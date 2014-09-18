@@ -4,10 +4,16 @@
 
 (describe "unit"
 
-  (describe "get-unit"
+  (describe "get-units"
+    (it "should have the correct units"
+      (should= 1 (count (get-units)))))
 
+  (describe "get-unit-by-code"
     (it "provides rain"
-      (should= "rain" ((get-unit "rain") :name)))
-    ))
+      (should= "rain" ((get-unit-by-code "r") :name))))
+
+  (describe "get-unit-by-name"
+    (it "provides rain"
+      (should= "rain" ((get-unit-by-name "rain") :name)))))
 
 (run-specs)

@@ -6,7 +6,7 @@
             :url          "file://LICENSE"
             :distribution :repo
             :comments     "Copyright 2011-2014 Pedro Santos All Rights Reserved."}
-  :dependencies [[org.clojure/clojure "1.5.1"]]
+  :dependencies [[org.clojure/clojure "1.6.0"]]
 
   :profiles {:dev {:dependencies [[speclj "3.1.0"]]}}
   :plugins [[speclj "3.1.0"]]
