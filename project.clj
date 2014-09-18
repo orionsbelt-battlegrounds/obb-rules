@@ -1,4 +1,4 @@
-(defproject obb-rules3 "0.1.0"
+(defproject obb-rules "0.1.0"
   :description "Orion's Belt battle rules"
   :url "http://example.com/FIXME"
 
@@ -8,9 +8,4 @@
             :comments     "Copyright 2011-2014 Pedro Santos All Rights Reserved."}
   :dependencies [[org.clojure/clojure "1.6.0"]]
 
-  :profiles {:dev {:dependencies [[speclj "3.1.0"]]}}
-  :plugins [[speclj "3.1.0"]]
-  :test-paths ["spec"]
-
-  :eval-in :leiningen ; to recognize spec task
   )
