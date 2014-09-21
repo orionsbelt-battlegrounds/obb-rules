@@ -8,6 +8,6 @@
             :comments     "Copyright 2011-2014 Pedro Santos All Rights Reserved."}
   :dependencies [[org.clojure/clojure "1.6.0"]]
   :source-paths ["src"]
-  :test-paths ["spec"]
+  :test-paths ["test"]
 
   )
