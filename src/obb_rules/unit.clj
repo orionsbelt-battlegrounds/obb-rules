@@ -1,5 +1,6 @@
 (ns obb-rules.unit
-  (:require [obb-rules.units.rain :refer [metadata]]))
+  (:require [obb-rules.units.rain]
+            [obb-rules.units.crusader]))
 
 (defn- unit-name-to-symbol
   [name]
@@ -15,9 +16,11 @@
   [code]
   (get-unit-by-name "rain"))
 
+
 (defn get-units
   "Gets all the available units"
   []
-  [(get-unit-by-name "rain")])
-
+  [(get-unit-by-name "rain")
+   ;(get-unit-by-name "crusader")])
+   ])
 
