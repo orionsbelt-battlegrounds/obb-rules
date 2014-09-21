@@ -10,4 +10,6 @@
   :source-paths ["src"]
   :test-paths ["test"]
 
+  :profiles {:dev {:plugins [[com.jakemccrary/lein-test-refresh "0.5.2"]]}}
+
   )

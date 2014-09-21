@@ -1,5 +1,5 @@
 (ns obb-rules.env-test
-  (:use clojure.test obb-rules.unit))
+  (:use clojure.test))
 
 (deftest env
 (testing "testing framework"
