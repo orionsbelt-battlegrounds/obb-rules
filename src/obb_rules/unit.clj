@@ -8,12 +8,12 @@
   [obb-rules.units.rain/metadata
    obb-rules.units.crusader/metadata])
 
-(defn build-units
+(defn- build-units
   [units, selector]
   (reduce #(conj %1 [(%2 selector) %2]) {} units))
 
-(def units-by-name (delay (build-units (get-units) :name)))
-(def units-by-code (delay (build-units (get-units) :code)))
+(def ^{:private true} units-by-name (delay (build-units (get-units) :name)))
+(def ^{:private true} units-by-code (delay (build-units (get-units) :code)))
 
 (defn get-unit-by-code
   "Gets a unit info given it's code"
