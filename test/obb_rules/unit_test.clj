@@ -17,9 +17,9 @@
 
 (defn- verify-unit
   [unit]
-  (deftest unit-tester (test-unit (unit :name) (unit :code))))
+  (testing  (test-unit (unit :name) (unit :code))))
 
-(defn- verify-units []
+(deftest verify-units
   (doseq [unit (get-units)]
     (verify-unit unit)))
 
