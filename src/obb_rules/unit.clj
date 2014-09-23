@@ -1,4 +1,6 @@
-(ns obb-rules.unit)
+(ns obb-rules.unit
+  (:require [obb-rules.units.rain]
+            [obb-rules.units.crusader]))
 
 (defn get-units
   "Gets all the available units"
