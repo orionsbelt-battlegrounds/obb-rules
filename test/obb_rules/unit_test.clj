@@ -10,10 +10,10 @@
   (let [unit (get-unit-by-name name)
         unit-by-code (get-unit-by-code code)]
     (is (= unit unit-by-code))
-    (is (= name (unit :name)))
-    (is (= code (unit :code)))
-    (is (> (unit :attack) 0))
-    (is (> (unit :defense) 0))))
+    (is (= name (unit-name unit)))
+    (is (= code (unit-code unit)))
+    (is (> (unit-attack unit) 0))
+    (is (> (unit-defense unit) 0))))
 
 (defn- verify-unit
   [unit]

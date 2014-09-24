@@ -25,3 +25,7 @@
   [name]
   (@units-by-name name))
 
+(defn unit-name "Gets a unit's name" [unit] (unit :name))
+(defn unit-code "Gets a unit's code" [unit] (unit :code))
+(defn unit-attack "Gets a unit's attack" [unit] (unit :attack))
+(defn unit-defense "Gets a unit's defense" [unit] (unit :defense))
