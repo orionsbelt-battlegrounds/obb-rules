@@ -21,14 +21,6 @@
           (let [fetched-element (get-element new-board [1 1])]
             (is (= fetched-element element))
             (is (= true (has-element? new-board [1 1])))
-            (is (= 1 (board-elements-count new-board))))))
-
-      (testing "operations with x y usage"
-        (let [new-board (place-element board 1 1 element)]
-          (is (= 1 (board-elements-count new-board)))
-          (let [fetched-element (get-element new-board 1 1)]
-            (is (= fetched-element element))
-            (is (= true (has-element? new-board 1 1)))
             (is (= 1 (board-elements-count new-board)))))))))
 
 (run-tests)
