@@ -32,7 +32,7 @@
 
 (defn join-elements
   "Joins several elements"
-  [e1 e2]
-  (let [q1 (element-quantity e1)
-        q2 (element-quantity e2)]
-    (assoc e1 :quantity (+ q1 q2))))
+  [& elements]
+  (let [quantities (map (fn [e] (element-quantity e)) elements)
+        template (first elements)]
+    (assoc template :quantity (apply + quantities))))
