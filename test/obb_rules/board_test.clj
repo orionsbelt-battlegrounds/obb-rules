@@ -1,6 +1,8 @@
 (ns obb-rules.board-test
   (:use clojure.test obb-rules.board))
 
+(def dummy-element :dummy-element)
+
 (deftest board
   (testing "create-board"
     (let [board (create-board 8 9)]
@@ -13,7 +15,7 @@
 
   (testing "managing elements"
     (let [board (create-board 8 8)
-          element :dummy-element-placeholder]
+          element dummy-element]
 
       (testing "operations with coordinate"
         (let [new-board (place-element board [1 1] element)]
