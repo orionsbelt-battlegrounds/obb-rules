@@ -1,5 +1,5 @@
 (ns obb-rules.board-test
-  (:use clojure.test obb-rules.board))
+  (:use clojure.test obb-rules.board obb-rules.element obb-rules.unit))
 
 (def dummy-element :dummy-element)
 
@@ -12,6 +12,19 @@
       (is (= false (has-element? board [1 1])))
       (is (= 9 (board-height board)))
       (is (= 8 (board-width board)))))
+
+  (testing "building a board"
+    (let [e1 (create-element :p1 (get-unit-by-name "rain") 20 :south)
+          e2 (create-element :p2 (get-unit-by-name "rain") 20 :north)
+          empty-board (create-board)
+          board1 (place-element empty-board [1 1] e1)
+          board2 (place-element board1 [2 2] e2)]
+      (is (= 2 (board-elements-count board2)))))
+
+  (testing "out of bounds"
+    (let [board (create-board)
+          element (create-element :p2 (get-unit-by-name "rain") 20 :north)]
+      (is (= false (can-place-element? board [-1 9] element)))))
 
   (testing "managing elements"
     (let [board (create-board 8 8)
