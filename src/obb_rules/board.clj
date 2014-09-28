@@ -27,7 +27,7 @@
   [board coord]
   ((board :elements) coord))
 
-(defn- in-bounds?
+(defn in-bounds?
   "Checks if a given coord is in the board"
   [board [x y]]
   (let [w (board-width board)

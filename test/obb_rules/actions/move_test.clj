@@ -22,6 +22,12 @@
         (is (failed? result))
         (is (= "NotAdjacent" (result-message result)))))
 
+    (testing "out of bounds"
+      (let [move-far (build-action [:move :p1 [8 8] [9 9] 10])
+            result (move-far board)]
+        (is (failed? result))
+        (is (= "OutOfBounds" (result-message result)))))
+
     (testing "coordinate is from another player"
       (let [action (build-action [:move :p1 [1 1] [2 2] 10])
             element (create-element :p2 rain 10 :south)
