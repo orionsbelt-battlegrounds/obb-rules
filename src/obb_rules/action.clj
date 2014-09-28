@@ -1,7 +1,7 @@
 (ns obb-rules.action
   (:use obb-rules.actions.rotate))
 
-(def ^{:private true} available-actions
+(def ^:private available-actions
   {:rotate build-rotate})
 
 (defn build-action

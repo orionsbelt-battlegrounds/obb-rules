@@ -12,8 +12,8 @@
   [units, selector]
   (reduce #(conj %1 [(%2 selector) %2]) {} units))
 
-(def ^{:private true} units-by-name (delay (build-units (get-units) :name)))
-(def ^{:private true} units-by-code (delay (build-units (get-units) :code)))
+(def ^:private units-by-name (delay (build-units (get-units) :name)))
+(def ^:private units-by-code (delay (build-units (get-units) :code)))
 
 (defn get-unit-by-code
   "Gets a unit info given it's code"
