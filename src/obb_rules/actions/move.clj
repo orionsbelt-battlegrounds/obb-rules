@@ -11,6 +11,11 @@
     (and eto (not= player (element-player eto))) "NotOwnedElement"
     (not= player (element-player efrom)) "NotOwnedElement"))
 
+(defn- process-move
+  "Processes the actual move"
+  [board]
+  (action-success board 0))
+
 (defn build-move
   "Builds a move action on a board"
   [[player from to quantity]]
@@ -19,5 +24,5 @@
           eto (get-element board to)]
       (if-let [error (move-restrictions player board efrom from eto to)]
         (action-failed error)
-        (action-failed "NotImplemented")))))
+        (process-move board)))))
 

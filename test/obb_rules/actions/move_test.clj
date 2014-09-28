@@ -12,6 +12,14 @@
 (def rain-element (create-element :p1 rain 10 :south))
 (def board (place-element (create-board) [2 2] rain-element))
 
+(deftest all-movement
+
+  (testing "all movement"
+    (let [result (move-down board)
+          new-board (result-board result)
+          new-element (get-element new-board [2 3])]
+      (is new-element))))
+
 (deftest generic-movement
 
   (testing "failures"
