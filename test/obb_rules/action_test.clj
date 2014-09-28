@@ -2,7 +2,7 @@
   (:use clojure.test 
         obb-rules.action
         obb-rules.board
-        obb-rules.element 
+        obb-rules.element
         obb-rules.result
         obb-rules.unit))
 

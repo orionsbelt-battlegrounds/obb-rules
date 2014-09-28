@@ -44,13 +44,18 @@
     (in-bounds? board coord)
     (nil? (get-element board coord))))
 
+(defn swap-element
+  "Swaps a given element for another"
+  [board coord new-elem]
+  (let [elements (board :elements)
+        new-elements (assoc elements coord new-elem)]
+    (assoc board :elements new-elements)))
+
 (defn place-element
   "Places an element on the board"
   [board coord element]
   (assert (can-place-element? board coord element))
-  (let [elements (board :elements)
-        new-elements (assoc elements coord element)]
-    (assoc board :elements new-elements)))
+  (swap-element board coord element))
 
 (defn has-element?
   "Returns true if the board has an element on a given coord"

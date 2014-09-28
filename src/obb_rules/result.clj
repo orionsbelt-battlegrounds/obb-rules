@@ -2,6 +2,9 @@
 
 (defn succeeded? "True if the action failed" [result] (result :success))
 (defn failed? "True if the action failed" [result] (not (succeeded? result)))
+(defn result-message "Gets the message of a result" [result] (result :message))
+(defn result-cost "Gets the cost of a result" [result] (result :cost))
+(defn result-board "Gets the board of a result" [result] (result :board))
 
 (defn action-result
   "Represents the result of an action"
