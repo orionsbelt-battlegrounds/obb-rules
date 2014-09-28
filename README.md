@@ -1,14 +1,6 @@
-# obb-rules3
+# obb-rules
 
-A Clojure library designed to ... well, that part is up to you.
+Orion's Belt BattleGrounds rules in clojure.
 
-## Usage
+[![Build Status](https://travis-ci.org/donbonifacio/obb-rules.svg?branch=cloveralls)](https://travis-ci.org/donbonifacio/obb-rules) [![Coverage Status](https://coveralls.io/repos/donbonifacio/obb-rules/badge.png)](https://coveralls.io/r/donbonifacio/obb-rules)
 
-FIXME
-
-## License
-
-Copyright © 2014 FIXME
-
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
