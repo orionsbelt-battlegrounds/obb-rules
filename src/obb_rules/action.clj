@@ -1,8 +1,10 @@
 (ns obb-rules.action
-  (:use obb-rules.actions.rotate))
+  (:use obb-rules.actions.rotate
+        obb-rules.actions.move))
 
 (def ^:private available-actions
-  {:rotate build-rotate})
+  {:rotate build-rotate
+   :move build-move})
 
 (defn build-action
   "Buidls an action given its code and args"

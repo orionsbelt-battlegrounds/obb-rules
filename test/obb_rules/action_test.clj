@@ -6,14 +6,22 @@
         obb-rules.result
         obb-rules.unit))
 
-(deftest action
+(defn- loader-check
+  "Checks if an action is recognized"
+  [raw-action]
+  (let [action (build-action raw-action)
+        board (create-board)]
+    (is action)
+    (is (fn? action))
+    (let [result (action board)]
+      (is (= true (failed? result))))))
+
+(deftest load-actions
+
+  (testing "load move"
+    (loader-check [:move :p1 [1 1] [2 2] 10]))
 
   (testing "load rotate"
-    (let [rotate (build-action [:rotate :p1 [1 1] :south])
-          board (create-board)]
-      (is rotate)
-      (is (fn? rotate))
-      (let [result (rotate board)]
-        (is (= true (failed? result)))))))
+    (loader-check [:rotate :p1 [1 1] :south])))
 
 (run-tests)
