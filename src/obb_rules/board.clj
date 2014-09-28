@@ -1,4 +1,5 @@
 (ns obb-rules.board
+  (:use obb-rules.element)
   (:require [clojure.math.numeric-tower :as math]))
 
 (defn create-board
@@ -45,6 +46,13 @@
     (in-bounds? board coord)
     (nil? (get-element board coord))))
 
+(defn remove-element
+  "Removes an element from the board"
+  [board coord]
+  (let [elements (board :elements)
+        new-elements (dissoc elements coord)]
+    (assoc board :elements new-elements)))
+
 (defn swap-element
   "Swaps a given element for another"
   [board coord new-elem]
@@ -69,3 +77,20 @@
   (and
     (> 2 (math/abs (- c1x c2x)))
     (> 2 (math/abs (- c1y c2y)))))
+
+(defn remove-from-element
+  "Removes a quantity from the board"
+  [board coord quantity]
+  (let [element (get-element board coord)
+        remaining-quantity (- (element-quantity element) quantity)]
+    (if (= 0 remaining-quantity)
+      (remove-element board coord)
+      (swap-element board coord (element-quantity element remaining-quantity)))))
+
+(defn add-to-element
+  "Adds a quantity to an element"
+  [board coord extra-quantity]
+  (let [element (get-element board coord)
+        quantity (or 0 (element-quantity element))
+        new-quantity (+ quantity extra-quantity)]
+    (swap-element board coord (element-quantity element new-quantity))))

@@ -36,3 +36,4 @@
   (let [quantities (map (fn [e] (element-quantity e)) elements)
         template (first elements)]
     (assoc template :quantity (apply + quantities))))
+
