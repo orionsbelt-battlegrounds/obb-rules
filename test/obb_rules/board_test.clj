@@ -38,4 +38,18 @@
             (is (= true (has-element? new-board [1 1])))
             (is (= 1 (board-elements-count new-board)))))))))
 
+(deftest adjacent
+  (testing "adjacent"
+    (is (adjacent? [2 2] [1 1]))
+    (is (adjacent? [2 2] [1 2]))
+    (is (adjacent? [2 2] [1 3]))
+    (is (adjacent? [2 2] [2 1]))
+    (is (adjacent? [2 2] [2 2]))
+    (is (adjacent? [2 2] [2 3]))
+    (is (adjacent? [2 2] [3 1]))
+    (is (adjacent? [2 2] [3 2]))
+    (is (adjacent? [2 2] [3 3])))
+  (testing "not adjacent"
+    (is (not (adjacent? [2 2] [4 4])))))
+
 (run-tests)
