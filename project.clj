@@ -12,5 +12,6 @@
   :test-paths ["test"]
 
   :profiles {:dev {:plugins [[com.jakemccrary/lein-test-refresh "0.5.2"]]}}
+  :plugins [[lein-cloverage "1.0.2"]]
 
   )
