@@ -36,6 +36,23 @@
     (test-complete-move board [2 2] [3 2])
     (test-complete-move board [2 2] [3 3])))
 
+(deftest partial-movement
+
+  (testing "partial-movement"
+    (let [old-coord [2 2]
+          new-coord [1 2]
+          move (build-action [:move :p1 old-coord new-coord 4])
+          result (move board)
+          new-board (result-board result)
+          new-element (get-element new-board new-coord)
+          old-element (get-element new-board old-coord)]
+      (is (succeeded? result))
+      (is old-element)
+      (is new-element)
+      (is (= 2 (result-cost result)))
+      (is (= 4 (element-quantity new-element)))
+      (is (= 6 (element-quantity old-element))))))
+
 (deftest cost
   (testing "full move cost"
     (is (= 2 (movement-cost rain true)))
