@@ -6,7 +6,8 @@
             :url          "file://LICENSE"
             :distribution :repo
             :comments     "Copyright 2011-2014 Pedro Santos All Rights Reserved."}
-  :dependencies [[org.clojure/clojure "1.6.0"]]
+  :dependencies [[org.clojure/clojure "1.6.0"]
+                 [org.clojure/math.numeric-tower "0.0.4"]]
   :source-paths ["src"]
   :test-paths ["test"]
 

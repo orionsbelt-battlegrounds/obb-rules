@@ -1,4 +1,5 @@
-(ns obb-rules.board)
+(ns obb-rules.board
+  (:require [clojure.math.numeric-tower :as math]))
 
 (defn create-board
   "Creates an empty board"
@@ -61,3 +62,10 @@
   "Returns true if the board has an element on a given coord"
   [board coord]
   (not (nil? (get-element board coord))))
+
+(defn adjacent?
+  "Checks if two coordinates are adjacent"
+  [[c1x c1y] [c2x c2y]]
+  (and
+    (> 2 (math/abs (- c1x c2x)))
+    (> 2 (math/abs (- c1y c2y)))))

@@ -3,15 +3,20 @@
 
 (defn- move-restrictions
   "Restrictions on the move action"
-  [player element]
-  nil)
+  [player efrom from eto to]
+  (cond
+    (nil? efrom) "EmptyCoordinate"
+    (not (adjacent? from to)) "NotAdjacent"
+    (and eto (not= player (element-player eto))) "NotOwnedElement"
+    (not= player (element-player efrom)) "NotOwnedElement"))
 
 (defn build-move
   "Builds a move action on a board"
-  [[player coord new-direction]]
+  [[player from to quantity]]
   (fn mover [board]
-    (let [element (get-element board coord)]
-      (if-let [error (move-restrictions player element)]
+    (let [efrom (get-element board from)
+          eto (get-element board to)]
+      (if-let [error (move-restrictions player efrom from eto to)]
         (action-failed error)
         (action-failed "NotImplemented")))))
 
