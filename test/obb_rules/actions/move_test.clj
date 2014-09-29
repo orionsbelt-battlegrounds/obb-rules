@@ -1,5 +1,6 @@
 (ns obb-rules.actions.move-test
   (:use clojure.test
+        midje.sweet
         obb-rules.action
         obb-rules.actions.move
         obb-rules.board
@@ -24,9 +25,9 @@
     (is (not old-element))
     (is new-element)))
 
-(deftest all-movement
+(deftest movement-restrictions
 
-  (testing "all movement complete"
+  (testing "all-movement does not have restrictions"
     (test-complete-move board [2 2] [1 1])
     (test-complete-move board [2 2] [1 2])
     (test-complete-move board [2 2] [1 3])
@@ -104,3 +105,5 @@
             result (move-down board)]
         (is (failed? result))
         (is (= "EmptyCoordinate" (result-message result)))))))
+
+(run-tests)
