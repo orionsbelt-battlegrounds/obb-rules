@@ -12,30 +12,48 @@
 (def crusader (get-unit-by-name "crusader"))
 (def move-down (build-action [:move :p1 [2 2] [2 3] 10]))
 (def rain-element (create-element :p1 rain 10 :south))
+(def crusader-element (create-element :p1 crusader 10 :south))
 (def board (place-element (create-board) [2 2] rain-element))
 
 (defn- test-complete-move
-  [board old-coord new-coord]
+  [board old-coord new-coord expected-success?]
   (let [move (build-action [:move :p1 old-coord new-coord 10])
-        result (move board)
-        new-board (result-board result)
-        new-element (get-element new-board new-coord)
-        old-element (get-element new-board old-coord)]
-    (is (succeeded? result))
-    (is (not old-element))
-    (is new-element)))
+        result (move board)]
+    (if expected-success?
+      (do
+        (is (succeeded? result))
+        (if (succeeded? result)
+          (let [new-board (result-board result)
+                new-element (get-element new-board new-coord)
+                old-element (get-element new-board old-coord)]
+            (is (not old-element))
+            (is new-element))))
+      (do
+        (is (failed? result))))))
 
 (deftest movement-restrictions
 
+  (testing "front movement"
+
+    (let [board (place-element (create-board) [2 2] crusader-element)]
+      (test-complete-move board [2 2] [1 1] false)
+      (test-complete-move board [2 2] [1 2] false)
+      (test-complete-move board [2 2] [1 3] false)
+      (test-complete-move board [2 2] [2 1] false)
+      (test-complete-move board [2 2] [2 3] true)
+      (test-complete-move board [2 2] [3 1] false)
+      (test-complete-move board [2 2] [3 2] false)
+      (test-complete-move board [2 2] [3 3] false)))
+
   (testing "all-movement does not have restrictions"
-    (test-complete-move board [2 2] [1 1])
-    (test-complete-move board [2 2] [1 2])
-    (test-complete-move board [2 2] [1 3])
-    (test-complete-move board [2 2] [2 1])
-    (test-complete-move board [2 2] [2 3])
-    (test-complete-move board [2 2] [3 1])
-    (test-complete-move board [2 2] [3 2])
-    (test-complete-move board [2 2] [3 3])))
+    (test-complete-move board [2 2] [1 1] true)
+    (test-complete-move board [2 2] [1 2] true)
+    (test-complete-move board [2 2] [1 3] true)
+    (test-complete-move board [2 2] [2 1] true)
+    (test-complete-move board [2 2] [2 3] true)
+    (test-complete-move board [2 2] [3 1] true)
+    (test-complete-move board [2 2] [3 2] true)
+    (test-complete-move board [2 2] [3 3] true)))
 
 (deftest partial-movement
 

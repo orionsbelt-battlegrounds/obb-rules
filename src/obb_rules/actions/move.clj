@@ -1,4 +1,5 @@
 (ns obb-rules.actions.move
+  (:require [obb-rules.actions.move-restrictions :as move-restrictions])
   (:use obb-rules.result obb-rules.board obb-rules.element obb-rules.unit))
 
 (defn- move-restrictions
@@ -8,6 +9,7 @@
     (not (in-bounds? board to)) "OutOfBounds"
     (nil? efrom) "EmptyCoordinate"
     (not (adjacent? from to)) "NotAdjacent"
+    (not (move-restrictions/valid? efrom from to)) "MovementTypeFail"
     (and eto (not= (element-unit efrom) (element-unit eto))) "UnitMismatch"
     (and eto (not= player (element-player eto))) "NotOwnedElement"
     (not= player (element-player efrom)) "NotOwnedElement"))

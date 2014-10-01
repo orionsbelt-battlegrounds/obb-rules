@@ -30,3 +30,4 @@
 (defn unit-attack "Gets a unit's attack" [unit] (unit :attack))
 (defn unit-defense "Gets a unit's defense" [unit] (unit :defense))
 (defn unit-movement-cost "Gets a unit's movement cost" [unit] (unit :movement-cost))
+(defn unit-movement-type "Gets a unit's movement type" [unit] (unit :movement-type))

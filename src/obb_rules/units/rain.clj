@@ -13,6 +13,6 @@
    :category :light
    :displacement :air
 
-   :movement-type nil
+   :movement-type :all
    :movement-cost 1})
 

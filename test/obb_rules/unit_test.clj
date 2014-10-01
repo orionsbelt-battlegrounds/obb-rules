@@ -13,6 +13,7 @@
     (is (= name (unit-name unit)))
     (is (= code (unit-code unit)))
     (is (> (unit-attack unit) 0))
+    (is (unit-movement-type unit))
     (is (> (unit-defense unit) 0))))
 
 (defn- verify-unit
