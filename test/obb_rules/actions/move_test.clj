@@ -11,10 +11,12 @@
 (def rain (get-unit-by-name "rain"))
 (def crusader (get-unit-by-name "crusader"))
 (def nova (get-unit-by-name "nova"))
+(def pretorian (get-unit-by-name "pretorian"))
 (def move-down (build-action [:move :p1 [2 2] [2 3] 10]))
 (def rain-element (create-element :p1 rain 10 :south))
 (def crusader-element (create-element :p1 crusader 10 :south))
 (def nova-element (create-element :p1 nova 10 :south))
+(def pretorian-element (create-element :p1 pretorian 10 :south))
 (def board (place-element (create-board) [2 2] rain-element))
 
 (defn- test-complete-move
@@ -56,6 +58,17 @@
       (test-complete-move board [2 2] [3 1] false)
       (test-complete-move board [2 2] [3 2] true)
       (test-complete-move board [2 2] [3 3] false)))
+
+  (testing "diagonal movement"
+    (let [board (place-element (create-board) [2 2] pretorian-element)]
+      (test-complete-move board [2 2] [1 1] true)
+      (test-complete-move board [2 2] [1 2] false)
+      (test-complete-move board [2 2] [1 3] true)
+      (test-complete-move board [2 2] [2 1] false)
+      (test-complete-move board [2 2] [2 3] false)
+      (test-complete-move board [2 2] [3 1] true)
+      (test-complete-move board [2 2] [3 2] false)
+      (test-complete-move board [2 2] [3 3] true)))
 
   (testing "all-movement"
     (test-complete-move board [2 2] [1 1] true)

@@ -20,9 +20,15 @@
     (= x1 x2)
     (= y1 y2)))
 
+(defn- diagonal-movement-valid?
+  "Given two adjacent coords, checks if the movement is valid"
+  [direction from to]
+  (not (normal-movement-valid? direction from to)))
+
 (def ^:private validators
   {:all all-movement-valid?
    :normal normal-movement-valid?
+   :diagonal diagonal-movement-valid?
    :front front-movement-valid?})
 
 (defn valid?
