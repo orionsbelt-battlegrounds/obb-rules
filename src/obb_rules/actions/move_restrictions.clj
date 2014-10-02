@@ -13,8 +13,16 @@
   [direction from to]
   (= (dir/update direction from) to))
 
+(defn- normal-movement-valid?
+  "Given two adjacent coords, checks if the movement is valid"
+  [direction [x1 y1] [x2 y2]]
+  (or
+    (= x1 x2)
+    (= y1 y2)))
+
 (def ^:private validators
   {:all all-movement-valid?
+   :normal normal-movement-valid?
    :front front-movement-valid?})
 
 (defn valid?
@@ -24,4 +32,5 @@
         direction (element/element-direction element)
         movement-type (unit/unit-movement-type unit)
         validator (validators movement-type)]
+    (assert validator (str "Can't resolve " movement-type " movement type "))
     (validator direction from to)))

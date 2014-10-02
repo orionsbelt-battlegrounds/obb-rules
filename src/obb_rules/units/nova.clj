@@ -13,6 +13,6 @@
    :category :heavy
    :displacement :air
 
-   :movement-type :front
+   :movement-type :normal
    :movement-cost 4})
 
