@@ -57,7 +57,8 @@
   "Swaps a given element for another"
   [board coord new-elem]
   (let [elements (board :elements)
-        new-elements (assoc elements coord new-elem)]
+        element-with-coord (element-coordinate new-elem coord)
+        new-elements (assoc elements coord element-with-coord)]
     (assoc board :elements new-elements)))
 
 (defn place-element
