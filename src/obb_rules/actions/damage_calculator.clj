@@ -7,9 +7,7 @@
   (let [attacker-unit (element-unit attacker-element)
         defender-unit (element-unit defender-element)
         attacker-quantity (element-quantity attacker-element)
-        attack (unit-attack attacker-unit)
-        defender (unit-defense defender-unit)
-        distance-factor 1.0]
+        attack (unit-attack attacker-unit)]
     (* attack attacker-quantity)))
 
 (defn defense
