@@ -6,7 +6,8 @@
   {:player player
    :unit unit
    :quantity quantity
-   :direction direction})
+   :direction direction
+   :coordinate nil})
 
 (defn element-player "Element's player" [element] (element :player))
 (defn element-unit "Element's unit" [element] (element :unit))
@@ -22,6 +23,15 @@
   ([element] (element :quantity))
   ([element new-quantity]
    (assoc element :quantity new-quantity)))
+
+(defn element-coordinate
+  "Gets/Sets element's coordinate"
+  ([element]
+   (let [c (element :coordinate)]
+     (assert c "NoCoordinate")
+     (element :coordinate)))
+  ([element new-coordinate]
+   (assoc element :coordinate new-coordinate)))
 
 (defn can-join-elements?
   "Checks if several elements can be joined into one"

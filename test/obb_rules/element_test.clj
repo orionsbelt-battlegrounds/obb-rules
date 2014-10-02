@@ -17,6 +17,11 @@
           e2 (element-quantity e 100)]
       (is (= 100 (element-quantity e2)))))
 
+  (testing "setting coordinate"
+    (let [e (create-element player unit 20 :south)
+          e2 (element-coordinate e [3 4])]
+      (is (= [3 4] (element-coordinate e2)))))
+
   (testing "change direction"
     (let [e (create-element player unit 20 :south)
           e2 (element-direction e :east)]
