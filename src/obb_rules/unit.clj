@@ -1,6 +1,7 @@
 (ns obb-rules.unit
   (:require [obb-rules.units.rain]
             [obb-rules.units.nova]
+            [obb-rules.units.pretorian]
             [obb-rules.units.crusader]))
 
 (defn get-units
@@ -8,6 +9,7 @@
   []
   [obb-rules.units.rain/metadata
    obb-rules.units.nova/metadata
+   obb-rules.units.pretorian/metadata
    obb-rules.units.crusader/metadata])
 
 (defn- build-units
