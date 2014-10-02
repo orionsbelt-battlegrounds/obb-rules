@@ -106,6 +106,22 @@
 
   (testing "failures"
 
+    (testing "fails if quantity is not the minimum percentage"
+      (let [old-coord [2 2]
+            new-coord [1 2]
+            move (build-action [:move :p1 old-coord new-coord 1])
+            result (move board)]
+        (is (failed? result))
+        (is (= "InvalidQuantityPercentage" (result-message result)))))
+
+    (testing "fails if quantity is not the maximum percentage"
+      (let [old-coord [2 2]
+            new-coord [1 2]
+            move (build-action [:move :p1 old-coord new-coord 9])
+            result (move board)]
+        (is (failed? result))
+        (is (= "InvalidQuantityPercentage" (result-message result)))))
+
     (testing "not adjacent"
       (let [move-far (build-action [:move :p1 [2 2] [4 4] 10])
             result (move-far board)]

@@ -2,13 +2,26 @@
   (:require [obb-rules.actions.move-restrictions :as move-restrictions])
   (:use obb-rules.result obb-rules.board obb-rules.element obb-rules.unit))
 
+(def ^:private min-move-percentage 0.2)
+(def ^:private max-move-percentage (- 1 min-move-percentage))
+
+(defn- invalid-move-percentage?
+  "Checks if a quantity to move is invalid"
+  [total-quantity quantity]
+  (if (= total-quantity quantity)
+    false
+    (or
+      (>= quantity (* total-quantity max-move-percentage))
+      (<= quantity (* total-quantity min-move-percentage)))))
+
 (defn- move-restrictions
   "Restrictions on the move action"
-  [player board efrom from eto to]
+  [player board efrom from eto to quantity]
   (cond
     (not (in-bounds? board to)) "OutOfBounds"
     (nil? efrom) "EmptyCoordinate"
     (not (adjacent? from to)) "NotAdjacent"
+    (invalid-move-percentage? (element-quantity efrom) quantity) "InvalidQuantityPercentage"
     (not (move-restrictions/valid? efrom from to)) "MovementTypeFail"
     (and eto (not= (element-unit efrom) (element-unit eto))) "UnitMismatch"
     (and eto (not= player (element-player eto))) "NotOwnedElement"
@@ -38,7 +51,7 @@
   (fn mover [board]
     (let [efrom (get-element board from)
           eto (get-element board to)]
-      (if-let [error (move-restrictions player board efrom from eto to)]
+      (if-let [error (move-restrictions player board efrom from eto to quantity)]
         (action-failed error)
         (process-move board efrom from eto to quantity)))))
 
