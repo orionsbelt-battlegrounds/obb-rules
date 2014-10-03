@@ -1,9 +1,11 @@
 (ns obb-rules.action
   (:use obb-rules.actions.rotate
+        obb-rules.actions.attack
         obb-rules.actions.move))
 
 (def ^:private available-actions
   {:rotate build-rotate
+   :attack build-attack
    :move build-move})
 
 (defn build-action
