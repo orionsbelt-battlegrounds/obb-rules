@@ -29,6 +29,11 @@
   [name]
   (@units-by-name name))
 
+(defn fetch
+  "Gets a unit"
+  [identifier]
+  (or (get-unit-by-name identifier) (get-unit-by-code identifier)))
+
 (defn unit-name "Gets a unit's name" [unit] (unit :name))
 (defn unit-code "Gets a unit's code" [unit] (unit :code))
 (defn unit-attack "Gets a unit's attack" [unit] (unit :attack))
