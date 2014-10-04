@@ -18,6 +18,21 @@
 
 (deftest test-attack
 
+  (comment (testing "hitpoints"
+    (let [crusader-element (create-element :p1 crusader 1 :south)
+          rain-element (create-element :p2 rain 1 :north)
+          board (create-board)
+          cboard (place-element board [1 1] crusader-element)
+          rboard (place-element cboard [1 2] rain-element)
+          attack (build-action [:attack [1 2] [1 1]])]
+      (loop [board rboard]
+        (let [result (attack board :p2)
+              after-attack (result-board result)
+              crusader-element (get-element after-attack [1 1])]
+          (if crusader-element
+            (recur after-attack)
+            (is (nil? crusader-element))))))))
+
   (testing "emtpy target"
     (let [attack (build-action [:attack [2 2] [2 3]])
           result (attack board1 :p1)]
@@ -60,4 +75,7 @@
   (testing "simple success"
     (let [attack (build-action [:attack [2 2] [2 3]])
           result (attack board :p1)]
-      (is (succeeded? result)))))
+      (is (succeeded? result))
+      (is (nil? (get-element (result-board result) [2 3]))))))
+
+(run-tests)

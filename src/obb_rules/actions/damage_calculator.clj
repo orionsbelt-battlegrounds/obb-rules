@@ -37,4 +37,4 @@
         defender-quantity (element-quantity defender-element)]
     (if (> destroyed defender-quantity)
       defender-quantity
-      (int destroyed))))
+      destroyed)))

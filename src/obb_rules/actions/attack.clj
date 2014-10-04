@@ -1,5 +1,6 @@
 (ns obb-rules.actions.attack
-  (:require [obb-rules.actions.direction :as dir])
+  (:require [obb-rules.actions.direction :as dir]
+            [obb-rules.actions.damage-calculator :as calculator])
   (:use obb-rules.result obb-rules.board obb-rules.element obb-rules.unit))
 
 (defn- advance-and-check-target
@@ -10,9 +11,9 @@
         next-coordinate (dir/update direction current-coordinate)
         next-element (get-element board next-coordinate)]
     (cond
+      (= next-element target) true
       (>= distance (unit-range unit)) false
       (nil? next-element) (advance-and-check-target board attacker target next-coordinate (+ 1 distance))
-      (= next-element target) true
       :else false)))
 
 (defn- in-range?
@@ -32,7 +33,9 @@
 (defn- process-attack
   "Processes the attack"
   [board attacker target]
-  (action-success board 1))
+  (let [destroyed (calculator/destroyed attacker target)
+        coordinate (element-coordinate target)]
+    (action-success (remove-from-element board coordinate destroyed) 1)))
 
 (defn build-attack
   "Builds an attack action on a board"

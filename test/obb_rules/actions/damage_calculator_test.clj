@@ -48,7 +48,7 @@
 
   (testing "units destroyed"
     (let [destroyed (calculator/destroyed rain-element crusader-element)]
-      (is (= 0 destroyed))))
+      (is (= 0 (int destroyed)))))
 
   (testing "actual damage made"
     (let [damage (calculator/damage rain-element crusader-element)]
