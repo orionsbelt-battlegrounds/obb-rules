@@ -4,6 +4,7 @@
             [obb-rules.units.pretorian]
             [obb-rules.units.raptor]
             [obb-rules.units.anubis]
+            [obb-rules.units.kamikaze]
             [obb-rules.units.crusader]))
 
 (defn get-units
@@ -14,6 +15,7 @@
    obb-rules.units.pretorian/metadata
    obb-rules.units.raptor/metadata
    obb-rules.units.anubis/metadata
+   obb-rules.units.kamikaze/metadata
    obb-rules.units.crusader/metadata])
 
 (defn- build-units
