@@ -2,12 +2,14 @@
 
 (defn create-element
   "Creates an element"
-  [player unit quantity direction]
+  ([player unit quantity direction]
+   (create-element player unit quantity direction nil))
+  ([player unit quantity direction coordinate]
   {:player player
    :unit unit
    :quantity quantity
    :direction direction
-   :coordinate nil})
+   :coordinate coordinate}))
 
 (defn element-player "Element's player" [element] (element :player))
 (defn element-unit "Element's unit" [element] (element :unit))

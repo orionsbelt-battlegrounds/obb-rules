@@ -9,8 +9,30 @@
 
 (def rain (get-unit-by-name "rain"))
 (def crusader (get-unit-by-name "crusader"))
-(def rain-element (create-element :p1 rain 10 :south))
-(def crusader-element (create-element :p1 crusader 10 :south))
+(def rain-element (create-element :p1 rain 10 :south [1 1]))
+(def crusader-element (create-element :p1 crusader 10 :south [1 2]))
+
+(deftest range-factor
+
+  (defn- test-range
+    [c1 c2 expected-factor]
+    (let [board (place-element (create-board) c1 (create-element :p1 crusader 10 :south))
+          board2 (place-element board c2 (create-element :p2 crusader 10 :south))
+          e1 (get-element board2 c1)
+          e2 (get-element board2 c2)
+          damage (calculator/damage e1 e2)
+          factor (calculator/distance-factor e1 e2)]
+      (is (> damage 0))
+      (is (= factor expected-factor))
+      damage))
+
+  (testing "range attenuation"
+    (is (= 24000 (test-range [1 1] [1 2] 1)))
+    (is (= 24000 (test-range [1 1] [1 3] 1)))
+    (is (= 24000 (test-range [1 1] [1 4] 1 )))
+    (is (= 18000 (test-range [1 1] [1 5] 0.75)))
+    (is (= 12000 (test-range [1 1] [1 6] 0.50)))
+    (is (= 6000  (test-range [1 1] [1 7] 0.25)))))
 
 (deftest test-crusader-attack
 
