@@ -22,9 +22,10 @@
 
 (defn- attack-restrictions
   "Checks if the attack is possible"
-  [board attacker target]
+  [board player attacker target]
   (cond
     (nil? target) "EmptyTarget"
+    (not= player (element-player attacker)) "NotOwnedElement"
     (not (in-range? board attacker target)) "OutOfRange"
     (= (element-player attacker) (element-player target)) "SamePlayer"))
 
@@ -39,7 +40,7 @@
   (fn attacker [board player]
     (let [attacker (get-element board coord)
           target (get-element board target-coord)]
-      (if-let [error (attack-restrictions board attacker target)]
+      (if-let [error (attack-restrictions board player attacker target)]
         (action-failed error)
         (process-attack board attacker target)))))
 

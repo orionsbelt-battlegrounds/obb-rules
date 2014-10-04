@@ -51,6 +51,12 @@
       (is (failed? result))
       (is (= "SamePlayer" (result-message result)))))
 
+  (testing "player not owned"
+    (let [attack (build-action [:attack [2 2] [2 3]])
+          result (attack board :p2)]
+      (is (failed? result))
+      (is (= "NotOwnedElement" (result-message result)))))
+
   (testing "simple success"
     (let [attack (build-action [:attack [2 2] [2 3]])
           result (attack board :p1)]
