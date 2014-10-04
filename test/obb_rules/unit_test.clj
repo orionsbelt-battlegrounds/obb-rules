@@ -3,7 +3,7 @@
 
 (deftest unit
   (testing "get-units"
-    (is (= 9 (count (get-units))))))
+    (is (= 10 (count (get-units))))))
 
 (defn- test-unit
   [name code]
