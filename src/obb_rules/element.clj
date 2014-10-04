@@ -1,4 +1,5 @@
-(ns obb-rules.element)
+(ns obb-rules.element
+  (:require [obb-rules.unit :as unit]))
 
 (defn create-element
   "Creates an element"
@@ -9,7 +10,8 @@
    :unit unit
    :quantity quantity
    :direction direction
-   :coordinate coordinate}))
+   :coordinate coordinate
+   :hitpoints (unit/unit-defense unit)}))
 
 (defn element-player "Element's player" [element] (element :player))
 (defn element-unit "Element's unit" [element] (element :unit))
@@ -25,6 +27,27 @@
   ([element] (element :quantity))
   ([element new-quantity]
    (assoc element :quantity new-quantity)))
+
+(defn- remove-specific-quantity
+  "Removes a specific, concrete quantity from the element"
+  [element quantity]
+  (let [current-quantity (element-quantity element)
+        remaining-quantity (- current-quantity quantity)]
+    (if (> 0 remaining-quantity)
+      (element-quantity element 0)
+      (element-quantity element remaining-quantity))))
+
+(defn- remove-hitpoints
+  "Removes part of an element (<1)"
+  [element percentage])
+
+(defn remove-quantity
+  "Removes a specified quantity"
+  [element quantity]
+  (cond
+    (= quantity 0) element
+    (>= quantity 1) (remove-specific-quantity element quantity)
+    :else (remove-hitpoints element quantity)))
 
 (defn element-coordinate
   "Gets/Sets element's coordinate"

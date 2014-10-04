@@ -83,10 +83,11 @@
   "Removes a quantity from the board"
   [board coord quantity]
   (let [element (get-element board coord)
-        remaining-quantity (- (element-quantity element) quantity)]
+        new-element (remove-quantity element quantity)
+        remaining-quantity (element-quantity new-element)]
     (if (= 0 remaining-quantity)
       (remove-element board coord)
-      (swap-element board coord (element-quantity element remaining-quantity)))))
+      (swap-element board coord new-element))))
 
 (defn add-to-element
   "Adds a quantity to an element"
