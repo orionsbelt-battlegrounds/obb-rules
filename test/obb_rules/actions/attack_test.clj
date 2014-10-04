@@ -18,7 +18,7 @@
 
 (deftest test-attack
 
-  (comment (testing "hitpoints"
+  (testing "hitpoints"
     (let [crusader-element (create-element :p1 crusader 1 :south)
           rain-element (create-element :p2 rain 1 :north)
           board (create-board)
@@ -31,7 +31,7 @@
               crusader-element (get-element after-attack [1 1])]
           (if crusader-element
             (recur after-attack)
-            (is (nil? crusader-element))))))))
+            (is (nil? crusader-element)))))))
 
   (testing "emtpy target"
     (let [attack (build-action [:attack [2 2] [2 3]])

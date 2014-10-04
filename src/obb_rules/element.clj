@@ -22,6 +22,12 @@
   ([element new-direction]
    (assoc element :direction new-direction)))
 
+(defn- element-hitpoints
+  "Gets/Sets element's hitpoints"
+  ([element] (element :hitpoints))
+  ([element new-hitpoints]
+   (assoc element :hitpoints new-hitpoints)))
+
 (defn element-quantity
   "Gets/Sets element's quantity"
   ([element] (element :quantity))
@@ -39,7 +45,16 @@
 
 (defn- remove-hitpoints
   "Removes part of an element (<1)"
-  [element percentage])
+  [element percentage]
+  (let [unit (element-unit element)
+        defense (unit/unit-defense unit)
+        hitpoints-to-take (* percentage defense)
+        current-hitpoints (element-hitpoints element)
+        new-hitpoints (- current-hitpoints hitpoints-to-take)]
+    (if (< 0 new-hitpoints)
+      (element-hitpoints element new-hitpoints)
+      (assoc element :hitpoints defense
+                     :quantity (- (element-quantity element) 1)))))
 
 (defn remove-quantity
   "Removes a specified quantity"
