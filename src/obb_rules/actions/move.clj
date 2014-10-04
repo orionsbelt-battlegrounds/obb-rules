@@ -47,8 +47,8 @@
 
 (defn build-move
   "Builds a move action on a board"
-  [[player from to quantity]]
-  (fn mover [board]
+  [[from to quantity]]
+  (fn mover [board player]
     (let [efrom (get-element board from)
           eto (get-element board to)]
       (if-let [error (move-restrictions player board efrom from eto to quantity)]

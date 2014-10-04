@@ -17,8 +17,8 @@
 
 (defn build-rotate
   "Builds a rotate action on a board"
-  [[player coord new-direction]]
-  (fn rotator [board]
+  [[coord new-direction]]
+  (fn rotator [board player]
     (let [element (get-element board coord)]
       (if-let [error (rotate-restrictions player element)]
         (action-failed error)

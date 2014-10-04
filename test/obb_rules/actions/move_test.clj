@@ -12,7 +12,7 @@
 (def crusader (get-unit-by-name "crusader"))
 (def nova (get-unit-by-name "nova"))
 (def pretorian (get-unit-by-name "pretorian"))
-(def move-down (build-action [:move :p1 [2 2] [2 3] 10]))
+(def move-down (build-action [:move [2 2] [2 3] 10]))
 (def rain-element (create-element :p1 rain 10 :south))
 (def crusader-element (create-element :p1 crusader 10 :south))
 (def nova-element (create-element :p1 nova 10 :south))
@@ -21,8 +21,8 @@
 
 (defn- test-complete-move
   [board old-coord new-coord expected-success?]
-  (let [move (build-action [:move :p1 old-coord new-coord 10])
-        result (move board)]
+  (let [move (build-action [:move old-coord new-coord 10])
+        result (move board :p1)]
     (if expected-success?
       (do
         (is (succeeded? result))
@@ -85,8 +85,8 @@
   (testing "partial-movement"
     (let [old-coord [2 2]
           new-coord [1 2]
-          move (build-action [:move :p1 old-coord new-coord 4])
-          result (move board)
+          move (build-action [:move old-coord new-coord 4])
+          result (move board :p1)
           new-board (result-board result)
           new-element (get-element new-board new-coord)
           old-element (get-element new-board old-coord)]
@@ -109,59 +109,59 @@
     (testing "fails if quantity is not the minimum percentage"
       (let [old-coord [2 2]
             new-coord [1 2]
-            move (build-action [:move :p1 old-coord new-coord 1])
-            result (move board)]
+            move (build-action [:move old-coord new-coord 1])
+            result (move board :p1)]
         (is (failed? result))
         (is (= "InvalidQuantityPercentage" (result-message result)))))
 
     (testing "fails if quantity is not the maximum percentage"
       (let [old-coord [2 2]
             new-coord [1 2]
-            move (build-action [:move :p1 old-coord new-coord 9])
-            result (move board)]
+            move (build-action [:move old-coord new-coord 9])
+            result (move board :p1)]
         (is (failed? result))
         (is (= "InvalidQuantityPercentage" (result-message result)))))
 
     (testing "not adjacent"
-      (let [move-far (build-action [:move :p1 [2 2] [4 4] 10])
-            result (move-far board)]
+      (let [move-far (build-action [:move [2 2] [4 4] 10])
+            result (move-far board :p1)]
         (is (failed? result))
         (is (= "NotAdjacent" (result-message result)))))
 
     (testing "out of bounds"
-      (let [move-far (build-action [:move :p1 [8 8] [9 9] 10])
-            result (move-far board)]
+      (let [move-far (build-action [:move [8 8] [9 9] 10])
+            result (move-far board :p1)]
         (is (failed? result))
         (is (= "OutOfBounds" (result-message result)))))
 
     (testing "coordinate is from another player"
-      (let [action (build-action [:move :p1 [1 1] [2 2] 10])
+      (let [action (build-action [:move [1 1] [2 2] 10])
             element (create-element :p2 rain 10 :south)
             board (place-element (create-board) [1 1] element)
-            result (action board)]
+            result (action board :p1)]
         (is (failed? result))
         (is (= "NotOwnedElement" (result-message result)))))
 
     (testing "target coordinate is from another player"
-      (let [action (build-action [:move :p1 [2 2] [3 3] 10])
+      (let [action (build-action [:move [2 2] [3 3] 10])
             element (create-element :p2 rain 10 :south)
             new-board (place-element board [3 3] element)
-            result (action new-board)]
+            result (action new-board :p1)]
         (is (failed? result))
         (is (= "NotOwnedElement" (result-message result)))))
 
     (testing "target coordinate is another unit"
-      (let [action (build-action [:move :p1 [2 2] [3 3] 10])
+      (let [action (build-action [:move [2 2] [3 3] 10])
             element (create-element :p1 crusader 10 :south)
             new-board (place-element board [3 3] element)
-            result (action new-board)]
+            result (action new-board :p1)]
         (is (failed? result))
         (is (= "UnitMismatch" (result-message result)))))
 
     (testing "coordinate empty"
-      (let [action (build-action [:move :p1 [1 1] [1 2] :10])
+      (let [action (build-action [:move [1 1] [1 2] :10])
             board (create-board)
-            result (move-down board)]
+            result (move-down board :p1)]
         (is (failed? result))
         (is (= "EmptyCoordinate" (result-message result)))))))
 

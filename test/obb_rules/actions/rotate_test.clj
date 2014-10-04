@@ -12,10 +12,10 @@
 (deftest rotate
 
   (testing "success"
-    (let [action (build-action [:rotate :p1 [1 1] :north])
+    (let [action (build-action [:rotate [1 1] :north])
           element (create-element :p1 unit 10 :south)
           board (place-element (create-board) [1 1] element)
-          result (action board)
+          result (action board :p1)
           new-board (result-board result)
           new-element (get-element new-board [1 1])]
       (is (succeeded? result))
@@ -28,16 +28,18 @@
   (testing "failures"
 
     (testing "coordinate is from another player"
-      (let [action (build-action [:rotate :p1 [1 1] :north])
+      (let [action (build-action [:rotate [1 1] :north])
             element (create-element :p2 unit 10 :south)
             board (place-element (create-board) [1 1] element)
-            result (action board)]
+            result (action board :p1)]
         (is (failed? result))
         (is (= "NotOwnedElement" (result-message result)))))
 
     (testing "coordinate empty"
-      (let [action (build-action [:rotate :p1 [1 1] :north])
+      (let [action (build-action [:rotate [1 1] :north])
             board (create-board)
-            result (action board)]
+            result (action board :p1)]
         (is (failed? result))
         (is (= "EmptyCoordinate" (result-message result)))))))
+
+(run-tests)

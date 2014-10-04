@@ -19,39 +19,39 @@
 (deftest test-attack
 
   (testing "emtpy target"
-    (let [attack (build-action [:attack :p1 [2 2] [2 3]])
-          result (attack board1)]
+    (let [attack (build-action [:attack [2 2] [2 3]])
+          result (attack board1 :p1)]
       (is (= "EmptyTarget" (result-message result)))))
 
   (testing "in range target"
     (let [board (place-element board1 [2 6] (create-element :p2 crusader 10 :east))
-          attack (build-action [:attack :p1 [2 2] [2 6]])
-          result (attack board)]
+          attack (build-action [:attack [2 2] [2 6]])
+          result (attack board :p1)]
       (is (succeeded? result))))
 
   (testing "out of range target"
     (let [board (place-element board1 [3 3] (create-element :p2 crusader 10 :east))
-          attack (build-action [:attack :p1 [2 2] [3 3]])
-          result (attack board)]
+          attack (build-action [:attack [2 2] [3 3]])
+          result (attack board :p1)]
       (is (failed? result))
       (is (= "OutOfRange" (result-message result)))))
 
   (testing "obstacle"
     (let [board (place-element board1 [2 3] (create-element :p2 crusader 10 :east))
           board2 (place-element board [2 4] (create-element :p2 crusader 10 :east))
-          attack (build-action [:attack :p1 [2 2] [2 4]])
-          result (attack board2)]
+          attack (build-action [:attack [2 2] [2 4]])
+          result (attack board2 :p1)]
       (is (failed? result))
       (is (= "OutOfRange" (result-message result)))))
 
   (testing "same player target"
     (let [board (place-element board1 [2 3] (create-element :p1 crusader 10 :east))
-          attack (build-action [:attack :p1 [2 2] [2 3]])
-          result (attack board)]
+          attack (build-action [:attack [2 2] [2 3]])
+          result (attack board :p1)]
       (is (failed? result))
       (is (= "SamePlayer" (result-message result)))))
 
   (testing "simple success"
-    (let [attack (build-action [:attack :p1 [2 2] [2 3]])
-          result (attack board)]
+    (let [attack (build-action [:attack [2 2] [2 3]])
+          result (attack board :p1)]
       (is (succeeded? result)))))

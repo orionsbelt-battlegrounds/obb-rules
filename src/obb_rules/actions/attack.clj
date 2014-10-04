@@ -35,8 +35,8 @@
 
 (defn build-attack
   "Builds an attack action on a board"
-  [[player coord target-coord]]
-  (fn attacker [board]
+  [[coord target-coord]]
+  (fn attacker [board player]
     (let [attacker (get-element board coord)
           target (get-element board target-coord)]
       (if-let [error (attack-restrictions board attacker target)]

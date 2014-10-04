@@ -13,15 +13,18 @@
         board (create-board)]
     (is action)
     (is (fn? action))
-    (let [result (action board)]
+    (let [result (action board :p1)]
       (is (= true (failed? result))))))
 
 (deftest load-actions
 
+  (testing "load attack"
+    (loader-check [:attack [1 1] [2 2]]))
+
   (testing "load move"
-    (loader-check [:move :p1 [1 1] [2 2] 10]))
+    (loader-check [:move [1 1] [2 2] 10]))
 
   (testing "load rotate"
-    (loader-check [:rotate :p1 [1 1] :south])))
+    (loader-check [:rotate [1 1] :south])))
 
 (run-tests)
