@@ -18,6 +18,9 @@
 
 (deftest load-actions
 
+  (testing "load deploy"
+    (loader-check [:deploy 100 :rain [8 8]]))
+
   (testing "load attack"
     (loader-check [:attack [1 1] [2 2]]))
 
