@@ -10,7 +10,7 @@
   [stash unit]
   (or (stash unit) 0))
 
-(defn empty?
+(defn cleared?
   "Returns true if this stash is empty"
   [stash]
   (= 0 (count stash)))

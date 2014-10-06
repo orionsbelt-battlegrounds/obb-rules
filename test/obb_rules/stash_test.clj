@@ -17,8 +17,8 @@
 (deftest stash-access
   (let [s (stash/create :anubis 20)]
 
-    (testing "is empty?"
-      (is (not (stash/empty? s))))
+    (testing "is cleared"
+      (is (not (stash/cleared? s))))
 
     (testing "is available"
       (is (stash/available? s :anubis 10)))
@@ -37,5 +37,5 @@
     (testing "get all unit from stash"
       (let [new-stash (stash/retrieve s :anubis 20)]
         (is new-stash)
-        (is (stash/empty? new-stash))
+        (is (stash/cleared? new-stash))
         (is (= 0 (stash/how-many? new-stash :anubis)))))))
