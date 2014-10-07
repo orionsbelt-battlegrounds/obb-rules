@@ -24,5 +24,36 @@
   (doseq [unit (get-units)]
     (verify-unit unit)))
 
+(defn- unit-present?
+  "Checks if a unit is present"
+  [uname coll]
+  (some (fn [u] (= (unit-name u) (name uname))) coll))
+
+(deftest units-by-category-test
+  (testing "light units"
+    (let [units (units-by-category :light)]
+      (is units)
+      (is (> (count units) 0))
+      (is (unit-present? :rain units))
+      (is (unit-present? :toxic units))
+      (is (not (unit-present? :worm units)))
+      (is (not (unit-present? :crusader units)))))
+
+  (testing "medium units"
+    (let [units (units-by-category :medium)]
+      (is units)
+      (is (> (count units) 0))
+      (is (unit-present? :worm units))
+      (is (not (unit-present? :rain units)))
+      (is (not (unit-present? :crusader units)))))
+
+  (testing "heavy units"
+    (let [units (units-by-category :heavy)]
+      (is units)
+      (is (> (count units) 0))
+      (is (unit-present? :crusader units))
+      (is (not (unit-present? :rain units)))
+      (is (not (unit-present? :worm units))))))
+
 (verify-units)
 (run-tests)

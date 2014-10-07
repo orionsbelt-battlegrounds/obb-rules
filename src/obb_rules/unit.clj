@@ -53,3 +53,9 @@
 (defn unit-defense "Gets a unit's defense" [unit] (unit :defense))
 (defn unit-movement-cost "Gets a unit's movement cost" [unit] (unit :movement-cost))
 (defn unit-movement-type "Gets a unit's movement type" [unit] (unit :movement-type))
+(defn unit-category "Gets a unit's category" [unit] (unit :category))
+
+(defn units-by-category
+  "Gets all the units for a given category"
+  [category]
+  (filter (fn [u] (= (unit-category u) category)) (get-units)))
