@@ -10,7 +10,7 @@
    :value 48
 
    :type :mechanic
-   :category :heavy
+   :category :medium
    :displacement :air
 
    :movement-type :diagonal

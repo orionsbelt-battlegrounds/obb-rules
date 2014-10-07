@@ -10,7 +10,7 @@
    :value 60
 
    :type :mechanic
-   :category :light
+   :category :medium
    :displacement :air
 
    :movement-type :all
