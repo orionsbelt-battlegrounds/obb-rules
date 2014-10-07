@@ -39,3 +39,10 @@
         (is new-stash)
         (is (stash/cleared? new-stash))
         (is (= 0 (stash/how-many? new-stash :anubis)))))))
+
+(deftest random-stash-test
+  (testing "random stash"
+    (let [stash (stash/random)]
+      (is stash))))
+
+(run-tests)
