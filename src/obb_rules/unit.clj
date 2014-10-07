@@ -4,6 +4,7 @@
             [obb-rules.units.pretorian]
             [obb-rules.units.raptor]
             [obb-rules.units.worm]
+            [obb-rules.units.heavy-seeker]
             [obb-rules.units.scarab]
             [obb-rules.units.toxic]
             [obb-rules.units.anubis]
@@ -20,6 +21,7 @@
    obb-rules.units.toxic/metadata
    obb-rules.units.worm/metadata
    obb-rules.units.anubis/metadata
+   obb-rules.units.heavy-seeker/metadata
    obb-rules.units.scarab/metadata
    obb-rules.units.kamikaze/metadata
    obb-rules.units.crusader/metadata])
