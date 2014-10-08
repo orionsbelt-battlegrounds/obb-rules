@@ -24,7 +24,7 @@
 (defn retrieve
   "Removes units from stash"
   [stash unit quantity]
-  (let [current-quantity (stash unit)
+  (let [current-quantity (how-many? stash unit)
         new-quantity (- current-quantity quantity)]
     (assert (>= current-quantity quantity) "InvalidStashQuantity")
     (if (= new-quantity 0)

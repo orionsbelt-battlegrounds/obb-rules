@@ -96,3 +96,13 @@
         quantity (or 0 (element-quantity element))
         new-quantity (+ quantity extra-quantity)]
     (swap-element board coord (element-quantity element new-quantity))))
+
+(defn set-stash
+  "Sets the stash for a given player"
+  [board player stash]
+  (assoc-in board [:stash player] stash))
+
+(defn get-stash
+  "Gets a stash for a given player"
+  [board player]
+  (get-in board [:stash player]))
