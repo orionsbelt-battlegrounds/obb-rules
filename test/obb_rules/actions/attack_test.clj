@@ -1,4 +1,5 @@
 (ns obb-rules.actions.attack-test
+  (:require [obb-rules.element :as element])
   (:use clojure.test
         midje.sweet
         obb-rules.action
@@ -26,7 +27,8 @@
           rboard (place-element cboard [1 2] rain-element)
           attack (build-action [:attack [1 2] [1 1]])]
       (loop [board rboard]
-        (let [result (attack board :p2)
+        (let [clean-board (swap-element board [1 2] rain-element)
+              result (attack clean-board :p2)
               after-attack (result-board result)
               crusader-element (get-element after-attack [1 1])]
           (if crusader-element
@@ -71,6 +73,18 @@
           result (attack board :p2)]
       (is (failed? result))
       (is (= "NotOwnedElement" (result-message result)))))
+
+  (testing "freeze attack"
+    (let [attack (build-action [:attack [2 2] [2 3]])
+          result (attack board :p1)
+          board (result-board result)
+          result2 (attack board :p1)
+          board2 (result-board result)
+          attacker (get-element board2 [2 2])]
+      (is (succeeded? result))
+      (is (failed? result2))
+      (is (= "FrozenElement" (result-message result2)))
+      (is (element/frozen? attacker))))
 
   (testing "simple success"
     (let [attack (build-action [:attack [2 2] [2 3]])

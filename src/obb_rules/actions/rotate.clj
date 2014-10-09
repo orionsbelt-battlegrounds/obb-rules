@@ -6,6 +6,7 @@
   [player element]
   (cond
     (nil? element) "EmptyCoordinate"
+    (frozen? element) "FrozenElement"
     (not= player (element-player element)) "NotOwnedElement"))
 
 (defn- process-rotate

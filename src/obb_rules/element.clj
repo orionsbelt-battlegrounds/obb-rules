@@ -87,3 +87,17 @@
         template (first elements)]
     (assoc template :quantity (apply + quantities))))
 
+(defn frozen?
+  "True if the element is frozen"
+  [element]
+  (= true (element :frozen)))
+
+(defn freeze
+  "Freezes the given element"
+  [element]
+  (assoc element :frozen true))
+
+(defn unfreeze
+  "Unfreezes an element"
+  [element]
+  (dissoc element :frozen))

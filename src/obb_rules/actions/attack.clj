@@ -1,5 +1,6 @@
 (ns obb-rules.actions.attack
   (:require [obb-rules.actions.direction :as dir]
+            [obb-rules.element :as element]
             [obb-rules.actions.damage-calculator :as calculator])
   (:use obb-rules.result obb-rules.board obb-rules.element obb-rules.unit))
 
@@ -25,6 +26,8 @@
   "Checks if the attack is possible"
   [board player attacker target]
   (cond
+    (nil? attacker) "EmptyAttacker"
+    (frozen? attacker) "FrozenElement"
     (nil? target) "EmptyTarget"
     (not= player (element-player attacker)) "NotOwnedElement"
     (not (in-range? board attacker target)) "OutOfRange"
@@ -34,8 +37,10 @@
   "Processes the attack"
   [board attacker target]
   (let [destroyed (calculator/destroyed attacker target)
-        coordinate (element-coordinate target)]
-    (action-success (remove-from-element board coordinate destroyed) 1)))
+        attacker-coordinate (element-coordinate attacker)
+        coordinate (element-coordinate target)
+        frozen-board (swap-element board attacker-coordinate (element/freeze attacker))]
+    (action-success (remove-from-element frozen-board coordinate destroyed) 1)))
 
 (defn build-attack
   "Builds an attack action on a board"
