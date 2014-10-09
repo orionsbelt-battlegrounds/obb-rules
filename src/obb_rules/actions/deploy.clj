@@ -3,11 +3,19 @@
             [obb-rules.stash :as stash])
   (:use obb-rules.result obb-rules.board obb-rules.element obb-rules.unit))
 
+(defn- invalid-deploy-zone?
+  "Returns true if the coordinate zone is invalid"
+  [player [x y]]
+  (if (= player :p1)
+    (< y 7 )
+    (> y 2)))
+
 (defn- deploy-restrictions
   "Checks if the deploy can be made"
   [player board quantity unit coordinate element stash]
   (cond
     (not stash) "NoStashAvailable"
+    (invalid-deploy-zone? player coordinate) "InvalidDeployZone"
     (not (stash/available? stash (keyword (unit-name unit)) quantity)) "InvalidQuantity"
     (not (can-place-element? board coordinate element)) "InvalidPlace"))
 

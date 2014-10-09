@@ -22,3 +22,43 @@
       (is (succeeded? result))
       (is (= 0 (stash/how-many? final-stash :rain)))
       (is (get-element final-board [8 8])))))
+
+(deftest test-fail-invalid-quantity
+  (testing "simple example"
+    (let [stash (stash/create :rain 10)
+          board (board/set-stash (create-board) :p1 stash)
+          deploy (action/build-action [:deploy 100 :rain [8 8]])
+          result (deploy board :p1)]
+      (is (failed? result))
+      (is (= "InvalidQuantity" (result-message result))))))
+
+(deftest test-fail-stash-from-another-player
+  (let [stash (stash/create :rain 10)
+        board (board/set-stash (create-board) :p1 stash)
+        deploy (action/build-action [:deploy 10 :rain [8 8]])
+        result (deploy board :p2)]
+    (is (failed? result))
+    (is (= "NoStashAvailable" (result-message result)))))
+
+(deftest test-fail-p2-position
+  (let [stash (stash/create :rain 10)
+        board (board/set-stash (create-board) :p2 stash)
+        deploy (action/build-action [:deploy 10 :rain [8 8]])
+        result (deploy board :p2)]
+    (is (failed? result))
+    (is (= "InvalidDeployZone" (result-message result)))))
+
+(deftest test-fail-p1-position
+  (let [stash (stash/create :rain 10)
+        board (board/set-stash (create-board) :p1 stash)
+        deploy (action/build-action [:deploy 10 :rain [1 1]])
+        result (deploy board :p1)]
+    (is (failed? result))
+    (is (= "InvalidDeployZone" (result-message result)))))
+
+(deftest fail-if-no-stash
+  (let [board (create-board)
+        deploy (action/build-action [:deploy 10 :rain [8 8]])
+        result (deploy board :p1)]
+    (is (failed? result))
+    (is (= "NoStashAvailable" (result-message result)))))
