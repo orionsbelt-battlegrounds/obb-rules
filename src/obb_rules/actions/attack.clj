@@ -1,6 +1,7 @@
 (ns obb-rules.actions.attack
   (:require [obb-rules.actions.direction :as dir]
             [obb-rules.element :as element]
+            [obb-rules.game :as game]
             [obb-rules.actions.damage-calculator :as calculator])
   (:use obb-rules.result obb-rules.board obb-rules.element obb-rules.unit))
 
@@ -27,6 +28,7 @@
   [board player attacker target]
   (cond
     (nil? attacker) "EmptyAttacker"
+    (not (game/player-turn? board player)) "StateMismatch"
     (frozen? attacker) "FrozenElement"
     (nil? target) "EmptyTarget"
     (not= player (element-player attacker)) "NotOwnedElement"

@@ -1,6 +1,7 @@
 (ns obb-rules.actions.deploy
   (:require [obb-rules.unit :as unit]
-            [obb-rules.stash :as stash])
+            [obb-rules.stash :as stash]
+            [obb-rules.game :as game])
   (:use obb-rules.result obb-rules.board obb-rules.element obb-rules.unit))
 
 (defn- invalid-deploy-zone?
@@ -15,6 +16,7 @@
   [player board quantity unit coordinate element stash]
   (cond
     (not stash) "NoStashAvailable"
+    (not (game/deploy? board)) "StateMismatch"
     (invalid-deploy-zone? player coordinate) "InvalidDeployZone"
     (not (stash/available? stash (keyword (unit-name unit)) quantity)) "InvalidQuantity"
     (not (can-place-element? board coordinate element)) "InvalidPlace"))

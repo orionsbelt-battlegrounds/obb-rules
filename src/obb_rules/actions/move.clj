@@ -1,5 +1,6 @@
 (ns obb-rules.actions.move
-  (:require [obb-rules.actions.move-restrictions :as move-restrictions])
+  (:require [obb-rules.actions.move-restrictions :as move-restrictions]
+            [obb-rules.game :as game])
   (:use obb-rules.result obb-rules.board obb-rules.element obb-rules.unit))
 
 (def ^:private min-move-percentage 0.2)
@@ -18,6 +19,7 @@
   "Restrictions on the move action"
   [player board efrom from eto to quantity]
   (cond
+    (not (game/player-turn? board player)) "StateMismatch"
     (not (in-bounds? board to)) "OutOfBounds"
     (nil? efrom) "EmptyCoordinate"
     (frozen? efrom) "FrozenElement"

@@ -10,3 +10,4 @@
     (is (= :deploy (game/state game)))
     (is (= 0 (board/board-elements-count game)))
     (is (not (stash/cleared? game)))))
+
