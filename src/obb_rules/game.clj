@@ -12,6 +12,7 @@
 
 (defn deploy? "True if in deploy state" [game] (state? game :deploy))
 (defn player-turn? "True if player's state" [game player] (state? game player))
+(defn get-stash "Gets the player's stash" [game player] (board/get-stash game player))
 
 (defn state
   "Gets the current game's state"
@@ -31,3 +32,9 @@
   []
   (let [stash (stash/random)]
     (create stash)))
+
+(defn start-battle
+  "Given a deployed board, starts the battle"
+  [game]
+  (assert (deploy? game) "Game not in deploy state")
+  (assoc game :state (rand-nth [:p1 :p2])))

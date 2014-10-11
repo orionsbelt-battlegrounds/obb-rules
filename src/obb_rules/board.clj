@@ -95,6 +95,7 @@
   (let [element (get-element board coord)
         quantity (or 0 (element-quantity element))
         new-quantity (+ quantity extra-quantity)]
+    (println "~~~~~" element)
     (swap-element board coord (element-quantity element new-quantity))))
 
 (defn set-stash
