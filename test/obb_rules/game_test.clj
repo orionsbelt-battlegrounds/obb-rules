@@ -23,5 +23,9 @@
     (is (stash/cleared? (game/get-stash game4 :p1)))
 
     (let [battle (turn/process game4 :p1 [:move [1 7] [1 6] 1]
-                                         [:move [1 6] [1 5] 1])])))
+                                         [:move [1 6] [1 5] 1]
+                                         [:move [1 5] [1 4] 1]
+                                         [:move [1 4] [1 3] 1]
+                                         [:attack [1 3] [1 2]])]
+      (is (= 1 (board/board-elements-count battle))))))
 
