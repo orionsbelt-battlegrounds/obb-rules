@@ -101,3 +101,12 @@
   "Unfreezes an element"
   [element]
   (dissoc element :frozen))
+
+(defn assert-element
+  "Assets that an object acts as an element"
+  [element]
+  (when element
+    (assert (element-player element) (str "NoPlayer-" element))
+    (assert (element-quantity element) "NoQuantity")
+    (assert (element-direction element) "NoDirection")
+    (assert (element-unit element) "NoCoordinate")))

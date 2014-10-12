@@ -59,11 +59,13 @@
   (let [elements (board :elements)
         element-with-coord (element-coordinate new-elem coord)
         new-elements (assoc elements coord element-with-coord)]
+    (assert-element element-with-coord)
     (assoc board :elements new-elements)))
 
 (defn place-element
   "Places an element on the board"
   [board coord element]
+  (assert-element element)
   (assert (can-place-element? board coord element))
   (swap-element board coord element))
 
@@ -91,12 +93,14 @@
 
 (defn add-to-element
   "Adds a quantity to an element"
-  [board coord extra-quantity]
-  (let [element (get-element board coord)
+  [board coord extra-quantity from-element]
+  (let [element (or (get-element board coord) from-element)
         quantity (or 0 (element-quantity element))
-        new-quantity (+ quantity extra-quantity)]
-    (println "~~~~~" element)
-    (swap-element board coord (element-quantity element new-quantity))))
+        new-quantity (+ quantity extra-quantity)
+        new-element (element-quantity element new-quantity)]
+    (assert element (str "NoElement-" coord " - " board))
+    (assert-element new-element)
+    (swap-element board coord new-element)))
 
 (defn set-stash
   "Sets the stash for a given player"

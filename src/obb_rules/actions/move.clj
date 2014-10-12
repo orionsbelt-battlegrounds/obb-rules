@@ -45,7 +45,7 @@
         remaining-quantity (- from-quantity quantity)
         cost (movement-cost unit (not= 0 remaining-quantity))
         removed-from-board (remove-from-element board from quantity)
-        added-to-board (add-to-element removed-from-board to quantity)]
+        added-to-board (add-to-element removed-from-board to quantity efrom)]
     (action-success added-to-board cost)))
 
 (defn build-move

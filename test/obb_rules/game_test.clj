@@ -22,6 +22,6 @@
     (is (stash/cleared? (game/get-stash game4 :p2)))
     (is (stash/cleared? (game/get-stash game4 :p1)))
 
-    (let [battle (turn/process game4 :p1 ;[:move [1 7] [1 6] 1]
+    (let [battle (turn/process game4 :p1 [:move [1 7] [1 6] 1]
                                          [:move [1 6] [1 5] 1])])))
 
