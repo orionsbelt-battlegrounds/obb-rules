@@ -31,7 +31,8 @@
                 new-element (get-element new-board new-coord)
                 old-element (get-element new-board old-coord)]
             (is (not old-element))
-            (is new-element))))
+            (is new-element)
+            (assert-element new-element))))
       (do
         (is (failed? result))))))
 
