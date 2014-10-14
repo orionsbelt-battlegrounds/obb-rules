@@ -41,3 +41,16 @@
   [game]
   (assert (deploy? game) "Game not in deploy state")
   (assoc game :state (rand-nth [:p1 :p2])))
+
+(defn action-results
+  "Provides the actions a results currently aplied on this game
+  if any."
+  [game]
+  (game :action-results))
+
+(defn push-result
+  "Stores an action's result"
+  [game raw-action result]
+  (let [action-results (or (action-results game) [])
+        new-results (conj action-results [raw-action result])]
+    (assoc game :action-results new-results)))
