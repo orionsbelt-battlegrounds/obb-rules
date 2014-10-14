@@ -13,11 +13,14 @@
 (defn deploy? "True if in deploy state" [game] (state? game :deploy))
 (defn player-turn? "True if player's state" [game player] (state? game player))
 (defn get-stash "Gets the player's stash" [game player] (board/get-stash game player))
+(defn mode "Gets the game mode" [game] (or (game :mode) :default))
 
 (defn state
-  "Gets the current game's state"
-  [game]
-  (game :state))
+  "Gets/Sets the current game's state"
+  ([game]
+   (game :state))
+  ([game new-state]
+   (assoc game :state new-state)))
 
 (defn create
   "Creates a game for a given stash"

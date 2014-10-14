@@ -10,15 +10,24 @@
    :height h
    :elements {}}))
 
+(defn- player-element?
+  "True if the given element is from the given player"
+  [player [coordinate element]]
+  (= player (element-player element)))
+
 (defn board-elements-count
   "Gets the number of board elements"
-  [board]
-  (count (board :elements)))
+  ([board]
+   (count (board :elements)))
+  ([board player]
+   (count (filter (partial player-element? player) (board :elements)))))
 
 (defn empty-board?
   "Checks if a board is empty"
-  [board]
-  (= 0 (board-elements-count board)))
+  ([board]
+   (= 0 (board-elements-count board)))
+  ([board player]
+   (= 0 (board-elements-count board player))))
 
 (defn board-width "Gets a board's witdh" [board] (board :width))
 (defn board-height "Gets a board's height" [board] (board :height))

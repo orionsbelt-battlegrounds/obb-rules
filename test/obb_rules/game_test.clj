@@ -2,6 +2,7 @@
   (:require [obb-rules.game :as game]
             [obb-rules.board :as board]
             [obb-rules.turn :as turn]
+            [obb-rules.game-mode :as game-mode]
             [obb-rules.stash :as stash])
   (:use clojure.test))
 
@@ -21,11 +22,18 @@
     (is (not= :deploy (game/state game4)))
     (is (stash/cleared? (game/get-stash game4 :p2)))
     (is (stash/cleared? (game/get-stash game4 :p1)))
+    (is (= false (game-mode/final? game4)))
 
     (let [battle (turn/process game4 :p1 [:move [1 7] [1 6] 1]
                                          [:move [1 6] [1 5] 1]
                                          [:move [1 5] [1 4] 1]
                                          [:move [1 4] [1 3] 1]
                                          [:attack [1 3] [1 2]])]
-      (is (= 1 (board/board-elements-count battle))))))
+      (is (= 1 (board/board-elements-count battle)))
+
+      (let [mode (game/mode battle)]
+        (is (= :final (game/state battle)))
+        (is (= :default mode))
+        (is (= true (game-mode/final? battle)))
+        (is (= :p1 (game-mode/winner battle)))))))
 
