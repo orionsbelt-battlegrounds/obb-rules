@@ -47,5 +47,3 @@
 
   (testing "create-element"
     (is (create-element player unit 10 :north))))
-
-(run-tests)

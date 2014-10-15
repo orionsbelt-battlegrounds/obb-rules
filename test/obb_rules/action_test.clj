@@ -29,5 +29,3 @@
 
   (testing "load rotate"
     (loader-check [:rotate [1 1] :south])))
-
-(run-tests)

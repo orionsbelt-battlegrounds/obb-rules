@@ -44,5 +44,3 @@
   (testing "random stash"
     (let [stash (stash/random)]
       (is stash))))
-
-(run-tests)

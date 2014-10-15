@@ -165,5 +165,3 @@
             result (move-down board :p1)]
         (is (failed? result))
         (is (= "EmptyCoordinate" (result-message result)))))))
-
-(run-tests)

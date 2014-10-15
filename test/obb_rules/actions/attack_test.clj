@@ -91,5 +91,3 @@
           result (attack board :p1)]
       (is (succeeded? result))
       (is (nil? (get-element (result-board result) [2 3]))))))
-
-(run-tests)

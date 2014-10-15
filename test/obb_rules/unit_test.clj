@@ -56,4 +56,3 @@
       (is (not (unit-present? :worm units))))))
 
 (verify-units)
-(run-tests)

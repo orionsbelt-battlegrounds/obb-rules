@@ -52,5 +52,3 @@
     (is (adjacent? [2 2] [3 3])))
   (testing "not adjacent"
     (is (not (adjacent? [2 2] [4 4])))))
-
-(run-tests)
