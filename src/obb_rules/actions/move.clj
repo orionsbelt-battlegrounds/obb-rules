@@ -3,8 +3,8 @@
             [obb-rules.game :as game])
   (:use obb-rules.result obb-rules.board obb-rules.element obb-rules.unit))
 
-(def ^:private min-move-percentage 0.2)
-(def ^:private max-move-percentage (- 1 min-move-percentage))
+(def min-move-percentage 0.2)
+(def max-move-percentage (- 1 min-move-percentage))
 
 (defn- invalid-move-percentage?
   "Checks if a quantity to move is invalid"
