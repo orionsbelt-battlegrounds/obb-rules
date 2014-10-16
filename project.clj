@@ -1,6 +1,6 @@
-(defproject obb-rules "0.1.0"
+(defproject obb-rules "1.0.0-SNAPSHOT"
   :description "Orion's Belt battle rules"
-  :url "http://example.com/FIXME"
+  :url "https://github.com/orionsbelt-battlegrounds/obb-rules"
 
   :license {:name         "The MIT License"
             :url          "file://LICENSE"
