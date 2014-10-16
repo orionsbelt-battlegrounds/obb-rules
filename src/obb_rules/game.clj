@@ -2,6 +2,8 @@
   (:require [obb-rules.stash :as stash]
             [obb-rules.board :as board]))
 
+(def version (System/getProperty "obb-rules-api.version"))
+
 (defn state?
   "Checks if the game is in a given state"
   [game state]
