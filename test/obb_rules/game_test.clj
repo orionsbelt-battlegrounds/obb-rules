@@ -62,3 +62,16 @@
       (is (= 0 (result/result-cost result)))
       (is (= "ActionPointsOverflow" (result/result-message result)))
       (is (result/failed? result)))))
+
+(deftest ensure-fail-with-failed-action-result
+  (testing "building a board"
+    (let [e1 (element/create-element :p1 (unit/get-unit-by-name "rain") 20 :south)
+          empty-board (board/create-board)
+          board1 (board/place-element empty-board [1 1] e1)
+          result (turn/process board1 :p1 [:move [1 1] [1 2] 20]
+                                          [:move [1 2] [1 1] 20]
+                                          [:move [1 1] [8 8] 20]
+                                          [:move [1 1] [1 2] 20])]
+      (is (= 0 (result/result-cost result)))
+      (is (= "ActionFailed" (result/result-message result)))
+      (is (result/failed? result)))))
