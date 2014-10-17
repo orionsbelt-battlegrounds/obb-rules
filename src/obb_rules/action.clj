@@ -13,6 +13,7 @@
 (defn build-action
   "Buidls an action given its code and args"
   [[action-type & action-args]]
-  (let [builder (available-actions action-type)]
+  (let [builder (-> (keyword action-type)
+                    (available-actions))]
     (assert builder (str "No action builder defined for " action-type))
     (builder action-args)))

@@ -23,6 +23,15 @@
       (is (= 0 (stash/how-many? final-stash :rain)))
       (is (get-element final-board [8 8])))))
 
+(deftest test-strings-for-keywords
+  (testing "simple example"
+    (let [stash (stash/create :rain 10)
+          board (board/set-stash (create-board) :p1 stash)
+          deploy (action/build-action ["deploy" 100 "rain" [8 8]])
+          result (deploy board :p1)]
+      (is (failed? result))
+      (is (= "InvalidQuantity" (result-message result))))))
+
 (deftest test-fail-invalid-quantity
   (testing "simple example"
     (let [stash (stash/create :rain 10)
