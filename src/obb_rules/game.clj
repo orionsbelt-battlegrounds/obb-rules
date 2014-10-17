@@ -1,5 +1,6 @@
 (ns obb-rules.game
   (:require [obb-rules.stash :as stash]
+            [obb-rules.result :as result]
             [obb-rules.board :as board]))
 
 (def version (System/getProperty "obb-rules-api.version"))
@@ -56,3 +57,10 @@
   (let [action-results (or (action-results game) [])
         new-results (conj action-results [raw-action result])]
     (assoc game :action-results new-results)))
+
+(defn valid-actions?
+  "Returns true if the actions currently applied to the given game
+  are all successful."
+  [game]
+  (every? #(result/succeeded? (last %)) (action-results game)))
+

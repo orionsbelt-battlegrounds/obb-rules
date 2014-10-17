@@ -6,14 +6,23 @@
 
 (def max-action-points 6)
 
-(defn- apply-actions
-  "Applies the actions to a board"
+(defn- continue-apply-actions
+  "Processes an action on a game"
   [player current-game action-pair]
   (let [raw-action (first action-pair)
         action (last action-pair)
         result (action current-game player)
         result-game (result/result-board result)]
-    (game/push-result result-game raw-action result)))
+    (if (result/succeeded? result)
+      (game/push-result result-game raw-action result)
+      (game/push-result current-game raw-action result))))
+
+(defn- apply-actions
+  "Applies the actions to a board"
+  [player current-game action-pair]
+  (if (game/valid-actions? current-game)
+    (continue-apply-actions player current-game action-pair)
+    current-game))
 
 (defn- action-pair
   "Gets a collection of raw-action,action pairs"
@@ -30,9 +39,13 @@
 (defn- create-result
   "Creates a result for the given game"
   [game total-action-points]
-  (if (> total-action-points max-action-points)
-    (result/action-failed "ActionPointsOverflow")
-    (result/action-success game total-action-points)))
+  (cond
+    (not (game/valid-actions? game)) 
+      (result/action-failed "ActionFailed")
+    (> total-action-points max-action-points)
+      (result/action-failed "ActionPointsOverflow")
+    :else
+      (result/action-success game total-action-points)))
 
 (defn process
   "Processes the given actions"
