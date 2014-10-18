@@ -5,9 +5,11 @@
 (defn final?
   "Checks if the game is finished"
   [game]
-  (or
-    (board/empty-board? game :p1)
-    (board/empty-board? game :p2)))
+  (and
+    (not (= game/state :deploy))
+    (or
+      (board/empty-board? game :p1)
+      (board/empty-board? game :p2))))
 
 (defn winner
   "Gets the winner of the given game"
