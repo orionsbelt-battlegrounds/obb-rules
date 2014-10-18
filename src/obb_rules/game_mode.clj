@@ -6,7 +6,7 @@
   "Checks if the game is finished"
   [game]
   (and
-    (not (= game/state :deploy))
+    (not (= (game/state game) :deploy))
     (or
       (board/empty-board? game :p1)
       (board/empty-board? game :p2))))
