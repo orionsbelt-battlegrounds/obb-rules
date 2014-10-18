@@ -21,6 +21,8 @@
 
 (defn action-failed
   "Represents an unsuccessful action"
-  [message]
-  (action-result false nil 0 message))
+  ([message]
+   (action-result false nil 0 message))
+  ([message game]
+   (action-result false game 0 message)))
 
