@@ -41,9 +41,9 @@
   [game total-action-points]
   (cond
     (not (game/valid-actions? game)) 
-      (result/action-failed "ActionFailed")
+      (result/action-failed "ActionFailed" game)
     (> total-action-points max-action-points)
-      (result/action-failed "ActionPointsOverflow" game)
+      (result/action-failed "ActionPointsOverflow")
     :else
       (result/action-success game total-action-points)))
 
