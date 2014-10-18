@@ -23,7 +23,7 @@
         game2 (result/result-board result2)
         result3 (turn/process game2 :p2 [:deploy 1 :kamikaze [1 2]])
         game3 (result/result-board result3)
-        game4 (game/start-battle game3)]
+        game4 game3]
     (is (not= :deploy (game/state game4)))
     (is (result/succeeded? result2))
     (is (result/succeeded? result3))
@@ -42,9 +42,9 @@
       (is (= 5 (result/result-cost result)))
 
       (let [mode (game/mode battle)]
+        (is (= true (game-mode/final? battle)))
         (is (= :final (game/state battle)))
         (is (= :default mode))
-        (is (= true (game-mode/final? battle)))
         (is (= :p1 (game-mode/winner battle)))))))
 
 (deftest ensure-max-action-points

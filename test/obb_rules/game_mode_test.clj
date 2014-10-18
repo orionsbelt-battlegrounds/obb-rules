@@ -11,3 +11,4 @@
         final-game (game-mode/process game-on-deploy)]
     (is (not (game-mode/final? game-on-deploy)))
     (is (= :deploy (game/state final-game)))))
+
