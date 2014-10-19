@@ -52,3 +52,7 @@
     (is (adjacent? [2 2] [3 3])))
   (testing "not adjacent"
     (is (not (adjacent? [2 2] [4 4])))))
+
+(deftest default-board-size
+  (is (= default-board-w (board-width {})))
+  (is (= default-board-h (board-height {}))))

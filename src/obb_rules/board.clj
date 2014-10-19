@@ -2,6 +2,9 @@
   (:use obb-rules.element)
   (:require [clojure.math.numeric-tower :as math]))
 
+(def default-board-w 8)
+(def default-board-h 8)
+
 (defn create-board
   "Creates an empty board"
   ([] (create-board 8 8))
@@ -29,8 +32,8 @@
   ([board player]
    (= 0 (board-elements-count board player))))
 
-(defn board-width "Gets a board's witdh" [board] (board :width))
-(defn board-height "Gets a board's height" [board] (board :height))
+(defn board-width "Gets a board's witdh" [board] (or (board :width) default-board-w))
+(defn board-height "Gets a board's height" [board] (or (board :height) default-board-h))
 
 (defn get-element
   "Gets an element given a coordinate"
