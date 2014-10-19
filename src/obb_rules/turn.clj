@@ -45,7 +45,7 @@
     (> total-action-points max-action-points)
       (result/action-failed "ActionPointsOverflow")
     :else
-      (result/action-success game total-action-points)))
+      (result/action-success game total-action-points "TurnOK")))
 
 (defn process
   "Processes the given actions"
