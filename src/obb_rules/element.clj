@@ -68,8 +68,8 @@
   "Gets/Sets element's coordinate"
   ([element]
    (let [c (element :coordinate)]
-     (assert c "NoCoordinate")
-     (element :coordinate)))
+     (assert c (str "NoCoordinate:" element))
+     c))
   ([element new-coordinate]
    (assoc element :coordinate new-coordinate)))
 
