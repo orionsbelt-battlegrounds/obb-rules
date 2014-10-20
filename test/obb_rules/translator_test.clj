@@ -41,3 +41,20 @@
           translated (translator/element :p2 element)]
       (is (= translated expected))
       (is (not= element translated))))
+
+(deftest translate-action-test
+  (let [rotate [:rotate [1 1] :north]
+        move [:move [1 1] [1 2] 1]
+        attack [:attack [1 1] [1 8]]
+        deploy [:deploy 10 :rain [1 1]]]
+    (testing ":p1"
+      (is (= rotate (translator/action :p1 rotate)))
+      (is (= move (translator/action :p1 move)))
+      (is (= attack (translator/action :p1 attack)))
+      (is (= deploy (translator/action :p1 deploy))))
+    (testing ":p2"
+      (is (= [:rotate [8 8] :south] (translator/action :p2 rotate)))
+      (is (= [:move [8 8] [8 7] 1] (translator/action :p2 move)))
+      (is (= [:attack [8 8] [8 1]] (translator/action :p2 attack)))
+      (is (= [:deploy 10 :rain [8 8]] (translator/action :p2 deploy))))))
+
