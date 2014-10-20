@@ -24,6 +24,7 @@
     (is (= :east (translator/direction :p1 :east)))
     (is (= :west (translator/direction :p1 :west))))
   (testing ":p2"
+    (is (= :west (translator/direction :p2 "east")))
     (is (= :west (translator/direction :p2 :east)))
     (is (= :east (translator/direction :p2 :west)))
     (is (= :south (translator/direction :p2 :north)))

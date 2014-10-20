@@ -17,10 +17,10 @@
   (if (= :p1 focus)
     dir
     (cond
-      (= dir :south) :north
-      (= dir :north) :south
-      (= dir :west) :east
-      (= dir :east) :west)))
+      (= (keyword dir) :south) :north
+      (= (keyword dir) :north) :south
+      (= (keyword dir) :west) :east
+      (= (keyword dir) :east) :west)))
 
 (defn element
   "Translates an element for a given player focus"
