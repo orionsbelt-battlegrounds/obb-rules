@@ -1,7 +1,7 @@
 (ns obb-rules.translator-test
   (:require [obb-rules.translator :as translator]
             [obb-rules.element :as element])
-  (:use clojure.test))
+  (:use clojure.test obb-rules.element obb-rules.unit obb-rules.board))
 
 (def unit :dummy)
 
@@ -58,3 +58,15 @@
       (is (= [:attack [8 8] [8 1]] (translator/action :p2 attack)))
       (is (= [:deploy 10 :rain [8 8]] (translator/action :p2 deploy))))))
 
+(deftest translate-board-test
+  (let [e1 (create-element :p1 (get-unit-by-name "rain") 20 :south)
+        e2 (create-element :p2 (get-unit-by-name "rain") 20 :north)
+        board (-> (create-board)
+                        (place-element [1 1] e1)
+                        (place-element [2 2] e2))]
+    (testing ":p1"
+      (is (= board (translator/board :p1 board))))
+    (testing ":p2"
+      (let [p2-board (translator/board :p2 board)]
+        (is (not= board p2-board))
+        (is (= board (translator/board :p2 p2-board)))))))

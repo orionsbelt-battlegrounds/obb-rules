@@ -58,3 +58,16 @@
     action
     (convert-action action)))
 
+(defn- convert-board
+  "Converts a board to :p2 focus"
+  [board]
+  (let [elements (board/elements board)
+        translated (into {} (for [[k v] elements] [k (element :p2 v)]))]
+    (board/elements board translated)))
+
+(defn board
+  "Translates a full board to a given player focus"
+  [focus board]
+  (if (= :p1 focus)
+    board
+    (convert-board board)))

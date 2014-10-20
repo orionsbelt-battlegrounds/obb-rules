@@ -35,6 +35,13 @@
 (defn board-width "Gets a board's witdh" [board] (or (board :width) default-board-w))
 (defn board-height "Gets a board's height" [board] (or (board :height) default-board-h))
 
+(defn elements
+  "Gets/sets all the elements"
+  ([board]
+   (board :elements))
+  ([board elements]
+   (assoc board :elements elements)))
+
 (defn get-element
   "Gets an element given a coordinate"
   [board coord]
