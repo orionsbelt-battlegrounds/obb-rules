@@ -58,6 +58,11 @@
     action
     (convert-action action)))
 
+(defn actions
+  "Translates all actions for a given player focus"
+  [focus actions]
+  (map (partial action focus) actions))
+
 (defn- convert-board
   "Converts a board to :p2 focus"
   [board]

@@ -58,6 +58,11 @@
       (is (= [:attack [8 8] [8 1]] (translator/action :p2 attack)))
       (is (= [:deploy 10 :rain [8 8]] (translator/action :p2 deploy))))))
 
+(deftest translate-actions-test
+  (let [actions [[:move [1 1] [2 2] 1]]]
+    (is (= actions (translator/actions :p1 actions)))
+    (is (= [[:move [8 8] [7 7] 1]] (translator/actions :p2 actions)))))
+
 (deftest translate-board-test
   (let [e1 (create-element :p1 (get-unit-by-name "rain") 20 :south)
         e2 (create-element :p2 (get-unit-by-name "rain") 20 :north)
