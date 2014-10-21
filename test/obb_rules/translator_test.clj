@@ -67,11 +67,12 @@
   (let [e1 (create-element :p1 (get-unit-by-name "rain") 20 :south)
         e2 (create-element :p2 (get-unit-by-name "rain") 20 :north)
         board (-> (create-board)
-                        (place-element [1 1] e1)
-                        (place-element [2 2] e2))]
+                  (place-element [1 1] e1)
+                  (place-element [2 2] e2))]
     (testing ":p1"
       (is (= board (translator/board :p1 board))))
     (testing ":p2"
       (let [p2-board (translator/board :p2 board)]
+        (is (not (get-element p2-board [1 1])))
         (is (not= board p2-board))
         (is (= board (translator/board :p2 p2-board)))))))

@@ -67,7 +67,8 @@
   "Converts a board to :p2 focus"
   [board]
   (let [elements (board/elements board)
-        translated (into {} (for [[k v] elements] [k (element :p2 v)]))]
+        translated (into {} (for [[k v] elements]
+                              [(coordinate :p2 k) (element :p2 v)]))]
     (board/elements board translated)))
 
 (defn board
