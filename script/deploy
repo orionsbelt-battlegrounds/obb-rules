@@ -1,1 +1,1 @@
-lein deploy clojars
+lein test && lein deploy clojars
