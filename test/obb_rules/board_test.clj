@@ -10,6 +10,7 @@
       (is board)
       (is (empty-board? board))
       (is (= 0 (board-elements-count board)))
+      (is (board-terrain board))
       (is (= false (has-element? board [1 1])))
       (is (= 9 (board-height board)))
       (is (= 8 (board-width board)))))

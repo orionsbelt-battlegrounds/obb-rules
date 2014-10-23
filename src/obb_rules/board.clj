@@ -5,12 +5,19 @@
 (def default-board-w 8)
 (def default-board-h 8)
 
+(defn- random-terrain
+  "Provides a random terrain"
+  []
+  (rand-nth [:water :ice :terrest
+             :desert :rock :forest]))
+
 (defn create-board
   "Creates an empty board"
   ([] (create-board 8 8))
   ([w h]
   {:width w
    :height h
+   :terrain (random-terrain)
    :elements {}}))
 
 (defn- player-element?
@@ -34,6 +41,7 @@
 
 (defn board-width "Gets a board's witdh" [board] (or (board :width) default-board-w))
 (defn board-height "Gets a board's height" [board] (or (board :height) default-board-h))
+(defn board-terrain "Gets the board's terrain" [board] (board :terrain))
 
 (defn elements
   "Gets/sets all the elements"
