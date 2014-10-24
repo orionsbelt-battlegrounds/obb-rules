@@ -1,4 +1,4 @@
-(defproject obb-rules "1.0.0-SNAPSHOT"
+(defproject obb-rules "1.0.0"
   :description "Orion's Belt battle rules"
   :url "https://github.com/orionsbelt-battlegrounds/obb-rules"
 
@@ -10,6 +10,9 @@
                  [org.clojure/math.numeric-tower "0.0.4"]]
   :source-paths ["src"]
   :test-paths ["test"]
+
+  :scm {:name "git"
+        :url "git@github.com:orionsbelt-battlegrounds/obb-rules.git"}
 
   :profiles {:dev 
              {:dependencies [[midje "1.6.3"]]
