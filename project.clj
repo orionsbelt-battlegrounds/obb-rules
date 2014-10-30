@@ -16,7 +16,7 @@
 
   :profiles {:dev 
              {:dependencies [[midje "1.6.3"]]
-              :plugins [[com.jakemccrary/lein-test-refresh "0.5.2"]
+              :plugins [[com.jakemccrary/lein-test-refresh "0.5.4"]
                         [lein-cloverage "1.0.2"]
                         [lein-midje "3.0.0"]]}}
 
