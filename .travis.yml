@@ -1,3 +1,7 @@
 language: clojure
 notifications:
-    slack: orionsbelt-game:QT4unoZGVBOvbSWiil1o1bm0
+  slack: orionsbelt-game:QT4unoZGVBOvbSWiil1o1bm0
+jdk:
+  - openjdk7
+  - oraclejdk7
+  - oraclejdk8
