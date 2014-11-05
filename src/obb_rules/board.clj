@@ -25,12 +25,19 @@
   [player [coordinate element]]
   (= player (element-player element)))
 
+(defn board-elements
+  "Gets the elements of a given player"
+  [board player]
+  (->> (board :elements)
+       (filter (partial player-element? player))
+       (map #(last %))))
+
 (defn board-elements-count
   "Gets the number of board elements"
   ([board]
    (count (board :elements)))
   ([board player]
-   (count (filter (partial player-element? player) (board :elements)))))
+   (count (board-elements board player))))
 
 (defn empty-board?
   "Checks if a board is empty"
