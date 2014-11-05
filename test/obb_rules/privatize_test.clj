@@ -33,6 +33,11 @@
     (is (board/empty-board? privatized :p1))
     (is (board/empty-board? privatized :p2))))
 
+(deftest privatize-hides-elements-handles-nil
+  (let [privatized (privatize/game partial-deploy-game nil)]
+    (is (board/empty-board? privatized :p1))
+    (is (board/empty-board? privatized :p2))))
+
 (deftest privatize-hides-elements-except-p1
   (let [privatized (privatize/game partial-deploy-game :p1)
         stash1 (game/get-stash privatized :p1)
