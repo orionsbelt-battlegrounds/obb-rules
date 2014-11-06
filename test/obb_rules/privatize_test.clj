@@ -8,11 +8,11 @@
   (:use clojure.test))
 
 (def deploy-game (game/random))
-(def final-board (assoc deploy-game :state :final))
+(def final-board (assoc deploy-game :state "final"))
 (def p1-board (assoc deploy-game :state :p1))
-(def p2-board (assoc deploy-game :state :p2))
+(def p2-board (assoc deploy-game :state "p2"))
 (def p1-element (element/create-element :p1 :unit 20 :north [1 1]))
-(def p2-element (element/create-element :p2 :unit 20 :north [2 2]))
+(def p2-element (element/create-element "p2" :unit 20 :north [2 2]))
 (def partial-deploy-game (-> deploy-game
                              (board/place-element [1 1] p1-element)
                              (board/place-element [2 2] p2-element)))
@@ -39,7 +39,7 @@
     (is (board/empty-board? privatized :p2))))
 
 (deftest privatize-hides-elements-except-p1
-  (let [privatized (privatize/game partial-deploy-game :p1)
+  (let [privatized (privatize/game partial-deploy-game "p1")
         stash1 (game/get-stash privatized :p1)
         stash2 (game/get-stash privatized :p2)]
     (is (not (stash/cleared? stash1)))
@@ -53,7 +53,7 @@
         stash2 (game/get-stash privatized :p2)]
     (is (not (stash/cleared? stash2)))
     (is (stash/cleared? stash1))
-    (is (board/empty-board? privatized :p1))
+    (is (board/empty-board? privatized "p1"))
     (is (not (board/empty-board? privatized :p2)))))
 
 (deftest privatize-dont-do-final-state

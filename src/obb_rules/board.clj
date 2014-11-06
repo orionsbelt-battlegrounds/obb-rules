@@ -23,7 +23,7 @@
 (defn- player-element?
   "True if the given element is from the given player"
   [player [coordinate element]]
-  (= player (element-player element)))
+  (= (keyword player) (keyword (element-player element))))
 
 (defn board-elements
   "Gets the elements of a given player"
@@ -44,7 +44,7 @@
   ([board]
    (= 0 (board-elements-count board)))
   ([board player]
-   (= 0 (board-elements-count board player))))
+   (= 0 (board-elements-count board (keyword player)))))
 
 (defn board-width "Gets a board's witdh" [board] (or (board :width) default-board-w))
 (defn board-height "Gets a board's height" [board] (or (board :height) default-board-h))
