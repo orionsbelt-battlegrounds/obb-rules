@@ -39,9 +39,17 @@
         new-results (map (fn [[k v]] [k (dissoc v :board)]) results)]
     (assoc-in result [:board :action-results] new-results)))
 
+(defn clean-coordinate-keys
+  "Transforms coordiante keys in strings"
+  [result]
+  (let [elements (get-in result [:board :elements])
+        cleaned (reduce (fn [h [k v]] (assoc h (str k) v)) {} elements)]
+    (assoc-in result [:board :elements] cleaned)))
+
 (defn clean-result
   "Cleans a result"
   [result]
   (-> result
       (clean-action-results)
+      (clean-coordinate-keys)
       (clean-unit)))

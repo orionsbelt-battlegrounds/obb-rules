@@ -34,3 +34,7 @@
         result (second action-result)]
     (is (nil? (result :board)))))
 
+(deftest clean-coordinate-keys
+  (let [simplified (simplify/clean-coordinate-keys {:board {:elements {[1 2] {:a 1}}}})]
+    (is (get-in simplified [:board :elements "[1 2]"]))))
+
