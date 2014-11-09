@@ -12,6 +12,10 @@
   (let [simplified (simplify/clean-unit {:outer {:unit (unit/fetch :rain)}})]
     (is (= "rain" (get-in simplified [:outer :unit])))))
 
+(deftest simplify-unit-already-simplified
+  (let [simplified (simplify/clean-unit {:outer {:unit "rain"}})]
+    (is (= "rain" (get-in simplified [:outer :unit])))))
+
 (deftest build-unit
   (let [built (simplify/build-unit {:unit "rain"})]
     (is (= (unit/fetch :rain) (built :unit)))))

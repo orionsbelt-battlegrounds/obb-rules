@@ -6,11 +6,18 @@
 (declare clean-unit)
 (declare build-unit)
 
+(defn- resolve-unit
+  "Properly simplifies a unit"
+  [value]
+  (if (string? value)
+    value
+    (value :name)))
+
 (defn- simplify-if-unit
   "Simplifies a unit object, if it's a unit"
   [[k v]]
   (cond
-    (= :unit (keyword k)) [k (v :name)]
+    (= :unit (keyword k)) [k (resolve-unit v)]
     (map? v) [k (clean-unit v)]
     :else [k v]))
 
