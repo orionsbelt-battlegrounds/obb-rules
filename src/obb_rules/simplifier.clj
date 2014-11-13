@@ -46,12 +46,33 @@
         new-results (map (fn [[k v]] [k (dissoc v :board)]) results)]
     (assoc-in result [:board :action-results] new-results)))
 
+(defn coordenize
+  "Transforms a string in a coordinate"
+  [raw]
+  (let [beter-raw (-> raw (str) (clojure.string/replace #":" ""))]
+    (if-let [parsed (re-matches #"\[(\d+) (\d+)\]" beter-raw)]
+      (into [] (map read-string (rest parsed)))
+      raw)))
+
+(defn build-coordinate-keys
+  "Transforms coordiante strings in coordinates"
+  [result]
+  (let [elements (get-in result [:board :elements])
+        cleaned (reduce (fn [h [k v]] (assoc h (coordenize k) v)) {} elements)]
+    (assoc-in result [:board :elements] cleaned)))
+
 (defn clean-coordinate-keys
   "Transforms coordiante keys in strings"
   [result]
   (let [elements (get-in result [:board :elements])
         cleaned (reduce (fn [h [k v]] (assoc h (str k) v)) {} elements)]
     (assoc-in result [:board :elements] cleaned)))
+
+(defn build-result
+  "Builds a result"
+  [result]
+  (-> result
+      (build-unit)))
 
 (defn clean-result
   "Cleans a result"

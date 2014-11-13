@@ -42,3 +42,7 @@
   (let [simplified (simplify/clean-coordinate-keys {:board {:elements {[1 2] {:a 1}}}})]
     (is (get-in simplified [:board :elements "[1 2]"]))))
 
+(deftest coordenize-test
+  (is (= [1 1] (simplify/coordenize "[1 1]")))
+  (is (= [1 1] (simplify/coordenize ":[1 1]")))
+  (is (= [1 1] (simplify/coordenize "::[1 1]"))))
