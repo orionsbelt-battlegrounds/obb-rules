@@ -72,6 +72,7 @@
   "Builds a result"
   [result]
   (-> result
+      (build-coordinate-keys)
       (build-unit)))
 
 (defn clean-result
