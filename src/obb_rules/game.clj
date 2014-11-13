@@ -8,7 +8,7 @@
 (defn state?
   "Checks if the game is in a given state"
   [game state]
-  (let [current-state (state game)]
+  (let [current-state (get state game)]
     (or
       (nil? current-state)
       (= state current-state))))

@@ -1,6 +1,7 @@
 (ns obb-rules.actions.move
   (:require [obb-rules.actions.move-restrictions :as move-restrictions]
-            [obb-rules.game :as game])
+            [obb-rules.game :as game]
+            [obb-rules.simplifier :as simplify])
   (:use obb-rules.result obb-rules.board obb-rules.element obb-rules.unit))
 
 (def min-move-percentage 0.2)
@@ -27,8 +28,8 @@
     (invalid-move-percentage? (element-quantity efrom) quantity) "InvalidQuantityPercentage"
     (not (move-restrictions/valid? efrom from to)) "MovementTypeFail"
     (and eto (not= (element-unit efrom) (element-unit eto))) "UnitMismatch"
-    (and eto (not= player (element-player eto))) "NotOwnedElement"
-    (not= player (element-player efrom)) "NotOwnedElement"))
+    (and eto (simplify/not-name= player (element-player eto))) "NotOwnedElement"
+    (simplify/not-name= player (element-player efrom)) "NotOwnedElement"))
 
 (defn movement-cost
   "Specifies a unit movement cost"

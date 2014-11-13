@@ -103,6 +103,14 @@
     (is (= 2 (movement-cost rain true)))
     (is (= 1 (movement-cost rain false)))))
 
+(deftest should-support-key-string-on-player
+  (let [action (build-action [:move [1 1] [2 2] 10])
+        element (create-element "p1" rain 10 :south)
+        board (place-element (create-board) [1 1] element)
+        result (action board :p1)]
+    (is (succeeded? result))
+    (is (= "OK" (result-message result)))))
+
 (deftest generic-movement
 
   (testing "failures"

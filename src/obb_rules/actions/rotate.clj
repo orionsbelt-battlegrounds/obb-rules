@@ -1,5 +1,6 @@
 (ns obb-rules.actions.rotate
-  (:require [obb-rules.game :as game])
+  (:require [obb-rules.game :as game]
+            [obb-rules.simplifier :as simplify])
   (:use obb-rules.result obb-rules.board obb-rules.element))
 
 (defn- rotate-restrictions
@@ -9,7 +10,7 @@
     (nil? element) "EmptyCoordinate"
     (not (game/player-turn? board player)) "StateMismatch"
     (frozen? element) "FrozenElement"
-    (not= player (element-player element)) "NotOwnedElement"))
+    (simplify/not-name= player (element-player element)) "NotOwnedElement"))
 
 (defn- process-rotate
   "Processes the rotate"

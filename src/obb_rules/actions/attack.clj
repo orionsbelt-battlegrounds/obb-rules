@@ -2,6 +2,7 @@
   (:require [obb-rules.actions.direction :as dir]
             [obb-rules.element :as element]
             [obb-rules.game :as game]
+            [obb-rules.simplifier :as simplify]
             [obb-rules.actions.damage-calculator :as calculator])
   (:use obb-rules.result obb-rules.board obb-rules.element obb-rules.unit))
 
@@ -31,7 +32,7 @@
     (not (game/player-turn? board player)) "StateMismatch"
     (frozen? attacker) "FrozenElement"
     (nil? target) "EmptyTarget"
-    (not= player (element-player attacker)) "NotOwnedElement"
+    (simplify/not-name= player (element-player attacker)) "NotOwnedElement"
     (not (in-range? board attacker target)) "OutOfRange"
     (= (element-player attacker) (element-player target)) "SamePlayer"))
 

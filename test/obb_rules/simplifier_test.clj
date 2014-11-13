@@ -50,3 +50,9 @@
   (is (= [1 1] (simplify/coordenize "[1 1]")))
   (is (= [1 1] (simplify/coordenize ":[1 1]")))
   (is (= [1 1] (simplify/coordenize "::[1 1]"))))
+
+(deftest name=
+  (is (simplify/name= :p1 :p1))
+  (is (simplify/name= "p1" :p1))
+  (is (simplify/name= "p1" "p1")))
+
