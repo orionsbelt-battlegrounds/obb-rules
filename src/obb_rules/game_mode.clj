@@ -39,11 +39,23 @@
   [game]
   (game/start-battle game))
 
+(defn- switch-turn-player?
+  "Checks if the game is in a state where a player switch should be done"
+  [game]
+  (some #{:p1 :p2} [(keyword (game :state))]))
+
+(defn- switch-turn-player
+  "Toggles the player to play"
+  [game]
+  (let [current-player (keyword (game :state))
+        next-player (first (disj #{:p1 :p2} current-player))]
+    (assoc game :state (keyword next-player))))
+
 (defn process
-  "Checks if a given game is finished and updates it's state.
-   Returns the given game if not finished"
+  "Checks the current game's state and acts based on it"
   [game]
   (cond
     (final? game) (finalize game)
+    (switch-turn-player? game) (switch-turn-player game)
     (deploy-completed? game) (start-game game)
     :else game))
