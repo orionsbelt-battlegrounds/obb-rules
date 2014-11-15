@@ -1,6 +1,7 @@
 (ns obb-rules.board
   (:use obb-rules.element)
-  (:require [clojure.math.numeric-tower :as math]))
+  (:require [clojure.math.numeric-tower :as math]
+            [obb-rules.simplifier :as simplify]))
 
 (def default-board-w 8)
 (def default-board-h 8)
@@ -23,7 +24,7 @@
 (defn- player-element?
   "True if the given element is from the given player"
   [player [coordinate element]]
-  (= (keyword player) (keyword (element-player element))))
+  (simplify/name= player (element-player element)))
 
 (defn board-elements
   "Gets the elements of a given player"
