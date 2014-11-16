@@ -17,3 +17,10 @@
                     (available-actions))]
     (assert builder (str "No action builder defined for " action-type))
     (builder action-args)))
+
+(defn reset-action-specific-state
+  "Removes action specific state from the board"
+  [board]
+  (let [elements (get board :elements)
+        cleaned (reduce (fn [h [k v]] (assoc h k (dissoc v :frozen))) {} elements)]
+    (assoc board :elements cleaned)))

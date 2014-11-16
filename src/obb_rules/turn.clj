@@ -40,12 +40,14 @@
   "Creates a result for the given game"
   [game total-action-points]
   (cond
-    (not (game/valid-actions? game)) 
+    (not (game/valid-actions? game))
       (result/action-failed "ActionFailed" game)
     (> total-action-points max-action-points)
       (result/action-failed "ActionPointsOverflow")
     :else
-      (result/action-success game total-action-points "TurnOK")))
+      (-> game
+          (action/reset-action-specific-state)
+          (result/action-success total-action-points "TurnOK"))))
 
 (defn process
   "Processes the given actions"

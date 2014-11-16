@@ -39,6 +39,7 @@
           battle (result/result-board result)]
       (is (= 1 (board/board-elements-count battle)))
       (is (result/succeeded? result))
+      (is (not (element/frozen? (board/get-element battle [1 3]))))
       (is (= "TurnOK" (result/result-message result)))
       (is (= 5 (result/result-cost result)))
 
