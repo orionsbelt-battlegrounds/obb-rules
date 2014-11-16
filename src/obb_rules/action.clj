@@ -1,14 +1,14 @@
 (ns obb-rules.action
-  (:use obb-rules.actions.rotate
-        obb-rules.actions.attack
-        obb-rules.actions.deploy
-        obb-rules.actions.move))
+  (:require [obb-rules.actions.rotate :as rotate]
+            [obb-rules.actions.attack :as attack]
+            [obb-rules.actions.deploy :as deploy]
+            [obb-rules.actions.move :as move]))
 
 (def ^:private available-actions
-  {:rotate build-rotate
-   :attack build-attack
-   :deploy build-deploy
-   :move build-move})
+  {:rotate rotate/build-rotate
+   :attack attack/build-attack
+   :deploy deploy/build-deploy
+   :move move/build-move})
 
 (defn build-action
   "Buidls an action given its code and args"
@@ -21,6 +21,4 @@
 (defn reset-action-specific-state
   "Removes action specific state from the board"
   [board]
-  (let [elements (get board :elements)
-        cleaned (reduce (fn [h [k v]] (assoc h k (dissoc v :frozen))) {} elements)]
-    (assoc board :elements cleaned)))
+  (move/reset-action-state board))

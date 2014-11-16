@@ -59,3 +59,9 @@
         (action-failed error)
         (process-move board efrom from eto to quantity)))))
 
+(defn reset-action-state
+  "Removes action specific state from the board"
+  [board]
+  (let [elements (get board :elements)
+        cleaned (reduce (fn [h [k v]] (assoc h k (dissoc v :frozen))) {} elements)]
+    (assoc board :elements cleaned)))
