@@ -1,20 +1,26 @@
 (ns obb-rules.translator
   (:require [obb-rules.board :as board]
+            [obb-rules.simplifier :as simplify]
             [obb-rules.element :as element]))
 
 (def max-coordinate (+ 1 board/default-board-w))
 
+(defn- default-focus?
+  "Checks if the current given focus is the default one"
+  [focus]
+  (simplify/name= :p1 focus))
+
 (defn coordinate
   "Translates a coordinate for a given player focus"
   [focus [x y]]
-  (if (= :p1 focus)
+  (if (default-focus? focus)
     [x y]
     [(- max-coordinate x) (- max-coordinate y)]))
 
 (defn direction
   "Translates a direction for a given player focus"
   [focus dir]
-  (if (= :p1 focus)
+  (if (default-focus? focus)
     dir
     (cond
       (= (keyword dir) :south) :north
@@ -25,7 +31,7 @@
 (defn element
   "Translates an element for a given player focus"
   [focus element]
-  (if (= :p1 focus)
+  (if (default-focus? focus)
     element
     (let [dir (element/element-direction element)
           coord (element/element-coordinate element)]
@@ -54,7 +60,7 @@
 (defn action
   "Translates an action for a given player focus"
   [focus action]
-  (if (= :p1 focus)
+  (if (default-focus? focus)
     action
     (convert-action action)))
 
@@ -74,6 +80,6 @@
 (defn board
   "Translates a full board to a given player focus"
   [focus board]
-  (if (= :p1 focus)
+  (if (default-focus? focus)
     board
     (convert-board board)))
