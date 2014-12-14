@@ -1,6 +1,7 @@
 (ns obb-rules.actions.move
   (:require [obb-rules.actions.move-restrictions :as move-restrictions]
             [obb-rules.game :as game]
+            [obb-rules.element :as element]
             [obb-rules.simplifier :as simplify])
   (:use obb-rules.result obb-rules.board obb-rules.element obb-rules.unit))
 
@@ -54,7 +55,8 @@
   [[from to quantity]]
   (fn mover [board player]
     (let [efrom (get-element board from)
-          eto (get-element board to)]
+          eto (get-element board to)
+          quantity (or quantity (element/element-quantity efrom))]
       (if-let [error (move-restrictions player board efrom from eto to quantity)]
         (action-failed error)
         (process-move board efrom from eto to quantity)))))

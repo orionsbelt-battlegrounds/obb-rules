@@ -81,6 +81,17 @@
     (test-complete-move board [2 2] [3 2] true)
     (test-complete-move board [2 2] [3 3] true)))
 
+(deftest allow-default-quantity
+  (let [old-coord [2 2]
+        new-coord [1 2]
+        move (build-action [:move old-coord new-coord])
+        result (move board :p1)
+        new-board (result-board result)
+        new-element (get-element new-board new-coord)]
+    (is (succeeded? result))
+    (is new-element)
+    (is (= 10 (element-quantity new-element)))))
+
 (deftest partial-movement
 
   (testing "partial-movement"
