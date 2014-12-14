@@ -1,6 +1,7 @@
 (ns obb-rules.actions.deploy
   (:require [obb-rules.unit :as unit]
             [obb-rules.stash :as stash]
+            [obb-rules.simplifier :as simplify]
             [obb-rules.game :as game])
   (:use obb-rules.result obb-rules.board obb-rules.element obb-rules.unit))
 
@@ -30,12 +31,19 @@
         new-board (set-stash placed-board player new-stash)]
     (action-success new-board 0)))
 
+(defn- default-direction
+  "Gets the default direction for the given player"
+  [player]
+  (if (simplify/name= player :p1)
+    :north
+    :south))
+
 (defn build-deploy
   "Deploys a unit to the battleground"
   [[quantity unit-type coordinate]]
   (fn deployer [board player]
     (let [unit (unit/fetch unit-type)
-          element (create-element player unit quantity :north)
+          element (create-element player unit quantity (default-direction player))
           stash (get-stash board player)]
       (assert unit (str "Don't know unit type " unit-type))
       (if-let [error (deploy-restrictions player board quantity unit coordinate element stash)]
