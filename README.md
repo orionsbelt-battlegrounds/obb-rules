@@ -1,4 +1,5 @@
-# OBB Rules  [![Build Status](https://travis-ci.org/orionsbelt-battlegrounds/obb-rules.svg)](https://travis-ci.org/orionsbelt-battlegrounds/obb-rules) [![Dependency Status](https://www.versioneye.com/user/projects/54524ea830a8fe3fcb000004/badge.svg?style=flat)](https://www.versioneye.com/user/projects/54524ea830a8fe3fcb000004)
+# OBB Rules
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/orionsbelt-battlegrounds/open-source?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Build Status](https://travis-ci.org/orionsbelt-battlegrounds/obb-rules.svg)](https://travis-ci.org/orionsbelt-battlegrounds/obb-rules) [![Dependency Status](https://www.versioneye.com/user/projects/54524ea830a8fe3fcb000004/badge.svg?style=flat)](https://www.versioneye.com/user/projects/54524ea830a8fe3fcb000004)
 
 Implementation of the [Orion's Belt BattleGrounds](https://github.com/orionsbelt-battlegrounds) battle engine in `clojure`. There's also a [REST/JSON](https://github.com/orionsbelt-battlegrounds/obb-rules-api) interface for this component.
 
