@@ -1,4 +1,5 @@
 pom.xml
+cov
 pom.xml.asc
 *jar
 /lib/
