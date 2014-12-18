@@ -1,7 +1,6 @@
 (ns obb-rules.stash-test
   (:require [obb-rules.stash :as stash])
   (:use clojure.test
-        midje.sweet
         obb-rules.action
         obb-rules.actions.move
         obb-rules.board

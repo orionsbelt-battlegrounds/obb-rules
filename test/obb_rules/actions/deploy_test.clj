@@ -4,7 +4,6 @@
             [obb-rules.element :as element]
             [obb-rules.action :as action])
   (:use clojure.test
-        midje.sweet
         obb-rules.action
         obb-rules.actions.move
         obb-rules.board

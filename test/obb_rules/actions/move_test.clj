@@ -1,6 +1,5 @@
 (ns obb-rules.actions.move-test
   (:use clojure.test
-        midje.sweet
         obb-rules.action
         obb-rules.actions.move
         obb-rules.board

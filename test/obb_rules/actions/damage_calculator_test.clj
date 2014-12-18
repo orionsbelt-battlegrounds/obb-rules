@@ -1,7 +1,6 @@
 (ns obb-rules.actions.damage-calculator-test
   (:require [obb-rules.actions.damage-calculator :as calculator])
   (:use clojure.test
-        midje.sweet
         obb-rules.board
         obb-rules.element
         obb-rules.result

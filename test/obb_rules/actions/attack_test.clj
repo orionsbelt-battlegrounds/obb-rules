@@ -1,7 +1,6 @@
 (ns obb-rules.actions.attack-test
   (:require [obb-rules.element :as element])
   (:use clojure.test
-        midje.sweet
         obb-rules.action
         obb-rules.actions.move
         obb-rules.board

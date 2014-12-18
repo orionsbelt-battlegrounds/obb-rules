@@ -15,9 +15,7 @@
         :url "git@github.com:orionsbelt-battlegrounds/obb-rules.git"}
 
   :profiles {:dev 
-             {:dependencies [[midje "1.6.3"]]
-              :plugins [[com.jakemccrary/lein-test-refresh "0.5.4"]
-                        [lein-cloverage "1.0.2"]
-                        [lein-midje "3.0.0"]]}}
+             {:plugins [[com.jakemccrary/lein-test-refresh "0.5.4"]
+                        [lein-cloverage "1.0.2"]]}}
 
   )
