@@ -50,13 +50,21 @@
         added-to-board (add-to-element removed-from-board to quantity efrom)]
     (action-success added-to-board cost)))
 
+(defn- get-quantity
+  "Tries to get the quantity from the args"
+  [quantity element]
+  (cond
+    quantity quantity
+    element (element/element-quantity element)
+    :else 0))
+
 (defn build-move
   "Builds a move action on a board"
   [[from to quantity]]
   (fn mover [board player]
     (let [efrom (get-element board from)
           eto (get-element board to)
-          quantity (or quantity (element/element-quantity efrom))]
+          quantity (get-quantity quantity efrom)]
       (if-let [error (move-restrictions player board efrom from eto to quantity)]
         (action-failed error)
         (process-move board efrom from eto to quantity)))))
