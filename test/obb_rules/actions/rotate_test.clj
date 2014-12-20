@@ -35,13 +35,21 @@
         (is (failed? result))
         (is (= "NotOwnedElement" (result-message result)))))
 
+    (testing "coordinate is frozen"
+      (let [action (build-action [:rotate [1 1] :north])
+            element (-> (create-element :p1 unit 10 :south)
+                        (freeze))
+            board (place-element (create-board) [1 1] element)
+            result (action board :p1)]
+        (is (failed? result))
+        (is (= "FrozenElement" (result-message result)))))
+
     (testing "coordinate empty"
       (let [action (build-action [:rotate [1 1] :north])
             board (create-board)
             result (action board :p1)]
         (is (failed? result))
         (is (= "EmptyCoordinate" (result-message result)))))))
-
 
 (deftest consider-player-name
   (let [action (build-action [:rotate [1 1] :north])

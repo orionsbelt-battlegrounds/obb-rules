@@ -177,6 +177,22 @@
         (is (failed? result))
         (is (= "UnitMismatch" (result-message result)))))
 
+    (testing "target element is frozen"
+      (let [action (build-action [:move [2 2] [3 3] 10])
+            element (-> (create-element :p1 rain 10 :south)
+                        (freeze))
+            new-board (place-element board [3 3] element)
+            result (action new-board :p1)]
+        (is (failed? result))
+        (is (= "FrozenElement" (result-message result)))))
+
+    (testing "from element is frozen"
+      (let [action (build-action [:move [2 2] [3 3] 10])
+            new-board (place-element (create-board) [2 2] (-> rain-element freeze))
+            result (action new-board :p1)]
+        (is (failed? result))
+        (is (= "FrozenElement" (result-message result)))))
+
     (testing "coordinate empty"
       (let [action (build-action [:move [1 1] [1 2] :10])
             board (create-board)

@@ -90,7 +90,9 @@
 (defn frozen?
   "True if the element is frozen"
   [element]
-  (= true (element :frozen)))
+  (and
+    element
+    (= true (element :frozen))))
 
 (defn freeze
   "Freezes the given element"

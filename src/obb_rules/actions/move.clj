@@ -25,6 +25,7 @@
     (not (in-bounds? board to)) "OutOfBounds"
     (nil? efrom) "EmptyCoordinate"
     (frozen? efrom) "FrozenElement"
+    (frozen? eto) "FrozenElement"
     (not (adjacent? from to)) "NotAdjacent"
     (invalid-move-percentage? (element-quantity efrom) quantity) "InvalidQuantityPercentage"
     (not (move-restrictions/valid? efrom from to)) "MovementTypeFail"

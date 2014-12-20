@@ -38,5 +38,5 @@
         direction (element/element-direction element)
         movement-type (unit/unit-movement-type unit)
         validator (validators movement-type)]
-    (assert validator (str "Can't resolve " movement-type " movement type "))
+    (assert validator (str "Can't resolve " movement-type " movement type"))
     (validator direction from to)))
