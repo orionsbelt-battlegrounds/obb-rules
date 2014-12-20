@@ -37,8 +37,14 @@
   "Specifies a unit movement cost"
   [unit partial-move?]
   (if partial-move?
-    (* 2(unit-movement-cost unit))
+    (* 2 (unit-movement-cost unit))
     (unit-movement-cost unit)))
+
+(defn find-possible-destinations
+  "Returns a collection with possible coordinates to move the given
+  element on the given board"
+  [board element]
+  (move-restrictions/possible-destinations element))
 
 (defn- process-move
   "Processes the actual move"

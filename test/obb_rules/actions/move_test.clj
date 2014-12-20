@@ -20,8 +20,10 @@
 
 (defn- test-complete-move
   [board old-coord new-coord expected-success?]
-  (let [move (build-action [:move old-coord new-coord 10])
-        result (move board :p1)]
+  (let [move (build-action [:move old-coord new-coord])
+        result (move board :p1)
+        efrom (get-element board old-coord)
+        possible-moves (find-possible-destinations board efrom)]
     (if expected-success?
       (do
         (is (succeeded? result))
@@ -29,10 +31,13 @@
           (let [new-board (result-board result)
                 new-element (get-element new-board new-coord)
                 old-element (get-element new-board old-coord)]
+            (println possible-moves)
+            (is (some #(= new-coord %) possible-moves))
             (is (not old-element))
             (is new-element)
             (assert-element new-element))))
       (do
+        (is (not (some #(= new-coord %) possible-moves)))
         (is (failed? result))))))
 
 (deftest movement-restrictions
