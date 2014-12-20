@@ -39,86 +39,84 @@
         (is (not (some #(= new-coord %) possible-moves)))
         (is (failed? result))))))
 
-(deftest movement-restrictions
+(deftest front-movement-east
+  (let [element (element-direction crusader-element :east)
+        board (place-element (create-board) [2 2] element)]
+    (test-complete-move board [2 2] [1 1] false)
+    (test-complete-move board [2 2] [1 2] false)
+    (test-complete-move board [2 2] [1 3] false)
+    (test-complete-move board [2 2] [2 1] false)
+    (test-complete-move board [2 2] [2 3] false)
+    (test-complete-move board [2 2] [3 1] false)
+    (test-complete-move board [2 2] [3 2] true)
+    (test-complete-move board [2 2] [3 3] false)))
 
-  (testing "front movement east"
-    (let [element (element-direction crusader-element :east)
-          board (place-element (create-board) [2 2] element)]
-      (test-complete-move board [2 2] [1 1] false)
-      (test-complete-move board [2 2] [1 2] false)
-      (test-complete-move board [2 2] [1 3] false)
-      (test-complete-move board [2 2] [2 1] false)
-      (test-complete-move board [2 2] [2 3] false)
-      (test-complete-move board [2 2] [3 1] false)
-      (test-complete-move board [2 2] [3 2] true)
-      (test-complete-move board [2 2] [3 3] false)))
-
-  (testing "front movement north"
-    (let [element (element-direction crusader-element :west)
-          board (place-element (create-board) [2 2] element)]
-      (test-complete-move board [2 2] [1 1] false)
-      (test-complete-move board [2 2] [1 2] true)
-      (test-complete-move board [2 2] [1 3] false)
-      (test-complete-move board [2 2] [2 1] false)
-      (test-complete-move board [2 2] [2 3] false)
-      (test-complete-move board [2 2] [3 1] false)
-      (test-complete-move board [2 2] [3 2] false)
-      (test-complete-move board [2 2] [3 3] false)))
-
-  (testing "front movement south"
-    (let [board (place-element (create-board) [2 2] crusader-element)]
-      (test-complete-move board [2 2] [1 1] false)
-      (test-complete-move board [2 2] [1 2] false)
-      (test-complete-move board [2 2] [1 3] false)
-      (test-complete-move board [2 2] [2 1] false)
-      (test-complete-move board [2 2] [2 3] true)
-      (test-complete-move board [2 2] [3 1] false)
-      (test-complete-move board [2 2] [3 2] false)
-      (test-complete-move board [2 2] [3 3] false)))
-
-  (testing "front movement north"
-    (let [element (element-direction crusader-element :north)
-          board (place-element (create-board) [2 2] element)]
-      (test-complete-move board [2 2] [1 1] false)
-      (test-complete-move board [2 2] [1 2] false)
-      (test-complete-move board [2 2] [1 3] false)
-      (test-complete-move board [2 2] [2 1] true)
-      (test-complete-move board [2 2] [2 3] false)
-      (test-complete-move board [2 2] [3 1] false)
-      (test-complete-move board [2 2] [3 2] false)
-      (test-complete-move board [2 2] [3 3] false)))
-
-  (testing "normal movement"
-    (let [board (place-element (create-board) [2 2] nova-element)]
-      (test-complete-move board [2 2] [1 1] false)
-      (test-complete-move board [2 2] [1 2] true)
-      (test-complete-move board [2 2] [1 3] false)
-      (test-complete-move board [2 2] [2 1] true)
-      (test-complete-move board [2 2] [2 3] true)
-      (test-complete-move board [2 2] [3 1] false)
-      (test-complete-move board [2 2] [3 2] true)
-      (test-complete-move board [2 2] [3 3] false)))
-
-  (testing "diagonal movement"
-    (let [board (place-element (create-board) [2 2] pretorian-element)]
-      (test-complete-move board [2 2] [1 1] true)
-      (test-complete-move board [2 2] [1 2] false)
-      (test-complete-move board [2 2] [1 3] true)
-      (test-complete-move board [2 2] [2 1] false)
-      (test-complete-move board [2 2] [2 3] false)
-      (test-complete-move board [2 2] [3 1] true)
-      (test-complete-move board [2 2] [3 2] false)
-      (test-complete-move board [2 2] [3 3] true)))
-
-  (testing "all-movement"
-    (test-complete-move board [2 2] [1 1] true)
+(deftest front-movement-north
+  (let [element (element-direction crusader-element :west)
+        board (place-element (create-board) [2 2] element)]
+    (test-complete-move board [2 2] [1 1] false)
     (test-complete-move board [2 2] [1 2] true)
-    (test-complete-move board [2 2] [1 3] true)
+    (test-complete-move board [2 2] [1 3] false)
+    (test-complete-move board [2 2] [2 1] false)
+    (test-complete-move board [2 2] [2 3] false)
+    (test-complete-move board [2 2] [3 1] false)
+    (test-complete-move board [2 2] [3 2] false)
+    (test-complete-move board [2 2] [3 3] false)))
+
+(deftest front-movement-south
+  (let [board (place-element (create-board) [2 2] crusader-element)]
+    (test-complete-move board [2 2] [1 1] false)
+    (test-complete-move board [2 2] [1 2] false)
+    (test-complete-move board [2 2] [1 3] false)
+    (test-complete-move board [2 2] [2 1] false)
+    (test-complete-move board [2 2] [2 3] true)
+    (test-complete-move board [2 2] [3 1] false)
+    (test-complete-move board [2 2] [3 2] false)
+    (test-complete-move board [2 2] [3 3] false)))
+
+(deftest front-movement-north
+  (let [element (element-direction crusader-element :north)
+        board (place-element (create-board) [2 2] element)]
+    (test-complete-move board [2 2] [1 1] false)
+    (test-complete-move board [2 2] [1 2] false)
+    (test-complete-move board [2 2] [1 3] false)
+    (test-complete-move board [2 2] [2 1] true)
+    (test-complete-move board [2 2] [2 3] false)
+    (test-complete-move board [2 2] [3 1] false)
+    (test-complete-move board [2 2] [3 2] false)
+    (test-complete-move board [2 2] [3 3] false)))
+
+(deftest normal-movement
+  (let [board (place-element (create-board) [2 2] nova-element)]
+    (test-complete-move board [2 2] [1 1] false)
+    (test-complete-move board [2 2] [1 2] true)
+    (test-complete-move board [2 2] [1 3] false)
     (test-complete-move board [2 2] [2 1] true)
     (test-complete-move board [2 2] [2 3] true)
-    (test-complete-move board [2 2] [3 1] true)
+    (test-complete-move board [2 2] [3 1] false)
     (test-complete-move board [2 2] [3 2] true)
+    (test-complete-move board [2 2] [3 3] false)))
+
+(deftest diagonal-movement
+  (let [board (place-element (create-board) [2 2] pretorian-element)]
+    (test-complete-move board [2 2] [1 1] true)
+    (test-complete-move board [2 2] [1 2] false)
+    (test-complete-move board [2 2] [1 3] true)
+    (test-complete-move board [2 2] [2 1] false)
+    (test-complete-move board [2 2] [2 3] false)
+    (test-complete-move board [2 2] [3 1] true)
+    (test-complete-move board [2 2] [3 2] false)
     (test-complete-move board [2 2] [3 3] true)))
+
+(deftest all-movement
+  (test-complete-move board [2 2] [1 1] true)
+  (test-complete-move board [2 2] [1 2] true)
+  (test-complete-move board [2 2] [1 3] true)
+  (test-complete-move board [2 2] [2 1] true)
+  (test-complete-move board [2 2] [2 3] true)
+  (test-complete-move board [2 2] [3 1] true)
+  (test-complete-move board [2 2] [3 2] true)
+  (test-complete-move board [2 2] [3 3] true))
 
 (deftest allow-default-quantity
   (let [old-coord [2 2]
