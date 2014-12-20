@@ -18,9 +18,10 @@
 (def pretorian-element (create-element :p1 pretorian 10 :south))
 (def board (place-element (create-board) [2 2] rain-element))
 
-(defn- test-complete-move
-  [board old-coord new-coord expected-success?]
-  (let [move (build-action [:move old-coord new-coord])
+(defn- test-complete-move-action
+  "Tests a movement outcome"
+  [board old-coord new-coord expected-success? move-action]
+  (let [move (build-action [move-action old-coord new-coord])
         result (move board :p1)
         efrom (get-element board old-coord)
         possible-moves (find-possible-destinations board efrom)]
@@ -38,6 +39,12 @@
       (do
         (is (not (some #(= new-coord %) possible-moves)))
         (is (failed? result))))))
+
+(defn- test-complete-move
+  "Tests a movement using the :move and :goto actions"
+  [board old-coord new-coord expected-success?]
+  (test-complete-move-action board old-coord new-coord expected-success? :move)
+  (test-complete-move-action board old-coord new-coord expected-success? :goto))
 
 (deftest front-movement-east
   (let [element (element-direction crusader-element :east)
