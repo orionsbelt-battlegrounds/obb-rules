@@ -40,11 +40,26 @@
     (* 2 (unit-movement-cost unit))
     (unit-movement-cost unit)))
 
+(defn- possible-on-board?
+  "Checks if the given coordinate is a possible move for the
+  element on the given board"
+  [board efrom destination]
+  (nil? (move-restrictions
+          (element/element-player efrom)
+          board
+          efrom
+          (element/element-coordinate efrom)
+          (get-element board destination)
+          destination
+          (element/element-quantity efrom))))
+
 (defn find-possible-destinations
   "Returns a collection with possible coordinates to move the given
   element on the given board"
   [board element]
-  (move-restrictions/possible-destinations element))
+  (filter
+    (partial possible-on-board? board element)
+    (move-restrictions/possible-destinations element)))
 
 (defn- process-move
   "Processes the actual move"

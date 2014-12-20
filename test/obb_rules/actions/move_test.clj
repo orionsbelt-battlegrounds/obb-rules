@@ -31,7 +31,6 @@
           (let [new-board (result-board result)
                 new-element (get-element new-board new-coord)
                 old-element (get-element new-board old-coord)]
-            (println possible-moves)
             (is (some #(= new-coord %) possible-moves))
             (is (not old-element))
             (is new-element)
@@ -42,13 +41,49 @@
 
 (deftest movement-restrictions
 
-  (testing "front movement"
+  (testing "front movement east"
+    (let [element (element-direction crusader-element :east)
+          board (place-element (create-board) [2 2] element)]
+      (test-complete-move board [2 2] [1 1] false)
+      (test-complete-move board [2 2] [1 2] false)
+      (test-complete-move board [2 2] [1 3] false)
+      (test-complete-move board [2 2] [2 1] false)
+      (test-complete-move board [2 2] [2 3] false)
+      (test-complete-move board [2 2] [3 1] false)
+      (test-complete-move board [2 2] [3 2] true)
+      (test-complete-move board [2 2] [3 3] false)))
+
+  (testing "front movement north"
+    (let [element (element-direction crusader-element :west)
+          board (place-element (create-board) [2 2] element)]
+      (test-complete-move board [2 2] [1 1] false)
+      (test-complete-move board [2 2] [1 2] true)
+      (test-complete-move board [2 2] [1 3] false)
+      (test-complete-move board [2 2] [2 1] false)
+      (test-complete-move board [2 2] [2 3] false)
+      (test-complete-move board [2 2] [3 1] false)
+      (test-complete-move board [2 2] [3 2] false)
+      (test-complete-move board [2 2] [3 3] false)))
+
+  (testing "front movement south"
     (let [board (place-element (create-board) [2 2] crusader-element)]
       (test-complete-move board [2 2] [1 1] false)
       (test-complete-move board [2 2] [1 2] false)
       (test-complete-move board [2 2] [1 3] false)
       (test-complete-move board [2 2] [2 1] false)
       (test-complete-move board [2 2] [2 3] true)
+      (test-complete-move board [2 2] [3 1] false)
+      (test-complete-move board [2 2] [3 2] false)
+      (test-complete-move board [2 2] [3 3] false)))
+
+  (testing "front movement north"
+    (let [element (element-direction crusader-element :north)
+          board (place-element (create-board) [2 2] element)]
+      (test-complete-move board [2 2] [1 1] false)
+      (test-complete-move board [2 2] [1 2] false)
+      (test-complete-move board [2 2] [1 3] false)
+      (test-complete-move board [2 2] [2 1] true)
+      (test-complete-move board [2 2] [2 3] false)
       (test-complete-move board [2 2] [3 1] false)
       (test-complete-move board [2 2] [3 2] false)
       (test-complete-move board [2 2] [3 3] false)))
