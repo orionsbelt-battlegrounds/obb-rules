@@ -18,6 +18,19 @@
 (def pretorian-element (create-element :p1 pretorian 10 :south))
 (def board (place-element (create-board) [2 2] rain-element))
 
+(deftest simple-coords-move
+  (let [move-far (build-action [:goto [2 2] [2 5]])
+        result (move-far board :p1)]
+    (is (succeeded? result))
+    (is (= 3 (result-cost result)))
+    (is (= "OK" (result-message result)))))
+
+(deftest simple-coords-move-diagonal
+  (let [move-far (build-action [:goto [2 2] [6 6]])
+        result (move-far board :p1)]
+    (is (succeeded? result))
+    (is (= 4 (result-cost result)))
+    (is (= "OK" (result-message result)))))
 
 (deftest out-of-bounds
   (let [move-far (build-action [:goto [8 8] [9 9]])
