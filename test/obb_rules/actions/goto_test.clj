@@ -25,12 +25,70 @@
     (is (= 3 (result-cost result)))
     (is (= "OK" (result-message result)))))
 
+(deftest fails-if-invalid-from
+  (let [move-far (build-action [:goto [1 1] [8 8]])
+        result (move-far board :p1)]
+    (is (failed? result))
+    (is (= "NoRouteToTarget" (result-message result)))))
+
+(deftest fail-if-moves-too-far-away
+  (let [move-far (build-action [:goto [1 1] [8 8]])
+        obstacle-board (-> (create-board)
+                           (place-element [1 1] rain-element))
+        result (move-far obstacle-board :p1)]
+    (is (failed? result))
+    (is (= "ActionPointsOverflow" (result-message result)))))
+
 (deftest simple-coords-move-diagonal
   (let [move-far (build-action [:goto [2 2] [6 6]])
         result (move-far board :p1)]
     (is (succeeded? result))
     (is (= 4 (result-cost result)))
     (is (= "OK" (result-message result)))))
+
+(deftest simple-coords-move-direct-obstacle
+  (let [move-far (build-action [:goto [2 2] [2 5]])
+        obstacle-board (place-element board [2 3] pretorian-element)
+        result (move-far obstacle-board :p1)]
+    (is (succeeded? result))
+    (is (= 3 (result-cost result)))
+    (is (= "OK" (result-message result)))))
+
+(deftest simple-coords-move-3-obstacles
+  (let [move-far (build-action [:goto [4 4] [4 7]])
+        obstacle-board (-> (create-board)
+                           (place-element [4 4] rain-element)
+                           (place-element [3 6] pretorian-element)
+                           (place-element [4 6] pretorian-element)
+                           (place-element [5 6] pretorian-element))
+        result (move-far obstacle-board :p1)]
+    (is (succeeded? result))
+    (is (= 5 (result-cost result)))
+    (is (= "OK" (result-message result)))))
+
+(deftest completely-bloqued
+  (let [move-far (build-action [:goto [1 1] [1 3]])
+        obstacle-board (-> (create-board)
+                           (place-element [1 1] rain-element)
+                           (place-element [1 2] pretorian-element)
+                           (place-element [2 2] pretorian-element)
+                           (place-element [2 1] pretorian-element))
+        result (move-far obstacle-board :p1)]
+    (is (failed? result))
+    (is (= "NoRouteToTarget" (result-message result)))))
+
+(deftest completely-bloqued-with-interval
+  (let [move-far (build-action [:goto [1 1] [1 4]])
+        obstacle-board (-> (create-board)
+                           (place-element [1 1] rain-element)
+                           (place-element [2 1] pretorian-element)
+                           (place-element [2 2] pretorian-element)
+                           (place-element [1 3] pretorian-element)
+                           (place-element [2 3] pretorian-element)
+                           (place-element [3 3] pretorian-element))
+        result (move-far obstacle-board :p1)]
+    (is (failed? result))
+    (is (= "NoRouteToTarget" (result-message result)))))
 
 (deftest out-of-bounds
   (let [move-far (build-action [:goto [8 8] [9 9]])
