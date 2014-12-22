@@ -2,6 +2,7 @@
   (:require [obb-rules.actions.rotate :as rotate]
             [obb-rules.actions.attack :as attack]
             [obb-rules.actions.deploy :as deploy]
+            [obb-rules.actions.auto-deploy :as auto-deploy]
             [obb-rules.actions.goto :as goto]
             [obb-rules.actions.move :as move]))
 
@@ -9,6 +10,7 @@
   {:rotate rotate/build-rotate
    :attack attack/build-attack
    :deploy deploy/build-deploy
+   :auto-deploy auto-deploy/build-auto-deploy
    :move move/build-move
    :goto goto/build-goto})
 

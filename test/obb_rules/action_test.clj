@@ -23,6 +23,11 @@
   (testing "load deploy as string"
     (loader-check ["deploy" 100 "rain" [8 8]]))
 
+  (testing "load auto-deploy"
+    (loader-check [:auto-deploy :firingsquad]))
+  (testing "load deploy as string"
+    (loader-check ["auto-deploy" "firingsquad"]))
+
   (testing "load attack"
     (loader-check [:attack [1 1] [2 2]]))
   (testing "load attack as string"
