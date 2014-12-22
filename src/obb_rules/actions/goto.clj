@@ -44,12 +44,12 @@
 
 (defn- find-path
   "Tries to find a path between two coords"
-  [board player from target cost travelled]
-  (let [possible (possible-coords board from target travelled)
+  [board player from target cost travelled possible]
+  (let [possible (or possible (possible-coords board from target travelled))
         best (first possible)]
     (if (not best)
       (result/action-failed "NoRouteToTarget")
-      (let[result (process-move board from best player)
+      (let [result (process-move board from best player)
            new-board (result/result-board result)
            current-cost (+ cost (result/result-cost result))]
         (cond
@@ -60,14 +60,16 @@
           (result/failed? result)
             result
           :else
-            (recur new-board player best target current-cost (conj travelled best)))))))
+            (if-let [result (find-path new-board player best target current-cost (conj travelled best) nil)]
+              result
+              (recur board player from target cost travelled (rest possible))))))))
 
 (defn- resolve-goto
   "Tries to find the best path between the given coordinates. Fails if can't
   find it, or the :move action would fail for this scenario."
   [from target quantity]
   (fn gotoer [board player]
-    (if-let [result (find-path board player from target 0 #{})]
+    (if-let [result (find-path board player from target 0 #{} nil)]
       result
       (result/action-failed "NoPathToTarget"))))
 

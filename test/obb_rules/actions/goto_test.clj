@@ -66,7 +66,7 @@
     (is (= 5 (result-cost result)))
     (is (= "OK" (result-message result)))))
 
-(deftest completely-bloqued
+(deftest completely-blocked
   (let [move-far (build-action [:goto [1 1] [1 3]])
         obstacle-board (-> (create-board)
                            (place-element [1 1] rain-element)
@@ -77,11 +77,23 @@
     (is (failed? result))
     (is (= "NoRouteToTarget" (result-message result)))))
 
-(deftest completely-bloqued-with-interval
+(deftest completely-blocked-with-interval
   (let [move-far (build-action [:goto [1 1] [1 4]])
         obstacle-board (-> (create-board)
                            (place-element [1 1] rain-element)
                            (place-element [2 1] pretorian-element)
+                           (place-element [2 2] pretorian-element)
+                           (place-element [1 3] pretorian-element)
+                           (place-element [2 3] pretorian-element)
+                           (place-element [3 3] pretorian-element))
+        result (move-far obstacle-board :p1)]
+    (is (failed? result))
+    (is (= "NoRouteToTarget" (result-message result)))))
+
+#_(deftest force-try-other-destination-than-best
+  (let [move-far (build-action [:goto [1 2] [1 4]])
+        obstacle-board (-> (create-board)
+                           (place-element [1 2] rain-element)
                            (place-element [2 2] pretorian-element)
                            (place-element [1 3] pretorian-element)
                            (place-element [2 3] pretorian-element)
