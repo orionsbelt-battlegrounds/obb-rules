@@ -90,7 +90,7 @@
     (is (failed? result))
     (is (= "NoRouteToTarget" (result-message result)))))
 
-#_(deftest force-try-other-destination-than-best
+(deftest force-try-other-destination-than-best
   (let [move-far (build-action [:goto [1 2] [1 4]])
         obstacle-board (-> (create-board)
                            (place-element [1 2] rain-element)

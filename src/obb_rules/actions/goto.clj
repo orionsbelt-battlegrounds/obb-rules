@@ -10,12 +10,31 @@
             [obb-rules.board :as board]))
 
 (defn- distance-to
-  "Calculates the straight distance between two coordinates"
+  "Calculates the distance between two coordinates"
   [[xa ya] [xb yb]]
   (math/sqrt
     (+
       (math/expt (- xa xb) 2)
       (math/expt (- ya yb) 2))))
+
+(defn- distance-factor
+  "Gives proper weight to the distance between coordinates. It calculates the
+  geometric distance to the target. However, if the distance of the current
+  coordinate to evaluate is bigger than the distance of the source coordinate,
+  it will make the diagonals more valuable. Meaning, going one square behind
+  will always be the costest move to make."
+  [source target current]
+  (let [source-distance (distance-to source target)
+        current-distance (distance-to current target)]
+    (if (> source-distance current-distance)
+      current-distance
+      (let [[xa ya] target
+            [xb yb] current
+            dx (math/abs (- xa xb))
+            dy (math/abs (- ya yb))]
+        (if (or (= 0 dx) (= 0 dy))
+          (+ current-distance 1)
+          current-distance)))))
 
 (defn- purge
   "Removes the travelled coords from the given coordinates to handle"
@@ -24,15 +43,16 @@
 
 (defn- sort-by-distance
   "Sorts the given collection by the distance to a target"
-  [coords target]
-  (sort-by (partial distance-to target) coords))
+  [coords from target]
+  (println (map (fn [c] [c (distance-factor from target c)]) coords))
+  (sort-by (partial distance-factor from target) coords))
 
 (defn- possible-coords
   "Groups the possible coords for the current scenario"
   [board from target travelled]
   (if-let [efrom (board/get-element board from)]
     (-> (move/find-possible-destinations board efrom)
-        (sort-by-distance target)
+        (sort-by-distance from target)
         (purge travelled))
     []))
 
