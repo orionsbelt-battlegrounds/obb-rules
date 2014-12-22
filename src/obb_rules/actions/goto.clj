@@ -5,6 +5,7 @@
   (:require [clojure.math.numeric-tower :as math]
             [obb-rules.actions.move :as move]
             [obb-rules.element :as element]
+            [obb-rules.laws :as laws]
             [obb-rules.result :as result]
             [obb-rules.board :as board]))
 
@@ -52,7 +53,7 @@
            new-board (result/result-board result)
            current-cost (+ cost (result/result-cost result))]
         (cond
-          (< 6 current-cost)
+          (< laws/max-action-points current-cost)
             (result/action-failed "ActionPointsOverflow")
           (= best target)
             (result/action-success new-board current-cost)

@@ -1,10 +1,9 @@
 (ns obb-rules.turn
   (:require [obb-rules.action :as action]
             [obb-rules.game :as game]
+            [obb-rules.laws :as laws]
             [obb-rules.game-mode :as game-mode]
             [obb-rules.result :as result]))
-
-(def max-action-points 6)
 
 (defn- continue-apply-actions
   "Processes an action on a game"
@@ -42,7 +41,7 @@
   (cond
     (not (game/valid-actions? game))
       (result/action-failed "ActionFailed" game)
-    (> total-action-points max-action-points)
+    (> total-action-points laws/max-action-points)
       (result/action-failed "ActionPointsOverflow")
     :else
       (-> game

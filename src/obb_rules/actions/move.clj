@@ -1,12 +1,10 @@
 (ns obb-rules.actions.move
   (:require [obb-rules.actions.move-restrictions :as move-restrictions]
             [obb-rules.game :as game]
+            [obb-rules.laws :as laws]
             [obb-rules.element :as element]
             [obb-rules.simplifier :as simplify])
   (:use obb-rules.result obb-rules.board obb-rules.element obb-rules.unit))
-
-(def min-move-percentage 0.2)
-(def max-move-percentage (- 1 min-move-percentage))
 
 (defn- invalid-move-percentage?
   "Checks if a quantity to move is invalid"
@@ -14,8 +12,8 @@
   (if (= total-quantity quantity)
     false
     (or
-      (>= quantity (* total-quantity max-move-percentage))
-      (<= quantity (* total-quantity min-move-percentage)))))
+      (>= quantity (* total-quantity laws/max-move-percentage))
+      (<= quantity (* total-quantity laws/min-move-percentage)))))
 
 (defn- move-restrictions
   "Restrictions on the move action"

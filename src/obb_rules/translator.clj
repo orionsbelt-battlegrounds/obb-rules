@@ -1,9 +1,10 @@
 (ns obb-rules.translator
   (:require [obb-rules.board :as board]
             [obb-rules.simplifier :as simplify]
+            [obb-rules.laws :as laws]
             [obb-rules.element :as element]))
 
-(def max-coordinate (+ 1 board/default-board-w))
+(def max-coordinate (+ 1 laws/default-board-w))
 
 (defn- default-focus?
   "Checks if the current given focus is the default one"

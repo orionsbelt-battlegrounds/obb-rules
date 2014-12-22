@@ -1,4 +1,5 @@
 (ns obb-rules.board-test
+  (:require [obb-rules.laws :as laws])
   (:use clojure.test obb-rules.board obb-rules.element obb-rules.unit))
 
 (def unit (get-unit-by-name "rain"))
@@ -55,5 +56,5 @@
     (is (not (adjacent? [2 2] [4 4])))))
 
 (deftest default-board-size
-  (is (= default-board-w (board-width {})))
-  (is (= default-board-h (board-height {}))))
+  (is (= laws/default-board-w (board-width {})))
+  (is (= laws/default-board-h (board-height {}))))

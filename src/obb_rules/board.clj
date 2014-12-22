@@ -1,10 +1,8 @@
 (ns obb-rules.board
   (:use obb-rules.element)
   (:require [clojure.math.numeric-tower :as math]
+            [obb-rules.laws :as laws]
             [obb-rules.simplifier :as simplify]))
-
-(def default-board-w 8)
-(def default-board-h 8)
 
 (defn- random-terrain
   "Provides a random terrain"
@@ -14,7 +12,7 @@
 
 (defn create-board
   "Creates an empty board"
-  ([] (create-board 8 8))
+  ([] (create-board laws/default-board-w laws/default-board-h))
   ([w h]
   {:width w
    :height h
@@ -47,8 +45,8 @@
   ([board player]
    (= 0 (board-elements-count board (keyword player)))))
 
-(defn board-width "Gets a board's witdh" [board] (or (board :width) default-board-w))
-(defn board-height "Gets a board's height" [board] (or (board :height) default-board-h))
+(defn board-width "Gets a board's witdh" [board] (or (board :width) laws/default-board-w))
+(defn board-height "Gets a board's height" [board] (or (board :height) laws/default-board-h))
 (defn board-terrain "Gets the board's terrain" [board] (board :terrain))
 
 (defn elements
