@@ -44,7 +44,6 @@
 (defn- sort-by-distance
   "Sorts the given collection by the distance to a target"
   [coords from target]
-  (println (map (fn [c] [c (distance-factor from target c)]) coords))
   (sort-by (partial distance-factor from target) coords))
 
 (defn- possible-coords
