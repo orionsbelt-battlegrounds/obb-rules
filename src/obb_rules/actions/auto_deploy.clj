@@ -50,8 +50,8 @@
 
 (defn- build-deploy-actions
   "Builds deploy actions based on the given data"
-  [lineup]
-  (map-indexed (fn [idx [u q]] [(int q) (unit/unit-name u) [(+ idx 1) 7]]) lineup))
+  [lineup row]
+  (map-indexed (fn [idx [u q]] [(int q) (unit/unit-name u) [(+ idx 1) row]]) lineup))
 
 (defn- do-actions
   "Performs the deploy actions"
@@ -65,10 +65,17 @@
   [board player stash]
   (let [lineup (build-lineup board stash)
         lineup-quantities (build-lineup-quantities lineup stash)
-        raw-actions (build-deploy-actions lineup-quantities)
+        raw-actions (build-deploy-actions lineup-quantities 7)
         actions (map deploy/build-deploy raw-actions)
         start-result (result/action-success board 0)]
     (reduce (partial do-actions player) start-result actions)))
+
+(defn- deploy-back-row
+  "Deploys a back row with all the given units"
+  [result player stash]
+  (let [raw-actions (build-deploy-actions stash 8)
+        actions (map deploy/build-deploy raw-actions)]
+    (reduce (partial do-actions player) result actions)))
 
 (defn- deploy-firingsquad
   "Deploys the given stash in a way that will be advantajous for firingsquad
@@ -76,8 +83,11 @@
   [board player]
   (let [stash (map map-stash-to-units (board/get-stash board player))
         ordered-stash (sort-by firing-squad-value stash)
-        front-row-units (front-row-units-to-use stash)]
-    (deploy-front-row board player (take front-row-units ordered-stash))))
+        front-row-units (front-row-units-to-use stash)
+        back-row-units (- (count ordered-stash) front-row-units)]
+    (-> board
+        (deploy-front-row player (take front-row-units ordered-stash))
+        (deploy-back-row player (take-last back-row-units ordered-stash)))))
 
 (def templates
   "The supported auto-deploy templates"
