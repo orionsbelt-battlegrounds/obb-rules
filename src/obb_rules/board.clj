@@ -143,4 +143,4 @@
 (defn get-stash
   "Gets a stash for a given player"
   [board player]
-  (get-in board [:stash player]))
+  (get-in board [:stash (keyword player)]))

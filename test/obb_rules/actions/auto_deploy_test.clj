@@ -2,6 +2,7 @@
   (:require [obb-rules.actions.auto-deploy :as auto-deploy]
             [obb-rules.game :as game]
             [obb-rules.board :as board]
+            [obb-rules.stash :as stash]
             [obb-rules.result :as result]
             [obb-rules.action :as action])
   (:use clojure.test))
@@ -23,3 +24,20 @@
         result (process-action board :p1 [:auto-deploy])]
     (is (result/failed? result))
     (is (= "NoStash" (result/result-message result)))))
+
+(deftest fails-if-no-template
+  (let [board (game/random)
+        result (process-action board :p1 [:auto-deploy :no-template])]
+    (is (result/failed? result))
+    (is (= "NoTemplate" (result/result-message result)))))
+
+(deftest smoke-success-str
+  (let [board (game/random)
+        result (process-action board "p1" ["auto-deploy" "firingsquad"])]
+    (is (result/succeeded? result))))
+
+(deftest smoke-success-sym
+  (let [board (game/random)
+        result (process-action board :p1 [:auto-deploy :firingsquad])]
+    (is (result/succeeded? result))
+    (is (stash/cleared? (board/get-stash (result/result-board result) :p1)))))

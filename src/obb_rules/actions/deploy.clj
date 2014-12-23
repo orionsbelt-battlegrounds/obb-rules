@@ -8,7 +8,7 @@
 (defn- invalid-deploy-zone?
   "Returns true if the coordinate zone is invalid"
   [player [x y]]
-  (if (= player :p1)
+  (if (simplify/name= player :p1)
     (< y 7 )
     (> y 2)))
 
@@ -25,7 +25,7 @@
 (defn- process-deploy
   "Processes a deploy"
   [player board quantity unit coordinate element stash]
-  (let [unit-type (keyword (unit-name unit))
+  (let [unit-type (unit-name unit)
         new-stash (stash/retrieve stash unit-type quantity)
         placed-board (place-element board coordinate element)
         new-board (set-stash placed-board player new-stash)]
