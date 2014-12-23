@@ -3,6 +3,7 @@
   ^{:added "1.5" :author "Pedro Santos"}
   (:require [clojure.math.numeric-tower :as math]
             [obb-rules.result :as result]
+            [obb-rules.translator :as translator]
             [obb-rules.actions.deploy :as deploy]
             [obb-rules.stash :as stash]
             [obb-rules.board :as board]
@@ -48,10 +49,16 @@
   (let [quantities (map (partial split-stash lineup) stash)]
     (apply concat quantities)))
 
+(defn- build-deploy-action
+  "Builds a deploy action command"
+  [player row idx [u q]]
+  (let [coordinate (translator/coordinate player [(+ idx 1) row])]
+    [(int q) (unit/unit-name u) coordinate]))
+
 (defn- build-deploy-actions
   "Builds deploy actions based on the given data"
-  [lineup row]
-  (map-indexed (fn [idx [u q]] [(int q) (unit/unit-name u) [(+ idx 1) row]]) lineup))
+  [player lineup row]
+  (map-indexed (partial build-deploy-action player row) lineup))
 
 (defn- do-actions
   "Performs the deploy actions"
@@ -65,7 +72,7 @@
   [board player stash]
   (let [lineup (build-lineup board stash)
         lineup-quantities (build-lineup-quantities lineup stash)
-        raw-actions (build-deploy-actions lineup-quantities 7)
+        raw-actions (build-deploy-actions player lineup-quantities 7)
         actions (map deploy/build-deploy raw-actions)
         start-result (result/action-success board 0)]
     (reduce (partial do-actions player) start-result actions)))
@@ -73,7 +80,7 @@
 (defn- deploy-back-row
   "Deploys a back row with all the given units"
   [result player stash]
-  (let [raw-actions (build-deploy-actions stash 8)
+  (let [raw-actions (build-deploy-actions player stash 8)
         actions (map deploy/build-deploy raw-actions)]
     (reduce (partial do-actions player) result actions)))
 

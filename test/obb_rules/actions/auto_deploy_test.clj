@@ -38,6 +38,10 @@
 
 (deftest smoke-success-sym
   (let [board (game/random)
-        result (process-action board :p1 [:auto-deploy :firingsquad])]
-    (is (result/succeeded? result))
-    (is (stash/cleared? (board/get-stash (result/result-board result) :p1)))))
+        result-p2 (process-action board :p2 [:auto-deploy :firingsquad])
+        board2 (result/result-board result-p2)
+        result-p1 (process-action board2 :p1 [:auto-deploy :firingsquad])]
+    (is (result/succeeded? result-p1))
+    (is (result/succeeded? result-p2))
+    (is (stash/cleared? (board/get-stash (result/result-board result-p1) :p2)))
+    (is (stash/cleared? (board/get-stash (result/result-board result-p1) :p1)))))
