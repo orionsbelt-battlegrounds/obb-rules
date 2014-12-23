@@ -17,7 +17,7 @@
     (is (not (stash/cleared? game)))))
 
 (deftest complete-game-processing
-  (let [stash (stash/create :kamikaze 1)
+  (let [stash (stash/create "kamikaze" 1)
         game (game/create stash)
         result2 (turn/process game :p1 [:deploy 1 :kamikaze [1 7]])
         game2 (result/result-board result2)

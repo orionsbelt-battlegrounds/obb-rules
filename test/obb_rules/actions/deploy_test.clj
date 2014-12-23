@@ -13,19 +13,19 @@
 
 (deftest basic-deploy
   (testing "simple example"
-    (let [stash (stash/create :rain 10)
+    (let [stash (stash/create "rain" 10)
           board (board/set-stash (create-board) :p1 stash)
           deploy (action/build-action [:deploy 10 :rain [8 8]])
           result (deploy board :p1)
           final-board (result-board result)
           final-stash (board/get-stash final-board :p1)]
       (is (succeeded? result))
-      (is (= 0 (stash/how-many? final-stash :rain)))
+      (is (= 0 (stash/how-many? final-stash "rain")))
       (is (get-element final-board [8 8])))))
 
 (deftest test-direction
   (testing "p1"
-    (let [stash (stash/create :rain 10)
+    (let [stash (stash/create "rain" 10)
           board (board/set-stash (create-board) :p1 stash)
           deploy (action/build-action [:deploy 10 :rain [8 8]])
           result (deploy board :p1)
@@ -34,7 +34,7 @@
       (is (succeeded? result))
       (is (= :north (element/element-direction element)))))
   (testing "p2"
-    (let [stash (stash/create :rain 10)
+    (let [stash (stash/create "rain" 10)
           board (board/set-stash (create-board) :p2 stash)
           deploy (action/build-action [:deploy 10 :rain [1 1]])
           result (deploy board :p2)

@@ -14,27 +14,27 @@
                       :crusader 10))))
 
 (deftest stash-access
-  (let [s (stash/create :anubis 20)]
+  (let [s (stash/create "anubis" 20)]
 
     (testing "is cleared"
       (is (not (stash/cleared? s))))
 
     (testing "is available"
-      (is (stash/available? s :anubis 10)))
+      (is (stash/available? s "anubis" 10)))
 
     (testing "is not available"
-      (is (not (stash/available? s :anubis 100))))
+      (is (not (stash/available? s "anubis" 100))))
 
     (testing "unit count"
       (is (= 20 (stash/how-many? s :anubis))))
 
     (testing "get partial unit from stash"
-      (let [new-stash (stash/retrieve s :anubis 10)]
+      (let [new-stash (stash/retrieve s "anubis" 10)]
         (is new-stash)
-        (is (= 10 (stash/how-many? new-stash :anubis)))))
+        (is (= 10 (stash/how-many? new-stash "anubis")))))
 
     (testing "get all unit from stash"
-      (let [new-stash (stash/retrieve s :anubis 20)]
+      (let [new-stash (stash/retrieve s "anubis" 20)]
         (is new-stash)
         (is (stash/cleared? new-stash))
         (is (= 0 (stash/how-many? new-stash :anubis)))))))

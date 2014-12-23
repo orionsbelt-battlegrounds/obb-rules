@@ -9,7 +9,7 @@
 (defn how-many?
   "States how many of a unit are present"
   [stash unit]
-  (or (stash (keyword unit)) (stash (name unit)) 0))
+  (or (stash (name unit)) 0))
 
 (defn cleared?
   "Returns true if this stash is empty"
