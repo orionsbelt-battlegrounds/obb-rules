@@ -39,9 +39,12 @@
   "Splits the total quantity into the given slots"
   [lineup [unit quantity]]
   (let [slots (count (filter #(= unit %) lineup))
-        fraction (/ quantity slots)]
-    (into [[unit (math/ceil fraction)]]
-          (take (- slots 1) (repeat [unit (math/floor fraction)])))))
+        fraction (/ quantity slots)
+        smallest-parcel-quantity (math/floor fraction)
+        equal-parcel-slots (- slots 1)
+        biggest (- quantity (* equal-parcel-slots smallest-parcel-quantity))]
+    (into [[unit biggest]]
+          (take equal-parcel-slots (repeat [unit smallest-parcel-quantity])))))
 
 (defn- build-lineup-quantities
   "Associates the expected quantities with every lineup element"
