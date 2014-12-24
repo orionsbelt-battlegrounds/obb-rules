@@ -8,7 +8,7 @@
             :comments     "Copyright 2011-2014 Pedro Santos All Rights Reserved."}
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [org.clojure/math.numeric-tower "0.0.4"]
-                 [org.clojure/test.check "0.6.2"]]
+                 ]
   :source-paths ["src"]
   :test-paths ["test"]
 
@@ -16,7 +16,8 @@
         :url "git@github.com:orionsbelt-battlegrounds/obb-rules.git"}
 
   :profiles {:dev 
-             {:plugins [[com.jakemccrary/lein-test-refresh "0.5.4"]
+             {:dependencies [[org.clojure/test.check "0.6.2"]]
+              :plugins [[com.jakemccrary/lein-test-refresh "0.5.4"]
                         [lein-cloverage "1.0.2"]]}}
 
   )
