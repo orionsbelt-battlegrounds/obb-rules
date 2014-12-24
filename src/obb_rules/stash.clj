@@ -1,6 +1,11 @@
 (ns obb-rules.stash
   (:require [obb-rules.unit :as unit]))
 
+(defn create-from-hash
+  "Creates a new stash from the given hash"
+  [unit-hash]
+  unit-hash)
+
 (defn create
   "Creates a new stash"
   [& units]
