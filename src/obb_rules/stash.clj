@@ -11,10 +11,17 @@
   [& units]
   (apply hash-map units))
 
+(defn- accessorfn
+  "Gets the way to access a unit key on the stash"
+  [stash unit-name]
+  (if (get stash (name unit-name))
+    name
+    keyword))
+
 (defn how-many?
   "States how many of a unit are present"
   [stash unit]
-  (or (stash (name unit)) 0))
+  (or (stash ((accessorfn stash unit) unit)) 0))
 
 (defn cleared?
   "Returns true if this stash is empty"
@@ -29,12 +36,14 @@
 (defn retrieve
   "Removes units from stash"
   [stash unit quantity]
-  (let [current-quantity (how-many? stash unit)
+  (let [access-key (accessorfn stash unit)
+        unit-key (access-key unit)
+        current-quantity (how-many? stash unit-key)
         new-quantity (- current-quantity quantity)]
     (assert (>= current-quantity quantity) "InvalidStashQuantity")
     (if (= new-quantity 0)
-      (dissoc stash unit)
-      (assoc stash unit new-quantity))))
+      (dissoc stash unit-key)
+      (assoc stash unit-key new-quantity))))
 
 (defn- random-by-category
   "Returns random units for the given category"
