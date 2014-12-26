@@ -16,7 +16,7 @@
     (cond
       (= next-element target) true
       (>= distance (unit-range unit)) false
-      (nil? next-element) (advance-and-check-target board attacker target next-coordinate (+ 1 distance))
+      (nil? next-element) (recur board attacker target next-coordinate (+ 1 distance))
       :else false)))
 
 (defn- in-range?
