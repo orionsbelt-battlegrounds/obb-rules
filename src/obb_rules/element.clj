@@ -16,6 +16,12 @@
 (defn element-player "Element's player" [element] (element :player))
 (defn element-unit "Element's unit" [element] (element :unit))
 
+(defn catapult-attack?
+  "True if the element supports catapult"
+  [element]
+  (let [unit (element-unit element)]
+    (unit/catapult? unit)))
+
 (defn element-direction 
   "Gets/Sets element's direction" 
   ([element] (element :direction))

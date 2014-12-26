@@ -12,11 +12,12 @@
   (let [unit (element-unit attacker)
         direction (element-direction attacker)
         next-coordinate (dir/update direction current-coordinate)
-        next-element (get-element board next-coordinate)]
+        next-element (get-element board next-coordinate)
+        may-try-next? (or (nil? next-element) (element/catapult-attack? attacker))]
     (cond
       (= next-element target) true
       (>= distance (unit-range unit)) false
-      (nil? next-element) (recur board attacker target next-coordinate (+ 1 distance))
+      may-try-next? (recur board attacker target next-coordinate (+ 1 distance))
       :else false)))
 
 (defn- in-range?
