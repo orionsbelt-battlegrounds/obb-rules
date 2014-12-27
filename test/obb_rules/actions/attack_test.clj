@@ -1,5 +1,6 @@
 (ns obb-rules.actions.attack-test
-  (:require [obb-rules.element :as element])
+  (:require [obb-rules.element :as element]
+            [obb-rules.result :as result])
   (:use clojure.test
         obb-rules.action
         obb-rules.actions.move
@@ -101,9 +102,11 @@
   (let [board (-> board-with-eagle
                   (place-element [2 4] rain-element))
         attack (build-action [:attack [2 2] [2 4]])
-        result (attack board :p1)]
+        result (attack board :p1)
+        info (first (result/info result))]
     (is (succeeded? result))
     (is (= "OK" (result-message result)))
+    (is (= :catapult (info :attack-type)))
     (is (nil? (get-element (result-board result) [2 4])))))
 
 (deftest attack-catapult
@@ -111,7 +114,21 @@
                   (place-element [2 3] rain-element)
                   (place-element [2 4] rain-element))
         attack (build-action [:attack [2 2] [2 4]])
-        result (attack board :p1)]
+        result (attack board :p1)
+        info (first (result/info result))]
     (is (succeeded? result))
     (is (= "OK" (result-message result)))
+    (is (= :catapult (info :attack-type)))
+    (is (nil? (get-element (result-board result) [2 4])))))
+
+(deftest attack-catapult-interval
+  (let [board (-> board-with-eagle
+                  (place-element [2 3] rain-element)
+                  (place-element [2 5] rain-element))
+        attack (build-action [:attack [2 2] [2 5]])
+        result (attack board :p1)
+        info (first (result/info result))]
+    (is (succeeded? result))
+    (is (= "OK" (result-message result)))
+    (is (= :catapult (info :attack-type)))
     (is (nil? (get-element (result-board result) [2 4])))))

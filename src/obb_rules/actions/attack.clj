@@ -14,7 +14,7 @@
         next-coordinate (dir/update direction current-coordinate)
         next-element (get-element board next-coordinate)
         may-try-next? (or (nil? next-element) (element/catapult-attack? attacker))
-        bypassed? (or bypassed-element? (nil? next-element))]
+        bypassed? (or bypassed-element? (nil? next-element) (not= next-element target))]
     (cond
       (= next-element target) (if bypassed? :catapult :direct)
       (>= distance (unit-range unit)) :out-of-range
@@ -44,12 +44,16 @@
 
 (defn- process-attack
   "Processes the attack"
-  [board attacker target]
+  [board attacker target attack-type]
   (let [destroyed (calculator/destroyed attacker target)
         attacker-coordinate (element-coordinate attacker)
+        target-unit (element-unit target)
         coordinate (element-coordinate target)
-        frozen-board (swap-element board attacker-coordinate (element/freeze attacker))]
-    (action-success (remove-from-element frozen-board coordinate destroyed) 1)))
+        frozen-board (swap-element board attacker-coordinate (element/freeze attacker))
+        final-board (remove-from-element frozen-board coordinate destroyed)]
+    (action-success final-board 1 "OK" [{:attack-type attack-type
+                                         :destroyed destroyed
+                                         :unit (unit-name target-unit)}])))
 
 (defn build-attack
   "Builds an attack action on a board"
@@ -60,5 +64,5 @@
           [success? info] (resolve-attack board player attacker target)]
       (if-not success?
         (action-failed info)
-        (process-attack board attacker target)))))
+        (process-attack board attacker target info)))))
 
