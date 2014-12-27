@@ -32,12 +32,12 @@
   "Gets how many units an attack will destroy"
   [attacker-element defender-element]
   (let [total-damage (damage attacker-element defender-element)
-        total-defense (defense attacker-element defender-element)
-        destroyed (/ total-damage total-defense)
+        elem-defense (defense attacker-element defender-element)
+        destroyed (/ total-damage elem-defense)
         defender-quantity (element-quantity defender-element)]
     (if (> destroyed defender-quantity)
       [defender-quantity 0]
-      [destroyed (- total-damage (* total-defense defender-quantity))])))
+      [destroyed (- total-damage (* elem-defense defender-quantity))])))
 
 (defn destroyed
   "Gets how many units an attack will destroy"

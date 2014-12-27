@@ -42,18 +42,30 @@
         [false "OutOfRange"]
         [true lock-target]))))
 
+(defn- build-basic-attack-info
+  "Builds information about the concrete attack, without the side effects"
+  [attack-type destroyed target]
+  (let [target-unit (element-unit target)]
+    [{:attack-type attack-type
+      :destroyed destroyed
+      :unit (unit-name target-unit)}]))
+
+(defn- process-after-attack
+  "Processes registered handlers for after-attack"
+  [board attacker target unused-damage info]
+  [board info])
+
 (defn- process-attack
   "Processes the attack"
   [board attacker target attack-type]
   (let [[destroyed unused-damage] (calculator/destroyed-with-unused-damage attacker target)
         attacker-coordinate (element-coordinate attacker)
-        target-unit (element-unit target)
         coordinate (element-coordinate target)
         frozen-board (swap-element board attacker-coordinate (element/freeze attacker))
-        final-board (remove-from-element frozen-board coordinate destroyed)]
-    (action-success final-board 1 "OK" [{:attack-type attack-type
-                                         :destroyed destroyed
-                                         :unit (unit-name target-unit)}])))
+        attack-board (remove-from-element frozen-board coordinate destroyed)
+        attack-info (build-basic-attack-info attack-type destroyed target)
+        [final-board final-info] (process-after-attack attack-board attacker target unused-damage attack-info)]
+    (action-success final-board 1 "OK" final-info)))
 
 (defn build-attack
   "Builds an attack action on a board"

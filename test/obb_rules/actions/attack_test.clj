@@ -145,6 +145,7 @@
     (is (succeeded? result))
     (is (= "OK" (result-message result)))
     (is (= :direct (info :attack-type)))
+    (is (= "rain" (info :unit)))
     (is (nil? (get-element (result-board result) [2 4])))))
 
 #_(deftest attack-fenix-rebound
