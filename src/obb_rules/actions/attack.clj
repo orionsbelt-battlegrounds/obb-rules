@@ -14,9 +14,9 @@
         next-coordinate (dir/update direction current-coordinate)
         next-element (get-element board next-coordinate)
         may-try-next? (or (nil? next-element) (element/catapult-attack? attacker))
-        bypassed? (or bypassed-element? (nil? next-element) (not= next-element target))]
+        bypassed? (or bypassed-element? (and (some? next-element) (not= next-element target)))]
     (cond
-      (= next-element target) (if bypassed? :catapult :direct)
+      (= next-element target) (if bypassed-element? :catapult :direct)
       (>= distance (unit-range unit)) :out-of-range
       may-try-next? (recur board attacker target next-coordinate (+ 1 distance) bypassed?)
       :else :out-of-range)))
