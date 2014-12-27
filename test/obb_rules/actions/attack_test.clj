@@ -147,15 +147,18 @@
     (is (= :direct (info :attack-type)))
     (is (nil? (get-element (result-board result) [2 4])))))
 
-(deftest attack-fenix-interval
+#_(deftest attack-fenix-rebound
   (let [board (-> board-with-fenix
                   (place-element [2 4] rain-element)
                   (place-element [2 5] rain-element))
         attack (build-action [:attack [2 2] [2 4]])
         result (attack board :p1)
-        info (first (result/info result))]
-    (println info)
+        info (result/info result)
+        target-info (first info)
+        rebound-info (last info)]
     (is (succeeded? result))
     (is (= "OK" (result-message result)))
-    (is (= :direct (info :attack-type)))
-    (is (nil? (get-element (result-board result) [2 4])))))
+    (is (= :direct (target-info :attack-type)))
+    (is (= :rebound (rebound-info :attack-type)))
+    (is (nil? (get-element (result-board result) [2 4])))
+    (is (nil? (get-element (result-board result) [2 5])))))
