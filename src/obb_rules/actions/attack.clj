@@ -8,22 +8,18 @@
 
 (defn- advance-and-check-target
   "Goes to the next coordinate and checks if the target is valid"
-  [board attacker target current-coordinate distance]
+  [board attacker target current-coordinate distance bypassed-element?]
   (let [unit (element-unit attacker)
         direction (element-direction attacker)
         next-coordinate (dir/update direction current-coordinate)
         next-element (get-element board next-coordinate)
-        may-try-next? (or (nil? next-element) (element/catapult-attack? attacker))]
+        may-try-next? (or (nil? next-element) (element/catapult-attack? attacker))
+        bypassed? (or bypassed-element? (nil? next-element))]
     (cond
-      (= next-element target) true
-      (>= distance (unit-range unit)) false
-      may-try-next? (recur board attacker target next-coordinate (+ 1 distance))
-      :else false)))
-
-(defn- in-range?
-  "Checks if the target element is in range"
-  [board attacker target]
-  (advance-and-check-target board attacker target (element-coordinate attacker) 1))
+      (= next-element target) (if bypassed? :catapult :direct)
+      (>= distance (unit-range unit)) :out-of-range
+      may-try-next? (recur board attacker target next-coordinate (+ 1 distance) bypassed?)
+      :else :out-of-range)))
 
 (defn- attack-restrictions
   "Checks if the attack is possible"
@@ -34,8 +30,17 @@
     (frozen? attacker) "FrozenElement"
     (nil? target) "EmptyTarget"
     (simplify/not-name= player (element-player attacker)) "NotOwnedElement"
-    (not (in-range? board attacker target)) "OutOfRange"
     (= (element-player attacker) (element-player target)) "SamePlayer"))
+
+(defn- resolve-attack
+  "Checks if the target element is in range"
+  [board player attacker target]
+  (if-let [error-msg (attack-restrictions board player attacker target)]
+    [false error-msg]
+    (let [lock-target (advance-and-check-target board attacker target (element-coordinate attacker) 1 false)]
+      (if (= :out-of-range lock-target)
+        [false "OutOfRange"]
+        [true lock-target]))))
 
 (defn- process-attack
   "Processes the attack"
@@ -51,8 +56,9 @@
   [[coord target-coord]]
   (fn attacker [board player]
     (let [attacker (get-element board coord)
-          target (get-element board target-coord)]
-      (if-let [error (attack-restrictions board player attacker target)]
-        (action-failed error)
+          target (get-element board target-coord)
+          [success? info] (resolve-attack board player attacker target)]
+      (if-not success?
+        (action-failed info)
         (process-attack board attacker target)))))
 
