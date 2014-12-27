@@ -5,6 +5,10 @@
             [obb-rules.units.raptor]
             [obb-rules.units.worm]
             [obb-rules.units.eagle]
+            [obb-rules.units.doomer]
+            [obb-rules.units.fenix]
+            [obb-rules.units.kahuna]
+            [obb-rules.units.panther]
             [obb-rules.units.vector]
             [obb-rules.units.heavy-seeker]
             [obb-rules.units.scarab]
@@ -26,6 +30,10 @@
    obb-rules.units.anubis/metadata
    obb-rules.units.eagle/metadata
    obb-rules.units.heavy-seeker/metadata
+   obb-rules.units.doomer/metadata
+   obb-rules.units.fenix/metadata
+   obb-rules.units.kahuna/metadata
+   obb-rules.units.panther/metadata
    obb-rules.units.scarab/metadata
    obb-rules.units.kamikaze/metadata
    obb-rules.units.crusader/metadata])
