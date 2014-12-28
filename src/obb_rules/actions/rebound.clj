@@ -4,11 +4,17 @@
   "Processes rebound logic"
   (:require [obb-rules.element :as element]
             [obb-rules.board :as board]
+            [obb-rules.actions.damage-calculator :as calculator]
             [obb-rules.actions.direction :as direction]))
 
 (defn- process-rebound
   "Applies rebound on the board"
-  [config {attacker :attacker board :board info :info unused-damage :unused-damage :as args}]
+  [config {attacker :attacker board :board info :info unused-damage :unused-damage rebound-target :rebound-target :as args}]
+  (let [[destroyed _] (calculator/destroyed-with-unused-damage board
+                                                               attacker
+                                                               rebound-target
+                                                               unused-damage)]
+    (println "----- " destroyed " d " unused-damage))
   [board info]
   )
 
@@ -23,7 +29,7 @@
   "Checks if the rebound can be performed"
   [config {target :target board :board unused-damage :unused-damage rebound-target :rebound-target :as args}]
   (and
-    (>= 0 unused-damage)
+    (>= unused-damage 0)
     (target-was-destroyed? board target)
     rebound-target))
 
@@ -39,6 +45,7 @@
   "Processes the rebound for the given data"
   [config {board :board info :info :as args}]
   (let [args (assoc args :rebound-target (rebound-target args))]
+    (println args)
     (if (aplicable? config args)
       (process-rebound config args)
       [board info])))
