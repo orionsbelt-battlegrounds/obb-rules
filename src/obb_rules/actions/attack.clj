@@ -63,7 +63,7 @@
 (defn- process-attack
   "Processes the attack"
   [board attacker target attack-type]
-  (let [[destroyed unused-damage] (calculator/destroyed-with-unused-damage attacker target)
+  (let [[destroyed unused-damage] (calculator/destroyed-with-unused-damage board attacker target)
         attacker-coordinate (element-coordinate attacker)
         coordinate (element-coordinate target)
         frozen-board (swap-element board attacker-coordinate (element/freeze attacker))

@@ -14,7 +14,7 @@
 
 (defn damage
   "Gets the base damage given by a unit to another"
-  [attacker-element defender-element]
+  [board attacker-element defender-element]
   (let [attacker-unit (element-unit attacker-element)
         defender-unit (element-unit defender-element)
         attacker-quantity (element-quantity attacker-element)
@@ -24,15 +24,15 @@
 
 (defn defense
   "Gets the defense of a given unit from another"
-  [attacker-element defender-element]
+  [board attacker-element defender-element]
   (let [unit (element-unit defender-element)]
     (unit-defense unit)))
 
 (defn destroyed-with-unused-damage
   "Gets how many units an attack will destroy"
-  [attacker-element defender-element]
-  (let [total-damage (damage attacker-element defender-element)
-        elem-defense (defense attacker-element defender-element)
+  [board attacker-element defender-element]
+  (let [total-damage (damage board attacker-element defender-element)
+        elem-defense (defense board attacker-element defender-element)
         destroyed (/ total-damage elem-defense)
         defender-quantity (element-quantity defender-element)]
     (if (> destroyed defender-quantity)
@@ -41,6 +41,6 @@
 
 (defn destroyed
   "Gets how many units an attack will destroy"
-  [attacker-element defender-element]
-  (let [[destroyed _] (destroyed-with-unused-damage attacker-element defender-element)]
+  [board attacker-element defender-element]
+  (let [[destroyed _] (destroyed-with-unused-damage board attacker-element defender-element)]
     destroyed))
