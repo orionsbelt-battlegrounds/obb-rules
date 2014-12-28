@@ -6,7 +6,7 @@
 
 (defn process
   "Processes the given hooks"
-  [event board attacker target unused-damage info]
+  [event {attacker :attacker board :board info :info :as args}]
   (if-let [hooks (element/hooks attacker event)]
     [board info]
     [board info]))

@@ -54,7 +54,11 @@
 (defn- process-after-attack
   "Processes registered handlers for after-attack"
   [board attacker target unused-damage info]
-  (hooks/process :after-attack board attacker target unused-damage info))
+  (hooks/process :after-attack {:board board
+                                :attacker attacker
+                                :target target
+                                :unused-damage unused-damage
+                                :info info}))
 
 (defn- process-attack
   "Processes the attack"
