@@ -16,6 +16,10 @@
 (defn element-player "Element's player" [element] (element :player))
 (defn element-unit "Element's unit" [element] (element :unit))
 
+(defn hooks
+  "Gets the hooks for the given event"
+  [element event])
+
 (defn catapult-attack?
   "True if the element supports catapult"
   [element]

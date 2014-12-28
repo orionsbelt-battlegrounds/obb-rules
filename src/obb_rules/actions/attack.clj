@@ -2,6 +2,7 @@
   (:require [obb-rules.actions.direction :as dir]
             [obb-rules.element :as element]
             [obb-rules.game :as game]
+            [obb-rules.actions.hooks :as hooks]
             [obb-rules.simplifier :as simplify]
             [obb-rules.actions.damage-calculator :as calculator])
   (:use obb-rules.result obb-rules.board obb-rules.element obb-rules.unit))
@@ -53,7 +54,7 @@
 (defn- process-after-attack
   "Processes registered handlers for after-attack"
   [board attacker target unused-damage info]
-  [board info])
+  (hooks/process :after-attack board attacker target unused-damage info))
 
 (defn- process-attack
   "Processes the attack"
