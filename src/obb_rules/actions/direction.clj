@@ -14,4 +14,3 @@
   [dir [x y]]
   (let [[ox oy] (offset dir)]
     [(+ x ox) (+ y oy)]))
-
