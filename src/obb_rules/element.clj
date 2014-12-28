@@ -18,7 +18,9 @@
 
 (defn hooks
   "Gets the hooks for the given event"
-  [element event])
+  [element event]
+  (let [unit (element-unit element)]
+    (unit/event-hooks unit event)))
 
 (defn catapult-attack?
   "True if the element supports catapult"

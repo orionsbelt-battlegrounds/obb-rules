@@ -8,6 +8,6 @@
   "Processes the given hooks"
   [event board attacker target unused-damage info]
   (if-let [hooks (element/hooks attacker event)]
-    nil
+    [board info]
     [board info]))
 
