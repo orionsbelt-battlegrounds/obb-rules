@@ -40,8 +40,8 @@
          destroyed (/ total-damage elem-defense)
          defender-quantity (element-quantity defender-element)]
      (if (> destroyed defender-quantity)
-       [defender-quantity 0]
-       [destroyed (- total-damage (* elem-defense defender-quantity))]))))
+       [defender-quantity (- total-damage (* elem-defense defender-quantity))]
+       [destroyed 0]))))
 
 (defn destroyed
   "Gets how many units an attack will destroy"

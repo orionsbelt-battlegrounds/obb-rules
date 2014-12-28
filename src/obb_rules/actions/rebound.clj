@@ -14,9 +14,8 @@
                                                                attacker
                                                                rebound-target
                                                                unused-damage)]
-    (println "----- " destroyed " d " unused-damage))
-  [board info]
-  )
+    [board info]
+  ))
 
 (defn- target-was-destroyed?
   "Checks if the original target was in fact destroyed"
@@ -45,7 +44,6 @@
   "Processes the rebound for the given data"
   [config {board :board info :info :as args}]
   (let [args (assoc args :rebound-target (rebound-target args))]
-    (println args)
     (if (aplicable? config args)
       (process-rebound config args)
       [board info])))
