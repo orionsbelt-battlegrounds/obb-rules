@@ -4,6 +4,7 @@
   "Processes rebound logic"
   (:require [obb-rules.element :as element]
             [obb-rules.board :as board]
+            [obb-rules.unit :as unit]
             [obb-rules.actions.damage-calculator :as calculator]
             [obb-rules.actions.direction :as direction]))
 
@@ -13,7 +14,11 @@
   (let [[destroyed _] (calculator/destroyed-with-unused-damage board
                                                                attacker
                                                                rebound-target
-                                                               unused-damage)]
+                                                               unused-damage)
+        rebound-coordinate (element/element-coordinate rebound-target)
+        board (board/remove-from-element board rebound-coordinate destroyed)
+        unit-name (unit/unit-name (element/element-unit rebound-target))
+        info (conj info {:attack-type :rebound :destroyed destroyed :unit unit-name})]
     [board info]
   ))
 

@@ -35,7 +35,7 @@
     (is (= "rain" (info :unit)))
     (is (nil? (get-element (result-board result) [2 4])))))
 
-#_(deftest attack-fenix-rebound
+(deftest attack-fenix-rebound
   (let [board (-> board-with-fenix
                   (place-element [2 4] rain-element)
                   (place-element [2 5] rain-element))
