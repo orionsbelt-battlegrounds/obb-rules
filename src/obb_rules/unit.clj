@@ -6,6 +6,7 @@
             [obb-rules.units.worm]
             [obb-rules.units.eagle]
             [obb-rules.units.doomer]
+            [obb-rules.units.driller]
             [obb-rules.units.fenix]
             [obb-rules.units.kahuna]
             [obb-rules.units.panther]
@@ -32,6 +33,7 @@
    obb-rules.units.heavy-seeker/metadata
    obb-rules.units.doomer/metadata
    obb-rules.units.fenix/metadata
+   obb-rules.units.driller/metadata
    obb-rules.units.kahuna/metadata
    obb-rules.units.panther/metadata
    obb-rules.units.scarab/metadata
