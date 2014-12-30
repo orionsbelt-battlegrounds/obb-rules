@@ -8,19 +8,24 @@
             [obb-rules.actions.damage-calculator :as calculator]
             [obb-rules.actions.direction :as direction]))
 
+(defn- calculate-destroyed
+  "Calculates the destroyed units by rebound"
+  [config {attacker :attacker board :board info :info unused-damage :unused-damage rebound-target :rebound-target :as args}]
+  (let [[destroyed _] (calculator/destroyed-with-unused-damage board
+                                           attacker
+                                           rebound-target
+                                           unused-damage)]
+    destroyed))
+
 (defn- process-rebound
   "Applies rebound on the board"
   [config {attacker :attacker board :board info :info unused-damage :unused-damage rebound-target :rebound-target :as args}]
-  (let [[destroyed _] (calculator/destroyed-with-unused-damage board
-                                                               attacker
-                                                               rebound-target
-                                                               unused-damage)
+  (let [destroyed (calculate-destroyed config args)
         rebound-coordinate (element/element-coordinate rebound-target)
         board (board/remove-from-element board rebound-coordinate destroyed)
         unit-name (unit/unit-name (element/element-unit rebound-target))
         info (conj info {:attack-type :rebound :destroyed destroyed :unit unit-name})]
-    [board info]
-  ))
+    [board info]))
 
 (defn- target-was-destroyed?
   "Checks if the original target was in fact destroyed"
