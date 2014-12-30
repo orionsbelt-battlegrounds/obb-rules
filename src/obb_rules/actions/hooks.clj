@@ -3,9 +3,11 @@
   obb-rules.actions.hooks
   "Hooks on the main actions"
   (:require [obb-rules.element :as element]
-            [obb-rules.actions.rebound :as rebound]))
+            [obb-rules.actions.rebound :as rebound]
+            [obb-rules.actions.triple-attack :as triple-attack]))
 
-(def hook-handlers {:rebound rebound/process})
+(def hook-handlers {:rebound rebound/process
+                    :triple triple-attack/process})
 
 (defn- get-handler
   "Gets a handler for a hook"

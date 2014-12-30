@@ -1,4 +1,4 @@
-(defproject obb-rules "1.7"
+(defproject obb-rules "1.8"
   :description "Orion's Belt battle rules"
   :url "https://github.com/orionsbelt-battlegrounds/obb-rules"
 
