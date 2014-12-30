@@ -35,18 +35,40 @@
     (is (= "rain" (info :unit)))
     (is (nil? (get-element (result-board result) [2 4])))))
 
-#_(deftest attack-fenix-rebound
-  (let [board (-> board-with-fenix
-                  (place-element [2 4] rain-element)
-                  (place-element [2 5] rain-element))
-        attack (build-action [:attack [2 2] [2 4]])
+(deftest attack-driller-triple
+  (let [board (-> board-with-driller
+                  (place-element [1 3] rain-element)
+                  (place-element [2 3] rain-element)
+                  (place-element [3 3] rain-element))
+        attack (build-action [:attack [2 2] [2 3]])
         result (attack board :p1)
         info (result/info result)
         target-info (first info)
-        rebound-info (last info)]
+        triple-1-info (second info)
+        triple-2-info (last info)]
     (is (succeeded? result))
     (is (= "OK" (result-message result)))
     (is (= :direct (target-info :attack-type)))
-    (is (= :rebound (rebound-info :attack-type)))
-    (is (nil? (get-element (result-board result) [2 4])))
-    (is (nil? (get-element (result-board result) [2 5])))))
+    (is (= :triple (triple-1-info :attack-type)))
+    (is (= :triple (triple-2-info :attack-type)))
+    (is (nil? (get-element (result-board result) [1 3])))
+    (is (nil? (get-element (result-board result) [2 3])))
+    (is (nil? (get-element (result-board result) [3 3])))))
+
+(deftest attack-driller-triple-partial
+  (let [board (-> board-with-driller
+                  (place-element [2 3] rain-element)
+                  (place-element [3 3] rain-element))
+        attack (build-action [:attack [2 2] [2 3]])
+        result (attack board :p1)
+        info (result/info result)
+        target-info (first info)
+        triple-1-info (second info)
+        triple-2-info (last info)]
+    (is (succeeded? result))
+    (is (= "OK" (result-message result)))
+    (is (= :direct (target-info :attack-type)))
+    (is (= :triple (triple-1-info :attack-type)))
+    (is (= :triple (triple-2-info :attack-type)))
+    (is (nil? (get-element (result-board result) [2 3])))
+    (is (nil? (get-element (result-board result) [3 3])))))
