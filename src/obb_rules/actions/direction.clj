@@ -1,4 +1,5 @@
-(ns obb-rules.actions.direction)
+(ns obb-rules.actions.direction
+  (:require [obb-rules.simplifier :as simplify]))
 
 (defn offset
   "Returns and adjacent offset of a direction"
@@ -14,3 +15,10 @@
   [dir [x y]]
   (let [[ox oy] (offset dir)]
     [(+ x ox) (+ y oy)]))
+
+(defn perpendicular
+  "Gets the perpendicular coords for the given one"
+  [coord direction]
+  (if (or (simplify/name= direction :south) (simplify/name= direction :north))
+    [(update :west coord) (update :east coord)]
+    [(update :south coord) (update :north coord)]))
