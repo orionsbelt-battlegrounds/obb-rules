@@ -60,10 +60,20 @@
                                 :unused-damage unused-damage
                                 :info info}))
 
+(defn- process-after-hit
+  "Processes registered handlers for after-hit"
+  [board attacker target unused-damage info]
+  (hooks/process :after-hit {:board board
+                             :attacker attacker
+                             :target target
+                             :unused-damage unused-damage
+                             :info info}))
+
 (defn- process-hooks
   "Processes registered handlers on hooks"
   [board attacker target unused-damage info]
-  (process-after-attack board attacker target unused-damage info))
+  (let [[board info] (process-after-attack board attacker target unused-damage info)]
+    (process-after-hit board attacker target unused-damage info)))
 
 (defn- process-attack
   "Processes the attack"

@@ -1,4 +1,23 @@
-(ns obb-rules.unit)
+(ns obb-rules.unit
+  (:require [obb-rules.units.rain]
+            [obb-rules.units.nova]
+            [obb-rules.units.pretorian]
+            [obb-rules.units.raptor]
+            [obb-rules.units.worm]
+            [obb-rules.units.eagle]
+            [obb-rules.units.doomer]
+            [obb-rules.units.driller]
+            [obb-rules.units.krill]
+            [obb-rules.units.fenix]
+            [obb-rules.units.kahuna]
+            [obb-rules.units.panther]
+            [obb-rules.units.vector]
+            [obb-rules.units.heavy-seeker]
+            [obb-rules.units.scarab]
+            [obb-rules.units.toxic]
+            [obb-rules.units.anubis]
+            [obb-rules.units.kamikaze]
+            [obb-rules.units.crusader]))
 
 (defn get-units
   "Gets all the available units"
