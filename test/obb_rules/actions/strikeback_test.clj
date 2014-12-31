@@ -26,8 +26,19 @@
         attack (build-action [:attack [8 7] [8 8]])
         result (attack board :p1)
         info (last (result/info result))]
-    (println info)
     (is (succeeded? result))
     (is (= "OK" (result-message result)))
     (is (= :strikeback (info :attack-type)))
     (is (nil? (get-element (result-board result) [8 7])))))
+
+(deftest attack-strikeback-out-of-range
+  (let [board (-> board-with-krill
+                  (place-element [8 4] crusader-element))
+        attack (build-action [:attack [8 4] [8 8]])
+        result (attack board :p1)
+        info (last (result/info result))]
+    (is (succeeded? result))
+    (is (= 1 (count (result/info result))))
+    (is (= "OK" (result-message result)))
+    (is (= :direct (info :attack-type)))
+    (is (get-element (result-board result) [8 4]))))

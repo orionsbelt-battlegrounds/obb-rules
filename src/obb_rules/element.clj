@@ -28,6 +28,12 @@
   (let [unit (element-unit element)]
     (unit/catapult? unit)))
 
+(defn element-range
+  "Gets the element's range"
+  [element]
+  (let [unit (element-unit element)]
+    (unit/unit-range unit)))
+
 (defn element-direction 
   "Gets/Sets element's direction" 
   ([element] (element :direction))

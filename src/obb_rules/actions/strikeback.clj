@@ -24,16 +24,23 @@
         info (conj info {:attack-type :strikeback :destroyed destroyed :unit unit-name :target (element/element-player attacker)})]
     [board info]))
 
+(defn- in-range?
+  "Checks if the attacker is in range of the target"
+  [target attacker]
+  (let [[tx ty] (element/element-coordinate target)
+        [ax ay] (element/element-coordinate attacker)
+        distance (+ (- tx ax) (- ty ay))]
+    (<= distance (element/element-range target))))
+
 (defn- aplicable?
   "Checks if the rebound can be performed"
-  [config {target :target board :board unused-damage :unused-damage rebound-target :rebound-target :as args}]
+  [config {target :target attacker :attacker board :board :as args}]
   (and
-    true))
+    (in-range? target attacker)))
 
 (defn process
   "Processes the strikeback for the given data"
   [config {board :board info :info :as args}]
-  (println "here")
   (if (aplicable? config args)
     (process-strikeback config args)
     [board info]))
