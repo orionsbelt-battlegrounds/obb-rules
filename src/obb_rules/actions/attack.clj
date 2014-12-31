@@ -49,7 +49,8 @@
   (let [target-unit (element-unit target)]
     [{:attack-type attack-type
       :destroyed destroyed
-      :unit (unit-name target-unit)}]))
+      :unit (unit-name target-unit)
+      :target (element/element-player target)}]))
 
 (defn- process-after-attack
   "Processes registered handlers for after-attack"

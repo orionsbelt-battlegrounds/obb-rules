@@ -53,11 +53,16 @@
     (facing-attacker? target attacker)
     (direct-attack? info)))
 
+(defn- refresh-target
+  "Refreshes the target to get the actual quantity"
+  [{board :board target :target :as args}]
+  (let [target-coordinate (element/element-coordinate target)]
+    (assoc args :target (board/get-element board target-coordinate))))
+
 (defn process
   "Processes the strikeback for the given data"
   [config {board :board info :info target :target :as args}]
-  (let [target-coordinate (element/element-coordinate target)
-        args (assoc args :target (board/get-element board target-coordinate))]
+  (let [args (refresh-target args)]
     (if (aplicable? config args)
       (process-strikeback config args)
       [board info])))

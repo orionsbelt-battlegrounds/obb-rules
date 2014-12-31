@@ -16,7 +16,7 @@
           target-coordinate (element/element-coordinate target)
           board (board/remove-from-element board target-coordinate destroyed)
           unit-name (unit/unit-name (element/element-unit target))
-          info (conj info {:attack-type :triple :destroyed destroyed :unit unit-name})]
+          info (conj info {:attack-type :triple :destroyed destroyed :unit unit-name :target (element/element-player target)})]
       [board info])
     [board info]))
 

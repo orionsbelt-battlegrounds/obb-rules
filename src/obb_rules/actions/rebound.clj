@@ -24,7 +24,7 @@
         rebound-coordinate (element/element-coordinate rebound-target)
         board (board/remove-from-element board rebound-coordinate destroyed)
         unit-name (unit/unit-name (element/element-unit rebound-target))
-        info (conj info {:attack-type :rebound :destroyed destroyed :unit unit-name})]
+        info (conj info {:attack-type :rebound :destroyed destroyed :unit unit-name :target (element/element-player rebound-target)})]
     [board info]))
 
 (defn- target-was-destroyed?
