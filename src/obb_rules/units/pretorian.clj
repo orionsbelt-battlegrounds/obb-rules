@@ -5,6 +5,7 @@
    :code "h"
 
    :attack 450
+   :after-hit [[:strikeback]]
    :defense 5550
    :range 3
    :value 48

@@ -1,22 +1,4 @@
-(ns obb-rules.unit
-  (:require [obb-rules.units.rain]
-            [obb-rules.units.nova]
-            [obb-rules.units.pretorian]
-            [obb-rules.units.raptor]
-            [obb-rules.units.worm]
-            [obb-rules.units.eagle]
-            [obb-rules.units.doomer]
-            [obb-rules.units.driller]
-            [obb-rules.units.fenix]
-            [obb-rules.units.kahuna]
-            [obb-rules.units.panther]
-            [obb-rules.units.vector]
-            [obb-rules.units.heavy-seeker]
-            [obb-rules.units.scarab]
-            [obb-rules.units.toxic]
-            [obb-rules.units.anubis]
-            [obb-rules.units.kamikaze]
-            [obb-rules.units.crusader]))
+(ns obb-rules.unit)
 
 (defn get-units
   "Gets all the available units"
@@ -34,6 +16,7 @@
    obb-rules.units.doomer/metadata
    obb-rules.units.fenix/metadata
    obb-rules.units.driller/metadata
+   obb-rules.units.krill/metadata
    obb-rules.units.kahuna/metadata
    obb-rules.units.panther/metadata
    obb-rules.units.scarab/metadata
