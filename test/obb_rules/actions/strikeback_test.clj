@@ -68,3 +68,17 @@
     (is (= "OK" (result-message result)))
     (is (= :catapult (info :attack-type)))
     (is (get-element (result-board result) [8 6]))))
+
+(deftest strikeback-remaining-units
+  (let [eagle-element (element/element-quantity eagle-element 80)
+        board (-> board-with-krill
+                  (place-element [8 6] eagle-element))
+        attack (build-action [:attack [8 6] [8 8]])
+        result (attack board :p1)
+        info (last (result/info result))]
+    (is (succeeded? result))
+    (is (= 2 (count (result/info result))))
+    (is (= "OK" (result-message result)))
+    (is (= :strikeback (info :attack-type)))
+    (is (get-element (result-board result) [8 6]))
+    (is (get-element (result-board result) [8 8]))))

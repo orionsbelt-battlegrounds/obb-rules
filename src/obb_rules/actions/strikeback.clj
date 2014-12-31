@@ -55,8 +55,10 @@
 
 (defn process
   "Processes the strikeback for the given data"
-  [config {board :board info :info :as args}]
-  (if (aplicable? config args)
-    (process-strikeback config args)
-    [board info]))
+  [config {board :board info :info target :target :as args}]
+  (let [target-coordinate (element/element-coordinate target)
+        args (assoc args :target (board/get-element board target-coordinate))]
+    (if (aplicable? config args)
+      (process-strikeback config args)
+      [board info])))
 
