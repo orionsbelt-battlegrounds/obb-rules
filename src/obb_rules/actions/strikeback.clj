@@ -39,12 +39,19 @@
   (direction/facing? (element/element-direction target)
                      (element/element-direction attacker)))
 
+(defn- direct-attack?
+  "True if the hit was direct"
+  [info]
+  (let [original-info (first info)]
+    (= :direct (get original-info :attack-type))))
+
 (defn- aplicable?
   "Checks if the rebound can be performed"
-  [config {target :target attacker :attacker board :board :as args}]
+  [config {target :target attacker :attacker board :board info :info :as args}]
   (and
     (in-range? target attacker)
-    (facing-attacker? target attacker)))
+    (facing-attacker? target attacker)
+    (direct-attack? info)))
 
 (defn process
   "Processes the strikeback for the given data"
