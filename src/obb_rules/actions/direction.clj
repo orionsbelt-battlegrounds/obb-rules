@@ -22,3 +22,12 @@
   (if (or (simplify/name= direction :south) (simplify/name= direction :north))
     [(update :west coord) (update :east coord)]
     [(update :south coord) (update :north coord)]))
+
+(defn facing?
+  "True if the two given directions are facing each other"
+  [dir1 dir2]
+  (cond
+    (simplify/name= dir1 :north) (= dir2 :south)
+    (simplify/name= dir1 :south) (= dir2 :north)
+    (simplify/name= dir1 :east) (= dir2 :west)
+    (simplify/name= dir1 :west) (= dir2 :east)))

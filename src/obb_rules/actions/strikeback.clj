@@ -5,6 +5,7 @@
   (:require [obb-rules.element :as element]
             [obb-rules.board :as board]
             [obb-rules.unit :as unit]
+            [obb-rules.actions.direction :as direction]
             [obb-rules.actions.damage-calculator :as calculator]
             [obb-rules.actions.direction :as direction]))
 
@@ -32,11 +33,18 @@
         distance (+ (- tx ax) (- ty ay))]
     (<= distance (element/element-range target))))
 
+(defn- facing-attacker?
+  "True if the target is facing it's attacker"
+  [target attacker]
+  (direction/facing? (element/element-direction target)
+                     (element/element-direction attacker)))
+
 (defn- aplicable?
   "Checks if the rebound can be performed"
   [config {target :target attacker :attacker board :board :as args}]
   (and
-    (in-range? target attacker)))
+    (in-range? target attacker)
+    (facing-attacker? target attacker)))
 
 (defn process
   "Processes the strikeback for the given data"

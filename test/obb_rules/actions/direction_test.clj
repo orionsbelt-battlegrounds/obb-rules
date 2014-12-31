@@ -14,3 +14,9 @@
   (is (some #{[4 3]} (direction/perpendicular [4 4] :east)))
   (is (some #{[4 5]} (direction/perpendicular [4 4] :east))))
 
+(deftest facing
+  (is (direction/facing? :north :south))
+  (is (direction/facing? :south :north))
+  (is (direction/facing? :east :west))
+  (is (direction/facing? :west :east)))
+  (is (not (direction/facing? :west :south)))

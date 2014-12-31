@@ -42,3 +42,16 @@
     (is (= "OK" (result-message result)))
     (is (= :direct (info :attack-type)))
     (is (get-element (result-board result) [8 4]))))
+
+(deftest attack-strikeback-on-the-side
+  (let [crusader-element (element/element-direction crusader-element :east)
+        board (-> board-with-krill
+                  (place-element [7 8] crusader-element))
+        attack (build-action [:attack [7 8] [8 8]])
+        result (attack board :p1)
+        info (last (result/info result))]
+    (is (succeeded? result))
+    (is (= 1 (count (result/info result))))
+    (is (= "OK" (result-message result)))
+    (is (= :direct (info :attack-type)))
+    (is (get-element (result-board result) [7 8]))))
