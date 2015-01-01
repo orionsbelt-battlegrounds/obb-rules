@@ -48,9 +48,9 @@
 
 (defn- get-bonus
   "Gets bonus"
-  [unit bonus-type specific-type]
+  [unit bonus-prop bonus-type specific-type]
   (if-let [bonus (unit/unit-bonus unit)]
-    (if-let [specific (get bonus bonus-type)]
+    (if-let [specific (get-in bonus [bonus-prop bonus-type])]
       (or (get specific specific-type) 0)
       0)
     0))
@@ -61,8 +61,19 @@
   (let [attacker-unit (element-unit element)
         defender-unit (element-unit target)
         attack (unit/unit-attack attacker-unit)
-        category-bonus (get-bonus attacker-unit :category (unit/unit-category defender-unit))]
+        target-cat (unit/unit-category defender-unit)
+        category-bonus (get-bonus attacker-unit :attack :category target-cat)]
     (+ attack category-bonus)))
+
+(defn element-defense
+  "Gets the defense of this element for the given target"
+  [board element target]
+  (let [attacker-unit (element-unit element)
+        defender-unit (element-unit target)
+        defense (unit/unit-defense defender-unit)
+        target-cat (unit/unit-category attacker-unit)
+        category-bonus (get-bonus defender-unit :defense :category target-cat)]
+    (+ defense category-bonus)))
 
 (defn element-quantity
   "Gets/Sets element's quantity"

@@ -9,6 +9,8 @@
    :range 1
    :value 7
 
+   :bonus {:defense {:category {:heavy 1600}}}
+
    :type :mechanic
    :category :light
    :displacement :air

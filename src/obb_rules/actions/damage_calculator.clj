@@ -23,8 +23,7 @@
 (defn defense
   "Gets the defense of a given unit from another"
   [board attacker-element defender-element]
-  (let [unit (element-unit defender-element)]
-    (unit-defense unit)))
+  (element-defense board attacker-element defender-element))
 
 (defn destroyed-with-unused-damage
   "Gets how many units an attack will destroy"

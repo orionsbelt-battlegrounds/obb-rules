@@ -9,7 +9,7 @@
    :range 1
    :value 4
 
-   :bonus {:category {:heavy 1200}}
+   :bonus {:attack {:category {:heavy 1200}}}
 
    :type :mechanic
    :category :light
