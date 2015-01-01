@@ -72,8 +72,10 @@
         defender-unit (element-unit target)
         defense (unit/unit-defense defender-unit)
         target-cat (unit/unit-category attacker-unit)
-        category-bonus (get-bonus defender-unit :defense :category target-cat)]
-    (+ defense category-bonus)))
+        target-displacement (unit/unit-displacement attacker-unit)
+        category-bonus (get-bonus defender-unit :defense :category target-cat)
+        displacement-bonus (get-bonus defender-unit :defense :displacement target-displacement)]
+    (+ defense category-bonus displacement-bonus)))
 
 (defn element-quantity
   "Gets/Sets element's quantity"

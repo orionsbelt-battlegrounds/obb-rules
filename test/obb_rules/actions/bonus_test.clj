@@ -4,6 +4,7 @@
   (:use clojure.test obb-rules.unit obb-rules.element obb-rules.board))
 
 (def rain (get-unit-by-name "rain"))
+(def kahuna (get-unit-by-name "kahuna"))
 (def anubis (get-unit-by-name "anubis"))
 (def rain-element (create-element :p1 rain 1 :south [1 1]))
 (def eagle (get-unit-by-name "eagle"))
@@ -35,4 +36,18 @@
                   (place-element [1 2] (create-element :p1 anubis 1 :south [1 2]))
                   (place-element [1 1] (create-element :p2 crusader 1 :south [1 1])))]
     (is (= 2100 (calculator/defense board (board/get-element board [1 1])
+                                          (board/get-element board [1 2]))))))
+
+(deftest kahuna-base-defense-on-ground
+  (let [board (-> (create-board)
+                  (place-element [1 2] (create-element :p1 kahuna 1 :south [1 2]))
+                  (place-element [1 1] (create-element :p2 kahuna 1 :south [1 1])))]
+    (is (= 1300 (calculator/defense board (board/get-element board [1 1])
+                                          (board/get-element board [1 2]))))))
+
+(deftest kahuna-base-defense-on-air
+  (let [board (-> (create-board)
+                  (place-element [1 2] (create-element :p1 kahuna 1 :south [1 2]))
+                  (place-element [1 1] (create-element :p2 crusader 1 :south [1 1])))]
+    (is (= 1700 (calculator/defense board (board/get-element board [1 1])
                                           (board/get-element board [1 2]))))))
