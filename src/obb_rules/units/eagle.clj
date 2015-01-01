@@ -8,7 +8,7 @@
   {:name "eagle"
    :code "e"
 
-   :attack 1100
+   :attack 1500
    :attack-type :catapult
    :defense 1200
    :range 3

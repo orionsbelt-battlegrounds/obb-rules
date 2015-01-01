@@ -70,7 +70,7 @@
     (is (get-element (result-board result) [8 6]))))
 
 (deftest strikeback-remaining-units
-  (let [eagle-element (element/element-quantity eagle-element 80)
+  (let [eagle-element (element/element-quantity eagle-element 60)
         board (-> board-with-krill
                   (place-element [8 6] eagle-element))
         attack (build-action [:attack [8 6] [8 8]])
