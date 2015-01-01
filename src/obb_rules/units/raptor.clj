@@ -9,6 +9,8 @@
    :range 2
    :value 20
 
+   :bonus {:attack {:category {:light 1000}}}
+
    :type :mechanic
    :category :light
    :displacement :air

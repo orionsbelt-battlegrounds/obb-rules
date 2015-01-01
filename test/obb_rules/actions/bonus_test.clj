@@ -4,6 +4,8 @@
   (:use clojure.test obb-rules.unit obb-rules.element obb-rules.board))
 
 (def rain (get-unit-by-name "rain"))
+(def nova (get-unit-by-name "nova"))
+(def heavy-seeker (get-unit-by-name "heavy-seeker"))
 (def kahuna (get-unit-by-name "kahuna"))
 (def boozer (get-unit-by-name "boozer"))
 (def anubis (get-unit-by-name "anubis"))
@@ -80,4 +82,11 @@
                   (place-element [1 2] (create-element :p1 rain 1 :south [1 2]))
                   (place-element [1 1] (create-element :p2 boozer 1 :south [1 1])))]
     (is (= 7200 (calculator/damage board (board/get-element board [1 1])
+                                         (board/get-element board [1 2]))))))
+
+(deftest nova-base-attack-on-organic
+  (let [board (-> (create-board)
+                  (place-element [1 2] (create-element :p1 heavy-seeker 1 :south [1 2]))
+                  (place-element [1 1] (create-element :p2 nova 1 :south [1 1])))]
+    (is (= 6700 (calculator/damage board (board/get-element board [1 1])
                                          (board/get-element board [1 2]))))))

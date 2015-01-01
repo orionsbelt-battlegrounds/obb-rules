@@ -63,10 +63,12 @@
         attack (unit/unit-attack attacker-unit)
         target-cat (unit/unit-category defender-unit)
         target-displacement (unit/unit-displacement defender-unit)
+        target-type (unit/unit-type defender-unit)
         terrain-bonus (get-bonus attacker-unit :attack :terrain (keyword (get board :terrain)))
         category-bonus (get-bonus attacker-unit :attack :category target-cat)
+        type-bonus (get-bonus attacker-unit :attack :type target-type)
         displacement-bonus (get-bonus attacker-unit :attack :displacement target-displacement)]
-    (+ attack category-bonus terrain-bonus displacement-bonus)))
+    (+ attack category-bonus terrain-bonus displacement-bonus type-bonus)))
 
 (defn element-defense
   "Gets the defense of this element for the given target"

@@ -9,6 +9,8 @@
    :range 5
    :value 70
 
+   :bonus {:attack {:type {:organic 4000}}}
+
    :type :mechanic
    :category :heavy
    :displacement :air
