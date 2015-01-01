@@ -5,6 +5,7 @@
             [obb-rules.units.raptor]
             [obb-rules.units.worm]
             [obb-rules.units.eagle]
+            [obb-rules.units.boozer]
             [obb-rules.units.doomer]
             [obb-rules.units.driller]
             [obb-rules.units.krill]
@@ -30,6 +31,7 @@
    obb-rules.units.worm/metadata
    obb-rules.units.vector/metadata
    obb-rules.units.anubis/metadata
+   obb-rules.units.boozer/metadata
    obb-rules.units.eagle/metadata
    obb-rules.units.heavy-seeker/metadata
    obb-rules.units.doomer/metadata

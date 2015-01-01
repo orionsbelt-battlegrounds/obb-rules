@@ -5,6 +5,7 @@
 
 (def rain (get-unit-by-name "rain"))
 (def kahuna (get-unit-by-name "kahuna"))
+(def boozer (get-unit-by-name "boozer"))
 (def anubis (get-unit-by-name "anubis"))
 (def rain-element (create-element :p1 rain 1 :south [1 1]))
 (def eagle (get-unit-by-name "eagle"))
@@ -66,4 +67,17 @@
                   (place-element [1 2] (create-element :p1 kahuna 1 :south [1 2]))
                   (place-element [1 1] (create-element :p2 kahuna 1 :south [1 1])))]
     (is (= 1400 (calculator/damage board (board/get-element board [1 1])
+                                         (board/get-element board [1 2]))))))
+
+(deftest boozer-base-attack-on-ground
+  (let [board (-> (create-board)
+                  (place-element [1 2] (create-element :p1 kahuna 1 :south [1 2]))
+                  (place-element [1 1] (create-element :p2 boozer 1 :south [1 1])))]
+    (is (= 3200 (calculator/damage board (board/get-element board [1 1])
+                                         (board/get-element board [1 2]))))))
+(deftest boozer-base-attack-on-air
+  (let [board (-> (create-board)
+                  (place-element [1 2] (create-element :p1 rain 1 :south [1 2]))
+                  (place-element [1 1] (create-element :p2 boozer 1 :south [1 1])))]
+    (is (= 7200 (calculator/damage board (board/get-element board [1 1])
                                          (board/get-element board [1 2]))))))
