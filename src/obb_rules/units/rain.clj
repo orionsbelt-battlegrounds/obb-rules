@@ -9,6 +9,8 @@
    :range 1
    :value 4
 
+   :bonus {:category {:heavy 1200}}
+
    :type :mechanic
    :category :light
    :displacement :air

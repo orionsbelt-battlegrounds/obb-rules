@@ -46,6 +46,24 @@
   ([element new-hitpoints]
    (assoc element :hitpoints new-hitpoints)))
 
+(defn- get-bonus
+  "Gets bonus"
+  [unit bonus-type specific-type]
+  (if-let [bonus (unit/unit-bonus unit)]
+    (if-let [specific (get bonus bonus-type)]
+      (or (get specific specific-type) 0)
+      0)
+    0))
+
+(defn element-attack
+  "Gets the attack of this element for the given target"
+  [board element target]
+  (let [attacker-unit (element-unit element)
+        defender-unit (element-unit target)
+        attack (unit/unit-attack attacker-unit)
+        category-bonus (get-bonus attacker-unit :category (unit/unit-category defender-unit))]
+    (+ attack category-bonus)))
+
 (defn element-quantity
   "Gets/Sets element's quantity"
   ([element] (element :quantity))
