@@ -63,8 +63,19 @@
     (is (stash/cleared? (board/get-stash (result/result-board result-p1) :p2)))
     (is (stash/cleared? (board/get-stash (result/result-board result-p1) :p1)))))
 
+(deftest test-check-fail-2
+  (let [stash (stash/create "nova" 1 "heavy-seeker" 1 "crusader" 1 "boozer" 1)
+        board (game/create stash)
+        result-p2 (process-action board :p2 [:auto-deploy :firingsquad])
+        board2 (result/result-board result-p2)
+        result-p1 (process-action board2 :p1 [:auto-deploy :firingsquad])]
+    (is (result/succeeded? result-p1))
+    (is (result/succeeded? result-p2))
+    (is (stash/cleared? (board/get-stash (result/result-board result-p1) :p2)))
+    (is (stash/cleared? (board/get-stash (result/result-board result-p1) :p1)))))
+
 (defspec any-random-game-should-be-firing-squad-deployed
-  obb-gen/scenarions-to-test
+  (* obb-gen/scenarions-to-test 1)
   (prop/for-all [raw-stash (obb-gen/stash)]
     (let [stash (stash/create-from-hash (apply hash-map (flatten raw-stash)))
           board (game/create stash)

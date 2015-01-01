@@ -18,10 +18,11 @@
 (defn build-lineup
   "Builds a vector with 8 positions, each with the corresponding unit"
   [board stash]
-  (let [units (count stash)
+  (let [squares (board/board-width board)
+        units (math/ceil (/ squares  (count stash)))
         grouped (map #(take units (repeat [(first %)])) stash)
         final (flatten grouped)]
-    (take (board/board-width board) final)))
+    (take squares final)))
 
 (defn- split-stash
   "Splits the total quantity into the given slots"
