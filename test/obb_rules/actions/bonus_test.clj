@@ -51,3 +51,19 @@
                   (place-element [1 1] (create-element :p2 crusader 1 :south [1 1])))]
     (is (= 1700 (calculator/defense board (board/get-element board [1 1])
                                           (board/get-element board [1 2]))))))
+
+(deftest kahuna-base-defense-on-ground
+  (let [board (-> (create-board)
+                  (assoc :terrain :ground)
+                  (place-element [1 2] (create-element :p1 kahuna 1 :south [1 2]))
+                  (place-element [1 1] (create-element :p2 kahuna 1 :south [1 1])))]
+    (is (= 1700 (calculator/defense board (board/get-element board [1 1])
+                                          (board/get-element board [1 2]))))))
+
+(deftest kahuna-base-attack-on-ground
+  (let [board (-> (create-board)
+                  (assoc :terrain :ground)
+                  (place-element [1 2] (create-element :p1 kahuna 1 :south [1 2]))
+                  (place-element [1 1] (create-element :p2 kahuna 1 :south [1 1])))]
+    (is (= 1400 (calculator/damage board (board/get-element board [1 1])
+                                         (board/get-element board [1 2]))))))

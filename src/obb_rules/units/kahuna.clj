@@ -13,7 +13,9 @@
    :range 2
    :value 42
 
-   :bonus {:defense {:displacement {:air 400}}}
+   :bonus {:defense {:displacement {:air 400}
+                     :terrain {:ground 400}}
+           :attack {:terrain {:ground 400}}}
 
    :type :mechanic
    :category :medium

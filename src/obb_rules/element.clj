@@ -62,8 +62,9 @@
         defender-unit (element-unit target)
         attack (unit/unit-attack attacker-unit)
         target-cat (unit/unit-category defender-unit)
+        terrain-bonus (get-bonus attacker-unit :attack :terrain (keyword (get board :terrain)))
         category-bonus (get-bonus attacker-unit :attack :category target-cat)]
-    (+ attack category-bonus)))
+    (+ attack category-bonus terrain-bonus)))
 
 (defn element-defense
   "Gets the defense of this element for the given target"
@@ -73,9 +74,10 @@
         defense (unit/unit-defense defender-unit)
         target-cat (unit/unit-category attacker-unit)
         target-displacement (unit/unit-displacement attacker-unit)
+        terrain-bonus (get-bonus defender-unit :defense :terrain (keyword (get board :terrain)))
         category-bonus (get-bonus defender-unit :defense :category target-cat)
         displacement-bonus (get-bonus defender-unit :defense :displacement target-displacement)]
-    (+ defense category-bonus displacement-bonus)))
+    (+ defense category-bonus displacement-bonus terrain-bonus)))
 
 (defn element-quantity
   "Gets/Sets element's quantity"
