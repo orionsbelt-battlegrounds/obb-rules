@@ -4,6 +4,7 @@
 
 (deftest perpendicular-horiz
   (is (some #{[3 4]} (direction/perpendicular [4 4] :north)))
+  (is (some #{[3 4]} (direction/perpendicular [4 4] "north")))
   (is (some #{[5 4]} (direction/perpendicular [4 4] :north)))
   (is (some #{[3 4]} (direction/perpendicular [4 4] :south)))
   (is (some #{[5 4]} (direction/perpendicular [4 4] :south))))
@@ -16,6 +17,8 @@
 
 (deftest facing
   (is (direction/facing? :north :south))
+  (is (direction/facing? "north" "south"))
+  (is (direction/facing? :north "south"))
   (is (direction/facing? :south :north))
   (is (direction/facing? :east :west))
   (is (direction/facing? :west :east)))

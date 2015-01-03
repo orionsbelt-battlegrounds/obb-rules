@@ -55,20 +55,45 @@
       0)
     0))
 
+(defn- category-bonus
+  "Gets the category bonus on a given context"
+  [bonus-type source-unit target-unit]
+  (let [category (unit/unit-category target-unit)]
+    (get-bonus source-unit bonus-type :category category)))
+
+(defn- displacement-bonus
+  "Gets the displacement bonus on a given context"
+  [bonus-type source-unit target-unit]
+  (let [displacement (unit/unit-displacement target-unit)]
+    (get-bonus source-unit bonus-type :displacement displacement)))
+
+(defn- type-bonus
+  "Gets the type bonus on a given context"
+  [bonus-type source-unit target-unit]
+  (let [unit-type (unit/unit-type target-unit)]
+    (get-bonus source-unit bonus-type :type unit-type)))
+
+(defn- terrain-bonus
+  "Gets the terrain bonus on a given context"
+  [bonus-type board unit]
+  (get-bonus unit bonus-type :terrain (keyword (get board :terrain))))
+
+(defn- resolve-bonus
+  "Resolves bonus between two units"
+  [bonus-type board attacker-unit defender-unit]
+  (+ (category-bonus bonus-type attacker-unit defender-unit)
+     (terrain-bonus bonus-type board attacker-unit)
+     (displacement-bonus bonus-type attacker-unit defender-unit)
+     (type-bonus bonus-type attacker-unit defender-unit)))
+
 (defn element-attack
   "Gets the attack of this element for the given target"
   [board element target]
   (let [attacker-unit (element-unit element)
         defender-unit (element-unit target)
         attack (unit/unit-attack attacker-unit)
-        target-cat (unit/unit-category defender-unit)
-        target-displacement (unit/unit-displacement defender-unit)
-        target-type (unit/unit-type defender-unit)
-        terrain-bonus (get-bonus attacker-unit :attack :terrain (keyword (get board :terrain)))
-        category-bonus (get-bonus attacker-unit :attack :category target-cat)
-        type-bonus (get-bonus attacker-unit :attack :type target-type)
-        displacement-bonus (get-bonus attacker-unit :attack :displacement target-displacement)]
-    (+ attack category-bonus terrain-bonus displacement-bonus type-bonus)))
+        bonus (resolve-bonus :attack board attacker-unit defender-unit)]
+    (+ attack bonus)))
 
 (defn element-defense
   "Gets the defense of this element for the given target"
@@ -76,12 +101,8 @@
   (let [attacker-unit (element-unit element)
         defender-unit (element-unit target)
         defense (unit/unit-defense defender-unit)
-        target-cat (unit/unit-category attacker-unit)
-        target-displacement (unit/unit-displacement attacker-unit)
-        terrain-bonus (get-bonus defender-unit :defense :terrain (keyword (get board :terrain)))
-        category-bonus (get-bonus defender-unit :defense :category target-cat)
-        displacement-bonus (get-bonus defender-unit :defense :displacement target-displacement)]
-    (+ defense category-bonus displacement-bonus terrain-bonus)))
+        bonus (resolve-bonus :defense board defender-unit attacker-unit)]
+    (+ defense bonus)))
 
 (defn element-quantity
   "Gets/Sets element's quantity"

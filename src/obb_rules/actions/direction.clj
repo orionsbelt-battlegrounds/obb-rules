@@ -27,7 +27,7 @@
   "True if the two given directions are facing each other"
   [dir1 dir2]
   (cond
-    (simplify/name= dir1 :north) (= dir2 :south)
-    (simplify/name= dir1 :south) (= dir2 :north)
-    (simplify/name= dir1 :east) (= dir2 :west)
-    (simplify/name= dir1 :west) (= dir2 :east)))
+    (simplify/name= dir1 :north) (simplify/name= dir2 :south)
+    (simplify/name= dir1 :south) (simplify/name= dir2 :north)
+    (simplify/name= dir1 :east) (simplify/name= dir2 :west)
+    (simplify/name= dir1 :west) (simplify/name= dir2 :east)))
