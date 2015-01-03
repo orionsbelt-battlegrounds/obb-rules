@@ -48,12 +48,18 @@
           (action/reset-action-specific-state)
           (result/action-success total-action-points "TurnOK"))))
 
-(defn process
+(defn process-actions
   "Processes the given actions"
-  [game player & raw-actions]
+  [game player raw-actions]
   (let [actions (map action-pair raw-actions)
         do-actions (partial apply-actions player)
         final-state (reduce do-actions game actions)
         final (game-mode/process final-state)
         action-points (points final)]
     (create-result final action-points)))
+
+(defn process
+  "Processes the given actions"
+  [game player & raw-actions]
+  (process-actions game player raw-actions))
+
