@@ -78,6 +78,7 @@
 (defn unit-category "Gets a unit's category" [unit] (unit :category))
 (defn unit-displacement "Gets a unit's displacement" [unit] (unit :displacement))
 (defn unit-type "Gets a unit's type" [unit] (unit :type))
+(defn unit-value "Gets a unit's hardcore value" [unit] (or (unit :value) 0))
 (defn attack-type "Gets the unit's attack type" [unit] (or (unit :attack-type) :direct))
 (defn event-hooks "Gets the hooks for an event" [unit event] (unit event))
 (defn catapult? "True if the unit has catapult" [unit] (= :catapult (attack-type unit)))
