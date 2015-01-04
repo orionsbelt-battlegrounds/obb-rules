@@ -29,7 +29,7 @@
 (defn eval-game
   "Evaluates a game for the participant players"
   ([game]
-   (eval-game game :simple))
+   (eval-game game :value))
   ([game mode]
    (let [p1-units (get-units game :p1)
          p2-units (get-units game :p2)]
