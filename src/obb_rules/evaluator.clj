@@ -2,6 +2,9 @@
   obb-rules.evaluator
   "Evaluates a game for the participant players"
   (:require [obb-rules.game :as game]
+            [obb-rules.stash :as stash]
+            [obb-rules.element :as element]
+            [obb-rules.board :as board]
             [obb-rules.unit :as unit]))
 
 (defn- get-units
@@ -9,7 +12,9 @@
   Also returns the quantities"
   [game player]
   (let [stash (game/get-stash game player)]
-    (map (fn [[k v]] [(unit/fetch k) v]) stash)))
+    (if (stash/cleared? stash)
+      (map (fn [e] [(element/element-unit e) (element/element-quantity e)]) (board/board-elements game player))
+      (map (fn [[k v]] [(unit/fetch k) v]) stash))))
 
 (defn- sum-value
   "Sums the value/quantity of the given units"
