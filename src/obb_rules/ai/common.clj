@@ -4,21 +4,35 @@
   (:require [obb-rules.game :as game]
             [obb-rules.stash :as stash]
             [obb-rules.turn :as turn]
+            [obb-rules.evaluator :as evaluator]
             [obb-rules.result :as result]
             [obb-rules.actions.direction :as dir]
+            [obb-rules.simplifier :as simplify]
             [obb-rules.element :as element]
             [obb-rules.board :as board]
             [obb-rules.unit :as unit]))
 
 (defn- process
   "Processes an action on a game/board"
-  [board element raw-action]
-  (let [player (element/element-player element)]
-    (turn/process-actions board player [raw-action])))
+  [player board element raw-action]
+  (turn/process-actions board player [raw-action]))
+
+(defn- eval-board
+  "Evaluates a board for a given player"
+  [board player]
+  (let [[score1 score2] (evaluator/eval-game board)]
+    (if (simplify/name= player :p1)
+      (- score1 score2)
+      (- score2 score1))))
 
 (defn- build-target
   "Builds a result that represents a successful target"
-  [result raw-action])
+  [player result raw-action distance]
+  (let [board (result/result-board result)]
+    (-> result
+        (assoc :distance distance)
+        (assoc :actions [raw-action])
+        (assoc :value (eval-board board player)))))
 
 (defn- find-targets
   "Finds possible attack targets for the given element"
@@ -29,13 +43,14 @@
         origin (element/element-coordinate attacker)
         next-element (board/get-element game next-coordinate)
         raw-action [:attack origin next-coordinate]
-        result (process game attacker raw-action)]
+        player (element/element-player attacker)
+        result (process player game attacker raw-action)]
     (if (result/failed? result)
       targets
-      (conj targets (build-target result raw-action)))))
+      (conj targets (build-target player result raw-action distance)))))
 
 (defn attack-options
   "Returns a collection of possible options for attack
   for the given element"
   [game element]
-  (find-targets game element [] (element/element-coordinate element) 0))
+  (find-targets game element [] (element/element-coordinate element) 1))
