@@ -7,6 +7,8 @@
             [obb-rules.board :as board]
             [obb-rules.unit :as unit]))
 
+(def default-evaluator :value)
+
 (defn- get-units
   "Gets the units from the game that belong to the given player.
   Also returns the quantities"
@@ -29,7 +31,7 @@
 (defn eval-game
   "Evaluates a game for the participant players"
   ([game]
-   (eval-game game :value))
+   (eval-game game default-evaluator))
   ([game mode]
    (let [p1-units (get-units game :p1)
          p2-units (get-units game :p2)]
