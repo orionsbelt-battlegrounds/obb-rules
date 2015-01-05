@@ -47,7 +47,8 @@
         result (process player game attacker raw-action)]
     (if (result/failed? result)
       targets
-      (conj targets (build-target player result raw-action distance)))))
+      (let [targets (conj targets (build-target player result raw-action distance))]
+        (recur game attacker targets next-coordinate (+ 1 distance))))))
 
 (defn attack-options
   "Returns a collection of possible options for attack
