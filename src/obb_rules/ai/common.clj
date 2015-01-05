@@ -37,11 +37,9 @@
 (defn- find-targets
   "Finds possible attack targets for the given element"
   [game attacker targets current-coordinate distance]
-  (let [unit (element/element-unit attacker)
-        direction (element/element-direction attacker)
+  (let [direction (element/element-direction attacker)
         next-coordinate (dir/update direction current-coordinate)
         origin (element/element-coordinate attacker)
-        next-element (board/get-element game next-coordinate)
         raw-action [:attack origin next-coordinate]
         player (element/element-player attacker)
         result (process player game attacker raw-action)]
