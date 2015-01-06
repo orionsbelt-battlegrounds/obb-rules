@@ -46,7 +46,14 @@
     (is (< 0 (option :value)))
     (is (= [[:attack [2 5] [2 7]]] (option :actions)))))
 
-(deftest get-distance-attack-options
+(deftest get-no-attack-options
+  (let [board (-> (board/create-board)
+                  (place-element [2 5] (create-element :p1 krill 1 :south [2 5]))
+                  (place-element [2 7] (create-element :p1 rain 1 :north [2 7])))
+        options (common/attack-options board (board/get-element board [2 5]))]
+    (is (= 0 (count options)))))
+
+(deftest get-attack-options-catapult-obstacles
   (let [board (-> (board/create-board)
                   (place-element [2 1] (create-element :p1 vect 1 :south [2 1]))
                   (place-element [2 2] (create-element :p2 rain 1 :north [2 2]))
