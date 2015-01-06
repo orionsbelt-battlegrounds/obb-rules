@@ -14,7 +14,7 @@
 
 (defn- process
   "Processes an action on a game/board"
-  [player board element raw-action]
+  [player board element raw-action next-element]
   (turn/process-actions board player [raw-action]))
 
 (defn- eval-board
@@ -39,14 +39,19 @@
   [game attacker targets current-coordinate distance]
   (let [direction (element/element-direction attacker)
         next-coordinate (dir/update direction current-coordinate)
+        next-element (board/get-element game next-coordinate)
         origin (element/element-coordinate attacker)
         raw-action [:attack origin next-coordinate]
         player (element/element-player attacker)
-        result (process player game attacker raw-action)]
-    (if (result/failed? result)
-      targets
-      (let [targets (conj targets (build-target player result raw-action distance))]
-        (recur game attacker targets next-coordinate (+ 1 distance))))))
+        result (process player game attacker raw-action next-element)]
+    (cond
+      (< (element/element-range attacker) distance)
+        targets
+      (result/failed? result)
+        (recur game attacker targets next-coordinate (+ 1 distance))
+      :else
+        (let [targets (conj targets (build-target player result raw-action distance))]
+          (recur game attacker targets next-coordinate (+ 1 distance))))))
 
 (defn attack-options
   "Returns a collection of possible options for attack
