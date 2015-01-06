@@ -7,6 +7,7 @@
             [obb-rules.result :as result]
             [obb-rules.action :as action]
             [obb-rules.generators :as obb-gen]
+            [criterium.core :as criterium]
             [clojure.test.check.generators :as gen]
             [clojure.test.check.properties :as prop])
   (:use clojure.test

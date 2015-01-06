@@ -17,7 +17,8 @@
         :url "git@github.com:orionsbelt-battlegrounds/obb-rules.git"}
 
   :profiles {:dev 
-             {:dependencies [[org.clojure/test.check "0.6.2"]]
+             {:dependencies [[org.clojure/test.check "0.6.2"]
+                             [criterium "0.4.3"]]
               :plugins [[com.jakemccrary/lein-test-refresh "0.5.4"]
                         [lein-cloverage "1.0.2"]]}}
 
