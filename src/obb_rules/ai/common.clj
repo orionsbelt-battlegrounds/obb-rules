@@ -4,6 +4,7 @@
   (:require [obb-rules.game :as game]
             [obb-rules.stash :as stash]
             [obb-rules.turn :as turn]
+            [obb-rules.laws :as laws]
             [obb-rules.evaluator :as evaluator]
             [obb-rules.result :as result]
             [obb-rules.actions.direction :as dir]
@@ -58,3 +59,19 @@
   for the given element"
   [game element]
   (find-targets game element [] (element/element-coordinate element) 1))
+
+(defn option-value-sorter
+  "Sorts a collection of options based on the value"
+  [option]
+  (println option)
+  (- (option :value)))
+
+(defn join-options
+  "Joins the given options on the given board, until the cost is possible"
+  [player result option]
+  (println "+++++++++++++" result)
+  (if (> (result/result-cost result) laws/max-action-points)
+    result
+    (let [board (result/result-board result)
+          actions (option :actions)
+          result (turn/process-actions board player actions)])))

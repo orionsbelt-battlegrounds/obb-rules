@@ -30,5 +30,10 @@
   [game player]
   (let [elements (board/board-elements game player)
         gatherer (partial gather-element-actions game)
-        actions (reduce gatherer [] elements)]
+        joiner (partial common/join-options player)
+        root-result (result/action-success game 0)
+        actions (->> (reduce gatherer [] elements)
+                     (sort-by common/option-value-sorter)
+                     #_(reduce joiner [] root-result))]
+    (println (map #(:value %) actions))
     (:actions (first actions))))

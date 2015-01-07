@@ -11,3 +11,6 @@
 
 (deftest direct-attack
   (acts-as-bot/direct-attack firingsquad/actions))
+
+(deftest direct-attack-double
+  (acts-as-bot/direct-attack-double firingsquad/actions))

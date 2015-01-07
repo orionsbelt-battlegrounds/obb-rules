@@ -19,7 +19,7 @@
     (is (result/succeeded? result))))
 
 (defn direct-attack
-  "Applies a bot function to a deployable game"
+  "Simple direct attack"
   [botfn]
   (let [board (-> (board/create-board)
                   (place-element [2 5] (create-element :p1 rain 1 :south [2 5]))
@@ -29,3 +29,17 @@
         final-game (result/result-board result)]
     (is (result/succeeded? result))
     (is (board/empty-board? final-game :p2))))
+
+(defn direct-attack-double
+  "Must select two actions"
+  [botfn]
+  (let [board (-> (board/create-board)
+                  (place-element [2 5] (create-element :p1 rain 1 :south [2 5]))
+                  (place-element [2 6] (create-element :p2 rain 1 :north [2 6]))
+                  (place-element [3 5] (create-element :p1 rain 5 :south [3 5]))
+                  (place-element [3 6] (create-element :p2 rain 5 :north [3 6])))
+        actions (botfn board :p1)
+        result (turn/process-actions board :p1 actions)
+        final-game (result/result-board result)]
+    (is (result/succeeded? result))
+    #_(is (board/empty-board? final-game :p2))))
