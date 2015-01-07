@@ -9,3 +9,5 @@
 (deftest deploy-choice
   (acts-as-bot/validate-deploy firingsquad/actions))
 
+(deftest direct-attack
+  (acts-as-bot/direct-attack firingsquad/actions))
