@@ -26,14 +26,18 @@
   [game all element]
   (into all (common/attack-options game element)))
 
+(defn- find-one
+  "Given a collection of sorted options, tries to find a good one"
+  [player options]
+  (let [joiner (partial common/join-options player)]
+    (reduce joiner (first options) (rest options))))
+
 (defmethod actions :turn
   [game player]
   (let [elements (board/board-elements game player)
         gatherer (partial gather-element-actions game)
-        joiner (partial common/join-options player)
         root-result (result/action-success game 0)
-        actions (->> (reduce gatherer [] elements)
-                     (sort-by common/option-value-sorter)
-                     #_(reduce joiner [] root-result))]
-    (println (map #(:value %) actions))
-    (:actions (first actions))))
+        option (->> (reduce gatherer [] elements)
+                    (sort-by common/option-value-sorter)
+                    (find-one player))]
+    (option :action)))

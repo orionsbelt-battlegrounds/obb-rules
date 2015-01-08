@@ -63,15 +63,19 @@
 (defn option-value-sorter
   "Sorts a collection of options based on the value"
   [option]
-  (println option)
   (- (option :value)))
 
 (defn join-options
   "Joins the given options on the given board, until the cost is possible"
-  [player result option]
-  (println "+++++++++++++" result)
-  (if (> (result/result-cost result) laws/max-action-points)
-    result
-    (let [board (result/result-board result)
-          actions (option :actions)
-          result (turn/process-actions board player actions)])))
+  [player master current-option]
+  (if (>= (master :cost) laws/max-action-points)
+    master
+    (let [board (master :board)
+          actions (current-option :actions)
+          result (turn/process-actions board player actions)]
+      (if (result/succeeded? result)
+        (-> master
+            (assoc :board (result/result-board board))
+            (assoc :actions (into (master :actions) actions))
+            (assoc :cost (+ (master :cost) (result/result-cost result))))
+        master))))
