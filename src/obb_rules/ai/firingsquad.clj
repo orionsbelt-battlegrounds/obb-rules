@@ -36,7 +36,6 @@
   [game player]
   (let [elements (board/board-elements game player)
         gatherer (partial gather-element-actions game)
-        root-result (result/action-success game 0)
         option (->> (reduce gatherer [] elements)
                     (sort-by common/option-value-sorter)
                     (find-one player))]

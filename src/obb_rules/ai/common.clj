@@ -16,7 +16,7 @@
 (defn- process
   "Processes an action on a game/board"
   [player board element raw-action next-element]
-  (turn/process-actions board player [raw-action]))
+  (turn/simulate-actions board player [raw-action]))
 
 (defn- eval-board
   "Evaluates a board for a given player"
@@ -72,7 +72,7 @@
     master
     (let [board (master :board)
           actions (current-option :actions)
-          result (turn/process-actions board player actions)]
+          result (turn/simulate-actions board player actions)]
       (if (result/succeeded? result)
         (-> master
             (assoc :board (result/result-board board))

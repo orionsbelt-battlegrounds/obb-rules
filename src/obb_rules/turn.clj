@@ -48,6 +48,15 @@
           (action/reset-action-specific-state)
           (result/action-success total-action-points "TurnOK"))))
 
+(defn simulate-actions
+  "Simulates the given actions"
+  [game player raw-actions]
+  (let [actions (map action-pair raw-actions)
+        do-actions (partial apply-actions player)
+        final (reduce do-actions game actions)
+        action-points (points final)]
+    (create-result final action-points)))
+
 (defn process-actions
   "Processes the given actions"
   [game player raw-actions]

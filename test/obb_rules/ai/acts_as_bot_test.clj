@@ -22,6 +22,7 @@
   "Simple direct attack"
   [botfn]
   (let [board (-> (board/create-board)
+                  (game/state :p1)
                   (place-element [2 5] (create-element :p1 rain 1 :south [2 5]))
                   (place-element [2 6] (create-element :p2 rain 1 :north [2 6])))
         actions (botfn board :p1)
@@ -34,6 +35,7 @@
   "Must select two actions"
   [botfn]
   (let [board (-> (board/create-board)
+                  (game/state :p1)
                   (place-element [2 5] (create-element :p1 rain 1 :south [2 5]))
                   (place-element [2 6] (create-element :p2 rain 1 :north [2 6]))
                   (place-element [3 5] (create-element :p1 rain 5 :south [3 5]))
