@@ -27,7 +27,6 @@
         actions (botfn board :p1)
         result (turn/process-actions board :p1 actions)
         final-game (result/result-board result)]
-    (println actions)
     (is (result/succeeded? result))
     (is (board/empty-board? final-game :p2))))
 

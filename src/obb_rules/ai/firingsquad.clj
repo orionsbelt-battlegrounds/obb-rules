@@ -40,4 +40,4 @@
         option (->> (reduce gatherer [] elements)
                     (sort-by common/option-value-sorter)
                     (find-one player))]
-    (option :action)))
+    (option :actions)))
