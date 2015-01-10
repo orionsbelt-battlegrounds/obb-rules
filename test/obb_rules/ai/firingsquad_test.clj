@@ -17,3 +17,6 @@
 
 (deftest rotate-attack
   (acts-as-bot/rotate-attack firingsquad/actions))
+
+(deftest prefer-rotate-attack
+  (acts-as-bot/prefer-rotate-attack firingsquad/actions))

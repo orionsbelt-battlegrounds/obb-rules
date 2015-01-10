@@ -62,9 +62,11 @@
 
 (defn- prepend-actions
   "Adds the given actions to the start of the option's actions"
-  [new-actions option]
-  (assoc option :actions (into new-actions
-                               (option :actions))))
+  [new-actions cost option]
+  (-> option
+      (assoc :actions (into new-actions
+                            (option :actions)))
+      (assoc :cost (+ cost (option :cost)))))
 
 (defn- rotate-and-attack
   "For a given element, rotates it and attacks"
@@ -72,7 +74,7 @@
   (let [element (element/element-direction element dir)
         coord (element/element-coordinate element)
         game (board/swap-element game coord element)]
-    (map (partial prepend-actions [[:rotate coord dir]])
+    (map (partial prepend-actions [[:rotate coord dir]] 1)
          (attack-options game element))))
 
 (defn rotate-attack-options

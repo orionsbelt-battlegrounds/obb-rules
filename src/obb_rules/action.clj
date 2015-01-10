@@ -22,6 +22,8 @@
     (assert builder (str "No action builder defined for " action-type))
     (builder action-args)))
 
+#_(def build-action (memoize build-action))
+
 (defn reset-action-specific-state
   "Removes action specific state from the board"
   [board]
