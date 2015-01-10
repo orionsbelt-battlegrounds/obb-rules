@@ -23,3 +23,9 @@
   (is (direction/facing? :east :west))
   (is (direction/facing? :west :east)))
   (is (not (direction/facing? :west :south)))
+
+(deftest other
+  (is (= [:north :south :west] (direction/other :east)))
+  (is (= [:north :east :south] (direction/other :west)))
+  (is (= [:north :east :west] (direction/other :south)))
+  (is (= [:south :east :west] (direction/other :north))))

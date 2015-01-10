@@ -24,7 +24,9 @@
 (defn- gather-element-actions
   "Gathers possible actions for the given element"
   [game all element]
-  (into all (common/attack-options game element)))
+  (conj all (first (-> []
+                       (into (common/attack-options game element))
+                       (into (common/rotate-attack-options game element))))))
 
 (defn- find-one
   "Given a collection of sorted options, tries to find a good one"
@@ -39,4 +41,6 @@
         option (->> (reduce gatherer [] elements)
                     (sort-by common/option-value-sorter)
                     (find-one player))]
-    (option :actions)))
+    (if option
+      (option :actions)
+      [])))

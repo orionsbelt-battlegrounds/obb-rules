@@ -45,3 +45,16 @@
         final-game (result/result-board result)]
     (is (result/succeeded? result))
     (is (board/empty-board? final-game :p2))))
+
+(defn rotate-attack
+  "Rotates to attack"
+  [botfn]
+  (let [board (-> (board/create-board)
+                  (game/state :p1)
+                  (place-element [2 5] (create-element :p1 rain 1 :south [2 5]))
+                  (place-element [3 5] (create-element :p2 rain 1 :north [3 5])))
+        actions (botfn board :p1)
+        result (turn/process-actions board :p1 actions)
+        final-game (result/result-board result)]
+    (is (result/succeeded? result))
+    (is (board/empty-board? final-game :p2))))

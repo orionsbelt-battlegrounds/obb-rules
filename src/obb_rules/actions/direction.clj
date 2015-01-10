@@ -23,6 +23,14 @@
     [(update :west coord) (update :east coord)]
     [(update :south coord) (update :north coord)]))
 
+(defn other
+  "Given a direction, returns all the other possible directions"
+  [dir]
+  (cond (simplify/name= dir :north) [:south :east :west]
+        (simplify/name= dir :south) [:north :east :west]
+        (simplify/name= dir :west) [:north :east :south]
+        (simplify/name= dir :east) [:north :south :west]))
+
 (defn facing?
   "True if the two given directions are facing each other"
   [dir1 dir2]

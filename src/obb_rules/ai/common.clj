@@ -60,6 +60,33 @@
   [game element]
   (find-targets game element [] (element/element-coordinate element) 1))
 
+(defn- prepend-actions
+  "Adds the given actions to the start of the option's actions"
+  [new-actions option]
+  (assoc option :actions (into new-actions
+                               (option :actions))))
+
+(defn- rotate-and-attack
+  "For a given element, rotates it and attacks"
+  [game element dir]
+  (let [element (element/element-direction element dir)
+        coord (element/element-coordinate element)
+        game (board/swap-element game coord element)]
+    (map (partial prepend-actions [[:rotate coord dir]])
+         (attack-options game element))))
+
+(defn rotate-attack-options
+  "Returns a collection of possible options that first rotate and then
+  attack"
+  [game element]
+  (let [coordinate (element/element-coordinate element)
+        player (element/element-player element)
+        dirs (dir/other (element/element-direction element))
+        options (->> (map (partial rotate-and-attack game element) dirs)
+                     (flatten)
+                     (filter #(seq %1)))]
+    options))
+
 (defn option-value-sorter
   "Sorts a collection of options based on the value"
   [option]
