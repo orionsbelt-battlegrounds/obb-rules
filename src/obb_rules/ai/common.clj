@@ -92,7 +92,9 @@
 (defn option-value-sorter
   "Sorts a collection of options based on the value"
   [option]
-  (- (option :value)))
+  (if option
+    (- (option :value))
+    0))
 
 (defn join-options
   "Joins the given options on the given board, until the cost is possible"

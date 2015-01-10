@@ -74,3 +74,16 @@
     (is (result/succeeded? result))
     (is (board/get-element final-game [2 6]))
     (is (not (board/get-element final-game [3 5])))))
+
+(defn first-blood
+  "Deploy and attack"
+  [botfn]
+  #_(let [board (game/random)
+        actions (botfn board :p1)
+        result (turn/process-actions board :p1 actions)
+        result2 (turn/process-actions (result/result-board result) :p2 actions)
+        game (game/state (result/result-board result2) :p1)
+        actions2 (botfn game :p1)
+        ]
+    (println actions2)
+    (is (result/succeeded? result))))

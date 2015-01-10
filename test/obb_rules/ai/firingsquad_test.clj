@@ -20,3 +20,6 @@
 
 (deftest prefer-rotate-attack
   (acts-as-bot/prefer-rotate-attack firingsquad/actions))
+
+(deftest first-blood
+  (acts-as-bot/first-blood firingsquad/actions))
