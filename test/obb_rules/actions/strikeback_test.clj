@@ -1,5 +1,6 @@
 (ns obb-rules.actions.strikeback-test
   (:require [obb-rules.element :as element]
+            [obb-rules.board :as board]
             [obb-rules.result :as result])
   (:use clojure.test
         obb-rules.action
@@ -12,6 +13,7 @@
 (def rain (get-unit-by-name "rain"))
 (def crusader (get-unit-by-name "crusader"))
 (def eagle (get-unit-by-name "eagle"))
+(def boozer (get-unit-by-name "boozer"))
 (def krill (get-unit-by-name "krill"))
 (def rain-element (create-element :p1 rain 10 :south))
 (def eagle-element (create-element :p1 eagle 10 :south))

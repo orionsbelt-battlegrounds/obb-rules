@@ -28,10 +28,12 @@
 (defn- in-range?
   "Checks if the attacker is in range of the target"
   [target attacker]
-  (let [[tx ty] (element/element-coordinate target)
-        [ax ay] (element/element-coordinate attacker)
-        distance (+ (- tx ax) (- ty ay))]
-    (<= distance (element/element-range target))))
+  (if target
+    (let [[tx ty] (element/element-coordinate target)
+          [ax ay] (element/element-coordinate attacker)
+          distance (+ (- tx ax) (- ty ay))]
+      (<= distance (element/element-range target)))
+    false))
 
 (defn- facing-attacker?
   "True if the target is facing it's attacker"

@@ -99,7 +99,8 @@
 (defn join-options
   "Joins the given options on the given board, until the cost is possible"
   [player master current-option]
-  (if (or (>= (master :cost) laws/max-action-points)
+  (if (or (nil? master)
+          (>= (master :cost) laws/max-action-points)
           (nil? current-option))
     master
     (let [board (master :board)
