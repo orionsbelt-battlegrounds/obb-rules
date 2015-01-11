@@ -78,7 +78,7 @@
 (defn first-blood
   "Deploy and attack"
   [botfn]
-  #_(let [board (game/random)
+  (let [board (game/random)
         actions (botfn board :p1)
         result (turn/process-actions board :p1 actions)
         result2 (turn/process-actions (result/result-board result) :p2 actions)
