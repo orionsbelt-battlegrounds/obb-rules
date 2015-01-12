@@ -13,8 +13,8 @@
         clojure.test.check
         clojure.test.check.clojure-test))
 
-(def scenarions-to-test 100)
-(def scenarions-to-test-small 10)
+(def scenarions-to-test (read-string (get (System/getenv) "OBB_SCENARIOS_TO_TEST" "10")))
+(def scenarions-to-test-small (int (/ scenarions-to-test 10)))
 
 (def unit-names (map #(unit/unit-name %) (unit/get-units)))
 
