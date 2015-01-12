@@ -29,3 +29,9 @@
   (is (= [:north :east :south] (direction/other :west)))
   (is (= [:north :east :west] (direction/other :south)))
   (is (= [:south :east :west] (direction/other :north))))
+
+(deftest clockwise
+  (is (= :east (direction/clockwise :north)))
+  (is (= :west (direction/clockwise :south)))
+  (is (= :north (direction/clockwise :west)))
+  (is (= :south (direction/clockwise :east))))

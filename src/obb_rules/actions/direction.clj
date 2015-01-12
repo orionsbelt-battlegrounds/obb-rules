@@ -39,3 +39,12 @@
     (simplify/name= dir1 :south) (simplify/name= dir2 :north)
     (simplify/name= dir1 :east) (simplify/name= dir2 :west)
     (simplify/name= dir1 :west) (simplify/name= dir2 :east)))
+
+(defn clockwise
+  "Gets the direction achieved rotating the given direction clockwise"
+  [dir]
+  (cond
+    (simplify/name= dir :north) :east
+    (simplify/name= dir :south) :west
+    (simplify/name= dir :west) :north
+    (simplify/name= dir :east) :south))
