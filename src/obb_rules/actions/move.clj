@@ -59,6 +59,11 @@
     (partial possible-on-board? board element)
     (move-restrictions/possible-destinations element)))
 
+(defn find-all-possible-destinations
+  "Returns all possible destinations on a complete turn"
+  [board element]
+  (find-possible-destinations board element))
+
 (defn- process-move
   "Processes the actual move"
   [board efrom from eto to quantity]

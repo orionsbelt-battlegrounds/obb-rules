@@ -244,3 +244,11 @@
             result (move-down board :p1)]
         (is (failed? result))
         (is (= "EmptyCoordinate" (result-message result)))))))
+
+(deftest find-all-possible-destinations-crusader
+  (let [board (create-board)
+        element (create-element :p1 crusader 1 :south [1 1])
+        all (find-all-possible-destinations board element)]
+    (is all)
+    (is (= 1 (count all)))
+    (is (= [1 2] (first all)))))
