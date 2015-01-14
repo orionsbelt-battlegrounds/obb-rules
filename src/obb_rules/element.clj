@@ -28,6 +28,12 @@
   (let [unit (element-unit element)]
     (unit/catapult? unit)))
 
+(defn element-cost
+  "Gets the element's movement cost"
+  [element]
+  (let [unit (element-unit element)]
+    (unit/unit-movement-cost unit)))
+
 (defn element-range
   "Gets the element's range"
   [element]

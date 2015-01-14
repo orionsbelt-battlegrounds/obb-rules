@@ -252,3 +252,11 @@
     (is all)
     (is (= 1 (count all)))
     (is (= [1 2] (first all)))))
+
+(deftest find-all-possible-destinations-pretorian
+  (let [board (create-board)
+        element (create-element :p1 pretorian 10 :south [1 1])
+        all (find-all-possible-destinations board element)]
+    (is all)
+    (is (= 7 (count all)))
+    (is (some #{[3 1] [2 2] [4 2] [2 4] [4 4] [1 3] [3 3]} all))))

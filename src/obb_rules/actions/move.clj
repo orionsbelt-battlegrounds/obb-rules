@@ -59,10 +59,27 @@
     (partial possible-on-board? board element)
     (move-restrictions/possible-destinations element)))
 
+(defn- tier-positions
+  "Find possible destinations for the given coordinates"
+  [board element coll]
+  (first (for [coord coll
+               :let [element (element/element-coordinate element coord)
+                     coord-pos (find-possible-destinations board element)]]
+           (reduce conj #{} coord-pos))))
+
 (defn find-all-possible-destinations
   "Returns all possible destinations on a complete turn"
-  [board element]
-  (find-possible-destinations board element))
+  ([board element]
+   (let [mov-cost (element/element-cost element)
+         start-positions (find-possible-destinations board element)
+         start-set (into #{} start-positions)]
+    (find-all-possible-destinations board element mov-cost mov-cost start-set start-set)))
+  ([board element mov-cost curr-cost curr-coords all]
+   (if (> (+ curr-cost mov-cost) laws/max-action-points)
+     (disj all (element/element-coordinate element))
+     (let [current-pos (tier-positions board element curr-coords)
+           all (into all current-pos)]
+       (recur board element mov-cost (+ curr-cost mov-cost) current-pos all)))))
 
 (defn- process-move
   "Processes the actual move"
