@@ -62,10 +62,11 @@
 (defn- tier-positions
   "Find possible destinations for the given coordinates"
   [board element coll]
-  (first (for [coord coll
+  (let [all (for [coord coll
                :let [element (element/element-coordinate element coord)
                      coord-pos (find-possible-destinations board element)]]
-           (reduce conj #{} coord-pos))))
+           (reduce conj #{} coord-pos))]
+    (apply clojure.set/union all)))
 
 (defn find-all-possible-destinations
   "Returns all possible destinations on a complete turn"

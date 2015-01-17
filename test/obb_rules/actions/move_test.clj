@@ -261,9 +261,9 @@
     (is (= 7 (count all)))
     (is (some #{[3 1] [2 2] [4 2] [2 4] [4 4] [1 3] [3 3]} all))))
 
-#_(deftest find-all-possible-destinations-rain
+(deftest find-all-possible-destinations-rain
   (let [board (create-board)
         element (create-element :p1 rain 10 :south [4 4])
         all (find-all-possible-destinations board element)]
     (is all)
-    (is (= 7 (count all)))))
+    (is (= 63 (count all)))))
