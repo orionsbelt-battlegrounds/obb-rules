@@ -113,13 +113,26 @@
   (and option
        (< 0 (option :value))))
 
+(defn- targets-in-range?
+  "True if there are any targets in range"
+  [game element coord]
+  true)
+
+(defn- discard-possible-coords
+  "Tries to discard coords"
+  [game element coords]
+  (filter (fn [coord]
+            (and (nil? (board/get-element game coord))
+                 (targets-in-range? game element coord))) coords))
+
 (defn move-attack-options
   "Returns a collection of possible options that first move and then
   attack"
   [game element]
   (let [coordinate (element/element-coordinate element)
         player (element/element-player element)
-        possible-coords (move/find-all-possible-destinations game element)
+        possible-coords (->> (move/find-all-possible-destinations game element)
+                             (discard-possible-coords game element))
         run-results (partial goto-result game element player)
         actions-and-results (map run-results possible-coords)
         options (->> (map build-options actions-and-results)

@@ -83,8 +83,11 @@
         result (turn/process-actions board :p1 actions)
         result2 (turn/process-actions (result/result-board result) :p2 actions)
         game (game/state (result/result-board result2) :p1)
-        actions2 (botfn game :p1)]
-    (is (result/succeeded? result))))
+        actions2 (botfn game :p1)
+        result3 (turn/process-actions game :p1 actions2)]
+    (is (result/succeeded? result))
+    (is (result/succeeded? result2))
+    (is (result/succeeded? result3))))
 
 (defn move-and-attack
   "Moves and attacks"
