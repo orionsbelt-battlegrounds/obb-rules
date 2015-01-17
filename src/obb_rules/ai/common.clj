@@ -8,6 +8,7 @@
             [obb-rules.evaluator :as evaluator]
             [obb-rules.result :as result]
             [obb-rules.actions.direction :as dir]
+            [obb-rules.actions.move :as move]
             [obb-rules.simplifier :as simplify]
             [obb-rules.element :as element]
             [obb-rules.board :as board]
@@ -95,7 +96,9 @@
   [game element]
   (let [coordinate (element/element-coordinate element)
         player (element/element-player element)
-        dirs (dir/other (element/element-direction element))]
+        possible-coords (move/find-all-possible-destinations game element)
+        ]
+    #_(println possible-coords)
     []))
 
 (defn option-value-sorter

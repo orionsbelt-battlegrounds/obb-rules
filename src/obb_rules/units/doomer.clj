@@ -18,6 +18,6 @@
    :category :heavy
    :displacement :air
 
-   :movement-type :diagnal
+   :movement-type :diagonal
    :movement-cost 3})
 
