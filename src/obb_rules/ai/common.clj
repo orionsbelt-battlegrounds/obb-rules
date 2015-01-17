@@ -90,6 +90,29 @@
                      (filter #(seq %1)))]
     options))
 
+(defn- goto-result
+  "Applies a goto the given coordinate"
+  [game element player target-coord]
+  (let [source-coord (element/element-coordinate element)
+        action [:goto source-coord target-coord]
+        result (turn/simulate-actions game player [action])]
+    [action result target-coord]))
+
+(defn- build-options
+  "Builds options from a result"
+  [[action result target-coord]]
+  (when (result/succeeded? result)
+    (let [game (result/result-board result)
+          element (board/get-element game target-coord)]
+      (map (partial prepend-actions [action] (result/result-cost result))
+           (attack-options game element)))))
+
+(defn- valuable-options
+  "Predicate that returns true if an option has a positive value"
+  [option]
+  (and option
+       (< 0 (option :value))))
+
 (defn move-attack-options
   "Returns a collection of possible options that first move and then
   attack"
@@ -97,9 +120,12 @@
   (let [coordinate (element/element-coordinate element)
         player (element/element-player element)
         possible-coords (move/find-all-possible-destinations game element)
-        ]
-    #_(println possible-coords)
-    []))
+        run-results (partial goto-result game element player)
+        actions-and-results (map run-results possible-coords)
+        options (->> (map build-options actions-and-results)
+                     (flatten)
+                     (filter valuable-options))]
+    options))
 
 (defn option-value-sorter
   "Sorts a collection of options based on the value"

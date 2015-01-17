@@ -96,6 +96,5 @@
         actions (botfn board :p1)
         result (turn/process-actions board :p1 actions)
         final-game (result/result-board result)]
-    #_(println actions)
     (is (result/succeeded? result))
-    #_(is (not (board/get-element final-game [5 5])))))
+    (is (not (board/get-element final-game [5 5])))))
