@@ -27,6 +27,7 @@
   (conj all (first (-> []
                        (into (common/attack-options game element))
                        (into (common/rotate-attack-options game element))
+                       (into (common/move-attack-options game element))
                        (->> (sort-by common/option-value-sorter))))))
 
 (defn- find-one

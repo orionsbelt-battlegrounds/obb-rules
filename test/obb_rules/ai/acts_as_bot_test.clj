@@ -85,3 +85,17 @@
         game (game/state (result/result-board result2) :p1)
         actions2 (botfn game :p1)]
     (is (result/succeeded? result))))
+
+(defn move-and-attack
+  "Moves and attacks"
+  [botfn]
+  (let [board (-> (board/create-board)
+                  (game/state :p1)
+                  (place-element [2 5] (create-element :p1 rain 1 :south [2 5]))
+                  (place-element [5 5] (create-element :p2 kamikaze 1 :north [5 5])))
+        actions (botfn board :p1)
+        result (turn/process-actions board :p1 actions)
+        final-game (result/result-board result)]
+    (println actions)
+    (is (result/succeeded? result))
+    (is (not (board/get-element final-game [5 5])))))

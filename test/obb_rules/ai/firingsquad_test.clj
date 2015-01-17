@@ -30,6 +30,9 @@
 (deftest first-blood
   (acts-as-bot/first-blood firingsquad/actions (stash/random)))
 
+(deftest move-and-attack
+  (acts-as-bot/move-and-attack firingsquad/actions))
+
 (defspec first-blood-check
   (* obb-gen/scenarions-to-test 1)
   (prop/for-all [raw-stash (obb-gen/stash)]

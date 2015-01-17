@@ -89,6 +89,15 @@
                      (filter #(seq %1)))]
     options))
 
+(defn move-attack-options
+  "Returns a collection of possible options that first move and then
+  attack"
+  [game element]
+  (let [coordinate (element/element-coordinate element)
+        player (element/element-player element)
+        dirs (dir/other (element/element-direction element))]
+    []))
+
 (defn option-value-sorter
   "Sorts a collection of options based on the value"
   [option]
