@@ -1,5 +1,6 @@
 (ns obb-rules.actions.move
-  (:require [obb-rules.actions.move-restrictions :as move-restrictions]
+  (:require [clojure.set]
+            [obb-rules.actions.move-restrictions :as move-restrictions]
             [obb-rules.game :as game]
             [obb-rules.laws :as laws]
             [obb-rules.element :as element]
