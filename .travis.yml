@@ -1,5 +1,5 @@
 language: clojure
-env: OBB_SCENARIOS_TO_TEST=500
+env: OBB_SCENARIOS_TO_TEST=10
 notifications:
   slack: orionsbelt-game:QT4unoZGVBOvbSWiil1o1bm0
 jdk:
