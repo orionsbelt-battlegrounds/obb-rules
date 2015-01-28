@@ -21,7 +21,7 @@
   [value]
   (if (string? value)
     value
-    (value :name)))
+    (unit/unit-name value)))
 
 (defn- simplify-if-unit
   "Simplifies a unit object, if it's a unit"
