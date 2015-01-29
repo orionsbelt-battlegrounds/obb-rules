@@ -1,9 +1,10 @@
 (ns obb-rules.translator-test
   (:require [obb-rules.translator :as translator]
+            [obb-rules.unit :as unit]
             [obb-rules.element :as element])
   (:use clojure.test obb-rules.element obb-rules.unit obb-rules.board))
 
-(def unit :dummy)
+(def unit (unit/get-unit-by-name "rain"))
 
 (deftest translate-coordinate-test
   (testing ":p1"

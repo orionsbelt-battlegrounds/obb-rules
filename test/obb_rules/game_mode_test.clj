@@ -4,11 +4,13 @@
             [obb-rules.game-mode :as game-mode]
             [obb-rules.turn :as turn]
             [obb-rules.element :as element]
+            [obb-rules.unit :as unit]
             [obb-rules.stash :as stash])
   (:use clojure.test))
 
-(def p1-element (element/create-element "p1" :dummy 20 :south))
-(def p2-element (element/create-element "p2" :dummy 20 :south))
+(def rain (unit/get-unit-by-name "rain"))
+(def p1-element (element/create-element "p1" rain 20 :south))
+(def p2-element (element/create-element "p2" rain 20 :south))
 (def running-game (-> (game/random)
                   (assoc :state "p1")
                   (board/place-element [1 1] p1-element)
