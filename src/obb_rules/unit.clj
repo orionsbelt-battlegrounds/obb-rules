@@ -29,7 +29,7 @@
 (defn gather-units
   "Gets all the available units"
   []
-  (map #(map->CombatUnit %)
+  (mapv #(map->CombatUnit %)
     [obb-rules.units.rain/metadata
      obb-rules.units.nova/metadata
      obb-rules.units.pretorian/metadata
@@ -76,19 +76,19 @@
   (let [identifier (name raw)]
     (or (get-unit-by-name identifier) (get-unit-by-code identifier))))
 
-(defn unit-name "Gets a unit's name" [unit] (.name unit))
-(defn unit-code "Gets a unit's code" [unit] (.code unit))
-(defn unit-attack "Gets a unit's attack" [unit] (.attack unit))
-(defn unit-bonus "Gets a unit's bonus" [unit] (.bonus unit))
-(defn unit-range "Gets a unit's range" [unit] (.range unit))
-(defn unit-defense "Gets a unit's defense" [unit] (.defense unit))
-(defn unit-movement-cost "Gets a unit's movement cost" [unit] (.movement-cost unit))
-(defn unit-movement-type "Gets a unit's movement type" [unit] (.movement-type unit))
-(defn unit-category "Gets a unit's category" [unit] (.category unit))
-(defn unit-displacement "Gets a unit's displacement" [unit] (.displacement unit))
-(defn unit-type "Gets a unit's type" [unit] (.type unit))
-(defn unit-value "Gets a unit's hardcore value" [unit] (or (.value unit) 0))
-(defn attack-type "Gets the unit's attack type" [unit] (or (.attack-type unit) :direct))
+(defn unit-name "Gets a unit's name" [unit] (:name unit))
+(defn unit-code "Gets a unit's code" [unit] (:code unit))
+(defn unit-attack "Gets a unit's attack" [unit] (:attack unit))
+(defn unit-bonus "Gets a unit's bonus" [unit] (:bonus unit))
+(defn unit-range "Gets a unit's range" [unit] (:range unit))
+(defn unit-defense "Gets a unit's defense" [unit] (:defense unit))
+(defn unit-movement-cost "Gets a unit's movement cost" [unit] (:movement-cost unit))
+(defn unit-movement-type "Gets a unit's movement type" [unit] (:movement-type unit))
+(defn unit-category "Gets a unit's category" [unit] (:category unit))
+(defn unit-displacement "Gets a unit's displacement" [unit] (:displacement unit))
+(defn unit-type "Gets a unit's type" [unit] (:type unit))
+(defn unit-value "Gets a unit's hardcore value" [unit] (or (:value unit) 0))
+(defn attack-type "Gets the unit's attack type" [unit] (or (:attack-type unit) :direct))
 (defn event-hooks "Gets the hooks for an event" [unit event] (event unit))
 (defn catapult? "True if the unit has catapult" [unit] (= :catapult (attack-type unit)))
 
