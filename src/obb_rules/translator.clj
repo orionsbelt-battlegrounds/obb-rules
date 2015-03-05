@@ -49,6 +49,10 @@
                                           (coordinate :p2 (get action 2))
                                           (get action 3)])
 
+(defmethod convert-action :goto [action] [:goto
+                                          (coordinate :p2 (get action 1))
+                                          (coordinate :p2 (get action 2))])
+
 (defmethod convert-action :attack [action] [:attack
                                             (coordinate :p2 (get action 1))
                                             (coordinate :p2 (get action 2))])
