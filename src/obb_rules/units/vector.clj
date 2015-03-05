@@ -17,6 +17,6 @@
    :category :medium
    :displacement :air
 
-   :movement-type :diagonal
+   :movement-type :normal
    :movement-cost 3})
 
