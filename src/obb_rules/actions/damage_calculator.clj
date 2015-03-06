@@ -25,6 +25,13 @@
   [board attacker-element defender-element]
   (element-defense board attacker-element defender-element))
 
+(defn- quantify
+  "If the given quantity is bigger than 1, then it should be an integer"
+  [quantity]
+  (if (> quantity 1)
+    (int quantity)
+    quantity))
+
 (defn destroyed-with-unused-damage
   "Gets how many units an attack will destroy"
   ([board attacker-element defender-element]
@@ -37,8 +44,8 @@
          destroyed (/ total-damage elem-defense)
          defender-quantity (element-quantity defender-element)]
      (if (> destroyed defender-quantity)
-       [defender-quantity (- total-damage (* elem-defense defender-quantity))]
-       [destroyed 0]))))
+       [(quantify defender-quantity) (- total-damage (* elem-defense defender-quantity))]
+       [(quantify destroyed) 0]))))
 
 (defn destroyed
   "Gets how many units an attack will destroy"

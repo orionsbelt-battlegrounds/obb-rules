@@ -12,6 +12,8 @@
 (def rain (get-unit-by-name "rain"))
 (def crusader (get-unit-by-name "crusader"))
 (def eagle (get-unit-by-name "eagle"))
+(def krill (get-unit-by-name "krill"))
+(def scarab (get-unit-by-name "scarab"))
 (def fenix (get-unit-by-name "fenix"))
 (def rain-element (create-element :p2 rain 10 :south))
 (def eagle-element (create-element :p1 eagle 10 :south))
@@ -43,6 +45,15 @@
   (let [attack (build-action [:attack [2 2] [2 3]])
         result (attack board1 :p1)]
     (is (= "EmptyTarget" (result-message result)))))
+
+(deftest attack-int-destroyed
+  (let [board (-> (create-board)
+                  (place-element [2 6] (create-element :p1 krill 50 :north))
+                  (place-element [2 5] (create-element :p2 scarab 50 :south)))
+        attack (build-action [:attack [2 6] [2 5]])
+        result (attack board :p1)]
+    (is (integer? (get-in result [:board :elements [2 5] :quantity])))
+    (is (succeeded? result))))
 
 (deftest attack-in-range-target
   (let [board (place-element board1 [2 6] (create-element :p2 crusader 10 :east))
