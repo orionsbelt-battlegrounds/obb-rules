@@ -59,7 +59,13 @@
 (defn get-element
   "Gets an element given a coordinate"
   [board coord]
-  ((board :elements) coord))
+  (get-in board [:elements coord]))
+
+(defn get-element-consider-removed
+  "Gets an element given a coordinate"
+  [board coord]
+  (or (get-element board coord)
+      (get-in board [:removed-elements coord])))
 
 (defn in-bounds?
   "Checks if a given coord is in the board"
@@ -79,12 +85,20 @@
     (in-bounds? board coord)
     (nil? (get-element board coord))))
 
+(defn- register-removed-element
+  "Registers that an element was removed from a coordinate"
+  [board coord element]
+  (let [all-removed (or (board :removed-elements) {})]
+    (assoc board :removed-elements (assoc all-removed coord element))))
+
 (defn remove-element
   "Removes an element from the board"
   [board coord]
   (let [elements (board :elements)
         new-elements (dissoc elements coord)]
-    (assoc board :elements new-elements)))
+    (-> board
+        (register-removed-element coord (get elements coord))
+        (assoc :elements new-elements))))
 
 (defn swap-element
   "Swaps a given element for another"

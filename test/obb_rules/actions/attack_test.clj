@@ -1,6 +1,7 @@
 (ns obb-rules.actions.attack-test
   (:require [obb-rules.element :as element]
-            [obb-rules.result :as result])
+            [obb-rules.result :as result]
+            [obb-rules.turn :as turn])
   (:use clojure.test
         obb-rules.action
         obb-rules.actions.move
@@ -54,6 +55,17 @@
         result (attack board :p1)]
     (is (integer? (get-in result [:board :elements [2 5] :quantity])))
     (is (succeeded? result))))
+
+(deftest attack-using-destroyed-space
+  (let [board (-> (create-board)
+                  (place-element [2 6] (create-element :p1 eagle 50 :north))
+                  (place-element [2 5] (create-element :p1 krill 50 :north))
+                  (place-element [2 4] (create-element :p2 scarab 1 :south))
+                  (place-element [2 3] (create-element :p2 scarab 1 :south)))
+        clear-obstacle-attack [:attack [2 6] [2 4]]
+        should-fail-attack [:attack [2 5] [2 3]]
+        result (turn/process-actions board :p1 [clear-obstacle-attack should-fail-attack])]
+    (is (failed? result))))
 
 (deftest attack-in-range-target
   (let [board (place-element board1 [2 6] (create-element :p2 crusader 10 :east))

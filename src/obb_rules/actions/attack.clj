@@ -13,7 +13,7 @@
   (let [unit (element-unit attacker)
         direction (element-direction attacker)
         next-coordinate (dir/update direction current-coordinate)
-        next-element (get-element board next-coordinate)
+        next-element (get-element-consider-removed board next-coordinate)
         may-try-next? (or (nil? next-element) (element/catapult-attack? attacker))
         bypassed? (or bypassed-element? (and (some? next-element) (not= next-element target)))]
     (cond
@@ -76,16 +76,23 @@
   (let [[board info] (process-after-attack board attacker target unused-damage info)]
     (process-after-hit board attacker target unused-damage info)))
 
+(defn- update-board-state
+  "Updates the board with state from this action, that's relevant to next
+  actions on the turn"
+  [board attacker target destroyed]
+  (let [coordinate (element-coordinate target)
+        attacker-coordinate (element-coordinate attacker)]
+    (-> board
+        (swap-element attacker-coordinate (element/freeze attacker))
+        (remove-from-element coordinate destroyed))))
+
 (defn- process-attack
   "Processes the attack"
   [board attacker target attack-type]
   (let [[destroyed unused-damage] (calculator/destroyed-with-unused-damage board attacker target)
-        attacker-coordinate (element-coordinate attacker)
-        coordinate (element-coordinate target)
-        frozen-board (swap-element board attacker-coordinate (element/freeze attacker))
-        attack-board (remove-from-element frozen-board coordinate destroyed)
+        attacked-board (update-board-state board attacker target destroyed)
         attack-info (build-basic-attack-info attack-type destroyed target)
-        [final-board final-info] (process-hooks attack-board attacker target unused-damage attack-info)]
+        [final-board final-info] (process-hooks attacked-board attacker target unused-damage attack-info)]
     (action-success final-board 1 "OK" final-info)))
 
 (defn build-attack
