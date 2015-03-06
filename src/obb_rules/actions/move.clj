@@ -48,7 +48,7 @@
           board
           efrom
           (element/element-coordinate efrom)
-          (get-element board destination)
+          (get-element-consider-removed board destination)
           destination
           (element/element-quantity efrom))))
 
@@ -107,7 +107,7 @@
   [[from to quantity]]
   (fn mover [board player]
     (let [efrom (get-element board from)
-          eto (get-element board to)
+          eto (get-element-consider-removed board to)
           quantity (get-quantity quantity efrom)]
       (if-let [error (move-restrictions player board efrom from eto to quantity)]
         (action-failed error)

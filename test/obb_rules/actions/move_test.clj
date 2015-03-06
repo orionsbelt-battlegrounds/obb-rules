@@ -1,4 +1,5 @@
 (ns obb-rules.actions.move-test
+  (:require [obb-rules.turn :as turn])
   (:use clojure.test
         obb-rules.action
         obb-rules.actions.move
@@ -11,6 +12,9 @@
 (def crusader (get-unit-by-name "crusader"))
 (def nova (get-unit-by-name "nova"))
 (def pretorian (get-unit-by-name "pretorian"))
+(def eagle (get-unit-by-name "eagle"))
+(def krill (get-unit-by-name "krill"))
+(def scarab (get-unit-by-name "scarab"))
 (def move-down (build-action [:move [2 2] [2 3] 10]))
 (def rain-element (create-element :p1 rain 10 :south))
 (def crusader-element (create-element :p1 crusader 10 :south))
@@ -267,3 +271,15 @@
         all (find-all-possible-destinations board element)]
     (is all)
     (is (= 63 (count all)))))
+
+(deftest move-using-destroyed-space
+  (let [board (-> (create-board)
+                  (place-element [2 6] (create-element :p1 eagle 50 :north))
+                  (place-element [2 5] (create-element :p1 krill 50 :north))
+                  (place-element [2 4] (create-element :p2 scarab 1 :south))
+                  (place-element [2 3] (create-element :p2 scarab 1 :south)))
+        clear-obstacle-attack [:attack [2 6] [2 4]]
+        should-fail-move [:move [2 5] [2 4]]
+        result (turn/process-actions board :p1 [clear-obstacle-attack should-fail-move])]
+    (is (failed? result))))
+
