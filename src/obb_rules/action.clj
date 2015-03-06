@@ -27,4 +27,6 @@
 (defn reset-action-specific-state
   "Removes action specific state from the board"
   [board]
-  (move/reset-action-state board))
+  (-> board
+      (dissoc :removed-elements)
+      (move/reset-action-state)))

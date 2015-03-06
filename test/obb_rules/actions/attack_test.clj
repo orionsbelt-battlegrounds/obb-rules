@@ -54,6 +54,7 @@
         attack (build-action [:attack [2 6] [2 5]])
         result (attack board :p1)]
     (is (integer? (get-in result [:board :elements [2 5] :quantity])))
+    (is (empty? (get-in result [:board :removed-elements])))
     (is (succeeded? result))))
 
 (deftest attack-using-destroyed-space
@@ -65,7 +66,8 @@
         clear-obstacle-attack [:attack [2 6] [2 4]]
         should-fail-attack [:attack [2 5] [2 3]]
         result (turn/process-actions board :p1 [clear-obstacle-attack should-fail-attack])]
-    (is (failed? result))))
+    (is (failed? result))
+    (is (get-in result [:board :removed-elements]))))
 
 (deftest attack-in-range-target
   (let [board (place-element board1 [2 6] (create-element :p2 crusader 10 :east))
