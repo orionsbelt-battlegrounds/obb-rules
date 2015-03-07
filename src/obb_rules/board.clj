@@ -86,19 +86,23 @@
     (nil? (get-element board coord))))
 
 (defn- register-removed-element
-  "Registers that an element was removed from a coordinate"
-  [board coord element]
-  (let [all-removed (or (board :removed-elements) {})]
-    (assoc board :removed-elements (assoc all-removed coord element))))
+  "Registers that an element was destroyed from a coordinate"
+  [board coord element destroyed?]
+  (if destroyed?
+    (let [all-removed (or (board :removed-elements) {})]
+      (assoc board :removed-elements (assoc all-removed coord element)))
+    board))
 
 (defn remove-element
   "Removes an element from the board"
-  [board coord]
-  (let [elements (board :elements)
-        new-elements (dissoc elements coord)]
-    (-> board
-        (register-removed-element coord (get elements coord))
-        (assoc :elements new-elements))))
+  ([board coord]
+   (remove-element board coord false))
+  ([board coord destroyed?]
+   (let [elements (board :elements)
+         new-elements (dissoc elements coord)]
+     (-> board
+         (register-removed-element coord (get elements coord) destroyed?)
+         (assoc :elements new-elements)))))
 
 (defn swap-element
   "Swaps a given element for another"
@@ -129,14 +133,21 @@
     (> 2 (math/abs (- c1y c2y)))))
 
 (defn remove-from-element
-  "Removes a quantity from the board"
+  "Removes a quantity from the board, marking it as move"
+  ([board coord quantity]
+   (remove-from-element board coord quantity false))
+  ([board coord quantity destroyed?]
+   (let [element (get-element board coord)
+         new-element (remove-quantity element quantity)
+         remaining-quantity (element-quantity new-element)]
+     (if (= 0 remaining-quantity)
+       (remove-element board coord destroyed?)
+       (swap-element board coord new-element)))))
+
+(defn destroy-from-element
+  "Removes a quantity from the board, marking it as destroyed"
   [board coord quantity]
-  (let [element (get-element board coord)
-        new-element (remove-quantity element quantity)
-        remaining-quantity (element-quantity new-element)]
-    (if (= 0 remaining-quantity)
-      (remove-element board coord)
-      (swap-element board coord new-element))))
+  (remove-from-element board coord quantity true))
 
 (defn add-to-element
   "Adds a quantity to an element"

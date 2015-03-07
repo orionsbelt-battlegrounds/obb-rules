@@ -84,7 +84,7 @@
         attacker-coordinate (element-coordinate attacker)]
     (-> board
         (swap-element attacker-coordinate (element/freeze attacker))
-        (remove-from-element coordinate destroyed))))
+        (destroy-from-element coordinate destroyed))))
 
 (defn- process-attack
   "Processes the attack"

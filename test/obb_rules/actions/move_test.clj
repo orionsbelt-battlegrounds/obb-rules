@@ -12,6 +12,7 @@
 (def crusader (get-unit-by-name "crusader"))
 (def nova (get-unit-by-name "nova"))
 (def pretorian (get-unit-by-name "pretorian"))
+(def panther (get-unit-by-name "panther"))
 (def eagle (get-unit-by-name "eagle"))
 (def krill (get-unit-by-name "krill"))
 (def scarab (get-unit-by-name "scarab"))
@@ -282,4 +283,14 @@
         should-fail-move [:move [2 5] [2 4]]
         result (turn/process-actions board :p1 [clear-obstacle-attack should-fail-move])]
     (is (failed? result))))
+
+(deftest move-using-previous-occupied-space
+  (let [board (-> (create-board)
+                  (place-element [8 4] (create-element :p1 panther 100 :north))
+                  (place-element [7 4] (create-element :p1 nova 25 :north)))
+        move1 [:move [7 4] [7 5]]
+        move2 [:move [8 4] [7 4]]
+        result (turn/process-actions board :p1 [move1 move2])]
+    (is (succeeded? result))
+    (is (= "TurnOK" (:message result)))))
 
