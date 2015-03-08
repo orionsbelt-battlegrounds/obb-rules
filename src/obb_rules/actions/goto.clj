@@ -83,18 +83,28 @@
               result
               (recur board player from target cost travelled (rest possible))))))))
 
+(defn- resolve-adjacent-move
+  "Id the target is adjacent to the source, tries to run a :move action."
+  [board player from target quantity]
+  (when (board/adjacent? from target)
+    (let [action (move/build-move [from target quantity])
+          result (action board player)]
+      (if (= "MovementTypeFail" (result/result-message result))
+        nil ; on this case, we can't resolve the move, try another upstream
+        result))))
+
 (defn- resolve-goto
   "Tries to find the best path between the given coordinates. Fails if can't
   find it, or the :move action would fail for this scenario."
   [from target quantity]
   (fn gotoer [board player]
-    (if-let [result (find-path board player from target 0 #{} nil)]
-      result
-      (result/action-failed "NoPathToTarget"))))
+    (if-let [adjacent-result (resolve-adjacent-move board player from target quantity)]
+      adjacent-result
+      (if-let [result (find-path board player from target 0 #{} nil)]
+        result
+        (result/action-failed "NoPathToTarget")))))
 
 (defn build-goto
   "Builds a goto action on a board"
   [[from to quantity]]
-  (if (board/adjacent? from to)
-    (move/build-move [from to quantity])
-    (resolve-goto from to quantity)))
+  (resolve-goto from to quantity))

@@ -10,6 +10,7 @@
 (def rain (get-unit-by-name "rain"))
 (def crusader (get-unit-by-name "crusader"))
 (def nova (get-unit-by-name "nova"))
+(def toxic (get-unit-by-name "toxic"))
 (def pretorian (get-unit-by-name "pretorian"))
 (def move-down (build-action [:move [2 2] [2 3] 10]))
 (def rain-element (create-element :p1 rain 10 :south))
@@ -111,7 +112,9 @@
 (deftest coordinate-is-from-another-player
   (let [action (build-action [:goto [1 1] [2 2] 10])
         element (create-element :p2 rain 10 :south)
-        board (place-element (create-board) [1 1] element)
+        board (-> (create-board)
+                  (place-element [1 1] (create-element :p1 rain 10 :south [1 1]))
+                  (place-element [2 2] (create-element :p2 rain 10 :south [2 2])))
         result (action board :p1)]
     (is (failed? result))
     (is (= "NotOwnedElement" (result-message result)))))
@@ -138,3 +141,12 @@
         result (move-down board :p1)]
     (is (failed? result))
     (is (= "EmptyCoordinate" (result-message result)))))
+
+(deftest resolve-to-goto-even-if-adjacent
+  (let [action (build-action [:goto [3 3] [4 4] 10])
+        element (create-element :p1 toxic 10 :south [3 3])
+        new-board (place-element board [3 3] element)
+        result (action new-board :p1)]
+    (is (succeeded? result))
+    (is (= "OK" (result-message result)))))
+
