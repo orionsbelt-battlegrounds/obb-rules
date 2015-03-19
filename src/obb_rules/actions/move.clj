@@ -86,7 +86,12 @@
 (defn- coordinate-coll-to-map
   "Adds coordinate info with cost to the given map"
   [coll coords cost]
-  (reduce (fn [container coord] (assoc container coord cost)) coll coords))
+  (reduce (fn [container coord]
+            (let [curr-cost (get container coord)]
+              (if (or (nil? curr-cost) (< cost curr-cost))
+                (assoc container coord cost)
+                container)))
+          coll coords))
 
 (defn find-all-possible-destinations-with-cost
   "Returns all possible destinations on a complete turn, including cost"
@@ -94,7 +99,7 @@
    (let [mov-cost (element/element-cost element)
          start-positions (find-possible-destinations board element)
          coll (coordinate-coll-to-map {} start-positions mov-cost)]
-     (find-all-possible-destinations-with-cost board element mov-cost mov-cost start-positions coll)))
+     (find-all-possible-destinations-with-cost board element mov-cost mov-cost (set start-positions) coll)))
   ([board element mov-cost curr-cost curr-coords all]
    (if (> (+ curr-cost mov-cost) laws/max-action-points)
      (dissoc all (element/element-coordinate element))

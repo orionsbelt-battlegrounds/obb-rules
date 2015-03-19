@@ -274,6 +274,20 @@
     (is (= 7 (count all)))
     (is (some #{[3 1] [2 2] [4 2] [2 4] [4 4] [1 3] [3 3]} all))))
 
+(deftest find-all-possible-destinations-with-cost-pretorian
+  (let [board (create-board)
+        element (create-element :p1 pretorian 10 :south [1 1])
+        all (find-all-possible-destinations-with-cost board element)]
+    (is all)
+    (is (= 7 (count all)))
+    (is (= 2 (get all [2 2])))
+    (is (= 4 (get all [1 3])))
+    (is (= 4 (get all [3 1])))
+    (is (= 4 (get all [3 3])))
+    (is (= 6 (get all [4 2])))
+    (is (= 6 (get all [4 4])))
+    (is (= 6 (get all [2 4])))))
+
 (deftest find-all-possible-destinations-rain
   (let [board (create-board)
         element (create-element :p1 rain 10 :south [4 4])
