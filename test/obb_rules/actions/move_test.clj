@@ -281,6 +281,13 @@
     (is all)
     (is (= 63 (count all)))))
 
+(deftest find-all-possible-destinations-with-cost-rain
+  (let [board (create-board)
+        element (create-element :p1 rain 10 :south [4 4])
+        all (find-all-possible-destinations-with-cost board element)]
+    (is all)
+    (is (= 63 (count all)))))
+
 (deftest move-using-destroyed-space
   (let [board (-> (create-board)
                   (place-element [2 6] (create-element :p1 eagle 50 :north))
