@@ -83,6 +83,26 @@
            all (into all current-pos)]
        (recur board element mov-cost (+ curr-cost mov-cost) current-pos all)))))
 
+(defn- coordinate-coll-to-map
+  "Adds coordinate info with cost to the given map"
+  [coll coords cost]
+  (reduce (fn [container coord] (assoc container coord cost)) coll coords))
+
+(defn find-all-possible-destinations-with-cost
+  "Returns all possible destinations on a complete turn, including cost"
+  ([board element]
+   (let [mov-cost (element/element-cost element)
+         start-positions (find-possible-destinations board element)
+         coll (coordinate-coll-to-map {} start-positions mov-cost)]
+     (find-all-possible-destinations-with-cost board element mov-cost mov-cost coll coll)))
+  ([board element mov-cost curr-cost curr-coords all]
+   (if (> (+ curr-cost mov-cost) laws/max-action-points)
+     (dissoc all (element/element-coordinate element))
+     (let [curr-cost (+ curr-cost mov-cost)
+           current-pos (tier-positions board element curr-coords)
+           all (coordinate-coll-to-map all current-pos curr-cost)]
+       (recur board element mov-cost curr-cost current-pos all)))))
+
 (defn- process-move
   "Processes the actual move"
   [board efrom from eto to quantity]

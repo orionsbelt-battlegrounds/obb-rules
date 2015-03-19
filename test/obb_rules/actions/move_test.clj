@@ -258,6 +258,14 @@
     (is (= 1 (count all)))
     (is (= [1 2] (first all)))))
 
+(deftest find-all-possible-destinations-with-cost-crusader
+  (let [board (create-board)
+        element (create-element :p1 crusader 1 :south [1 1])
+        all (find-all-possible-destinations-with-cost board element)]
+    (is all)
+    (is (= 1 (count all)))
+    (is (= 4 (get all [1 2])))))
+
 (deftest find-all-possible-destinations-pretorian
   (let [board (create-board)
         element (create-element :p1 pretorian 10 :south [1 1])
