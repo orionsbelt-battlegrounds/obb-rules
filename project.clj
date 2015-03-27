@@ -16,9 +16,15 @@
   :scm {:name "git"
         :url "git@github.com:orionsbelt-battlegrounds/obb-rules.git"}
 
+  :aliases {"all" ["with-profile" "dev:1.6:1.7" "test"]}
+
   :profiles {:production {
                    :global-vars {*warn-on-reflection* false
                                  *assert* false}}
+             :1.6 {:dependencies [[org.clojure/clojure "1.6.0"]
+                                  [org.clojure/test.check "0.6.2"]]}
+             :1.7 {:dependencies [[org.clojure/clojure "1.7.0-alpha5"]
+                                  [org.clojure/test.check "0.6.2"]]}
              :dev {:dependencies [[org.clojure/test.check "0.6.2"]
                                   [criterium "0.4.3"]]
                    :global-vars {*warn-on-reflection* false
