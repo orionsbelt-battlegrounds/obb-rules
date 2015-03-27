@@ -5,6 +5,7 @@ script: lein all
 notifications:
   slack: orionsbelt-game:QT4unoZGVBOvbSWiil1o1bm0
 jdk:
+  - openjdk6
   - openjdk7
   - oraclejdk7
   - oraclejdk8
