@@ -7,7 +7,7 @@
             :distribution :repo
             :comments     "Copyright 2011-2014 Pedro Santos All Rights Reserved."}
 
-  :dependencies [[org.clojure/clojure "1.6.0"]
+  :dependencies [[org.clojure/clojure "1.7.0-alpha6"]
                  [org.clojure/math.numeric-tower "0.0.4"]]
 
   :source-paths ["src"]
@@ -23,7 +23,7 @@
                                  *assert* false}}
              :1.6 {:dependencies [[org.clojure/clojure "1.6.0"]
                                   [org.clojure/test.check "0.6.2"]]}
-             :1.7 {:dependencies [[org.clojure/clojure "1.7.0-alpha5"]
+             :1.7 {:dependencies [[org.clojure/clojure "1.7.0-alpha6"]
                                   [org.clojure/test.check "0.6.2"]]}
              :dev {:dependencies [[org.clojure/test.check "0.6.2"]
                                   [criterium "0.4.3"]]
