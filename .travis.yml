@@ -1,5 +1,7 @@
 language: clojure
-env: OBB_SCENARIOS_TO_TEST=10
+env:
+- OBB_SCENARIOS_TO_TEST=10
+- BOOT_CLOJURE_VERSION=1.7.0-RC2
 install:
 - wget -O boot https://github.com/boot-clj/boot/releases/download/2.0.0-rc9/boot.sh
 - chmod 755 boot
