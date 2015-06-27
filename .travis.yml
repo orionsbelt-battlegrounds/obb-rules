@@ -4,8 +4,7 @@ install:
 - wget -O boot https://github.com/boot-clj/boot/releases/download/2.0.0-rc9/boot.sh
 - chmod 755 boot
 - ./boot -V
-lein: lein2
-script: lein test && ./boot test-clj && ./boot test-cljs
+script: ./boot test-clj && ./boot test-cljs
 jdk:
   - oraclejdk8
 after_script:
