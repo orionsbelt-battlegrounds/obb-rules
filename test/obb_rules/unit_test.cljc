@@ -1,10 +1,13 @@
 (ns obb-rules.unit-test
-  (:use clojure.test obb-rules.unit))
+  (:require 
+    [obb-rules.unit :as unit]
+    [cljs.test :refer-macros [deftest testing is]]))
 
-(deftest unit
+(deftest unit-smoke
   (testing "get-units"
-    (is (= 20 (count (get-units))))))
+    (is (= 20 (count (unit/get-units))))))
 
+(comment
 (defn- test-unit
   [name code]
   (let [unit (get-unit-by-name name)
@@ -56,3 +59,4 @@
       (is (not (unit-present? :worm units))))))
 
 (verify-units)
+)

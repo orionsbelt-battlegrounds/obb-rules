@@ -1,32 +1,32 @@
 (set-env!
- :source-paths #{"src" "test"}
-  :dependencies '[[org.clojure/clojure "1.7.0-RC2"]
-                  [adzerk/boot-cljs "0.0-3308-0"]
-                  [adzerk/boot-test "1.0.4" :scope "test"]
-                  [org.clojure/test.check "0.7.0" :score "test"]
-                  [boot-cljs-test/node-runner "0.1.0" :scope "test"]
-                  [org.clojure/math.numeric-tower "0.0.4"]])
+ :source-paths   #{"src" "test"}
+ :resource-paths #{"html"}
+ :dependencies '[[adzerk/boot-cljs      "0.0-3308-0" ]
+                 [adzerk/boot-cljs-repl "0.1.10-SNAPSHOT" ]
+                 [adzerk/boot-reload    "0.2.6"      ]
+                 [boot-cljs-test/node-runner "0.1.0" ]
+                 [org.clojure/clojurescript "0.0-3308"  ]
+                 [org.clojure/clojure "1.7.0-RC2"]
+                 [pandeiro/boot-http    "0.3.0"      :scope "test"]])
 
-(require '[adzerk.boot-test :refer :all]
-         '[boot-cljs-test.node-runner :refer :all]
-         '[adzerk.boot-cljs :refer :all])
+(require
+ '[adzerk.boot-cljs      :refer :all]
+ '[adzerk.boot-cljs-repl :refer [cljs-repl start-repl]]
+ '[boot-cljs-test.node-runner :refer :all]
+ '[adzerk.boot-reload    :refer [reload]]
+ '[pandeiro.http         :refer [serve]])
 
-(task-options!
-  pom {:project 'my-project
-       :version "0.1.0"}
-  jar {:manifest {"Foo" "bar"}})
+(deftask dev []
+  (set-env! :source-paths #{"src" "test"})
+  (comp #_(serve :dir "target/")
+        (watch)
+        (speak)
+        (reload :on-jsload 'app.core/main)
+        (cljs-repl)
+        (cljs-test-node-runner :namespaces '[obb-rules.unit-test])
+        (cljs :source-map true :optimizations :none)
+        (run-cljs-test)))
 
-  (deftask build
-  "Build my project."
-  []
-  (comp (pom) (jar) (install)))
-
-
-  (deftask cljs-auto-test []
-    (comp (watch)
-    (speak)
-      (cljs-test-node-runner) ;; put it before `cljs` task
-      (cljs :source-map true
-                    :optimizations :none)
-                            (run-cljs-test) ;; put it after `cljs` task
-                            ))
+(deftask build []
+  (set-env! :source-paths #{"src"})
+  (comp (cljs :optimizations :advanced)))
