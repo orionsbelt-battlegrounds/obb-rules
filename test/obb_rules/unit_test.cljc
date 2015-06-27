@@ -1,6 +1,7 @@
 (ns obb-rules.unit-test
-  (:require 
+  (:require
     [obb-rules.unit :as unit]
+    [clojure.test :refer [deftest testing is]]
     [cljs.test :refer-macros [deftest testing is]]))
 
 (deftest unit-smoke
