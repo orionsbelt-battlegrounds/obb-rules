@@ -22,7 +22,7 @@
                          "phantom/test.js"
                           "test.html"]}
               :builds [{:id "prod"
-                        :source-paths ["src" "test"]
+                        :source-paths ["src"]
                         :compiler {:output-to "resources/public/js/main.js"
                                    :optimizations :whitespace
                                    :pretty-print true}}
