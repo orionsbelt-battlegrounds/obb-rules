@@ -1,6 +1,7 @@
 (ns obb-rules.test-runner
   (:require [cljs.test :refer-macros [run-tests] :refer [empty-env report]]
-            [obb-rules.unit-test]))
+            [obb-rules.unit-test]
+            [obb-rules.element-test]))
 
 (enable-console-print!)
 
@@ -31,7 +32,8 @@
 
 (defn runner
   []
-  (run-tests (empty-env ::test) 'obb-rules.unit-test)
+  (run-tests (empty-env ::test) 'obb-rules.unit-test
+                                'obb-rules.element-test)
   ;; The phantomjs test runner expects this variable to be set. See
   ;; phantom/test.js.
   (set! (.-rand_cljc_error_count js/window) @error-count))

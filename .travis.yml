@@ -3,7 +3,7 @@ env:
   global:
     - OBB_SCENARIOS_TO_TEST=10
 lein: lein2
-script: lein test && lein with-profile cljs cljsbuild test
+script: script/test
 jdk:
   - oraclejdk8
 after_script:
