@@ -1,8 +1,11 @@
 (ns obb-rules.translator-test
-  (:require [obb-rules.translator :as translator]
-            [obb-rules.unit :as unit]
-            [obb-rules.element :as element])
-  (:use clojure.test obb-rules.element obb-rules.unit obb-rules.board))
+  (:require
+    [obb-rules.translator :as translator]
+    [obb-rules.unit :as unit]
+    [obb-rules.element :as element]
+    [obb-rules.board :as board]
+    #?(:clj [clojure.test :refer [deftest testing is]]
+       :cljs [cljs.test :refer-macros [deftest testing is]])))
 
 (def unit (unit/get-unit-by-name "rain"))
 
@@ -68,15 +71,15 @@
     (is (= [[:move [8 8] [7 7] 1]] (translator/actions :p2 actions)))))
 
 (deftest translate-board-test
-  (let [e1 (create-element :p1 (get-unit-by-name "rain") 20 :south)
-        e2 (create-element :p2 (get-unit-by-name "rain") 20 :north)
-        board (-> (create-board)
-                  (place-element [1 1] e1)
-                  (place-element [2 2] e2))]
+  (let [e1 (element/create-element :p1 (unit/get-unit-by-name "rain") 20 :south)
+        e2 (element/create-element :p2 (unit/get-unit-by-name "rain") 20 :north)
+        board (-> (board/create-board)
+                  (board/place-element [1 1] e1)
+                  (board/place-element [2 2] e2))]
     (testing ":p1"
       (is (= board (translator/board :p1 board))))
     (testing ":p2"
       (let [p2-board (translator/board :p2 board)]
-        (is (not (get-element p2-board [1 1])))
+        (is (not (board/get-element p2-board [1 1])))
         (is (not= board p2-board))
         (is (= board (translator/board :p2 p2-board)))))))

@@ -2,8 +2,6 @@
   (:require
     [obb-rules.simplifier :as simplify]
     [obb-rules.unit :as unit]
-    ;[obb-rules.element :as element]
-    ;[obb-rules.board :as board]
     #?(:clj [clojure.test :refer [deftest testing is]]
        :cljs [cljs.test :refer-macros [deftest testing is]])))
 

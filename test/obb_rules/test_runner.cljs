@@ -3,6 +3,7 @@
             [obb-rules.unit-test]
             [obb-rules.board-test]
             [obb-rules.simplifier-test]
+            [obb-rules.translator-test]
             [obb-rules.element-test]))
 
 (enable-console-print!)
@@ -37,6 +38,7 @@
   (run-tests (empty-env ::test) 'obb-rules.unit-test
                                 'obb-rules.element-test
                                 'obb-rules.board-test
+                                'obb-rules.translator-test
                                 'obb-rules.simplifier-test)
   ;; The phantomjs test runner expects this variable to be set. See
   ;; phantom/test.js.
