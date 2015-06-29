@@ -3,7 +3,8 @@ lein test
 
 # lein won't load cljc tests, so we need this for the moment
 lein test obb-rules.unit-test \
-          obb-rules.element-test
+          obb-rules.element-test |
+          obb-rules.board-test
 
 #test cljs part
 lein with-profile cljs cljsbuild test

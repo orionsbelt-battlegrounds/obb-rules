@@ -31537,51 +31537,11 @@ goog.require("cljs.core");
 obb_rules.units.pretorian.metadata = cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null, "category", "category", -593092832), new cljs.core.Keyword(null, "displacement", "displacement", -1309600669), new cljs.core.Keyword(null, "name", "name", 1843675177), new cljs.core.Keyword(null, "value", "value", 305978217), new cljs.core.Keyword(null, "movement-cost", "movement-cost", -716301045), new cljs.core.Keyword(null, "after-hit", "after-hit", 491119628), new cljs.core.Keyword(null, "type", 
 "type", 1174270348), new cljs.core.Keyword(null, "defense", "defense", 1755014992), new cljs.core.Keyword(null, "code", "code", 1586293142), new cljs.core.Keyword(null, "movement-type", "movement-type", -1340819145), new cljs.core.Keyword(null, "attack", "attack", 1957061788), new cljs.core.Keyword(null, "range", "range", 1639692286)], [new cljs.core.Keyword(null, "medium", "medium", -1864319384), new cljs.core.Keyword(null, "air", "air", -104121788), "pretorian", 48, 2, new cljs.core.PersistentVector(null, 
 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "strikeback", "strikeback", 833058309)], null)], null), new cljs.core.Keyword(null, "mechanic", "mechanic", -1805001628), 5550, "h", new cljs.core.Keyword(null, "diagonal", "diagonal", -1969989146), 450, 3]);
-goog.provide("obb_rules.units.kamikaze");
-goog.require("cljs.core");
-obb_rules.units.kamikaze.metadata = cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null, "category", "category", -593092832), new cljs.core.Keyword(null, "displacement", "displacement", -1309600669), new cljs.core.Keyword(null, "name", "name", 1843675177), new cljs.core.Keyword(null, "value", "value", 305978217), new cljs.core.Keyword(null, "movement-cost", "movement-cost", -716301045), new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "defense", 
-"defense", 1755014992), new cljs.core.Keyword(null, "code", "code", 1586293142), new cljs.core.Keyword(null, "movement-type", "movement-type", -1340819145), new cljs.core.Keyword(null, "attack", "attack", 1957061788), new cljs.core.Keyword(null, "range", "range", 1639692286)], [new cljs.core.Keyword(null, "medium", "medium", -1864319384), new cljs.core.Keyword(null, "air", "air", -104121788), "kamikaze", 60, 1, new cljs.core.Keyword(null, "mechanic", "mechanic", -1805001628), 1, "k", new cljs.core.Keyword(null, 
-"all", "all", 892129742), 4E3, 1]);
 goog.provide("obb_rules.units.panther");
 goog.require("cljs.core");
 obb_rules.units.panther.metadata = cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null, "category", "category", -593092832), new cljs.core.Keyword(null, "displacement", "displacement", -1309600669), new cljs.core.Keyword(null, "name", "name", 1843675177), new cljs.core.Keyword(null, "value", "value", 305978217), new cljs.core.Keyword(null, "movement-cost", "movement-cost", -716301045), new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "after-attack", 
 "after-attack", -1103058896), new cljs.core.Keyword(null, "defense", "defense", 1755014992), new cljs.core.Keyword(null, "code", "code", 1586293142), new cljs.core.Keyword(null, "movement-type", "movement-type", -1340819145), new cljs.core.Keyword(null, "attack", "attack", 1957061788), new cljs.core.Keyword(null, "range", "range", 1639692286)], [new cljs.core.Keyword(null, "light", "light", 1918998747), new cljs.core.Keyword(null, "ground", "ground", 1193572934), "panther", 11, 1, new cljs.core.Keyword(null, 
 "mechanic", "mechanic", -1805001628), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "rebound", "rebound", -1472887389)], null)], null), 300, "p", new cljs.core.Keyword(null, "all", "all", 892129742), 300, 1]);
-goog.provide("obb_rules.units.raptor");
-goog.require("cljs.core");
-obb_rules.units.raptor.metadata = cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null, "category", "category", -593092832), new cljs.core.Keyword(null, "displacement", "displacement", -1309600669), new cljs.core.Keyword(null, "name", "name", 1843675177), new cljs.core.Keyword(null, "value", "value", 305978217), new cljs.core.Keyword(null, "movement-cost", "movement-cost", -716301045), new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "defense", "defense", 
-1755014992), new cljs.core.Keyword(null, "bonus", "bonus", -1684391149), new cljs.core.Keyword(null, "code", "code", 1586293142), new cljs.core.Keyword(null, "movement-type", "movement-type", -1340819145), new cljs.core.Keyword(null, "attack", "attack", 1957061788), new cljs.core.Keyword(null, "range", "range", 1639692286)], [new cljs.core.Keyword(null, "light", "light", 1918998747), new cljs.core.Keyword(null, "air", "air", -104121788), "raptor", 20, 1, new cljs.core.Keyword(null, "mechanic", "mechanic", 
--1805001628), 400, new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "attack", "attack", 1957061788), new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "category", "category", -593092832), new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "light", "light", 1918998747), 1E3], null)], null)], null), "rp", new cljs.core.Keyword(null, "all", "all", 892129742), 280, 2]);
-goog.provide("obb_rules.units.nova");
-goog.require("cljs.core");
-obb_rules.units.nova.metadata = cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null, "category", "category", -593092832), new cljs.core.Keyword(null, "displacement", "displacement", -1309600669), new cljs.core.Keyword(null, "name", "name", 1843675177), new cljs.core.Keyword(null, "value", "value", 305978217), new cljs.core.Keyword(null, "movement-cost", "movement-cost", -716301045), new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "defense", "defense", 
-1755014992), new cljs.core.Keyword(null, "bonus", "bonus", -1684391149), new cljs.core.Keyword(null, "code", "code", 1586293142), new cljs.core.Keyword(null, "movement-type", "movement-type", -1340819145), new cljs.core.Keyword(null, "attack", "attack", 1957061788), new cljs.core.Keyword(null, "range", "range", 1639692286)], [new cljs.core.Keyword(null, "heavy", "heavy", 2126165008), new cljs.core.Keyword(null, "air", "air", -104121788), "nova", 70, 4, new cljs.core.Keyword(null, "mechanic", "mechanic", 
--1805001628), 1900, new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "attack", "attack", 1957061788), new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "organic", "organic", -1424795777), 4E3], null)], null)], null), "n", new cljs.core.Keyword(null, "normal", "normal", -1519123858), 2700, 5]);
-goog.provide("obb_rules.units.heavy_seeker");
-goog.require("cljs.core");
-obb_rules.units.heavy_seeker.metadata = cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null, "category", "category", -593092832), new cljs.core.Keyword(null, "displacement", "displacement", -1309600669), new cljs.core.Keyword(null, "name", "name", 1843675177), new cljs.core.Keyword(null, "value", "value", 305978217), new cljs.core.Keyword(null, "movement-cost", "movement-cost", -716301045), new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "defense", 
-"defense", 1755014992), new cljs.core.Keyword(null, "code", "code", 1586293142), new cljs.core.Keyword(null, "movement-type", "movement-type", -1340819145), new cljs.core.Keyword(null, "attack", "attack", 1957061788), new cljs.core.Keyword(null, "range", "range", 1639692286)], [new cljs.core.Keyword(null, "heavy", "heavy", 2126165008), new cljs.core.Keyword(null, "air", "air", -104121788), "heavy-seeker", 65, 4, new cljs.core.Keyword(null, "organic", "organic", -1424795777), 2200, "hr", new cljs.core.Keyword(null, 
-"diagonal", "diagonal", -1969989146), 2500, 5]);
-goog.provide("obb_rules.units.eagle");
-goog.require("cljs.core");
-obb_rules.units.eagle.metadata = cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null, "category", "category", -593092832), new cljs.core.Keyword(null, "displacement", "displacement", -1309600669), new cljs.core.Keyword(null, "attack-type", "attack-type", -639911421), new cljs.core.Keyword(null, "name", "name", 1843675177), new cljs.core.Keyword(null, "value", "value", 305978217), new cljs.core.Keyword(null, "movement-cost", "movement-cost", -716301045), new cljs.core.Keyword(null, 
-"type", "type", 1174270348), new cljs.core.Keyword(null, "defense", "defense", 1755014992), new cljs.core.Keyword(null, "code", "code", 1586293142), new cljs.core.Keyword(null, "movement-type", "movement-type", -1340819145), new cljs.core.Keyword(null, "attack", "attack", 1957061788), new cljs.core.Keyword(null, "range", "range", 1639692286)], [new cljs.core.Keyword(null, "medium", "medium", -1864319384), new cljs.core.Keyword(null, "air", "air", -104121788), new cljs.core.Keyword(null, "catapult", 
-"catapult", -369050119), "eagle", 70, 2, new cljs.core.Keyword(null, "mechanic", "mechanic", -1805001628), 1200, "e", new cljs.core.Keyword(null, "diagonal", "diagonal", -1969989146), 1500, 3]);
-goog.provide("obb_rules.main");
-goog.require("cljs.core");
-obb_rules.main.main = function obb_rules$main$main() {
-  return cljs.core.println.call(null, "Main");
-};
-goog.provide("obb_rules.units.anubis");
-goog.require("cljs.core");
-obb_rules.units.anubis.metadata = cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null, "category", "category", -593092832), new cljs.core.Keyword(null, "displacement", "displacement", -1309600669), new cljs.core.Keyword(null, "name", "name", 1843675177), new cljs.core.Keyword(null, "value", "value", 305978217), new cljs.core.Keyword(null, "movement-cost", "movement-cost", -716301045), new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "defense", "defense", 
-1755014992), new cljs.core.Keyword(null, "bonus", "bonus", -1684391149), new cljs.core.Keyword(null, "code", "code", 1586293142), new cljs.core.Keyword(null, "movement-type", "movement-type", -1340819145), new cljs.core.Keyword(null, "attack", "attack", 1957061788), new cljs.core.Keyword(null, "range", "range", 1639692286)], [new cljs.core.Keyword(null, "light", "light", 1918998747), new cljs.core.Keyword(null, "air", "air", -104121788), "anubis", 7, 1, new cljs.core.Keyword(null, "mechanic", "mechanic", 
--1805001628), 500, new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "defense", "defense", 1755014992), new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "category", "category", -593092832), new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "heavy", "heavy", 2126165008), 1600], null)], null)], null), "a", new cljs.core.Keyword(null, "all", "all", 892129742), 200, 1]);
-goog.provide("obb_rules.units.worm");
-goog.require("cljs.core");
-obb_rules.units.worm.metadata = cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null, "category", "category", -593092832), new cljs.core.Keyword(null, "displacement", "displacement", -1309600669), new cljs.core.Keyword(null, "name", "name", 1843675177), new cljs.core.Keyword(null, "value", "value", 305978217), new cljs.core.Keyword(null, "movement-cost", "movement-cost", -716301045), new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "defense", "defense", 
-1755014992), new cljs.core.Keyword(null, "code", "code", 1586293142), new cljs.core.Keyword(null, "movement-type", "movement-type", -1340819145), new cljs.core.Keyword(null, "attack", "attack", 1957061788), new cljs.core.Keyword(null, "range", "range", 1639692286)], [new cljs.core.Keyword(null, "medium", "medium", -1864319384), new cljs.core.Keyword(null, "ground", "ground", 1193572934), "worm", 25, 2, new cljs.core.Keyword(null, "organic", "organic", -1424795777), 1200, "w", new cljs.core.Keyword(null, 
-"all", "all", 892129742), 1200, 3]);
 goog.provide("obb_rules.units.crusader");
 goog.require("cljs.core");
 obb_rules.units.crusader.metadata = cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null, "category", "category", -593092832), new cljs.core.Keyword(null, "displacement", "displacement", -1309600669), new cljs.core.Keyword(null, "name", "name", 1843675177), new cljs.core.Keyword(null, "value", "value", 305978217), new cljs.core.Keyword(null, "movement-cost", "movement-cost", -716301045), new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "defense", 
@@ -31593,6 +31553,11 @@ obb_rules.units.doomer.metadata = cljs.core.PersistentHashMap.fromArrays([new cl
 "type", "type", 1174270348), new cljs.core.Keyword(null, "after-attack", "after-attack", -1103058896), new cljs.core.Keyword(null, "defense", "defense", 1755014992), new cljs.core.Keyword(null, "code", "code", 1586293142), new cljs.core.Keyword(null, "movement-type", "movement-type", -1340819145), new cljs.core.Keyword(null, "attack", "attack", 1957061788), new cljs.core.Keyword(null, "range", "range", 1639692286)], [new cljs.core.Keyword(null, "heavy", "heavy", 2126165008), new cljs.core.Keyword(null, 
 "air", "air", -104121788), new cljs.core.Keyword(null, "catapult", "catapult", -369050119), "doomer", 68, 3, new cljs.core.Keyword(null, "mechanic", "mechanic", -1805001628), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "rebound", "rebound", -1472887389)], null)], null), 500, "doo", new cljs.core.Keyword(null, "diagonal", "diagonal", -1969989146), 6E3, 
 3]);
+goog.provide("obb_rules.units.eagle");
+goog.require("cljs.core");
+obb_rules.units.eagle.metadata = cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null, "category", "category", -593092832), new cljs.core.Keyword(null, "displacement", "displacement", -1309600669), new cljs.core.Keyword(null, "attack-type", "attack-type", -639911421), new cljs.core.Keyword(null, "name", "name", 1843675177), new cljs.core.Keyword(null, "value", "value", 305978217), new cljs.core.Keyword(null, "movement-cost", "movement-cost", -716301045), new cljs.core.Keyword(null, 
+"type", "type", 1174270348), new cljs.core.Keyword(null, "defense", "defense", 1755014992), new cljs.core.Keyword(null, "code", "code", 1586293142), new cljs.core.Keyword(null, "movement-type", "movement-type", -1340819145), new cljs.core.Keyword(null, "attack", "attack", 1957061788), new cljs.core.Keyword(null, "range", "range", 1639692286)], [new cljs.core.Keyword(null, "medium", "medium", -1864319384), new cljs.core.Keyword(null, "air", "air", -104121788), new cljs.core.Keyword(null, "catapult", 
+"catapult", -369050119), "eagle", 70, 2, new cljs.core.Keyword(null, "mechanic", "mechanic", -1805001628), 1200, "e", new cljs.core.Keyword(null, "diagonal", "diagonal", -1969989146), 1500, 3]);
 goog.provide("obb_rules.units.driller");
 goog.require("cljs.core");
 obb_rules.units.driller.metadata = cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null, "category", "category", -593092832), new cljs.core.Keyword(null, "displacement", "displacement", -1309600669), new cljs.core.Keyword(null, "name", "name", 1843675177), new cljs.core.Keyword(null, "value", "value", 305978217), new cljs.core.Keyword(null, "movement-cost", "movement-cost", -716301045), new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "after-attack", 
@@ -31615,6 +31580,11 @@ goog.require("cljs.core");
 obb_rules.units.fenix.metadata = cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null, "category", "category", -593092832), new cljs.core.Keyword(null, "displacement", "displacement", -1309600669), new cljs.core.Keyword(null, "name", "name", 1843675177), new cljs.core.Keyword(null, "value", "value", 305978217), new cljs.core.Keyword(null, "movement-cost", "movement-cost", -716301045), new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "after-attack", 
 "after-attack", -1103058896), new cljs.core.Keyword(null, "defense", "defense", 1755014992), new cljs.core.Keyword(null, "code", "code", 1586293142), new cljs.core.Keyword(null, "movement-type", "movement-type", -1340819145), new cljs.core.Keyword(null, "attack", "attack", 1957061788), new cljs.core.Keyword(null, "range", "range", 1639692286)], [new cljs.core.Keyword(null, "heavy", "heavy", 2126165008), new cljs.core.Keyword(null, "air", "air", -104121788), "fenix", 100, 3, new cljs.core.Keyword(null, 
 "mechanic", "mechanic", -1805001628), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "rebound", "rebound", -1472887389)], null)], null), 2950, "f", new cljs.core.Keyword(null, "normal", "normal", -1519123858), 2500, 4]);
+goog.provide("obb_rules.units.raptor");
+goog.require("cljs.core");
+obb_rules.units.raptor.metadata = cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null, "category", "category", -593092832), new cljs.core.Keyword(null, "displacement", "displacement", -1309600669), new cljs.core.Keyword(null, "name", "name", 1843675177), new cljs.core.Keyword(null, "value", "value", 305978217), new cljs.core.Keyword(null, "movement-cost", "movement-cost", -716301045), new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "defense", "defense", 
+1755014992), new cljs.core.Keyword(null, "bonus", "bonus", -1684391149), new cljs.core.Keyword(null, "code", "code", 1586293142), new cljs.core.Keyword(null, "movement-type", "movement-type", -1340819145), new cljs.core.Keyword(null, "attack", "attack", 1957061788), new cljs.core.Keyword(null, "range", "range", 1639692286)], [new cljs.core.Keyword(null, "light", "light", 1918998747), new cljs.core.Keyword(null, "air", "air", -104121788), "raptor", 20, 1, new cljs.core.Keyword(null, "mechanic", "mechanic", 
+-1805001628), 400, new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "attack", "attack", 1957061788), new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "category", "category", -593092832), new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "light", "light", 1918998747), 1E3], null)], null)], null), "rp", new cljs.core.Keyword(null, "all", "all", 892129742), 280, 2]);
 goog.provide("obb_rules.units.scarab");
 goog.require("cljs.core");
 obb_rules.units.scarab.metadata = cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null, "category", "category", -593092832), new cljs.core.Keyword(null, "displacement", "displacement", -1309600669), new cljs.core.Keyword(null, "name", "name", 1843675177), new cljs.core.Keyword(null, "value", "value", 305978217), new cljs.core.Keyword(null, "movement-cost", "movement-cost", -716301045), new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "defense", "defense", 
@@ -31625,11 +31595,36 @@ goog.require("cljs.core");
 obb_rules.units.rain.metadata = cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null, "category", "category", -593092832), new cljs.core.Keyword(null, "displacement", "displacement", -1309600669), new cljs.core.Keyword(null, "name", "name", 1843675177), new cljs.core.Keyword(null, "value", "value", 305978217), new cljs.core.Keyword(null, "movement-cost", "movement-cost", -716301045), new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "defense", "defense", 
 1755014992), new cljs.core.Keyword(null, "bonus", "bonus", -1684391149), new cljs.core.Keyword(null, "code", "code", 1586293142), new cljs.core.Keyword(null, "movement-type", "movement-type", -1340819145), new cljs.core.Keyword(null, "attack", "attack", 1957061788), new cljs.core.Keyword(null, "range", "range", 1639692286)], [new cljs.core.Keyword(null, "light", "light", 1918998747), new cljs.core.Keyword(null, "air", "air", -104121788), "rain", 4, 1, new cljs.core.Keyword(null, "mechanic", "mechanic", 
 -1805001628), 70, new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "attack", "attack", 1957061788), new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "category", "category", -593092832), new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "heavy", "heavy", 2126165008), 1200], null)], null)], null), "r", new cljs.core.Keyword(null, "all", "all", 892129742), 120, 1]);
+goog.provide("obb_rules.units.anubis");
+goog.require("cljs.core");
+obb_rules.units.anubis.metadata = cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null, "category", "category", -593092832), new cljs.core.Keyword(null, "displacement", "displacement", -1309600669), new cljs.core.Keyword(null, "name", "name", 1843675177), new cljs.core.Keyword(null, "value", "value", 305978217), new cljs.core.Keyword(null, "movement-cost", "movement-cost", -716301045), new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "defense", "defense", 
+1755014992), new cljs.core.Keyword(null, "bonus", "bonus", -1684391149), new cljs.core.Keyword(null, "code", "code", 1586293142), new cljs.core.Keyword(null, "movement-type", "movement-type", -1340819145), new cljs.core.Keyword(null, "attack", "attack", 1957061788), new cljs.core.Keyword(null, "range", "range", 1639692286)], [new cljs.core.Keyword(null, "light", "light", 1918998747), new cljs.core.Keyword(null, "air", "air", -104121788), "anubis", 7, 1, new cljs.core.Keyword(null, "mechanic", "mechanic", 
+-1805001628), 500, new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "defense", "defense", 1755014992), new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "category", "category", -593092832), new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "heavy", "heavy", 2126165008), 1600], null)], null)], null), "a", new cljs.core.Keyword(null, "all", "all", 892129742), 200, 1]);
+goog.provide("obb_rules.units.kamikaze");
+goog.require("cljs.core");
+obb_rules.units.kamikaze.metadata = cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null, "category", "category", -593092832), new cljs.core.Keyword(null, "displacement", "displacement", -1309600669), new cljs.core.Keyword(null, "name", "name", 1843675177), new cljs.core.Keyword(null, "value", "value", 305978217), new cljs.core.Keyword(null, "movement-cost", "movement-cost", -716301045), new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "defense", 
+"defense", 1755014992), new cljs.core.Keyword(null, "code", "code", 1586293142), new cljs.core.Keyword(null, "movement-type", "movement-type", -1340819145), new cljs.core.Keyword(null, "attack", "attack", 1957061788), new cljs.core.Keyword(null, "range", "range", 1639692286)], [new cljs.core.Keyword(null, "medium", "medium", -1864319384), new cljs.core.Keyword(null, "air", "air", -104121788), "kamikaze", 60, 1, new cljs.core.Keyword(null, "mechanic", "mechanic", -1805001628), 1, "k", new cljs.core.Keyword(null, 
+"all", "all", 892129742), 4E3, 1]);
 goog.provide("obb_rules.units.toxic");
 goog.require("cljs.core");
 obb_rules.units.toxic.metadata = cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null, "category", "category", -593092832), new cljs.core.Keyword(null, "displacement", "displacement", -1309600669), new cljs.core.Keyword(null, "name", "name", 1843675177), new cljs.core.Keyword(null, "value", "value", 305978217), new cljs.core.Keyword(null, "movement-cost", "movement-cost", -716301045), new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "defense", "defense", 
 1755014992), new cljs.core.Keyword(null, "bonus", "bonus", -1684391149), new cljs.core.Keyword(null, "code", "code", 1586293142), new cljs.core.Keyword(null, "movement-type", "movement-type", -1340819145), new cljs.core.Keyword(null, "attack", "attack", 1957061788), new cljs.core.Keyword(null, "range", "range", 1639692286)], [new cljs.core.Keyword(null, "light", "light", 1918998747), new cljs.core.Keyword(null, "air", "air", -104121788), "toxic", 9, 1, new cljs.core.Keyword(null, "mechanic", "mechanic", 
 -1805001628), 600, new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "attack", "attack", 1957061788), new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "organic", "organic", -1424795777), 1E3], null)], null)], null), "tx", new cljs.core.Keyword(null, "normal", "normal", -1519123858), 450, 2]);
+goog.provide("obb_rules.units.worm");
+goog.require("cljs.core");
+obb_rules.units.worm.metadata = cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null, "category", "category", -593092832), new cljs.core.Keyword(null, "displacement", "displacement", -1309600669), new cljs.core.Keyword(null, "name", "name", 1843675177), new cljs.core.Keyword(null, "value", "value", 305978217), new cljs.core.Keyword(null, "movement-cost", "movement-cost", -716301045), new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "defense", "defense", 
+1755014992), new cljs.core.Keyword(null, "code", "code", 1586293142), new cljs.core.Keyword(null, "movement-type", "movement-type", -1340819145), new cljs.core.Keyword(null, "attack", "attack", 1957061788), new cljs.core.Keyword(null, "range", "range", 1639692286)], [new cljs.core.Keyword(null, "medium", "medium", -1864319384), new cljs.core.Keyword(null, "ground", "ground", 1193572934), "worm", 25, 2, new cljs.core.Keyword(null, "organic", "organic", -1424795777), 1200, "w", new cljs.core.Keyword(null, 
+"all", "all", 892129742), 1200, 3]);
+goog.provide("obb_rules.units.heavy_seeker");
+goog.require("cljs.core");
+obb_rules.units.heavy_seeker.metadata = cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null, "category", "category", -593092832), new cljs.core.Keyword(null, "displacement", "displacement", -1309600669), new cljs.core.Keyword(null, "name", "name", 1843675177), new cljs.core.Keyword(null, "value", "value", 305978217), new cljs.core.Keyword(null, "movement-cost", "movement-cost", -716301045), new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "defense", 
+"defense", 1755014992), new cljs.core.Keyword(null, "code", "code", 1586293142), new cljs.core.Keyword(null, "movement-type", "movement-type", -1340819145), new cljs.core.Keyword(null, "attack", "attack", 1957061788), new cljs.core.Keyword(null, "range", "range", 1639692286)], [new cljs.core.Keyword(null, "heavy", "heavy", 2126165008), new cljs.core.Keyword(null, "air", "air", -104121788), "heavy-seeker", 65, 4, new cljs.core.Keyword(null, "organic", "organic", -1424795777), 2200, "hr", new cljs.core.Keyword(null, 
+"diagonal", "diagonal", -1969989146), 2500, 5]);
+goog.provide("obb_rules.units.nova");
+goog.require("cljs.core");
+obb_rules.units.nova.metadata = cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null, "category", "category", -593092832), new cljs.core.Keyword(null, "displacement", "displacement", -1309600669), new cljs.core.Keyword(null, "name", "name", 1843675177), new cljs.core.Keyword(null, "value", "value", 305978217), new cljs.core.Keyword(null, "movement-cost", "movement-cost", -716301045), new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "defense", "defense", 
+1755014992), new cljs.core.Keyword(null, "bonus", "bonus", -1684391149), new cljs.core.Keyword(null, "code", "code", 1586293142), new cljs.core.Keyword(null, "movement-type", "movement-type", -1340819145), new cljs.core.Keyword(null, "attack", "attack", 1957061788), new cljs.core.Keyword(null, "range", "range", 1639692286)], [new cljs.core.Keyword(null, "heavy", "heavy", 2126165008), new cljs.core.Keyword(null, "air", "air", -104121788), "nova", 70, 4, new cljs.core.Keyword(null, "mechanic", "mechanic", 
+-1805001628), 1900, new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "attack", "attack", 1957061788), new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "organic", "organic", -1424795777), 4E3], null)], null)], null), "n", new cljs.core.Keyword(null, "normal", "normal", -1519123858), 2700, 5]);
 goog.provide("obb_rules.units.boozer");
 goog.require("cljs.core");
 obb_rules.units.boozer.metadata = cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null, "category", "category", -593092832), new cljs.core.Keyword(null, "displacement", "displacement", -1309600669), new cljs.core.Keyword(null, "name", "name", 1843675177), new cljs.core.Keyword(null, "value", "value", 305978217), new cljs.core.Keyword(null, "movement-cost", "movement-cost", -716301045), new cljs.core.Keyword(null, "after-hit", "after-hit", 491119628), new cljs.core.Keyword(null, "type", 
@@ -31678,16 +31673,16 @@ obb_rules.unit.CombatUnit = function(name, code, value, attack, attack_type, ran
   this.cljs$lang$protocol_mask$partition0$ = 2229667594;
   this.cljs$lang$protocol_mask$partition1$ = 8192;
 };
-obb_rules.unit.CombatUnit.prototype.cljs$core$ILookup$_lookup$arity$2 = function(this__7349__auto__, k__7350__auto__) {
+obb_rules.unit.CombatUnit.prototype.cljs$core$ILookup$_lookup$arity$2 = function(this__7369__auto__, k__7370__auto__) {
   var self__ = this;
-  var this__7349__auto____$1 = this;
-  return cljs.core._lookup.call(null, this__7349__auto____$1, k__7350__auto__, null);
+  var this__7369__auto____$1 = this;
+  return cljs.core._lookup.call(null, this__7369__auto____$1, k__7370__auto__, null);
 };
-obb_rules.unit.CombatUnit.prototype.cljs$core$ILookup$_lookup$arity$3 = function(this__7351__auto__, k8823, else__7352__auto__) {
+obb_rules.unit.CombatUnit.prototype.cljs$core$ILookup$_lookup$arity$3 = function(this__7371__auto__, k8843, else__7372__auto__) {
   var self__ = this;
-  var this__7351__auto____$1 = this;
-  var G__8825 = k8823 instanceof cljs.core.Keyword ? k8823.fqn : null;
-  switch(G__8825) {
+  var this__7371__auto____$1 = this;
+  var G__8845 = k8843 instanceof cljs.core.Keyword ? k8843.fqn : null;
+  switch(G__8845) {
     case "category":
       return self__.category;
       break;
@@ -31728,64 +31723,64 @@ obb_rules.unit.CombatUnit.prototype.cljs$core$ILookup$_lookup$arity$3 = function
       return self__.range;
       break;
     default:
-      return cljs.core.get.call(null, self__.__extmap, k8823, else__7352__auto__);
+      return cljs.core.get.call(null, self__.__extmap, k8843, else__7372__auto__);
   }
 };
-obb_rules.unit.CombatUnit.prototype.cljs$core$IPrintWithWriter$_pr_writer$arity$3 = function(this__7363__auto__, writer__7364__auto__, opts__7365__auto__) {
+obb_rules.unit.CombatUnit.prototype.cljs$core$IPrintWithWriter$_pr_writer$arity$3 = function(this__7383__auto__, writer__7384__auto__, opts__7385__auto__) {
   var self__ = this;
-  var this__7363__auto____$1 = this;
-  var pr_pair__7366__auto__ = function(this__7363__auto____$1) {
-    return function(keyval__7367__auto__) {
-      return cljs.core.pr_sequential_writer.call(null, writer__7364__auto__, cljs.core.pr_writer, "", " ", "", opts__7365__auto__, keyval__7367__auto__);
+  var this__7383__auto____$1 = this;
+  var pr_pair__7386__auto__ = function(this__7383__auto____$1) {
+    return function(keyval__7387__auto__) {
+      return cljs.core.pr_sequential_writer.call(null, writer__7384__auto__, cljs.core.pr_writer, "", " ", "", opts__7385__auto__, keyval__7387__auto__);
     };
-  }(this__7363__auto____$1);
-  return cljs.core.pr_sequential_writer.call(null, writer__7364__auto__, pr_pair__7366__auto__, "#obb-rules.unit.CombatUnit{", ", ", "}", opts__7365__auto__, cljs.core.concat.call(null, new cljs.core.PersistentVector(null, 13, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "name", "name", 1843675177), self__.name], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, 
+  }(this__7383__auto____$1);
+  return cljs.core.pr_sequential_writer.call(null, writer__7384__auto__, pr_pair__7386__auto__, "#obb-rules.unit.CombatUnit{", ", ", "}", opts__7385__auto__, cljs.core.concat.call(null, new cljs.core.PersistentVector(null, 13, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "name", "name", 1843675177), self__.name], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, 
   [new cljs.core.Keyword(null, "code", "code", 1586293142), self__.code], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "value", "value", 305978217), self__.value], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "attack", "attack", 1957061788), self__.attack], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, 
   "attack-type", "attack-type", -639911421), self__.attack_type], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "range", "range", 1639692286), self__.range], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "defense", "defense", 1755014992), self__.defense], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, 
   "bonus", "bonus", -1684391149), self__.bonus], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "type", "type", 1174270348), self__.type], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "category", "category", -593092832), self__.category], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, 
   "displacement", "displacement", -1309600669), self__.displacement], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "movement-type", "movement-type", -1340819145), self__.movement_type], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "movement-cost", "movement-cost", -716301045), self__.movement_cost], null)], null), self__.__extmap));
 };
-obb_rules.unit.CombatUnit.prototype.cljs$core$IMeta$_meta$arity$1 = function(this__7347__auto__) {
+obb_rules.unit.CombatUnit.prototype.cljs$core$IMeta$_meta$arity$1 = function(this__7367__auto__) {
   var self__ = this;
-  var this__7347__auto____$1 = this;
+  var this__7367__auto____$1 = this;
   return self__.__meta;
 };
-obb_rules.unit.CombatUnit.prototype.cljs$core$ICloneable$_clone$arity$1 = function(this__7343__auto__) {
+obb_rules.unit.CombatUnit.prototype.cljs$core$ICloneable$_clone$arity$1 = function(this__7363__auto__) {
   var self__ = this;
-  var this__7343__auto____$1 = this;
+  var this__7363__auto____$1 = this;
   return new obb_rules.unit.CombatUnit(self__.name, self__.code, self__.value, self__.attack, self__.attack_type, self__.range, self__.defense, self__.bonus, self__.type, self__.category, self__.displacement, self__.movement_type, self__.movement_cost, self__.__meta, self__.__extmap, self__.__hash);
 };
-obb_rules.unit.CombatUnit.prototype.cljs$core$ICounted$_count$arity$1 = function(this__7353__auto__) {
+obb_rules.unit.CombatUnit.prototype.cljs$core$ICounted$_count$arity$1 = function(this__7373__auto__) {
   var self__ = this;
-  var this__7353__auto____$1 = this;
+  var this__7373__auto____$1 = this;
   return 13 + cljs.core.count.call(null, self__.__extmap);
 };
-obb_rules.unit.CombatUnit.prototype.cljs$core$IHash$_hash$arity$1 = function(this__7344__auto__) {
+obb_rules.unit.CombatUnit.prototype.cljs$core$IHash$_hash$arity$1 = function(this__7364__auto__) {
   var self__ = this;
-  var this__7344__auto____$1 = this;
-  var h__7170__auto__ = self__.__hash;
-  if (!(h__7170__auto__ == null)) {
-    return h__7170__auto__;
+  var this__7364__auto____$1 = this;
+  var h__7190__auto__ = self__.__hash;
+  if (!(h__7190__auto__ == null)) {
+    return h__7190__auto__;
   } else {
-    var h__7170__auto____$1 = cljs.core.hash_imap.call(null, this__7344__auto____$1);
-    self__.__hash = h__7170__auto____$1;
-    return h__7170__auto____$1;
+    var h__7190__auto____$1 = cljs.core.hash_imap.call(null, this__7364__auto____$1);
+    self__.__hash = h__7190__auto____$1;
+    return h__7190__auto____$1;
   }
 };
-obb_rules.unit.CombatUnit.prototype.cljs$core$IEquiv$_equiv$arity$2 = function(this__7345__auto__, other__7346__auto__) {
+obb_rules.unit.CombatUnit.prototype.cljs$core$IEquiv$_equiv$arity$2 = function(this__7365__auto__, other__7366__auto__) {
   var self__ = this;
-  var this__7345__auto____$1 = this;
+  var this__7365__auto____$1 = this;
   if (cljs.core.truth_(function() {
-    var and__6742__auto__ = other__7346__auto__;
-    if (cljs.core.truth_(and__6742__auto__)) {
-      var and__6742__auto____$1 = this__7345__auto____$1.constructor === other__7346__auto__.constructor;
-      if (and__6742__auto____$1) {
-        return cljs.core.equiv_map.call(null, this__7345__auto____$1, other__7346__auto__);
+    var and__6762__auto__ = other__7366__auto__;
+    if (cljs.core.truth_(and__6762__auto__)) {
+      var and__6762__auto____$1 = this__7365__auto____$1.constructor === other__7366__auto__.constructor;
+      if (and__6762__auto____$1) {
+        return cljs.core.equiv_map.call(null, this__7365__auto____$1, other__7366__auto__);
       } else {
-        return and__6742__auto____$1;
+        return and__6762__auto____$1;
       }
     } else {
-      return and__6742__auto__;
+      return and__6762__auto__;
     }
   }())) {
     return true;
@@ -31793,62 +31788,62 @@ obb_rules.unit.CombatUnit.prototype.cljs$core$IEquiv$_equiv$arity$2 = function(t
     return false;
   }
 };
-obb_rules.unit.CombatUnit.prototype.cljs$core$IMap$_dissoc$arity$2 = function(this__7358__auto__, k__7359__auto__) {
+obb_rules.unit.CombatUnit.prototype.cljs$core$IMap$_dissoc$arity$2 = function(this__7378__auto__, k__7379__auto__) {
   var self__ = this;
-  var this__7358__auto____$1 = this;
+  var this__7378__auto____$1 = this;
   if (cljs.core.contains_QMARK_.call(null, new cljs.core.PersistentHashSet(null, new cljs.core.PersistentArrayMap(null, 13, [new cljs.core.Keyword(null, "category", "category", -593092832), null, new cljs.core.Keyword(null, "displacement", "displacement", -1309600669), null, new cljs.core.Keyword(null, "attack-type", "attack-type", -639911421), null, new cljs.core.Keyword(null, "name", "name", 1843675177), null, new cljs.core.Keyword(null, "value", "value", 305978217), null, new cljs.core.Keyword(null, 
   "movement-cost", "movement-cost", -716301045), null, new cljs.core.Keyword(null, "type", "type", 1174270348), null, new cljs.core.Keyword(null, "defense", "defense", 1755014992), null, new cljs.core.Keyword(null, "bonus", "bonus", -1684391149), null, new cljs.core.Keyword(null, "code", "code", 1586293142), null, new cljs.core.Keyword(null, "movement-type", "movement-type", -1340819145), null, new cljs.core.Keyword(null, "attack", "attack", 1957061788), null, new cljs.core.Keyword(null, "range", 
-  "range", 1639692286), null], null), null), k__7359__auto__)) {
-    return cljs.core.dissoc.call(null, cljs.core.with_meta.call(null, cljs.core.into.call(null, cljs.core.PersistentArrayMap.EMPTY, this__7358__auto____$1), self__.__meta), k__7359__auto__);
+  "range", 1639692286), null], null), null), k__7379__auto__)) {
+    return cljs.core.dissoc.call(null, cljs.core.with_meta.call(null, cljs.core.into.call(null, cljs.core.PersistentArrayMap.EMPTY, this__7378__auto____$1), self__.__meta), k__7379__auto__);
   } else {
-    return new obb_rules.unit.CombatUnit(self__.name, self__.code, self__.value, self__.attack, self__.attack_type, self__.range, self__.defense, self__.bonus, self__.type, self__.category, self__.displacement, self__.movement_type, self__.movement_cost, self__.__meta, cljs.core.not_empty.call(null, cljs.core.dissoc.call(null, self__.__extmap, k__7359__auto__)), null);
+    return new obb_rules.unit.CombatUnit(self__.name, self__.code, self__.value, self__.attack, self__.attack_type, self__.range, self__.defense, self__.bonus, self__.type, self__.category, self__.displacement, self__.movement_type, self__.movement_cost, self__.__meta, cljs.core.not_empty.call(null, cljs.core.dissoc.call(null, self__.__extmap, k__7379__auto__)), null);
   }
 };
-obb_rules.unit.CombatUnit.prototype.cljs$core$IAssociative$_assoc$arity$3 = function(this__7356__auto__, k__7357__auto__, G__8822) {
+obb_rules.unit.CombatUnit.prototype.cljs$core$IAssociative$_assoc$arity$3 = function(this__7376__auto__, k__7377__auto__, G__8842) {
   var self__ = this;
-  var this__7356__auto____$1 = this;
-  var pred__8826 = cljs.core.keyword_identical_QMARK_;
-  var expr__8827 = k__7357__auto__;
-  if (cljs.core.truth_(pred__8826.call(null, new cljs.core.Keyword(null, "name", "name", 1843675177), expr__8827))) {
-    return new obb_rules.unit.CombatUnit(G__8822, self__.code, self__.value, self__.attack, self__.attack_type, self__.range, self__.defense, self__.bonus, self__.type, self__.category, self__.displacement, self__.movement_type, self__.movement_cost, self__.__meta, self__.__extmap, null);
+  var this__7376__auto____$1 = this;
+  var pred__8846 = cljs.core.keyword_identical_QMARK_;
+  var expr__8847 = k__7377__auto__;
+  if (cljs.core.truth_(pred__8846.call(null, new cljs.core.Keyword(null, "name", "name", 1843675177), expr__8847))) {
+    return new obb_rules.unit.CombatUnit(G__8842, self__.code, self__.value, self__.attack, self__.attack_type, self__.range, self__.defense, self__.bonus, self__.type, self__.category, self__.displacement, self__.movement_type, self__.movement_cost, self__.__meta, self__.__extmap, null);
   } else {
-    if (cljs.core.truth_(pred__8826.call(null, new cljs.core.Keyword(null, "code", "code", 1586293142), expr__8827))) {
-      return new obb_rules.unit.CombatUnit(self__.name, G__8822, self__.value, self__.attack, self__.attack_type, self__.range, self__.defense, self__.bonus, self__.type, self__.category, self__.displacement, self__.movement_type, self__.movement_cost, self__.__meta, self__.__extmap, null);
+    if (cljs.core.truth_(pred__8846.call(null, new cljs.core.Keyword(null, "code", "code", 1586293142), expr__8847))) {
+      return new obb_rules.unit.CombatUnit(self__.name, G__8842, self__.value, self__.attack, self__.attack_type, self__.range, self__.defense, self__.bonus, self__.type, self__.category, self__.displacement, self__.movement_type, self__.movement_cost, self__.__meta, self__.__extmap, null);
     } else {
-      if (cljs.core.truth_(pred__8826.call(null, new cljs.core.Keyword(null, "value", "value", 305978217), expr__8827))) {
-        return new obb_rules.unit.CombatUnit(self__.name, self__.code, G__8822, self__.attack, self__.attack_type, self__.range, self__.defense, self__.bonus, self__.type, self__.category, self__.displacement, self__.movement_type, self__.movement_cost, self__.__meta, self__.__extmap, null);
+      if (cljs.core.truth_(pred__8846.call(null, new cljs.core.Keyword(null, "value", "value", 305978217), expr__8847))) {
+        return new obb_rules.unit.CombatUnit(self__.name, self__.code, G__8842, self__.attack, self__.attack_type, self__.range, self__.defense, self__.bonus, self__.type, self__.category, self__.displacement, self__.movement_type, self__.movement_cost, self__.__meta, self__.__extmap, null);
       } else {
-        if (cljs.core.truth_(pred__8826.call(null, new cljs.core.Keyword(null, "attack", "attack", 1957061788), expr__8827))) {
-          return new obb_rules.unit.CombatUnit(self__.name, self__.code, self__.value, G__8822, self__.attack_type, self__.range, self__.defense, self__.bonus, self__.type, self__.category, self__.displacement, self__.movement_type, self__.movement_cost, self__.__meta, self__.__extmap, null);
+        if (cljs.core.truth_(pred__8846.call(null, new cljs.core.Keyword(null, "attack", "attack", 1957061788), expr__8847))) {
+          return new obb_rules.unit.CombatUnit(self__.name, self__.code, self__.value, G__8842, self__.attack_type, self__.range, self__.defense, self__.bonus, self__.type, self__.category, self__.displacement, self__.movement_type, self__.movement_cost, self__.__meta, self__.__extmap, null);
         } else {
-          if (cljs.core.truth_(pred__8826.call(null, new cljs.core.Keyword(null, "attack-type", "attack-type", -639911421), expr__8827))) {
-            return new obb_rules.unit.CombatUnit(self__.name, self__.code, self__.value, self__.attack, G__8822, self__.range, self__.defense, self__.bonus, self__.type, self__.category, self__.displacement, self__.movement_type, self__.movement_cost, self__.__meta, self__.__extmap, null);
+          if (cljs.core.truth_(pred__8846.call(null, new cljs.core.Keyword(null, "attack-type", "attack-type", -639911421), expr__8847))) {
+            return new obb_rules.unit.CombatUnit(self__.name, self__.code, self__.value, self__.attack, G__8842, self__.range, self__.defense, self__.bonus, self__.type, self__.category, self__.displacement, self__.movement_type, self__.movement_cost, self__.__meta, self__.__extmap, null);
           } else {
-            if (cljs.core.truth_(pred__8826.call(null, new cljs.core.Keyword(null, "range", "range", 1639692286), expr__8827))) {
-              return new obb_rules.unit.CombatUnit(self__.name, self__.code, self__.value, self__.attack, self__.attack_type, G__8822, self__.defense, self__.bonus, self__.type, self__.category, self__.displacement, self__.movement_type, self__.movement_cost, self__.__meta, self__.__extmap, null);
+            if (cljs.core.truth_(pred__8846.call(null, new cljs.core.Keyword(null, "range", "range", 1639692286), expr__8847))) {
+              return new obb_rules.unit.CombatUnit(self__.name, self__.code, self__.value, self__.attack, self__.attack_type, G__8842, self__.defense, self__.bonus, self__.type, self__.category, self__.displacement, self__.movement_type, self__.movement_cost, self__.__meta, self__.__extmap, null);
             } else {
-              if (cljs.core.truth_(pred__8826.call(null, new cljs.core.Keyword(null, "defense", "defense", 1755014992), expr__8827))) {
-                return new obb_rules.unit.CombatUnit(self__.name, self__.code, self__.value, self__.attack, self__.attack_type, self__.range, G__8822, self__.bonus, self__.type, self__.category, self__.displacement, self__.movement_type, self__.movement_cost, self__.__meta, self__.__extmap, null);
+              if (cljs.core.truth_(pred__8846.call(null, new cljs.core.Keyword(null, "defense", "defense", 1755014992), expr__8847))) {
+                return new obb_rules.unit.CombatUnit(self__.name, self__.code, self__.value, self__.attack, self__.attack_type, self__.range, G__8842, self__.bonus, self__.type, self__.category, self__.displacement, self__.movement_type, self__.movement_cost, self__.__meta, self__.__extmap, null);
               } else {
-                if (cljs.core.truth_(pred__8826.call(null, new cljs.core.Keyword(null, "bonus", "bonus", -1684391149), expr__8827))) {
-                  return new obb_rules.unit.CombatUnit(self__.name, self__.code, self__.value, self__.attack, self__.attack_type, self__.range, self__.defense, G__8822, self__.type, self__.category, self__.displacement, self__.movement_type, self__.movement_cost, self__.__meta, self__.__extmap, null);
+                if (cljs.core.truth_(pred__8846.call(null, new cljs.core.Keyword(null, "bonus", "bonus", -1684391149), expr__8847))) {
+                  return new obb_rules.unit.CombatUnit(self__.name, self__.code, self__.value, self__.attack, self__.attack_type, self__.range, self__.defense, G__8842, self__.type, self__.category, self__.displacement, self__.movement_type, self__.movement_cost, self__.__meta, self__.__extmap, null);
                 } else {
-                  if (cljs.core.truth_(pred__8826.call(null, new cljs.core.Keyword(null, "type", "type", 1174270348), expr__8827))) {
-                    return new obb_rules.unit.CombatUnit(self__.name, self__.code, self__.value, self__.attack, self__.attack_type, self__.range, self__.defense, self__.bonus, G__8822, self__.category, self__.displacement, self__.movement_type, self__.movement_cost, self__.__meta, self__.__extmap, null);
+                  if (cljs.core.truth_(pred__8846.call(null, new cljs.core.Keyword(null, "type", "type", 1174270348), expr__8847))) {
+                    return new obb_rules.unit.CombatUnit(self__.name, self__.code, self__.value, self__.attack, self__.attack_type, self__.range, self__.defense, self__.bonus, G__8842, self__.category, self__.displacement, self__.movement_type, self__.movement_cost, self__.__meta, self__.__extmap, null);
                   } else {
-                    if (cljs.core.truth_(pred__8826.call(null, new cljs.core.Keyword(null, "category", "category", -593092832), expr__8827))) {
-                      return new obb_rules.unit.CombatUnit(self__.name, self__.code, self__.value, self__.attack, self__.attack_type, self__.range, self__.defense, self__.bonus, self__.type, G__8822, self__.displacement, self__.movement_type, self__.movement_cost, self__.__meta, self__.__extmap, null);
+                    if (cljs.core.truth_(pred__8846.call(null, new cljs.core.Keyword(null, "category", "category", -593092832), expr__8847))) {
+                      return new obb_rules.unit.CombatUnit(self__.name, self__.code, self__.value, self__.attack, self__.attack_type, self__.range, self__.defense, self__.bonus, self__.type, G__8842, self__.displacement, self__.movement_type, self__.movement_cost, self__.__meta, self__.__extmap, null);
                     } else {
-                      if (cljs.core.truth_(pred__8826.call(null, new cljs.core.Keyword(null, "displacement", "displacement", -1309600669), expr__8827))) {
-                        return new obb_rules.unit.CombatUnit(self__.name, self__.code, self__.value, self__.attack, self__.attack_type, self__.range, self__.defense, self__.bonus, self__.type, self__.category, G__8822, self__.movement_type, self__.movement_cost, self__.__meta, self__.__extmap, null);
+                      if (cljs.core.truth_(pred__8846.call(null, new cljs.core.Keyword(null, "displacement", "displacement", -1309600669), expr__8847))) {
+                        return new obb_rules.unit.CombatUnit(self__.name, self__.code, self__.value, self__.attack, self__.attack_type, self__.range, self__.defense, self__.bonus, self__.type, self__.category, G__8842, self__.movement_type, self__.movement_cost, self__.__meta, self__.__extmap, null);
                       } else {
-                        if (cljs.core.truth_(pred__8826.call(null, new cljs.core.Keyword(null, "movement-type", "movement-type", -1340819145), expr__8827))) {
-                          return new obb_rules.unit.CombatUnit(self__.name, self__.code, self__.value, self__.attack, self__.attack_type, self__.range, self__.defense, self__.bonus, self__.type, self__.category, self__.displacement, G__8822, self__.movement_cost, self__.__meta, self__.__extmap, null);
+                        if (cljs.core.truth_(pred__8846.call(null, new cljs.core.Keyword(null, "movement-type", "movement-type", -1340819145), expr__8847))) {
+                          return new obb_rules.unit.CombatUnit(self__.name, self__.code, self__.value, self__.attack, self__.attack_type, self__.range, self__.defense, self__.bonus, self__.type, self__.category, self__.displacement, G__8842, self__.movement_cost, self__.__meta, self__.__extmap, null);
                         } else {
-                          if (cljs.core.truth_(pred__8826.call(null, new cljs.core.Keyword(null, "movement-cost", "movement-cost", -716301045), expr__8827))) {
-                            return new obb_rules.unit.CombatUnit(self__.name, self__.code, self__.value, self__.attack, self__.attack_type, self__.range, self__.defense, self__.bonus, self__.type, self__.category, self__.displacement, self__.movement_type, G__8822, self__.__meta, self__.__extmap, null);
+                          if (cljs.core.truth_(pred__8846.call(null, new cljs.core.Keyword(null, "movement-cost", "movement-cost", -716301045), expr__8847))) {
+                            return new obb_rules.unit.CombatUnit(self__.name, self__.code, self__.value, self__.attack, self__.attack_type, self__.range, self__.defense, self__.bonus, self__.type, self__.category, self__.displacement, self__.movement_type, G__8842, self__.__meta, self__.__extmap, null);
                           } else {
-                            return new obb_rules.unit.CombatUnit(self__.name, self__.code, self__.value, self__.attack, self__.attack_type, self__.range, self__.defense, self__.bonus, self__.type, self__.category, self__.displacement, self__.movement_type, self__.movement_cost, self__.__meta, cljs.core.assoc.call(null, self__.__extmap, k__7357__auto__, G__8822), null);
+                            return new obb_rules.unit.CombatUnit(self__.name, self__.code, self__.value, self__.attack, self__.attack_type, self__.range, self__.defense, self__.bonus, self__.type, self__.category, self__.displacement, self__.movement_type, self__.movement_cost, self__.__meta, cljs.core.assoc.call(null, self__.__extmap, k__7377__auto__, G__8842), null);
                           }
                         }
                       }
@@ -31863,27 +31858,27 @@ obb_rules.unit.CombatUnit.prototype.cljs$core$IAssociative$_assoc$arity$3 = func
     }
   }
 };
-obb_rules.unit.CombatUnit.prototype.cljs$core$ISeqable$_seq$arity$1 = function(this__7361__auto__) {
+obb_rules.unit.CombatUnit.prototype.cljs$core$ISeqable$_seq$arity$1 = function(this__7381__auto__) {
   var self__ = this;
-  var this__7361__auto____$1 = this;
+  var this__7381__auto____$1 = this;
   return cljs.core.seq.call(null, cljs.core.concat.call(null, new cljs.core.PersistentVector(null, 13, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "name", "name", 1843675177), self__.name], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "code", "code", 1586293142), self__.code], null), new cljs.core.PersistentVector(null, 
   2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "value", "value", 305978217), self__.value], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "attack", "attack", 1957061788), self__.attack], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "attack-type", "attack-type", -639911421), self__.attack_type], null), new cljs.core.PersistentVector(null, 
   2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "range", "range", 1639692286), self__.range], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "defense", "defense", 1755014992), self__.defense], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "bonus", "bonus", -1684391149), self__.bonus], null), new cljs.core.PersistentVector(null, 
   2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "type", "type", 1174270348), self__.type], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "category", "category", -593092832), self__.category], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "displacement", "displacement", -1309600669), self__.displacement], null), new cljs.core.PersistentVector(null, 
   2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "movement-type", "movement-type", -1340819145), self__.movement_type], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "movement-cost", "movement-cost", -716301045), self__.movement_cost], null)], null), self__.__extmap));
 };
-obb_rules.unit.CombatUnit.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(this__7348__auto__, G__8822) {
+obb_rules.unit.CombatUnit.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(this__7368__auto__, G__8842) {
   var self__ = this;
-  var this__7348__auto____$1 = this;
-  return new obb_rules.unit.CombatUnit(self__.name, self__.code, self__.value, self__.attack, self__.attack_type, self__.range, self__.defense, self__.bonus, self__.type, self__.category, self__.displacement, self__.movement_type, self__.movement_cost, G__8822, self__.__extmap, self__.__hash);
+  var this__7368__auto____$1 = this;
+  return new obb_rules.unit.CombatUnit(self__.name, self__.code, self__.value, self__.attack, self__.attack_type, self__.range, self__.defense, self__.bonus, self__.type, self__.category, self__.displacement, self__.movement_type, self__.movement_cost, G__8842, self__.__extmap, self__.__hash);
 };
-obb_rules.unit.CombatUnit.prototype.cljs$core$ICollection$_conj$arity$2 = function(this__7354__auto__, entry__7355__auto__) {
+obb_rules.unit.CombatUnit.prototype.cljs$core$ICollection$_conj$arity$2 = function(this__7374__auto__, entry__7375__auto__) {
   var self__ = this;
-  var this__7354__auto____$1 = this;
-  if (cljs.core.vector_QMARK_.call(null, entry__7355__auto__)) {
-    return cljs.core._assoc.call(null, this__7354__auto____$1, cljs.core._nth.call(null, entry__7355__auto__, 0), cljs.core._nth.call(null, entry__7355__auto__, 1));
+  var this__7374__auto____$1 = this;
+  if (cljs.core.vector_QMARK_.call(null, entry__7375__auto__)) {
+    return cljs.core._assoc.call(null, this__7374__auto____$1, cljs.core._nth.call(null, entry__7375__auto__, 0), cljs.core._nth.call(null, entry__7375__auto__, 1));
   } else {
-    return cljs.core.reduce.call(null, cljs.core._conj, this__7354__auto____$1, entry__7355__auto__);
+    return cljs.core.reduce.call(null, cljs.core._conj, this__7374__auto____$1, entry__7375__auto__);
   }
 };
 obb_rules.unit.CombatUnit.getBasis = function() {
@@ -31891,32 +31886,32 @@ obb_rules.unit.CombatUnit.getBasis = function() {
   "defense", "defense", -899420777, null), new cljs.core.Symbol(null, "bonus", "bonus", -43859622, null), new cljs.core.Symbol(null, "type", "type", -1480165421, null), new cljs.core.Symbol(null, "category", "category", 1047438695, null), new cljs.core.Symbol(null, "displacement", "displacement", 330930858, null), new cljs.core.Symbol(null, "movement-type", "movement-type", 299712382, null), new cljs.core.Symbol(null, "movement-cost", "movement-cost", 924230482, null)], null);
 };
 obb_rules.unit.CombatUnit.cljs$lang$type = true;
-obb_rules.unit.CombatUnit.cljs$lang$ctorPrSeq = function(this__7383__auto__) {
+obb_rules.unit.CombatUnit.cljs$lang$ctorPrSeq = function(this__7403__auto__) {
   return cljs.core._conj.call(null, cljs.core.List.EMPTY, "obb-rules.unit/CombatUnit");
 };
-obb_rules.unit.CombatUnit.cljs$lang$ctorPrWriter = function(this__7383__auto__, writer__7384__auto__) {
-  return cljs.core._write.call(null, writer__7384__auto__, "obb-rules.unit/CombatUnit");
+obb_rules.unit.CombatUnit.cljs$lang$ctorPrWriter = function(this__7403__auto__, writer__7404__auto__) {
+  return cljs.core._write.call(null, writer__7404__auto__, "obb-rules.unit/CombatUnit");
 };
 obb_rules.unit.__GT_CombatUnit = function obb_rules$unit$__GT_CombatUnit(name, code, value, attack, attack_type, range, defense, bonus, type, category, displacement, movement_type, movement_cost) {
   return new obb_rules.unit.CombatUnit(name, code, value, attack, attack_type, range, defense, bonus, type, category, displacement, movement_type, movement_cost, null, null, null);
 };
-obb_rules.unit.map__GT_CombatUnit = function obb_rules$unit$map__GT_CombatUnit(G__8824) {
-  return new obb_rules.unit.CombatUnit((new cljs.core.Keyword(null, "name", "name", 1843675177)).cljs$core$IFn$_invoke$arity$1(G__8824), (new cljs.core.Keyword(null, "code", "code", 1586293142)).cljs$core$IFn$_invoke$arity$1(G__8824), (new cljs.core.Keyword(null, "value", "value", 305978217)).cljs$core$IFn$_invoke$arity$1(G__8824), (new cljs.core.Keyword(null, "attack", "attack", 1957061788)).cljs$core$IFn$_invoke$arity$1(G__8824), (new cljs.core.Keyword(null, "attack-type", "attack-type", -639911421)).cljs$core$IFn$_invoke$arity$1(G__8824), 
-  (new cljs.core.Keyword(null, "range", "range", 1639692286)).cljs$core$IFn$_invoke$arity$1(G__8824), (new cljs.core.Keyword(null, "defense", "defense", 1755014992)).cljs$core$IFn$_invoke$arity$1(G__8824), (new cljs.core.Keyword(null, "bonus", "bonus", -1684391149)).cljs$core$IFn$_invoke$arity$1(G__8824), (new cljs.core.Keyword(null, "type", "type", 1174270348)).cljs$core$IFn$_invoke$arity$1(G__8824), (new cljs.core.Keyword(null, "category", "category", -593092832)).cljs$core$IFn$_invoke$arity$1(G__8824), 
-  (new cljs.core.Keyword(null, "displacement", "displacement", -1309600669)).cljs$core$IFn$_invoke$arity$1(G__8824), (new cljs.core.Keyword(null, "movement-type", "movement-type", -1340819145)).cljs$core$IFn$_invoke$arity$1(G__8824), (new cljs.core.Keyword(null, "movement-cost", "movement-cost", -716301045)).cljs$core$IFn$_invoke$arity$1(G__8824), null, cljs.core.dissoc.call(null, G__8824, new cljs.core.Keyword(null, "name", "name", 1843675177), new cljs.core.Keyword(null, "code", "code", 1586293142), 
+obb_rules.unit.map__GT_CombatUnit = function obb_rules$unit$map__GT_CombatUnit(G__8844) {
+  return new obb_rules.unit.CombatUnit((new cljs.core.Keyword(null, "name", "name", 1843675177)).cljs$core$IFn$_invoke$arity$1(G__8844), (new cljs.core.Keyword(null, "code", "code", 1586293142)).cljs$core$IFn$_invoke$arity$1(G__8844), (new cljs.core.Keyword(null, "value", "value", 305978217)).cljs$core$IFn$_invoke$arity$1(G__8844), (new cljs.core.Keyword(null, "attack", "attack", 1957061788)).cljs$core$IFn$_invoke$arity$1(G__8844), (new cljs.core.Keyword(null, "attack-type", "attack-type", -639911421)).cljs$core$IFn$_invoke$arity$1(G__8844), 
+  (new cljs.core.Keyword(null, "range", "range", 1639692286)).cljs$core$IFn$_invoke$arity$1(G__8844), (new cljs.core.Keyword(null, "defense", "defense", 1755014992)).cljs$core$IFn$_invoke$arity$1(G__8844), (new cljs.core.Keyword(null, "bonus", "bonus", -1684391149)).cljs$core$IFn$_invoke$arity$1(G__8844), (new cljs.core.Keyword(null, "type", "type", 1174270348)).cljs$core$IFn$_invoke$arity$1(G__8844), (new cljs.core.Keyword(null, "category", "category", -593092832)).cljs$core$IFn$_invoke$arity$1(G__8844), 
+  (new cljs.core.Keyword(null, "displacement", "displacement", -1309600669)).cljs$core$IFn$_invoke$arity$1(G__8844), (new cljs.core.Keyword(null, "movement-type", "movement-type", -1340819145)).cljs$core$IFn$_invoke$arity$1(G__8844), (new cljs.core.Keyword(null, "movement-cost", "movement-cost", -716301045)).cljs$core$IFn$_invoke$arity$1(G__8844), null, cljs.core.dissoc.call(null, G__8844, new cljs.core.Keyword(null, "name", "name", 1843675177), new cljs.core.Keyword(null, "code", "code", 1586293142), 
   new cljs.core.Keyword(null, "value", "value", 305978217), new cljs.core.Keyword(null, "attack", "attack", 1957061788), new cljs.core.Keyword(null, "attack-type", "attack-type", -639911421), new cljs.core.Keyword(null, "range", "range", 1639692286), new cljs.core.Keyword(null, "defense", "defense", 1755014992), new cljs.core.Keyword(null, "bonus", "bonus", -1684391149), new cljs.core.Keyword(null, "type", "type", 1174270348), new cljs.core.Keyword(null, "category", "category", -593092832), new cljs.core.Keyword(null, 
   "displacement", "displacement", -1309600669), new cljs.core.Keyword(null, "movement-type", "movement-type", -1340819145), new cljs.core.Keyword(null, "movement-cost", "movement-cost", -716301045)), null);
 };
 obb_rules.unit.gather_units = function obb_rules$unit$gather_units() {
-  return cljs.core.mapv.call(null, function(p1__8830_SHARP_) {
-    return obb_rules.unit.map__GT_CombatUnit.call(null, p1__8830_SHARP_);
+  return cljs.core.mapv.call(null, function(p1__8850_SHARP_) {
+    return obb_rules.unit.map__GT_CombatUnit.call(null, p1__8850_SHARP_);
   }, new cljs.core.PersistentVector(null, 20, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_rules.units.rain.metadata, obb_rules.units.nova.metadata, obb_rules.units.pretorian.metadata, obb_rules.units.raptor.metadata, obb_rules.units.toxic.metadata, obb_rules.units.worm.metadata, obb_rules.units.vector.metadata, obb_rules.units.anubis.metadata, obb_rules.units.boozer.metadata, obb_rules.units.eagle.metadata, obb_rules.units.heavy_seeker.metadata, obb_rules.units.doomer.metadata, obb_rules.units.fenix.metadata, 
   obb_rules.units.driller.metadata, obb_rules.units.krill.metadata, obb_rules.units.kahuna.metadata, obb_rules.units.panther.metadata, obb_rules.units.scarab.metadata, obb_rules.units.kamikaze.metadata, obb_rules.units.crusader.metadata], null));
 };
 obb_rules.unit.get_units = cljs.core.memoize.call(null, obb_rules.unit.gather_units);
 obb_rules.unit.build_units = function obb_rules$unit$build_units(units, selector) {
-  return cljs.core.reduce.call(null, function(p1__8831_SHARP_, p2__8832_SHARP_) {
-    return cljs.core.conj.call(null, p1__8831_SHARP_, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [selector.call(null, p2__8832_SHARP_), p2__8832_SHARP_], null));
+  return cljs.core.reduce.call(null, function(p1__8851_SHARP_, p2__8852_SHARP_) {
+    return cljs.core.conj.call(null, p1__8851_SHARP_, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [selector.call(null, p2__8852_SHARP_), p2__8852_SHARP_], null));
   }, cljs.core.PersistentArrayMap.EMPTY, units);
 };
 obb_rules.unit.units_by_name = new cljs.core.Delay(function() {
@@ -31933,9 +31928,9 @@ obb_rules.unit.get_unit_by_name = function obb_rules$unit$get_unit_by_name(name)
 };
 obb_rules.unit.fetch = function obb_rules$unit$fetch(raw) {
   var identifier = cljs.core.name.call(null, raw);
-  var or__6754__auto__ = obb_rules.unit.get_unit_by_name.call(null, identifier);
-  if (cljs.core.truth_(or__6754__auto__)) {
-    return or__6754__auto__;
+  var or__6774__auto__ = obb_rules.unit.get_unit_by_name.call(null, identifier);
+  if (cljs.core.truth_(or__6774__auto__)) {
+    return or__6774__auto__;
   } else {
     return obb_rules.unit.get_unit_by_code.call(null, identifier);
   }
@@ -31974,17 +31969,17 @@ obb_rules.unit.unit_type = function obb_rules$unit$unit_type(unit) {
   return (new cljs.core.Keyword(null, "type", "type", 1174270348)).cljs$core$IFn$_invoke$arity$1(unit);
 };
 obb_rules.unit.unit_value = function obb_rules$unit$unit_value(unit) {
-  var or__6754__auto__ = (new cljs.core.Keyword(null, "value", "value", 305978217)).cljs$core$IFn$_invoke$arity$1(unit);
-  if (cljs.core.truth_(or__6754__auto__)) {
-    return or__6754__auto__;
+  var or__6774__auto__ = (new cljs.core.Keyword(null, "value", "value", 305978217)).cljs$core$IFn$_invoke$arity$1(unit);
+  if (cljs.core.truth_(or__6774__auto__)) {
+    return or__6774__auto__;
   } else {
     return 0;
   }
 };
 obb_rules.unit.attack_type = function obb_rules$unit$attack_type(unit) {
-  var or__6754__auto__ = (new cljs.core.Keyword(null, "attack-type", "attack-type", -639911421)).cljs$core$IFn$_invoke$arity$1(unit);
-  if (cljs.core.truth_(or__6754__auto__)) {
-    return or__6754__auto__;
+  var or__6774__auto__ = (new cljs.core.Keyword(null, "attack-type", "attack-type", -639911421)).cljs$core$IFn$_invoke$arity$1(unit);
+  if (cljs.core.truth_(or__6774__auto__)) {
+    return or__6774__auto__;
   } else {
     return new cljs.core.Keyword(null, "direct", "direct", -1775717856);
   }
@@ -32000,12 +31995,204 @@ obb_rules.unit.units_by_category = function obb_rules$unit$units_by_category(cat
     return cljs.core._EQ_.call(null, obb_rules.unit.unit_category.call(null, u), category);
   }, obb_rules.unit.get_units.call(null));
 };
+goog.provide("clojure.walk");
+goog.require("cljs.core");
+clojure.walk.walk = function clojure$walk$walk(inner, outer, form) {
+  if (cljs.core.seq_QMARK_.call(null, form)) {
+    return outer.call(null, cljs.core.doall.call(null, cljs.core.map.call(null, inner, form)));
+  } else {
+    if (cljs.core.coll_QMARK_.call(null, form)) {
+      return outer.call(null, cljs.core.into.call(null, cljs.core.empty.call(null, form), cljs.core.map.call(null, inner, form)));
+    } else {
+      return outer.call(null, form);
+    }
+  }
+};
+clojure.walk.postwalk = function clojure$walk$postwalk(f, form) {
+  return clojure.walk.walk.call(null, cljs.core.partial.call(null, clojure$walk$postwalk, f), f, form);
+};
+clojure.walk.prewalk = function clojure$walk$prewalk(f, form) {
+  return clojure.walk.walk.call(null, cljs.core.partial.call(null, clojure$walk$prewalk, f), cljs.core.identity, f.call(null, form));
+};
+clojure.walk.keywordize_keys = function clojure$walk$keywordize_keys(m) {
+  var f = function(p__8942) {
+    var vec__8943 = p__8942;
+    var k = cljs.core.nth.call(null, vec__8943, 0, null);
+    var v = cljs.core.nth.call(null, vec__8943, 1, null);
+    if (typeof k === "string") {
+      return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.keyword.call(null, k), v], null);
+    } else {
+      return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [k, v], null);
+    }
+  };
+  return clojure.walk.postwalk.call(null, function(f) {
+    return function(x) {
+      if (cljs.core.map_QMARK_.call(null, x)) {
+        return cljs.core.into.call(null, cljs.core.PersistentArrayMap.EMPTY, cljs.core.map.call(null, f, x));
+      } else {
+        return x;
+      }
+    };
+  }(f), m);
+};
+clojure.walk.stringify_keys = function clojure$walk$stringify_keys(m) {
+  var f = function(p__8946) {
+    var vec__8947 = p__8946;
+    var k = cljs.core.nth.call(null, vec__8947, 0, null);
+    var v = cljs.core.nth.call(null, vec__8947, 1, null);
+    if (k instanceof cljs.core.Keyword) {
+      return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.name.call(null, k), v], null);
+    } else {
+      return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [k, v], null);
+    }
+  };
+  return clojure.walk.postwalk.call(null, function(f) {
+    return function(x) {
+      if (cljs.core.map_QMARK_.call(null, x)) {
+        return cljs.core.into.call(null, cljs.core.PersistentArrayMap.EMPTY, cljs.core.map.call(null, f, x));
+      } else {
+        return x;
+      }
+    };
+  }(f), m);
+};
+clojure.walk.prewalk_replace = function clojure$walk$prewalk_replace(smap, form) {
+  return clojure.walk.prewalk.call(null, function(x) {
+    if (cljs.core.contains_QMARK_.call(null, smap, x)) {
+      return smap.call(null, x);
+    } else {
+      return x;
+    }
+  }, form);
+};
+clojure.walk.postwalk_replace = function clojure$walk$postwalk_replace(smap, form) {
+  return clojure.walk.postwalk.call(null, function(x) {
+    if (cljs.core.contains_QMARK_.call(null, smap, x)) {
+      return smap.call(null, x);
+    } else {
+      return x;
+    }
+  }, form);
+};
+goog.provide("obb_rules.simplifier");
+goog.require("cljs.core");
+goog.require("clojure.walk");
+goog.require("obb_rules.unit");
+obb_rules.simplifier.name_EQ_ = function obb_rules$simplifier$name_EQ_(a, b) {
+  return cljs.core._EQ_.call(null, cljs.core.name.call(null, a), cljs.core.name.call(null, b));
+};
+obb_rules.simplifier.not_name_EQ_ = function obb_rules$simplifier$not_name_EQ_(a, b) {
+  return cljs.core.not.call(null, obb_rules.simplifier.name_EQ_.call(null, a, b));
+};
+obb_rules.simplifier.resolve_unit = function obb_rules$simplifier$resolve_unit(value) {
+  if (typeof value === "string") {
+    return value;
+  } else {
+    return obb_rules.unit.unit_name.call(null, value);
+  }
+};
+obb_rules.simplifier.simplify_if_unit = function obb_rules$simplifier$simplify_if_unit(p__8863) {
+  var vec__8865 = p__8863;
+  var k = cljs.core.nth.call(null, vec__8865, 0, null);
+  var v = cljs.core.nth.call(null, vec__8865, 1, null);
+  if (cljs.core._EQ_.call(null, new cljs.core.Keyword(null, "unit", "unit", 375175175), cljs.core.keyword.call(null, k))) {
+    return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [k, obb_rules.simplifier.resolve_unit.call(null, v)], null);
+  } else {
+    if (cljs.core.map_QMARK_.call(null, v)) {
+      return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [k, obb_rules.simplifier.clean_unit.call(null, v)], null);
+    } else {
+      return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [k, v], null);
+    }
+  }
+};
+obb_rules.simplifier.build_if_unit = function obb_rules$simplifier$build_if_unit(p__8866) {
+  var vec__8868 = p__8866;
+  var k = cljs.core.nth.call(null, vec__8868, 0, null);
+  var v = cljs.core.nth.call(null, vec__8868, 1, null);
+  if (cljs.core._EQ_.call(null, new cljs.core.Keyword(null, "unit", "unit", 375175175), cljs.core.keyword.call(null, k))) {
+    return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [k, obb_rules.unit.fetch.call(null, v)], null);
+  } else {
+    if (cljs.core.map_QMARK_.call(null, v)) {
+      return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [k, obb_rules.simplifier.build_unit.call(null, v)], null);
+    } else {
+      return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [k, v], null);
+    }
+  }
+};
+obb_rules.simplifier.clean_unit = function obb_rules$simplifier$clean_unit(obj) {
+  return clojure.walk.walk.call(null, obb_rules.simplifier.simplify_if_unit, cljs.core.identity, obj);
+};
+obb_rules.simplifier.build_unit = function obb_rules$simplifier$build_unit(obj) {
+  return clojure.walk.walk.call(null, obb_rules.simplifier.build_if_unit, cljs.core.identity, obj);
+};
+obb_rules.simplifier.clean_action_results = function obb_rules$simplifier$clean_action_results(result) {
+  var results = cljs.core.get_in.call(null, result, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "board", "board", -1907017633), new cljs.core.Keyword(null, "action-results", "action-results", -389719209)], null));
+  var new_results = cljs.core.map.call(null, function(results) {
+    return function(p__8871) {
+      var vec__8872 = p__8871;
+      var k = cljs.core.nth.call(null, vec__8872, 0, null);
+      var v = cljs.core.nth.call(null, vec__8872, 1, null);
+      return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [k, cljs.core.dissoc.call(null, v, new cljs.core.Keyword(null, "board", "board", -1907017633))], null);
+    };
+  }(results), results);
+  return cljs.core.assoc_in.call(null, result, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "board", "board", -1907017633), new cljs.core.Keyword(null, "action-results", "action-results", -389719209)], null), new_results);
+};
+obb_rules.simplifier.coordenize = function obb_rules$simplifier$coordenize(raw) {
+  var beter_raw = clojure.string.replace.call(null, [cljs.core.str(raw)].join(""), /:/, "");
+  var temp__4423__auto__ = cljs.core.re_matches.call(null, /\[(\d+) (\d+)\]/, beter_raw);
+  if (cljs.core.truth_(temp__4423__auto__)) {
+    var parsed = temp__4423__auto__;
+    return cljs.core.into.call(null, cljs.core.PersistentVector.EMPTY, cljs.core.map.call(null, cljs.core.read_string, cljs.core.rest.call(null, parsed)));
+  } else {
+    return raw;
+  }
+};
+obb_rules.simplifier.build_coordinate_keys = function obb_rules$simplifier$build_coordinate_keys(result) {
+  var elements = cljs.core.get_in.call(null, result, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "board", "board", -1907017633), new cljs.core.Keyword(null, "elements", "elements", 657646735)], null));
+  var cleaned = cljs.core.reduce.call(null, function(elements) {
+    return function(h, p__8875) {
+      var vec__8876 = p__8875;
+      var k = cljs.core.nth.call(null, vec__8876, 0, null);
+      var v = cljs.core.nth.call(null, vec__8876, 1, null);
+      return cljs.core.assoc.call(null, h, obb_rules.simplifier.coordenize.call(null, k), v);
+    };
+  }(elements), cljs.core.PersistentArrayMap.EMPTY, elements);
+  return cljs.core.assoc_in.call(null, result, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "board", "board", -1907017633), new cljs.core.Keyword(null, "elements", "elements", 657646735)], null), cleaned);
+};
+obb_rules.simplifier.clean_coordinate_keys = function obb_rules$simplifier$clean_coordinate_keys(result) {
+  var elements = cljs.core.get_in.call(null, result, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "board", "board", -1907017633), new cljs.core.Keyword(null, "elements", "elements", 657646735)], null));
+  var cleaned = cljs.core.reduce.call(null, function(elements) {
+    return function(h, p__8879) {
+      var vec__8880 = p__8879;
+      var k = cljs.core.nth.call(null, vec__8880, 0, null);
+      var v = cljs.core.nth.call(null, vec__8880, 1, null);
+      return cljs.core.assoc.call(null, h, [cljs.core.str(k)].join(""), v);
+    };
+  }(elements), cljs.core.PersistentArrayMap.EMPTY, elements);
+  return cljs.core.assoc_in.call(null, result, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "board", "board", -1907017633), new cljs.core.Keyword(null, "elements", "elements", 657646735)], null), cleaned);
+};
+obb_rules.simplifier.build_result = function obb_rules$simplifier$build_result(result) {
+  return obb_rules.simplifier.build_unit.call(null, obb_rules.simplifier.build_coordinate_keys.call(null, result));
+};
+obb_rules.simplifier.clean_result = function obb_rules$simplifier$clean_result(result) {
+  return obb_rules.simplifier.clean_unit.call(null, obb_rules.simplifier.clean_coordinate_keys.call(null, obb_rules.simplifier.clean_action_results.call(null, result)));
+};
+goog.provide("obb_rules.math");
+goog.require("cljs.core");
+obb_rules.math.abs = function obb_rules$math$abs(n) {
+  return Math.abs(n);
+};
+goog.provide("obb_rules.main");
+goog.require("cljs.core");
+obb_rules.main.main = function obb_rules$main$main() {
+  return cljs.core.println.call(null, "Main");
+};
 goog.provide("obb_rules.element");
 goog.require("cljs.core");
 goog.require("obb_rules.unit");
 obb_rules.element.create_element = function obb_rules$element$create_element() {
-  var G__8836 = arguments.length;
-  switch(G__8836) {
+  var G__8884 = arguments.length;
+  switch(G__8884) {
     case 4:
       return obb_rules.element.create_element.cljs$core$IFn$_invoke$arity$4(arguments[0], arguments[1], arguments[2], arguments[3]);
       break;
@@ -32047,8 +32234,8 @@ obb_rules.element.element_range = function obb_rules$element$element_range(eleme
   return obb_rules.unit.unit_range.call(null, unit);
 };
 obb_rules.element.element_direction = function obb_rules$element$element_direction() {
-  var G__8839 = arguments.length;
-  switch(G__8839) {
+  var G__8887 = arguments.length;
+  switch(G__8887) {
     case 1:
       return obb_rules.element.element_direction.cljs$core$IFn$_invoke$arity$1(arguments[0]);
       break;
@@ -32067,8 +32254,8 @@ obb_rules.element.element_direction.cljs$core$IFn$_invoke$arity$2 = function(ele
 };
 obb_rules.element.element_direction.cljs$lang$maxFixedArity = 2;
 obb_rules.element.element_hitpoints = function obb_rules$element$element_hitpoints() {
-  var G__8842 = arguments.length;
-  switch(G__8842) {
+  var G__8890 = arguments.length;
+  switch(G__8890) {
     case 1:
       return obb_rules.element.element_hitpoints.cljs$core$IFn$_invoke$arity$1(arguments[0]);
       break;
@@ -32093,9 +32280,9 @@ obb_rules.element.get_bonus = function obb_rules$element$get_bonus(unit, bonus_p
     var temp__4423__auto____$1 = cljs.core.get_in.call(null, bonus, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [bonus_prop, bonus_type], null));
     if (cljs.core.truth_(temp__4423__auto____$1)) {
       var specific = temp__4423__auto____$1;
-      var or__6754__auto__ = cljs.core.get.call(null, specific, specific_type);
-      if (cljs.core.truth_(or__6754__auto__)) {
-        return or__6754__auto__;
+      var or__6774__auto__ = cljs.core.get.call(null, specific, specific_type);
+      if (cljs.core.truth_(or__6774__auto__)) {
+        return or__6774__auto__;
       } else {
         return 0;
       }
@@ -32139,8 +32326,8 @@ obb_rules.element.element_defense = function obb_rules$element$element_defense(b
   return defense + bonus;
 };
 obb_rules.element.element_quantity = function obb_rules$element$element_quantity() {
-  var G__8845 = arguments.length;
-  switch(G__8845) {
+  var G__8893 = arguments.length;
+  switch(G__8893) {
     case 1:
       return obb_rules.element.element_quantity.cljs$core$IFn$_invoke$arity$1(arguments[0]);
       break;
@@ -32191,8 +32378,8 @@ obb_rules.element.remove_quantity = function obb_rules$element$remove_quantity(e
   }
 };
 obb_rules.element.element_coordinate = function obb_rules$element$element_coordinate() {
-  var G__8848 = arguments.length;
-  switch(G__8848) {
+  var G__8896 = arguments.length;
+  switch(G__8896) {
     case 1:
       return obb_rules.element.element_coordinate.cljs$core$IFn$_invoke$arity$1(arguments[0]);
       break;
@@ -32219,8 +32406,8 @@ obb_rules.element.can_join_elements_QMARK_ = function obb_rules$element$can_join
   return cljs.core._EQ_.call(null, obb_rules.element.element_player.call(null, e1), obb_rules.element.element_player.call(null, e2)) && cljs.core._EQ_.call(null, obb_rules.element.element_unit.call(null, e1), obb_rules.element.element_unit.call(null, e2));
 };
 obb_rules.element.join_elements = function obb_rules$element$join_elements() {
-  var argseq__7794__auto__ = 0 < arguments.length ? new cljs.core.IndexedSeq(Array.prototype.slice.call(arguments, 0), 0) : null;
-  return obb_rules.element.join_elements.cljs$core$IFn$_invoke$arity$variadic(argseq__7794__auto__);
+  var argseq__7814__auto__ = 0 < arguments.length ? new cljs.core.IndexedSeq(Array.prototype.slice.call(arguments, 0), 0) : null;
+  return obb_rules.element.join_elements.cljs$core$IFn$_invoke$arity$variadic(argseq__7814__auto__);
 };
 obb_rules.element.join_elements.cljs$core$IFn$_invoke$arity$variadic = function(elements) {
   var quantities = cljs.core.map.call(null, function(e) {
@@ -32230,15 +32417,15 @@ obb_rules.element.join_elements.cljs$core$IFn$_invoke$arity$variadic = function(
   return cljs.core.assoc.call(null, template, new cljs.core.Keyword(null, "quantity", "quantity", -1929050694), cljs.core.apply.call(null, cljs.core._PLUS_, quantities));
 };
 obb_rules.element.join_elements.cljs$lang$maxFixedArity = 0;
-obb_rules.element.join_elements.cljs$lang$applyTo = function(seq8850) {
-  return obb_rules.element.join_elements.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null, seq8850));
+obb_rules.element.join_elements.cljs$lang$applyTo = function(seq8898) {
+  return obb_rules.element.join_elements.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null, seq8898));
 };
 obb_rules.element.frozen_QMARK_ = function obb_rules$element$frozen_QMARK_(element) {
-  var and__6742__auto__ = element;
-  if (cljs.core.truth_(and__6742__auto__)) {
+  var and__6762__auto__ = element;
+  if (cljs.core.truth_(and__6762__auto__)) {
     return cljs.core._EQ_.call(null, true, element.call(null, new cljs.core.Keyword(null, "frozen", "frozen", -1824610372)));
   } else {
-    return and__6742__auto__;
+    return and__6762__auto__;
   }
 };
 obb_rules.element.freeze = function obb_rules$element$freeze(element) {
@@ -32269,4 +32456,283 @@ obb_rules.element.assert_element = function obb_rules$element$assert_element(ele
   } else {
     return null;
   }
+};
+goog.provide("obb_rules.laws");
+goog.require("cljs.core");
+obb_rules.laws.default_board_w = 8;
+obb_rules.laws.default_board_h = 8;
+obb_rules.laws.max_action_points = 6;
+obb_rules.laws.min_move_percentage = .2;
+obb_rules.laws.max_move_percentage = 1 - obb_rules.laws.min_move_percentage;
+goog.provide("obb_rules.board");
+goog.require("cljs.core");
+goog.require("obb_rules.math");
+goog.require("obb_rules.laws");
+goog.require("obb_rules.element");
+goog.require("obb_rules.simplifier");
+obb_rules.board.random_terrain = function obb_rules$board$random_terrain() {
+  return cljs.core.rand_nth.call(null, new cljs.core.PersistentVector(null, 6, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "water", "water", -824098213), new cljs.core.Keyword(null, "ice", "ice", -415533543), new cljs.core.Keyword(null, "terrest", "terrest", 1919162097), new cljs.core.Keyword(null, "desert", "desert", -559764082), new cljs.core.Keyword(null, "rock", "rock", 946709275), new cljs.core.Keyword(null, "forest", "forest", 278860306)], null));
+};
+obb_rules.board.create_board = function obb_rules$board$create_board() {
+  var G__8904 = arguments.length;
+  switch(G__8904) {
+    case 0:
+      return obb_rules.board.create_board.cljs$core$IFn$_invoke$arity$0();
+      break;
+    case 2:
+      return obb_rules.board.create_board.cljs$core$IFn$_invoke$arity$2(arguments[0], arguments[1]);
+      break;
+    default:
+      throw new Error([cljs.core.str("Invalid arity: "), cljs.core.str(arguments.length)].join(""));;
+  }
+};
+obb_rules.board.create_board.cljs$core$IFn$_invoke$arity$0 = function() {
+  return obb_rules.board.create_board.call(null, obb_rules.laws.default_board_w, obb_rules.laws.default_board_h);
+};
+obb_rules.board.create_board.cljs$core$IFn$_invoke$arity$2 = function(w, h) {
+  return new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "width", "width", -384071477), w, new cljs.core.Keyword(null, "height", "height", 1025178622), h, new cljs.core.Keyword(null, "terrain", "terrain", 704966005), obb_rules.board.random_terrain.call(null), new cljs.core.Keyword(null, "elements", "elements", 657646735), cljs.core.PersistentArrayMap.EMPTY], null);
+};
+obb_rules.board.create_board.cljs$lang$maxFixedArity = 2;
+obb_rules.board.player_element_QMARK_ = function obb_rules$board$player_element_QMARK_(player, p__8906) {
+  var vec__8908 = p__8906;
+  var coordinate = cljs.core.nth.call(null, vec__8908, 0, null);
+  var element = cljs.core.nth.call(null, vec__8908, 1, null);
+  return obb_rules.simplifier.name_EQ_.call(null, player, obb_rules.element.element_player.call(null, element));
+};
+obb_rules.board.board_elements = function obb_rules$board$board_elements(board, player) {
+  return cljs.core.map.call(null, function(p1__8909_SHARP_) {
+    return cljs.core.last.call(null, p1__8909_SHARP_);
+  }, cljs.core.filter.call(null, cljs.core.partial.call(null, obb_rules.board.player_element_QMARK_, player), board.call(null, new cljs.core.Keyword(null, "elements", "elements", 657646735))));
+};
+obb_rules.board.board_elements_count = function obb_rules$board$board_elements_count() {
+  var G__8911 = arguments.length;
+  switch(G__8911) {
+    case 1:
+      return obb_rules.board.board_elements_count.cljs$core$IFn$_invoke$arity$1(arguments[0]);
+      break;
+    case 2:
+      return obb_rules.board.board_elements_count.cljs$core$IFn$_invoke$arity$2(arguments[0], arguments[1]);
+      break;
+    default:
+      throw new Error([cljs.core.str("Invalid arity: "), cljs.core.str(arguments.length)].join(""));;
+  }
+};
+obb_rules.board.board_elements_count.cljs$core$IFn$_invoke$arity$1 = function(board) {
+  return cljs.core.count.call(null, board.call(null, new cljs.core.Keyword(null, "elements", "elements", 657646735)));
+};
+obb_rules.board.board_elements_count.cljs$core$IFn$_invoke$arity$2 = function(board, player) {
+  return cljs.core.count.call(null, obb_rules.board.board_elements.call(null, board, player));
+};
+obb_rules.board.board_elements_count.cljs$lang$maxFixedArity = 2;
+obb_rules.board.empty_board_QMARK_ = function obb_rules$board$empty_board_QMARK_() {
+  var G__8914 = arguments.length;
+  switch(G__8914) {
+    case 1:
+      return obb_rules.board.empty_board_QMARK_.cljs$core$IFn$_invoke$arity$1(arguments[0]);
+      break;
+    case 2:
+      return obb_rules.board.empty_board_QMARK_.cljs$core$IFn$_invoke$arity$2(arguments[0], arguments[1]);
+      break;
+    default:
+      throw new Error([cljs.core.str("Invalid arity: "), cljs.core.str(arguments.length)].join(""));;
+  }
+};
+obb_rules.board.empty_board_QMARK_.cljs$core$IFn$_invoke$arity$1 = function(board) {
+  return cljs.core._EQ_.call(null, 0, obb_rules.board.board_elements_count.call(null, board));
+};
+obb_rules.board.empty_board_QMARK_.cljs$core$IFn$_invoke$arity$2 = function(board, player) {
+  return cljs.core._EQ_.call(null, 0, obb_rules.board.board_elements_count.call(null, board, cljs.core.keyword.call(null, player)));
+};
+obb_rules.board.empty_board_QMARK_.cljs$lang$maxFixedArity = 2;
+obb_rules.board.board_width = function obb_rules$board$board_width(board) {
+  var or__6774__auto__ = board.call(null, new cljs.core.Keyword(null, "width", "width", -384071477));
+  if (cljs.core.truth_(or__6774__auto__)) {
+    return or__6774__auto__;
+  } else {
+    return obb_rules.laws.default_board_w;
+  }
+};
+obb_rules.board.board_height = function obb_rules$board$board_height(board) {
+  var or__6774__auto__ = board.call(null, new cljs.core.Keyword(null, "height", "height", 1025178622));
+  if (cljs.core.truth_(or__6774__auto__)) {
+    return or__6774__auto__;
+  } else {
+    return obb_rules.laws.default_board_h;
+  }
+};
+obb_rules.board.board_terrain = function obb_rules$board$board_terrain(board) {
+  return board.call(null, new cljs.core.Keyword(null, "terrain", "terrain", 704966005));
+};
+obb_rules.board.elements = function obb_rules$board$elements() {
+  var G__8917 = arguments.length;
+  switch(G__8917) {
+    case 1:
+      return obb_rules.board.elements.cljs$core$IFn$_invoke$arity$1(arguments[0]);
+      break;
+    case 2:
+      return obb_rules.board.elements.cljs$core$IFn$_invoke$arity$2(arguments[0], arguments[1]);
+      break;
+    default:
+      throw new Error([cljs.core.str("Invalid arity: "), cljs.core.str(arguments.length)].join(""));;
+  }
+};
+obb_rules.board.elements.cljs$core$IFn$_invoke$arity$1 = function(board) {
+  return board.call(null, new cljs.core.Keyword(null, "elements", "elements", 657646735));
+};
+obb_rules.board.elements.cljs$core$IFn$_invoke$arity$2 = function(board, elements) {
+  return cljs.core.assoc.call(null, board, new cljs.core.Keyword(null, "elements", "elements", 657646735), elements);
+};
+obb_rules.board.elements.cljs$lang$maxFixedArity = 2;
+obb_rules.board.get_element = function obb_rules$board$get_element(board, coord) {
+  return cljs.core.get_in.call(null, board, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "elements", "elements", 657646735), coord], null));
+};
+obb_rules.board.get_element_consider_removed = function obb_rules$board$get_element_consider_removed(board, coord) {
+  var or__6774__auto__ = obb_rules.board.get_element.call(null, board, coord);
+  if (cljs.core.truth_(or__6774__auto__)) {
+    return or__6774__auto__;
+  } else {
+    return cljs.core.get_in.call(null, board, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "removed-elements", "removed-elements", 1264344662), coord], null));
+  }
+};
+obb_rules.board.in_bounds_QMARK_ = function obb_rules$board$in_bounds_QMARK_(board, p__8919) {
+  var vec__8921 = p__8919;
+  var x = cljs.core.nth.call(null, vec__8921, 0, null);
+  var y = cljs.core.nth.call(null, vec__8921, 1, null);
+  var w = obb_rules.board.board_width.call(null, board);
+  var h = obb_rules.board.board_height.call(null, board);
+  return x > 0 && y > 0 && x <= w && y <= h;
+};
+obb_rules.board.can_place_element_QMARK_ = function obb_rules$board$can_place_element_QMARK_(board, coord, elem) {
+  var and__6762__auto__ = obb_rules.board.in_bounds_QMARK_.call(null, board, coord);
+  if (cljs.core.truth_(and__6762__auto__)) {
+    return obb_rules.board.get_element.call(null, board, coord) == null;
+  } else {
+    return and__6762__auto__;
+  }
+};
+obb_rules.board.register_removed_element = function obb_rules$board$register_removed_element(board, coord, element, destroyed_QMARK_) {
+  if (cljs.core.truth_(destroyed_QMARK_)) {
+    var all_removed = function() {
+      var or__6774__auto__ = board.call(null, new cljs.core.Keyword(null, "removed-elements", "removed-elements", 1264344662));
+      if (cljs.core.truth_(or__6774__auto__)) {
+        return or__6774__auto__;
+      } else {
+        return cljs.core.PersistentArrayMap.EMPTY;
+      }
+    }();
+    return cljs.core.assoc.call(null, board, new cljs.core.Keyword(null, "removed-elements", "removed-elements", 1264344662), cljs.core.assoc.call(null, all_removed, coord, element));
+  } else {
+    return board;
+  }
+};
+obb_rules.board.remove_element = function obb_rules$board$remove_element() {
+  var G__8923 = arguments.length;
+  switch(G__8923) {
+    case 2:
+      return obb_rules.board.remove_element.cljs$core$IFn$_invoke$arity$2(arguments[0], arguments[1]);
+      break;
+    case 3:
+      return obb_rules.board.remove_element.cljs$core$IFn$_invoke$arity$3(arguments[0], arguments[1], arguments[2]);
+      break;
+    default:
+      throw new Error([cljs.core.str("Invalid arity: "), cljs.core.str(arguments.length)].join(""));;
+  }
+};
+obb_rules.board.remove_element.cljs$core$IFn$_invoke$arity$2 = function(board, coord) {
+  return obb_rules.board.remove_element.call(null, board, coord, false);
+};
+obb_rules.board.remove_element.cljs$core$IFn$_invoke$arity$3 = function(board, coord, destroyed_QMARK_) {
+  var elements = board.call(null, new cljs.core.Keyword(null, "elements", "elements", 657646735));
+  var new_elements = cljs.core.dissoc.call(null, elements, coord);
+  return cljs.core.assoc.call(null, obb_rules.board.register_removed_element.call(null, board, coord, cljs.core.get.call(null, elements, coord), destroyed_QMARK_), new cljs.core.Keyword(null, "elements", "elements", 657646735), new_elements);
+};
+obb_rules.board.remove_element.cljs$lang$maxFixedArity = 3;
+obb_rules.board.swap_element = function obb_rules$board$swap_element(board, coord, new_elem) {
+  var elements = board.call(null, new cljs.core.Keyword(null, "elements", "elements", 657646735));
+  var element_with_coord = obb_rules.element.element_coordinate.call(null, new_elem, coord);
+  var new_elements = cljs.core.assoc.call(null, elements, coord, element_with_coord);
+  obb_rules.element.assert_element.call(null, element_with_coord);
+  return cljs.core.assoc.call(null, board, new cljs.core.Keyword(null, "elements", "elements", 657646735), new_elements);
+};
+obb_rules.board.place_element = function obb_rules$board$place_element(board, coord, element) {
+  obb_rules.element.assert_element.call(null, element);
+  if (cljs.core.truth_(obb_rules.board.can_place_element_QMARK_.call(null, board, coord, element))) {
+  } else {
+    throw new Error([cljs.core.str("Assert failed: "), cljs.core.str(cljs.core.pr_str.call(null, cljs.core.list(new cljs.core.Symbol(null, "can-place-element?", "can-place-element?", -436049716, null), new cljs.core.Symbol(null, "board", "board", -266486106, null), new cljs.core.Symbol(null, "coord", "coord", 186874888, null), new cljs.core.Symbol(null, "element", "element", -680416020, null))))].join(""));
+  }
+  return obb_rules.board.swap_element.call(null, board, coord, element);
+};
+obb_rules.board.has_element_QMARK_ = function obb_rules$board$has_element_QMARK_(board, coord) {
+  return !(obb_rules.board.get_element.call(null, board, coord) == null);
+};
+obb_rules.board.adjacent_QMARK_ = function obb_rules$board$adjacent_QMARK_(p__8925, p__8926) {
+  var vec__8929 = p__8925;
+  var c1x = cljs.core.nth.call(null, vec__8929, 0, null);
+  var c1y = cljs.core.nth.call(null, vec__8929, 1, null);
+  var vec__8930 = p__8926;
+  var c2x = cljs.core.nth.call(null, vec__8930, 0, null);
+  var c2y = cljs.core.nth.call(null, vec__8930, 1, null);
+  return 2 > obb_rules.math.abs.call(null, c1x - c2x) && 2 > obb_rules.math.abs.call(null, c1y - c2y);
+};
+obb_rules.board.remove_from_element = function obb_rules$board$remove_from_element() {
+  var G__8932 = arguments.length;
+  switch(G__8932) {
+    case 3:
+      return obb_rules.board.remove_from_element.cljs$core$IFn$_invoke$arity$3(arguments[0], arguments[1], arguments[2]);
+      break;
+    case 4:
+      return obb_rules.board.remove_from_element.cljs$core$IFn$_invoke$arity$4(arguments[0], arguments[1], arguments[2], arguments[3]);
+      break;
+    default:
+      throw new Error([cljs.core.str("Invalid arity: "), cljs.core.str(arguments.length)].join(""));;
+  }
+};
+obb_rules.board.remove_from_element.cljs$core$IFn$_invoke$arity$3 = function(board, coord, quantity) {
+  return obb_rules.board.remove_from_element.call(null, board, coord, quantity, false);
+};
+obb_rules.board.remove_from_element.cljs$core$IFn$_invoke$arity$4 = function(board, coord, quantity, destroyed_QMARK_) {
+  var element = obb_rules.board.get_element.call(null, board, coord);
+  var new_element = obb_rules.element.remove_quantity.call(null, element, quantity);
+  var remaining_quantity = obb_rules.element.element_quantity.call(null, new_element);
+  if (cljs.core._EQ_.call(null, 0, remaining_quantity)) {
+    return obb_rules.board.remove_element.call(null, board, coord, destroyed_QMARK_);
+  } else {
+    return obb_rules.board.swap_element.call(null, board, coord, new_element);
+  }
+};
+obb_rules.board.remove_from_element.cljs$lang$maxFixedArity = 4;
+obb_rules.board.destroy_from_element = function obb_rules$board$destroy_from_element(board, coord, quantity) {
+  return obb_rules.board.remove_from_element.call(null, board, coord, quantity, true);
+};
+obb_rules.board.add_to_element = function obb_rules$board$add_to_element(board, coord, extra_quantity, from_element) {
+  var element = function() {
+    var or__6774__auto__ = obb_rules.board.get_element.call(null, board, coord);
+    if (cljs.core.truth_(or__6774__auto__)) {
+      return or__6774__auto__;
+    } else {
+      return from_element;
+    }
+  }();
+  var quantity = function() {
+    var or__6774__auto__ = 0;
+    if (cljs.core.truth_(or__6774__auto__)) {
+      return or__6774__auto__;
+    } else {
+      return obb_rules.element.element_quantity.call(null, element);
+    }
+  }();
+  var new_quantity = quantity + extra_quantity;
+  var new_element = obb_rules.element.element_quantity.call(null, element, new_quantity);
+  if (cljs.core.truth_(element)) {
+  } else {
+    throw new Error([cljs.core.str("Assert failed: "), cljs.core.str([cljs.core.str("NoElement-"), cljs.core.str(coord), cljs.core.str(" - "), cljs.core.str(board)].join("")), cljs.core.str("\n"), cljs.core.str(cljs.core.pr_str.call(null, new cljs.core.Symbol(null, "element", "element", -680416020, null)))].join(""));
+  }
+  obb_rules.element.assert_element.call(null, new_element);
+  return obb_rules.board.swap_element.call(null, board, coord, new_element);
+};
+obb_rules.board.set_stash = function obb_rules$board$set_stash(board, player, stash) {
+  return cljs.core.assoc_in.call(null, board, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "stash", "stash", 1808320309), player], null), stash);
+};
+obb_rules.board.get_stash = function obb_rules$board$get_stash(board, player) {
+  return cljs.core.get_in.call(null, board, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "stash", "stash", 1808320309), cljs.core.keyword.call(null, player)], null));
 };

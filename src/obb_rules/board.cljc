@@ -1,7 +1,7 @@
 (ns obb-rules.board
-  (:use obb-rules.element)
-  (:require [clojure.math.numeric-tower :as math]
+  (:require [obb-rules.math :as math]
             [obb-rules.laws :as laws]
+            [obb-rules.element :as element]
             [obb-rules.simplifier :as simplify]))
 
 (defn- random-terrain
@@ -22,7 +22,7 @@
 (defn- player-element?
   "True if the given element is from the given player"
   [player [coordinate element]]
-  (simplify/name= player (element-player element)))
+  (simplify/name= player (element/element-player element)))
 
 (defn board-elements
   "Gets the elements of a given player"
@@ -108,15 +108,15 @@
   "Swaps a given element for another"
   [board coord new-elem]
   (let [elements (board :elements)
-        element-with-coord (element-coordinate new-elem coord)
+        element-with-coord (element/element-coordinate new-elem coord)
         new-elements (assoc elements coord element-with-coord)]
-    (assert-element element-with-coord)
+    (element/assert-element element-with-coord)
     (assoc board :elements new-elements)))
 
 (defn place-element
   "Places an element on the board"
   [board coord element]
-  (assert-element element)
+  (element/assert-element element)
   (assert (can-place-element? board coord element))
   (swap-element board coord element))
 
@@ -138,8 +138,8 @@
    (remove-from-element board coord quantity false))
   ([board coord quantity destroyed?]
    (let [element (get-element board coord)
-         new-element (remove-quantity element quantity)
-         remaining-quantity (element-quantity new-element)]
+         new-element (element/remove-quantity element quantity)
+         remaining-quantity (element/element-quantity new-element)]
      (if (= 0 remaining-quantity)
        (remove-element board coord destroyed?)
        (swap-element board coord new-element)))))
@@ -153,11 +153,11 @@
   "Adds a quantity to an element"
   [board coord extra-quantity from-element]
   (let [element (or (get-element board coord) from-element)
-        quantity (or 0 (element-quantity element))
+        quantity (or 0 (element/element-quantity element))
         new-quantity (+ quantity extra-quantity)
-        new-element (element-quantity element new-quantity)]
+        new-element (element/element-quantity element new-quantity)]
     (assert element (str "NoElement-" coord " - " board))
-    (assert-element new-element)
+    (element/assert-element new-element)
     (swap-element board coord new-element)))
 
 (defn set-stash
