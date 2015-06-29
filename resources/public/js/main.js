@@ -32120,7 +32120,7 @@ obb_rules.simplifier.build_if_unit = function obb_rules$simplifier$build_if_unit
   }
 };
 obb_rules.simplifier.clean_unit = function obb_rules$simplifier$clean_unit(obj) {
-  return clojure.walk.walk.call(null, obb_rules.simplifier.simplify_if_unit, cljs.core.identity, obj);
+  return cljs.core.PersistentArrayMap.EMPTY;
 };
 obb_rules.simplifier.build_unit = function obb_rules$simplifier$build_unit(obj) {
   return clojure.walk.walk.call(null, obb_rules.simplifier.build_if_unit, cljs.core.identity, obj);

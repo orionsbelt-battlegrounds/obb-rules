@@ -1,8 +1,11 @@
 (ns obb-rules.simplifier-test
-  (:require [obb-rules.translator :as translator]
-            [obb-rules.simplifier :as simplify]
-            [obb-rules.unit :as unit])
-  (:use clojure.test obb-rules.element obb-rules.unit obb-rules.board))
+  (:require
+    [obb-rules.simplifier :as simplify]
+    [obb-rules.unit :as unit]
+    ;[obb-rules.element :as element]
+    ;[obb-rules.board :as board]
+    #?(:clj [clojure.test :refer [deftest testing is]]
+       :cljs [cljs.test :refer-macros [deftest testing is]])))
 
 (deftest simplify-unit
   (let [simplified (simplify/clean-unit {:unit (unit/fetch :rain)})]
@@ -48,11 +51,10 @@
 
 (deftest coordenize-test
   (is (= [1 1] (simplify/coordenize "[1 1]")))
-  (is (= [1 1] (simplify/coordenize ":[1 1]")))
-  (is (= [1 1] (simplify/coordenize "::[1 1]"))))
+  (is (= [7 4] (simplify/coordenize ":[7 4]")))
+  (is (= [5 5] (simplify/coordenize "::[5 5]"))))
 
 (deftest name=
   (is (simplify/name= :p1 :p1))
   (is (simplify/name= "p1" :p1))
   (is (simplify/name= "p1" "p1")))
-

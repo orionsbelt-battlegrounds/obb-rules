@@ -1,6 +1,7 @@
 (ns obb-rules.simplifier
   "Simplifies data structures and builds them if necessary"
   (:require [clojure.walk :as w]
+            [obb-rules.host-dependent :as host]
             [obb-rules.unit :as unit]))
 
 (declare clean-unit)
@@ -61,7 +62,7 @@
   [raw]
   (let [beter-raw (-> raw (str) (clojure.string/replace #":" ""))]
     (if-let [parsed (re-matches #"\[(\d+) (\d+)\]" beter-raw)]
-      (into [] (map clojure.core/read-string (rest parsed)))
+      (into [] (map host/parse-int (rest parsed)))
       raw)))
 
 (defn build-coordinate-keys
