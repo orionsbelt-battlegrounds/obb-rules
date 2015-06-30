@@ -1,12 +1,8 @@
 (ns obb-rules.stash-test
-  (:require [obb-rules.stash :as stash])
-  (:use clojure.test
-        obb-rules.action
-        obb-rules.actions.move
-        obb-rules.board
-        obb-rules.element
-        obb-rules.result
-        obb-rules.unit))
+  (:require
+    [obb-rules.stash :as stash]
+    #?(:clj [clojure.test :refer [deftest testing is run-tests]]
+       :cljs [cljs.test :refer-macros [deftest testing is run-tests]])))
 
 (deftest stash-creation
   (testing "creates a stash given some units"
