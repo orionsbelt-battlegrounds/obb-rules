@@ -2,9 +2,10 @@
   (:require [obb-rules.stash :as stash]
             [obb-rules.result :as result]
             [obb-rules.simplifier :as simplify]
+            [obb-rules.host-dependent :as host]
             [obb-rules.board :as board]))
 
-(def version (System/getProperty "obb-rules.version"))
+(def version "2.0.0")
 
 (defn state?
   "Checks if the game is in a given state"

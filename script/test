@@ -7,6 +7,7 @@ lein test obb-rules.unit-test \
           obb-rules.board-test \
           obb-rules.simplifier-test \
           obb-rules.translator-test \
+          obb-rules.game-mode-test \
           obb-rules.stash-test
 
 #test cljs part

@@ -1,12 +1,13 @@
 (ns obb-rules.game-mode-test
-  (:require [obb-rules.game :as game]
-            [obb-rules.board :as board]
-            [obb-rules.game-mode :as game-mode]
-            [obb-rules.turn :as turn]
-            [obb-rules.element :as element]
-            [obb-rules.unit :as unit]
-            [obb-rules.stash :as stash])
-  (:use clojure.test))
+  (:require
+    [obb-rules.game :as game]
+    [obb-rules.board :as board]
+    [obb-rules.game-mode :as game-mode]
+    [obb-rules.element :as element]
+    [obb-rules.unit :as unit]
+    [obb-rules.stash :as stash]
+    #?(:clj [clojure.test :refer [deftest testing is run-tests]]
+       :cljs [cljs.test :refer-macros [deftest testing is run-tests]])))
 
 (def rain (unit/get-unit-by-name "rain"))
 (def p1-element (element/create-element "p1" rain 20 :south))
