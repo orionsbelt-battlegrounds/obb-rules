@@ -9,7 +9,7 @@ lein test obb-rules.unit-test \
           obb-rules.translator-test \
           obb-rules.game-mode-test \
           obb-rules.stash-test \
-          obb-rules.direction-test
+          obb-rules.actions.direction-test
 
 #test cljs part
 lein with-profile cljs cljsbuild test
