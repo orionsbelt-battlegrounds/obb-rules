@@ -1,15 +1,16 @@
 (ns obb-rules.action
   (:require [obb-rules.actions.rotate :as rotate]
             #?(:clj [obb-rules.actions.attack :as attack])
-            #?(:clj [obb-rules.actions.deploy :as deploy])
+            [obb-rules.actions.deploy :as deploy]
             #?(:clj [obb-rules.actions.auto-deploy :as auto-deploy])
             #?(:clj [obb-rules.actions.goto :as goto])
             [obb-rules.actions.move :as move]))
 
 (def ^:private available-actions
-  #?(:cljs {:rotate rotate/build-rotate
-            :move move/build-move
-            })
+  #?(:cljs
+  {:rotate rotate/build-rotate
+   :move move/build-move
+   :deploy deploy/build-deploy})
   #?(:clj
   {:rotate rotate/build-rotate
    :move move/build-move

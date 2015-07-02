@@ -10,6 +10,7 @@ lein test obb-rules.unit-test \
           obb-rules.game-mode-test \
           obb-rules.stash-test \
           obb-rules.actions.direction-test \
+          obb-rules.actions.deploy-test \
           obb-rules.actions.rotate-test
 
 #test cljs part
