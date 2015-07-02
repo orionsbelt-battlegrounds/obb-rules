@@ -1,6 +1,8 @@
 (ns obb-rules.actions.direction-test
-  (:require [obb-rules.actions.direction :as direction])
-  (:use clojure.test))
+  (:require
+    [obb-rules.actions.direction :as direction]
+    #?(:clj [clojure.test :refer [deftest testing is run-tests]]
+       :cljs [cljs.test :refer-macros [deftest testing is run-tests]])))
 
 (deftest perpendicular-horiz
   (is (some #{[3 4]} (direction/perpendicular [4 4] :north)))
