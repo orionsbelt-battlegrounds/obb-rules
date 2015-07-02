@@ -5,6 +5,7 @@
             [obb-rules.simplifier-test]
             [obb-rules.translator-test]
             [obb-rules.actions.direction-test]
+            [obb-rules.actions.rotate-test]
             [obb-rules.stash-test]
             [obb-rules.game-mode-test]
             [obb-rules.element-test]))
@@ -45,6 +46,7 @@
                                 'obb-rules.stash-test
                                 'obb-rules.game-mode-test
                                 'obb-rules.actions.direction-test
+                                'obb-rules.actions.rotate-test
                                 'obb-rules.simplifier-test)
   ;; The phantomjs test runner expects this variable to be set. See
   ;; phantom/test.js.
