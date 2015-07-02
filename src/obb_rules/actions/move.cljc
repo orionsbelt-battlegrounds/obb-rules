@@ -4,8 +4,11 @@
             [obb-rules.game :as game]
             [obb-rules.laws :as laws]
             [obb-rules.element :as element]
-            [obb-rules.simplifier :as simplify])
-  (:use obb-rules.result obb-rules.board obb-rules.element obb-rules.unit))
+            [obb-rules.simplifier :as simplify]
+            [obb-rules.result :as result]
+            [obb-rules.board :as board]
+            [obb-rules.element :as element]
+            [obb-rules.unit :as unit]))
 
 (defn- invalid-move-percentage?
   "Checks if a quantity to move is invalid"
@@ -21,23 +24,23 @@
   [player board efrom from eto to quantity]
   (cond
     (not (game/player-turn? board player)) "StateMismatch"
-    (not (in-bounds? board to)) "OutOfBounds"
+    (not (board/in-bounds? board to)) "OutOfBounds"
     (nil? efrom) "EmptyCoordinate"
-    (frozen? efrom) "FrozenElement"
-    (frozen? eto) "FrozenElement"
-    (not (adjacent? from to)) "NotAdjacent"
-    (invalid-move-percentage? (element-quantity efrom) quantity) "InvalidQuantityPercentage"
+    (element/frozen? efrom) "FrozenElement"
+    (element/frozen? eto) "FrozenElement"
+    (not (board/adjacent? from to)) "NotAdjacent"
+    (invalid-move-percentage? (element/element-quantity efrom) quantity) "InvalidQuantityPercentage"
     (not (move-restrictions/valid? efrom from to)) "MovementTypeFail"
-    (and eto (not= (element-unit efrom) (element-unit eto))) "UnitMismatch"
-    (and eto (simplify/not-name= player (element-player eto))) "NotOwnedElement"
-    (simplify/not-name= player (element-player efrom)) "NotOwnedElement"))
+    (and eto (not= (element/element-unit efrom) (element/element-unit eto))) "UnitMismatch"
+    (and eto (simplify/not-name= player (element/element-player eto))) "NotOwnedElement"
+    (simplify/not-name= player (element/element-player efrom)) "NotOwnedElement"))
 
 (defn movement-cost
   "Specifies a unit movement cost"
   [unit partial-move?]
   (if partial-move?
-    (* 2 (unit-movement-cost unit))
-    (unit-movement-cost unit)))
+    (* 2 (unit/unit-movement-cost unit))
+    (unit/unit-movement-cost unit)))
 
 (defn- possible-on-board?
   "Checks if the given coordinate is a possible move for the
@@ -48,7 +51,7 @@
           board
           efrom
           (element/element-coordinate efrom)
-          (get-element-consider-removed board destination)
+          (board/get-element-consider-removed board destination)
           destination
           (element/element-quantity efrom))))
 
@@ -111,13 +114,13 @@
 (defn- process-move
   "Processes the actual move"
   [board efrom from eto to quantity]
-  (let [unit (element-unit efrom)
-        from-quantity (element-quantity efrom)
+  (let [unit (element/element-unit efrom)
+        from-quantity (element/element-quantity efrom)
         remaining-quantity (- from-quantity quantity)
         cost (movement-cost unit (not= 0 remaining-quantity))
-        removed-from-board (remove-from-element board from quantity)
-        added-to-board (add-to-element removed-from-board to quantity efrom)]
-    (action-success added-to-board cost)))
+        removed-from-board (board/remove-from-element board from quantity)
+        added-to-board (board/add-to-element removed-from-board to quantity efrom)]
+    (result/action-success added-to-board cost)))
 
 (defn- get-quantity
   "Tries to get the quantity from the args"
@@ -131,11 +134,11 @@
   "Builds a move action on a board"
   [[from to quantity]]
   (fn mover [board player]
-    (let [efrom (get-element board from)
-          eto (get-element-consider-removed board to)
+    (let [efrom (board/get-element board from)
+          eto (board/get-element-consider-removed board to)
           quantity (get-quantity quantity efrom)]
       (if-let [error (move-restrictions player board efrom from eto to quantity)]
-        (action-failed error)
+        (result/action-failed error)
         (process-move board efrom from eto to quantity)))))
 
 (defn reset-action-state
