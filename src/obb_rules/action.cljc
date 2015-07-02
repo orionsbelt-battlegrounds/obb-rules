@@ -1,18 +1,22 @@
 (ns obb-rules.action
   (:require [obb-rules.actions.rotate :as rotate]
-            [obb-rules.actions.attack :as attack]
-            [obb-rules.actions.deploy :as deploy]
-            [obb-rules.actions.auto-deploy :as auto-deploy]
-            [obb-rules.actions.goto :as goto]
+            #?(:clj [obb-rules.actions.attack :as attack])
+            #?(:clj [obb-rules.actions.deploy :as deploy])
+            #?(:clj [obb-rules.actions.auto-deploy :as auto-deploy])
+            #?(:clj [obb-rules.actions.goto :as goto])
             [obb-rules.actions.move :as move]))
 
 (def ^:private available-actions
+  #?(:cljs {:rotate rotate/build-rotate
+            :move move/build-move
+            })
+  #?(:clj
   {:rotate rotate/build-rotate
+   :move move/build-move
    :attack attack/build-attack
    :deploy deploy/build-deploy
    :auto-deploy auto-deploy/build-auto-deploy
-   :move move/build-move
-   :goto goto/build-goto})
+   :goto goto/build-goto}))
 
 (defn build-action
   "Builds an action given its code and args"
