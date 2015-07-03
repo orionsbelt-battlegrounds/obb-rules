@@ -5,7 +5,6 @@
   (:require [obb-rules.element :as element]
             [obb-rules.board :as board]
             [obb-rules.unit :as unit]
-            [obb-rules.actions.direction :as direction]
             [obb-rules.actions.damage-calculator :as calculator]
             [obb-rules.actions.direction :as direction]))
 

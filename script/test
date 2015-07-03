@@ -13,7 +13,8 @@ lein test obb-rules.unit-test \
           obb-rules.actions.deploy-test \
           obb-rules.actions.rotate-test \
           obb-rules.actions.damage-calculator-test \
-          obb-rules.actions.rebound-test
+          obb-rules.actions.rebound-test \
+          obb-rules.actions.strikeback-test
 
 #test cljs part
 lein with-profile cljs cljsbuild test
