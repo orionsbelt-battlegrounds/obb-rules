@@ -7,6 +7,7 @@
             [obb-rules.actions.direction-test]
             [obb-rules.actions.rotate-test]
             [obb-rules.actions.deploy-test]
+            [obb-rules.actions.rebound-test]
             [obb-rules.actions.damage-calculator-test]
             [obb-rules.stash-test]
             [obb-rules.game-mode-test]
@@ -51,6 +52,7 @@
                                 'obb-rules.actions.rotate-test
                                 'obb-rules.actions.deploy-test
                                 'obb-rules.actions.damage-calculator-test
+                                'obb-rules.actions.rebound-test
                                 'obb-rules.simplifier-test)
   ;; The phantomjs test runner expects this variable to be set. See
   ;; phantom/test.js.
