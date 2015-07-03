@@ -6,8 +6,9 @@
             [obb-rules.unit :as unit]
             [obb-rules.result :as result]
             [obb-rules.game-mode :as game-mode]
-            [obb-rules.stash :as stash])
-  (:use clojure.test))
+            [obb-rules.stash :as stash]
+    #?(:clj [clojure.test :refer [deftest testing is run-tests]]
+       :cljs [cljs.test :refer-macros [deftest testing is run-tests]])))
 
 (deftest create-game
   (let [game (game/random)]

@@ -4,6 +4,7 @@
             [obb-rules.board-test]
             [obb-rules.simplifier-test]
             [obb-rules.env-test]
+            [obb-rules.game-test]
             [obb-rules.translator-test]
             [obb-rules.actions.direction-test]
             [obb-rules.actions.rotate-test]
@@ -59,6 +60,7 @@
                                 'obb-rules.stash-test
                                 'obb-rules.game-mode-test
                                 'obb-rules.privatize-test
+                                'obb-rules.game-test
                                 'obb-rules.actions.direction-test
                                 'obb-rules.actions.rotate-test
                                 'obb-rules.actions.deploy-test
