@@ -3,6 +3,7 @@
             [obb-rules.unit-test]
             [obb-rules.board-test]
             [obb-rules.simplifier-test]
+            [obb-rules.env-test]
             [obb-rules.translator-test]
             [obb-rules.actions.direction-test]
             [obb-rules.actions.rotate-test]
@@ -51,6 +52,7 @@
 (defn runner
   []
   (run-tests (empty-env ::test) 'obb-rules.unit-test
+                                'obb-rules.env-test
                                 'obb-rules.element-test
                                 'obb-rules.board-test
                                 'obb-rules.translator-test
