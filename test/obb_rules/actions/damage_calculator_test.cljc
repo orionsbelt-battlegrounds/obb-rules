@@ -1,25 +1,27 @@
 (ns obb-rules.actions.damage-calculator-test
-  (:require [obb-rules.actions.damage-calculator :as calculator])
-  (:use clojure.test
-        obb-rules.board
-        obb-rules.element
-        obb-rules.result
-        obb-rules.unit))
+  (:require
+    [obb-rules.actions.damage-calculator :as calculator]
+    [obb-rules.board :as board]
+    [obb-rules.element :as element]
+    [obb-rules.result :as result]
+    [obb-rules.unit :as unit]
+    #?(:clj [clojure.test :refer [deftest testing is run-tests]]
+       :cljs [cljs.test :refer-macros [deftest testing is run-tests]])))
 
-(def board (create-board))
-(def rain (get-unit-by-name "rain"))
-(def crusader (get-unit-by-name "crusader"))
-(def rain-element (create-element :p1 rain 10 :south [1 1]))
-(def crusader-element (create-element :p1 crusader 10 :south [1 2]))
+(def board (board/create-board))
+(def rain (unit/get-unit-by-name "rain"))
+(def crusader (unit/get-unit-by-name "crusader"))
+(def rain-element (element/create-element :p1 rain 10 :south [1 1]))
+(def crusader-element (element/create-element :p1 crusader 10 :south [1 2]))
 
 (deftest range-factor
 
   (defn- test-range
     [c1 c2 expected-factor]
-    (let [board (place-element (create-board) c1 (create-element :p1 crusader 10 :south))
-          board2 (place-element board c2 (create-element :p2 crusader 10 :south))
-          e1 (get-element board2 c1)
-          e2 (get-element board2 c2)
+    (let [board (board/place-element board c1 (element/create-element :p1 crusader 10 :south))
+          board2 (board/place-element board c2 (element/create-element :p2 crusader 10 :south))
+          e1 (board/get-element board2 c1)
+          e2 (board/get-element board2 c2)
           damage (calculator/damage board e1 e2)
           factor (calculator/distance-factor e1 e2)]
       (is (> damage 0))
