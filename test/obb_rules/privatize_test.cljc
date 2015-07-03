@@ -1,12 +1,14 @@
 (ns obb-rules.privatize-test
-  (:require [obb-rules.game :as game]
-            [obb-rules.board :as board]
-            [obb-rules.privatize :as privatize]
-            [obb-rules.unit :as unit]
-            [obb-rules.turn :as turn]
-            [obb-rules.element :as element]
-            [obb-rules.stash :as stash])
-  (:use clojure.test))
+  (:require
+    [obb-rules.game :as game]
+    [obb-rules.board :as board]
+    [obb-rules.privatize :as privatize]
+    [obb-rules.unit :as unit]
+    [obb-rules.turn :as turn]
+    [obb-rules.element :as element]
+    [obb-rules.stash :as stash]
+    #?(:clj [clojure.test :refer [deftest testing is run-tests]]
+       :cljs [cljs.test :refer-macros [deftest testing is run-tests]])))
 
 (def rain (unit/get-unit-by-name "rain"))
 (def deploy-game (game/random))

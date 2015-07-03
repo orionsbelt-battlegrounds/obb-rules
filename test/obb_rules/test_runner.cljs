@@ -16,6 +16,7 @@
             [obb-rules.actions.triple-attack-test]
             [obb-rules.actions.attack-test]
             [obb-rules.actions.damage-calculator-test]
+            [obb-rules.privatize-test]
             [obb-rules.stash-test]
             [obb-rules.game-mode-test]
             [obb-rules.element-test]))
@@ -55,6 +56,7 @@
                                 'obb-rules.translator-test
                                 'obb-rules.stash-test
                                 'obb-rules.game-mode-test
+                                'obb-rules.privatize-test
                                 'obb-rules.actions.direction-test
                                 'obb-rules.actions.rotate-test
                                 'obb-rules.actions.deploy-test

@@ -20,6 +20,7 @@ lein test obb-rules.unit-test \
           obb-rules.actions.goto-test \
           obb-rules.actions.bonus-test \
           obb-rules.actions.catapult-test \
+          obb-rules.privatize-test \
           obb-rules.actions.strikeback-test
 
 #test cljs part
