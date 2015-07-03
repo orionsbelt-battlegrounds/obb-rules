@@ -1,6 +1,6 @@
 (ns obb-rules.action
   (:require [obb-rules.actions.rotate :as rotate]
-            #?(:clj [obb-rules.actions.attack :as attack])
+            [obb-rules.actions.attack :as attack]
             [obb-rules.actions.deploy :as deploy]
             #?(:clj [obb-rules.actions.auto-deploy :as auto-deploy])
             #?(:clj [obb-rules.actions.goto :as goto])
@@ -10,6 +10,7 @@
   #?(:cljs
   {:rotate rotate/build-rotate
    :move move/build-move
+   :attack attack/build-attack
    :deploy deploy/build-deploy})
   #?(:clj
   {:rotate rotate/build-rotate
