@@ -3,7 +3,7 @@
             [obb-rules.actions.attack :as attack]
             [obb-rules.actions.deploy :as deploy]
             #?(:clj [obb-rules.actions.auto-deploy :as auto-deploy])
-            #?(:clj [obb-rules.actions.goto :as goto])
+            [obb-rules.actions.goto :as goto]
             [obb-rules.actions.move :as move]))
 
 (def ^:private available-actions
@@ -11,7 +11,8 @@
   {:rotate rotate/build-rotate
    :move move/build-move
    :attack attack/build-attack
-   :deploy deploy/build-deploy})
+   :deploy deploy/build-deploy
+   :goto goto/build-goto})
   #?(:clj
   {:rotate rotate/build-rotate
    :move move/build-move

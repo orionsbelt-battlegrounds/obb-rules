@@ -2,7 +2,7 @@
   obb-rules.actions.goto
   "Allows movement from a unit to non-adjacent coordinates.
   Translates itself to the best found path via :move actions."
-  (:require [clojure.math.numeric-tower :as math]
+  (:require [obb-rules.math :as math]
             [obb-rules.actions.move :as move]
             [obb-rules.element :as element]
             [obb-rules.laws :as laws]
