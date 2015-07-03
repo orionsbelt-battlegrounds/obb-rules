@@ -10,6 +10,7 @@
             [obb-rules.actions.rebound-test]
             [obb-rules.actions.strikeback-test]
             [obb-rules.actions.triple-attack-test]
+            [obb-rules.actions.attack-test]
             [obb-rules.actions.damage-calculator-test]
             [obb-rules.stash-test]
             [obb-rules.game-mode-test]
@@ -57,6 +58,7 @@
                                 'obb-rules.actions.rebound-test
                                 'obb-rules.actions.strikeback-test
                                 'obb-rules.actions.triple-attack-test
+                                'obb-rules.actions.attack-test
                                 'obb-rules.simplifier-test)
   ;; The phantomjs test runner expects this variable to be set. See
   ;; phantom/test.js.

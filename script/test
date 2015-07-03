@@ -15,6 +15,7 @@ lein test obb-rules.unit-test \
           obb-rules.actions.damage-calculator-test \
           obb-rules.actions.rebound-test \
           obb-rules.actions.triple-attack-test \
+          obb-rules.actions.attack-test \
           obb-rules.actions.strikeback-test
 
 #test cljs part
