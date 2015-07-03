@@ -8,6 +8,7 @@
             [obb-rules.actions.rotate-test]
             [obb-rules.actions.move-test]
             [obb-rules.actions.goto-test]
+            [obb-rules.actions.bonus-test]
             [obb-rules.actions.deploy-test]
             [obb-rules.actions.rebound-test]
             [obb-rules.actions.strikeback-test]
@@ -63,6 +64,7 @@
                                 'obb-rules.actions.attack-test
                                 'obb-rules.actions.move-test
                                 'obb-rules.actions.goto-test
+                                'obb-rules.actions.bonus-test
                                 'obb-rules.simplifier-test)
   ;; The phantomjs test runner expects this variable to be set. See
   ;; phantom/test.js.

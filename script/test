@@ -18,6 +18,7 @@ lein test obb-rules.unit-test \
           obb-rules.actions.attack-test \
           obb-rules.actions.move-test \
           obb-rules.actions.goto-test \
+          obb-rules.actions.bonus-test \
           obb-rules.actions.strikeback-test
 
 #test cljs part
