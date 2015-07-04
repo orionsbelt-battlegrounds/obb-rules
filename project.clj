@@ -7,8 +7,7 @@
             :distribution :repo
             :comments     "Copyright 2011-2014 Pedro Santos All Rights Reserved."}
 
-  :source-paths ["src"]
-  :test-paths ["test"]
+  :jvm-opts ["-XX:+TieredCompilation" "-XX:TieredStopAtLevel=1"]
 
   :scm {:name "git"
         :url "git@github.com:orionsbelt-battlegrounds/obb-rules.git"}
