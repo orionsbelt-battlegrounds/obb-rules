@@ -15,7 +15,7 @@
     #?(:clj [clojure.test :refer [deftest testing is run-tests]]
        :cljs [cljs.test :refer-macros [deftest testing is run-tests]])))
 
-(def scenarions-to-test (host/parse-int (host/get-env "OBB_SCENARIOS_TO_TEST" "10")))
+(def scenarions-to-test (host/scenarios-to-test))
 (def scenarions-to-test-small (int (/ scenarions-to-test 10)))
 
 (def unit-names (map #(unit/unit-name %) (unit/get-units)))

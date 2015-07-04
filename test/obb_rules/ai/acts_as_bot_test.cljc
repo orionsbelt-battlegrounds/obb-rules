@@ -2,9 +2,19 @@
   (:require [obb-rules.game :as game]
             [obb-rules.turn :as turn]
             [obb-rules.board :as board]
+            [obb-rules.element :as element]
             [obb-rules.unit :as unit]
-            [obb-rules.result :as result])
-  (:use clojure.test obb-rules.board obb-rules.element))
+            [obb-rules.result :as result]
+    #?(:cljs [cljs.test.check :as tc])
+    #?(:clj [clojure.test.check.generators :as gen]
+       :cljs [cljs.test.check.generators :as gen])
+    #?(:clj [clojure.test.check.properties :as prop]
+       :cljs [cljs.test.check.properties :as prop :include-macros true])
+    #?(:clj [clojure.test.check.clojure-test :refer [defspec]]
+       :cljs [cljs.test.check.cljs-test :refer-macros [defspec]])
+    #?(:clj [clojure.test :refer [deftest testing is run-tests]]
+       :cljs [cljs.test :refer-macros [deftest testing is run-tests]])))
+
 
 (def rain (unit/get-unit-by-name "rain"))
 (def kamikaze (unit/get-unit-by-name "kamikaze"))
@@ -24,8 +34,8 @@
   [botfn]
   (let [board (-> (board/create-board)
                   (game/state :p1)
-                  (place-element [2 5] (create-element :p1 rain 1 :south [2 5]))
-                  (place-element [2 6] (create-element :p2 rain 1 :north [2 6])))
+                  (board/place-element [2 5] (element/create-element :p1 rain 1 :south [2 5]))
+                  (board/place-element [2 6] (element/create-element :p2 rain 1 :north [2 6])))
         actions (botfn board :p1)
         result (turn/process-actions board :p1 actions)
         final-game (result/result-board result)]
@@ -37,10 +47,10 @@
   [botfn]
   (let [board (-> (board/create-board)
                   (game/state :p1)
-                  (place-element [2 5] (create-element :p1 rain 1 :south [2 5]))
-                  (place-element [2 6] (create-element :p2 rain 1 :north [2 6]))
-                  (place-element [3 5] (create-element :p1 rain 5 :south [3 5]))
-                  (place-element [3 6] (create-element :p2 rain 5 :north [3 6])))
+                  (board/place-element [2 5] (element/create-element :p1 rain 1 :south [2 5]))
+                  (board/place-element [2 6] (element/create-element :p2 rain 1 :north [2 6]))
+                  (board/place-element [3 5] (element/create-element :p1 rain 5 :south [3 5]))
+                  (board/place-element [3 6] (element/create-element :p2 rain 5 :north [3 6])))
         actions (botfn board :p1)
         result (turn/process-actions board :p1 actions)
         final-game (result/result-board result)]
@@ -52,8 +62,8 @@
   [botfn]
   (let [board (-> (board/create-board)
                   (game/state :p1)
-                  (place-element [2 5] (create-element :p1 rain 1 :south [2 5]))
-                  (place-element [3 5] (create-element :p2 rain 1 :north [3 5])))
+                  (board/place-element [2 5] (element/create-element :p1 rain 1 :south [2 5]))
+                  (board/place-element [3 5] (element/create-element :p2 rain 1 :north [3 5])))
         actions (botfn board :p1)
         result (turn/process-actions board :p1 actions)
         final-game (result/result-board result)]
@@ -65,9 +75,9 @@
   [botfn]
   (let [board (-> (board/create-board)
                   (game/state :p1)
-                  (place-element [2 5] (create-element :p1 rain 1 :south [2 5]))
-                  (place-element [2 6] (create-element :p2 rain 1 :south [2 6]))
-                  (place-element [3 5] (create-element :p2 kamikaze 1 :north [3 5])))
+                  (board/place-element [2 5] (element/create-element :p1 rain 1 :south [2 5]))
+                  (board/place-element [2 6] (element/create-element :p2 rain 1 :south [2 6]))
+                  (board/place-element [3 5] (element/create-element :p2 kamikaze 1 :north [3 5])))
         actions (botfn board :p1)
         result (turn/process-actions board :p1 actions)
         final-game (result/result-board result)]
@@ -94,8 +104,8 @@
   [botfn]
   (let [board (-> (board/create-board)
                   (game/state :p1)
-                  (place-element [2 5] (create-element :p1 rain 1 :south [2 5]))
-                  (place-element [5 5] (create-element :p2 kamikaze 1 :north [5 5])))
+                  (board/place-element [2 5] (element/create-element :p1 rain 1 :south [2 5]))
+                  (board/place-element [5 5] (element/create-element :p2 kamikaze 1 :north [5 5])))
         actions (botfn board :p1)
         result (turn/process-actions board :p1 actions)
         final-game (result/result-board result)]

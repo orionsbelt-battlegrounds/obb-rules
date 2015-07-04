@@ -6,7 +6,9 @@
     [obb-rules.env-test]
     [obb-rules.game-test]
     [obb-rules.translator-test]
+    [obb-rules.action-test]
     [obb-rules.actions.direction-test]
+    [obb-rules.actions.auto-deploy-test]
     [obb-rules.actions.rotate-test]
     [obb-rules.actions.move-test]
     [obb-rules.actions.goto-test]
@@ -22,5 +24,8 @@
     [obb-rules.stash-test]
     [obb-rules.game-mode-test]
     [obb-rules.evaluator-test]
+    [obb-rules.ai.acts-as-bot-test]
+    [obb-rules.ai.common-test]
+    [obb-rules.ai.firingsquad-test]
     [obb-rules.element-test]))
 

@@ -1,20 +1,20 @@
 (ns obb-rules.action-test
-  (:use clojure.test 
-        obb-rules.action
-        obb-rules.board
-        obb-rules.element
-        obb-rules.result
-        obb-rules.unit))
+  (:require
+    [obb-rules.board :as board]
+    [obb-rules.action :as action]
+    [obb-rules.result :as result]
+    #?(:clj [clojure.test :refer [deftest testing is run-tests]]
+       :cljs [cljs.test :refer-macros [deftest testing is run-tests]])))
 
 (defn- loader-check
   "Checks if an action is recognized"
   [raw-action]
-  (let [action (build-action raw-action)
-        board (create-board)]
+  (let [action (action/build-action raw-action)
+        board (board/create-board)]
     (is action)
     (is (fn? action))
     (let [result (action board :p1)]
-      (is (= true (failed? result))))))
+      (is (= true (result/failed? result))))))
 
 (deftest load-actions
 

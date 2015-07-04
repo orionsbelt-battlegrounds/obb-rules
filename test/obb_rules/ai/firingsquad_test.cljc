@@ -5,12 +5,16 @@
             [obb-rules.result :as result]
             [obb-rules.ai.firingsquad :as firingsquad]
             [obb-rules.generators :as obb-gen]
-            [clojure.test.check.generators :as gen]
-            [clojure.test.check.properties :as prop]
-            [obb-rules.ai.acts-as-bot-test :as acts-as-bot])
-  (:use clojure.test
-        clojure.test.check
-        clojure.test.check.clojure-test))
+            [obb-rules.ai.acts-as-bot-test :as acts-as-bot]
+    #?(:cljs [cljs.test.check :as tc])
+    #?(:clj [clojure.test.check.generators :as gen]
+       :cljs [cljs.test.check.generators :as gen])
+    #?(:clj [clojure.test.check.properties :as prop]
+       :cljs [cljs.test.check.properties :as prop :include-macros true])
+    #?(:clj [clojure.test.check.clojure-test :refer [defspec]]
+       :cljs [cljs.test.check.cljs-test :refer-macros [defspec]])
+    #?(:clj [clojure.test :refer [deftest testing is run-tests]]
+       :cljs [cljs.test :refer-macros [deftest testing is run-tests]])))
 
 (deftest deploy-choice
   (acts-as-bot/validate-deploy firingsquad/actions))
