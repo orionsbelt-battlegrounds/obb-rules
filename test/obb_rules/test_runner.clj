@@ -8,4 +8,4 @@
 
 (defn -main
   [& args]
-  (runner))
+  (time (runner)))

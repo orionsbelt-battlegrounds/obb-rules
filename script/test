@@ -1,2 +1,2 @@
 lein with-profile clj run
-lein with-profile cljs cljsbuild test
+lein with-profile cljs-browser cljsbuild test

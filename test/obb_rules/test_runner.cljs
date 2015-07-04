@@ -31,8 +31,7 @@
 
 (defn runner
   []
-  (println all-tests)
-  (run-all-tests #"obb-rules.*-test")
+  (time (run-all-tests #"obb-rules.*-test"))
   ;; The phantomjs test runner expects this variable to be set. See
   ;; phantom/test.js.
   (set! (.-rand_cljc_error_count js/window) @error-count))
