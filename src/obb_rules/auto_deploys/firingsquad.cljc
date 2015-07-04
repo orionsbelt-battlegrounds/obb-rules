@@ -1,8 +1,7 @@
 (ns ^{:added "1.5" :author "Pedro Santos"}
   obb-rules.auto-deploys.firingsquad
   "Logic for an auto-deploy that will benefit a firingsquad"
-  (:require [clojure.math.numeric-tower :as math]
-            [obb-rules.result :as result]
+  (:require [obb-rules.result :as result]
             [obb-rules.translator :as translator]
             [obb-rules.actions.deploy :as deploy]
             [obb-rules.stash :as stash]

@@ -1,7 +1,7 @@
 (ns ^{:added "1.10" :author "Pedro Santos"}
   obb-rules.ai.firingsquad
   "Firingsquad bot implementation"
-  (:require [clojure.math.numeric-tower :as math]
+  (:require [obb-rules.math :as math]
             [obb-rules.actions.move :as move]
             [obb-rules.element :as element]
             [obb-rules.ai.common :as common]

@@ -4,14 +4,19 @@
             [obb-rules.board :as board]
             [obb-rules.unit :as unit]
             [obb-rules.result :as result]
+            [obb-rules.element :as element]
             [obb-rules.turn :as turn]
             [obb-rules.generators :as obb-gen]
             [obb-rules.game :as game]
-            [clojure.test.check.generators :as gen]
-            [clojure.test.check.properties :as prop])
-  (:use clojure.test obb-rules.board obb-rules.element
-        clojure.test.check
-        clojure.test.check.clojure-test))
+    #?(:cljs [cljs.test.check :as tc])
+    #?(:clj [clojure.test.check.generators :as gen]
+       :cljs [cljs.test.check.generators :as gen])
+    #?(:clj [clojure.test.check.properties :as prop]
+       :cljs [cljs.test.check.properties :as prop :include-macros true])
+    #?(:clj [clojure.test.check.clojure-test :refer [defspec]]
+       :cljs [cljs.test.check.cljs-test :refer-macros [defspec]])
+    #?(:clj [clojure.test :refer [deftest testing is run-tests]]
+       :cljs [cljs.test :refer-macros [deftest testing is run-tests]])))
 
 (def rain (unit/get-unit-by-name "rain"))
 
@@ -30,8 +35,8 @@
 
 (deftest considers-elements
   (let [game (-> (board/create-board)
-                 (place-element [1 1] (create-element :p1 rain 10 :south))
-                 (place-element [8 8] (create-element :p2 rain 1 :south)))
+                 (board/place-element [1 1] (element/create-element :p1 rain 10 :south))
+                 (board/place-element [8 8] (element/create-element :p2 rain 1 :south)))
         [score1 score2] (evaluator/eval-game game)]
     (is (= 40 score1))
     (is (= 4 score2))))

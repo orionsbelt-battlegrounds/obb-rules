@@ -77,4 +77,4 @@
                                         :target :nodejs
                                         :language-in :ecmascript5
                                         :language-out :ecmascript5
-                                        :optimizations :advanced}}]}}})
+                                        :optimizations :none}}]}}})

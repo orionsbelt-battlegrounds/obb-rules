@@ -1,7 +1,7 @@
 (ns obb-rules.auto-deploys.common
   "Common utilities for auto deploy logic"
   ^{:added "1.5" :author "Pedro Santos"}
-  (:require [clojure.math.numeric-tower :as math]
+  (:require [obb-rules.math :as math]
             [obb-rules.result :as result]
             [obb-rules.translator :as translator]
             [obb-rules.actions.deploy :as deploy]

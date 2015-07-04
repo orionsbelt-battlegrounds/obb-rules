@@ -21,5 +21,6 @@
     [obb-rules.privatize-test]
     [obb-rules.stash-test]
     [obb-rules.game-mode-test]
+    [obb-rules.evaluator-test]
     [obb-rules.element-test]))
 
