@@ -7,9 +7,6 @@
             :distribution :repo
             :comments     "Copyright 2011-2014 Pedro Santos All Rights Reserved."}
 
-  :dependencies [[org.clojure/clojure "1.7.0"]
-                 [org.clojure/math.numeric-tower "0.0.4"]]
-
   :source-paths ["src"]
   :test-paths ["test"]
 
@@ -19,7 +16,16 @@
   :profiles {:production {
                           :global-vars {*warn-on-reflection* false
                                         *assert* false}}
+
+             :clj {:dependencies [[org.clojure/clojure "1.7.0"]
+                                  [org.clojure/math.numeric-tower "0.0.4"]]
+
+                   :main obb-rules.test-runner}
+
+
              :cljs {:dependencies [[org.clojure/test.check "0.7.0"]
+                                   [org.clojure/math.numeric-tower "0.0.4"]
+                                   [org.clojure/clojure "1.7.0"]
                                    [org.clojure/clojurescript "0.0-3308" :exclusions [org.apache.ant/ant]]]
                     :plugins [[lein-cljsbuild "1.0.6"]]
                     :cljsbuild {

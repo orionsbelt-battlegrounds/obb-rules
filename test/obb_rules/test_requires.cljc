@@ -1,0 +1,25 @@
+(ns obb-rules.test-requires
+  (:require
+    [obb-rules.unit-test]
+    [obb-rules.board-test]
+    [obb-rules.simplifier-test]
+    [obb-rules.env-test]
+    [obb-rules.game-test]
+    [obb-rules.translator-test]
+    [obb-rules.actions.direction-test]
+    [obb-rules.actions.rotate-test]
+    [obb-rules.actions.move-test]
+    [obb-rules.actions.goto-test]
+    [obb-rules.actions.bonus-test]
+    [obb-rules.actions.catapult-test]
+    [obb-rules.actions.deploy-test]
+    [obb-rules.actions.rebound-test]
+    [obb-rules.actions.strikeback-test]
+    [obb-rules.actions.triple-attack-test]
+    [obb-rules.actions.attack-test]
+    [obb-rules.actions.damage-calculator-test]
+    [obb-rules.privatize-test]
+    [obb-rules.stash-test]
+    [obb-rules.game-mode-test]
+    [obb-rules.element-test]))
+

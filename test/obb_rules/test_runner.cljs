@@ -1,27 +1,6 @@
 (ns obb-rules.test-runner
-  (:require [cljs.test :refer-macros [run-tests] :refer [empty-env report]]
-            [obb-rules.unit-test]
-            [obb-rules.board-test]
-            [obb-rules.simplifier-test]
-            [obb-rules.env-test]
-            [obb-rules.game-test]
-            [obb-rules.translator-test]
-            [obb-rules.actions.direction-test]
-            [obb-rules.actions.rotate-test]
-            [obb-rules.actions.move-test]
-            [obb-rules.actions.goto-test]
-            [obb-rules.actions.bonus-test]
-            [obb-rules.actions.catapult-test]
-            [obb-rules.actions.deploy-test]
-            [obb-rules.actions.rebound-test]
-            [obb-rules.actions.strikeback-test]
-            [obb-rules.actions.triple-attack-test]
-            [obb-rules.actions.attack-test]
-            [obb-rules.actions.damage-calculator-test]
-            [obb-rules.privatize-test]
-            [obb-rules.stash-test]
-            [obb-rules.game-mode-test]
-            [obb-rules.element-test]))
+  (:require [cljs.test :refer-macros [run-tests run-all-tests] :refer [empty-env report]]
+            [obb-rules.test-requires]))
 
 (enable-console-print!)
 
@@ -52,28 +31,8 @@
 
 (defn runner
   []
-  (run-tests (empty-env ::test) 'obb-rules.unit-test
-                                'obb-rules.env-test
-                                'obb-rules.element-test
-                                'obb-rules.board-test
-                                'obb-rules.translator-test
-                                'obb-rules.stash-test
-                                'obb-rules.game-mode-test
-                                'obb-rules.privatize-test
-                                'obb-rules.game-test
-                                'obb-rules.actions.direction-test
-                                'obb-rules.actions.rotate-test
-                                'obb-rules.actions.deploy-test
-                                'obb-rules.actions.damage-calculator-test
-                                'obb-rules.actions.rebound-test
-                                'obb-rules.actions.strikeback-test
-                                'obb-rules.actions.triple-attack-test
-                                'obb-rules.actions.attack-test
-                                'obb-rules.actions.move-test
-                                'obb-rules.actions.goto-test
-                                'obb-rules.actions.bonus-test
-                                'obb-rules.actions.catapult-test
-                                'obb-rules.simplifier-test)
+  (println all-tests)
+  (run-all-tests #"obb-rules.*-test")
   ;; The phantomjs test runner expects this variable to be set. See
   ;; phantom/test.js.
   (set! (.-rand_cljc_error_count js/window) @error-count))
