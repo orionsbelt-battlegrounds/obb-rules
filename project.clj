@@ -51,7 +51,31 @@
                    :builds [{:id "test"
                              :source-paths ["src" "test"]
                              :compiler {:output-to "build/test/out.js"
-                             :output-dir "build/test/out"
-                             :cache-anlysis true
-                             :main obb-rules.test-runner
-                             :optimizations :none}}]}}})
+                                        :output-dir "build/test/out"
+                                        :cache-anlysis true
+                                        :main obb-rules.test-runner
+                                        :optimizations :none}}]}}
+     ;;
+     ;; Main profile for ClojureScript/Browser
+     ;;
+
+     :cljs-node {
+
+       :dependencies [[org.clojure/test.check "0.7.0"]
+                      [org.clojure/math.numeric-tower "0.0.4"]
+                      [org.clojure/clojure "1.7.0"]
+                      [org.clojure/clojurescript "0.0-3308" :exclusions [org.apache.ant/ant]]]
+
+       :plugins [[lein-cljsbuild "1.0.6"]]
+
+       :cljsbuild {
+                   :test-commands {"test" ["node"  "build/test/out-node.js"]}
+                   :builds [{:id "test"
+                             :source-paths ["src" "test"]
+                             :compiler {:output-to "build/test/out-node.js"
+                                        :output-dir "build/test/out-node"
+                                        :main obb-rules.test-runner
+                                        :target :nodejs
+                                        :language-in :ecmascript5
+                                        :language-out :ecmascript5
+                                        :optimizations :simple}}]}}})

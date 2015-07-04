@@ -1,2 +1,14 @@
+echo "--"
+echo "-- Clojure/JVM"
+echo "--"
 lein with-profile clj run
+
+echo "--"
+echo "-- ClojureScript/Nodejs"
+echo "--"
+lein with-profile cljs-node cljsbuild test
+
+echo "--"
+echo "-- ClojureScript/Browser"
+echo "--"
 lein with-profile cljs-browser cljsbuild test
