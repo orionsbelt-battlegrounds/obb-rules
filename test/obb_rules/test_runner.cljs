@@ -10,8 +10,6 @@
 
 (runner)
 
-(defn -main
-  [& args]
-  (runner))
+(defn -main [& args])
 
 (set! *main-cli-fn* -main)

@@ -4,8 +4,8 @@
 
 (defn runner
   []
-  (run-all-tests #"obb-rules.*-test"))
+  (time (run-all-tests #"obb-rules.*-test")))
 
 (defn -main
   [& args]
-  (time (runner)))
+  (runner))
