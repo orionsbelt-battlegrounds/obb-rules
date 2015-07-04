@@ -65,7 +65,7 @@
     (test-complete-move board [2 2] [3 2] true)
     (test-complete-move board [2 2] [3 3] false)))
 
-(deftest front-movement-north
+(deftest front-movement-west
   (let [element (element/element-direction crusader-element :west)
         board (board/place-element (board/create-board) [2 2] element)]
     (test-complete-move board [2 2] [1 1] false)

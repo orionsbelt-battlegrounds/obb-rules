@@ -54,7 +54,7 @@
                                         :output-dir "build/test/out"
                                         :cache-anlysis true
                                         :main obb-rules.test-runner
-                                        :optimizations :none}}]}}
+                                        :optimizations :advanced}}]}}
      ;;
      ;; Main profile for ClojureScript/Browser
      ;;
@@ -78,4 +78,4 @@
                                         :target :nodejs
                                         :language-in :ecmascript5
                                         :language-out :ecmascript5
-                                        :optimizations :simple}}]}}})
+                                        :optimizations :advanced}}]}}})

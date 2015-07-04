@@ -62,7 +62,7 @@
     (is (= 1700 (calculator/defense board (board/get-element board [1 1])
                                           (board/get-element board [1 2]))))))
 
-(deftest kahuna-base-defense-on-ground
+(deftest kahuna-base-defense-on-ground-2
   (let [board (-> (board/create-board)
                   (assoc :terrain :ground)
                   (board/place-element [1 2] (element/create-element :p1 kahuna 1 :south [1 2]))
