@@ -1,3 +1,8 @@
+
+lein with-profile clj deps
+lein with-profile cljs-node deps
+lein with-profile cljs-browser deps
+
 echo "--"
 echo "-- Clojure/JVM"
 echo "--"
