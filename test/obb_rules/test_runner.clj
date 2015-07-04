@@ -6,6 +6,11 @@
   []
   (time (run-all-tests #"obb-rules.*-test")))
 
+(defn prunner
+  []
+  (time (doall (pmap #(time (run-all-tests %)) [#"obb-rules\.[^\.]*-test"
+                                         #"obb-rules\.actions.*-test"]))))
+
 (defn -main
   [& args]
   (runner))

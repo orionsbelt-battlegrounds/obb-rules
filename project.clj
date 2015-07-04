@@ -55,7 +55,7 @@
                                         :main obb-rules.test-runner
                                         :optimizations :advanced}}]}}
      ;;
-     ;; Main profile for ClojureScript/Browser
+     ;; Main profile for ClojureScript/Nodejs
      ;;
 
      :cljs-node {
