@@ -1,5 +1,5 @@
 ### v2.0.0 - 05/07/2015
-* Add move/find-all-possible-destinations-with-cost
+* Migrate all code to cljc and make tests pass on JVM, nodejs and the browser
 
 ### v1.12.0 - 19/03/2015
 * Add move/find-all-possible-destinations-with-cost
