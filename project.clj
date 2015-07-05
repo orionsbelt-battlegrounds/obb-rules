@@ -59,6 +59,26 @@
 
 
      ;;
+     ;; Main profile for ClojureScript production
+     ;;
+
+     :cljs-prd {
+
+       :plugins [[lein-cljsbuild "1.0.6"]]
+
+       :cljsbuild {
+                   :builds [{:id "prd"
+                             :source-paths ["src"]
+                             :compiler {:main obb-demo.core
+                                        :asset-path "js/compiled/out"
+                                        :output-to "resources/public/js/compiled/obb.js"
+                                        :output-dir "resources/public/js/compiled/out"
+                                        :optimizations :advanced
+                                        :source-map-timestamp true}}]}}
+
+
+
+     ;;
      ;; Main profile for ClojureScript/Browser
      ;;
 
