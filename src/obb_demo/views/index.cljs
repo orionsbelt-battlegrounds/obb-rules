@@ -1,8 +1,15 @@
 (ns obb-demo.views.index
-  (:require [obb-demo.game :as game]))
+  (:require [obb-demo.game :as game]
+            [obb-demo.views.layout.header :as header]
+            [obb-demo.views.layout.footer :as footer]))
 
 (defn render
   ([]
    [render @game/app-state])
   ([game]
-   [:h1 "Orion's Belt BattleGrounds"]))
+   [:div
+    [header/render]
+    [:div.container
+     [:div.bs-docs-section.clearfix
+      "TODO"]
+      [footer/render]]]))
