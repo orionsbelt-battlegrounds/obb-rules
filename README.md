@@ -5,6 +5,13 @@ Implementation of the [Orion's Belt BattleGrounds](https://github.com/orionsbelt
 
 ![Board Example](https://raw.github.com/orionsbelt-battlegrounds/battle-engine-ai/master/doc/SampleBoard.jpeg)
 
+* [Game Overview](https://github.com/orionsbelt-battlegrounds/obb-rules#game-overview)
+ * [Available Actions](https://github.com/orionsbelt-battlegrounds/obb-rules#available-actions)
+ * [Unit Traits](https://github.com/orionsbelt-battlegrounds/obb-rules#unit-traits)
+* [Instalation](https://github.com/orionsbelt-battlegrounds/obb-rules#installation)
+* [Usage](https://github.com/orionsbelt-battlegrounds/obb-rules#usage)
+ * [AI](https://github.com/orionsbelt-battlegrounds/obb-rules#ai)
+
 ### Game Overview
 
 This is a chess-like board game, played on an 8x8 board. The player has up to 8 units to play and he starts by deploying them on the first 2 rows. This is unlike chess where you have all the pieces deployed in a standard way. After both players deploy their units, one is randomly choosen to draw first blood.
@@ -90,3 +97,7 @@ Then, you can apply actions in a turn.
 ```
 
 You'll get a result stating if the turn was successful and with the new board. There are several more working examples on the [unit tests](https://github.com/orionsbelt-battlegrounds/obb-rules/tree/master/test/obb_rules).
+
+### AI
+
+This lib includes a very simple AI implementation. There is one implementation named `:firingsquad` that tries to mimic tipical firing squad tactics. The bot API is very simple: You pass it a board and the player to process, and it returns actions to process. The [acts-as-a-bot-test](https://github.com/orionsbelt-battlegrounds/obb-rules/blob/master/test/obb_rules/ai/acts_as_bot_test.cljc) has several usage examples.
