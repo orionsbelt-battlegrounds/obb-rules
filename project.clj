@@ -12,7 +12,7 @@
                  [org.clojure/clojure "1.7.0"]
                  [org.clojure/tools.nrepl "0.2.10"]
                  [reagent "0.5.0"]
-                 [org.clojure/clojurescript "0.0-3308" :exclusions [org.apache.ant/ant]]]
+                 [org.clojure/clojurescript "0.0-3308"]]
 
   :jvm-opts ["-XX:+TieredCompilation" "-XX:TieredStopAtLevel=1"]
 
@@ -43,15 +43,20 @@
 
        :figwheel {:css-dirs ["resources/public/css"]}
 
+       :clean-targets ^{:protect false} ["resources/public/js/compiled" "target"]
+
        :cljsbuild {
-                   :figwheel {:on-jsload "obb-demo.core/on-js-reload" }
                    :builds [{:id "dev"
+                             :figwheel {:on-jsload "obb-demo.core/on-js-reload"}
                              :source-paths ["src"]
                              :compiler {:main obb-demo.core
+                                        :figwheel true
+                                        :recompile-dependents true
                                         :asset-path "js/compiled/out"
                                         :output-to "resources/public/js/compiled/obb.js"
                                         :output-dir "resources/public/js/compiled/out"
                                         :source-map-timestamp true}}]}}
+
 
      ;;
      ;; Main profile for ClojureScript/Browser
