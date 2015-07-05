@@ -1,4 +1,4 @@
-(defproject obb-rules "2.0.0-SNAPSHOT"
+(defproject obb-rules "2.0.0"
   :description "Orion's Belt battle rules"
   :url "https://github.com/orionsbelt-battlegrounds/obb-rules"
 
@@ -77,4 +77,4 @@
                                         :target :nodejs
                                         :language-in :ecmascript5
                                         :language-out :ecmascript5
-                                        :optimizations :none}}]}}})
+                                        :optimizations :advanced}}]}}})
