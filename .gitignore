@@ -16,4 +16,3 @@ pom.xml.asc
 build/
 langs
 *.log
-resources/public/js/compiled*

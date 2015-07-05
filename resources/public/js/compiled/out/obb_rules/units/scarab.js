@@ -1,0 +1,6 @@
+// Compiled by ClojureScript 0.0-3308 {}
+goog.provide('obb_rules.units.scarab');
+goog.require('cljs.core');
+obb_rules.units.scarab.metadata = cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null,"category","category",-593092832),new cljs.core.Keyword(null,"displacement","displacement",-1309600669),new cljs.core.Keyword(null,"name","name",1843675177),new cljs.core.Keyword(null,"value","value",305978217),new cljs.core.Keyword(null,"movement-cost","movement-cost",-716301045),new cljs.core.Keyword(null,"type","type",1174270348),new cljs.core.Keyword(null,"defense","defense",1755014992),new cljs.core.Keyword(null,"code","code",1586293142),new cljs.core.Keyword(null,"movement-type","movement-type",-1340819145),new cljs.core.Keyword(null,"attack","attack",1957061788),new cljs.core.Keyword(null,"range","range",1639692286)],[new cljs.core.Keyword(null,"medium","medium",-1864319384),new cljs.core.Keyword(null,"air","air",-104121788),"scarab",(38),(1),new cljs.core.Keyword(null,"mechanic","mechanic",-1805001628),(2300),"sc",new cljs.core.Keyword(null,"front","front",-1523508988),(1900),(2)]);
+
+//# sourceMappingURL=scarab.js.map?rel=1436104823131
