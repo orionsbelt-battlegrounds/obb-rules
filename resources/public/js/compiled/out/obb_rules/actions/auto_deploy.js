@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 0.0-3308 {}
+// Compiled by ClojureScript 0.0-3308 {:static-fns true, :optimize-constants true}
 goog.provide('obb_rules.actions.auto_deploy');
 goog.require('cljs.core');
 goog.require('obb_rules.board');
@@ -13,18 +13,20 @@ goog.require('obb_rules.translator');
 /**
  * The supported auto-deploy templates
  */
-obb_rules.actions.auto_deploy.templates = new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"firingsquad","firingsquad",-1910418650),obb_rules.auto_deploys.firingsquad.deploy], null);
+obb_rules.actions.auto_deploy.templates = new cljs.core.PersistentArrayMap(null, 1, [cljs.core.constant$keyword$firingsquad,obb_rules.auto_deploys.firingsquad.deploy], null);
 /**
  * Checks if the auto deploy can be made
  */
 obb_rules.actions.auto_deploy.verify_restrictions = (function obb_rules$actions$auto_deploy$verify_restrictions(board,player,template){
-if(cljs.core.not.call(null,obb_rules.game.state_QMARK_.call(null,board,new cljs.core.Keyword(null,"deploy","deploy",-2006774212)))){
+if(cljs.core.not(obb_rules.game.state_QMARK_(board,cljs.core.constant$keyword$deploy))){
 return "MustBeDeployState";
 } else {
-if(cljs.core.truth_(obb_rules.stash.cleared_QMARK_.call(null,obb_rules.board.get_stash.call(null,board,player)))){
+if(cljs.core.truth_(obb_rules.stash.cleared_QMARK_(obb_rules.board.get_stash(board,player)))){
 return "NoStash";
 } else {
-if((obb_rules.actions.auto_deploy.templates.call(null,template) == null)){
+if(((function (){var G__12875 = template;
+return (obb_rules.actions.auto_deploy.templates.cljs$core$IFn$_invoke$arity$1 ? obb_rules.actions.auto_deploy.templates.cljs$core$IFn$_invoke$arity$1(G__12875) : obb_rules.actions.auto_deploy.templates.call(null,G__12875));
+})() == null)){
 return "NoTemplate";
 } else {
 return null;
@@ -35,21 +37,21 @@ return null;
 /**
  * Creates a action that auto deploys a stash
  */
-obb_rules.actions.auto_deploy.build_auto_deploy = (function obb_rules$actions$auto_deploy$build_auto_deploy(p__23295){
-var vec__23297 = p__23295;
-var raw_template_name = cljs.core.nth.call(null,vec__23297,(0),null);
-var template_name = cljs.core.keyword.call(null,raw_template_name);
-return ((function (template_name,vec__23297,raw_template_name){
+obb_rules.actions.auto_deploy.build_auto_deploy = (function obb_rules$actions$auto_deploy$build_auto_deploy(p__12876){
+var vec__12880 = p__12876;
+var raw_template_name = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12880,(0),null);
+var template_name = cljs.core.keyword.cljs$core$IFn$_invoke$arity$1(raw_template_name);
+return ((function (template_name,vec__12880,raw_template_name){
 return (function obb_rules$actions$auto_deploy$build_auto_deploy_$_auto_deployer(board,player){
-var temp__4423__auto__ = obb_rules.actions.auto_deploy.verify_restrictions.call(null,board,player,template_name);
+var temp__4423__auto__ = obb_rules.actions.auto_deploy.verify_restrictions(board,player,template_name);
 if(cljs.core.truth_(temp__4423__auto__)){
 var error = temp__4423__auto__;
-return obb_rules.result.action_failed.call(null,error);
+return obb_rules.result.action_failed.cljs$core$IFn$_invoke$arity$1(error);
 } else {
-return obb_rules.actions.auto_deploy.templates.call(null,template_name).call(null,board,player);
+return (function (){var G__12882 = template_name;
+return (obb_rules.actions.auto_deploy.templates.cljs$core$IFn$_invoke$arity$1 ? obb_rules.actions.auto_deploy.templates.cljs$core$IFn$_invoke$arity$1(G__12882) : obb_rules.actions.auto_deploy.templates.call(null,G__12882));
+})().call(null,board,player);
 }
 });
-;})(template_name,vec__23297,raw_template_name))
+;})(template_name,vec__12880,raw_template_name))
 });
-
-//# sourceMappingURL=auto_deploy.js.map?rel=1436104824795
