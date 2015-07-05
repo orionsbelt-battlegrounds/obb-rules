@@ -7,6 +7,11 @@
             :distribution :repo
             :comments     "Copyright 2011-2014 Pedro Santos All Rights Reserved."}
 
+  :dependencies [[org.clojure/test.check "0.7.0"]
+                 [org.clojure/math.numeric-tower "0.0.4"]
+                 [org.clojure/clojure "1.7.0"]
+                 [org.clojure/clojurescript "0.0-3308" :exclusions [org.apache.ant/ant]]]
+
   :jvm-opts ["-XX:+TieredCompilation" "-XX:TieredStopAtLevel=1"]
 
   :scm {:name "git"
@@ -20,10 +25,6 @@
 
      :clj {
 
-       :dependencies [[org.clojure/clojure "1.7.0"]
-                      [org.clojure/test.check "0.7.0"]
-                      [org.clojure/math.numeric-tower "0.0.4"]]
-
        :plugins [[com.jakemccrary/lein-test-refresh "0.9.0"]
                  [lein-cloverage "1.0.2"]]
 
@@ -35,18 +36,10 @@
 
      :cljs-browser {
 
-       :dependencies [[org.clojure/test.check "0.7.0"]
-                      [org.clojure/math.numeric-tower "0.0.4"]
-                      [org.clojure/clojure "1.7.0"]
-                      [org.clojure/clojurescript "0.0-3308" :exclusions [org.apache.ant/ant]]]
-
        :plugins [[lein-cljsbuild "1.0.6"]]
 
        :cljsbuild {
-                   :test-commands
-                     {"test" ["phantomjs"
-                              "phantom/test.js"
-                               "test.html"]}
+                   :test-commands {"test" ["phantomjs" "phantom/test.js" "test.html"]}
                    :builds [{:id "test"
                              :source-paths ["src" "test"]
                              :compiler {:output-to "build/test/out.js"
@@ -54,16 +47,12 @@
                                         :cache-anlysis true
                                         :main obb-rules.test-runner
                                         :optimizations :advanced}}]}}
+
      ;;
      ;; Main profile for ClojureScript/Nodejs
      ;;
 
      :cljs-node {
-
-       :dependencies [[org.clojure/test.check "0.7.0"]
-                      [org.clojure/math.numeric-tower "0.0.4"]
-                      [org.clojure/clojure "1.7.0"]
-                      [org.clojure/clojurescript "0.0-3308" :exclusions [org.apache.ant/ant]]]
 
        :plugins [[lein-cljsbuild "1.0.6"]]
 
