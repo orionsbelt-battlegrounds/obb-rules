@@ -10,6 +10,8 @@
   :dependencies [[org.clojure/test.check "0.7.0"]
                  [org.clojure/math.numeric-tower "0.0.4"]
                  [org.clojure/clojure "1.7.0"]
+                 [org.clojure/tools.nrepl "0.2.10"]
+                 [reagent "0.5.0"]
                  [org.clojure/clojurescript "0.0-3308" :exclusions [org.apache.ant/ant]]]
 
   :jvm-opts ["-XX:+TieredCompilation" "-XX:TieredStopAtLevel=1"]
@@ -31,6 +33,27 @@
        :main obb-rules.test-runner}
 
      ;;
+     ;; Main profile for ClojureScript dev
+     ;;
+
+     :cljs-dev {
+
+       :plugins [[lein-cljsbuild "1.0.6"]
+                 [lein-figwheel "0.3.7"]]
+
+       :figwheel {:css-dirs ["resources/public/css"]}
+
+       :cljsbuild {
+                   :figwheel {:on-jsload "obb-demo.core/on-js-reload" }
+                   :builds [{:id "dev"
+                             :source-paths ["src"]
+                             :compiler {:main obb-demo.core
+                                        :asset-path "js/compiled/out"
+                                        :output-to "resources/public/js/compiled/obb.js"
+                                        :output-dir "resources/public/js/compiled/out"
+                                        :source-map-timestamp true}}]}}
+
+     ;;
      ;; Main profile for ClojureScript/Browser
      ;;
 
@@ -41,7 +64,7 @@
        :cljsbuild {
                    :test-commands {"test" ["phantomjs" "phantom/test.js" "test.html"]}
                    :builds [{:id "test"
-                             :source-paths ["src" "test"]
+                             :source-paths ["src/obb_rules" "test"]
                              :compiler {:output-to "build/test/out.js"
                                         :output-dir "build/test/out"
                                         :cache-anlysis true
@@ -59,7 +82,7 @@
        :cljsbuild {
                    :test-commands {"test" ["node"  "build/test/out-node.js"]}
                    :builds [{:id "test"
-                             :source-paths ["src" "test"]
+                             :source-paths ["src/obb_rules" "test"]
                              :compiler {:output-to "build/test/out-node.js"
                                         :output-dir "build/test/out-node"
                                         :main obb-rules.test-runner

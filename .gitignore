@@ -15,3 +15,5 @@ pom.xml.asc
 .DS_Store
 build/
 langs
+*.log
+resources/public/js/compiled*
