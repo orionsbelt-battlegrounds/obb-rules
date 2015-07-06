@@ -27,7 +27,7 @@
 
      :clj {
 
-       :plugins [[com.jakemccrary/lein-test-refresh "0.9.0"]
+       :plugins [[com.jakemccrary/lein-test-refresh "0.10.0"]
                  [lein-cloverage "1.0.2"]]
 
        :main obb-rules.test-runner}
