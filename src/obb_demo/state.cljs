@@ -12,4 +12,6 @@
 
 (defn set-page-data!
   "Sets data for the current page"
-  [])
+  [data]
+  (swap! app-state assoc :page-data data))
+

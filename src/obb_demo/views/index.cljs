@@ -11,5 +11,5 @@
     [header/render]
     [:div.container
      [:div.bs-docs-section.clearfix
-      [((:page-fn state))]]
+      [((:page-fn state)) state]]
       [footer/render]]]))

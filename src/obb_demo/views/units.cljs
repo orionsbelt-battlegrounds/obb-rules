@@ -1,5 +1,6 @@
 (ns obb-demo.views.units
-  (:require [obb-rules.unit :as unit]))
+  (:require [obb-rules.unit :as unit]
+            [obb-demo.state :as state]))
 
 (defn- unit-info-panel
   "Writes info about a unit"
@@ -21,7 +22,10 @@
       (for [unit (unit/units-by-category category)]
         (let [unit-name (unit/unit-name unit)
               url (str "http://orionsbelt.eu/public/units/" unit-name  "_n.png")]
-           [:li {:key unit-name} [:img {:src url :alt unit-name}]]))]]])
+           [:li {:key unit-name}
+            [:img {:src url
+                   :on-click #(state/set-page-data! unit-name)
+                   :alt unit-name}]]))]]])
 
 (defn- units-ul []
   [:div
@@ -31,11 +35,12 @@
 
 (defn render
   [state]
+  (println state)
   [:div
    [:div.row
     [:div.col-lg-4
      [units-ul]]
     [:div.col-lg-8
-     [unit-info-panel (unit/fetch :rain)]]]])
+     [unit-info-panel (unit/fetch (or (:page-data state) :rain))]]]])
 
 (defn renderer [] render)
