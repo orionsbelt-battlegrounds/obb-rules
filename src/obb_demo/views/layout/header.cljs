@@ -3,7 +3,7 @@
 
 (defn render
   []
-  [:div.navbar.navbar-default.navbar-fixed-top
+  [:div.navbar.navbar-default
    [:div.container
     [:div.navbar-header
      [:a.navbar-brand {:on-click #(secretary/dispatch! "/") :href "#"} "Orion's Belt BattleGrounds"]]

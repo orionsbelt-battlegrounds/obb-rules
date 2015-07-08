@@ -7,7 +7,7 @@
             [obb-demo.views.play :as play-view]))
 
 (secretary/defroute "/" []
-  (state/set-page! :index play-view/render))
+  (state/set-page! :index play-view/renderer))
 
 (secretary/defroute "/units" []
-  (state/set-page! :units units-view/render))
+  (state/set-page! :units units-view/renderer))

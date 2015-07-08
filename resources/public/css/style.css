@@ -1,1 +1,17 @@
 /** CSS **/
+
+body {
+  padding:0;
+}
+
+.bs-docs-section {
+  margin-top:20px;
+}
+
+ul.units {
+  list-style-type: none;
+}
+
+ul.units li {
+  float: left;
+}

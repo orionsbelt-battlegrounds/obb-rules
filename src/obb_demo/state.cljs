@@ -9,3 +9,7 @@
   [page page-fn]
   (reset! app-state {:page page
                      :page-fn page-fn}))
+
+(defn set-page-data!
+  "Sets data for the current page"
+  [])
