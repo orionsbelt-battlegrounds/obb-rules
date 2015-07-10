@@ -46,7 +46,7 @@
   "Gets the panel size stype"
   [options]
   (or (:boardground-style options)
-      {:width "500px"
+      #_{:width "500px"
        :height "500px"}))
 
 (defn render
