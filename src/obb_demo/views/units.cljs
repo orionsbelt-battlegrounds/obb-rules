@@ -35,12 +35,9 @@
 
 (defn render
   [state]
-  (println state)
   [:div
    [:div.row
     [:div.col-lg-4
      [units-ul]]
     [:div.col-lg-8
      [unit-info-panel (unit/fetch (or (:page-data state) :rain))]]]])
-
-(defn renderer [] render)

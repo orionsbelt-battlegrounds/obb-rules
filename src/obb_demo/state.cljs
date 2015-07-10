@@ -6,9 +6,8 @@
 
 (defn set-page!
   "Sets the current page to be displayed"
-  [page page-fn]
-  (reset! app-state {:page page
-                     :page-fn page-fn}))
+  [page]
+  (reset! app-state {:page page}))
 
 (defn set-page-data!
   "Sets data for the current page"
