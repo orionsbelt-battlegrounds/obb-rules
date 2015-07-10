@@ -17,8 +17,8 @@ ul.units li {
 }
 
 .obb-board-panel {
-  width: 512px;
-  height: 512px;
+  width: 500px;
+  height: 500px;
   position: relative;
 }
 
@@ -32,5 +32,10 @@ div.obb-square {
   width: 12.5%;
   height: 12.5%;
   transition: 0.13s;
-  background-color:pink;
+}
+
+img.obb-ice {
+  width:100%;
+  height:100%;
+  z-index:-100;
 }

@@ -18,7 +18,8 @@
   "Renders the full game's board"
   [game]
   [:div.obb-board-panel
-    [:div.obb-board
-     (for [y (range 1 9)
-           x (range 1 9)]
-       (square game x y))]])
+   [:img.obb-ice {:src "img/ice.jpg"}]
+   [:div.obb-board
+    (for [y (range 1 9)
+          x (range 1 9)]
+      (square game x y))]])
