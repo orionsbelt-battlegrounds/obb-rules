@@ -1,11 +1,18 @@
 // Compiled by ClojureScript 0.0-3308 {}
 goog.provide('obb_demo.views.play');
 goog.require('cljs.core');
+goog.require('obb_demo.boardground');
+goog.require('obb_rules.result');
+goog.require('obb_rules.game');
+goog.require('obb_rules.turn');
 goog.require('obb_demo.state');
-goog.require('obb_demo.views.layout.header');
-goog.require('obb_demo.views.layout.footer');
 obb_demo.views.play.render = (function obb_demo$views$play$render(state){
-return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),"Working on it...",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"p","p",151049309),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"img","img",1442687358),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"src","src",-1651076051),"https://camo.githubusercontent.com/f5fc5f992b37d31fb9b4aeb2d0d2241698779606/68747470733a2f2f7261772e6769746875622e636f6d2f6f72696f6e7362656c742d626174746c6567726f756e64732f626174746c652d656e67696e652d61692f6d61737465722f646f632f53616d706c65426f6172642e6a706567"], null)], null)], null)], null);
+var game = obb_rules.game.random.call(null);
+var result = obb_rules.turn.process_actions.call(null,game,new cljs.core.Keyword(null,"p1","p1",-936759954),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"auto-deploy","auto-deploy",1838692925),new cljs.core.Keyword(null,"firingsquad","firingsquad",-1910418650)], null)], null));
+var game2 = obb_rules.result.result_board.call(null,result);
+var result2 = obb_rules.turn.process_actions.call(null,game2,new cljs.core.Keyword(null,"p2","p2",905500641),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"auto-deploy","auto-deploy",1838692925),new cljs.core.Keyword(null,"firingsquad","firingsquad",-1910418650)], null)], null));
+var game2__$1 = obb_rules.result.result_board.call(null,result2);
+return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.row","div.row",133678515),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.col-lg-6","div.col-lg-6",-987495203),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_demo.boardground.render,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"boardground-style","boardground-style",491580564),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"width","width",-384071477),"500px",new cljs.core.Keyword(null,"height","height",1025178622),"500px"], null)], null),game2__$1], null)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.col-lg-6","div.col-lg-6",-987495203),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_demo.boardground.render,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"boardground-style","boardground-style",491580564),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"width","width",-384071477),"200px",new cljs.core.Keyword(null,"height","height",1025178622),"200px"], null)], null),game2__$1], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_demo.boardground.render,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"boardground-style","boardground-style",491580564),new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"width","width",-384071477),"100px",new cljs.core.Keyword(null,"height","height",1025178622),"100px",new cljs.core.Keyword(null,"margin-top","margin-top",392161226),"20px"], null)], null),game2__$1], null)], null)], null);
 });
 
-//# sourceMappingURL=play.js.map?rel=1436517561523
+//# sourceMappingURL=play.js.map?rel=1436536084103

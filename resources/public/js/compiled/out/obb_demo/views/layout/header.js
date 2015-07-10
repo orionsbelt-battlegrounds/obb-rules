@@ -9,7 +9,7 @@ return secretary.core.dispatch_BANG_.call(null,"/");
 return secretary.core.dispatch_BANG_.call(null,"/");
 }),new cljs.core.Keyword(null,"href","href",-793805698),"#"], null),"Play!"], null)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"li","li",723558921),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"a","a",-2123407586),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"on-click","on-click",1632826543),(function (){
 return secretary.core.dispatch_BANG_.call(null,"/units");
-}),new cljs.core.Keyword(null,"href","href",-793805698),"#"], null),"Units"], null)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"li","li",723558921),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"a","a",-2123407586),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"href","href",-793805698),"https://github.com/orionsbelt-battlegrounds/obb-rules"], null),"About"], null)], null)], null)], null)], null);
+}),new cljs.core.Keyword(null,"href","href",-793805698),"#"], null),"Units"], null)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"li","li",723558921),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"a","a",-2123407586),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"href","href",-793805698),"https://github.com/orionsbelt-battlegrounds/obb-rules"], null),"Source Code"], null)], null)], null)], null)], null);
 });
 
-//# sourceMappingURL=header.js.map?rel=1436517561505
+//# sourceMappingURL=header.js.map?rel=1436536084086

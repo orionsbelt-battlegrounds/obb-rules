@@ -10,6 +10,6 @@
     [:ul.nav.navbar-nav.navbar-right
       [:li [:a {:on-click #(secretary/dispatch! "/") :href "#"} "Play!"]]
       [:li [:a {:on-click #(secretary/dispatch! "/units") :href "#"} "Units"]]
-      [:li [:a {:href "https://github.com/orionsbelt-battlegrounds/obb-rules"} "About"]]]]
+      [:li [:a {:href "https://github.com/orionsbelt-battlegrounds/obb-rules"} "Source Code"]]]]
    ])
 
