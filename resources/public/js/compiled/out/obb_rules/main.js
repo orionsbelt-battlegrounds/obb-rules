@@ -1,6 +1,8 @@
-// Compiled by ClojureScript 0.0-3308 {:static-fns true, :optimize-constants true}
+// Compiled by ClojureScript 0.0-3308 {}
 goog.provide('obb_rules.main');
 goog.require('cljs.core');
 obb_rules.main.main = (function obb_rules$main$main(){
-return cljs.core.println.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq(["Main"], 0));
+return cljs.core.println.call(null,"Main");
 });
+
+//# sourceMappingURL=main.js.map?rel=1436517557593

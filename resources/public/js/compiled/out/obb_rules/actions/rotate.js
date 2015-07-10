@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 0.0-3308 {:static-fns true, :optimize-constants true}
+// Compiled by ClojureScript 0.0-3308 {}
 goog.provide('obb_rules.actions.rotate');
 goog.require('cljs.core');
 goog.require('obb_rules.board');
@@ -13,13 +13,13 @@ obb_rules.actions.rotate.rotate_restrictions = (function obb_rules$actions$rotat
 if((element == null)){
 return "EmptyCoordinate";
 } else {
-if(cljs.core.not(obb_rules.game.player_turn_QMARK_(board,player))){
+if(cljs.core.not.call(null,obb_rules.game.player_turn_QMARK_.call(null,board,player))){
 return "StateMismatch";
 } else {
-if(cljs.core.truth_(obb_rules.element.frozen_QMARK_(element))){
+if(cljs.core.truth_(obb_rules.element.frozen_QMARK_.call(null,element))){
 return "FrozenElement";
 } else {
-if(cljs.core.truth_(obb_rules.simplifier.not_name_EQ_(player,obb_rules.element.element_player(element)))){
+if(cljs.core.truth_(obb_rules.simplifier.not_name_EQ_.call(null,player,obb_rules.element.element_player.call(null,element)))){
 return "NotOwnedElement";
 } else {
 return null;
@@ -32,27 +32,29 @@ return null;
  * Processes the rotate
  */
 obb_rules.actions.rotate.process_rotate = (function obb_rules$actions$rotate$process_rotate(board,coord,elem,new_dir){
-var new_elem = obb_rules.element.element_direction.cljs$core$IFn$_invoke$arity$2(elem,new_dir);
-var new_board = obb_rules.board.swap_element(board,coord,new_elem);
-return obb_rules.result.action_success.cljs$core$IFn$_invoke$arity$2(new_board,(1));
+var new_elem = obb_rules.element.element_direction.call(null,elem,new_dir);
+var new_board = obb_rules.board.swap_element.call(null,board,coord,new_elem);
+return obb_rules.result.action_success.call(null,new_board,(1));
 });
 /**
  * Builds a rotate action on a board
  */
-obb_rules.actions.rotate.build_rotate = (function obb_rules$actions$rotate$build_rotate(p__12922){
-var vec__12924 = p__12922;
-var coord = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12924,(0),null);
-var new_direction = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12924,(1),null);
-return ((function (vec__12924,coord,new_direction){
+obb_rules.actions.rotate.build_rotate = (function obb_rules$actions$rotate$build_rotate(p__33122){
+var vec__33124 = p__33122;
+var coord = cljs.core.nth.call(null,vec__33124,(0),null);
+var new_direction = cljs.core.nth.call(null,vec__33124,(1),null);
+return ((function (vec__33124,coord,new_direction){
 return (function obb_rules$actions$rotate$build_rotate_$_rotator(board,player){
-var element = obb_rules.board.get_element(board,coord);
-var temp__4423__auto__ = obb_rules.actions.rotate.rotate_restrictions(player,board,element);
+var element = obb_rules.board.get_element.call(null,board,coord);
+var temp__4423__auto__ = obb_rules.actions.rotate.rotate_restrictions.call(null,player,board,element);
 if(cljs.core.truth_(temp__4423__auto__)){
 var error = temp__4423__auto__;
-return obb_rules.result.action_failed.cljs$core$IFn$_invoke$arity$1(error);
+return obb_rules.result.action_failed.call(null,error);
 } else {
-return obb_rules.actions.rotate.process_rotate(board,coord,element,new_direction);
+return obb_rules.actions.rotate.process_rotate.call(null,board,coord,element,new_direction);
 }
 });
-;})(vec__12924,coord,new_direction))
+;})(vec__33124,coord,new_direction))
 });
+
+//# sourceMappingURL=rotate.js.map?rel=1436517557535

@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 0.0-3308 {:static-fns true, :optimize-constants true}
+// Compiled by ClojureScript 0.0-3308 {}
 goog.provide('obb_rules.actions.damage_calculator');
 goog.require('cljs.core');
 goog.require('obb_rules.math');
@@ -8,13 +8,13 @@ goog.require('obb_rules.unit');
  * Gets a distance factor for an attack
  */
 obb_rules.actions.damage_calculator.distance_factor = (function obb_rules$actions$damage_calculator$distance_factor(attacker,target){
-var vec__12574 = obb_rules.element.element_coordinate.cljs$core$IFn$_invoke$arity$1(attacker);
-var x1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12574,(0),null);
-var y1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12574,(1),null);
-var vec__12575 = obb_rules.element.element_coordinate.cljs$core$IFn$_invoke$arity$1(target);
-var x2 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12575,(0),null);
-var y2 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12575,(1),null);
-var distance = obb_rules.math.abs(((x1 - x2) - (y1 - y2)));
+var vec__32895 = obb_rules.element.element_coordinate.call(null,attacker);
+var x1 = cljs.core.nth.call(null,vec__32895,(0),null);
+var y1 = cljs.core.nth.call(null,vec__32895,(1),null);
+var vec__32896 = obb_rules.element.element_coordinate.call(null,target);
+var x2 = cljs.core.nth.call(null,vec__32896,(0),null);
+var y2 = cljs.core.nth.call(null,vec__32896,(1),null);
+var distance = obb_rules.math.abs.call(null,((x1 - x2) - (y1 - y2)));
 if((distance > (3))){
 return (0.25 * ((7) - distance));
 } else {
@@ -25,16 +25,16 @@ return (1);
  * Gets the base damage given by a unit to another
  */
 obb_rules.actions.damage_calculator.damage = (function obb_rules$actions$damage_calculator$damage(board,attacker_element,defender_element){
-var attacker_quantity = obb_rules.element.element_quantity.cljs$core$IFn$_invoke$arity$1(attacker_element);
-var attack = obb_rules.element.element_attack(board,attacker_element,defender_element);
-var distance_perc = obb_rules.actions.damage_calculator.distance_factor(attacker_element,defender_element);
+var attacker_quantity = obb_rules.element.element_quantity.call(null,attacker_element);
+var attack = obb_rules.element.element_attack.call(null,board,attacker_element,defender_element);
+var distance_perc = obb_rules.actions.damage_calculator.distance_factor.call(null,attacker_element,defender_element);
 return (((attack * attacker_quantity) * distance_perc) | (0));
 });
 /**
  * Gets the defense of a given unit from another
  */
 obb_rules.actions.damage_calculator.defense = (function obb_rules$actions$damage_calculator$defense(board,attacker_element,defender_element){
-return obb_rules.element.element_defense(board,attacker_element,defender_element);
+return obb_rules.element.element_defense.call(null,board,attacker_element,defender_element);
 });
 /**
  * If the given quantity is bigger than 1, then it should be an integer
@@ -50,8 +50,8 @@ return quantity;
  * Gets how many units an attack will destroy
  */
 obb_rules.actions.damage_calculator.destroyed_with_unused_damage = (function obb_rules$actions$damage_calculator$destroyed_with_unused_damage(){
-var G__12577 = arguments.length;
-switch (G__12577) {
+var G__32898 = arguments.length;
+switch (G__32898) {
 case 3:
 return obb_rules.actions.damage_calculator.destroyed_with_unused_damage.cljs$core$IFn$_invoke$arity$3((arguments[(0)]),(arguments[(1)]),(arguments[(2)]));
 
@@ -67,17 +67,17 @@ throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(arguments.lengt
 });
 
 obb_rules.actions.damage_calculator.destroyed_with_unused_damage.cljs$core$IFn$_invoke$arity$3 = (function (board,attacker_element,defender_element){
-return obb_rules.actions.damage_calculator.destroyed_with_unused_damage.cljs$core$IFn$_invoke$arity$4(board,attacker_element,defender_element,obb_rules.actions.damage_calculator.damage(board,attacker_element,defender_element));
+return obb_rules.actions.damage_calculator.destroyed_with_unused_damage.call(null,board,attacker_element,defender_element,obb_rules.actions.damage_calculator.damage.call(null,board,attacker_element,defender_element));
 });
 
 obb_rules.actions.damage_calculator.destroyed_with_unused_damage.cljs$core$IFn$_invoke$arity$4 = (function (board,attacker_element,defender_element,total_damage){
-var elem_defense = obb_rules.actions.damage_calculator.defense(board,attacker_element,defender_element);
+var elem_defense = obb_rules.actions.damage_calculator.defense.call(null,board,attacker_element,defender_element);
 var destroyed = (total_damage / elem_defense);
-var defender_quantity = obb_rules.element.element_quantity.cljs$core$IFn$_invoke$arity$1(defender_element);
+var defender_quantity = obb_rules.element.element_quantity.call(null,defender_element);
 if((destroyed > defender_quantity)){
-return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_rules.actions.damage_calculator.quantify(defender_quantity),(total_damage - (elem_defense * defender_quantity))], null);
+return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_rules.actions.damage_calculator.quantify.call(null,defender_quantity),(total_damage - (elem_defense * defender_quantity))], null);
 } else {
-return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_rules.actions.damage_calculator.quantify(destroyed),(0)], null);
+return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_rules.actions.damage_calculator.quantify.call(null,destroyed),(0)], null);
 }
 });
 
@@ -86,8 +86,10 @@ obb_rules.actions.damage_calculator.destroyed_with_unused_damage.cljs$lang$maxFi
  * Gets how many units an attack will destroy
  */
 obb_rules.actions.damage_calculator.destroyed = (function obb_rules$actions$damage_calculator$destroyed(board,attacker_element,defender_element){
-var vec__12580 = obb_rules.actions.damage_calculator.destroyed_with_unused_damage.cljs$core$IFn$_invoke$arity$3(board,attacker_element,defender_element);
-var destroyed__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12580,(0),null);
-var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12580,(1),null);
+var vec__32901 = obb_rules.actions.damage_calculator.destroyed_with_unused_damage.call(null,board,attacker_element,defender_element);
+var destroyed__$1 = cljs.core.nth.call(null,vec__32901,(0),null);
+var _ = cljs.core.nth.call(null,vec__32901,(1),null);
 return destroyed__$1;
 });
+
+//# sourceMappingURL=damage_calculator.js.map?rel=1436517556648
