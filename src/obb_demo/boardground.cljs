@@ -20,17 +20,27 @@
 (defn- unit-image
   "Renders an html element that displays a board element's unit, if present
   at the given coordinates"
-  [game x y]
-  (if-let [element (board/get-element game [x y])]
+  [game element]
+  (when element
     (let [unit (element/element-unit element)
           unit-name (unit/unit-name unit)]
-      [:img {:src (str "http://orionsbelt.eu/public/units/" unit-name  "_" (direction element) ".png")}])))
+      [:img.unit {:src (str "http://orionsbelt.eu/public/units/" unit-name  "_" (direction element) ".png")}])))
+
+(defn- enemy-display
+  "Returns an enemy indication if the given element is an enemy"
+  [game element]
+  (when element
+    (let [player (element/element-player element)]
+      (if (= player :p2)
+        [:div.enemy]))))
 
 (defn- square
   "Renders a board square"
   [game x y]
-  [:div.obb-square {:key (str x y) :style (square-position x y)}
-   (unit-image game x y)])
+  (let [element (board/get-element game [x y])]
+    [:div.obb-square {:key (str x y) :style (square-position x y)}
+     (unit-image game element)
+     (enemy-display game element)]))
 
 (defn render
   "Renders the full game's board"

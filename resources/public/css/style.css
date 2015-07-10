@@ -40,3 +40,18 @@ img.obb-ice {
   height:100%;
   z-index:-100;
 }
+
+img.unit {
+  margin:6px;
+  z-index:100;
+  position: absolute;
+}
+
+div.enemy {
+  width:100%;
+  height:100%;
+  background-color: red;
+  opacity: 0.2;
+  z-index: 10;
+  position: absolute;
+}
