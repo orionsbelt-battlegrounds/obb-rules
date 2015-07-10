@@ -9,7 +9,24 @@
    [:div.panel-heading
     [:h3.panel-title (unit/unit-name unit)]]
    [:div.panel-body
-    "waza"]])
+    [:ul
+     [:li "Attack: " (unit/unit-attack unit)]
+     [:li "Attack Type: " (name (unit/attack-type unit))]
+     [:li "After Attack: " (map #(name (first %)) (:after-attack unit))]
+     [:li]
+     [:li "Range: " (unit/unit-range unit)]
+     [:li "Defense: " (unit/unit-defense unit)]
+     [:li "After hit: " (map #(name (first %)) (:after-hit unit))]
+     [:li]
+     [:li "Movement Type: " (name (unit/unit-movement-type unit))]
+     [:li "Movement Cost: " (unit/unit-movement-cost unit)]
+     [:li]
+     [:li "Type: " (name (unit/unit-type unit))]
+     [:li "Category: " (name (unit/unit-category unit))]
+     [:li "Displacement: " (name (unit/unit-displacement unit))]
+     [:li]
+     [:li "Value: " (unit/unit-value unit)]
+     ]]])
 
 (defn- units-panel
   "Writes a panel with units by category"
@@ -40,4 +57,4 @@
     [:div.col-lg-4
      [units-ul]]
     [:div.col-lg-8
-     [unit-info-panel (unit/fetch (or (:page-data state) :rain))]]]])
+     [unit-info-panel (unit/fetch (or (:units state) :rain))]]]])
