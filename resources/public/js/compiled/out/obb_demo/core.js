@@ -24,4 +24,4 @@ if(typeof obb_demo.core.start !== 'undefined'){
 obb_demo.core.start = obb_demo.core.init.call(null);
 }
 
-//# sourceMappingURL=core.js.map?rel=1436536084139
+//# sourceMappingURL=core.js.map?rel=1436542485134
