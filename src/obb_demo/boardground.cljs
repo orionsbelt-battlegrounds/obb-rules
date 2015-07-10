@@ -42,10 +42,17 @@
      (unit-image game element)
      (enemy-display game element)]))
 
+(defn- boardground-size
+  "Gets the panel size stype"
+  [options]
+  (or (:boardground-style options)
+      {:width "500px"
+       :height "500px"}))
+
 (defn render
   "Renders the full game's board"
-  [game]
-  [:div.obb-board-panel
+  [options game]
+  [:div.obb-board-panel {:style (boardground-size options)}
    [:img.obb-ice {:src "img/ice.jpg"}]
    [:div.obb-board
     (for [y (range 1 9)

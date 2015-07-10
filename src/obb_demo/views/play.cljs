@@ -12,4 +12,9 @@
         game2 (result/result-board result)
         result2 (turn/process-actions game2 :p2 [[:auto-deploy :firingsquad]])
         game2 (result/result-board result2)]
-    [boardground/render game2]))
+    [:div.row
+      [:div.col-lg-6
+        [boardground/render {:boardground-style {:width "500px" :height "500px"}} game2]]
+      [:div.col-lg-6
+        [boardground/render {:boardground-style {:width "200px" :height "200px"}} game2]
+        [boardground/render {:boardground-style {:width "100px" :height "100px" :margin-top "20px"}} game2]]]))
