@@ -15,3 +15,44 @@ ul.units {
 ul.units li {
   float: left;
 }
+
+.obb-board-panel {
+  width: 500px;
+  height: 500px;
+  position: relative;
+}
+
+div.obb-board {
+  top: 0;
+  height: 100%;
+}
+
+div.obb-square {
+  position: absolute;
+  width: 12.5%;
+  height: 12.5%;
+  transition: 0.13s;
+  border: 1px solid rgba(0, 0, 0, .1);
+}
+
+img.obb-ice {
+  width:100%;
+  height:100%;
+  z-index:-100;
+}
+
+img.unit {
+  z-index:100;
+  width:100%;
+  height:100%;
+  position: absolute;
+}
+
+div.enemy {
+  width:100%;
+  height:100%;
+  background-color: red;
+  opacity: 0.2;
+  z-index: 10;
+  position: absolute;
+}
