@@ -1,1 +1,1 @@
-lein with-profile clj test-refresh
+lein with-profile +clj test-refresh

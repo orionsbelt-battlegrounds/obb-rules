@@ -9,9 +9,11 @@
 
   :dependencies [[org.clojure/test.check "0.7.0"]
                  [org.clojure/math.numeric-tower "0.0.4"]
+                 [org.clojure/tools.namespace "0.2.11"]
                  [org.clojure/clojure "1.7.0"]
                  [org.clojure/tools.nrepl "0.2.10"]
                  [reagent "0.5.0"]
+                 [secretary "1.2.3"]
                  [org.clojure/clojurescript "0.0-3308"]]
 
   :jvm-opts ["-XX:+TieredCompilation" "-XX:TieredStopAtLevel=1"]
@@ -27,7 +29,7 @@
 
      :clj {
 
-       :plugins [[com.jakemccrary/lein-test-refresh "0.9.0"]
+       :plugins [[com.jakemccrary/lein-test-refresh "0.10.0"]
                  [lein-cloverage "1.0.2"]]
 
        :main obb-rules.test-runner}
