@@ -51,10 +51,15 @@
       (if (= player :p2)
         [:div.enemy]))))
 
+(defn selected?
+  "Checks if the given element is selected"
+  [game-data element]
+  (and element (= element (:selected-element game-data))))
+
 (defn- selected-display
   "Square addon when given element is selected"
   [game-data element]
-  (if (and element (= element (:selected-element game-data)))
+  (if (selected? game-data element)
     [(keyword (str "div.selected-" (name (element/element-player element))))]))
 
 (defn- possible-destination
@@ -69,6 +74,13 @@
                       :else "success")))
       cost]]))
 
+(defn- element-quantity
+  "Shows element quantity"
+  [game-data element]
+  (if (selected? game-data element)
+    [:div.element-quantity
+     [:span.label.label-default (element/element-quantity element)]]))
+
 (defn- square
   "Renders a board square"
   [game-data x y]
@@ -80,6 +92,7 @@
      (unit-image game element)
      (selected-display game-data element)
      (possible-destination game-data coord)
+     (element-quantity game-data element)
      (enemy-display game element)]))
 
 (defn- boardground-size
