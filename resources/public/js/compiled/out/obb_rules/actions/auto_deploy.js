@@ -35,11 +35,11 @@ return null;
 /**
  * Creates a action that auto deploys a stash
  */
-obb_rules.actions.auto_deploy.build_auto_deploy = (function obb_rules$actions$auto_deploy$build_auto_deploy(p__33095){
-var vec__33097 = p__33095;
-var raw_template_name = cljs.core.nth.call(null,vec__33097,(0),null);
+obb_rules.actions.auto_deploy.build_auto_deploy = (function obb_rules$actions$auto_deploy$build_auto_deploy(p__35487){
+var vec__35489 = p__35487;
+var raw_template_name = cljs.core.nth.call(null,vec__35489,(0),null);
 var template_name = cljs.core.keyword.call(null,raw_template_name);
-return ((function (template_name,vec__33097,raw_template_name){
+return ((function (template_name,vec__35489,raw_template_name){
 return (function obb_rules$actions$auto_deploy$build_auto_deploy_$_auto_deployer(board,player){
 var temp__4423__auto__ = obb_rules.actions.auto_deploy.verify_restrictions.call(null,board,player,template_name);
 if(cljs.core.truth_(temp__4423__auto__)){
@@ -49,7 +49,7 @@ return obb_rules.result.action_failed.call(null,error);
 return obb_rules.actions.auto_deploy.templates.call(null,template_name).call(null,board,player);
 }
 });
-;})(template_name,vec__33097,raw_template_name))
+;})(template_name,vec__35489,raw_template_name))
 });
 
-//# sourceMappingURL=auto_deploy.js.map?rel=1436517557428
+//# sourceMappingURL=auto_deploy.js.map?rel=1436720934719

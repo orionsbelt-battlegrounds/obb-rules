@@ -40,10 +40,10 @@ return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMP
  * Gets the used action points on a turn.
  */
 obb_rules.turn.points = (function obb_rules$turn$points(game){
-return cljs.core.reduce.call(null,cljs.core._PLUS_,cljs.core.map.call(null,(function (p1__33155_SHARP_){
-return obb_rules.result.result_cost.call(null,p1__33155_SHARP_);
-}),cljs.core.map.call(null,(function (p1__33154_SHARP_){
-return cljs.core.last.call(null,p1__33154_SHARP_);
+return cljs.core.reduce.call(null,cljs.core._PLUS_,cljs.core.map.call(null,(function (p1__35498_SHARP_){
+return obb_rules.result.result_cost.call(null,p1__35498_SHARP_);
+}),cljs.core.map.call(null,(function (p1__35497_SHARP_){
+return cljs.core.last.call(null,p1__35497_SHARP_);
 }),obb_rules.game.action_results.call(null,game))));
 });
 /**
@@ -100,12 +100,12 @@ return obb_rules.turn.process_actions.call(null,game,player,raw_actions);
 
 obb_rules.turn.process.cljs$lang$maxFixedArity = (2);
 
-obb_rules.turn.process.cljs$lang$applyTo = (function (seq33156){
-var G__33157 = cljs.core.first.call(null,seq33156);
-var seq33156__$1 = cljs.core.next.call(null,seq33156);
-var G__33158 = cljs.core.first.call(null,seq33156__$1);
-var seq33156__$2 = cljs.core.next.call(null,seq33156__$1);
-return obb_rules.turn.process.cljs$core$IFn$_invoke$arity$variadic(G__33157,G__33158,seq33156__$2);
+obb_rules.turn.process.cljs$lang$applyTo = (function (seq35499){
+var G__35500 = cljs.core.first.call(null,seq35499);
+var seq35499__$1 = cljs.core.next.call(null,seq35499);
+var G__35501 = cljs.core.first.call(null,seq35499__$1);
+var seq35499__$2 = cljs.core.next.call(null,seq35499__$1);
+return obb_rules.turn.process.cljs$core$IFn$_invoke$arity$variadic(G__35500,G__35501,seq35499__$2);
 });
 
-//# sourceMappingURL=turn.js.map?rel=1436517557665
+//# sourceMappingURL=turn.js.map?rel=1436720934789

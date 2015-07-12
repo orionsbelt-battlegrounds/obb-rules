@@ -12,10 +12,10 @@ goog.require('obb_rules.translator');
 /**
  * Provides the given stash, but with translates units
  */
-obb_rules.auto_deploys.common.map_stash_to_units = (function obb_rules$auto_deploys$common$map_stash_to_units(p__33076){
-var vec__33078 = p__33076;
-var unit_name = cljs.core.nth.call(null,vec__33078,(0),null);
-var quantity = cljs.core.nth.call(null,vec__33078,(1),null);
+obb_rules.auto_deploys.common.map_stash_to_units = (function obb_rules$auto_deploys$common$map_stash_to_units(p__35468){
+var vec__35470 = p__35468;
+var unit_name = cljs.core.nth.call(null,vec__35470,(0),null);
+var quantity = cljs.core.nth.call(null,vec__35470,(1),null);
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_rules.unit.fetch.call(null,unit_name),quantity], null);
 });
 /**
@@ -25,8 +25,8 @@ obb_rules.auto_deploys.common.build_lineup = (function obb_rules$auto_deploys$co
 var squares = obb_rules.board.board_width.call(null,board);
 var units = obb_rules.math.ceil.call(null,(squares / cljs.core.count.call(null,stash)));
 var grouped = cljs.core.map.call(null,((function (squares,units){
-return (function (p1__33079_SHARP_){
-return cljs.core.take.call(null,units,cljs.core.repeat.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.first.call(null,p1__33079_SHARP_)], null)));
+return (function (p1__35471_SHARP_){
+return cljs.core.take.call(null,units,cljs.core.repeat.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.first.call(null,p1__35471_SHARP_)], null)));
 });})(squares,units))
 ,stash);
 var final$ = cljs.core.flatten.call(null,grouped);
@@ -35,14 +35,14 @@ return cljs.core.take.call(null,squares,final$);
 /**
  * Splits the total quantity into the given slots
  */
-obb_rules.auto_deploys.common.split_stash = (function obb_rules$auto_deploys$common$split_stash(lineup,p__33081){
-var vec__33083 = p__33081;
-var unit = cljs.core.nth.call(null,vec__33083,(0),null);
-var quantity = cljs.core.nth.call(null,vec__33083,(1),null);
-var slots = cljs.core.count.call(null,cljs.core.filter.call(null,((function (vec__33083,unit,quantity){
-return (function (p1__33080_SHARP_){
-return cljs.core._EQ_.call(null,unit,p1__33080_SHARP_);
-});})(vec__33083,unit,quantity))
+obb_rules.auto_deploys.common.split_stash = (function obb_rules$auto_deploys$common$split_stash(lineup,p__35473){
+var vec__35475 = p__35473;
+var unit = cljs.core.nth.call(null,vec__35475,(0),null);
+var quantity = cljs.core.nth.call(null,vec__35475,(1),null);
+var slots = cljs.core.count.call(null,cljs.core.filter.call(null,((function (vec__35475,unit,quantity){
+return (function (p1__35472_SHARP_){
+return cljs.core._EQ_.call(null,unit,p1__35472_SHARP_);
+});})(vec__35475,unit,quantity))
 ,lineup));
 var fraction = (quantity / slots);
 var smallest_parcel_quantity = obb_rules.math.floor.call(null,fraction);
@@ -51,19 +51,29 @@ var biggest = (quantity - (equal_parcel_slots * smallest_parcel_quantity));
 return cljs.core.into.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [unit,biggest], null)], null),cljs.core.take.call(null,equal_parcel_slots,cljs.core.repeat.call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [unit,smallest_parcel_quantity], null))));
 });
 /**
+ * Shuffles the collection
+ */
+obb_rules.auto_deploys.common.randomize = (function obb_rules$auto_deploys$common$randomize(coll){
+if(cljs.core.truth_(coll)){
+return cljs.core.shuffle.call(null,coll);
+} else {
+return null;
+}
+});
+/**
  * Associates the expected quantities with every lineup element
  */
 obb_rules.auto_deploys.common.build_lineup_quantities = (function obb_rules$auto_deploys$common$build_lineup_quantities(lineup,stash){
 var quantities = cljs.core.map.call(null,cljs.core.partial.call(null,obb_rules.auto_deploys.common.split_stash,lineup),stash);
-return cljs.core.apply.call(null,cljs.core.concat,quantities);
+return obb_rules.auto_deploys.common.randomize.call(null,cljs.core.apply.call(null,cljs.core.concat,quantities));
 });
 /**
  * Builds a deploy action command
  */
-obb_rules.auto_deploys.common.build_deploy_action = (function obb_rules$auto_deploys$common$build_deploy_action(player,row,idx,p__33084){
-var vec__33086 = p__33084;
-var u = cljs.core.nth.call(null,vec__33086,(0),null);
-var q = cljs.core.nth.call(null,vec__33086,(1),null);
+obb_rules.auto_deploys.common.build_deploy_action = (function obb_rules$auto_deploys$common$build_deploy_action(player,row,idx,p__35476){
+var vec__35478 = p__35476;
+var u = cljs.core.nth.call(null,vec__35478,(0),null);
+var q = cljs.core.nth.call(null,vec__35478,(1),null);
 var coordinate = obb_rules.translator.coordinate.call(null,player,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(idx + (1)),row], null));
 return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(q | (0)),obb_rules.unit.unit_name.call(null,u),coordinate], null);
 });
@@ -84,4 +94,4 @@ return action.call(null,obb_rules.result.result_board.call(null,result),player);
 }
 });
 
-//# sourceMappingURL=common.js.map?rel=1436517557370
+//# sourceMappingURL=common.js.map?rel=1436720934666

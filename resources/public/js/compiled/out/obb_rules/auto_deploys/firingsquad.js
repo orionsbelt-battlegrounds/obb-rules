@@ -12,18 +12,18 @@ goog.require('obb_rules.translator');
 /**
  * Translates on how the given unit is good for a firingsquad
  */
-obb_rules.auto_deploys.firingsquad.firing_squad_value = (function obb_rules$auto_deploys$firingsquad$firing_squad_value(p__33089){
-var vec__33091 = p__33089;
-var unit = cljs.core.nth.call(null,vec__33091,(0),null);
-var quantity = cljs.core.nth.call(null,vec__33091,(1),null);
+obb_rules.auto_deploys.firingsquad.firing_squad_value = (function obb_rules$auto_deploys$firingsquad$firing_squad_value(p__35481){
+var vec__35483 = p__35481;
+var unit = cljs.core.nth.call(null,vec__35483,(0),null);
+var quantity = cljs.core.nth.call(null,vec__35483,(1),null);
 return (- obb_rules.unit.unit_range.call(null,unit));
 });
 /**
  * From the given stash, finds how may units are first row material
  */
 obb_rules.auto_deploys.firingsquad.front_row_units_to_use = (function obb_rules$auto_deploys$firingsquad$front_row_units_to_use(stash){
-var long_range_units = cljs.core.filter.call(null,(function (p1__33092_SHARP_){
-return (obb_rules.unit.unit_range.call(null,cljs.core.first.call(null,p1__33092_SHARP_)) > (4));
+var long_range_units = cljs.core.filter.call(null,(function (p1__35484_SHARP_){
+return (obb_rules.unit.unit_range.call(null,cljs.core.first.call(null,p1__35484_SHARP_)) > (4));
 }),stash);
 var number = cljs.core.count.call(null,long_range_units);
 if((number > (0))){
@@ -63,4 +63,4 @@ var back_row_units = (cljs.core.count.call(null,ordered_stash) - front_row_units
 return obb_rules.auto_deploys.firingsquad.deploy_back_row.call(null,obb_rules.auto_deploys.firingsquad.deploy_front_row.call(null,board,player,cljs.core.take.call(null,front_row_units,ordered_stash)),player,cljs.core.take_last.call(null,back_row_units,ordered_stash));
 });
 
-//# sourceMappingURL=firingsquad.js.map?rel=1436517557404
+//# sourceMappingURL=firingsquad.js.map?rel=1436720934700
