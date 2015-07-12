@@ -6,6 +6,12 @@
             [obb-rules.result :as result]
             [obb-demo.boardground :as boardground]))
 
+(defn- tune-up
+  "Prepare the game before deploying"
+  [game]
+  #_(assoc-in game [:stash :p1] (dissoc (get-in game [:stash :p1]) :crusader))
+  game)
+
 (defn- deployed-game
   "Creates a deployed game"
   []
@@ -18,6 +24,7 @@
                     :fenix 25
                     :crusader 25)
       (game/create)
+      (tune-up)
       (turn/process-actions :p1 [[:auto-deploy :firingsquad]])
       (result/result-board)
       (turn/process-actions :p2 [[:auto-deploy :firingsquad]])
