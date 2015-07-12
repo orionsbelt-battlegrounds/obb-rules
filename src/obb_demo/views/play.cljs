@@ -8,7 +8,6 @@
 (defn- deployed-game
   "Creates a deployed game"
   []
-
   (-> (game/random)
       (turn/process-actions :p1 [[:auto-deploy :firingsquad]])
       (result/result-board)
@@ -30,6 +29,6 @@
         game (:game game-data)]
     [:div.row
       [:div.col-lg-5
-        [boardground/render {} game]]
+        [boardground/render {} game-data]]
       [:div.col-lg-2
-        [boardground/render {} game]]]))
+        [boardground/render {} game-data]]]))

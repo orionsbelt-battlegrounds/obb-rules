@@ -4,7 +4,16 @@
             [obb-rules.element :as element]
             [obb-rules.unit :as unit]))
 
-(defn square-position
+(defn with-selected-element
+  "Verifies and marks as selected an element on the given coordinate"
+  [game-data x y]
+  (let [game (:game game-data)
+        coord [x y]]
+    (-> game-data
+        (assoc :selected-coord coord)
+        (assoc :selected-element (board/get-element game coord)))))
+
+(defn- square-position
   "Calculates the position via left and bottom percentages"
   [x y]
   (let [x (- x 1)]
@@ -34,12 +43,22 @@
       (if (= player :p2)
         [:div.enemy]))))
 
+(defn- selected-display
+  "Square addon when given element is selected"
+  [game-data element]
+  (if (= element (:selected-element game-data))
+    [(keyword (str "div.selected-" (name (element/element-player element))))]))
+
 (defn- square
   "Renders a board square"
-  [game x y]
-  (let [element (board/get-element game [x y])]
-    [:div.obb-square {:key (str x y) :style (square-position x y)}
+  [game-data x y]
+  (let [game (:game game-data)
+        coord [x y]
+        element (board/get-element game coord)
+        square-style (square-position x y)]
+    [:div.obb-square {:key (str x y) :style square-style}
      (unit-image game element)
+     (selected-display game-data element)
      (enemy-display game element)]))
 
 (defn- boardground-size
@@ -51,10 +70,10 @@
 
 (defn render
   "Renders the full game's board"
-  [options game]
+  [options game-data]
   [:div.obb-board-panel {:style (boardground-size options)}
    [:img.obb-ice {:src "img/ice.jpg"}]
    [:div.obb-board
     (for [y (range 1 9)
           x (range 1 9)]
-      (square game x y))]])
+      (square (with-selected-element game-data 1 7) x y))]])
