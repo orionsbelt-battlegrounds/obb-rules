@@ -35,7 +35,8 @@
 (defn- deploy-back-row
   "Deploys a back row with all the given units"
   [result player stash]
-  (let [raw-actions (common/build-deploy-actions player stash 8)
+  (let [stash (shuffle stash)
+        raw-actions (common/build-deploy-actions player stash 8)
         actions (map deploy/build-deploy raw-actions)]
     (reduce (partial common/do-actions player) result actions)))
 
