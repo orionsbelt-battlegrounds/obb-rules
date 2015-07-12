@@ -35,11 +35,17 @@
     (into [[unit biggest]]
           (take equal-parcel-slots (repeat [unit smallest-parcel-quantity])))))
 
+(defn- randomize
+  "Shuffles the collection"
+  [coll]
+  (when coll
+    (shuffle coll)))
+
 (defn build-lineup-quantities
   "Associates the expected quantities with every lineup element"
   [lineup stash]
   (let [quantities (map (partial split-stash lineup) stash)]
-    (apply concat quantities)))
+    (randomize (apply concat quantities))))
 
 (defn- build-deploy-action
   "Builds a deploy action command"

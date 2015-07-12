@@ -61,6 +61,15 @@
   [game element]
   (find-targets game element [] (element/element-coordinate element) 1))
 
+(defn find-possible-attacks
+  "Gets an hash with possible attack coordinates and value of the attack.
+  Thr format is {[1 1] 56}"
+  [game element]
+  (->> (attack-options game element)
+       (map (fn [option]
+              [(nth (first (:actions option)) 2) (:value option)]))
+       (into {})))
+
 (defn- prepend-actions
   "Adds the given actions to the start of the option's actions"
   [new-actions cost option]
