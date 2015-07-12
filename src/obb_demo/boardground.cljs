@@ -1,17 +1,25 @@
 (ns obb-demo.boardground
   "Represents an OBB board game"
   (:require [obb-rules.board :as board]
+            [obb-rules.actions.move :as move]
+            [obb-rules.game :as game]
             [obb-rules.element :as element]
             [obb-rules.unit :as unit]))
 
 (defn with-selected-element
   "Verifies and marks as selected an element on the given coordinate"
-  [game-data x y]
+  [game-data coord]
   (let [game (:game game-data)
-        coord [x y]]
-    (-> game-data
-        (assoc :selected-coord coord)
-        (assoc :selected-element (board/get-element game coord)))))
+        element (board/get-element game coord)]
+    (if element
+      (-> game-data
+          (assoc :possible-destinations (move/find-all-possible-destinations-with-cost game element))
+          (assoc :selected-coord coord)
+          (assoc :selected-element element))
+      (-> game-data
+          (dissoc :possible-destinations)
+          (dissoc :selected-coord)
+          (dissoc :selected-element)))))
 
 (defn- square-position
   "Calculates the position via left and bottom percentages"
@@ -46,8 +54,20 @@
 (defn- selected-display
   "Square addon when given element is selected"
   [game-data element]
-  (if (= element (:selected-element game-data))
+  (if (and element (= element (:selected-element game-data)))
     [(keyword (str "div.selected-" (name (element/element-player element))))]))
+
+(defn- possible-destination
+  "Display when given coord is a possible movement destination"
+  [game-data coord]
+  (if-let [cost (get (:possible-destinations game-data) coord)]
+    [:div.possible-destination
+     [(keyword (str "span.label.label-"
+                    (cond
+                      (> cost 4) "danger"
+                      (> cost 2) "warning"
+                      :else "success")))
+      cost]]))
 
 (defn- square
   "Renders a board square"
@@ -59,6 +79,7 @@
     [:div.obb-square {:key (str x y) :style square-style}
      (unit-image game element)
      (selected-display game-data element)
+     (possible-destination game-data coord)
      (enemy-display game element)]))
 
 (defn- boardground-size
@@ -68,6 +89,13 @@
       #_{:width "500px"
        :height "500px"}))
 
+(defn- prepare-game-data
+  "Specific preparations"
+  [game-data]
+  (let [game (:game game-data)
+        state (game/state game)]
+    (with-selected-element game-data (if (= state :p1) [4 7] [4 2]))))
+
 (defn render
   "Renders the full game's board"
   [options game-data]
@@ -76,4 +104,4 @@
    [:div.obb-board
     (for [y (range 1 9)
           x (range 1 9)]
-      (square (with-selected-element game-data 1 7) x y))]])
+      (square (prepare-game-data game-data) x y))]])

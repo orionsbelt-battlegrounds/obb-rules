@@ -21,7 +21,8 @@
     game
     (let [game (deployed-game)
           game-data {:game game}]
-      (state/set-page-data! game-data))))
+      (state/set-page-data! game-data)
+      game-data)))
 
 (defn render
   [state]
