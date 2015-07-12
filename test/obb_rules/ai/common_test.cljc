@@ -40,6 +40,14 @@
     (is (< 0 (option :value)))
     (is (= [[:attack [2 5] [2 6]]] (option :actions)))))
 
+(deftest find-possible-attacks-tes
+  (let [board (-> (board/create-board)
+                  (board/place-element [2 5] (element/create-element :p1 rain 1 :south [2 5]))
+                  (board/place-element [2 6] (element/create-element :p2 rain 1 :north [2 6])))
+        attacks (common/find-possible-attacks board (board/get-element board [2 5]))]
+    (is (= 1 (count attacks)))
+    (is (= (get attacks [2 6]) 4))))
+
 (deftest get-distance-attack-options
   (let [board (-> (board/create-board)
                   (board/place-element [2 5] (element/create-element :p1 krill 1 :south [2 5]))

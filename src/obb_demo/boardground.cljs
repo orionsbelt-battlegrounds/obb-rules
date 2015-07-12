@@ -3,6 +3,7 @@
   (:require [obb-rules.board :as board]
             [obb-rules.actions.move :as move]
             [obb-rules.game :as game]
+            [obb-rules.ai.common :as ai]
             [obb-rules.element :as element]
             [obb-rules.unit :as unit]))
 
@@ -14,10 +15,12 @@
     (if element
       (-> game-data
           (assoc :possible-destinations (move/find-all-possible-destinations-with-cost game element))
+          (assoc :possible-attacks (ai/find-possible-attacks game element))
           (assoc :selected-coord coord)
           (assoc :selected-element element))
       (-> game-data
           (dissoc :possible-destinations)
+          (dissoc :attack-options)
           (dissoc :selected-coord)
           (dissoc :selected-element)))))
 
@@ -67,12 +70,18 @@
   [game-data coord]
   (if-let [cost (get (:possible-destinations game-data) coord)]
     [:div.possible-destination
-     [(keyword (str "span.label.label-"
+     #_[(keyword (str "span.label.label-"
                     (cond
                       (> cost 4) "danger"
                       (> cost 2) "warning"
                       :else "success")))
       cost]]))
+
+(defn- possible-target
+  "Display when given coord is a possible target for an attack"
+  [game-data coord]
+  (if-let [cost (get (:possible-attacks game-data) coord)]
+    [:div.possible-target]))
 
 (defn- element-quantity
   "Shows element quantity"
@@ -92,6 +101,7 @@
      (unit-image game element)
      (selected-display game-data element)
      (possible-destination game-data coord)
+     (possible-target game-data coord)
      (element-quantity game-data element)
      (enemy-display game element)]))
 
