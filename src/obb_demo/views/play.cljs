@@ -1,6 +1,7 @@
 (ns obb-demo.views.play
   (:require [obb-demo.state :as state]
             [obb-rules.game :as game]
+            [obb-rules.stash :as stash]
             [obb-rules.turn :as turn]
             [obb-rules.result :as result]
             [obb-demo.boardground :as boardground]))
@@ -8,7 +9,15 @@
 (defn- deployed-game
   "Creates a deployed game"
   []
-  (-> (game/random)
+  (-> (stash/create :rain 100
+                    :raptor 100
+                    :pretorian 50
+                    :vector 50
+                    :eagle 50
+                    :kamikaze 50
+                    :fenix 25
+                    :crusader 25)
+      (game/create)
       (turn/process-actions :p1 [[:auto-deploy :firingsquad]])
       (result/result-board)
       (turn/process-actions :p2 [[:auto-deploy :firingsquad]])
