@@ -16,8 +16,8 @@ return obb_demo.views.play.render.call(null,state);
 }
 });
 obb_demo.views.index.render = (function obb_demo$views$index$render(){
-var G__35543 = arguments.length;
-switch (G__35543) {
+var G__46594 = arguments.length;
+switch (G__46594) {
 case 0:
 return obb_demo.views.index.render.cljs$core$IFn$_invoke$arity$0();
 
@@ -42,4 +42,4 @@ return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMP
 
 obb_demo.views.index.render.cljs$lang$maxFixedArity = 1;
 
-//# sourceMappingURL=index.js.map?rel=1436720935055
+//# sourceMappingURL=index.js.map?rel=1436731187134
