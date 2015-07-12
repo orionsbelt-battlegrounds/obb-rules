@@ -39,7 +39,7 @@
   "Associates the expected quantities with every lineup element"
   [lineup stash]
   (let [quantities (map (partial split-stash lineup) stash)]
-    (apply concat quantities)))
+    (shuffle (apply concat quantities))))
 
 (defn- build-deploy-action
   "Builds a deploy action command"
