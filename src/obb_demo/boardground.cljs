@@ -117,7 +117,8 @@
   [game-data]
   (let [game (:game game-data)
         state (game/state game)]
-    (with-selected-element game-data (if (= state :p1) [4 7] [4 2]))))
+    game-data
+    #_(with-selected-element game-data (if (= state :p1) [4 7] [4 2]))))
 
 (defn render
   "Renders the full game's board"
