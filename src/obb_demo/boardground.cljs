@@ -14,13 +14,13 @@
         element (board/get-element game coord)]
     (if element
       (-> game-data
-          (assoc :possible-destinations (move/find-all-possible-destinations-with-cost game element))
+          #_(assoc :possible-destinations (move/find-all-possible-destinations-with-cost game element))
           (assoc :possible-attacks (ai/find-possible-attacks game element))
           (assoc :selected-coord coord)
           (assoc :selected-element element))
       (-> game-data
           (dissoc :possible-destinations)
-          (dissoc :attack-options)
+          (dissoc :possible-attacks)
           (dissoc :selected-coord)
           (dissoc :selected-element)))))
 

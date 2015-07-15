@@ -69,5 +69,4 @@
         final-game (result/result-board result2)]
 
     (is (result/succeeded? result))
-    (println (dissoc final-game :action-results))
     (is (result/succeeded? result2))))
