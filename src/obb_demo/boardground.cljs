@@ -14,13 +14,13 @@
         element (board/get-element game coord)]
     (if element
       (-> game-data
-          (assoc :possible-destinations (move/find-all-possible-destinations-with-cost game element))
+          #_(assoc :possible-destinations (move/find-all-possible-destinations-with-cost game element))
           (assoc :possible-attacks (ai/find-possible-attacks game element))
           (assoc :selected-coord coord)
           (assoc :selected-element element))
       (-> game-data
           (dissoc :possible-destinations)
-          (dissoc :attack-options)
+          (dissoc :possible-attacks)
           (dissoc :selected-coord)
           (dissoc :selected-element)))))
 
@@ -117,7 +117,8 @@
   [game-data]
   (let [game (:game game-data)
         state (game/state game)]
-    (with-selected-element game-data (if (= state :p1) [4 7] [4 2]))))
+    game-data
+    #_(with-selected-element game-data (if (= state :p1) [4 7] [4 2]))))
 
 (defn render
   "Renders the full game's board"
