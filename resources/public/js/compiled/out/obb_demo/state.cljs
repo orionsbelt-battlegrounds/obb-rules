@@ -19,3 +19,8 @@
   [data]
   (swap! app-state assoc (current-page) data))
 
+(defn get-page-data
+  "Gets the data of the current page"
+  []
+  (get @app-state (current-page)))
+

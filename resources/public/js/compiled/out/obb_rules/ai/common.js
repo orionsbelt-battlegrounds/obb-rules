@@ -3,6 +3,7 @@ goog.provide('obb_rules.ai.common');
 goog.require('cljs.core');
 goog.require('obb_rules.board');
 goog.require('obb_rules.actions.direction');
+goog.require('obb_rules.math');
 goog.require('obb_rules.evaluator');
 goog.require('obb_rules.simplifier');
 goog.require('obb_rules.element');
@@ -23,9 +24,9 @@ return obb_rules.turn.simulate_actions.call(null,board,player,new cljs.core.Pers
  * Evaluates a board for a given player
  */
 obb_rules.ai.common.eval_board = (function obb_rules$ai$common$eval_board(board,player){
-var vec__35505 = obb_rules.evaluator.eval_game.call(null,board);
-var score1 = cljs.core.nth.call(null,vec__35505,(0),null);
-var score2 = cljs.core.nth.call(null,vec__35505,(1),null);
+var vec__32721 = obb_rules.evaluator.eval_game.call(null,board);
+var score1 = cljs.core.nth.call(null,vec__32721,(0),null);
+var score2 = cljs.core.nth.call(null,vec__32721,(1),null);
 if(cljs.core.truth_(obb_rules.simplifier.name_EQ_.call(null,player,new cljs.core.Keyword(null,"p1","p1",-936759954)))){
 return (score1 - score2);
 } else {
@@ -55,29 +56,29 @@ if((obb_rules.element.element_range.call(null,attacker) < distance)){
 return targets;
 } else {
 if(cljs.core.truth_(obb_rules.result.failed_QMARK_.call(null,result))){
-var G__35506 = game;
-var G__35507 = attacker;
-var G__35508 = targets;
-var G__35509 = next_coordinate;
-var G__35510 = ((1) + distance);
-game = G__35506;
-attacker = G__35507;
-targets = G__35508;
-current_coordinate = G__35509;
-distance = G__35510;
+var G__32722 = game;
+var G__32723 = attacker;
+var G__32724 = targets;
+var G__32725 = next_coordinate;
+var G__32726 = ((1) + distance);
+game = G__32722;
+attacker = G__32723;
+targets = G__32724;
+current_coordinate = G__32725;
+distance = G__32726;
 continue;
 } else {
 var targets__$1 = cljs.core.conj.call(null,targets,obb_rules.ai.common.build_target.call(null,player,result,raw_action,distance));
-var G__35511 = game;
-var G__35512 = attacker;
-var G__35513 = targets__$1;
-var G__35514 = next_coordinate;
-var G__35515 = ((1) + distance);
-game = G__35511;
-attacker = G__35512;
-targets = G__35513;
-current_coordinate = G__35514;
-distance = G__35515;
+var G__32727 = game;
+var G__32728 = attacker;
+var G__32729 = targets__$1;
+var G__32730 = next_coordinate;
+var G__32731 = ((1) + distance);
+game = G__32727;
+attacker = G__32728;
+targets = G__32729;
+current_coordinate = G__32730;
+distance = G__32731;
 continue;
 
 }
@@ -125,8 +126,8 @@ var coordinate = obb_rules.element.element_coordinate.call(null,element);
 var player = obb_rules.element.element_player.call(null,element);
 var dirs = obb_rules.actions.direction.other.call(null,obb_rules.element.element_direction.call(null,element));
 var options = cljs.core.filter.call(null,((function (coordinate,player,dirs){
-return (function (p1__35516_SHARP_){
-return cljs.core.seq.call(null,p1__35516_SHARP_);
+return (function (p1__32732_SHARP_){
+return cljs.core.seq.call(null,p1__32732_SHARP_);
 });})(coordinate,player,dirs))
 ,cljs.core.flatten.call(null,cljs.core.map.call(null,cljs.core.partial.call(null,obb_rules.ai.common.rotate_and_attack,game,element),dirs)));
 return options;
@@ -143,15 +144,15 @@ return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMP
 /**
  * Builds options from a result
  */
-obb_rules.ai.common.build_options = (function obb_rules$ai$common$build_options(p__35517){
-var vec__35519 = p__35517;
-var action = cljs.core.nth.call(null,vec__35519,(0),null);
-var result = cljs.core.nth.call(null,vec__35519,(1),null);
-var target_coord = cljs.core.nth.call(null,vec__35519,(2),null);
+obb_rules.ai.common.build_options = (function obb_rules$ai$common$build_options(p__32733){
+var vec__32735 = p__32733;
+var action = cljs.core.nth.call(null,vec__32735,(0),null);
+var result = cljs.core.nth.call(null,vec__32735,(1),null);
+var target_coord = cljs.core.nth.call(null,vec__32735,(2),null);
 if(cljs.core.truth_(obb_rules.result.succeeded_QMARK_.call(null,result))){
 var game = obb_rules.result.result_board.call(null,result);
 var element = obb_rules.board.get_element.call(null,game,target_coord);
-return cljs.core.map.call(null,cljs.core.partial.call(null,obb_rules.ai.common.prepend_actions,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [action], null),obb_rules.result.result_cost.call(null,result)),obb_rules.ai.common.attack_options.call(null,game,element));
+return cljs.core.map.call(null,cljs.core.partial.call(null,obb_rules.ai.common.prepend_actions,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [action], null),(0)),obb_rules.ai.common.attack_options.call(null,game,element));
 } else {
 return null;
 }
@@ -227,4 +228,4 @@ return master;
 }
 });
 
-//# sourceMappingURL=common.js.map?rel=1436720934902
+//# sourceMappingURL=common.js.map?rel=1436994408842

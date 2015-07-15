@@ -34,10 +34,16 @@ cljs.core._add_method.call(null,obb_rules.ai.firingsquad.actions,new cljs.core.K
 return new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"auto-deploy","auto-deploy",1838692925),new cljs.core.Keyword(null,"firingsquad","firingsquad",-1910418650)], null)], null);
 }));
 /**
+ * Utility for debugging
+ */
+obb_rules.ai.firingsquad.logger = (function obb_rules$ai$firingsquad$logger(coll){
+return coll;
+});
+/**
  * Gathers possible actions for the given element
  */
 obb_rules.ai.firingsquad.gather_element_actions = (function obb_rules$ai$firingsquad$gather_element_actions(game,all,element){
-return cljs.core.conj.call(null,all,cljs.core.first.call(null,cljs.core.sort_by.call(null,obb_rules.ai.common.option_value_sorter,cljs.core.into.call(null,cljs.core.into.call(null,cljs.core.into.call(null,cljs.core.PersistentVector.EMPTY,obb_rules.ai.common.attack_options.call(null,game,element)),obb_rules.ai.common.rotate_attack_options.call(null,game,element)),obb_rules.ai.common.move_attack_options.call(null,game,element)))));
+return cljs.core.conj.call(null,all,cljs.core.first.call(null,obb_rules.ai.firingsquad.logger.call(null,cljs.core.sort_by.call(null,obb_rules.ai.common.option_value_sorter,cljs.core.into.call(null,cljs.core.into.call(null,cljs.core.into.call(null,cljs.core.PersistentVector.EMPTY,obb_rules.ai.common.attack_options.call(null,game,element)),obb_rules.ai.common.rotate_attack_options.call(null,game,element)),obb_rules.ai.common.move_attack_options.call(null,game,element))))));
 });
 /**
  * Given a collection of sorted options, tries to find a good one
@@ -57,4 +63,4 @@ return cljs.core.PersistentVector.EMPTY;
 }
 }));
 
-//# sourceMappingURL=firingsquad.js.map?rel=1436720935022
+//# sourceMappingURL=firingsquad.js.map?rel=1436994408975

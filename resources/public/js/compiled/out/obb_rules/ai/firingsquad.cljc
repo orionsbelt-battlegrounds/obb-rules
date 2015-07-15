@@ -21,6 +21,12 @@
   [game player]
   [[:auto-deploy :firingsquad]])
 
+(defn- logger
+  "Utility for debugging"
+  [coll]
+  #_(println (map (fn [option] [(:value option) (:cost option) (:actions option)]) coll))
+  coll)
+
 (defn- gather-element-actions
   "Gathers possible actions for the given element"
   [game all element]
@@ -28,7 +34,8 @@
                        (into (common/attack-options game element))
                        (into (common/rotate-attack-options game element))
                        (into (common/move-attack-options game element))
-                       (->> (sort-by common/option-value-sorter))))))
+                       (->> (sort-by common/option-value-sorter))
+                       (logger)))))
 
 (defn- find-one
   "Given a collection of sorted options, tries to find a good one"
