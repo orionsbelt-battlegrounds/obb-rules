@@ -4,6 +4,7 @@
   (:require [obb-rules.game :as game]
             [obb-rules.stash :as stash]
             [obb-rules.turn :as turn]
+            [obb-rules.math :as math]
             [obb-rules.laws :as laws]
             [obb-rules.evaluator :as evaluator]
             [obb-rules.result :as result]
@@ -113,7 +114,7 @@
   (when (result/succeeded? result)
     (let [game (result/result-board result)
           element (board/get-element game target-coord)]
-      (map (partial prepend-actions [action] (result/result-cost result))
+      (map (partial prepend-actions [action] 0)
            (attack-options game element)))))
 
 (defn- valuable-options

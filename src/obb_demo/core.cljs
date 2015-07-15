@@ -27,10 +27,13 @@
           player (game/state game)
           actions (firingsquad/actions game player)
           result (turn/process-actions game player actions)
-          new-game (result/result-board result)]
-      #_(println player actions (result/succeeded? result))
-      (state/set-page-data! (assoc game-data :game new-game)))
-    (js/setTimeout (get-tick) 5000)))
+          new-game (dissoc (result/result-board result) :action-results)]
+      (println player actions)
+      (if (result/succeeded? result)
+        (state/set-page-data! (assoc game-data :game new-game))
+        (println result))
+      (when-not (= player :final)
+        (js/setTimeout (get-tick) 500)))))
 
 
 (defn init []
