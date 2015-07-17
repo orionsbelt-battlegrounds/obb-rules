@@ -24,7 +24,7 @@
 (defn- logger
   "Utility for debugging"
   [coll]
-  (println "----" (map (fn [option] [(:value option) (:cost option) (:actions option)]) coll))
+  #_(println "----" (map (fn [option] [(:value option) (:cost option) (:actions option)]) coll))
   coll)
 
 (defn- gather-element-actions
@@ -35,14 +35,14 @@
                          (into (common/attack-options game element))
                          (into (common/rotate-attack-options game element))
                          (into (common/move-attack-options game element))
-                         (->> (sort-by common/option-value-sorter))))))))
+                         (->> (sort-by common/option-value-cost-sorter))))))))
 
 (defn- find-one
   "Given a collection of sorted options, tries to find a good one"
   [player options]
   (let [joiner (partial common/join-options player)
         the-one (reduce joiner (first options) (rest options))]
-    (println "---->" (:actions the-one))
+    #_(println "---->" (:actions the-one))
     the-one))
 
 (defmethod actions :turn

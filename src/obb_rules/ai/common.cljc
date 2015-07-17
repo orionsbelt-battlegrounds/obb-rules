@@ -150,6 +150,14 @@
     (- (option :value))
     0))
 
+(defn option-value-cost-sorter
+  "Sorts a collection of options based on the value"
+  [option]
+  (if option
+    (let [cost-factor (+ 17 (* 100 (- laws/max-action-points (:cost option))))]
+      (- (* (option :value) cost-factor)))
+    0))
+
 (defn join-options
   "Joins the given options on the given board, until the cost is possible"
   [player master current-option]
