@@ -14,10 +14,11 @@
   #_(assoc-in game [:stash :p1] (dissoc (get-in game [:stash :p1]) :crusader))
   game)
 
-(defn- deployed-game
-  "Creates a deployed game"
+(defn- new-game
+  "Creates a new game"
   []
-  (-> (stash/create :rain 100
+  (game/random)
+  #_(-> (stash/create :rain 100
                     :raptor 100
                     :pretorian 40
                     :vector 50
@@ -25,7 +26,12 @@
                     :kamikaze 50
                     :fenix 25
                     :crusader 25)
-      (game/create)
+      (game/create)))
+
+(defn- deployed-game
+  "Creates a deployed game"
+  []
+  (-> (new-game)
       (tune-up)
       (turn/process-actions :p1 [[:auto-deploy :firingsquad]])
       (result/result-board)

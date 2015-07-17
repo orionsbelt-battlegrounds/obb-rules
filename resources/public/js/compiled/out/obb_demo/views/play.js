@@ -16,10 +16,16 @@ obb_demo.views.play.tune_up = (function obb_demo$views$play$tune_up(game){
 return game;
 });
 /**
+ * Creates a new game
+ */
+obb_demo.views.play.new_game = (function obb_demo$views$play$new_game(){
+return obb_rules.game.random.call(null);
+});
+/**
  * Creates a deployed game
  */
 obb_demo.views.play.deployed_game = (function obb_demo$views$play$deployed_game(){
-return obb_rules.result.result_board.call(null,obb_rules.turn.process_actions.call(null,obb_rules.result.result_board.call(null,obb_rules.turn.process_actions.call(null,obb_demo.views.play.tune_up.call(null,obb_rules.game.create.call(null,obb_rules.stash.create.call(null,new cljs.core.Keyword(null,"rain","rain",166635710),(100),new cljs.core.Keyword(null,"raptor","raptor",-2126104330),(100),new cljs.core.Keyword(null,"pretorian","pretorian",1043101965),(40),new cljs.core.Keyword(null,"vector","vector",1902966158),(50),new cljs.core.Keyword(null,"eagle","eagle",965459808),(50),new cljs.core.Keyword(null,"kamikaze","kamikaze",10684521),(50),new cljs.core.Keyword(null,"fenix","fenix",1325106245),(25),new cljs.core.Keyword(null,"crusader","crusader",-1459511144),(25)))),new cljs.core.Keyword(null,"p1","p1",-936759954),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"auto-deploy","auto-deploy",1838692925),new cljs.core.Keyword(null,"firingsquad","firingsquad",-1910418650)], null)], null))),new cljs.core.Keyword(null,"p2","p2",905500641),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"auto-deploy","auto-deploy",1838692925),new cljs.core.Keyword(null,"firingsquad","firingsquad",-1910418650)], null)], null)));
+return obb_rules.result.result_board.call(null,obb_rules.turn.process_actions.call(null,obb_rules.result.result_board.call(null,obb_rules.turn.process_actions.call(null,obb_demo.views.play.tune_up.call(null,obb_demo.views.play.new_game.call(null)),new cljs.core.Keyword(null,"p1","p1",-936759954),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"auto-deploy","auto-deploy",1838692925),new cljs.core.Keyword(null,"firingsquad","firingsquad",-1910418650)], null)], null))),new cljs.core.Keyword(null,"p2","p2",905500641),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"auto-deploy","auto-deploy",1838692925),new cljs.core.Keyword(null,"firingsquad","firingsquad",-1910418650)], null)], null)));
 });
 /**
  * Gets the current game or creates a new one
@@ -87,9 +93,9 @@ return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMP
  * Shows each player's power
  */
 obb_demo.views.play.power_bar = (function obb_demo$views$play$power_bar(game){
-var vec__30583 = obb_rules.evaluator.eval_game.call(null,game);
-var p1 = cljs.core.nth.call(null,vec__30583,(0),null);
-var p2 = cljs.core.nth.call(null,vec__30583,(1),null);
+var vec__30483 = obb_rules.evaluator.eval_game.call(null,game);
+var p1 = cljs.core.nth.call(null,vec__30483,(0),null);
+var p2 = cljs.core.nth.call(null,vec__30483,(1),null);
 var total = (p1 + p2);
 var p1_perc = obb_rules.math.ceil.call(null,((100) * ((total - p1) / total)));
 var p2_perc = ((100) - p1_perc);
@@ -113,4 +119,4 @@ return (100);
 })()," millis per action"], null)], null)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.panel.panel-info","div.panel.panel-info",1850762117),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.panel-heading","div.panel-heading",-368913146),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"h3.panel-title","h3.panel-title",530261929),"Preview"], null)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.panel-body","div.panel-body",-4468178),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_demo.boardground.render,cljs.core.PersistentArrayMap.EMPTY,game_data], null)], null)], null)], null)], null);
 });
 
-//# sourceMappingURL=play.js.map?rel=1437143112764
+//# sourceMappingURL=play.js.map?rel=1437144926543
