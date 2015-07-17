@@ -54,11 +54,32 @@
     (when (>= 1000 new-delay 50)
       (state/set-page-data! (assoc game-data :delay new-delay)))))
 
+(defn- selected-player
+  "Shows the player"
+  [current-player expected]
+
+  (if (= current-player expected)
+    (if (= :p1 current-player)
+      :span.label.label-success
+      :span.label.label-info)
+  :span.label.label-primary))
+
+(defn- players
+  "Displays the players and the current to play"
+  [game]
+  (let [player (game/state game)]
+    [:div
+      [(selected-player player :p2) "Player 2"]
+      " vs "
+      [(selected-player player :p1) "Player 1"]]))
+
 (defn render
   [state]
   (let [game-data (get-game-data state)
         game (:game game-data)]
     [:div.row
+      [:div.col-lg-2
+       (players game)]
       [:div.col-lg-5
         [boardground/render {} game-data]]
       [:div.col-lg-2
