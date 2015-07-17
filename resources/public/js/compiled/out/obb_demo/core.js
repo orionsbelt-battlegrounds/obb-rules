@@ -54,12 +54,13 @@ var action = temp__4423__auto__;
 var player = obb_rules.game.state.call(null,game);
 var result = obb_rules.turn.simulate_actions.call(null,game,player,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [action], null));
 var new_game = obb_rules.result.result_board.call(null,result);
-if(cljs.core.truth_(obb_rules.result.succeeded_QMARK_.call(null,result))){
-} else {
+if(cljs.core.not.call(null,obb_rules.result.succeeded_QMARK_.call(null,result))){
 cljs.core.println.call(null,result);
-}
 
+return game_data;
+} else {
 return cljs.core.assoc.call(null,cljs.core.dissoc.call(null,cljs.core.assoc.call(null,game_data,new cljs.core.Keyword(null,"game","game",-441523833),new_game),new cljs.core.Keyword(null,"action","action",-811238024)),new cljs.core.Keyword(null,"actions","actions",-812656882),cljs.core.rest.call(null,actions));
+}
 } else {
 return cljs.core.assoc.call(null,game_data,new cljs.core.Keyword(null,"action","action",-811238024),cljs.core.first.call(null,actions));
 }
@@ -99,4 +100,4 @@ if(typeof obb_demo.core.start !== 'undefined'){
 obb_demo.core.start = obb_demo.core.init.call(null);
 }
 
-//# sourceMappingURL=core.js.map?rel=1437143112841
+//# sourceMappingURL=core.js.map?rel=1437144376167
