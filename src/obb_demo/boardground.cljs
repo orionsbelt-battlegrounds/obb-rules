@@ -84,12 +84,20 @@
   (if-let [cost (get (:possible-attacks game-data) coord)]
     [:div.possible-target]))
 
+(defn- player-label
+  "Gets a label element for a player"
+  [player]
+  (if (= player :p1)
+    :span.label.label-success
+    :span.label.label-info))
+
 (defn- element-quantity
   "Shows element quantity"
   [game-data element]
   (if element #_(selected? game-data element)
     [:div.element-quantity
-     [:span.label.label-default (element/element-quantity element)]]))
+     [(player-label (element/element-player element))
+      (element/element-quantity element)]]))
 
 (defn- action-coords
   "Gathers coordinates that participated in the action"
