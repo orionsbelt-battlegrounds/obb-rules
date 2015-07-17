@@ -24,7 +24,7 @@
 (defn- logger
   "Utility for debugging"
   [coll]
-  #_(println "----" (map (fn [option] [(:value option) (:cost option) (:actions option)]) coll))
+  (println "----" (map (fn [option] [(:value option) (:cost option) (:actions option)]) coll))
   coll)
 
 (defn- gather-element-actions
@@ -42,7 +42,7 @@
   [player options]
   (let [joiner (partial common/join-options player)
         the-one (reduce joiner (first options) (rest options))]
-    #_(println "---->" (:actions the-one))
+    (println "---->" (:actions the-one))
     the-one))
 
 (defmethod actions :turn

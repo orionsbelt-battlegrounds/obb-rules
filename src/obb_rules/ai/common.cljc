@@ -117,12 +117,6 @@
       (map (partial prepend-actions [action] 0)
            (attack-options game element)))))
 
-(defn- valuable-options
-  "Predicate that returns true if an option has a positive value"
-  [option]
-  (and option
-       (< 0 (option :value))))
-
 (defn- targets-in-range?
   "True if there are any targets in range"
   [game element coord]
@@ -146,8 +140,7 @@
         run-results (partial goto-result game element player)
         actions-and-results (map run-results possible-coords)
         options (->> (map build-options actions-and-results)
-                     (flatten)
-                     (filter valuable-options))]
+                     (flatten))]
     options))
 
 (defn option-value-sorter
