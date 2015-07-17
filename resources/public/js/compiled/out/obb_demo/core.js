@@ -26,11 +26,18 @@ return obb_demo.core.tick;
  */
 obb_demo.core.generate_actions = (function obb_demo$core$generate_actions(game_data){
 var game = new cljs.core.Keyword(null,"game","game",-441523833).cljs$core$IFn$_invoke$arity$1(game_data);
+var turn_num = (function (){var or__16109__auto__ = new cljs.core.Keyword(null,"turn-num","turn-num",1507722590).cljs$core$IFn$_invoke$arity$1(game_data);
+if(cljs.core.truth_(or__16109__auto__)){
+return or__16109__auto__;
+} else {
+return (0);
+}
+})();
 var player = obb_rules.game.state.call(null,game);
 var actions = obb_rules.ai.firingsquad.actions.call(null,game,player);
 cljs.core.println.call(null,"--",player,actions);
 
-return cljs.core.assoc.call(null,game_data,new cljs.core.Keyword(null,"actions","actions",-812656882),actions);
+return cljs.core.assoc.call(null,cljs.core.assoc.call(null,game_data,new cljs.core.Keyword(null,"actions","actions",-812656882),actions),new cljs.core.Keyword(null,"turn-num","turn-num",1507722590),((cljs.core._EQ_.call(null,new cljs.core.Keyword(null,"final","final",1157881357),player))?turn_num:(turn_num + (1))));
 });
 /**
  * Processes actions
@@ -92,4 +99,4 @@ if(typeof obb_demo.core.start !== 'undefined'){
 obb_demo.core.start = obb_demo.core.init.call(null);
 }
 
-//# sourceMappingURL=core.js.map?rel=1437140578729
+//# sourceMappingURL=core.js.map?rel=1437143112841

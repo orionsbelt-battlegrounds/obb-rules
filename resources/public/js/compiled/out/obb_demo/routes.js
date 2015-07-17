@@ -7,37 +7,37 @@ goog.require('obb_demo.views.units');
 goog.require('obb_demo.views.index');
 goog.require('obb_demo.state');
 goog.require('obb_demo.views.play');
-var action__18694__auto___30526 = (function (params__18695__auto__){
-if(cljs.core.map_QMARK_.call(null,params__18695__auto__)){
-var map__30524 = params__18695__auto__;
-var map__30524__$1 = ((cljs.core.seq_QMARK_.call(null,map__30524))?cljs.core.apply.call(null,cljs.core.hash_map,map__30524):map__30524);
+var action__18693__auto___30593 = (function (params__18694__auto__){
+if(cljs.core.map_QMARK_.call(null,params__18694__auto__)){
+var map__30591 = params__18694__auto__;
+var map__30591__$1 = ((cljs.core.seq_QMARK_.call(null,map__30591))?cljs.core.apply.call(null,cljs.core.hash_map,map__30591):map__30591);
 return obb_demo.state.set_page_BANG_.call(null,new cljs.core.Keyword(null,"index","index",-1531685915));
 } else {
-if(cljs.core.vector_QMARK_.call(null,params__18695__auto__)){
-var vec__30525 = params__18695__auto__;
+if(cljs.core.vector_QMARK_.call(null,params__18694__auto__)){
+var vec__30592 = params__18694__auto__;
 return obb_demo.state.set_page_BANG_.call(null,new cljs.core.Keyword(null,"index","index",-1531685915));
 } else {
 return null;
 }
 }
 });
-secretary.core.add_route_BANG_.call(null,"/",action__18694__auto___30526);
+secretary.core.add_route_BANG_.call(null,"/",action__18693__auto___30593);
 
-var action__18694__auto___30529 = (function (params__18695__auto__){
-if(cljs.core.map_QMARK_.call(null,params__18695__auto__)){
-var map__30527 = params__18695__auto__;
-var map__30527__$1 = ((cljs.core.seq_QMARK_.call(null,map__30527))?cljs.core.apply.call(null,cljs.core.hash_map,map__30527):map__30527);
+var action__18693__auto___30596 = (function (params__18694__auto__){
+if(cljs.core.map_QMARK_.call(null,params__18694__auto__)){
+var map__30594 = params__18694__auto__;
+var map__30594__$1 = ((cljs.core.seq_QMARK_.call(null,map__30594))?cljs.core.apply.call(null,cljs.core.hash_map,map__30594):map__30594);
 return obb_demo.state.set_page_BANG_.call(null,new cljs.core.Keyword(null,"units","units",-533089095));
 } else {
-if(cljs.core.vector_QMARK_.call(null,params__18695__auto__)){
-var vec__30528 = params__18695__auto__;
+if(cljs.core.vector_QMARK_.call(null,params__18694__auto__)){
+var vec__30595 = params__18694__auto__;
 return obb_demo.state.set_page_BANG_.call(null,new cljs.core.Keyword(null,"units","units",-533089095));
 } else {
 return null;
 }
 }
 });
-secretary.core.add_route_BANG_.call(null,"/units",action__18694__auto___30529);
+secretary.core.add_route_BANG_.call(null,"/units",action__18693__auto___30596);
 
 
-//# sourceMappingURL=routes.js.map?rel=1437140578692
+//# sourceMappingURL=routes.js.map?rel=1437143112798

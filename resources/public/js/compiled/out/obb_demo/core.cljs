@@ -24,10 +24,14 @@
   "Generates actions to be processed"
   [game-data]
   (let [game (:game game-data)
+        turn-num (or (:turn-num game-data) 0)
         player (game/state game)
         actions (firingsquad/actions game player)]
     (println "--" player actions)
-    (assoc game-data :actions actions)))
+    (-> (assoc game-data :actions actions)
+        (assoc :turn-num (if (= :final player)
+                           turn-num
+                           (inc turn-num))))))
 
 (defn- process-actions
   "Processes actions"
