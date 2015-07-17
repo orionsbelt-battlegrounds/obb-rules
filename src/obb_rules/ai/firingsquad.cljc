@@ -30,12 +30,13 @@
 (defn- gather-element-actions
   "Gathers possible actions for the given element"
   [game all element]
-  (logger (remove empty?
+  (remove empty?
     (conj all (first (-> []
                          (into (common/attack-options game element))
                          (into (common/rotate-attack-options game element))
                          (into (common/move-attack-options game element))
-                         (->> (sort-by common/option-value-cost-sorter))))))))
+                         (into (logger (common/move-options game element)))
+                         (->> (sort-by common/option-value-cost-sorter)))))))
 
 (defn- find-one
   "Given a collection of sorted options, tries to find a good one"

@@ -40,6 +40,9 @@
 (deftest move-and-attack
   (acts-as-bot/move-and-attack firingsquad/actions))
 
+(deftest seek-and-destroy
+  (acts-as-bot/seek-and-destroy firingsquad/actions))
+
 (defspec first-blood-check
   (* obb-gen/scenarions-to-test 1)
   (prop/for-all [raw-stash (obb-gen/stash)]

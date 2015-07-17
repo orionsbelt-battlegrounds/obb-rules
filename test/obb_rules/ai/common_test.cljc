@@ -82,3 +82,9 @@
     (is (= 4 (option2 :distance)))
     (is (< 0 (option2 :value)))
     (is (= [[:attack [2 1] [2 5]]] (option2 :actions)))))
+
+(deftest option-value-cost-sorter
+  (let [options [{:cost 5 :value 1000}
+                 {:cost 1 :value 500}]
+        selected (first (sort-by common/option-value-cost-sorter options))]
+    (is (= 1 (:cost selected)))))

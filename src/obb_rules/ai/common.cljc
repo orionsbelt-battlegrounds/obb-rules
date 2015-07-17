@@ -129,6 +129,25 @@
             (and (nil? (board/get-element game coord))
                  (targets-in-range? game element coord))) coords))
 
+(defn move-options
+  "Returns a collection of possible options that move
+  the unit by chance"
+  [game element]
+  (let [coordinate (element/element-coordinate element)
+        unit (element/element-unit element)
+        mov-cost (unit/unit-movement-cost unit)
+        player (element/element-player element)
+        possible-coords (take 1 (shuffle (move/find-possible-destinations game element)))
+        run-results (partial goto-result game element player)
+        actions-and-results (map run-results possible-coords)]
+    (map (fn [[action result target-coord]]
+            (-> result
+                (assoc :distance 1)
+                (assoc :actions [action])
+                (assoc :value -10000)
+                (assoc :cost mov-cost)))
+         actions-and-results)))
+
 (defn move-attack-options
   "Returns a collection of possible options that first move and then
   attack"
