@@ -3,6 +3,7 @@
   (:require [obb-rules.board :as board]
             [obb-rules.actions.move :as move]
             [obb-rules.game :as game]
+            [obb-rules.result :as result]
             [obb-rules.ai.common :as ai]
             [obb-rules.element :as element]
             [obb-rules.unit :as unit]))
@@ -86,7 +87,7 @@
 (defn- element-quantity
   "Shows element quantity"
   [game-data element]
-  (if (selected? game-data element)
+  (if element #_(selected? game-data element)
     [:div.element-quantity
      [:span.label.label-default (element/element-quantity element)]]))
 
@@ -104,6 +105,15 @@
                                               #_(conj (nth raw-action 2)))
       :else coords)))
 
+(defn- attacked-coords
+  "Gathers coordinats that were attacked"
+  [coords action-result]
+  (let [raw-action (first action-result)
+        action-name (first raw-action)]
+    (cond
+      (some #{action-name} [:attack]) (conj coords (nth raw-action 2))
+      :else coords)))
+
 (defn- action-participant
   "Indicates if the given coordinate particpated on an action"
   [game-data coord]
@@ -113,6 +123,16 @@
   (when did-something?
     [(keyword (str "div.action-source.action-source-"
                    (name (get-in game-data [:game :state]))))])))
+
+(defn- attacked
+  "Indicates if the given coordinate was attacked"
+  [game-data coord element]
+  (let [action-results (get-in game-data [:game :action-results])
+        actions (reduce attacked-coords [] action-results)
+        attacked? (some #{coord} actions)]
+    (when attacked?
+      [:div.target
+       [:div.attacked]])))
 
 (defn- square
   "Renders a board square"
@@ -126,6 +146,7 @@
      (selected-display game-data element)
      (possible-destination game-data coord)
      (action-participant game-data coord)
+     (attacked game-data coord element)
      (possible-target game-data coord)
      (element-quantity game-data element)
      (enemy-display game element)]))
