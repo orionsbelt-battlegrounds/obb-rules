@@ -87,9 +87,9 @@ return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMP
  * Shows each player's power
  */
 obb_demo.views.play.power_bar = (function obb_demo$views$play$power_bar(game){
-var vec__31044 = obb_rules.evaluator.eval_game.call(null,game);
-var p1 = cljs.core.nth.call(null,vec__31044,(0),null);
-var p2 = cljs.core.nth.call(null,vec__31044,(1),null);
+var vec__30516 = obb_rules.evaluator.eval_game.call(null,game);
+var p1 = cljs.core.nth.call(null,vec__30516,(0),null);
+var p2 = cljs.core.nth.call(null,vec__30516,(1),null);
 var total = (p1 + p2);
 var p1_perc = obb_rules.math.ceil.call(null,((100) * ((total - p1) / total)));
 var p2_perc = ((100) - p1_perc);
@@ -107,4 +107,4 @@ return (100);
 })()," millis per action"], null)], null)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.panel.panel-info","div.panel.panel-info",1850762117),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.panel-heading","div.panel-heading",-368913146),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"h3.panel-title","h3.panel-title",530261929),"Preview"], null)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.panel-body","div.panel-body",-4468178),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_demo.boardground.render,cljs.core.PersistentArrayMap.EMPTY,game_data], null)], null)], null)], null)], null);
 });
 
-//# sourceMappingURL=play.js.map?rel=1437139796792
+//# sourceMappingURL=play.js.map?rel=1437140578619
