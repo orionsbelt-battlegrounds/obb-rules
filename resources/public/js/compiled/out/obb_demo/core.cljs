@@ -61,8 +61,7 @@
                           (process-actions game-data)
                           (generate-actions game-data))]
       (state/set-page-data! new-game-data)
-      (when-not (= :final (get-in new-game-data [:game :state]))
-        (js/setTimeout (get-tick) 100)))))
+      (js/setTimeout (get-tick) (or (:delay game-data) 50)))))
 
 (defn init []
   (secretary/set-config! :prefix "#")
