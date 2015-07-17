@@ -111,3 +111,15 @@
         final-game (result/result-board result)]
     (is (result/succeeded? result))
     (is (not (board/get-element final-game [5 5])))))
+
+(defn seek-and-destroy
+  "The seek part"
+  [botfn]
+  (let [board (-> (board/create-board)
+                  (game/state :p1)
+                  (board/place-element [2 5] (element/create-element :p1 rain 1 :south [2 5]))
+                  (board/place-element [5 5] (element/create-element :p1 kamikaze 1 :north [5 5])))
+        actions (botfn board :p1)
+        result (turn/process-actions board :p1 actions)
+        final-game (result/result-board result)]
+    (is (result/succeeded? result))))
