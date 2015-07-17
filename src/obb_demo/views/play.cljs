@@ -40,6 +40,20 @@
       (state/set-page-data! game-data)
       game-data)))
 
+(defn- restart-game
+  "Generates and restarts a new game"
+  []
+  (state/set-page-data! nil))
+
+(defn- set-speed
+  "Sets the actions delay speed"
+  [delay-msecs]
+  (let [game-data (state/get-page-data)
+        current (or (:delay game-data) 100)
+        new-delay (+ delay-msecs current)]
+    (when (>= 1000 new-delay 50)
+      (state/set-page-data! (assoc game-data :delay new-delay)))))
+
 (defn render
   [state]
   (let [game-data (get-game-data state)
@@ -48,4 +62,18 @@
       [:div.col-lg-5
         [boardground/render {} game-data]]
       [:div.col-lg-2
-        [boardground/render {} game-data]]]))
+       [:div.panel.panel-default
+        [:div.panel-heading
+         [:h3.panel-title "Options"]]
+        [:div.panel-body
+         [:button.btn.btn-primary {:on-click restart-game} "Restart game"]
+         [:button.btn.btn-primary {:on-click (partial set-speed -100)} "More speed"]
+         [:button.btn.btn-primary {:on-click (partial set-speed 100)} "Less speed"]
+         [:div.well.well-sm (or (:delay game-data) 100) " millis per action"]
+         ]]
+
+       [:div.panel.panel-info
+        [:div.panel-heading
+         [:h3.panel-title "Preview"]]
+        [:div.panel-body
+          [boardground/render {} game-data]]]]]))
