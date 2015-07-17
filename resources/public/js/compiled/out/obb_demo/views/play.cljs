@@ -2,6 +2,8 @@
   (:require [obb-demo.state :as state]
             [obb-rules.game :as game]
             [obb-rules.stash :as stash]
+            [obb-rules.math :as math]
+            [obb-rules.evaluator :as evaluator]
             [obb-rules.turn :as turn]
             [obb-rules.result :as result]
             [obb-demo.boardground :as boardground]))
@@ -54,11 +56,44 @@
     (when (>= 1000 new-delay 50)
       (state/set-page-data! (assoc game-data :delay new-delay)))))
 
+(defn- selected-player
+  "Shows the player"
+  [current-player expected]
+
+  (if (= current-player expected)
+    (if (= :p1 current-player)
+      :span.label.label-success
+      :span.label.label-info)
+  :span.label.label-primary))
+
+(defn- players
+  "Displays the players and the current to play"
+  [game]
+  (let [player (game/state game)]
+    [:div
+      [(selected-player player :p2) "Player 2"]
+      " vs "
+      [(selected-player player :p1) "Player 1"]]))
+
+(defn- power-bar
+  "Shows each player's power"
+  [game]
+  (let [[p1 p2] (evaluator/eval-game game)
+        total (+ p1 p2)
+        p1-perc (math/ceil (* 100 (/ (- total p1) total)))
+        p2-perc (- 100 p1-perc)]
+    [:div.progress {:style {:margin-top "10px"}}
+     [:div.progress-bar.progress-bar-info {:style {:width (str p1-perc "%")}} p1-perc]
+     [:div.progress-bar.progress-bar-success {:style {:width (str p2-perc "%")}} p2-perc]]))
+
 (defn render
   [state]
   (let [game-data (get-game-data state)
         game (:game game-data)]
     [:div.row
+      [:div.col-lg-2
+       (players game)
+       (power-bar game)]
       [:div.col-lg-5
         [boardground/render {} game-data]]
       [:div.col-lg-2

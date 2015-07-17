@@ -77,7 +77,7 @@ goog.addDependency("../reagent/impl/component.js", ['reagent.impl.component'], [
 goog.addDependency("../reagent/impl/template.js", ['reagent.impl.template'], ['reagent.impl.util', 'reagent.interop', 'reagent.ratom', 'cljs.core', 'reagent.impl.batching', 'reagent.impl.component', 'reagent.debug', 'clojure.string']);
 goog.addDependency("../reagent/core.js", ['reagent.core'], ['reagent.impl.util', 'reagent.interop', 'reagent.ratom', 'cljs.core', 'cljsjs.react', 'reagent.impl.template', 'reagent.impl.batching', 'reagent.impl.component', 'reagent.debug']);
 goog.addDependency("../obb_demo/state.js", ['obb_demo.state'], ['reagent.core', 'cljs.core']);
-goog.addDependency("../obb_demo/views/play.js", ['obb_demo.views.play'], ['obb_demo.boardground', 'cljs.core', 'obb_rules.result', 'obb_rules.turn', 'obb_rules.game', 'obb_demo.state', 'obb_rules.stash']);
+goog.addDependency("../obb_demo/views/play.js", ['obb_demo.views.play'], ['obb_demo.boardground', 'obb_rules.evaluator', 'cljs.core', 'obb_rules.result', 'obb_rules.turn', 'obb_rules.math', 'obb_rules.game', 'obb_demo.state', 'obb_rules.stash']);
 goog.addDependency("../obb_demo/views/units.js", ['obb_demo.views.units'], ['cljs.core', 'obb_rules.unit', 'obb_demo.state']);
 goog.addDependency("../obb_demo/views/index.js", ['obb_demo.views.index'], ['obb_demo.views.layout.footer', 'cljs.core', 'obb_demo.views.layout.header', 'obb_demo.views.play', 'obb_demo.views.units', 'obb_demo.state']);
 goog.addDependency("../obb_rules/privatize.js", ['obb_rules.privatize'], ['obb_rules.board', 'obb_rules.element', 'cljs.core', 'obb_rules.game']);
