@@ -86,12 +86,21 @@
      [:div.progress-bar.progress-bar-info {:style {:width (str p1-perc "%")}} p1-perc]
      [:div.progress-bar.progress-bar-success {:style {:width (str p2-perc "%")}} p2-perc]]))
 
+(defn- game-turn
+  "Displays the current turn"
+  [game-data]
+  [:ul.nav.nav-pills {:style {:margin-bottom "10px"}}
+   [:li
+    [:a "Turn "
+     [:span.badge (:turn-num game-data)]]]])
+
 (defn render
   [state]
   (let [game-data (get-game-data state)
         game (:game game-data)]
     [:div.row
       [:div.col-lg-2
+       (game-turn game-data)
        (players game)
        (power-bar game)]
       [:div.col-lg-5
