@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 0.0-3308 {}
+// Compiled by ClojureScript 0.0-3308 {:static-fns true, :optimize-constants true}
 goog.provide('obb_rules.turn');
 goog.require('cljs.core');
 goog.require('obb_rules.game_mode');
@@ -10,22 +10,25 @@ goog.require('obb_rules.laws');
  * Processes an action on a game
  */
 obb_rules.turn.continue_apply_actions = (function obb_rules$turn$continue_apply_actions(player,current_game,action_pair){
-var raw_action = cljs.core.first.call(null,action_pair);
-var action = cljs.core.last.call(null,action_pair);
-var result = action.call(null,current_game,player);
-var result_game = obb_rules.result.result_board.call(null,result);
-if(cljs.core.truth_(obb_rules.result.succeeded_QMARK_.call(null,result))){
-return obb_rules.game.push_result.call(null,result_game,raw_action,result);
+var raw_action = cljs.core.first(action_pair);
+var action = cljs.core.last(action_pair);
+var result = (function (){var G__13399 = current_game;
+var G__13400 = player;
+return (action.cljs$core$IFn$_invoke$arity$2 ? action.cljs$core$IFn$_invoke$arity$2(G__13399,G__13400) : action.call(null,G__13399,G__13400));
+})();
+var result_game = obb_rules.result.result_board(result);
+if(cljs.core.truth_(obb_rules.result.succeeded_QMARK_(result))){
+return obb_rules.game.push_result(result_game,raw_action,result);
 } else {
-return obb_rules.game.push_result.call(null,current_game,raw_action,result);
+return obb_rules.game.push_result(current_game,raw_action,result);
 }
 });
 /**
  * Applies the actions to a board
  */
 obb_rules.turn.apply_actions = (function obb_rules$turn$apply_actions(player,current_game,action_pair){
-if(cljs.core.truth_(obb_rules.game.valid_actions_QMARK_.call(null,current_game))){
-return obb_rules.turn.continue_apply_actions.call(null,player,current_game,action_pair);
+if(cljs.core.truth_(obb_rules.game.valid_actions_QMARK_(current_game))){
+return obb_rules.turn.continue_apply_actions(player,current_game,action_pair);
 } else {
 return current_game;
 }
@@ -34,29 +37,29 @@ return current_game;
  * Gets a collection of raw-action,action pairs
  */
 obb_rules.turn.action_pair = (function obb_rules$turn$action_pair(raw_action){
-return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [raw_action,obb_rules.action.build_action.call(null,raw_action)], null);
+return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [raw_action,obb_rules.action.build_action(raw_action)], null);
 });
 /**
  * Gets the used action points on a turn.
  */
 obb_rules.turn.points = (function obb_rules$turn$points(game){
-return cljs.core.reduce.call(null,cljs.core._PLUS_,cljs.core.map.call(null,(function (p1__35498_SHARP_){
-return obb_rules.result.result_cost.call(null,p1__35498_SHARP_);
-}),cljs.core.map.call(null,(function (p1__35497_SHARP_){
-return cljs.core.last.call(null,p1__35497_SHARP_);
-}),obb_rules.game.action_results.call(null,game))));
+return cljs.core.reduce.cljs$core$IFn$_invoke$arity$2(cljs.core._PLUS_,cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p1__13402_SHARP_){
+return obb_rules.result.result_cost(p1__13402_SHARP_);
+}),cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p1__13401_SHARP_){
+return cljs.core.last(p1__13401_SHARP_);
+}),obb_rules.game.action_results(game))));
 });
 /**
  * Creates a result for the given game
  */
 obb_rules.turn.create_result = (function obb_rules$turn$create_result(game,total_action_points){
-if(cljs.core.not.call(null,obb_rules.game.valid_actions_QMARK_.call(null,game))){
-return obb_rules.result.action_failed.call(null,"ActionFailed",game);
+if(cljs.core.not(obb_rules.game.valid_actions_QMARK_(game))){
+return obb_rules.result.action_failed.cljs$core$IFn$_invoke$arity$2("ActionFailed",game);
 } else {
 if((total_action_points > obb_rules.laws.max_action_points)){
-return obb_rules.result.action_failed.call(null,"ActionPointsOverflow");
+return obb_rules.result.action_failed.cljs$core$IFn$_invoke$arity$1("ActionPointsOverflow");
 } else {
-return obb_rules.result.action_success.call(null,obb_rules.action.reset_action_specific_state.call(null,game),total_action_points,"TurnOK");
+return obb_rules.result.action_success.cljs$core$IFn$_invoke$arity$3(obb_rules.action.reset_action_specific_state(game),total_action_points,"TurnOK");
 
 }
 }
@@ -65,47 +68,45 @@ return obb_rules.result.action_success.call(null,obb_rules.action.reset_action_s
  * Simulates the given actions
  */
 obb_rules.turn.simulate_actions = (function obb_rules$turn$simulate_actions(game,player,raw_actions){
-if(cljs.core.seq.call(null,raw_actions)){
-var actions = cljs.core.map.call(null,obb_rules.turn.action_pair,raw_actions);
-var do_actions = cljs.core.partial.call(null,obb_rules.turn.apply_actions,player);
-var final$ = cljs.core.reduce.call(null,do_actions,game,actions);
-var action_points = obb_rules.turn.points.call(null,final$);
-return obb_rules.turn.create_result.call(null,final$,action_points);
+if(cljs.core.seq(raw_actions)){
+var actions = cljs.core.map.cljs$core$IFn$_invoke$arity$2(obb_rules.turn.action_pair,raw_actions);
+var do_actions = cljs.core.partial.cljs$core$IFn$_invoke$arity$2(obb_rules.turn.apply_actions,player);
+var final$ = cljs.core.reduce.cljs$core$IFn$_invoke$arity$3(do_actions,game,actions);
+var action_points = obb_rules.turn.points(final$);
+return obb_rules.turn.create_result(final$,action_points);
 } else {
-return obb_rules.result.action_failed.call(null,"NoActions");
+return obb_rules.result.action_failed.cljs$core$IFn$_invoke$arity$1("NoActions");
 }
 });
 /**
  * Processes the given actions
  */
 obb_rules.turn.process_actions = (function obb_rules$turn$process_actions(game,player,raw_actions){
-var actions = cljs.core.map.call(null,obb_rules.turn.action_pair,raw_actions);
-var do_actions = cljs.core.partial.call(null,obb_rules.turn.apply_actions,player);
-var final_state = cljs.core.reduce.call(null,do_actions,game,actions);
-var final$ = obb_rules.game_mode.process.call(null,final_state);
-var action_points = obb_rules.turn.points.call(null,final$);
-return obb_rules.turn.create_result.call(null,final$,action_points);
+var actions = cljs.core.map.cljs$core$IFn$_invoke$arity$2(obb_rules.turn.action_pair,raw_actions);
+var do_actions = cljs.core.partial.cljs$core$IFn$_invoke$arity$2(obb_rules.turn.apply_actions,player);
+var final_state = cljs.core.reduce.cljs$core$IFn$_invoke$arity$3(do_actions,game,actions);
+var final$ = obb_rules.game_mode.process(final_state);
+var action_points = obb_rules.turn.points(final$);
+return obb_rules.turn.create_result(final$,action_points);
 });
 /**
  * Processes the given actions
  */
 obb_rules.turn.process = (function obb_rules$turn$process(){
-var argseq__17149__auto__ = ((((2) < arguments.length))?(new cljs.core.IndexedSeq(Array.prototype.slice.call(arguments,(2)),(0))):null);
-return obb_rules.turn.process.cljs$core$IFn$_invoke$arity$variadic((arguments[(0)]),(arguments[(1)]),argseq__17149__auto__);
+var argseq__7850__auto__ = ((((2) < arguments.length))?(new cljs.core.IndexedSeq(Array.prototype.slice.call(arguments,(2)),(0))):null);
+return obb_rules.turn.process.cljs$core$IFn$_invoke$arity$variadic((arguments[(0)]),(arguments[(1)]),argseq__7850__auto__);
 });
 
 obb_rules.turn.process.cljs$core$IFn$_invoke$arity$variadic = (function (game,player,raw_actions){
-return obb_rules.turn.process_actions.call(null,game,player,raw_actions);
+return obb_rules.turn.process_actions(game,player,raw_actions);
 });
 
 obb_rules.turn.process.cljs$lang$maxFixedArity = (2);
 
-obb_rules.turn.process.cljs$lang$applyTo = (function (seq35499){
-var G__35500 = cljs.core.first.call(null,seq35499);
-var seq35499__$1 = cljs.core.next.call(null,seq35499);
-var G__35501 = cljs.core.first.call(null,seq35499__$1);
-var seq35499__$2 = cljs.core.next.call(null,seq35499__$1);
-return obb_rules.turn.process.cljs$core$IFn$_invoke$arity$variadic(G__35500,G__35501,seq35499__$2);
+obb_rules.turn.process.cljs$lang$applyTo = (function (seq13403){
+var G__13404 = cljs.core.first(seq13403);
+var seq13403__$1 = cljs.core.next(seq13403);
+var G__13405 = cljs.core.first(seq13403__$1);
+var seq13403__$2 = cljs.core.next(seq13403__$1);
+return obb_rules.turn.process.cljs$core$IFn$_invoke$arity$variadic(G__13404,G__13405,seq13403__$2);
 });
-
-//# sourceMappingURL=turn.js.map?rel=1436720934789
