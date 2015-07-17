@@ -3,6 +3,7 @@ goog.provide('obb_demo.boardground');
 goog.require('cljs.core');
 goog.require('obb_rules.board');
 goog.require('obb_rules.element');
+goog.require('obb_rules.result');
 goog.require('obb_rules.unit');
 goog.require('obb_rules.actions.move');
 goog.require('obb_rules.game');
@@ -110,8 +111,64 @@ return null;
  * Shows element quantity
  */
 obb_demo.boardground.element_quantity = (function obb_demo$boardground$element_quantity(game_data,element){
-if(cljs.core.truth_(obb_demo.boardground.selected_QMARK_.call(null,game_data,element))){
+if(cljs.core.truth_(element)){
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.element-quantity","div.element-quantity",1861752223),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"span.label.label-default","span.label.label-default",-277664003),obb_rules.element.element_quantity.call(null,element)], null)], null);
+} else {
+return null;
+}
+});
+/**
+ * Gathers coordinates that participated in the action
+ */
+obb_demo.boardground.action_coords = (function obb_demo$boardground$action_coords(coords,action_result){
+var raw_action = cljs.core.first.call(null,action_result);
+var action_name = cljs.core.first.call(null,raw_action);
+if(cljs.core.truth_(cljs.core.some.call(null,cljs.core.PersistentHashSet.fromArray([action_name], true),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"move","move",-2110884309),new cljs.core.Keyword(null,"goto","goto",80149757)], null)))){
+return cljs.core.conj.call(null,cljs.core.conj.call(null,coords,cljs.core.nth.call(null,raw_action,(1))),cljs.core.nth.call(null,raw_action,(2)));
+} else {
+if(cljs.core.truth_(cljs.core.some.call(null,cljs.core.PersistentHashSet.fromArray([action_name], true),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"rotate","rotate",152705015),new cljs.core.Keyword(null,"attack","attack",1957061788)], null)))){
+return cljs.core.conj.call(null,coords,cljs.core.nth.call(null,raw_action,(1)));
+} else {
+return coords;
+
+}
+}
+});
+/**
+ * Gathers coordinats that were attacked
+ */
+obb_demo.boardground.attacked_coords = (function obb_demo$boardground$attacked_coords(coords,action_result){
+var raw_action = cljs.core.first.call(null,action_result);
+var action_name = cljs.core.first.call(null,raw_action);
+if(cljs.core.truth_(cljs.core.some.call(null,cljs.core.PersistentHashSet.fromArray([action_name], true),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"attack","attack",1957061788)], null)))){
+return cljs.core.conj.call(null,coords,cljs.core.nth.call(null,raw_action,(2)));
+} else {
+return coords;
+
+}
+});
+/**
+ * Indicates if the given coordinate particpated on an action
+ */
+obb_demo.boardground.action_participant = (function obb_demo$boardground$action_participant(game_data,coord){
+var action_results = cljs.core.get_in.call(null,game_data,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"game","game",-441523833),new cljs.core.Keyword(null,"action-results","action-results",-389719209)], null));
+var actions = cljs.core.reduce.call(null,obb_demo.boardground.action_coords,cljs.core.PersistentVector.EMPTY,action_results);
+var did_something_QMARK_ = cljs.core.some.call(null,cljs.core.PersistentHashSet.fromArray([coord], true),actions);
+if(cljs.core.truth_(did_something_QMARK_)){
+return new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.keyword.call(null,[cljs.core.str("div.action-source.action-source-"),cljs.core.str(cljs.core.name.call(null,cljs.core.get_in.call(null,game_data,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"game","game",-441523833),new cljs.core.Keyword(null,"state","state",-1988618099)], null))))].join(''))], null);
+} else {
+return null;
+}
+});
+/**
+ * Indicates if the given coordinate was attacked
+ */
+obb_demo.boardground.attacked = (function obb_demo$boardground$attacked(game_data,coord,element){
+var action_results = cljs.core.get_in.call(null,game_data,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"game","game",-441523833),new cljs.core.Keyword(null,"action-results","action-results",-389719209)], null));
+var actions = cljs.core.reduce.call(null,obb_demo.boardground.attacked_coords,cljs.core.PersistentVector.EMPTY,action_results);
+var attacked_QMARK_ = cljs.core.some.call(null,cljs.core.PersistentHashSet.fromArray([coord], true),actions);
+if(cljs.core.truth_(attacked_QMARK_)){
+return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.target","div.target",602141886),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.attacked","div.attacked",-823037688)], null)], null);
 } else {
 return null;
 }
@@ -124,7 +181,7 @@ var game = new cljs.core.Keyword(null,"game","game",-441523833).cljs$core$IFn$_i
 var coord = new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [x,y], null);
 var element = obb_rules.board.get_element.call(null,game,coord);
 var square_style = obb_demo.boardground.square_position.call(null,x,y);
-return new cljs.core.PersistentVector(null, 8, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.obb-square","div.obb-square",-422683647),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"key","key",-1516042587),[cljs.core.str(x),cljs.core.str(y)].join(''),new cljs.core.Keyword(null,"style","style",-496642736),square_style], null),obb_demo.boardground.unit_image.call(null,game,element),obb_demo.boardground.selected_display.call(null,game_data,element),obb_demo.boardground.possible_destination.call(null,game_data,coord),obb_demo.boardground.possible_target.call(null,game_data,coord),obb_demo.boardground.element_quantity.call(null,game_data,element),obb_demo.boardground.enemy_display.call(null,game,element)], null);
+return new cljs.core.PersistentVector(null, 10, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.obb-square","div.obb-square",-422683647),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"key","key",-1516042587),[cljs.core.str(x),cljs.core.str(y)].join(''),new cljs.core.Keyword(null,"style","style",-496642736),square_style], null),obb_demo.boardground.unit_image.call(null,game,element),obb_demo.boardground.selected_display.call(null,game_data,element),obb_demo.boardground.possible_destination.call(null,game_data,coord),obb_demo.boardground.action_participant.call(null,game_data,coord),obb_demo.boardground.attacked.call(null,game_data,coord,element),obb_demo.boardground.possible_target.call(null,game_data,coord),obb_demo.boardground.element_quantity.call(null,game_data,element),obb_demo.boardground.enemy_display.call(null,game,element)], null);
 });
 /**
  * Gets the panel size stype
@@ -144,35 +201,35 @@ return game_data;
  * Renders the full game's board
  */
 obb_demo.boardground.render = (function obb_demo$boardground$render(options,game_data){
-return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.obb-board-panel","div.obb-board-panel",-2108101234),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),obb_demo.boardground.boardground_size.call(null,options)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"img.obb-ice","img.obb-ice",-2106967169),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"src","src",-1651076051),"img/ice.jpg"], null)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.obb-board","div.obb-board",764065712),(function (){var iter__16863__auto__ = (function obb_demo$boardground$render_$_iter__32744(s__32745){
+return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.obb-board-panel","div.obb-board-panel",-2108101234),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),obb_demo.boardground.boardground_size.call(null,options)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"img.obb-ice","img.obb-ice",-2106967169),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"src","src",-1651076051),"img/ice.jpg"], null)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.obb-board","div.obb-board",764065712),(function (){var iter__16863__auto__ = (function obb_demo$boardground$render_$_iter__36511(s__36512){
 return (new cljs.core.LazySeq(null,(function (){
-var s__32745__$1 = s__32745;
+var s__36512__$1 = s__36512;
 while(true){
-var temp__4425__auto__ = cljs.core.seq.call(null,s__32745__$1);
+var temp__4425__auto__ = cljs.core.seq.call(null,s__36512__$1);
 if(temp__4425__auto__){
 var xs__4977__auto__ = temp__4425__auto__;
 var y = cljs.core.first.call(null,xs__4977__auto__);
-var iterys__16859__auto__ = ((function (s__32745__$1,y,xs__4977__auto__,temp__4425__auto__){
-return (function obb_demo$boardground$render_$_iter__32744_$_iter__32746(s__32747){
-return (new cljs.core.LazySeq(null,((function (s__32745__$1,y,xs__4977__auto__,temp__4425__auto__){
+var iterys__16859__auto__ = ((function (s__36512__$1,y,xs__4977__auto__,temp__4425__auto__){
+return (function obb_demo$boardground$render_$_iter__36511_$_iter__36513(s__36514){
+return (new cljs.core.LazySeq(null,((function (s__36512__$1,y,xs__4977__auto__,temp__4425__auto__){
 return (function (){
-var s__32747__$1 = s__32747;
+var s__36514__$1 = s__36514;
 while(true){
-var temp__4425__auto____$1 = cljs.core.seq.call(null,s__32747__$1);
+var temp__4425__auto____$1 = cljs.core.seq.call(null,s__36514__$1);
 if(temp__4425__auto____$1){
-var s__32747__$2 = temp__4425__auto____$1;
-if(cljs.core.chunked_seq_QMARK_.call(null,s__32747__$2)){
-var c__16861__auto__ = cljs.core.chunk_first.call(null,s__32747__$2);
+var s__36514__$2 = temp__4425__auto____$1;
+if(cljs.core.chunked_seq_QMARK_.call(null,s__36514__$2)){
+var c__16861__auto__ = cljs.core.chunk_first.call(null,s__36514__$2);
 var size__16862__auto__ = cljs.core.count.call(null,c__16861__auto__);
-var b__32749 = cljs.core.chunk_buffer.call(null,size__16862__auto__);
-if((function (){var i__32748 = (0);
+var b__36516 = cljs.core.chunk_buffer.call(null,size__16862__auto__);
+if((function (){var i__36515 = (0);
 while(true){
-if((i__32748 < size__16862__auto__)){
-var x = cljs.core._nth.call(null,c__16861__auto__,i__32748);
-cljs.core.chunk_append.call(null,b__32749,obb_demo.boardground.square.call(null,obb_demo.boardground.prepare_game_data.call(null,game_data),x,y));
+if((i__36515 < size__16862__auto__)){
+var x = cljs.core._nth.call(null,c__16861__auto__,i__36515);
+cljs.core.chunk_append.call(null,b__36516,obb_demo.boardground.square.call(null,obb_demo.boardground.prepare_game_data.call(null,game_data),x,y));
 
-var G__32750 = (i__32748 + (1));
-i__32748 = G__32750;
+var G__36517 = (i__36515 + (1));
+i__36515 = G__36517;
 continue;
 } else {
 return true;
@@ -180,29 +237,29 @@ return true;
 break;
 }
 })()){
-return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__32749),obb_demo$boardground$render_$_iter__32744_$_iter__32746.call(null,cljs.core.chunk_rest.call(null,s__32747__$2)));
+return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__36516),obb_demo$boardground$render_$_iter__36511_$_iter__36513.call(null,cljs.core.chunk_rest.call(null,s__36514__$2)));
 } else {
-return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__32749),null);
+return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__36516),null);
 }
 } else {
-var x = cljs.core.first.call(null,s__32747__$2);
-return cljs.core.cons.call(null,obb_demo.boardground.square.call(null,obb_demo.boardground.prepare_game_data.call(null,game_data),x,y),obb_demo$boardground$render_$_iter__32744_$_iter__32746.call(null,cljs.core.rest.call(null,s__32747__$2)));
+var x = cljs.core.first.call(null,s__36514__$2);
+return cljs.core.cons.call(null,obb_demo.boardground.square.call(null,obb_demo.boardground.prepare_game_data.call(null,game_data),x,y),obb_demo$boardground$render_$_iter__36511_$_iter__36513.call(null,cljs.core.rest.call(null,s__36514__$2)));
 }
 } else {
 return null;
 }
 break;
 }
-});})(s__32745__$1,y,xs__4977__auto__,temp__4425__auto__))
+});})(s__36512__$1,y,xs__4977__auto__,temp__4425__auto__))
 ,null,null));
-});})(s__32745__$1,y,xs__4977__auto__,temp__4425__auto__))
+});})(s__36512__$1,y,xs__4977__auto__,temp__4425__auto__))
 ;
 var fs__16860__auto__ = cljs.core.seq.call(null,iterys__16859__auto__.call(null,cljs.core.range.call(null,(1),(9))));
 if(fs__16860__auto__){
-return cljs.core.concat.call(null,fs__16860__auto__,obb_demo$boardground$render_$_iter__32744.call(null,cljs.core.rest.call(null,s__32745__$1)));
+return cljs.core.concat.call(null,fs__16860__auto__,obb_demo$boardground$render_$_iter__36511.call(null,cljs.core.rest.call(null,s__36512__$1)));
 } else {
-var G__32751 = cljs.core.rest.call(null,s__32745__$1);
-s__32745__$1 = G__32751;
+var G__36518 = cljs.core.rest.call(null,s__36512__$1);
+s__36512__$1 = G__36518;
 continue;
 }
 } else {
@@ -216,4 +273,4 @@ return iter__16863__auto__.call(null,cljs.core.range.call(null,(1),(9)));
 })()], null)], null);
 });
 
-//# sourceMappingURL=boardground.js.map?rel=1436994408944
+//# sourceMappingURL=boardground.js.map?rel=1437132464526

@@ -39,24 +39,22 @@ obb_demo.core.process_actions = (function obb_demo$core$process_actions(game_dat
 var actions = new cljs.core.Keyword(null,"actions","actions",-812656882).cljs$core$IFn$_invoke$arity$1(game_data);
 var game = new cljs.core.Keyword(null,"game","game",-441523833).cljs$core$IFn$_invoke$arity$1(game_data);
 if(cljs.core.empty_QMARK_.call(null,actions)){
-return cljs.core.dissoc.call(null,cljs.core.assoc.call(null,game_data,new cljs.core.Keyword(null,"game","game",-441523833),obb_rules.game_mode.process.call(null,game)),new cljs.core.Keyword(null,"actions","actions",-812656882));
+return cljs.core.dissoc.call(null,cljs.core.assoc.call(null,game_data,new cljs.core.Keyword(null,"game","game",-441523833),cljs.core.dissoc.call(null,obb_rules.game_mode.process.call(null,game),new cljs.core.Keyword(null,"action-results","action-results",-389719209))),new cljs.core.Keyword(null,"actions","actions",-812656882));
 } else {
 var temp__4423__auto__ = new cljs.core.Keyword(null,"action","action",-811238024).cljs$core$IFn$_invoke$arity$1(game_data);
 if(cljs.core.truth_(temp__4423__auto__)){
 var action = temp__4423__auto__;
 var player = obb_rules.game.state.call(null,game);
 var result = obb_rules.turn.simulate_actions.call(null,game,player,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [action], null));
-var new_game = cljs.core.dissoc.call(null,obb_rules.result.result_board.call(null,result),new cljs.core.Keyword(null,"action-results","action-results",-389719209));
-cljs.core.println.call(null,player,action);
-
+var new_game = obb_rules.result.result_board.call(null,result);
 if(cljs.core.truth_(obb_rules.result.succeeded_QMARK_.call(null,result))){
 } else {
 cljs.core.println.call(null,result);
 }
 
-return cljs.core.assoc.call(null,cljs.core.dissoc.call(null,obb_demo.boardground.with_selected_element.call(null,cljs.core.assoc.call(null,game_data,new cljs.core.Keyword(null,"game","game",-441523833),new_game),new cljs.core.Keyword(null,"invalid","invalid",412869516)),new cljs.core.Keyword(null,"action","action",-811238024)),new cljs.core.Keyword(null,"actions","actions",-812656882),cljs.core.rest.call(null,actions));
+return cljs.core.assoc.call(null,cljs.core.dissoc.call(null,cljs.core.assoc.call(null,game_data,new cljs.core.Keyword(null,"game","game",-441523833),new_game),new cljs.core.Keyword(null,"action","action",-811238024)),new cljs.core.Keyword(null,"actions","actions",-812656882),cljs.core.rest.call(null,actions));
 } else {
-return obb_demo.boardground.with_selected_element.call(null,cljs.core.assoc.call(null,game_data,new cljs.core.Keyword(null,"action","action",-811238024),cljs.core.first.call(null,actions)),cljs.core.nth.call(null,cljs.core.first.call(null,actions),(1)));
+return cljs.core.assoc.call(null,game_data,new cljs.core.Keyword(null,"action","action",-811238024),cljs.core.first.call(null,actions));
 }
 }
 });
@@ -69,7 +67,11 @@ var game_data = obb_demo.state.get_page_data.call(null);
 var new_game_data = (cljs.core.truth_(new cljs.core.Keyword(null,"actions","actions",-812656882).cljs$core$IFn$_invoke$arity$1(game_data))?obb_demo.core.process_actions.call(null,game_data):obb_demo.core.generate_actions.call(null,game_data));
 obb_demo.state.set_page_data_BANG_.call(null,new_game_data);
 
-return setTimeout(obb_demo.core.get_tick.call(null),(500));
+if(cljs.core._EQ_.call(null,new cljs.core.Keyword(null,"final","final",1157881357),cljs.core.get_in.call(null,new_game_data,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"game","game",-441523833),new cljs.core.Keyword(null,"state","state",-1988618099)], null)))){
+return null;
+} else {
+return setTimeout(obb_demo.core.get_tick.call(null),(100));
+}
 } else {
 return null;
 }
@@ -88,4 +90,4 @@ if(typeof obb_demo.core.start !== 'undefined'){
 obb_demo.core.start = obb_demo.core.init.call(null);
 }
 
-//# sourceMappingURL=core.js.map?rel=1436994409125
+//# sourceMappingURL=core.js.map?rel=1437132464677

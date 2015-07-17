@@ -117,12 +117,6 @@
       (map (partial prepend-actions [action] 0)
            (attack-options game element)))))
 
-(defn- valuable-options
-  "Predicate that returns true if an option has a positive value"
-  [option]
-  (and option
-       (< 0 (option :value))))
-
 (defn- targets-in-range?
   "True if there are any targets in range"
   [game element coord]
@@ -135,6 +129,25 @@
             (and (nil? (board/get-element game coord))
                  (targets-in-range? game element coord))) coords))
 
+(defn move-options
+  "Returns a collection of possible options that move
+  the unit by chance"
+  [game element]
+  (let [coordinate (element/element-coordinate element)
+        unit (element/element-unit element)
+        mov-cost (unit/unit-movement-cost unit)
+        player (element/element-player element)
+        possible-coords (take 1 (shuffle (move/find-possible-destinations game element)))
+        run-results (partial goto-result game element player)
+        actions-and-results (map run-results possible-coords)]
+    (map (fn [[action result target-coord]]
+            (-> result
+                (assoc :distance 1)
+                (assoc :actions [action])
+                (assoc :value -10000)
+                (assoc :cost mov-cost)))
+         actions-and-results)))
+
 (defn move-attack-options
   "Returns a collection of possible options that first move and then
   attack"
@@ -146,8 +159,7 @@
         run-results (partial goto-result game element player)
         actions-and-results (map run-results possible-coords)
         options (->> (map build-options actions-and-results)
-                     (flatten)
-                     (filter valuable-options))]
+                     (flatten))]
     options))
 
 (defn option-value-sorter
@@ -155,6 +167,14 @@
   [option]
   (if option
     (- (option :value))
+    0))
+
+(defn option-value-cost-sorter
+  "Sorts a collection of options based on the value"
+  [option]
+  (if option
+    (let [cost-factor (+ 17 (* 100 (- laws/max-action-points (:cost option))))]
+      (- (* (option :value) cost-factor)))
     0))
 
 (defn join-options
