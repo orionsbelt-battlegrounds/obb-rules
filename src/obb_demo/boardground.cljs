@@ -90,6 +90,30 @@
     [:div.element-quantity
      [:span.label.label-default (element/element-quantity element)]]))
 
+(defn- action-coords
+  "Gathers coordinates that participated in the action"
+  [coords action-result]
+  (let [raw-action (first action-result)
+        action-name (first raw-action)]
+    (cond
+      (some #{action-name} [:move :goto]) (-> coords
+                                              (conj (nth raw-action 1))
+                                              (conj (nth raw-action 2)))
+      (some #{action-name} [:rotate :attack]) (-> coords
+                                              (conj (nth raw-action 1))
+                                              #_(conj (nth raw-action 2)))
+      :else coords)))
+
+(defn- action-participant
+  "Indicates if the given coordinate particpated on an action"
+  [game-data coord]
+  (let [action-results (get-in game-data [:game :action-results])
+        actions (reduce action-coords [] action-results)
+        did-something? (some #{coord} actions)]
+  (when did-something?
+    [(keyword (str "div.action-source.action-source-"
+                   (name (get-in game-data [:game :state]))))])))
+
 (defn- square
   "Renders a board square"
   [game-data x y]
@@ -101,6 +125,7 @@
      (unit-image game element)
      (selected-display game-data element)
      (possible-destination game-data coord)
+     (action-participant game-data coord)
      (possible-target game-data coord)
      (element-quantity game-data element)
      (enemy-display game element)]))

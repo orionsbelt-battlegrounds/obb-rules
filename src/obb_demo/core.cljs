@@ -35,21 +35,21 @@
   (let [actions (:actions game-data)
         game (:game game-data)]
     (if (empty? actions)
-      (-> (assoc game-data :game (game-mode/process game))
+      (-> (assoc game-data :game (-> (game-mode/process game)
+                                     (dissoc :action-results)))
           (dissoc :actions))
       (if-let [action (:action game-data)]
         (let [player (game/state game)
               result (turn/simulate-actions game player [action])
-              new-game (dissoc (result/result-board result) :action-results)]
-          (println player action)
+              new-game (result/result-board result)]
+          #_(println player action)
           (when-not (result/succeeded? result)
             (println result))
           (-> (assoc game-data :game new-game)
-              (boardground/with-selected-element :invalid)
               (dissoc :action)
               (assoc :actions (rest actions))))
         (-> (assoc game-data :action (first actions))
-            (boardground/with-selected-element (nth (first actions) 1))
+            #_(boardground/with-selected-element (nth (first actions) 1))
             #_())))))
 
 (defn- tick
@@ -61,7 +61,8 @@
                           (process-actions game-data)
                           (generate-actions game-data))]
       (state/set-page-data! new-game-data)
-      (js/setTimeout (get-tick) 500))))
+      (when-not (= :final (get-in new-game-data [:game :state]))
+        (js/setTimeout (get-tick) 100)))))
 
 (defn init []
   (secretary/set-config! :prefix "#")

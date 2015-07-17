@@ -17,7 +17,7 @@
   []
   (-> (stash/create :rain 100
                     :raptor 100
-                    :pretorian 50
+                    :pretorian 40
                     :vector 50
                     :eagle 50
                     :kamikaze 50
