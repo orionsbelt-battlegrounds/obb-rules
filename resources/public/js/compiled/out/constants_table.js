@@ -1,5 +1,6 @@
 cljs.core.constant$keyword$direct = new cljs.core.Keyword(null,"direct","direct",-1775717856);
 cljs.core.constant$keyword$category = new cljs.core.Keyword(null,"category","category",-593092832);
+cljs.core.constant$keyword$many_DASH_games = new cljs.core.Keyword(null,"many-games","many-games",1856139136);
 cljs.core.constant$keyword$div$obb_DASH_square = new cljs.core.Keyword(null,"div.obb-square","div.obb-square",-422683647);
 cljs.core.constant$keyword$p2 = new cljs.core.Keyword(null,"p2","p2",905500641);
 cljs.core.constant$keyword$on_DASH_set = new cljs.core.Keyword(null,"on-set","on-set",-140953470);

@@ -1,6 +1,7 @@
 // Compiled by ClojureScript 0.0-3308 {:static-fns true, :optimize-constants true}
 goog.provide('obb_demo.views.index');
 goog.require('cljs.core');
+goog.require('obb_demo.views.many_games');
 goog.require('obb_demo.views.layout.footer');
 goog.require('obb_demo.views.layout.header');
 goog.require('obb_demo.views.units');
@@ -11,13 +12,17 @@ var page = cljs.core.constant$keyword$page.cljs$core$IFn$_invoke$arity$1(state);
 if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.constant$keyword$units,page)){
 return obb_demo.views.units.render(state);
 } else {
+if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.constant$keyword$many_DASH_games,page)){
+return obb_demo.views.many_games.render(state);
+} else {
 return obb_demo.views.play.render(state);
 
 }
+}
 });
 obb_demo.views.index.render = (function obb_demo$views$index$render(){
-var G__13657 = arguments.length;
-switch (G__13657) {
+var G__13678 = arguments.length;
+switch (G__13678) {
 case 0:
 return obb_demo.views.index.render.cljs$core$IFn$_invoke$arity$0();
 
@@ -33,8 +38,8 @@ throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(arguments.lengt
 });
 
 obb_demo.views.index.render.cljs$core$IFn$_invoke$arity$0 = (function (){
-return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_demo.views.index.render,(function (){var G__13658 = obb_demo.state.app_state;
-return (cljs.core.deref.cljs$core$IFn$_invoke$arity$1 ? cljs.core.deref.cljs$core$IFn$_invoke$arity$1(G__13658) : cljs.core.deref.call(null,G__13658));
+return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_demo.views.index.render,(function (){var G__13679 = obb_demo.state.app_state;
+return (cljs.core.deref.cljs$core$IFn$_invoke$arity$1 ? cljs.core.deref.cljs$core$IFn$_invoke$arity$1(G__13679) : cljs.core.deref.call(null,G__13679));
 })()], null);
 });
 

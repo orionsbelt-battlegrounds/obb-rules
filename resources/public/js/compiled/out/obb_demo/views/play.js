@@ -1,6 +1,7 @@
 // Compiled by ClojureScript 0.0-3308 {:static-fns true, :optimize-constants true}
 goog.provide('obb_demo.views.play');
 goog.require('cljs.core');
+goog.require('obb_demo.processor');
 goog.require('obb_rules.math');
 goog.require('obb_rules.evaluator');
 goog.require('obb_demo.boardground');
@@ -16,18 +17,6 @@ obb_demo.views.play.tune_up = (function obb_demo$views$play$tune_up(game){
 return game;
 });
 /**
- * Creates a new game
- */
-obb_demo.views.play.new_game = (function obb_demo$views$play$new_game(){
-return obb_rules.game.random();
-});
-/**
- * Creates a deployed game
- */
-obb_demo.views.play.deployed_game = (function obb_demo$views$play$deployed_game(){
-return obb_rules.result.result_board(obb_rules.turn.process_actions(obb_rules.result.result_board(obb_rules.turn.process_actions(obb_demo.views.play.tune_up(obb_demo.views.play.new_game()),cljs.core.constant$keyword$p1,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$auto_DASH_deploy,cljs.core.constant$keyword$firingsquad], null)], null))),cljs.core.constant$keyword$p2,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$auto_DASH_deploy,cljs.core.constant$keyword$firingsquad], null)], null)));
-});
-/**
  * Gets the current game or creates a new one
  */
 obb_demo.views.play.get_game_data = (function obb_demo$views$play$get_game_data(state){
@@ -36,7 +25,7 @@ if(cljs.core.truth_(temp__4423__auto__)){
 var game = temp__4423__auto__;
 return game;
 } else {
-var game = obb_demo.views.play.deployed_game();
+var game = obb_demo.processor.deployed_game();
 var game_data = new cljs.core.PersistentArrayMap(null, 1, [cljs.core.constant$keyword$game,game], null);
 obb_demo.state.set_page_data_BANG_(game_data);
 
@@ -93,9 +82,9 @@ return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMP
  * Shows each player's power
  */
 obb_demo.views.play.power_bar = (function obb_demo$views$play$power_bar(game){
-var vec__13636 = obb_rules.evaluator.eval_game.cljs$core$IFn$_invoke$arity$1(game);
-var p1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__13636,(0),null);
-var p2 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__13636,(1),null);
+var vec__13642 = obb_rules.evaluator.eval_game.cljs$core$IFn$_invoke$arity$1(game);
+var p1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__13642,(0),null);
+var p2 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__13642,(1),null);
 var total = (p1 + p2);
 var p1_perc = obb_rules.math.ceil(((100) * ((total - p1) / total)));
 var p2_perc = ((100) - p1_perc);
