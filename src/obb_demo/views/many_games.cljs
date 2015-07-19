@@ -5,7 +5,7 @@
             [obb-rules.math :as math]
             [obb-rules.evaluator :as evaluator]
             [obb-rules.turn :as turn]
-            [obb-demo.views.play :as play]
+            [obb-demo.core :as core]
             [obb-rules.result :as result]
             [obb-demo.boardground :as boardground]))
 
@@ -14,7 +14,7 @@
   [state]
   (if-let [datas (:many-games state)]
     datas
-    (let [games (take 6 (repeatedly play/deployed-game))
+    (let [games (take 6 (repeatedly core/deployed-game))
           datas (mapv (fn [game] {:game game}) games)]
       (state/set-page-data! datas)
       datas)))

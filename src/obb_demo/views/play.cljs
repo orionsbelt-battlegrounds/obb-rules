@@ -2,6 +2,7 @@
   (:require [obb-demo.state :as state]
             [obb-rules.game :as game]
             [obb-rules.stash :as stash]
+            [obb-demo.core :as core]
             [obb-rules.math :as math]
             [obb-rules.evaluator :as evaluator]
             [obb-rules.turn :as turn]
@@ -14,36 +15,12 @@
   #_(assoc-in game [:stash :p1] (dissoc (get-in game [:stash :p1]) :crusader))
   game)
 
-(defn- new-game
-  "Creates a new game"
-  []
-  (game/random)
-  #_(-> (stash/create :rain 100
-                    :raptor 100
-                    :pretorian 40
-                    :vector 50
-                    :eagle 50
-                    :kamikaze 50
-                    :fenix 25
-                    :crusader 25)
-      (game/create)))
-
-(defn- deployed-game
-  "Creates a deployed game"
-  []
-  (-> (new-game)
-      (tune-up)
-      (turn/process-actions :p1 [[:auto-deploy :firingsquad]])
-      (result/result-board)
-      (turn/process-actions :p2 [[:auto-deploy :firingsquad]])
-      (result/result-board)))
-
 (defn- get-game-data
   "Gets the current game or creates a new one"
   [state]
   (if-let [game (:index state)]
     game
-    (let [game (deployed-game)
+    (let [game (core/deployed-game)
           game-data {:game game}]
       (state/set-page-data! game-data)
       game-data)))
