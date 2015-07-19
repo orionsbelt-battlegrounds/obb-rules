@@ -2,7 +2,7 @@
   (:require [obb-demo.state :as state]
             [obb-rules.game :as game]
             [obb-rules.stash :as stash]
-            [obb-demo.core :as core]
+            [obb-demo.processor :as processor]
             [obb-rules.math :as math]
             [obb-rules.evaluator :as evaluator]
             [obb-rules.turn :as turn]
@@ -20,7 +20,7 @@
   [state]
   (if-let [game (:index state)]
     game
-    (let [game (core/deployed-game)
+    (let [game (processor/deployed-game)
           game-data {:game game}]
       (state/set-page-data! game-data)
       game-data)))
