@@ -3,6 +3,7 @@
             [obb-rules.game :as game]
             [obb-rules.stash :as stash]
             [obb-demo.processor :as processor]
+            [obb-demo.views.power-bar :as power-bar]
             [obb-rules.math :as math]
             [obb-rules.evaluator :as evaluator]
             [obb-rules.turn :as turn]
@@ -58,17 +59,6 @@
       " vs "
       [(selected-player player :p1) "Player 1"]]))
 
-(defn- power-bar
-  "Shows each player's power"
-  [game]
-  (let [[p1 p2] (evaluator/eval-game game)
-        total (+ p1 p2)
-        p1-perc (math/ceil (* 100 (/ (- total p1) total)))
-        p2-perc (- 100 p1-perc)]
-    [:div.progress {:style {:margin-top "10px"}}
-     [:div.progress-bar.progress-bar-info {:style {:width (str p1-perc "%")}} p1-perc]
-     [:div.progress-bar.progress-bar-success {:style {:width (str p2-perc "%")}} p2-perc]]))
-
 (defn- game-turn
   "Displays the current turn"
   [game-data]
@@ -85,7 +75,7 @@
       [:div.col-lg-2
        (game-turn game-data)
        (players game)
-       (power-bar game)]
+       (power-bar/render game)]
       [:div.col-lg-5
         [boardground/render {} game-data]]
       [:div.col-lg-2
