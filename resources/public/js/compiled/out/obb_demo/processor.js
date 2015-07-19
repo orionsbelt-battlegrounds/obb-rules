@@ -41,7 +41,11 @@ return (obb_rules.ai.firingsquad.actions.cljs$core$IFn$_invoke$arity$2 ? obb_rul
 })();
 cljs.core.println.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq(["--",player,actions], 0));
 
+if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.constant$keyword$final,obb_rules.game.state.cljs$core$IFn$_invoke$arity$1(game))){
+return new cljs.core.PersistentArrayMap(null, 1, [cljs.core.constant$keyword$game,obb_demo.processor.deployed_game()], null);
+} else {
 return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(game_data,cljs.core.constant$keyword$actions,actions),cljs.core.constant$keyword$turn_DASH_num,((cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.constant$keyword$final,player))?turn_num:(turn_num + (1))));
+}
 });
 /**
  * Processes actions
@@ -59,9 +63,7 @@ var player = obb_rules.game.state.cljs$core$IFn$_invoke$arity$1(game);
 var result = obb_rules.turn.simulate_actions(game,player,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [action], null));
 var new_game = obb_rules.result.result_board(result);
 if(cljs.core.not(obb_rules.result.succeeded_QMARK_(result))){
-cljs.core.println.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([result], 0));
-
-return game_data;
+return cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(cljs.core.assoc_in(game_data,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$game,cljs.core.constant$keyword$state], null),cljs.core.constant$keyword$final),cljs.core.constant$keyword$action),cljs.core.constant$keyword$actions);
 } else {
 return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(game_data,cljs.core.constant$keyword$game,new_game),cljs.core.constant$keyword$action),cljs.core.constant$keyword$actions,cljs.core.rest(actions));
 }
