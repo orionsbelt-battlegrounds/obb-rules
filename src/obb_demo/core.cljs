@@ -57,14 +57,24 @@
             #_(boardground/with-selected-element (nth (first actions) 1))
             #_())))))
 
+(defn- auto-process-game-data
+  "Uses the AI the process a game-data"
+  [game-data]
+  (if (:actions game-data)
+    (process-actions game-data)
+    (generate-actions game-data)))
+
 (defn- tick
   "Processes CPU plays"
   []
+  (when (and (= :many-games (state/current-page)))
+    (let [games-data (state/get-page-data)
+          new-games-data (mapv auto-process-game-data games-data)]
+      (state/set-page-data! new-games-data)
+      (js/setTimeout (get-tick) 100)))
   (when (and (= :index (state/current-page)))
     (let [game-data (state/get-page-data)
-          new-game-data (if (:actions game-data)
-                          (process-actions game-data)
-                          (generate-actions game-data))]
+          new-game-data (auto-process-game-data game-data)]
       (state/set-page-data! new-game-data)
       (js/setTimeout (get-tick) (or (:delay game-data) 50)))))
 
