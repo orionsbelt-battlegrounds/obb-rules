@@ -3,6 +3,7 @@
             [obb-rules.game :as game]
             [obb-rules.stash :as stash]
             [obb-rules.math :as math]
+            [obb-demo.views.power-bar :as power-bar]
             [obb-demo.processor :as processor]
             [obb-rules.evaluator :as evaluator]
             [obb-rules.turn :as turn]
@@ -31,4 +32,5 @@
       [:div.col-lg-12
        (for [game-data datas]
         [:div.col-lg-4 {:key (rand-int 10000)}
+         (power-bar/render (:game game-data))
          [boardground/render {} game-data]])]]))
