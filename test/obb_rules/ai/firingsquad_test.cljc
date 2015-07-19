@@ -49,10 +49,10 @@
     (let [stash (stash/create-from-hash (apply hash-map (flatten raw-stash)))]
       (acts-as-bot/first-blood firingsquad/actions stash))))
 
-(deftest complete-game
-  (def crusader (unit/get-unit-by-name "crusader"))
-  (def quantity 100)
+(def crusader (unit/get-unit-by-name "crusader"))
+(def quantity 100)
 
+(deftest complete-game
   (let [board (-> (board/create-board)
                   (game/state :p1)
                   (board/place-element [1 7] (element/create-element :p1 crusader quantity :north [1 7]))

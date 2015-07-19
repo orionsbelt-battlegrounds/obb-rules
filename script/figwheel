@@ -1,2 +1,3 @@
+rm -rf resoures/public/js/compiled
 lein with-profile cljs-dev clean
 lein with-profile cljs-dev figwheel

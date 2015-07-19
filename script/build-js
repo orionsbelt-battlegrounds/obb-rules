@@ -1,1 +1,2 @@
+rm -rf resources/public/js/compiled
 lein with-profile cljs-prd cljsbuild once

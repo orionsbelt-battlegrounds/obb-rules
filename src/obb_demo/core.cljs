@@ -57,14 +57,47 @@
             #_(boardground/with-selected-element (nth (first actions) 1))
             #_())))))
 
+(defn- new-game
+  "Creates a new game"
+  []
+  (game/random)
+  #_(-> (stash/create :rain 100
+                    :raptor 100
+                    :pretorian 40
+                    :vector 50
+                    :eagle 50
+                    :kamikaze 50
+                    :fenix 25
+                    :crusader 25)
+      (game/create)))
+
+(defn deployed-game
+  "Creates a deployed game"
+  []
+  (-> (new-game)
+      (turn/process-actions :p1 [[:auto-deploy :firingsquad]])
+      (result/result-board)
+      (turn/process-actions :p2 [[:auto-deploy :firingsquad]])
+      (result/result-board)))
+
+(defn- auto-process-game-data
+  "Uses the AI the process a game-data"
+  [game-data]
+  (if (:actions game-data)
+    (process-actions game-data)
+    (generate-actions game-data)))
+
 (defn- tick
   "Processes CPU plays"
   []
+  (when (and (= :many-games (state/current-page)))
+    (let [games-data (state/get-page-data)
+          new-games-data (mapv auto-process-game-data games-data)]
+      (state/set-page-data! new-games-data)
+      (js/setTimeout (get-tick) 100)))
   (when (and (= :index (state/current-page)))
     (let [game-data (state/get-page-data)
-          new-game-data (if (:actions game-data)
-                          (process-actions game-data)
-                          (generate-actions game-data))]
+          new-game-data (auto-process-game-data game-data)]
       (state/set-page-data! new-game-data)
       (js/setTimeout (get-tick) (or (:delay game-data) 50)))))
 
