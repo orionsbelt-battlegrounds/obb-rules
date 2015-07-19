@@ -32,5 +32,5 @@
       [:div.col-lg-12
        (for [game-data datas]
         [:div.col-lg-4 {:key (rand-int 10000)}
-         [boardground/render {} game-data]
-         (power-bar/render (:game game-data))])]]))
+         (power-bar/render (:game game-data))
+         [boardground/render {} game-data]])]]))
