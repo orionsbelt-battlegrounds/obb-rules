@@ -3,9 +3,9 @@
             [obb-rules.game :as game]
             [obb-rules.stash :as stash]
             [obb-rules.math :as math]
+            [obb-demo.processor :as processor]
             [obb-rules.evaluator :as evaluator]
             [obb-rules.turn :as turn]
-            [obb-demo.core :as core]
             [obb-rules.result :as result]
             [obb-demo.boardground :as boardground]))
 
@@ -14,7 +14,7 @@
   [state]
   (if-let [datas (:many-games state)]
     datas
-    (let [games (take 6 (repeatedly core/deployed-game))
+    (let [games (take 6 (repeatedly processor/deployed-game))
           datas (mapv (fn [game] {:game game}) games)]
       (state/set-page-data! datas)
       datas)))
