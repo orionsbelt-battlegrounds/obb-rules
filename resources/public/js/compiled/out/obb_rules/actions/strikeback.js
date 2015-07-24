@@ -9,32 +9,32 @@ goog.require('obb_rules.unit');
 /**
  * Calculates the destroyed units by rebound
  */
-obb_rules.actions.strikeback.calculate_destroyed = (function obb_rules$actions$strikeback$calculate_destroyed(config,p__12593){
-var map__12595 = p__12593;
-var map__12595__$1 = ((cljs.core.seq_QMARK_(map__12595))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__12595):map__12595);
-var args = map__12595__$1;
-var target = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12595__$1,cljs.core.constant$keyword$target);
-var attacker = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12595__$1,cljs.core.constant$keyword$attacker);
-var board = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12595__$1,cljs.core.constant$keyword$board);
-var info = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12595__$1,cljs.core.constant$keyword$info);
-var unused_damage = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12595__$1,cljs.core.constant$keyword$unused_DASH_damage);
-var rebound_target = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12595__$1,cljs.core.constant$keyword$rebound_DASH_target);
+obb_rules.actions.strikeback.calculate_destroyed = (function obb_rules$actions$strikeback$calculate_destroyed(config,p__12602){
+var map__12604 = p__12602;
+var map__12604__$1 = ((cljs.core.seq_QMARK_(map__12604))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__12604):map__12604);
+var args = map__12604__$1;
+var target = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12604__$1,cljs.core.constant$keyword$target);
+var attacker = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12604__$1,cljs.core.constant$keyword$attacker);
+var board = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12604__$1,cljs.core.constant$keyword$board);
+var info = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12604__$1,cljs.core.constant$keyword$info);
+var unused_damage = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12604__$1,cljs.core.constant$keyword$unused_DASH_damage);
+var rebound_target = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12604__$1,cljs.core.constant$keyword$rebound_DASH_target);
 var destroyed = obb_rules.actions.damage_calculator.destroyed(board,target,attacker);
 return destroyed;
 });
 /**
  * Applies rebound on the board
  */
-obb_rules.actions.strikeback.process_strikeback = (function obb_rules$actions$strikeback$process_strikeback(config,p__12596){
-var map__12598 = p__12596;
-var map__12598__$1 = ((cljs.core.seq_QMARK_(map__12598))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__12598):map__12598);
-var args = map__12598__$1;
-var target = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12598__$1,cljs.core.constant$keyword$target);
-var attacker = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12598__$1,cljs.core.constant$keyword$attacker);
-var board = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12598__$1,cljs.core.constant$keyword$board);
-var info = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12598__$1,cljs.core.constant$keyword$info);
-var unused_damage = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12598__$1,cljs.core.constant$keyword$unused_DASH_damage);
-var rebound_target = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12598__$1,cljs.core.constant$keyword$rebound_DASH_target);
+obb_rules.actions.strikeback.process_strikeback = (function obb_rules$actions$strikeback$process_strikeback(config,p__12605){
+var map__12607 = p__12605;
+var map__12607__$1 = ((cljs.core.seq_QMARK_(map__12607))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__12607):map__12607);
+var args = map__12607__$1;
+var target = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12607__$1,cljs.core.constant$keyword$target);
+var attacker = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12607__$1,cljs.core.constant$keyword$attacker);
+var board = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12607__$1,cljs.core.constant$keyword$board);
+var info = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12607__$1,cljs.core.constant$keyword$info);
+var unused_damage = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12607__$1,cljs.core.constant$keyword$unused_DASH_damage);
+var rebound_target = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12607__$1,cljs.core.constant$keyword$rebound_DASH_target);
 var destroyed = obb_rules.actions.strikeback.calculate_destroyed(config,args);
 var attacker_coordinate = obb_rules.element.element_coordinate.cljs$core$IFn$_invoke$arity$1(attacker);
 var board__$1 = obb_rules.board.remove_from_element.cljs$core$IFn$_invoke$arity$3(board,attacker_coordinate,destroyed);
@@ -47,12 +47,12 @@ return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMP
  */
 obb_rules.actions.strikeback.in_range_QMARK_ = (function obb_rules$actions$strikeback$in_range_QMARK_(target,attacker){
 if(cljs.core.truth_(target)){
-var vec__12601 = obb_rules.element.element_coordinate.cljs$core$IFn$_invoke$arity$1(target);
-var tx = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12601,(0),null);
-var ty = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12601,(1),null);
-var vec__12602 = obb_rules.element.element_coordinate.cljs$core$IFn$_invoke$arity$1(attacker);
-var ax = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12602,(0),null);
-var ay = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12602,(1),null);
+var vec__12610 = obb_rules.element.element_coordinate.cljs$core$IFn$_invoke$arity$1(target);
+var tx = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12610,(0),null);
+var ty = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12610,(1),null);
+var vec__12611 = obb_rules.element.element_coordinate.cljs$core$IFn$_invoke$arity$1(attacker);
+var ax = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12611,(0),null);
+var ay = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12611,(1),null);
 var distance = ((tx - ax) + (ty - ay));
 return (distance <= obb_rules.element.element_range(target));
 } else {
@@ -75,48 +75,48 @@ return cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.constant$keyword$d
 /**
  * Checks if the rebound can be performed
  */
-obb_rules.actions.strikeback.aplicable_QMARK_ = (function obb_rules$actions$strikeback$aplicable_QMARK_(config,p__12603){
-var map__12605 = p__12603;
-var map__12605__$1 = ((cljs.core.seq_QMARK_(map__12605))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__12605):map__12605);
-var args = map__12605__$1;
-var target = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12605__$1,cljs.core.constant$keyword$target);
-var attacker = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12605__$1,cljs.core.constant$keyword$attacker);
-var board = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12605__$1,cljs.core.constant$keyword$board);
-var info = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12605__$1,cljs.core.constant$keyword$info);
-var and__6798__auto__ = obb_rules.actions.strikeback.in_range_QMARK_(target,attacker);
-if(cljs.core.truth_(and__6798__auto__)){
-var and__6798__auto____$1 = obb_rules.actions.strikeback.facing_attacker_QMARK_(target,attacker);
-if(cljs.core.truth_(and__6798__auto____$1)){
+obb_rules.actions.strikeback.aplicable_QMARK_ = (function obb_rules$actions$strikeback$aplicable_QMARK_(config,p__12612){
+var map__12614 = p__12612;
+var map__12614__$1 = ((cljs.core.seq_QMARK_(map__12614))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__12614):map__12614);
+var args = map__12614__$1;
+var target = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12614__$1,cljs.core.constant$keyword$target);
+var attacker = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12614__$1,cljs.core.constant$keyword$attacker);
+var board = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12614__$1,cljs.core.constant$keyword$board);
+var info = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12614__$1,cljs.core.constant$keyword$info);
+var and__6807__auto__ = obb_rules.actions.strikeback.in_range_QMARK_(target,attacker);
+if(cljs.core.truth_(and__6807__auto__)){
+var and__6807__auto____$1 = obb_rules.actions.strikeback.facing_attacker_QMARK_(target,attacker);
+if(cljs.core.truth_(and__6807__auto____$1)){
 return obb_rules.actions.strikeback.direct_attack_QMARK_(info);
 } else {
-return and__6798__auto____$1;
+return and__6807__auto____$1;
 }
 } else {
-return and__6798__auto__;
+return and__6807__auto__;
 }
 });
 /**
  * Refreshes the target to get the actual quantity
  */
-obb_rules.actions.strikeback.refresh_target = (function obb_rules$actions$strikeback$refresh_target(p__12606){
-var map__12608 = p__12606;
-var map__12608__$1 = ((cljs.core.seq_QMARK_(map__12608))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__12608):map__12608);
-var args = map__12608__$1;
-var board = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12608__$1,cljs.core.constant$keyword$board);
-var target = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12608__$1,cljs.core.constant$keyword$target);
+obb_rules.actions.strikeback.refresh_target = (function obb_rules$actions$strikeback$refresh_target(p__12615){
+var map__12617 = p__12615;
+var map__12617__$1 = ((cljs.core.seq_QMARK_(map__12617))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__12617):map__12617);
+var args = map__12617__$1;
+var board = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12617__$1,cljs.core.constant$keyword$board);
+var target = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12617__$1,cljs.core.constant$keyword$target);
 var target_coordinate = obb_rules.element.element_coordinate.cljs$core$IFn$_invoke$arity$1(target);
 return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(args,cljs.core.constant$keyword$target,obb_rules.board.get_element(board,target_coordinate));
 });
 /**
  * Processes the strikeback for the given data
  */
-obb_rules.actions.strikeback.process = (function obb_rules$actions$strikeback$process(config,p__12609){
-var map__12611 = p__12609;
-var map__12611__$1 = ((cljs.core.seq_QMARK_(map__12611))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__12611):map__12611);
-var args = map__12611__$1;
-var board = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12611__$1,cljs.core.constant$keyword$board);
-var info = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12611__$1,cljs.core.constant$keyword$info);
-var target = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12611__$1,cljs.core.constant$keyword$target);
+obb_rules.actions.strikeback.process = (function obb_rules$actions$strikeback$process(config,p__12618){
+var map__12620 = p__12618;
+var map__12620__$1 = ((cljs.core.seq_QMARK_(map__12620))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__12620):map__12620);
+var args = map__12620__$1;
+var board = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12620__$1,cljs.core.constant$keyword$board);
+var info = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12620__$1,cljs.core.constant$keyword$info);
+var target = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12620__$1,cljs.core.constant$keyword$target);
 var args__$1 = obb_rules.actions.strikeback.refresh_target(args);
 if(cljs.core.truth_(obb_rules.actions.strikeback.aplicable_QMARK_(config,args__$1))){
 return obb_rules.actions.strikeback.process_strikeback(config,args__$1);

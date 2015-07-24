@@ -4,6 +4,7 @@ goog.require('cljs.core');
 goog.require('obb_rules.game_mode');
 goog.require('obb_rules.math');
 goog.require('obb_rules.evaluator');
+goog.require('obb_rules.simplifier');
 goog.require('obb_rules.result');
 goog.require('obb_rules.ai.firingsquad');
 goog.require('obb_rules.game');
@@ -27,24 +28,26 @@ return obb_rules.result.result_board(obb_rules.turn.process_actions(obb_rules.re
  */
 obb_demo.processor.generate_actions = (function obb_demo$processor$generate_actions(game_data){
 var game = cljs.core.constant$keyword$game.cljs$core$IFn$_invoke$arity$1(game_data);
-var turn_num = (function (){var or__6810__auto__ = cljs.core.constant$keyword$turn_DASH_num.cljs$core$IFn$_invoke$arity$1(game_data);
-if(cljs.core.truth_(or__6810__auto__)){
-return or__6810__auto__;
+var turn_num = (function (){var or__6819__auto__ = cljs.core.constant$keyword$turn_DASH_num.cljs$core$IFn$_invoke$arity$1(game_data);
+if(cljs.core.truth_(or__6819__auto__)){
+return or__6819__auto__;
 } else {
 return (0);
 }
 })();
 var player = obb_rules.game.state.cljs$core$IFn$_invoke$arity$1(game);
-var actions = (function (){var G__13637 = game;
-var G__13638 = player;
-return (obb_rules.ai.firingsquad.actions.cljs$core$IFn$_invoke$arity$2 ? obb_rules.ai.firingsquad.actions.cljs$core$IFn$_invoke$arity$2(G__13637,G__13638) : obb_rules.ai.firingsquad.actions.call(null,G__13637,G__13638));
+var actions = (function (){var G__13642 = game;
+var G__13643 = player;
+return (obb_rules.ai.firingsquad.actions.cljs$core$IFn$_invoke$arity$2 ? obb_rules.ai.firingsquad.actions.cljs$core$IFn$_invoke$arity$2(G__13642,G__13643) : obb_rules.ai.firingsquad.actions.call(null,G__13642,G__13643));
 })();
+cljs.core.println.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq(["game",obb_rules.simplifier.clean_result(new cljs.core.PersistentArrayMap(null, 1, [cljs.core.constant$keyword$board,game], null))], 0));
+
 cljs.core.println.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq(["--",player,actions], 0));
 
 if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.constant$keyword$final,obb_rules.game.state.cljs$core$IFn$_invoke$arity$1(game))){
 return new cljs.core.PersistentArrayMap(null, 1, [cljs.core.constant$keyword$game,obb_demo.processor.deployed_game()], null);
 } else {
-return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(game_data,cljs.core.constant$keyword$actions,actions),cljs.core.constant$keyword$turn_DASH_num,((cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.constant$keyword$final,player))?turn_num:(turn_num + (1))));
+return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(game_data,cljs.core.constant$keyword$actions,actions),cljs.core.constant$keyword$original_DASH_actions,actions),cljs.core.constant$keyword$turn_DASH_num,((cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.constant$keyword$final,player))?turn_num:(turn_num + (1))));
 }
 });
 /**
@@ -63,7 +66,9 @@ var player = obb_rules.game.state.cljs$core$IFn$_invoke$arity$1(game);
 var result = obb_rules.turn.simulate_actions(game,player,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [action], null));
 var new_game = obb_rules.result.result_board(result);
 if(cljs.core.not(obb_rules.result.succeeded_QMARK_(result))){
-return cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(cljs.core.assoc_in(game_data,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$game,cljs.core.constant$keyword$state], null),cljs.core.constant$keyword$final),cljs.core.constant$keyword$action),cljs.core.constant$keyword$actions);
+cljs.core.println.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([result], 0));
+
+return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(game_data,cljs.core.constant$keyword$delay,(100000));
 } else {
 return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(game_data,cljs.core.constant$keyword$game,new_game),cljs.core.constant$keyword$action),cljs.core.constant$keyword$actions,cljs.core.rest(actions));
 }

@@ -5,8 +5,8 @@ goog.require('cljs.core');
  * True if the action failed
  */
 obb_rules.result.succeeded_QMARK_ = (function obb_rules$result$succeeded_QMARK_(result){
-var G__12565 = cljs.core.constant$keyword$success;
-return (result.cljs$core$IFn$_invoke$arity$1 ? result.cljs$core$IFn$_invoke$arity$1(G__12565) : result.call(null,G__12565));
+var G__12574 = cljs.core.constant$keyword$success;
+return (result.cljs$core$IFn$_invoke$arity$1 ? result.cljs$core$IFn$_invoke$arity$1(G__12574) : result.call(null,G__12574));
 });
 /**
  * True if the action failed
@@ -18,29 +18,29 @@ return cljs.core.not(obb_rules.result.succeeded_QMARK_(result));
  * Gets the message of a result
  */
 obb_rules.result.result_message = (function obb_rules$result$result_message(result){
-var G__12567 = cljs.core.constant$keyword$message;
-return (result.cljs$core$IFn$_invoke$arity$1 ? result.cljs$core$IFn$_invoke$arity$1(G__12567) : result.call(null,G__12567));
+var G__12576 = cljs.core.constant$keyword$message;
+return (result.cljs$core$IFn$_invoke$arity$1 ? result.cljs$core$IFn$_invoke$arity$1(G__12576) : result.call(null,G__12576));
 });
 /**
  * Gets the cost of a result
  */
 obb_rules.result.result_cost = (function obb_rules$result$result_cost(result){
-var G__12569 = cljs.core.constant$keyword$cost;
-return (result.cljs$core$IFn$_invoke$arity$1 ? result.cljs$core$IFn$_invoke$arity$1(G__12569) : result.call(null,G__12569));
+var G__12578 = cljs.core.constant$keyword$cost;
+return (result.cljs$core$IFn$_invoke$arity$1 ? result.cljs$core$IFn$_invoke$arity$1(G__12578) : result.call(null,G__12578));
 });
 /**
  * Gets the board of a result
  */
 obb_rules.result.result_board = (function obb_rules$result$result_board(result){
-var G__12571 = cljs.core.constant$keyword$board;
-return (result.cljs$core$IFn$_invoke$arity$1 ? result.cljs$core$IFn$_invoke$arity$1(G__12571) : result.call(null,G__12571));
+var G__12580 = cljs.core.constant$keyword$board;
+return (result.cljs$core$IFn$_invoke$arity$1 ? result.cljs$core$IFn$_invoke$arity$1(G__12580) : result.call(null,G__12580));
 });
 /**
  * Gets additional information
  */
 obb_rules.result.info = (function obb_rules$result$info(result){
-var G__12573 = cljs.core.constant$keyword$info;
-return (result.cljs$core$IFn$_invoke$arity$1 ? result.cljs$core$IFn$_invoke$arity$1(G__12573) : result.call(null,G__12573));
+var G__12582 = cljs.core.constant$keyword$info;
+return (result.cljs$core$IFn$_invoke$arity$1 ? result.cljs$core$IFn$_invoke$arity$1(G__12582) : result.call(null,G__12582));
 });
 /**
  * Represents the result of an action
@@ -55,8 +55,8 @@ return base_with_info;
  * Represents a successful action
  */
 obb_rules.result.action_success = (function obb_rules$result$action_success(){
-var G__12575 = arguments.length;
-switch (G__12575) {
+var G__12584 = arguments.length;
+switch (G__12584) {
 case 2:
 return obb_rules.result.action_success.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(arguments[(1)]));
 
@@ -92,8 +92,8 @@ obb_rules.result.action_success.cljs$lang$maxFixedArity = 4;
  * Represents an unsuccessful action
  */
 obb_rules.result.action_failed = (function obb_rules$result$action_failed(){
-var G__12578 = arguments.length;
-switch (G__12578) {
+var G__12587 = arguments.length;
+switch (G__12587) {
 case 1:
 return obb_rules.result.action_failed.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 

@@ -12,10 +12,10 @@ goog.require('obb_rules.translator');
 /**
  * Provides the given stash, but with translates units
  */
-obb_rules.auto_deploys.common.map_stash_to_units = (function obb_rules$auto_deploys$common$map_stash_to_units(p__12861){
-var vec__12863 = p__12861;
-var unit_name = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12863,(0),null);
-var quantity = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12863,(1),null);
+obb_rules.auto_deploys.common.map_stash_to_units = (function obb_rules$auto_deploys$common$map_stash_to_units(p__12870){
+var vec__12872 = p__12870;
+var unit_name = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12872,(0),null);
+var quantity = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12872,(1),null);
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_rules.unit.fetch(unit_name),quantity], null);
 });
 /**
@@ -25,8 +25,8 @@ obb_rules.auto_deploys.common.build_lineup = (function obb_rules$auto_deploys$co
 var squares = obb_rules.board.board_width(board);
 var units = obb_rules.math.ceil((squares / cljs.core.count(stash)));
 var grouped = cljs.core.map.cljs$core$IFn$_invoke$arity$2(((function (squares,units){
-return (function (p1__12864_SHARP_){
-return cljs.core.take.cljs$core$IFn$_invoke$arity$2(units,cljs.core.repeat.cljs$core$IFn$_invoke$arity$1(new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.first(p1__12864_SHARP_)], null)));
+return (function (p1__12873_SHARP_){
+return cljs.core.take.cljs$core$IFn$_invoke$arity$2(units,cljs.core.repeat.cljs$core$IFn$_invoke$arity$1(new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.first(p1__12873_SHARP_)], null)));
 });})(squares,units))
 ,stash);
 var final$ = cljs.core.flatten(grouped);
@@ -35,14 +35,14 @@ return cljs.core.take.cljs$core$IFn$_invoke$arity$2(squares,final$);
 /**
  * Splits the total quantity into the given slots
  */
-obb_rules.auto_deploys.common.split_stash = (function obb_rules$auto_deploys$common$split_stash(lineup,p__12866){
-var vec__12868 = p__12866;
-var unit = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12868,(0),null);
-var quantity = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12868,(1),null);
-var slots = cljs.core.count(cljs.core.filter.cljs$core$IFn$_invoke$arity$2(((function (vec__12868,unit,quantity){
-return (function (p1__12865_SHARP_){
-return cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(unit,p1__12865_SHARP_);
-});})(vec__12868,unit,quantity))
+obb_rules.auto_deploys.common.split_stash = (function obb_rules$auto_deploys$common$split_stash(lineup,p__12875){
+var vec__12877 = p__12875;
+var unit = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12877,(0),null);
+var quantity = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12877,(1),null);
+var slots = cljs.core.count(cljs.core.filter.cljs$core$IFn$_invoke$arity$2(((function (vec__12877,unit,quantity){
+return (function (p1__12874_SHARP_){
+return cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(unit,p1__12874_SHARP_);
+});})(vec__12877,unit,quantity))
 ,lineup));
 var fraction = (quantity / slots);
 var smallest_parcel_quantity = obb_rules.math.floor(fraction);
@@ -70,10 +70,10 @@ return obb_rules.auto_deploys.common.randomize(cljs.core.apply.cljs$core$IFn$_in
 /**
  * Builds a deploy action command
  */
-obb_rules.auto_deploys.common.build_deploy_action = (function obb_rules$auto_deploys$common$build_deploy_action(player,row,idx,p__12869){
-var vec__12871 = p__12869;
-var u = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12871,(0),null);
-var q = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12871,(1),null);
+obb_rules.auto_deploys.common.build_deploy_action = (function obb_rules$auto_deploys$common$build_deploy_action(player,row,idx,p__12878){
+var vec__12880 = p__12878;
+var u = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12880,(0),null);
+var q = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12880,(1),null);
 var coordinate = obb_rules.translator.coordinate(player,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(idx + (1)),row], null));
 return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(q | (0)),obb_rules.unit.unit_name(u),coordinate], null);
 });
@@ -90,8 +90,8 @@ obb_rules.auto_deploys.common.do_actions = (function obb_rules$auto_deploys$comm
 if(cljs.core.truth_(obb_rules.result.failed_QMARK_(result))){
 return result;
 } else {
-var G__12874 = obb_rules.result.result_board(result);
-var G__12875 = player;
-return (action.cljs$core$IFn$_invoke$arity$2 ? action.cljs$core$IFn$_invoke$arity$2(G__12874,G__12875) : action.call(null,G__12874,G__12875));
+var G__12883 = obb_rules.result.result_board(result);
+var G__12884 = player;
+return (action.cljs$core$IFn$_invoke$arity$2 ? action.cljs$core$IFn$_invoke$arity$2(G__12883,G__12884) : action.call(null,G__12883,G__12884));
 }
 });

@@ -10,6 +10,7 @@ cljs.core.constant$keyword$_STAR_ = new cljs.core.Keyword(null,"*","*",-12947323
 cljs.core.constant$keyword$displacement = new cljs.core.Keyword(null,"displacement","displacement",-1309600669);
 cljs.core.constant$keyword$rebound = new cljs.core.Keyword(null,"rebound","rebound",-1472887389);
 cljs.core.constant$keyword$attack_DASH_type = new cljs.core.Keyword(null,"attack-type","attack-type",-639911421);
+cljs.core.constant$keyword$original_DASH_actions = new cljs.core.Keyword(null,"original-actions","original-actions",2002612771);
 cljs.core.constant$keyword$div$panel$panel_DASH_default = new cljs.core.Keyword(null,"div.panel.panel-default","div.panel.panel-default",-1039051133);
 cljs.core.constant$keyword$mechanic = new cljs.core.Keyword(null,"mechanic","mechanic",-1805001628);
 cljs.core.constant$keyword$div$enemy = new cljs.core.Keyword(null,"div.enemy","div.enemy",-1561343804);

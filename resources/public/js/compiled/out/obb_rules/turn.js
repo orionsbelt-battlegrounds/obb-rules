@@ -12,9 +12,9 @@ goog.require('obb_rules.laws');
 obb_rules.turn.continue_apply_actions = (function obb_rules$turn$continue_apply_actions(player,current_game,action_pair){
 var raw_action = cljs.core.first(action_pair);
 var action = cljs.core.last(action_pair);
-var result = (function (){var G__13399 = current_game;
-var G__13400 = player;
-return (action.cljs$core$IFn$_invoke$arity$2 ? action.cljs$core$IFn$_invoke$arity$2(G__13399,G__13400) : action.call(null,G__13399,G__13400));
+var result = (function (){var G__13408 = current_game;
+var G__13409 = player;
+return (action.cljs$core$IFn$_invoke$arity$2 ? action.cljs$core$IFn$_invoke$arity$2(G__13408,G__13409) : action.call(null,G__13408,G__13409));
 })();
 var result_game = obb_rules.result.result_board(result);
 if(cljs.core.truth_(obb_rules.result.succeeded_QMARK_(result))){
@@ -43,10 +43,10 @@ return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMP
  * Gets the used action points on a turn.
  */
 obb_rules.turn.points = (function obb_rules$turn$points(game){
-return cljs.core.reduce.cljs$core$IFn$_invoke$arity$2(cljs.core._PLUS_,cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p1__13402_SHARP_){
-return obb_rules.result.result_cost(p1__13402_SHARP_);
-}),cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p1__13401_SHARP_){
-return cljs.core.last(p1__13401_SHARP_);
+return cljs.core.reduce.cljs$core$IFn$_invoke$arity$2(cljs.core._PLUS_,cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p1__13411_SHARP_){
+return obb_rules.result.result_cost(p1__13411_SHARP_);
+}),cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p1__13410_SHARP_){
+return cljs.core.last(p1__13410_SHARP_);
 }),obb_rules.game.action_results(game))));
 });
 /**
@@ -93,8 +93,8 @@ return obb_rules.turn.create_result(final$,action_points);
  * Processes the given actions
  */
 obb_rules.turn.process = (function obb_rules$turn$process(){
-var argseq__7850__auto__ = ((((2) < arguments.length))?(new cljs.core.IndexedSeq(Array.prototype.slice.call(arguments,(2)),(0))):null);
-return obb_rules.turn.process.cljs$core$IFn$_invoke$arity$variadic((arguments[(0)]),(arguments[(1)]),argseq__7850__auto__);
+var argseq__7859__auto__ = ((((2) < arguments.length))?(new cljs.core.IndexedSeq(Array.prototype.slice.call(arguments,(2)),(0))):null);
+return obb_rules.turn.process.cljs$core$IFn$_invoke$arity$variadic((arguments[(0)]),(arguments[(1)]),argseq__7859__auto__);
 });
 
 obb_rules.turn.process.cljs$core$IFn$_invoke$arity$variadic = (function (game,player,raw_actions){
@@ -103,10 +103,10 @@ return obb_rules.turn.process_actions(game,player,raw_actions);
 
 obb_rules.turn.process.cljs$lang$maxFixedArity = (2);
 
-obb_rules.turn.process.cljs$lang$applyTo = (function (seq13403){
-var G__13404 = cljs.core.first(seq13403);
-var seq13403__$1 = cljs.core.next(seq13403);
-var G__13405 = cljs.core.first(seq13403__$1);
-var seq13403__$2 = cljs.core.next(seq13403__$1);
-return obb_rules.turn.process.cljs$core$IFn$_invoke$arity$variadic(G__13404,G__13405,seq13403__$2);
+obb_rules.turn.process.cljs$lang$applyTo = (function (seq13412){
+var G__13413 = cljs.core.first(seq13412);
+var seq13412__$1 = cljs.core.next(seq13412);
+var G__13414 = cljs.core.first(seq13412__$1);
+var seq13412__$2 = cljs.core.next(seq13412__$1);
+return obb_rules.turn.process.cljs$core$IFn$_invoke$arity$variadic(G__13413,G__13414,seq13412__$2);
 });

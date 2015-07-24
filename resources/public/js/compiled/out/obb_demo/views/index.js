@@ -21,8 +21,8 @@ return obb_demo.views.play.render(state);
 }
 });
 obb_demo.views.index.render = (function obb_demo$views$index$render(){
-var G__13680 = arguments.length;
-switch (G__13680) {
+var G__13685 = arguments.length;
+switch (G__13685) {
 case 0:
 return obb_demo.views.index.render.cljs$core$IFn$_invoke$arity$0();
 
@@ -38,8 +38,8 @@ throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(arguments.lengt
 });
 
 obb_demo.views.index.render.cljs$core$IFn$_invoke$arity$0 = (function (){
-return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_demo.views.index.render,(function (){var G__13681 = obb_demo.state.app_state;
-return (cljs.core.deref.cljs$core$IFn$_invoke$arity$1 ? cljs.core.deref.cljs$core$IFn$_invoke$arity$1(G__13681) : cljs.core.deref.call(null,G__13681));
+return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_demo.views.index.render,(function (){var G__13686 = obb_demo.state.app_state;
+return (cljs.core.deref.cljs$core$IFn$_invoke$arity$1 ? cljs.core.deref.cljs$core$IFn$_invoke$arity$1(G__13686) : cljs.core.deref.call(null,G__13686));
 })()], null);
 });
 
