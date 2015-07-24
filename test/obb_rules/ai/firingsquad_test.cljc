@@ -4,6 +4,7 @@
             [obb-rules.stash :as stash]
             [obb-rules.unit :as unit]
             [obb-rules.element :as element]
+            [obb-rules.simplifier :as simplifier]
             [obb-rules.board :as board]
             [obb-rules.result :as result]
             [obb-rules.ai.firingsquad :as firingsquad]
@@ -73,3 +74,31 @@
 
     (is (result/succeeded? result))
     (is (result/succeeded? result2))))
+
+(deftest firingsquad-vs-firingsquad
+  (println "Running" obb-gen/scenarions-to-test "firingsquad vs firingsquad")
+  (dotimes [x obb-gen/scenarions-to-test]
+    (time
+      (let [game (-> (game/random)
+                     (turn/process-actions :p1 [[:auto-deploy :firingsquad]])
+                     (result/result-board)
+                     (turn/process-actions :p2 [[:auto-deploy :firingsquad]])
+                     (result/result-board))]
+        (loop [current-game game
+               counter 1]
+          (let [player (game/state current-game)
+                actions (firingsquad/actions current-game player)
+                result (turn/process-actions current-game player actions)
+                next-game (:board result)]
+            #_(println counter)
+            (is (result/succeeded? result))
+            (if (and (result/succeeded? result)
+                     (< counter 200)
+                     (not= :final (game/state next-game)))
+              (recur (dissoc next-game :action-results) (+ 1 counter))
+              (if (result/succeeded? result)
+                (println "** Game" x ":" counter "turns")
+                (do
+                  (println "--" player)
+                  (println actions)
+                  (println (simplifier/clean-result result)))))))))))

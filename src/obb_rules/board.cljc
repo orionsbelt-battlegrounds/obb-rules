@@ -69,14 +69,12 @@
 
 (defn in-bounds?
   "Checks if a given coord is in the board"
-  [board [x y]]
-  (let [w (board-width board)
-        h (board-height board)]
-    (and
-      (> x 0)
-      (> y 0)
-      (<= x w)
-      (<= y h))))
+  [board [^Integer x ^Integer y]]
+  (and
+    (> x 0)
+    (> y 0)
+    (<= x 8)
+    (<= y 8)))
 
 (defn can-place-element?
   "Checks if an element can be placed"
@@ -127,10 +125,14 @@
 
 (defn adjacent?
   "Checks if two coordinates are adjacent"
-  [[c1x c1y] [c2x c2y]]
-  (and
-    (> 2 (math/abs (- c1x c2x)))
-    (> 2 (math/abs (- c1y c2y)))))
+  [[^Integer c1x ^Integer c1y] [^Integer c2x ^Integer  c2y]]
+  (let [dx (- c1x c2x)
+        dy (- c1y c2y)]
+    (and
+      (< -2 dx)
+      (> 2 dx)
+      (< -2 dy)
+      (> 2 dy))))
 
 (defn remove-from-element
   "Removes a quantity from the board, marking it as move"

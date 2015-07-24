@@ -12,11 +12,12 @@
                  [org.clojure/tools.namespace "0.2.11"]
                  [org.clojure/clojure "1.8.0-alpha2"]
                  [org.clojure/tools.nrepl "0.2.10"]
+                 [criterium "0.4.3"]
                  [reagent "0.5.0"]
                  [secretary "1.2.3"]
                  [org.clojure/clojurescript "0.0-3308"]]
 
-  :jvm-opts ["-XX:+TieredCompilation" "-XX:TieredStopAtLevel=1"]
+  :jvm-opts ["-XX:+TieredCompilation"]
 
   :scm {:name "git"
         :url "git@github.com:orionsbelt-battlegrounds/obb-rules.git"}

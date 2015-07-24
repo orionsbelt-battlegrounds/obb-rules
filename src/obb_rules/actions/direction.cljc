@@ -12,8 +12,8 @@
 
 (defn update
   "Moves a coord given a direction"
-  [dir [x y]]
-  (let [[ox oy] (offset dir)]
+  [dir [^Integer x ^Integer y]]
+  (let [[^Integer ox ^Integer oy] (offset dir)]
     [(+ x ox) (+ y oy)]))
 
 (defn perpendicular

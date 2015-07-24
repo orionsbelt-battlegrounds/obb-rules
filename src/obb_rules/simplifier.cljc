@@ -10,7 +10,9 @@
 (defn name=
   "Compares two vars based on it's name"
   [a b]
-  (= (name a) (name b)))
+  (or
+    (= a b)
+    (= (name a) (name b))))
 
 (defn not-name=
   "Compares two vars based on it's name"
