@@ -185,11 +185,12 @@
           (nil? current-option))
     master
     (let [board (master :board)
-          actions (current-option :actions)
+          current-actions (current-option :actions)
+          actions (into (master :actions) current-actions)
           result (turn/simulate-actions board player actions)]
       (if (result/succeeded? result)
         (-> master
             (assoc :board (result/result-board result))
-            (assoc :actions (into (master :actions) actions))
+            (assoc :actions actions)
             (assoc :cost (+ (master :cost) (current-option :cost))))
         master))))
