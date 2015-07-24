@@ -3,6 +3,7 @@
             [obb-rules.game :as game]
             [obb-rules.stash :as stash]
             [obb-rules.math :as math]
+            [obb-rules.simplifier :as simplifier]
             [obb-rules.game-mode :as game-mode]
             [obb-rules.evaluator :as evaluator]
             [obb-rules.ai.firingsquad :as firingsquad]
@@ -39,11 +40,12 @@
         turn-num (or (:turn-num game-data) 0)
         player (game/state game)
         actions (firingsquad/actions game player)]
+    (println "game" (simplifier/clean-result {:board game}))
     (println "--" player actions)
     (if (= :final (game/state game))
       {:game (deployed-game)}
       (-> (assoc game-data :actions actions)
-          #_(assoc game-data :game game)
+          (assoc :original-actions actions)
           (assoc :turn-num (if (= :final player)
                              turn-num
                              (inc turn-num)))))))
@@ -63,8 +65,9 @@
               new-game (result/result-board result)]
           #_(println player action)
           (if-not (result/succeeded? result)
-            (do #_(println result)
-                (-> (assoc-in game-data [:game :state] :final)
+            (do (println result)
+                (assoc game-data :delay 100000)
+                #_(-> (assoc-in game-data [:game :state] :final)
                     (dissoc :action)
                     (dissoc :actions)))
             (-> (assoc game-data :game new-game)

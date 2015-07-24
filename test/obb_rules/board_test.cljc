@@ -60,6 +60,17 @@
   (testing "not board/adjacent"
     (is (not (board/adjacent? [2 2] [4 4])))))
 
+(deftest in-bounds
+  (let [game {:width 8 :height 8}]
+    (is (board/in-bounds? game [1 1]))
+    (is (board/in-bounds? game [4 4]))
+    (is (not (board/in-bounds? game [0 0])))
+    (is (not (board/in-bounds? game [1 0])))
+    (is (not (board/in-bounds? game [1 9])))
+    (is (not (board/in-bounds? game [1 20])))
+    (is (not (board/in-bounds? game [1 -2])))
+    (is (not (board/in-bounds? game [9 9])))))
+
 (deftest default-board-size
   (is (= laws/default-board-w (board/board-width {})))
   (is (= laws/default-board-h (board/board-height {}))))

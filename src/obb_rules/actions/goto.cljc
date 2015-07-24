@@ -11,7 +11,7 @@
 
 (defn- distance-to
   "Calculates the distance between two coordinates"
-  [[xa ya] [xb yb]]
+  [[^Integer xa ^Integer ya] [^Integer xb ^Integer yb]]
   (math/sqrt
     (+
       (math/expt (- xa xb) 2)
