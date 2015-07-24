@@ -4,6 +4,7 @@
             [obb-rules.stash :as stash]
             [obb-rules.unit :as unit]
             [obb-rules.element :as element]
+            [obb-rules.simplifier :as simplifier]
             [obb-rules.board :as board]
             [obb-rules.result :as result]
             [obb-rules.ai.firingsquad :as firingsquad]
@@ -97,4 +98,7 @@
               (recur (dissoc next-game :action-results) (+ 1 counter))
               (if (result/succeeded? result)
                 (println "** Game" x ":" counter "turns")
-                (println result)))))))))
+                (do
+                  (println "--" player)
+                  (println actions)
+                  (println (simplifier/clean-result result)))))))))))
