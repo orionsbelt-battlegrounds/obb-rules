@@ -73,3 +73,21 @@
 
     (is (result/succeeded? result))
     (is (result/succeeded? result2))))
+
+(deftest firingsquad-vs-firingsquad
+  (let [game (-> (game/random)
+                 (turn/process-actions :p1 [[:auto-deploy :firingsquad]])
+                 (result/result-board)
+                 (turn/process-actions :p2 [[:auto-deploy :firingsquad]])
+                 (result/result-board))]
+    (loop [current-game game]
+      (let [player (game/state current-game)
+            actions (firingsquad/actions current-game player)
+            result (turn/process-actions current-game player actions)
+            next-game (:board result)]
+        (is (result/succeeded? result))
+        (if (and (result/succeeded? result)
+                 (not= :final (game/state next-game)))
+          (recur (dissoc next-game :action-results))
+          (when (result/failed? result)
+            (println result)))))))

@@ -154,5 +154,4 @@
   (let [game (simplifier/build-result game)
         actions (firingsquad/actions game :p1)
         result (turn/process-actions game :p1 actions)]
-    (println actions)
     (is (result/succeeded? result))))
