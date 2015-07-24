@@ -180,17 +180,19 @@
 (defn join-options
   "Joins the given options on the given board, until the cost is possible"
   [player master current-option]
+  #_(println "master" (:cost master) (:actions master))
+  #_(println "current" (:cost current-option) (:actions current-option))
   (if (or (nil? master)
-          (>= (master :cost) laws/max-action-points)
+          (>= (:cost master) laws/max-action-points)
+          (>= (+ (:cost master) (:cost current-option)) laws/max-action-points)
           (nil? current-option))
     master
     (let [board (master :board)
-          current-actions (current-option :actions)
-          actions (into (master :actions) current-actions)
+          actions (current-option :actions)
           result (turn/simulate-actions board player actions)]
       (if (result/succeeded? result)
         (-> master
             (assoc :board (result/result-board result))
-            (assoc :actions actions)
+            (assoc :actions (into (master :actions) actions))
             (assoc :cost (+ (master :cost) (current-option :cost))))
         master))))
