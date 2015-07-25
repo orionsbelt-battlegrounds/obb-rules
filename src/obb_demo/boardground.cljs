@@ -48,6 +48,18 @@
           unit-name (unit/unit-name unit)]
       [:img.unit {:src (str "http://orionsbelt.eu/public/units/" unit-name  "_" (direction element) ".png")}])))
 
+(defn- possible-move
+  "Renders an html element that displays a board element's unit, as if
+  the unit could be moved to this square"
+  [game-data coord element]
+  (if (and (nil? element)
+           (= coord (:overed-coord game-data))
+           (get (:possible-destinations game-data) coord))
+    (let [element (:selected-element game-data)
+          unit (element/element-unit element)
+          unit-name (unit/unit-name unit)]
+      [:img.unit-possible-move {:src (str "http://orionsbelt.eu/public/units/" unit-name  "_" (direction element) ".png")}])))
+
 (defn- enemy-display
   "Returns an enemy indication if the given element is an enemy"
   [game element]
@@ -152,6 +164,11 @@
     (state/set-page-data! (with-selected-element game-data coord))
     (state/set-page-data! (with-selected-element game-data nil))))
 
+(defn- square-overed
+  "Processes hoverd square"
+  [game-data game coord elem]
+  (state/set-page-data! (assoc game-data :overed-coord coord)))
+
 (defn- square
   "Renders a board square"
   [game-data x y]
@@ -160,8 +177,10 @@
         element (board/get-element game coord)
         square-style (square-position x y)]
     [:div.obb-square {:on-click (partial square-clicked game-data game coord element)
+                      :on-mouse-over (partial square-overed game-data game coord element)
                       :key (str x y) :style square-style}
      (unit-image game element)
+     (possible-move game-data coord element)
      (selected-display game-data element)
      (possible-destination game-data coord)
      (action-participant game-data coord)

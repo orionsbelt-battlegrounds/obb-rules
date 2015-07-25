@@ -46,6 +46,14 @@ img.unit {
   position: absolute;
 }
 
+img.unit-possible-move {
+  z-index:1500;
+  width:100%;
+  height:100%;
+  opacity:.5;
+  position: absolute;
+}
+
 div.enemy {
   width:100%;
   height:100%;
