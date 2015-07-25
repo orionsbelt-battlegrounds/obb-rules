@@ -80,7 +80,7 @@
     (if (and (not (nil? element))
              (not (nil? cost))
              (= coord (:overed-coord game-data))
-             (possible-cost? game-data cost))
+             (possible-cost? game-data 1))
       (let [element (:selected-element game-data)
             unit (element/element-unit element)
             unit-name (unit/unit-name unit)]
