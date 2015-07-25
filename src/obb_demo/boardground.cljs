@@ -22,6 +22,7 @@
           (assoc :possible-attacks (ai/find-possible-attacks game element))
           (assoc :selected-coord coord)
           (assoc :selected-element element)
+          (dissoc :previous-player)
           (dissoc :previous-game))
       (-> game-data
           (dissoc :possible-destinations)
@@ -161,7 +162,8 @@
         did-something? (some #{coord} actions)]
   (when did-something?
     [(keyword (str "div.action-source.action-source-"
-                   (name (get-in game-data [:game :state]))))])))
+                   (name (or (:previous-player game-data)
+                              (get-in game-data [:game :state])))))])))
 
 (defn- attacked
   "Indicates if the given coordinate was attacked"

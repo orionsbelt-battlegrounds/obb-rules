@@ -73,6 +73,7 @@
   (state/set-page-data! {:game (dissoc (:original-game game-data) :action-results)
                          :original-game (:original-game game-data)
                          :previous-game (:original-game game-data)
+                         :previous-player :p2
                          :action-points 0
                          :turn-num 0}))
 
@@ -92,6 +93,7 @@
         (state/set-page-data! {:game clean-game
                                :original-game new-game
                                :previous-game new-game
+                               :previous-player :p2
                                :action-points 0
                                :turn-num 0}))
         (println result))))
