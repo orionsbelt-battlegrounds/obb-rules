@@ -4,7 +4,9 @@
             [obb-rules.stash :as stash]
             [obb-demo.processor :as processor]
             [obb-demo.views.power-bar :as power-bar]
+            [obb-rules.ai.firingsquad :as firingsquad]
             [obb-rules.math :as math]
+            [obb-rules.game-mode :as game-mode]
             [obb-rules.laws :as laws]
             [obb-rules.evaluator :as evaluator]
             [obb-rules.turn :as turn]
@@ -68,10 +70,31 @@
 (defn- reset-turn
   "Resets the actions on the current turn"
   [game-data]
-  (state/set-page-data! {:game (:original-game game-data)
+  (state/set-page-data! {:game (dissoc (:original-game game-data) :action-results)
                          :original-game (:original-game game-data)
+                         :previous-game (:original-game game-data)
                          :action-points 0
                          :turn-num 0}))
+
+(defn- play-turn
+  "Resets the actions on the current turn"
+  [game-data]
+  (let [player :p1
+        game (-> (:game game-data)
+                 (game-mode/process)
+                 (dissoc :action-results))
+        actions (firingsquad/actions game :p2)
+        result (turn/process-actions game :p2 actions)]
+    (println actions)
+    (if (result/succeeded? result)
+      (let [new-game (result/result-board result)
+            clean-game (dissoc new-game :action-results)]
+        (state/set-page-data! {:game clean-game
+                               :original-game new-game
+                               :previous-game new-game
+                               :action-points 0
+                               :turn-num 0}))
+        (println result))))
 
 (defn render
   [state]
@@ -83,6 +106,7 @@
        (players game)
        (power-bar/render game)
        (action-points game-data)
-       [:button.btn.btn-primary {:on-click (partial reset-turn game-data)} "Reset turn"]]
+       [:button.btn.btn-primary {:on-click (partial play-turn game-data)} "Play turn"]
+       [:button.btn.btn-default {:on-click (partial reset-turn game-data)} "Reset turn"]]
       [:div.col-lg-5
         [boardground/render {} game-data]]]))

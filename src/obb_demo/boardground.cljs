@@ -21,7 +21,8 @@
           (assoc :possible-destinations (move/find-all-possible-destinations-with-cost game element))
           (assoc :possible-attacks (ai/find-possible-attacks game element))
           (assoc :selected-coord coord)
-          (assoc :selected-element element))
+          (assoc :selected-element element)
+          (dissoc :previous-game))
       (-> game-data
           (dissoc :possible-destinations)
           (dissoc :possible-attacks)
@@ -146,10 +147,16 @@
       (some #{action-name} [:attack]) (conj coords (nth raw-action 2))
       :else coords)))
 
+(defn- get-action-results
+  "Gets current action-results"
+  [game-data]
+  (or (get-in game-data [:game :action-results])
+      (get-in game-data [:previous-game :action-results])))
+
 (defn- action-participant
   "Indicates if the given coordinate particpated on an action"
   [game-data coord]
-  (let [action-results (get-in game-data [:game :action-results])
+  (let [action-results (get-action-results game-data)
         actions (reduce action-coords [] action-results)
         did-something? (some #{coord} actions)]
   (when did-something?
@@ -159,7 +166,7 @@
 (defn- attacked
   "Indicates if the given coordinate was attacked"
   [game-data coord element]
-  (let [action-results (get-in game-data [:game :action-results])
+  (let [action-results (get-action-results game-data)
         actions (reduce attacked-coords [] action-results)
         attacked? (some #{coord} actions)]
     (when attacked?
@@ -187,11 +194,10 @@
     (if (result/succeeded? result)
       (state/set-page-data! (-> game-data
                                 (assoc :game (result/result-board result))
-                                (assoc :action-points (+ (result/result-cost result)
-                                                         ))
+                                (assoc :action-points (+ (result/result-cost result)))
                                 (assoc :actions (conj action current-actions))
-                                (with-selected-element coord)))))
-  )
+                                (with-selected-element coord)))
+      (println result))))
 
 (defn- process-goto
   "Processes a goto action"
