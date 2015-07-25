@@ -16,7 +16,7 @@
   [game-data coord]
   (let [game (:game game-data)
         element (board/get-element game coord)]
-    (if element
+    (if (and element (not (element/frozen? element)))
       (-> game-data
           (assoc :possible-destinations (move/find-all-possible-destinations-with-cost game element))
           (assoc :possible-attacks (ai/find-possible-attacks game element))
@@ -71,6 +71,20 @@
             unit (element/element-unit element)
             unit-name (unit/unit-name unit)]
         [:img.unit-possible-move {:src (str "http://orionsbelt.eu/public/units/" unit-name  "_" (direction element) ".png")}]))))
+
+(defn- possible-attack
+  "Renders an html element that displays a board element's unit, as if
+  the unit could be attacked on this square"
+  [game-data coord element]
+  (let [cost (get (:possible-attacks game-data) coord)]
+    (if (and (not (nil? element))
+             (not (nil? cost))
+             (= coord (:overed-coord game-data))
+             (possible-cost? game-data cost))
+      (let [element (:selected-element game-data)
+            unit (element/element-unit element)
+            unit-name (unit/unit-name unit)]
+        [:img.unit-possible-attack {:src "http://orionsbelt.eu/public/battle/target.gif"}]))))
 
 (defn- enemy-display
   "Returns an enemy indication if the given element is an enemy"
@@ -209,12 +223,29 @@
         action [:goto selected-coord coord]]
     (register-action game-data game player action coord)))
 
+(defn- attack?
+  "Checks if click is attack"
+  [game-data game coord elem]
+  (and (not (nil? elem))
+       (not (element/frozen? elem))
+       (get (:possible-attacks game-data) coord)))
+
+(defn- process-attack
+  "Processes a goto action"
+  [game-data game coord elem]
+  (let [selected-coord (:selected-coord game-data)
+        player (element/element-player (:selected-element game-data))
+        action [:attack selected-coord coord]]
+    (register-action game-data game player action selected-coord)))
+
 (defn- square-clicked
   "Processes select square"
   [game-data game coord elem]
   (cond
     (goto? game-data game coord elem)
       (process-goto game-data game coord elem)
+    (attack? game-data game coord elem)
+      (process-attack game-data game coord elem)
     (selected-coord? game-data game coord elem)
       (state/set-page-data! (with-selected-element game-data coord))
     :else
@@ -237,6 +268,7 @@
                       :key (str x y) :style square-style}
      (unit-image game element)
      (possible-move game-data coord element)
+     (possible-attack game-data coord element)
      (selected-display game-data element)
      (possible-destination game-data coord)
      (action-participant game-data coord)
