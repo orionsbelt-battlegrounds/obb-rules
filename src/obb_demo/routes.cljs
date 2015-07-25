@@ -9,6 +9,9 @@
 (secretary/defroute "/" []
   (state/set-page! :index))
 
+(secretary/defroute "/play" []
+  (state/set-page! :player))
+
 (secretary/defroute "/many-games" []
   (state/set-page! :many-games))
 
