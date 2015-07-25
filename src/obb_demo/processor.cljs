@@ -61,7 +61,7 @@
           (dissoc :actions))
       (if-let [action (:action game-data)]
         (let [player (game/state game)
-              result (turn/simulate-actions game player [action])
+              result (turn/simulate-actions game player [action] true)
               new-game (result/result-board result)]
           #_(println player action)
           (if-not (result/succeeded? result)

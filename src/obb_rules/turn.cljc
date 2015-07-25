@@ -59,14 +59,16 @@
 
 (defn simulate-actions
   "Simulates the given actions"
-  [game player raw-actions]
-  (if (seq raw-actions)
-    (let [actions (map action-pair raw-actions)
-          do-actions (partial apply-actions player)
-          final (reduce do-actions game actions)
-          action-points (points final)]
-      (create-result final action-points false))
-    (result/action-failed "NoActions")))
+  ([game player raw-actions]
+   (simulate-actions game player raw-actions false))
+  ([game player raw-actions cleanup?]
+   (if (seq raw-actions)
+     (let [actions (map action-pair raw-actions)
+           do-actions (partial apply-actions player)
+           final (reduce do-actions game actions)
+           action-points (points final)]
+       (create-result final action-points cleanup?))
+     (result/action-failed "NoActions"))))
 
 (defn process-actions
   "Processes the given actions"
