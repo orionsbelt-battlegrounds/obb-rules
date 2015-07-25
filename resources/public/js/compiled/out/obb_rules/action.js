@@ -11,20 +11,20 @@ obb_rules.action.available_actions = new cljs.core.PersistentArrayMap(null, 6, [
 /**
  * Builds an action given its code and args
  */
-obb_rules.action.build_action = (function obb_rules$action$build_action(p__12946){
-var vec__12950 = p__12946;
-var action_type = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12950,(0),null);
-var action_args = cljs.core.nthnext(vec__12950,(1));
-var builder = (function (){var G__12951 = cljs.core.keyword.cljs$core$IFn$_invoke$arity$1(action_type);
-return (obb_rules.action.available_actions.cljs$core$IFn$_invoke$arity$1 ? obb_rules.action.available_actions.cljs$core$IFn$_invoke$arity$1(G__12951) : obb_rules.action.available_actions.call(null,G__12951));
+obb_rules.action.build_action = (function obb_rules$action$build_action(p__12948){
+var vec__12952 = p__12948;
+var action_type = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12952,(0),null);
+var action_args = cljs.core.nthnext(vec__12952,(1));
+var builder = (function (){var G__12953 = cljs.core.keyword.cljs$core$IFn$_invoke$arity$1(action_type);
+return (obb_rules.action.available_actions.cljs$core$IFn$_invoke$arity$1 ? obb_rules.action.available_actions.cljs$core$IFn$_invoke$arity$1(G__12953) : obb_rules.action.available_actions.call(null,G__12953));
 })();
 if(cljs.core.truth_(builder)){
 } else {
 throw (new Error([cljs.core.str("Assert failed: "),cljs.core.str([cljs.core.str("No action builder defined for "),cljs.core.str(action_type)].join('')),cljs.core.str("\n"),cljs.core.str(cljs.core.pr_str.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([new cljs.core.Symbol(null,"builder","builder",-414730478,null)], 0)))].join('')));
 }
 
-var G__12952 = action_args;
-return (builder.cljs$core$IFn$_invoke$arity$1 ? builder.cljs$core$IFn$_invoke$arity$1(G__12952) : builder.call(null,G__12952));
+var G__12954 = action_args;
+return (builder.cljs$core$IFn$_invoke$arity$1 ? builder.cljs$core$IFn$_invoke$arity$1(G__12954) : builder.call(null,G__12954));
 });
 /**
  * Removes action specific state from the board

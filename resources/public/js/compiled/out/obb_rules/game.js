@@ -11,12 +11,12 @@ obb_rules.game.version = "2.0.0";
  * Checks if the game is in a given state
  */
 obb_rules.game.state_QMARK_ = (function obb_rules$game$state_QMARK_(game,state){
-var current_state = (function (){var G__12678 = cljs.core.constant$keyword$state;
-return (game.cljs$core$IFn$_invoke$arity$1 ? game.cljs$core$IFn$_invoke$arity$1(G__12678) : game.call(null,G__12678));
+var current_state = (function (){var G__12680 = cljs.core.constant$keyword$state;
+return (game.cljs$core$IFn$_invoke$arity$1 ? game.cljs$core$IFn$_invoke$arity$1(G__12680) : game.call(null,G__12680));
 })();
-var or__6819__auto__ = (current_state == null);
-if(or__6819__auto__){
-return or__6819__auto__;
+var or__6821__auto__ = (current_state == null);
+if(or__6821__auto__){
+return or__6821__auto__;
 } else {
 return obb_rules.simplifier.name_EQ_(state,current_state);
 }
@@ -43,11 +43,11 @@ return obb_rules.board.get_stash(game,player);
  * Gets the game mode
  */
 obb_rules.game.mode = (function obb_rules$game$mode(game){
-var or__6819__auto__ = (function (){var G__12682 = cljs.core.constant$keyword$mode;
-return (game.cljs$core$IFn$_invoke$arity$1 ? game.cljs$core$IFn$_invoke$arity$1(G__12682) : game.call(null,G__12682));
+var or__6821__auto__ = (function (){var G__12684 = cljs.core.constant$keyword$mode;
+return (game.cljs$core$IFn$_invoke$arity$1 ? game.cljs$core$IFn$_invoke$arity$1(G__12684) : game.call(null,G__12684));
 })();
-if(cljs.core.truth_(or__6819__auto__)){
-return or__6819__auto__;
+if(cljs.core.truth_(or__6821__auto__)){
+return or__6821__auto__;
 } else {
 return cljs.core.constant$keyword$default;
 }
@@ -56,8 +56,8 @@ return cljs.core.constant$keyword$default;
  * Gets/Sets the current game's state
  */
 obb_rules.game.state = (function obb_rules$game$state(){
-var G__12684 = arguments.length;
-switch (G__12684) {
+var G__12686 = arguments.length;
+switch (G__12686) {
 case 1:
 return obb_rules.game.state.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -73,8 +73,8 @@ throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(arguments.lengt
 });
 
 obb_rules.game.state.cljs$core$IFn$_invoke$arity$1 = (function (game){
-var G__12685 = cljs.core.constant$keyword$state;
-return (game.cljs$core$IFn$_invoke$arity$1 ? game.cljs$core$IFn$_invoke$arity$1(G__12685) : game.call(null,G__12685));
+var G__12687 = cljs.core.constant$keyword$state;
+return (game.cljs$core$IFn$_invoke$arity$1 ? game.cljs$core$IFn$_invoke$arity$1(G__12687) : game.call(null,G__12687));
 });
 
 obb_rules.game.state.cljs$core$IFn$_invoke$arity$2 = (function (game,new_state){
@@ -114,16 +114,16 @@ return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(game,cljs.core.constant$key
  * if any.
  */
 obb_rules.game.action_results = (function obb_rules$game$action_results(game){
-var G__12688 = cljs.core.constant$keyword$action_DASH_results;
-return (game.cljs$core$IFn$_invoke$arity$1 ? game.cljs$core$IFn$_invoke$arity$1(G__12688) : game.call(null,G__12688));
+var G__12690 = cljs.core.constant$keyword$action_DASH_results;
+return (game.cljs$core$IFn$_invoke$arity$1 ? game.cljs$core$IFn$_invoke$arity$1(G__12690) : game.call(null,G__12690));
 });
 /**
  * Stores an action's result
  */
 obb_rules.game.push_result = (function obb_rules$game$push_result(game,raw_action,result){
-var action_results = (function (){var or__6819__auto__ = obb_rules.game.action_results(game);
-if(cljs.core.truth_(or__6819__auto__)){
-return or__6819__auto__;
+var action_results = (function (){var or__6821__auto__ = obb_rules.game.action_results(game);
+if(cljs.core.truth_(or__6821__auto__)){
+return or__6821__auto__;
 } else {
 return cljs.core.PersistentVector.EMPTY;
 }
@@ -136,7 +136,7 @@ return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(game,cljs.core.constant$key
  * are all successful.
  */
 obb_rules.game.valid_actions_QMARK_ = (function obb_rules$game$valid_actions_QMARK_(game){
-return cljs.core.every_QMARK_((function (p1__12689_SHARP_){
-return obb_rules.result.succeeded_QMARK_(cljs.core.last(p1__12689_SHARP_));
+return cljs.core.every_QMARK_((function (p1__12691_SHARP_){
+return obb_rules.result.succeeded_QMARK_(cljs.core.last(p1__12691_SHARP_));
 }),obb_rules.game.action_results(game));
 });

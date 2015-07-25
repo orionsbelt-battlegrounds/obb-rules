@@ -28,20 +28,18 @@ return obb_rules.result.result_board(obb_rules.turn.process_actions(obb_rules.re
  */
 obb_demo.processor.generate_actions = (function obb_demo$processor$generate_actions(game_data){
 var game = cljs.core.constant$keyword$game.cljs$core$IFn$_invoke$arity$1(game_data);
-var turn_num = (function (){var or__6819__auto__ = cljs.core.constant$keyword$turn_DASH_num.cljs$core$IFn$_invoke$arity$1(game_data);
-if(cljs.core.truth_(or__6819__auto__)){
-return or__6819__auto__;
+var turn_num = (function (){var or__6821__auto__ = cljs.core.constant$keyword$turn_DASH_num.cljs$core$IFn$_invoke$arity$1(game_data);
+if(cljs.core.truth_(or__6821__auto__)){
+return or__6821__auto__;
 } else {
 return (0);
 }
 })();
 var player = obb_rules.game.state.cljs$core$IFn$_invoke$arity$1(game);
-var actions = (function (){var G__13642 = game;
-var G__13643 = player;
-return (obb_rules.ai.firingsquad.actions.cljs$core$IFn$_invoke$arity$2 ? obb_rules.ai.firingsquad.actions.cljs$core$IFn$_invoke$arity$2(G__13642,G__13643) : obb_rules.ai.firingsquad.actions.call(null,G__13642,G__13643));
+var actions = (function (){var G__13506 = game;
+var G__13507 = player;
+return (obb_rules.ai.firingsquad.actions.cljs$core$IFn$_invoke$arity$2 ? obb_rules.ai.firingsquad.actions.cljs$core$IFn$_invoke$arity$2(G__13506,G__13507) : obb_rules.ai.firingsquad.actions.call(null,G__13506,G__13507));
 })();
-cljs.core.println.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq(["game",obb_rules.simplifier.clean_result(new cljs.core.PersistentArrayMap(null, 1, [cljs.core.constant$keyword$board,game], null))], 0));
-
 cljs.core.println.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq(["--",player,actions], 0));
 
 if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.constant$keyword$final,obb_rules.game.state.cljs$core$IFn$_invoke$arity$1(game))){
@@ -63,7 +61,7 @@ var temp__4423__auto__ = cljs.core.constant$keyword$action.cljs$core$IFn$_invoke
 if(cljs.core.truth_(temp__4423__auto__)){
 var action = temp__4423__auto__;
 var player = obb_rules.game.state.cljs$core$IFn$_invoke$arity$1(game);
-var result = obb_rules.turn.simulate_actions(game,player,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [action], null));
+var result = obb_rules.turn.simulate_actions.cljs$core$IFn$_invoke$arity$4(game,player,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [action], null),true);
 var new_game = obb_rules.result.result_board(result);
 if(cljs.core.not(obb_rules.result.succeeded_QMARK_(result))){
 cljs.core.println.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([result], 0));

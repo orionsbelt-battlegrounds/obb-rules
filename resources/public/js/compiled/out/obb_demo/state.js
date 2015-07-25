@@ -16,8 +16,8 @@ return cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$4(obb_demo.state.app_sta
  * Gets the current page
  */
 obb_demo.state.current_page = (function obb_demo$state$current_page(){
-return cljs.core.constant$keyword$page.cljs$core$IFn$_invoke$arity$1((function (){var G__13635 = obb_demo.state.app_state;
-return (cljs.core.deref.cljs$core$IFn$_invoke$arity$1 ? cljs.core.deref.cljs$core$IFn$_invoke$arity$1(G__13635) : cljs.core.deref.call(null,G__13635));
+return cljs.core.constant$keyword$page.cljs$core$IFn$_invoke$arity$1((function (){var G__13414 = obb_demo.state.app_state;
+return (cljs.core.deref.cljs$core$IFn$_invoke$arity$1 ? cljs.core.deref.cljs$core$IFn$_invoke$arity$1(G__13414) : cljs.core.deref.call(null,G__13414));
 })());
 });
 /**
@@ -30,7 +30,7 @@ return cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$4(obb_demo.state.app_sta
  * Gets the data of the current page
  */
 obb_demo.state.get_page_data = (function obb_demo$state$get_page_data(){
-return cljs.core.get.cljs$core$IFn$_invoke$arity$2((function (){var G__13637 = obb_demo.state.app_state;
-return (cljs.core.deref.cljs$core$IFn$_invoke$arity$1 ? cljs.core.deref.cljs$core$IFn$_invoke$arity$1(G__13637) : cljs.core.deref.call(null,G__13637));
+return cljs.core.get.cljs$core$IFn$_invoke$arity$2((function (){var G__13416 = obb_demo.state.app_state;
+return (cljs.core.deref.cljs$core$IFn$_invoke$arity$1 ? cljs.core.deref.cljs$core$IFn$_invoke$arity$1(G__13416) : cljs.core.deref.call(null,G__13416));
 })(),obb_demo.state.current_page());
 });

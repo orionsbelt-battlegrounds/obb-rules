@@ -13,11 +13,11 @@ return game;
 } else {
 var stash1 = obb_rules.game.get_stash(game,cljs.core.constant$keyword$p1);
 var stash2 = obb_rules.game.get_stash(game,cljs.core.constant$keyword$p2);
-var and__6807__auto__ = obb_rules.stash.cleared_QMARK_(stash1);
-if(cljs.core.truth_(and__6807__auto__)){
+var and__6809__auto__ = obb_rules.stash.cleared_QMARK_(stash1);
+if(cljs.core.truth_(and__6809__auto__)){
 return obb_rules.stash.cleared_QMARK_(stash2);
 } else {
-return and__6807__auto__;
+return and__6809__auto__;
 }
 }
 });
@@ -25,16 +25,16 @@ return and__6807__auto__;
  * Checks if the game is finished
  */
 obb_rules.game_mode.final_QMARK_ = (function obb_rules$game_mode$final_QMARK_(game){
-var and__6807__auto__ = !(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.keyword.cljs$core$IFn$_invoke$arity$1(obb_rules.game.state.cljs$core$IFn$_invoke$arity$1(game)),cljs.core.constant$keyword$deploy));
-if(and__6807__auto__){
-var or__6819__auto__ = obb_rules.board.empty_board_QMARK_.cljs$core$IFn$_invoke$arity$2(game,cljs.core.constant$keyword$p1);
-if(cljs.core.truth_(or__6819__auto__)){
-return or__6819__auto__;
+var and__6809__auto__ = !(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.keyword.cljs$core$IFn$_invoke$arity$1(obb_rules.game.state.cljs$core$IFn$_invoke$arity$1(game)),cljs.core.constant$keyword$deploy));
+if(and__6809__auto__){
+var or__6821__auto__ = obb_rules.board.empty_board_QMARK_.cljs$core$IFn$_invoke$arity$2(game,cljs.core.constant$keyword$p1);
+if(cljs.core.truth_(or__6821__auto__)){
+return or__6821__auto__;
 } else {
 return obb_rules.board.empty_board_QMARK_.cljs$core$IFn$_invoke$arity$2(game,cljs.core.constant$keyword$p2);
 }
 } else {
-return and__6807__auto__;
+return and__6809__auto__;
 }
 });
 /**
@@ -68,16 +68,16 @@ return obb_rules.game.start_battle(game);
  * Checks if the game is in a state where a player switch should be done
  */
 obb_rules.game_mode.switch_turn_player_QMARK_ = (function obb_rules$game_mode$switch_turn_player_QMARK_(game){
-return cljs.core.some(new cljs.core.PersistentHashSet(null, new cljs.core.PersistentArrayMap(null, 2, [cljs.core.constant$keyword$p2,null,cljs.core.constant$keyword$p1,null], null), null),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.keyword.cljs$core$IFn$_invoke$arity$1((function (){var G__13401 = cljs.core.constant$keyword$state;
-return (game.cljs$core$IFn$_invoke$arity$1 ? game.cljs$core$IFn$_invoke$arity$1(G__13401) : game.call(null,G__13401));
+return cljs.core.some(new cljs.core.PersistentHashSet(null, new cljs.core.PersistentArrayMap(null, 2, [cljs.core.constant$keyword$p2,null,cljs.core.constant$keyword$p1,null], null), null),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.keyword.cljs$core$IFn$_invoke$arity$1((function (){var G__13391 = cljs.core.constant$keyword$state;
+return (game.cljs$core$IFn$_invoke$arity$1 ? game.cljs$core$IFn$_invoke$arity$1(G__13391) : game.call(null,G__13391));
 })())], null));
 });
 /**
  * Toggles the player to play
  */
 obb_rules.game_mode.switch_turn_player = (function obb_rules$game_mode$switch_turn_player(game){
-var current_player = cljs.core.keyword.cljs$core$IFn$_invoke$arity$1((function (){var G__13403 = cljs.core.constant$keyword$state;
-return (game.cljs$core$IFn$_invoke$arity$1 ? game.cljs$core$IFn$_invoke$arity$1(G__13403) : game.call(null,G__13403));
+var current_player = cljs.core.keyword.cljs$core$IFn$_invoke$arity$1((function (){var G__13393 = cljs.core.constant$keyword$state;
+return (game.cljs$core$IFn$_invoke$arity$1 ? game.cljs$core$IFn$_invoke$arity$1(G__13393) : game.call(null,G__13393));
 })());
 var next_player = cljs.core.first(cljs.core.disj.cljs$core$IFn$_invoke$arity$2(new cljs.core.PersistentHashSet(null, new cljs.core.PersistentArrayMap(null, 2, [cljs.core.constant$keyword$p2,null,cljs.core.constant$keyword$p1,null], null), null),current_player));
 return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(game,cljs.core.constant$keyword$state,cljs.core.keyword.cljs$core$IFn$_invoke$arity$1(next_player));
