@@ -5,6 +5,7 @@
             [obb-rules.game :as game]
             [obb-rules.result :as result]
             [obb-rules.ai.common :as ai]
+            [obb-demo.state :as state]
             [obb-rules.element :as element]
             [obb-rules.unit :as unit]))
 
@@ -15,7 +16,7 @@
         element (board/get-element game coord)]
     (if element
       (-> game-data
-          #_(assoc :possible-destinations (move/find-all-possible-destinations-with-cost game element))
+          (assoc :possible-destinations (move/find-all-possible-destinations-with-cost game element))
           (assoc :possible-attacks (ai/find-possible-attacks game element))
           (assoc :selected-coord coord)
           (assoc :selected-element element))
@@ -142,6 +143,15 @@
       [:div.target
        [:div.attacked]])))
 
+(defn- square-clicked
+  "Processes select square"
+  [game-data game coord elem]
+  (if (and elem
+           (not= coord (:selected-coord game-data))
+           (= (element/element-player elem) (game/state game)))
+    (state/set-page-data! (with-selected-element game-data coord))
+    (state/set-page-data! (with-selected-element game-data nil))))
+
 (defn- square
   "Renders a board square"
   [game-data x y]
@@ -149,7 +159,8 @@
         coord [x y]
         element (board/get-element game coord)
         square-style (square-position x y)]
-    [:div.obb-square {:key (str x y) :style square-style}
+    [:div.obb-square {:on-click (partial square-clicked game-data game coord element)
+                      :key (str x y) :style square-style}
      (unit-image game element)
      (selected-display game-data element)
      (possible-destination game-data coord)

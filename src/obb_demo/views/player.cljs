@@ -15,7 +15,8 @@
   [state]
   (if-let [game (:player state)]
     game
-    (let [game (processor/deployed-game)
+    (let [game (-> (processor/deployed-game)
+                   (game/state :p1))
           game-data {:game game
                      :turn-num 0}]
       (state/set-page-data! game-data)
