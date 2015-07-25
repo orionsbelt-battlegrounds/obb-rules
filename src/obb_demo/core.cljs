@@ -35,7 +35,7 @@
 
 (defn init []
   (secretary/set-config! :prefix "#")
-  (secretary/dispatch! "/")
+  (secretary/dispatch! "/play")
   (js/setTimeout tick 1000)
   (on-js-reload))
 

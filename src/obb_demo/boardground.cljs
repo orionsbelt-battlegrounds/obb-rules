@@ -177,7 +177,8 @@
     (if (result/succeeded? result)
       (state/set-page-data! (-> game-data
                                 (assoc :game (result/result-board result))
-                                (assoc :actions (conj action current-actions))))))
+                                (assoc :actions (conj action current-actions))
+                                (with-selected-element coord)))))
   )
 
 (defn- process-goto
