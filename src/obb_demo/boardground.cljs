@@ -3,6 +3,7 @@
   (:require [obb-rules.board :as board]
             [obb-rules.actions.move :as move]
             [obb-rules.game :as game]
+            [obb-rules.turn :as turn]
             [obb-rules.result :as result]
             [obb-rules.ai.common :as ai]
             [obb-demo.state :as state]
@@ -155,14 +156,48 @@
       [:div.target
        [:div.attacked]])))
 
+(defn- selected-coord?
+  "True if the given data is selected"
+  [game-data game coord elem]
+  (and elem
+       (not= coord (:selected-coord game-data))
+       (= (element/element-player elem) (game/state game))))
+
+(defn- goto?
+  "Checks if click is goto"
+  [game-data game coord elem]
+  (and (nil? elem)
+       (get (:possible-destinations game-data) coord)))
+
+(defn- register-action
+  "Registers an action"
+  [game-data game player action coord]
+  (let [current-actions (:actions game-data)
+        result (turn/simulate-actions game player [action])]
+    (if (result/succeeded? result)
+      (state/set-page-data! (-> game-data
+                                (assoc :game (result/result-board result))
+                                (assoc :actions (conj action current-actions))))))
+  )
+
+(defn- process-goto
+  "Processes a goto action"
+  [game-data game coord elem]
+  (let [selected-coord (:selected-coord game-data)
+        player (element/element-player (:selected-element game-data))
+        action [:goto selected-coord coord]]
+    (register-action game-data game player action coord)))
+
 (defn- square-clicked
   "Processes select square"
   [game-data game coord elem]
-  (if (and elem
-           (not= coord (:selected-coord game-data))
-           (= (element/element-player elem) (game/state game)))
-    (state/set-page-data! (with-selected-element game-data coord))
-    (state/set-page-data! (with-selected-element game-data nil))))
+  (cond
+    (goto? game-data game coord elem)
+      (process-goto game-data game coord elem)
+    (selected-coord? game-data game coord elem)
+      (state/set-page-data! (with-selected-element game-data coord))
+    :else
+      (state/set-page-data! (with-selected-element game-data nil))))
 
 (defn- square-overed
   "Processes hoverd square"
