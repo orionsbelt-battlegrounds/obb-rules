@@ -22,20 +22,26 @@
 (defn- tick
   "Processes CPU plays"
   []
-  (when (and (= :many-games (state/current-page)))
+  (cond
+    (and (= :many-games (state/current-page)))
     (let [games-data (state/get-page-data)
           new-games-data (mapv processor/auto-process-game-data games-data)]
       (state/set-page-data! new-games-data)
-      (js/setTimeout (get-tick) 100)))
-  (when (and (= :index (state/current-page)))
+      (js/setTimeout (get-tick) 50))
+
+    (and (= :index (state/current-page)))
     (let [game-data (state/get-page-data)
           new-game-data (processor/auto-process-game-data game-data)]
       (state/set-page-data! new-game-data)
-      (js/setTimeout (get-tick) (or (:delay game-data) 50)))))
+      (js/setTimeout (get-tick) (or (:delay game-data) 50)))
+
+    :else
+    (js/setTimeout (get-tick) 1000)))
+
 
 (defn init []
   (secretary/set-config! :prefix "#")
-  (secretary/dispatch! "/")
+  (secretary/dispatch! "/play")
   (js/setTimeout tick 1000)
   (on-js-reload))
 

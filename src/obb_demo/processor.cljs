@@ -40,7 +40,7 @@
         turn-num (or (:turn-num game-data) 0)
         player (game/state game)
         actions (firingsquad/actions game player)]
-    (println "game" (simplifier/clean-result {:board game}))
+    #_(println "game" (simplifier/clean-result {:board game}))
     (println "--" player actions)
     (if (= :final (game/state game))
       {:game (deployed-game)}
@@ -61,7 +61,7 @@
           (dissoc :actions))
       (if-let [action (:action game-data)]
         (let [player (game/state game)
-              result (turn/simulate-actions game player [action])
+              result (turn/simulate-actions game player [action] true)
               new-game (result/result-board result)]
           #_(println player action)
           (if-not (result/succeeded? result)

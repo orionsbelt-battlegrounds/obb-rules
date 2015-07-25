@@ -46,6 +46,14 @@ img.unit {
   position: absolute;
 }
 
+img.unit-possible-move {
+  z-index:1500;
+  width:100%;
+  height:100%;
+  opacity:.5;
+  position: absolute;
+}
+
 div.enemy {
   width:100%;
   height:100%;
@@ -103,16 +111,18 @@ div.action-source {
   width:100%;
   height:100%;
   opacity: 0.1;
-  z-index: 1000;
+  z-index:10;
   position: absolute;
 }
 
 div.action-source-p1 {
   background-color: green;
+  opacity:0.3;
 }
 
 div.action-source-p2 {
   background-color: blue;
+  opacity:0.4;
 }
 
 div.attacked {
@@ -125,11 +135,18 @@ div.attacked {
 }
 
 div.target {
-
   width:100%;
   height:100%;
   z-index: 2000;
   position: absolute;
   opacity: 1;
   background-image: url('http://orionsbelt.eu/public/battle/target.gif');
+}
+
+img.unit-possible-attack {
+  width:100%;
+  height:100%;
+  z-index: 20000;
+  position: absolute;
+  opacity: 1;
 }

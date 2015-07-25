@@ -35,29 +35,40 @@
        (map #(result/result-cost %))
        (reduce +)))
 
+(defn- reset-action-specific-state
+  "Resets state"
+  [game cleanup?]
+  (if cleanup?
+    (action/reset-action-specific-state game)
+    game))
+
 (defn- create-result
   "Creates a result for the given game"
-  [game total-action-points]
-  (cond
-    (not (game/valid-actions? game))
-      (result/action-failed "ActionFailed" game)
-    (> total-action-points laws/max-action-points)
-      (result/action-failed "ActionPointsOverflow")
-    :else
-      (-> game
-          (action/reset-action-specific-state)
-          (result/action-success total-action-points "TurnOK"))))
+  ([game total-action-points]
+   (create-result game total-action-points true))
+  ([game total-action-points cleanup?]
+   (cond
+     (not (game/valid-actions? game))
+       (result/action-failed "ActionFailed" game)
+     (> total-action-points laws/max-action-points)
+       (result/action-failed "ActionPointsOverflow")
+     :else
+       (-> game
+           (reset-action-specific-state cleanup?)
+           (result/action-success total-action-points "TurnOK")))))
 
 (defn simulate-actions
   "Simulates the given actions"
-  [game player raw-actions]
-  (if (seq raw-actions)
-    (let [actions (map action-pair raw-actions)
-          do-actions (partial apply-actions player)
-          final (reduce do-actions game actions)
-          action-points (points final)]
-      (create-result final action-points))
-    (result/action-failed "NoActions")))
+  ([game player raw-actions]
+   (simulate-actions game player raw-actions false))
+  ([game player raw-actions cleanup?]
+   (if (seq raw-actions)
+     (let [actions (map action-pair raw-actions)
+           do-actions (partial apply-actions player)
+           final (reduce do-actions game actions)
+           action-points (points final)]
+       (create-result final action-points cleanup?))
+     (result/action-failed "NoActions"))))
 
 (defn process-actions
   "Processes the given actions"

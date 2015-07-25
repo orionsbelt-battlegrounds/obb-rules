@@ -3,8 +3,11 @@
   (:require [obb-rules.board :as board]
             [obb-rules.actions.move :as move]
             [obb-rules.game :as game]
+            [obb-rules.laws :as laws]
+            [obb-rules.turn :as turn]
             [obb-rules.result :as result]
             [obb-rules.ai.common :as ai]
+            [obb-demo.state :as state]
             [obb-rules.element :as element]
             [obb-rules.unit :as unit]))
 
@@ -13,12 +16,14 @@
   [game-data coord]
   (let [game (:game game-data)
         element (board/get-element game coord)]
-    (if element
+    (if (and element (not (element/frozen? element)))
       (-> game-data
-          #_(assoc :possible-destinations (move/find-all-possible-destinations-with-cost game element))
+          (assoc :possible-destinations (move/find-all-possible-destinations-with-cost game element))
           (assoc :possible-attacks (ai/find-possible-attacks game element))
           (assoc :selected-coord coord)
-          (assoc :selected-element element))
+          (assoc :selected-element element)
+          (dissoc :previous-player)
+          (dissoc :previous-game))
       (-> game-data
           (dissoc :possible-destinations)
           (dissoc :possible-attacks)
@@ -47,6 +52,40 @@
           unit-name (unit/unit-name unit)]
       [:img.unit {:src (str "http://orionsbelt.eu/public/units/" unit-name  "_" (direction element) ".png")}])))
 
+(defn- possible-cost?
+  "True if something with the given cost is possible"
+  [game-data cost]
+  (let [action-points (or (:action-points game-data) 0)]
+    (>= laws/max-action-points (+ action-points cost))))
+
+(defn- possible-move
+  "Renders an html element that displays a board element's unit, as if
+  the unit could be moved to this square"
+  [game-data coord element]
+  (let [cost (get (:possible-destinations game-data) coord)]
+    (if (and (nil? element)
+             (not (nil? cost))
+             (= coord (:overed-coord game-data))
+             (possible-cost? game-data cost))
+      (let [element (:selected-element game-data)
+            unit (element/element-unit element)
+            unit-name (unit/unit-name unit)]
+        [:img.unit-possible-move {:src (str "http://orionsbelt.eu/public/units/" unit-name  "_" (direction element) ".png")}]))))
+
+(defn- possible-attack
+  "Renders an html element that displays a board element's unit, as if
+  the unit could be attacked on this square"
+  [game-data coord element]
+  (let [cost (get (:possible-attacks game-data) coord)]
+    (if (and (not (nil? element))
+             (not (nil? cost))
+             (= coord (:overed-coord game-data))
+             (possible-cost? game-data 1))
+      (let [element (:selected-element game-data)
+            unit (element/element-unit element)
+            unit-name (unit/unit-name unit)]
+        [:img.unit-possible-attack {:src "http://orionsbelt.eu/public/battle/target.gif"}]))))
+
 (defn- enemy-display
   "Returns an enemy indication if the given element is an enemy"
   [game element]
@@ -70,13 +109,14 @@
   "Display when given coord is a possible movement destination"
   [game-data coord]
   (if-let [cost (get (:possible-destinations game-data) coord)]
-    [:div.possible-destination
-     #_[(keyword (str "span.label.label-"
-                    (cond
-                      (> cost 4) "danger"
-                      (> cost 2) "warning"
-                      :else "success")))
-      cost]]))
+    (when (possible-cost? game-data cost)
+      [:div.possible-destination
+       #_[(keyword (str "span.label.label-"
+                      (cond
+                        (> cost 4) "danger"
+                        (> cost 2) "warning"
+                        :else "success")))
+        cost]])))
 
 (defn- possible-target
   "Display when given coord is a possible target for an attack"
@@ -122,25 +162,99 @@
       (some #{action-name} [:attack]) (conj coords (nth raw-action 2))
       :else coords)))
 
+(defn- get-action-results
+  "Gets current action-results"
+  [game-data]
+  (or (get-in game-data [:game :action-results])
+      (get-in game-data [:previous-game :action-results])))
+
 (defn- action-participant
   "Indicates if the given coordinate particpated on an action"
   [game-data coord]
-  (let [action-results (get-in game-data [:game :action-results])
+  (let [action-results (get-action-results game-data)
         actions (reduce action-coords [] action-results)
         did-something? (some #{coord} actions)]
   (when did-something?
     [(keyword (str "div.action-source.action-source-"
-                   (name (get-in game-data [:game :state]))))])))
+                   (name (or (:previous-player game-data)
+                              (get-in game-data [:game :state])))))])))
 
 (defn- attacked
   "Indicates if the given coordinate was attacked"
   [game-data coord element]
-  (let [action-results (get-in game-data [:game :action-results])
+  (let [action-results (get-action-results game-data)
         actions (reduce attacked-coords [] action-results)
         attacked? (some #{coord} actions)]
     (when attacked?
       [:div.target
        [:div.attacked]])))
+
+(defn- selected-coord?
+  "True if the given data is selected"
+  [game-data game coord elem]
+  (and elem
+       (not= coord (:selected-coord game-data))
+       (= (element/element-player elem) (game/state game))))
+
+(defn- goto?
+  "Checks if click is goto"
+  [game-data game coord elem]
+  (and (nil? elem)
+       (get (:possible-destinations game-data) coord)))
+
+(defn- register-action
+  "Registers an action"
+  [game-data game player action coord]
+  (let [current-actions (:actions game-data)
+        result (turn/simulate-actions game player [action])]
+    (if (result/succeeded? result)
+      (state/set-page-data! (-> game-data
+                                (assoc :game (result/result-board result))
+                                (assoc :action-points (+ (result/result-cost result)))
+                                (assoc :actions (conj action current-actions))
+                                (with-selected-element coord)))
+      (println result))))
+
+(defn- process-goto
+  "Processes a goto action"
+  [game-data game coord elem]
+  (let [selected-coord (:selected-coord game-data)
+        player (element/element-player (:selected-element game-data))
+        action [:goto selected-coord coord]]
+    (register-action game-data game player action coord)))
+
+(defn- attack?
+  "Checks if click is attack"
+  [game-data game coord elem]
+  (and (not (nil? elem))
+       (not (element/frozen? elem))
+       (get (:possible-attacks game-data) coord)))
+
+(defn- process-attack
+  "Processes a goto action"
+  [game-data game coord elem]
+  (let [selected-coord (:selected-coord game-data)
+        player (element/element-player (:selected-element game-data))
+        action [:attack selected-coord coord]]
+    (register-action game-data game player action selected-coord)))
+
+(defn- square-clicked
+  "Processes select square"
+  [game-data game coord elem]
+  (cond
+    (goto? game-data game coord elem)
+      (process-goto game-data game coord elem)
+    (attack? game-data game coord elem)
+      (process-attack game-data game coord elem)
+    (selected-coord? game-data game coord elem)
+      (state/set-page-data! (with-selected-element game-data coord))
+    :else
+      (state/set-page-data! (with-selected-element game-data nil))))
+
+(defn- square-overed
+  "Processes hoverd square"
+  [game-data game coord elem]
+  (state/set-page-data! (assoc game-data :overed-coord coord)))
 
 (defn- square
   "Renders a board square"
@@ -149,8 +263,12 @@
         coord [x y]
         element (board/get-element game coord)
         square-style (square-position x y)]
-    [:div.obb-square {:key (str x y) :style square-style}
+    [:div.obb-square {:on-click (partial square-clicked game-data game coord element)
+                      :on-mouse-over (partial square-overed game-data game coord element)
+                      :key (str x y) :style square-style}
      (unit-image game element)
+     (possible-move game-data coord element)
+     (possible-attack game-data coord element)
      (selected-display game-data element)
      (possible-destination game-data coord)
      (action-participant game-data coord)
