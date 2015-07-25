@@ -5,6 +5,7 @@
             [obb-demo.processor :as processor]
             [obb-demo.views.power-bar :as power-bar]
             [obb-rules.math :as math]
+            [obb-rules.laws :as laws]
             [obb-rules.evaluator :as evaluator]
             [obb-rules.turn :as turn]
             [obb-rules.result :as result]
@@ -18,6 +19,7 @@
     (let [game (-> (processor/deployed-game)
                    (game/state :p1))
           game-data {:game game
+                     :original-game game
                      :action-points 0
                      :turn-num 0}]
       (state/set-page-data! game-data)
@@ -55,6 +57,22 @@
     [:a "Turn "
      [:span.badge (:turn-num game-data)]]]])
 
+(defn- action-points
+  "Displays the current turn"
+  [game-data]
+  [:ul.nav.nav-pills {:style {:margin-bottom "10px"}}
+   [:li
+    [:a "Action Points "
+     [:span.badge (- laws/max-action-points (:action-points game-data))]]]])
+
+(defn- reset-turn
+  "Resets the actions on the current turn"
+  [game-data]
+  (state/set-page-data! {:game (:original-game game-data)
+                         :original-game (:original-game game-data)
+                         :action-points 0
+                         :turn-num 0}))
+
 (defn render
   [state]
   (let [game-data (get-game-data state)
@@ -63,6 +81,8 @@
       [:div.col-lg-2
        (game-turn game-data)
        (players game)
-       (power-bar/render game)]
+       (power-bar/render game)
+       (action-points game-data)
+       [:button.btn.btn-primary {:on-click (partial reset-turn game-data)} "Reset turn"]]
       [:div.col-lg-5
         [boardground/render {} game-data]]]))
