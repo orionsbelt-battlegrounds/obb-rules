@@ -3,6 +3,7 @@
   (:require [obb-rules.board :as board]
             [obb-rules.actions.move :as move]
             [obb-rules.game :as game]
+            [obb-rules.laws :as laws]
             [obb-rules.turn :as turn]
             [obb-rules.result :as result]
             [obb-rules.ai.common :as ai]
@@ -49,17 +50,25 @@
           unit-name (unit/unit-name unit)]
       [:img.unit {:src (str "http://orionsbelt.eu/public/units/" unit-name  "_" (direction element) ".png")}])))
 
+(defn- possible-cost?
+  "True if something with the given cost is possible"
+  [game-data cost]
+  (let [action-points (or (:action-points game-data) 0)]
+    (>= laws/max-action-points (+ action-points cost))))
+
 (defn- possible-move
   "Renders an html element that displays a board element's unit, as if
   the unit could be moved to this square"
   [game-data coord element]
-  (if (and (nil? element)
-           (= coord (:overed-coord game-data))
-           (get (:possible-destinations game-data) coord))
-    (let [element (:selected-element game-data)
-          unit (element/element-unit element)
-          unit-name (unit/unit-name unit)]
-      [:img.unit-possible-move {:src (str "http://orionsbelt.eu/public/units/" unit-name  "_" (direction element) ".png")}])))
+  (let [cost (get (:possible-destinations game-data) coord)]
+    (if (and (nil? element)
+             (not (nil? cost))
+             (= coord (:overed-coord game-data))
+             (possible-cost? game-data cost))
+      (let [element (:selected-element game-data)
+            unit (element/element-unit element)
+            unit-name (unit/unit-name unit)]
+        [:img.unit-possible-move {:src (str "http://orionsbelt.eu/public/units/" unit-name  "_" (direction element) ".png")}]))))
 
 (defn- enemy-display
   "Returns an enemy indication if the given element is an enemy"
@@ -84,13 +93,14 @@
   "Display when given coord is a possible movement destination"
   [game-data coord]
   (if-let [cost (get (:possible-destinations game-data) coord)]
-    [:div.possible-destination
-     #_[(keyword (str "span.label.label-"
-                    (cond
-                      (> cost 4) "danger"
-                      (> cost 2) "warning"
-                      :else "success")))
-      cost]]))
+    (when (possible-cost? game-data cost)
+      [:div.possible-destination
+       #_[(keyword (str "span.label.label-"
+                      (cond
+                        (> cost 4) "danger"
+                        (> cost 2) "warning"
+                        :else "success")))
+        cost]])))
 
 (defn- possible-target
   "Display when given coord is a possible target for an attack"
@@ -177,6 +187,8 @@
     (if (result/succeeded? result)
       (state/set-page-data! (-> game-data
                                 (assoc :game (result/result-board result))
+                                (assoc :action-points (+ (result/result-cost result)
+                                                         ))
                                 (assoc :actions (conj action current-actions))
                                 (with-selected-element coord)))))
   )

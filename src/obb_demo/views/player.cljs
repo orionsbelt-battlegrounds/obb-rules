@@ -18,6 +18,7 @@
     (let [game (-> (processor/deployed-game)
                    (game/state :p1))
           game-data {:game game
+                     :action-points 0
                      :turn-num 0}]
       (state/set-page-data! game-data)
       game-data)))
