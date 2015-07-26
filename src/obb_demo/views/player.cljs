@@ -1,6 +1,7 @@
 (ns obb-demo.views.player
   (:require [obb-demo.state :as state]
             [obb-rules.game :as game]
+            [obb-rules.element :as element]
             [obb-rules.stash :as stash]
             [obb-demo.processor :as processor]
             [obb-demo.views.power-bar :as power-bar]
@@ -67,6 +68,15 @@
     [:a "Action Points "
      [:span.badge (- laws/max-action-points (:action-points game-data))]]]])
 
+(defn- rotate-selected
+  "Rotates the selected element"
+  [game-data direction]
+  (let [game (:game game-data)
+        selected-coord (:selected-coord game-data)
+        player (element/element-player (:selected-element game-data))
+        action [:rotate selected-coord direction]]
+    (boardground/register-action game-data game player action selected-coord)))
+
 (defn- reset-turn
   "Resets the actions on the current turn"
   [game-data]
@@ -84,6 +94,7 @@
         game (-> (:game game-data)
                  (game-mode/process)
                  (dissoc :action-results))
+        turn-num (:turn-num game-data)
         actions (firingsquad/actions game :p2)
         result (turn/process-actions game :p2 actions)]
     (println actions)
@@ -95,8 +106,15 @@
                                :previous-game new-game
                                :previous-player :p2
                                :action-points 0
-                               :turn-num 0}))
+                               :turn-num (+ 1 turn-num)}))
         (println result))))
+
+(defn- rotate-button
+  "Rotate button display"
+  [game-data direction]
+  [:button.btn.btn-default {:disabled (not (:selected-element game-data))
+                            :on-click (partial rotate-selected game-data direction)}
+   (str "Rotate " direction)])
 
 (defn render
   [state]
@@ -109,6 +127,10 @@
        (power-bar/render game)
        (action-points game-data)
        [:button.btn.btn-primary {:on-click (partial play-turn game-data)} "Play turn"]
+       (rotate-button game-data :west)
+       (rotate-button game-data :east)
+       (rotate-button game-data :north)
+       (rotate-button game-data :south)
        [:button.btn.btn-default {:on-click (partial reset-turn game-data)} "Reset turn"]]
       [:div.col-lg-5
         [boardground/render {} game-data]]]))
