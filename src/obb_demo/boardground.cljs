@@ -202,7 +202,7 @@
   (and (nil? elem)
        (get (:possible-destinations game-data) coord)))
 
-(defn- register-action
+(defn register-action
   "Registers an action"
   [game-data game player action coord]
   (let [current-actions (:actions game-data)
