@@ -32,7 +32,7 @@ var new_games_data = cljs.core.mapv.cljs$core$IFn$_invoke$arity$2(obb_demo.proce
 obb_demo.state.set_page_data_BANG_(new_games_data);
 
 var G__13736 = obb_demo.core.get_tick();
-var G__13737 = (50);
+var G__13737 = (100);
 return setTimeout(G__13736,G__13737);
 } else {
 if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.constant$keyword$index,obb_demo.state.current_page())){

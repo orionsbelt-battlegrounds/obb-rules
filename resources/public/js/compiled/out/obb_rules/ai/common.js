@@ -244,7 +244,7 @@ return (0);
  * Joins the given options on the given board, until the cost is possible
  */
 obb_rules.ai.common.join_options = (function obb_rules$ai$common$join_options(player,master,current_option){
-if(((master == null)) || ((cljs.core.constant$keyword$cost.cljs$core$IFn$_invoke$arity$1(master) >= obb_rules.laws.max_action_points)) || (((cljs.core.constant$keyword$cost.cljs$core$IFn$_invoke$arity$1(master) + cljs.core.constant$keyword$cost.cljs$core$IFn$_invoke$arity$1(current_option)) >= obb_rules.laws.max_action_points)) || ((current_option == null))){
+if(((master == null)) || ((cljs.core.constant$keyword$cost.cljs$core$IFn$_invoke$arity$1(master) >= obb_rules.laws.max_action_points)) || (((cljs.core.constant$keyword$cost.cljs$core$IFn$_invoke$arity$1(master) + cljs.core.constant$keyword$cost.cljs$core$IFn$_invoke$arity$1(current_option)) > obb_rules.laws.max_action_points)) || ((current_option == null))){
 return master;
 } else {
 var board = (function (){var G__13464 = cljs.core.constant$keyword$board;

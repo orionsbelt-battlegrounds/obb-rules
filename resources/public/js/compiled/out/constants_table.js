@@ -30,6 +30,7 @@ cljs.core.constant$keyword$south = new cljs.core.Keyword(null,"south","south",15
 cljs.core.constant$keyword$div$panel$panel_DASH_info = new cljs.core.Keyword(null,"div.panel.panel-info","div.panel.panel-info",1850762117);
 cljs.core.constant$keyword$index = new cljs.core.Keyword(null,"index","index",-1531685915);
 cljs.core.constant$keyword$bottom = new cljs.core.Keyword(null,"bottom","bottom",-1550509018);
+cljs.core.constant$keyword$disabled = new cljs.core.Keyword(null,"disabled","disabled",-1529784218);
 cljs.core.constant$keyword$overed_DASH_coord = new cljs.core.Keyword(null,"overed-coord","overed-coord",1504839814);
 cljs.core.constant$keyword$div$panel_DASH_heading = new cljs.core.Keyword(null,"div.panel-heading","div.panel-heading",-368913146);
 cljs.core.constant$keyword$div$col_DASH_lg_DASH_2 = new cljs.core.Keyword(null,"div.col-lg-2","div.col-lg-2",664351046);
