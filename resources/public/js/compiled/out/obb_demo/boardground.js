@@ -147,6 +147,17 @@ return null;
 }
 });
 /**
+ * Checks if the given element is overed
+ */
+obb_demo.boardground.overed_QMARK_ = (function obb_demo$boardground$overed_QMARK_(game_data,element){
+var and__6809__auto__ = element;
+if(cljs.core.truth_(and__6809__auto__)){
+return cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(element,cljs.core.constant$keyword$overed_DASH_element.cljs$core$IFn$_invoke$arity$1(game_data));
+} else {
+return and__6809__auto__;
+}
+});
+/**
  * Checks if the given element is selected
  */
 obb_demo.boardground.selected_QMARK_ = (function obb_demo$boardground$selected_QMARK_(game_data,element){
@@ -209,7 +220,13 @@ return cljs.core.constant$keyword$span$label$label_DASH_info;
  * Shows element quantity
  */
 obb_demo.boardground.element_quantity = (function obb_demo$boardground$element_quantity(game_data,element){
-if(cljs.core.truth_(element)){
+if(cljs.core.truth_((function (){var or__6821__auto__ = obb_demo.boardground.selected_QMARK_(game_data,element);
+if(cljs.core.truth_(or__6821__auto__)){
+return or__6821__auto__;
+} else {
+return obb_demo.boardground.overed_QMARK_(game_data,element);
+}
+})())){
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$div$element_DASH_quantity,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_demo.boardground.player_label(obb_rules.element.element_player(element)),obb_rules.element.element_quantity.cljs$core$IFn$_invoke$arity$1(element)], null)], null);
 } else {
 return null;
@@ -379,7 +396,7 @@ return obb_demo.state.set_page_data_BANG_(obb_demo.boardground.with_selected_ele
  * Processes hoverd square
  */
 obb_demo.boardground.square_overed = (function obb_demo$boardground$square_overed(game_data,game,coord,elem){
-return obb_demo.state.set_page_data_BANG_(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(game_data,cljs.core.constant$keyword$overed_DASH_coord,coord));
+return obb_demo.state.set_page_data_BANG_(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(game_data,cljs.core.constant$keyword$overed_DASH_coord,coord),cljs.core.constant$keyword$overed_DASH_element,elem));
 });
 /**
  * Renders a board square
@@ -389,7 +406,8 @@ var game = cljs.core.constant$keyword$game.cljs$core$IFn$_invoke$arity$1(game_da
 var coord = new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [x,y], null);
 var element = obb_rules.board.get_element(game,coord);
 var square_style = obb_demo.boardground.square_position(x,y);
-return new cljs.core.PersistentVector(null, 12, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$div$obb_DASH_square,new cljs.core.PersistentArrayMap(null, 4, [cljs.core.constant$keyword$on_DASH_click,cljs.core.partial.cljs$core$IFn$_invoke$arity$variadic(obb_demo.boardground.square_clicked,game_data,game,coord,cljs.core.array_seq([element], 0)),cljs.core.constant$keyword$on_DASH_mouse_DASH_over,cljs.core.partial.cljs$core$IFn$_invoke$arity$variadic(obb_demo.boardground.square_overed,game_data,game,coord,cljs.core.array_seq([element], 0)),cljs.core.constant$keyword$key,[cljs.core.str(x),cljs.core.str(y)].join(''),cljs.core.constant$keyword$style,square_style], null),obb_demo.boardground.unit_image(game,element),obb_demo.boardground.possible_move(game_data,coord,element),obb_demo.boardground.possible_attack(game_data,coord,element),obb_demo.boardground.selected_display(game_data,element),obb_demo.boardground.possible_destination(game_data,coord),obb_demo.boardground.action_participant(game_data,coord),obb_demo.boardground.attacked(game_data,coord,element),obb_demo.boardground.possible_target(game_data,coord),obb_demo.boardground.element_quantity(game_data,element),obb_demo.boardground.enemy_display(game,element)], null);
+var square_clicked = cljs.core.partial.cljs$core$IFn$_invoke$arity$variadic(obb_demo.boardground.square_clicked,game_data,game,coord,cljs.core.array_seq([element], 0));
+return new cljs.core.PersistentVector(null, 12, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$div$obb_DASH_square,new cljs.core.PersistentArrayMap(null, 5, [cljs.core.constant$keyword$on_DASH_click,square_clicked,cljs.core.constant$keyword$on_DASH_touch_DASH_start,square_clicked,cljs.core.constant$keyword$on_DASH_mouse_DASH_over,cljs.core.partial.cljs$core$IFn$_invoke$arity$variadic(obb_demo.boardground.square_overed,game_data,game,coord,cljs.core.array_seq([element], 0)),cljs.core.constant$keyword$key,[cljs.core.str(x),cljs.core.str(y)].join(''),cljs.core.constant$keyword$style,square_style], null),obb_demo.boardground.unit_image(game,element),obb_demo.boardground.possible_move(game_data,coord,element),obb_demo.boardground.possible_attack(game_data,coord,element),obb_demo.boardground.selected_display(game_data,element),obb_demo.boardground.possible_destination(game_data,coord),obb_demo.boardground.action_participant(game_data,coord),obb_demo.boardground.attacked(game_data,coord,element),obb_demo.boardground.possible_target(game_data,coord),obb_demo.boardground.element_quantity(game_data,element),obb_demo.boardground.enemy_display(game,element)], null);
 });
 /**
  * Gets the panel size stype
