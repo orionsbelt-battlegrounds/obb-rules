@@ -27,7 +27,7 @@
     (let [games-data (state/get-page-data)
           new-games-data (mapv processor/auto-process-game-data games-data)]
       (state/set-page-data! new-games-data)
-      (js/setTimeout (get-tick) 50))
+      (js/setTimeout (get-tick) 100))
 
     (and (= :index (state/current-page)))
     (let [game-data (state/get-page-data)
