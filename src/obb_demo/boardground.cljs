@@ -94,6 +94,11 @@
       (if (= player :p2)
         [:div.enemy]))))
 
+(defn overed?
+  "Checks if the given element is overed"
+  [game-data element]
+  (and element (= element (:overed-element game-data))))
+
 (defn selected?
   "Checks if the given element is selected"
   [game-data element]
@@ -134,7 +139,8 @@
 (defn- element-quantity
   "Shows element quantity"
   [game-data element]
-  (if element #_(selected? game-data element)
+  (if (or (selected? game-data element)
+          (overed? game-data element))
     [:div.element-quantity
      [(player-label (element/element-player element))
       (element/element-quantity element)]]))
@@ -254,7 +260,8 @@
 (defn- square-overed
   "Processes hoverd square"
   [game-data game coord elem]
-  (state/set-page-data! (assoc game-data :overed-coord coord)))
+  (state/set-page-data! (-> (assoc game-data :overed-coord coord)
+                            (assoc :overed-element elem))))
 
 (defn- square
   "Renders a board square"
@@ -262,8 +269,10 @@
   (let [game (:game game-data)
         coord [x y]
         element (board/get-element game coord)
-        square-style (square-position x y)]
-    [:div.obb-square {:on-click (partial square-clicked game-data game coord element)
+        square-style (square-position x y)
+        square-clicked (partial square-clicked game-data game coord element)]
+    [:div.obb-square {:on-click square-clicked
+                      :on-touch-start square-clicked
                       :on-mouse-over (partial square-overed game-data game coord element)
                       :key (str x y) :style square-style}
      (unit-image game element)
