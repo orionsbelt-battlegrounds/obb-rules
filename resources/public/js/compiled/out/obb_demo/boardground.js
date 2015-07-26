@@ -24,9 +24,9 @@ return cljs.core.not(obb_rules.element.frozen_QMARK_(element));
 return and__6809__auto__;
 }
 })())){
-return cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(game_data,cljs.core.constant$keyword$possible_DASH_destinations,obb_rules.actions.move.find_all_possible_destinations_with_cost.cljs$core$IFn$_invoke$arity$2(game,element)),cljs.core.constant$keyword$possible_DASH_attacks,obb_rules.ai.common.find_possible_attacks(game,element)),cljs.core.constant$keyword$selected_DASH_coord,coord),cljs.core.constant$keyword$selected_DASH_element,element),cljs.core.constant$keyword$previous_DASH_player),cljs.core.constant$keyword$previous_DASH_game);
+return cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(game_data,cljs.core.constant$keyword$possible_DASH_destinations,obb_rules.actions.move.find_all_possible_destinations_with_cost.cljs$core$IFn$_invoke$arity$2(game,element)),cljs.core.constant$keyword$possible_DASH_attacks,obb_rules.ai.common.find_possible_attacks(game,element)),cljs.core.constant$keyword$selected_DASH_coord,coord),cljs.core.constant$keyword$selected_DASH_element,element),cljs.core.constant$keyword$selected_DASH_quantity,obb_rules.element.element_quantity.cljs$core$IFn$_invoke$arity$1(element)),cljs.core.constant$keyword$previous_DASH_player),cljs.core.constant$keyword$selected_DASH_quantity_DASH_error),cljs.core.constant$keyword$previous_DASH_game);
 } else {
-return cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(game_data,cljs.core.constant$keyword$possible_DASH_destinations),cljs.core.constant$keyword$possible_DASH_attacks),cljs.core.constant$keyword$selected_DASH_coord),cljs.core.constant$keyword$selected_DASH_element);
+return cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(game_data,cljs.core.constant$keyword$possible_DASH_destinations),cljs.core.constant$keyword$possible_DASH_attacks),cljs.core.constant$keyword$selected_DASH_coord),cljs.core.constant$keyword$selected_DASH_quantity),cljs.core.constant$keyword$selected_DASH_quantity_DASH_error),cljs.core.constant$keyword$selected_DASH_element);
 }
 });
 /**
@@ -322,7 +322,28 @@ return and__6809__auto__;
 obb_demo.boardground.goto_QMARK_ = (function obb_demo$boardground$goto_QMARK_(game_data,game,coord,elem){
 var and__6809__auto__ = (elem == null);
 if(and__6809__auto__){
+var and__6809__auto____$1 = cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.constant$keyword$selected_DASH_quantity.cljs$core$IFn$_invoke$arity$1(game_data),obb_rules.element.element_quantity.cljs$core$IFn$_invoke$arity$1(cljs.core.constant$keyword$selected_DASH_element.cljs$core$IFn$_invoke$arity$1(game_data)));
+if(and__6809__auto____$1){
 return cljs.core.get.cljs$core$IFn$_invoke$arity$2(cljs.core.constant$keyword$possible_DASH_destinations.cljs$core$IFn$_invoke$arity$1(game_data),coord);
+} else {
+return and__6809__auto____$1;
+}
+} else {
+return and__6809__auto__;
+}
+});
+/**
+ * Checks if click is move
+ */
+obb_demo.boardground.move_QMARK_ = (function obb_demo$boardground$move_QMARK_(game_data,game,coord,elem){
+var and__6809__auto__ = (elem == null);
+if(and__6809__auto__){
+var and__6809__auto____$1 = cljs.core.not_EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.constant$keyword$selected_DASH_quantity.cljs$core$IFn$_invoke$arity$1(game_data),obb_rules.element.element_quantity.cljs$core$IFn$_invoke$arity$1(cljs.core.constant$keyword$selected_DASH_element.cljs$core$IFn$_invoke$arity$1(game_data)));
+if(and__6809__auto____$1){
+return cljs.core.get.cljs$core$IFn$_invoke$arity$2(cljs.core.constant$keyword$possible_DASH_destinations.cljs$core$IFn$_invoke$arity$1(game_data),coord);
+} else {
+return and__6809__auto____$1;
+}
 } else {
 return and__6809__auto__;
 }
@@ -338,6 +359,16 @@ return obb_demo.state.set_page_data_BANG_(obb_demo.boardground.with_selected_ele
 } else {
 return cljs.core.println.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([result], 0));
 }
+});
+/**
+ * Processes a move action
+ */
+obb_demo.boardground.process_move = (function obb_demo$boardground$process_move(game_data,game,coord,elem){
+var selected_coord = cljs.core.constant$keyword$selected_DASH_coord.cljs$core$IFn$_invoke$arity$1(game_data);
+var player = obb_rules.element.element_player(cljs.core.constant$keyword$selected_DASH_element.cljs$core$IFn$_invoke$arity$1(game_data));
+var quantity = cljs.core.constant$keyword$selected_DASH_quantity.cljs$core$IFn$_invoke$arity$1(game_data);
+var action = new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$move,selected_coord,coord,quantity], null);
+return obb_demo.boardground.register_action(game_data,game,player,action,coord);
 });
 /**
  * Processes a goto action
@@ -380,6 +411,9 @@ obb_demo.boardground.square_clicked = (function obb_demo$boardground$square_clic
 if(cljs.core.truth_(obb_demo.boardground.goto_QMARK_(game_data,game,coord,elem))){
 return obb_demo.boardground.process_goto(game_data,game,coord,elem);
 } else {
+if(cljs.core.truth_(obb_demo.boardground.move_QMARK_(game_data,game,coord,elem))){
+return obb_demo.boardground.process_move(game_data,game,coord,elem);
+} else {
 if(cljs.core.truth_(obb_demo.boardground.attack_QMARK_(game_data,game,coord,elem))){
 return obb_demo.boardground.process_attack(game_data,game,coord,elem);
 } else {
@@ -388,6 +422,7 @@ return obb_demo.state.set_page_data_BANG_(obb_demo.boardground.with_selected_ele
 } else {
 return obb_demo.state.set_page_data_BANG_(obb_demo.boardground.with_selected_element(game_data,null));
 
+}
 }
 }
 }

@@ -9,9 +9,11 @@ goog.require('obb_rules.element');
 goog.require('obb_demo.boardground');
 goog.require('obb_rules.result');
 goog.require('obb_rules.ai.firingsquad');
+goog.require('obb_rules.actions.move');
 goog.require('obb_rules.game');
 goog.require('obb_rules.turn');
 goog.require('obb_demo.state');
+goog.require('obb_rules.host_dependent');
 goog.require('obb_rules.stash');
 goog.require('obb_rules.laws');
 goog.require('obb_demo.views.power_bar');
@@ -112,10 +114,64 @@ return cljs.core.println.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_se
  * Rotate button display
  */
 obb_demo.views.player.rotate_button = (function obb_demo$views$player$rotate_button(game_data,direction){
-return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$button$btn$btn_DASH_default,new cljs.core.PersistentArrayMap(null, 2, [cljs.core.constant$keyword$disabled,cljs.core.not(cljs.core.constant$keyword$selected_DASH_element.cljs$core$IFn$_invoke$arity$1(game_data)),cljs.core.constant$keyword$on_DASH_click,cljs.core.partial.cljs$core$IFn$_invoke$arity$3(obb_demo.views.player.rotate_selected,game_data,direction)], null),[cljs.core.str("Rotate "),cljs.core.str(direction)].join('')], null);
+return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$button$btn$btn_DASH_default,new cljs.core.PersistentArrayMap(null, 2, [cljs.core.constant$keyword$disabled,cljs.core.not(cljs.core.constant$keyword$selected_DASH_element.cljs$core$IFn$_invoke$arity$1(game_data)),cljs.core.constant$keyword$on_DASH_click,cljs.core.partial.cljs$core$IFn$_invoke$arity$3(obb_demo.views.player.rotate_selected,game_data,direction)], null),cljs.core.nth.cljs$core$IFn$_invoke$arity$2(cljs.core.name(direction),(0))], null);
+});
+/**
+ * Gets the quantity of the selected element, or 0 it no element is
+ * selected
+ */
+obb_demo.views.player.selected_element_quantity = (function obb_demo$views$player$selected_element_quantity(game_data){
+var temp__4423__auto__ = cljs.core.constant$keyword$selected_DASH_element.cljs$core$IFn$_invoke$arity$1(game_data);
+if(cljs.core.truth_(temp__4423__auto__)){
+var element = temp__4423__auto__;
+return obb_rules.element.element_quantity.cljs$core$IFn$_invoke$arity$1(element);
+} else {
+return (0);
+}
+});
+/**
+ * Parses the quantity on the given event
+ */
+obb_demo.views.player.parse_ev_quantity = (function obb_demo$views$player$parse_ev_quantity(ev){
+var raw_quantity = ev.target.value;
+if(cljs.core.empty_QMARK_(raw_quantity)){
+return "0";
+} else {
+return raw_quantity;
+}
+});
+/**
+ * Runs when the quantity changes
+ */
+obb_demo.views.player.quantity_changed = (function obb_demo$views$player$quantity_changed(game_data,ev){
+var total_quantity = obb_rules.element.element_quantity.cljs$core$IFn$_invoke$arity$1(cljs.core.constant$keyword$selected_DASH_element.cljs$core$IFn$_invoke$arity$1(game_data));
+var quantity = obb_demo.views.player.parse_ev_quantity(ev);
+if(cljs.core.truth_(obb_rules.actions.move.invalid_move_percentage_QMARK_(total_quantity,quantity))){
+return obb_demo.state.set_page_data_BANG_(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(game_data,cljs.core.constant$keyword$selected_DASH_quantity_DASH_error,true),cljs.core.constant$keyword$selected_DASH_quantity,quantity));
+} else {
+return obb_demo.state.set_page_data_BANG_(cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(game_data,cljs.core.constant$keyword$selected_DASH_quantity,quantity),cljs.core.constant$keyword$selected_DASH_quantity_DASH_error));
+}
+});
+/**
+ * Rotate options
+ */
+obb_demo.views.player.rotate_panel = (function obb_demo$views$player$rotate_panel(game_data){
+return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$div$panel$panel_DASH_default,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$div$panel_DASH_heading,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$h3$panel_DASH_title,"Rotate"], null)], null),new cljs.core.PersistentVector(null, 5, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$div$panel_DASH_body,obb_demo.views.player.rotate_button(game_data,cljs.core.constant$keyword$west),obb_demo.views.player.rotate_button(game_data,cljs.core.constant$keyword$east),obb_demo.views.player.rotate_button(game_data,cljs.core.constant$keyword$north),obb_demo.views.player.rotate_button(game_data,cljs.core.constant$keyword$south)], null)], null);
+});
+/**
+ * Specifies the units to move
+ */
+obb_demo.views.player.unit_quantity_picker = (function obb_demo$views$player$unit_quantity_picker(game_data){
+var quantity = cljs.core.constant$keyword$selected_DASH_quantity.cljs$core$IFn$_invoke$arity$1(game_data);
+var invalid_quantity_QMARK_ = cljs.core.constant$keyword$selected_DASH_quantity_DASH_error.cljs$core$IFn$_invoke$arity$1(game_data);
+return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$div$panel$panel_DASH_default,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$div$panel_DASH_heading,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$h3$panel_DASH_title,"Move quantity"], null)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$div$panel_DASH_body,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.keyword.cljs$core$IFn$_invoke$arity$1([cljs.core.str("div.form-group"),cljs.core.str((cljs.core.truth_(invalid_quantity_QMARK_)?".has-error":".has-success"))].join('')),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$input$form_DASH_control,new cljs.core.PersistentArrayMap(null, 4, [cljs.core.constant$keyword$on_DASH_change,cljs.core.partial.cljs$core$IFn$_invoke$arity$2(obb_demo.views.player.quantity_changed,game_data),cljs.core.constant$keyword$disabled,(quantity == null),cljs.core.constant$keyword$type,"text",cljs.core.constant$keyword$value,quantity], null)], null),(cljs.core.truth_(invalid_quantity_QMARK_)?(function (){var total_quantity = obb_rules.element.element_quantity.cljs$core$IFn$_invoke$arity$1(cljs.core.constant$keyword$selected_DASH_element.cljs$core$IFn$_invoke$arity$1(game_data));
+var min_quantity = obb_rules.math.ceil((total_quantity * obb_rules.laws.min_move_percentage));
+var max_quantity = obb_rules.math.floor((total_quantity * obb_rules.laws.max_move_percentage));
+return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$p,[cljs.core.str("Move must be "),cljs.core.str(min_quantity),cljs.core.str(" to "),cljs.core.str(max_quantity),cljs.core.str(" or "),cljs.core.str(total_quantity)].join('')], null);
+})():null)], null)], null)], null);
 });
 obb_demo.views.player.render = (function obb_demo$views$player$render(state){
 var game_data = obb_demo.views.player.get_game_data(state);
 var game = cljs.core.constant$keyword$game.cljs$core$IFn$_invoke$arity$1(game_data);
-return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$div$row,new cljs.core.PersistentVector(null, 11, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$div$col_DASH_lg_DASH_2,obb_demo.views.player.game_turn(game_data),obb_demo.views.player.players(game),obb_demo.views.power_bar.render(game),obb_demo.views.player.action_points(game_data),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$button$btn$btn_DASH_primary,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.constant$keyword$on_DASH_click,cljs.core.partial.cljs$core$IFn$_invoke$arity$2(obb_demo.views.player.play_turn,game_data)], null),"Play turn"], null),obb_demo.views.player.rotate_button(game_data,cljs.core.constant$keyword$west),obb_demo.views.player.rotate_button(game_data,cljs.core.constant$keyword$east),obb_demo.views.player.rotate_button(game_data,cljs.core.constant$keyword$north),obb_demo.views.player.rotate_button(game_data,cljs.core.constant$keyword$south),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$button$btn$btn_DASH_default,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.constant$keyword$on_DASH_click,cljs.core.partial.cljs$core$IFn$_invoke$arity$2(obb_demo.views.player.reset_turn,game_data)], null),"Reset turn"], null)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$div$col_DASH_lg_DASH_5,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_demo.boardground.render,cljs.core.PersistentArrayMap.EMPTY,game_data], null)], null)], null);
+return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$div$row,new cljs.core.PersistentVector(null, 9, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$div$col_DASH_lg_DASH_2,obb_demo.views.player.game_turn(game_data),obb_demo.views.player.players(game),obb_demo.views.power_bar.render(game),obb_demo.views.player.action_points(game_data),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$button$btn$btn_DASH_primary,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.constant$keyword$on_DASH_click,cljs.core.partial.cljs$core$IFn$_invoke$arity$2(obb_demo.views.player.play_turn,game_data)], null),"Play turn"], null),obb_demo.views.player.unit_quantity_picker(game_data),obb_demo.views.player.rotate_panel(game_data),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$button$btn$btn_DASH_default,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.constant$keyword$on_DASH_click,cljs.core.partial.cljs$core$IFn$_invoke$arity$2(obb_demo.views.player.reset_turn,game_data)], null),"Reset turn"], null)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$div$col_DASH_lg_DASH_5,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_demo.boardground.render,cljs.core.PersistentArrayMap.EMPTY,game_data], null)], null)], null);
 });
