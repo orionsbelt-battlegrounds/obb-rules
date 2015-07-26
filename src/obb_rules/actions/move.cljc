@@ -10,7 +10,7 @@
             [obb-rules.element :as element]
             [obb-rules.unit :as unit]))
 
-(defn- invalid-move-percentage?
+(defn invalid-move-percentage?
   "Checks if a quantity to move is invalid"
   [total-quantity quantity]
   (if (= total-quantity quantity)

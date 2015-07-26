@@ -2,7 +2,9 @@
   (:require [obb-demo.state :as state]
             [obb-rules.game :as game]
             [obb-rules.element :as element]
+            [obb-rules.actions.move :as move]
             [obb-rules.stash :as stash]
+            [obb-rules.host-dependent :as host]
             [obb-demo.processor :as processor]
             [obb-demo.views.power-bar :as power-bar]
             [obb-rules.ai.firingsquad :as firingsquad]
@@ -114,7 +116,70 @@
   [game-data direction]
   [:button.btn.btn-default {:disabled (not (:selected-element game-data))
                             :on-click (partial rotate-selected game-data direction)}
-   (str "Rotate " direction)])
+   (nth (name direction) 0)])
+
+(defn- selected-element-quantity
+  "Gets the quantity of the selected element, or 0 it no element is
+  selected"
+  [game-data]
+  (if-let [element (:selected-element game-data)]
+    (element/element-quantity element)
+    0))
+
+(defn- parse-ev-quantity
+  "Parses the quantity on the given event"
+  [ev]
+  (let [raw-quantity (-> ev .-target .-value)]
+    (if (empty? raw-quantity)
+      "0"
+      raw-quantity)))
+
+(defn- quantity-changed
+  "Runs when the quantity changes"
+  [game-data ev]
+  (let [total-quantity (element/element-quantity (:selected-element game-data))
+        quantity (parse-ev-quantity ev)]
+    (if (move/invalid-move-percentage? total-quantity quantity)
+      (state/set-page-data! (-> (assoc game-data :selected-quantity-error true)
+                                (assoc :selected-quantity quantity)))
+      (state/set-page-data! (-> (assoc game-data :selected-quantity quantity)
+                                (dissoc :selected-quantity-error))))))
+
+(defn- rotate-panel
+  "Rotate options"
+  [game-data]
+     [:div.panel.panel-default
+      [:div.panel-heading
+       [:h3.panel-title "Rotate"]]
+      [:div.panel-body
+       (rotate-button game-data :west)
+       (rotate-button game-data :east)
+       (rotate-button game-data :north)
+       (rotate-button game-data :south)
+       ]]
+  )
+
+(defn- unit-quantity-picker
+  "Specifies the units to move"
+  [game-data]
+  (let [quantity (:selected-quantity game-data)
+        invalid-quantity? (:selected-quantity-error game-data)]
+     [:div.panel.panel-default
+      [:div.panel-heading
+       [:h3.panel-title "Move quantity"]]
+      [:div.panel-body
+       [(keyword (str "div.form-group" (if invalid-quantity? ".has-error" ".has-success")))
+         [:input.form-control {:on-change (partial quantity-changed game-data)
+                               :disabled (nil? quantity)
+                               :type "text"
+                               :value quantity}]
+         (when invalid-quantity?
+           (let [total-quantity (element/element-quantity (:selected-element game-data))
+                 min-quantity (math/ceil (* total-quantity laws/min-move-percentage))
+                 max-quantity (math/floor (* total-quantity laws/max-move-percentage))]
+            [:p (str "Move must be " min-quantity " to " max-quantity " or " total-quantity)]))]
+       ]]
+    ))
 
 (defn render
   [state]
@@ -127,10 +192,8 @@
        (power-bar/render game)
        (action-points game-data)
        [:button.btn.btn-primary {:on-click (partial play-turn game-data)} "Play turn"]
-       (rotate-button game-data :west)
-       (rotate-button game-data :east)
-       (rotate-button game-data :north)
-       (rotate-button game-data :south)
+       (unit-quantity-picker game-data)
+       (rotate-panel game-data)
        [:button.btn.btn-default {:on-click (partial reset-turn game-data)} "Reset turn"]]
       [:div.col-lg-5
         [boardground/render {} game-data]]]))

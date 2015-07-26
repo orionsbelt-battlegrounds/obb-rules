@@ -22,12 +22,16 @@
           (assoc :possible-attacks (ai/find-possible-attacks game element))
           (assoc :selected-coord coord)
           (assoc :selected-element element)
+          (assoc :selected-quantity (element/element-quantity element))
           (dissoc :previous-player)
+          (dissoc :selected-quantity-error)
           (dissoc :previous-game))
       (-> game-data
           (dissoc :possible-destinations)
           (dissoc :possible-attacks)
           (dissoc :selected-coord)
+          (dissoc :selected-quantity)
+          (dissoc :selected-quantity-error)
           (dissoc :selected-element)))))
 
 (defn- square-position
@@ -206,6 +210,14 @@
   "Checks if click is goto"
   [game-data game coord elem]
   (and (nil? elem)
+       (= (:selected-quantity game-data) (element/element-quantity (:selected-element game-data)))
+       (get (:possible-destinations game-data) coord)))
+
+(defn- move?
+  "Checks if click is move"
+  [game-data game coord elem]
+  (and (nil? elem)
+       (not= (:selected-quantity game-data) (element/element-quantity (:selected-element game-data)))
        (get (:possible-destinations game-data) coord)))
 
 (defn register-action
@@ -220,6 +232,15 @@
                                 (assoc :actions (conj action current-actions))
                                 (with-selected-element coord)))
       (println result))))
+
+(defn- process-move
+  "Processes a move action"
+  [game-data game coord elem]
+  (let [selected-coord (:selected-coord game-data)
+        player (element/element-player (:selected-element game-data))
+        quantity (:selected-quantity game-data)
+        action [:move selected-coord coord quantity]]
+    (register-action game-data game player action coord)))
 
 (defn- process-goto
   "Processes a goto action"
@@ -250,6 +271,8 @@
   (cond
     (goto? game-data game coord elem)
       (process-goto game-data game coord elem)
+    (move? game-data game coord elem)
+      (process-move game-data game coord elem)
     (attack? game-data game coord elem)
       (process-attack game-data game coord elem)
     (selected-coord? game-data game coord elem)
