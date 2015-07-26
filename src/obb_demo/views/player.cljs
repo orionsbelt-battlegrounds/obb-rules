@@ -116,7 +116,7 @@
   [game-data direction]
   [:button.btn.btn-default {:disabled (not (:selected-element game-data))
                             :on-click (partial rotate-selected game-data direction)}
-   (str "Rotate " direction)])
+   (nth (name direction) 0)])
 
 (defn- selected-element-quantity
   "Gets the quantity of the selected element, or 0 it no element is
@@ -145,6 +145,19 @@
       (state/set-page-data! (-> (assoc game-data :selected-quantity quantity)
                                 (dissoc :selected-quantity-error))))))
 
+(defn- rotate-panel
+  "Rotate options"
+  [game-data]
+     [:div.panel.panel-default
+      [:div.panel-heading
+       [:h3.panel-title "Rotate"]]
+      [:div.panel-body
+       (rotate-button game-data :west)
+       (rotate-button game-data :east)
+       (rotate-button game-data :north)
+       (rotate-button game-data :south)
+       ]]
+  )
 
 (defn- unit-quantity-picker
   "Specifies the units to move"
@@ -180,10 +193,7 @@
        (action-points game-data)
        [:button.btn.btn-primary {:on-click (partial play-turn game-data)} "Play turn"]
        (unit-quantity-picker game-data)
-       (rotate-button game-data :west)
-       (rotate-button game-data :east)
-       (rotate-button game-data :north)
-       (rotate-button game-data :south)
+       (rotate-panel game-data)
        [:button.btn.btn-default {:on-click (partial reset-turn game-data)} "Reset turn"]]
       [:div.col-lg-5
         [boardground/render {} game-data]]]))
