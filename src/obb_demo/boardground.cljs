@@ -22,12 +22,16 @@
           (assoc :possible-attacks (ai/find-possible-attacks game element))
           (assoc :selected-coord coord)
           (assoc :selected-element element)
+          (assoc :selected-quantity (element/element-quantity element))
           (dissoc :previous-player)
+          (dissoc :selected-quantity-error)
           (dissoc :previous-game))
       (-> game-data
           (dissoc :possible-destinations)
           (dissoc :possible-attacks)
           (dissoc :selected-coord)
+          (dissoc :selected-quantity)
+          (dissoc :selected-quantity-error)
           (dissoc :selected-element)))))
 
 (defn- square-position
