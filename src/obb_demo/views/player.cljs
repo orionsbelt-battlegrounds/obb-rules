@@ -94,6 +94,7 @@
         game (-> (:game game-data)
                  (game-mode/process)
                  (dissoc :action-results))
+        turn-num (:turn-num game-data)
         actions (firingsquad/actions game :p2)
         result (turn/process-actions game :p2 actions)]
     (println actions)
@@ -105,7 +106,7 @@
                                :previous-game new-game
                                :previous-player :p2
                                :action-points 0
-                               :turn-num 0}))
+                               :turn-num (+ 1 turn-num)}))
         (println result))))
 
 (defn- rotate-button
