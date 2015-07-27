@@ -186,7 +186,7 @@
           (>= (:cost master) laws/max-action-points)
           (> (+ (:cost master) (:cost current-option)) laws/max-action-points)
           (nil? current-option))
-    master
+    (reduced master)
     (let [board (master :board)
           actions (current-option :actions)
           result (turn/simulate-actions board player actions)]
