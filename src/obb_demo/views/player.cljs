@@ -196,4 +196,15 @@
        (rotate-panel game-data)
        [:button.btn.btn-default {:on-click (partial reset-turn game-data)} "Reset turn"]]
       [:div.col-lg-5
-        [boardground/render {} game-data]]]))
+        [boardground/render {} game-data]]
+      [:div.col-lg-5
+       [:div.jumbotron
+        [:h1 "Demo"]
+        [:p "This is a demo that showcases the gameplay of Orion's Belt against a simple AI."]
+        [:p "It's your turn to play. Perform your actions and then click Play turn."]
+        [:p "Pro tip: on the top menu you can see CPU vs CPU and also the 
+            traits of all units."]
+        [:p "Would you like to know more?"
+         [:ul
+          [:li [:a {:href "https://twitter.com/orionsbelt"} "Twitter"]
+          [:li [:a {:href "https://github.com/orionsbelt-battlegrounds/obb-rules"} "Github"]]]]]]]]))

@@ -1,4 +1,5 @@
 language: clojure
+sudo: false
 env:
   global:
     - OBB_SCENARIOS_TO_TEST=10
