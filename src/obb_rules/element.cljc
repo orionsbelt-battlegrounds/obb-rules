@@ -13,7 +13,13 @@
    :coordinate coordinate
    :hitpoints (unit/unit-defense unit)}))
 
-(defn element-player "Element's player" [element] (element :player))
+(defn element-player
+  "Element's player"
+  ([element]
+   (element :player))
+  ([element player]
+   (assoc element :player player)))
+
 (defn element-unit "Element's unit" [element] (element :unit))
 
 (defn hooks
