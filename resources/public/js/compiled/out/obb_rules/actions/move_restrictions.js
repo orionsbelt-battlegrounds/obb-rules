@@ -19,22 +19,22 @@ return new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMP
 /**
  * Given two adjacent coords, checks if the movement is valid
  */
-obb_rules.actions.move_restrictions.normal_movement_valid_QMARK_ = (function obb_rules$actions$move_restrictions$normal_movement_valid_QMARK_(direction,p__12723,p__12724){
-var vec__12727 = p__12723;
-var x1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12727,(0),null);
-var y1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12727,(1),null);
-var vec__12728 = p__12724;
-var x2 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12728,(0),null);
-var y2 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12728,(1),null);
+obb_rules.actions.move_restrictions.normal_movement_valid_QMARK_ = (function obb_rules$actions$move_restrictions$normal_movement_valid_QMARK_(direction,p__12729,p__12730){
+var vec__12733 = p__12729;
+var x1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12733,(0),null);
+var y1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12733,(1),null);
+var vec__12734 = p__12730;
+var x2 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12734,(0),null);
+var y2 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12734,(1),null);
 return (cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(x1,x2)) || (cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(y1,y2));
 });
 /**
  * Given a coordinate, returns all possible adjacent squares
  */
-obb_rules.actions.move_restrictions.normal_movement_generator = (function obb_rules$actions$move_restrictions$normal_movement_generator(_,p__12729){
-var vec__12731 = p__12729;
-var x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12731,(0),null);
-var y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12731,(1),null);
+obb_rules.actions.move_restrictions.normal_movement_generator = (function obb_rules$actions$move_restrictions$normal_movement_generator(_,p__12735){
+var vec__12737 = p__12735;
+var x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12737,(0),null);
+var y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12737,(1),null);
 return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [x,(y - (1))], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [x,(y + (1))], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(x + (1)),y], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(x - (1)),y], null)], null);
 });
 /**
@@ -46,10 +46,10 @@ return cljs.core.not(obb_rules.actions.move_restrictions.normal_movement_valid_Q
 /**
  * Given a coordinate, returns all possible adjacent squares
  */
-obb_rules.actions.move_restrictions.diagonal_movement_generator = (function obb_rules$actions$move_restrictions$diagonal_movement_generator(_,p__12732){
-var vec__12734 = p__12732;
-var x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12734,(0),null);
-var y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12734,(1),null);
+obb_rules.actions.move_restrictions.diagonal_movement_generator = (function obb_rules$actions$move_restrictions$diagonal_movement_generator(_,p__12738){
+var vec__12740 = p__12738;
+var x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12740,(0),null);
+var y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12740,(1),null);
 return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(x - (1)),(y - (1))], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(x - (1)),(y + (1))], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(x + (1)),(y - (1))], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(x + (1)),(y + (1))], null)], null);
 });
 /**
@@ -73,18 +73,18 @@ obb_rules.actions.move_restrictions.valid_QMARK_ = (function obb_rules$actions$m
 var unit = obb_rules.element.element_unit(element);
 var direction = obb_rules.element.element_direction.cljs$core$IFn$_invoke$arity$1(element);
 var movement_type = obb_rules.unit.unit_movement_type(unit);
-var validator = (function (){var G__12739 = movement_type;
-return (obb_rules.actions.move_restrictions.validators.cljs$core$IFn$_invoke$arity$1 ? obb_rules.actions.move_restrictions.validators.cljs$core$IFn$_invoke$arity$1(G__12739) : obb_rules.actions.move_restrictions.validators.call(null,G__12739));
+var validator = (function (){var G__12745 = movement_type;
+return (obb_rules.actions.move_restrictions.validators.cljs$core$IFn$_invoke$arity$1 ? obb_rules.actions.move_restrictions.validators.cljs$core$IFn$_invoke$arity$1(G__12745) : obb_rules.actions.move_restrictions.validators.call(null,G__12745));
 })();
 if(cljs.core.truth_(validator)){
 } else {
 throw (new Error([cljs.core.str("Assert failed: "),cljs.core.str([cljs.core.str("Can't resolve "),cljs.core.str(movement_type),cljs.core.str(" movement type")].join('')),cljs.core.str("\n"),cljs.core.str(cljs.core.pr_str.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([new cljs.core.Symbol(null,"validator","validator",-325659154,null)], 0)))].join('')));
 }
 
-var G__12740 = direction;
-var G__12741 = from;
-var G__12742 = to;
-return (validator.cljs$core$IFn$_invoke$arity$3 ? validator.cljs$core$IFn$_invoke$arity$3(G__12740,G__12741,G__12742) : validator.call(null,G__12740,G__12741,G__12742));
+var G__12746 = direction;
+var G__12747 = from;
+var G__12748 = to;
+return (validator.cljs$core$IFn$_invoke$arity$3 ? validator.cljs$core$IFn$_invoke$arity$3(G__12746,G__12747,G__12748) : validator.call(null,G__12746,G__12747,G__12748));
 });
 /**
  * Returns a collection with the possible destinations based on the element's
@@ -95,15 +95,15 @@ var unit = obb_rules.element.element_unit(element);
 var direction = obb_rules.element.element_direction.cljs$core$IFn$_invoke$arity$1(element);
 var from = obb_rules.element.element_coordinate.cljs$core$IFn$_invoke$arity$1(element);
 var movement_type = obb_rules.unit.unit_movement_type(unit);
-var generator = (function (){var G__12746 = movement_type;
-return (obb_rules.actions.move_restrictions.generators.cljs$core$IFn$_invoke$arity$1 ? obb_rules.actions.move_restrictions.generators.cljs$core$IFn$_invoke$arity$1(G__12746) : obb_rules.actions.move_restrictions.generators.call(null,G__12746));
+var generator = (function (){var G__12752 = movement_type;
+return (obb_rules.actions.move_restrictions.generators.cljs$core$IFn$_invoke$arity$1 ? obb_rules.actions.move_restrictions.generators.cljs$core$IFn$_invoke$arity$1(G__12752) : obb_rules.actions.move_restrictions.generators.call(null,G__12752));
 })();
 if(cljs.core.truth_(generator)){
 } else {
 throw (new Error([cljs.core.str("Assert failed: "),cljs.core.str([cljs.core.str("Can't resolve "),cljs.core.str(movement_type),cljs.core.str(" movement type")].join('')),cljs.core.str("\n"),cljs.core.str(cljs.core.pr_str.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([new cljs.core.Symbol(null,"generator","generator",1067569246,null)], 0)))].join('')));
 }
 
-var G__12747 = direction;
-var G__12748 = from;
-return (generator.cljs$core$IFn$_invoke$arity$2 ? generator.cljs$core$IFn$_invoke$arity$2(G__12747,G__12748) : generator.call(null,G__12747,G__12748));
+var G__12753 = direction;
+var G__12754 = from;
+return (generator.cljs$core$IFn$_invoke$arity$2 ? generator.cljs$core$IFn$_invoke$arity$2(G__12753,G__12754) : generator.call(null,G__12753,G__12754));
 });

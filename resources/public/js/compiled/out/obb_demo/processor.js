@@ -28,17 +28,17 @@ return obb_rules.result.result_board(obb_rules.turn.process_actions(obb_rules.re
  */
 obb_demo.processor.generate_actions = (function obb_demo$processor$generate_actions(game_data){
 var game = cljs.core.constant$keyword$game.cljs$core$IFn$_invoke$arity$1(game_data);
-var turn_num = (function (){var or__6821__auto__ = cljs.core.constant$keyword$turn_DASH_num.cljs$core$IFn$_invoke$arity$1(game_data);
-if(cljs.core.truth_(or__6821__auto__)){
-return or__6821__auto__;
+var turn_num = (function (){var or__6825__auto__ = cljs.core.constant$keyword$turn_DASH_num.cljs$core$IFn$_invoke$arity$1(game_data);
+if(cljs.core.truth_(or__6825__auto__)){
+return or__6825__auto__;
 } else {
 return (0);
 }
 })();
 var player = obb_rules.game.state.cljs$core$IFn$_invoke$arity$1(game);
-var actions = (function (){var G__13506 = game;
-var G__13507 = player;
-return (obb_rules.ai.firingsquad.actions.cljs$core$IFn$_invoke$arity$2 ? obb_rules.ai.firingsquad.actions.cljs$core$IFn$_invoke$arity$2(G__13506,G__13507) : obb_rules.ai.firingsquad.actions.call(null,G__13506,G__13507));
+var actions = (function (){var G__13512 = game;
+var G__13513 = player;
+return (obb_rules.ai.firingsquad.actions.cljs$core$IFn$_invoke$arity$2 ? obb_rules.ai.firingsquad.actions.cljs$core$IFn$_invoke$arity$2(G__13512,G__13513) : obb_rules.ai.firingsquad.actions.call(null,G__13512,G__13513));
 })();
 cljs.core.println.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq(["--",player,actions], 0));
 

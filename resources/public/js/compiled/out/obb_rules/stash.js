@@ -12,8 +12,8 @@ return unit_hash;
  * Creates a new stash
  */
 obb_rules.stash.create = (function obb_rules$stash$create(){
-var argseq__7861__auto__ = ((((0) < arguments.length))?(new cljs.core.IndexedSeq(Array.prototype.slice.call(arguments,(0)),(0))):null);
-return obb_rules.stash.create.cljs$core$IFn$_invoke$arity$variadic(argseq__7861__auto__);
+var argseq__7865__auto__ = ((((0) < arguments.length))?(new cljs.core.IndexedSeq(Array.prototype.slice.call(arguments,(0)),(0))):null);
+return obb_rules.stash.create.cljs$core$IFn$_invoke$arity$variadic(argseq__7865__auto__);
 });
 
 obb_rules.stash.create.cljs$core$IFn$_invoke$arity$variadic = (function (units){
@@ -22,8 +22,8 @@ return cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,units);
 
 obb_rules.stash.create.cljs$lang$maxFixedArity = (0);
 
-obb_rules.stash.create.cljs$lang$applyTo = (function (seq12670){
-return obb_rules.stash.create.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq12670));
+obb_rules.stash.create.cljs$lang$applyTo = (function (seq12676){
+return obb_rules.stash.create.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq12676));
 });
 /**
  * Gets the way to access a unit key on the stash
@@ -39,11 +39,11 @@ return cljs.core.keyword;
  * States how many of a unit are present
  */
 obb_rules.stash.how_many_QMARK_ = (function obb_rules$stash$how_many_QMARK_(stash,unit){
-var or__6821__auto__ = (function (){var G__12674 = obb_rules.stash.accessorfn(stash,unit).call(null,unit);
-return (stash.cljs$core$IFn$_invoke$arity$1 ? stash.cljs$core$IFn$_invoke$arity$1(G__12674) : stash.call(null,G__12674));
+var or__6825__auto__ = (function (){var G__12680 = obb_rules.stash.accessorfn(stash,unit).call(null,unit);
+return (stash.cljs$core$IFn$_invoke$arity$1 ? stash.cljs$core$IFn$_invoke$arity$1(G__12680) : stash.call(null,G__12680));
 })();
-if(cljs.core.truth_(or__6821__auto__)){
-return or__6821__auto__;
+if(cljs.core.truth_(or__6825__auto__)){
+return or__6825__auto__;
 } else {
 return (0);
 }
@@ -65,8 +65,8 @@ return (quantity <= obb_rules.stash.how_many_QMARK_(stash,unit));
  */
 obb_rules.stash.retrieve = (function obb_rules$stash$retrieve(stash,unit,quantity){
 var access_key = obb_rules.stash.accessorfn(stash,unit);
-var unit_key = (function (){var G__12676 = unit;
-return (access_key.cljs$core$IFn$_invoke$arity$1 ? access_key.cljs$core$IFn$_invoke$arity$1(G__12676) : access_key.call(null,G__12676));
+var unit_key = (function (){var G__12682 = unit;
+return (access_key.cljs$core$IFn$_invoke$arity$1 ? access_key.cljs$core$IFn$_invoke$arity$1(G__12682) : access_key.call(null,G__12682));
 })();
 var current_quantity = obb_rules.stash.how_many_QMARK_(stash,unit_key);
 var new_quantity = (current_quantity - quantity);

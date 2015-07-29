@@ -19,7 +19,7 @@ return "StateMismatch";
 if(cljs.core.truth_(obb_rules.element.frozen_QMARK_(element))){
 return "FrozenElement";
 } else {
-if(cljs.core.truth_(obb_rules.simplifier.not_name_EQ_(player,obb_rules.element.element_player(element)))){
+if(cljs.core.truth_(obb_rules.simplifier.not_name_EQ_(player,obb_rules.element.element_player.cljs$core$IFn$_invoke$arity$1(element)))){
 return "NotOwnedElement";
 } else {
 return null;
@@ -39,11 +39,11 @@ return obb_rules.result.action_success.cljs$core$IFn$_invoke$arity$2(new_board,(
 /**
  * Builds a rotate action on a board
  */
-obb_rules.actions.rotate.build_rotate = (function obb_rules$actions$rotate$build_rotate(p__12943){
-var vec__12945 = p__12943;
-var coord = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12945,(0),null);
-var new_direction = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12945,(1),null);
-return ((function (vec__12945,coord,new_direction){
+obb_rules.actions.rotate.build_rotate = (function obb_rules$actions$rotate$build_rotate(p__12949){
+var vec__12951 = p__12949;
+var coord = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12951,(0),null);
+var new_direction = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12951,(1),null);
+return ((function (vec__12951,coord,new_direction){
 return (function obb_rules$actions$rotate$build_rotate_$_rotator(board,player){
 var element = obb_rules.board.get_element(board,coord);
 var temp__4423__auto__ = obb_rules.actions.rotate.rotate_restrictions(player,board,element);
@@ -54,5 +54,5 @@ return obb_rules.result.action_failed.cljs$core$IFn$_invoke$arity$1(error);
 return obb_rules.actions.rotate.process_rotate(board,coord,element,new_direction);
 }
 });
-;})(vec__12945,coord,new_direction))
+;})(vec__12951,coord,new_direction))
 });

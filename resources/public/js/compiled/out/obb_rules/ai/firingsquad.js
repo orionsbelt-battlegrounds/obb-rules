@@ -14,28 +14,28 @@ if(typeof obb_rules.ai.firingsquad.actions !== 'undefined'){
 /**
  * Returns a list of actions to apply to the current game
  */
-obb_rules.ai.firingsquad.actions = (function (){var method_table__7716__auto__ = (function (){var G__13497 = cljs.core.PersistentArrayMap.EMPTY;
-return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__13497) : cljs.core.atom.call(null,G__13497));
+obb_rules.ai.firingsquad.actions = (function (){var method_table__7720__auto__ = (function (){var G__13503 = cljs.core.PersistentArrayMap.EMPTY;
+return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__13503) : cljs.core.atom.call(null,G__13503));
 })();
-var prefer_table__7717__auto__ = (function (){var G__13498 = cljs.core.PersistentArrayMap.EMPTY;
-return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__13498) : cljs.core.atom.call(null,G__13498));
+var prefer_table__7721__auto__ = (function (){var G__13504 = cljs.core.PersistentArrayMap.EMPTY;
+return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__13504) : cljs.core.atom.call(null,G__13504));
 })();
-var method_cache__7718__auto__ = (function (){var G__13499 = cljs.core.PersistentArrayMap.EMPTY;
-return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__13499) : cljs.core.atom.call(null,G__13499));
+var method_cache__7722__auto__ = (function (){var G__13505 = cljs.core.PersistentArrayMap.EMPTY;
+return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__13505) : cljs.core.atom.call(null,G__13505));
 })();
-var cached_hierarchy__7719__auto__ = (function (){var G__13500 = cljs.core.PersistentArrayMap.EMPTY;
-return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__13500) : cljs.core.atom.call(null,G__13500));
+var cached_hierarchy__7723__auto__ = (function (){var G__13506 = cljs.core.PersistentArrayMap.EMPTY;
+return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__13506) : cljs.core.atom.call(null,G__13506));
 })();
-var hierarchy__7720__auto__ = cljs.core.get.cljs$core$IFn$_invoke$arity$3(cljs.core.PersistentArrayMap.EMPTY,cljs.core.constant$keyword$hierarchy,cljs.core.get_global_hierarchy());
-return (new cljs.core.MultiFn(cljs.core.symbol.cljs$core$IFn$_invoke$arity$2("obb-rules.ai.firingsquad","actions"),((function (method_table__7716__auto__,prefer_table__7717__auto__,method_cache__7718__auto__,cached_hierarchy__7719__auto__,hierarchy__7720__auto__){
+var hierarchy__7724__auto__ = cljs.core.get.cljs$core$IFn$_invoke$arity$3(cljs.core.PersistentArrayMap.EMPTY,cljs.core.constant$keyword$hierarchy,cljs.core.get_global_hierarchy());
+return (new cljs.core.MultiFn(cljs.core.symbol.cljs$core$IFn$_invoke$arity$2("obb-rules.ai.firingsquad","actions"),((function (method_table__7720__auto__,prefer_table__7721__auto__,method_cache__7722__auto__,cached_hierarchy__7723__auto__,hierarchy__7724__auto__){
 return (function (game,player){
 if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.constant$keyword$deploy,cljs.core.keyword.cljs$core$IFn$_invoke$arity$1(obb_rules.game.state.cljs$core$IFn$_invoke$arity$1(game)))){
 return cljs.core.constant$keyword$deploy;
 } else {
 return cljs.core.constant$keyword$turn;
 }
-});})(method_table__7716__auto__,prefer_table__7717__auto__,method_cache__7718__auto__,cached_hierarchy__7719__auto__,hierarchy__7720__auto__))
-,cljs.core.constant$keyword$default,hierarchy__7720__auto__,method_table__7716__auto__,prefer_table__7717__auto__,method_cache__7718__auto__,cached_hierarchy__7719__auto__));
+});})(method_table__7720__auto__,prefer_table__7721__auto__,method_cache__7722__auto__,cached_hierarchy__7723__auto__,hierarchy__7724__auto__))
+,cljs.core.constant$keyword$default,hierarchy__7724__auto__,method_table__7720__auto__,prefer_table__7721__auto__,method_cache__7722__auto__,cached_hierarchy__7723__auto__));
 })();
 }
 obb_rules.ai.firingsquad.actions.cljs$core$IMultiFn$_add_method$arity$3(null,cljs.core.constant$keyword$deploy,(function (game,player){
@@ -70,8 +70,8 @@ var elements = obb_rules.board.board_elements(game,player);
 var gatherer = cljs.core.partial.cljs$core$IFn$_invoke$arity$2(obb_rules.ai.firingsquad.gather_element_actions,game);
 var option = obb_rules.ai.firingsquad.find_one(player,cljs.core.sort_by.cljs$core$IFn$_invoke$arity$2(obb_rules.ai.common.option_value_sorter,cljs.core.reduce.cljs$core$IFn$_invoke$arity$3(gatherer,cljs.core.PersistentVector.EMPTY,elements)));
 if(cljs.core.truth_(option)){
-var G__13501 = cljs.core.constant$keyword$actions;
-return (option.cljs$core$IFn$_invoke$arity$1 ? option.cljs$core$IFn$_invoke$arity$1(G__13501) : option.call(null,G__13501));
+var G__13507 = cljs.core.constant$keyword$actions;
+return (option.cljs$core$IFn$_invoke$arity$1 ? option.cljs$core$IFn$_invoke$arity$1(G__13507) : option.call(null,G__13507));
 } else {
 return cljs.core.PersistentVector.EMPTY;
 }
