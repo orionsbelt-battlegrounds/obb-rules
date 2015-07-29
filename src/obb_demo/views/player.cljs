@@ -4,6 +4,7 @@
             [obb-rules.element :as element]
             [obb-rules.actions.move :as move]
             [obb-rules.stash :as stash]
+            [obb-rules.unit :as unit]
             [obb-rules.host-dependent :as host]
             [obb-demo.processor :as processor]
             [obb-demo.views.power-bar :as power-bar]
@@ -181,6 +182,41 @@
        ]]
     ))
 
+(defn- selected-element-info
+  "Adds docs"
+  [game-data]
+  (if-let [element (:selected-element game-data)]
+    (let [unit (element/element-unit element)]
+     [:div.panel.panel-info {:style {:margin-top "20px"}}
+      [:div.panel-heading
+       [:h3.panel-title (str "Selected element: " (unit/unit-name unit))]]
+      [:div.panel-body
+       [:div.row
+        [:div.col-lg-4
+         [:ul.list-group
+          [:li.list-group-item [:span.badge (unit/unit-attack unit)] "Attack"]
+          [:li.list-group-item [:span.badge (name (unit/attack-type unit))] "Type"]
+          [:li.list-group-item [:span.badge (unit/unit-range unit)] "Range"]
+          (when (:after-attack unit)
+            [:li.list-group-item [:span.badge (map #(name (first %)) (:after-attack unit))] "Powers"])]]
+
+        [:div.col-lg-4
+         [:ul.list-group
+          [:li.list-group-item [:span.badge (unit/unit-defense unit)] "Defense"]
+          (when (:after-hit unit)
+            [:li.list-group-item [:span.badge (map #(name (first %)) (:after-hit unit))] "Powers"])
+          [:li.list-group-item [:span.badge (name (unit/unit-category unit))] "Category"]]]
+
+        [:div.col-lg-4
+         [:ul.list-group
+          [:li.list-group-item [:span.badge (name (unit/unit-movement-type unit))] "Movement"]
+          [:li.list-group-item [:span.badge (unit/unit-movement-cost unit)] "Movement cost"]]]
+
+        ]
+       ]]
+  )))
+
+
 (defn render
   [state]
   (let [game-data (get-game-data state)
@@ -196,7 +232,8 @@
        (rotate-panel game-data)
        [:button.btn.btn-default {:on-click (partial reset-turn game-data)} "Reset turn"]]
       [:div.col-lg-5
-        [boardground/render {} game-data]]
+        [boardground/render {} game-data]
+        (selected-element-info game-data)]
       [:div.col-lg-5
        [:div.jumbotron
         [:h1 "Demo"]

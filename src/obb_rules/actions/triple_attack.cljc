@@ -4,14 +4,21 @@
   "Processes triple attack logic"
   (:require [obb-rules.element :as element]
             [obb-rules.board :as board]
+            [obb-rules.simplifier :as simplify]
             [obb-rules.unit :as unit]
             [obb-rules.actions.damage-calculator :as calculator]
             [obb-rules.actions.direction :as direction]))
 
+(defn- different-players?
+  "True if the elements are from different players"
+  [attacker target]
+  (simplify/not-name= (element/element-player attacker)
+                      (element/element-player target)))
+
 (defn- apply-triple
   "Applies the triple damage to a target"
   [config attacker board info target]
-  (if target
+  (if (and target (different-players? attacker target))
     (let [destroyed (calculator/destroyed board attacker target)
           target-coordinate (element/element-coordinate target)
           board (board/remove-from-element board target-coordinate destroyed)

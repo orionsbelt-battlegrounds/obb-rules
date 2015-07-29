@@ -70,3 +70,14 @@
     (is (= :triple (triple-2-info :attack-type)))
     (is (nil? (board/get-element (result/result-board result) [2 3])))
     (is (nil? (board/get-element (result/result-board result) [3 3])))))
+
+(deftest attack-driller-friendly
+  (let [board (-> board-with-driller
+                  (board/place-element [1 3] rain-element)
+                  (board/place-element [2 3] rain-element)
+                  (board/place-element [3 3] (element/element-player rain-element :p1)))
+        attack (action/build-action [:attack [2 2] [2 3]])
+        result (attack board :p1)]
+    (is (result/succeeded? result))
+    (is (board/get-element (result/result-board result) [3 3]))))
+
