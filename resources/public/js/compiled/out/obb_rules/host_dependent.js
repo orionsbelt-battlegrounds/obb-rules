@@ -2,8 +2,8 @@
 goog.provide('obb_rules.host_dependent');
 goog.require('cljs.core');
 obb_rules.host_dependent.parse_int = (function obb_rules$host_dependent$parse_int(raw){
-var G__12534 = raw;
-return parseInt(G__12534);
+var G__12532 = raw;
+return parseInt(G__12532);
 });
 obb_rules.host_dependent.get_env = (function obb_rules$host_dependent$get_env(var_name,default_value){
 return default_value;

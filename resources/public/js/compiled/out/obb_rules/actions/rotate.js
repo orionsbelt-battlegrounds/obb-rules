@@ -39,11 +39,11 @@ return obb_rules.result.action_success.cljs$core$IFn$_invoke$arity$2(new_board,(
 /**
  * Builds a rotate action on a board
  */
-obb_rules.actions.rotate.build_rotate = (function obb_rules$actions$rotate$build_rotate(p__13062){
-var vec__13064 = p__13062;
-var coord = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__13064,(0),null);
-var new_direction = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__13064,(1),null);
-return ((function (vec__13064,coord,new_direction){
+obb_rules.actions.rotate.build_rotate = (function obb_rules$actions$rotate$build_rotate(p__13060){
+var vec__13062 = p__13060;
+var coord = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__13062,(0),null);
+var new_direction = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__13062,(1),null);
+return ((function (vec__13062,coord,new_direction){
 return (function obb_rules$actions$rotate$build_rotate_$_rotator(board,player){
 var element = obb_rules.board.get_element(board,coord);
 var temp__4423__auto__ = obb_rules.actions.rotate.rotate_restrictions(player,board,element);
@@ -54,5 +54,5 @@ return obb_rules.result.action_failed.cljs$core$IFn$_invoke$arity$1(error);
 return obb_rules.actions.rotate.process_rotate(board,coord,element,new_direction);
 }
 });
-;})(vec__13064,coord,new_direction))
+;})(vec__13062,coord,new_direction))
 });

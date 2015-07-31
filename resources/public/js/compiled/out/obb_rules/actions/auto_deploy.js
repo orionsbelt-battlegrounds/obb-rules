@@ -24,8 +24,8 @@ return "MustBeDeployState";
 if(cljs.core.truth_(obb_rules.stash.cleared_QMARK_(obb_rules.board.get_stash(board,player)))){
 return "NoStash";
 } else {
-if(((function (){var G__13015 = template;
-return (obb_rules.actions.auto_deploy.templates.cljs$core$IFn$_invoke$arity$1 ? obb_rules.actions.auto_deploy.templates.cljs$core$IFn$_invoke$arity$1(G__13015) : obb_rules.actions.auto_deploy.templates.call(null,G__13015));
+if(((function (){var G__13013 = template;
+return (obb_rules.actions.auto_deploy.templates.cljs$core$IFn$_invoke$arity$1 ? obb_rules.actions.auto_deploy.templates.cljs$core$IFn$_invoke$arity$1(G__13013) : obb_rules.actions.auto_deploy.templates.call(null,G__13013));
 })() == null)){
 return "NoTemplate";
 } else {
@@ -37,21 +37,21 @@ return null;
 /**
  * Creates a action that auto deploys a stash
  */
-obb_rules.actions.auto_deploy.build_auto_deploy = (function obb_rules$actions$auto_deploy$build_auto_deploy(p__13016){
-var vec__13020 = p__13016;
-var raw_template_name = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__13020,(0),null);
+obb_rules.actions.auto_deploy.build_auto_deploy = (function obb_rules$actions$auto_deploy$build_auto_deploy(p__13014){
+var vec__13018 = p__13014;
+var raw_template_name = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__13018,(0),null);
 var template_name = cljs.core.keyword.cljs$core$IFn$_invoke$arity$1(raw_template_name);
-return ((function (template_name,vec__13020,raw_template_name){
+return ((function (template_name,vec__13018,raw_template_name){
 return (function obb_rules$actions$auto_deploy$build_auto_deploy_$_auto_deployer(board,player){
 var temp__4423__auto__ = obb_rules.actions.auto_deploy.verify_restrictions(board,player,template_name);
 if(cljs.core.truth_(temp__4423__auto__)){
 var error = temp__4423__auto__;
 return obb_rules.result.action_failed.cljs$core$IFn$_invoke$arity$1(error);
 } else {
-return (function (){var G__13022 = template_name;
-return (obb_rules.actions.auto_deploy.templates.cljs$core$IFn$_invoke$arity$1 ? obb_rules.actions.auto_deploy.templates.cljs$core$IFn$_invoke$arity$1(G__13022) : obb_rules.actions.auto_deploy.templates.call(null,G__13022));
+return (function (){var G__13020 = template_name;
+return (obb_rules.actions.auto_deploy.templates.cljs$core$IFn$_invoke$arity$1 ? obb_rules.actions.auto_deploy.templates.cljs$core$IFn$_invoke$arity$1(G__13020) : obb_rules.actions.auto_deploy.templates.call(null,G__13020));
 })().call(null,board,player);
 }
 });
-;})(template_name,vec__13020,raw_template_name))
+;})(template_name,vec__13018,raw_template_name))
 });

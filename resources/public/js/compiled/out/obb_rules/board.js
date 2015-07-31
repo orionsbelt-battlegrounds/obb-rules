@@ -15,8 +15,8 @@ return cljs.core.rand_nth(new cljs.core.PersistentVector(null, 6, 5, cljs.core.P
  * Creates an empty board
  */
 obb_rules.board.create_board = (function obb_rules$board$create_board(){
-var G__12634 = arguments.length;
-switch (G__12634) {
+var G__12632 = arguments.length;
+switch (G__12632) {
 case 0:
 return obb_rules.board.create_board.cljs$core$IFn$_invoke$arity$0();
 
@@ -43,28 +43,28 @@ obb_rules.board.create_board.cljs$lang$maxFixedArity = 2;
 /**
  * True if the given element is from the given player
  */
-obb_rules.board.player_element_QMARK_ = (function obb_rules$board$player_element_QMARK_(player,p__12636){
-var vec__12638 = p__12636;
-var coordinate = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12638,(0),null);
-var element = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12638,(1),null);
+obb_rules.board.player_element_QMARK_ = (function obb_rules$board$player_element_QMARK_(player,p__12634){
+var vec__12636 = p__12634;
+var coordinate = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12636,(0),null);
+var element = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12636,(1),null);
 return obb_rules.simplifier.name_EQ_(player,obb_rules.element.element_player.cljs$core$IFn$_invoke$arity$1(element));
 });
 /**
  * Gets the elements of a given player
  */
 obb_rules.board.board_elements = (function obb_rules$board$board_elements(board,player){
-return cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p1__12639_SHARP_){
-return cljs.core.last(p1__12639_SHARP_);
-}),cljs.core.filter.cljs$core$IFn$_invoke$arity$2(cljs.core.partial.cljs$core$IFn$_invoke$arity$2(obb_rules.board.player_element_QMARK_,player),(function (){var G__12641 = cljs.core.constant$keyword$elements;
-return (board.cljs$core$IFn$_invoke$arity$1 ? board.cljs$core$IFn$_invoke$arity$1(G__12641) : board.call(null,G__12641));
+return cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p1__12637_SHARP_){
+return cljs.core.last(p1__12637_SHARP_);
+}),cljs.core.filter.cljs$core$IFn$_invoke$arity$2(cljs.core.partial.cljs$core$IFn$_invoke$arity$2(obb_rules.board.player_element_QMARK_,player),(function (){var G__12639 = cljs.core.constant$keyword$elements;
+return (board.cljs$core$IFn$_invoke$arity$1 ? board.cljs$core$IFn$_invoke$arity$1(G__12639) : board.call(null,G__12639));
 })()));
 });
 /**
  * Gets the number of board elements
  */
 obb_rules.board.board_elements_count = (function obb_rules$board$board_elements_count(){
-var G__12643 = arguments.length;
-switch (G__12643) {
+var G__12641 = arguments.length;
+switch (G__12641) {
 case 1:
 return obb_rules.board.board_elements_count.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -80,8 +80,8 @@ throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(arguments.lengt
 });
 
 obb_rules.board.board_elements_count.cljs$core$IFn$_invoke$arity$1 = (function (board){
-return cljs.core.count((function (){var G__12644 = cljs.core.constant$keyword$elements;
-return (board.cljs$core$IFn$_invoke$arity$1 ? board.cljs$core$IFn$_invoke$arity$1(G__12644) : board.call(null,G__12644));
+return cljs.core.count((function (){var G__12642 = cljs.core.constant$keyword$elements;
+return (board.cljs$core$IFn$_invoke$arity$1 ? board.cljs$core$IFn$_invoke$arity$1(G__12642) : board.call(null,G__12642));
 })());
 });
 
@@ -94,8 +94,8 @@ obb_rules.board.board_elements_count.cljs$lang$maxFixedArity = 2;
  * Checks if a board is empty
  */
 obb_rules.board.empty_board_QMARK_ = (function obb_rules$board$empty_board_QMARK_(){
-var G__12647 = arguments.length;
-switch (G__12647) {
+var G__12645 = arguments.length;
+switch (G__12645) {
 case 1:
 return obb_rules.board.empty_board_QMARK_.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -123,11 +123,11 @@ obb_rules.board.empty_board_QMARK_.cljs$lang$maxFixedArity = 2;
  * Gets a board's witdh
  */
 obb_rules.board.board_width = (function obb_rules$board$board_width(board){
-var or__6938__auto__ = (function (){var G__12652 = cljs.core.constant$keyword$width;
-return (board.cljs$core$IFn$_invoke$arity$1 ? board.cljs$core$IFn$_invoke$arity$1(G__12652) : board.call(null,G__12652));
+var or__6936__auto__ = (function (){var G__12650 = cljs.core.constant$keyword$width;
+return (board.cljs$core$IFn$_invoke$arity$1 ? board.cljs$core$IFn$_invoke$arity$1(G__12650) : board.call(null,G__12650));
 })();
-if(cljs.core.truth_(or__6938__auto__)){
-return or__6938__auto__;
+if(cljs.core.truth_(or__6936__auto__)){
+return or__6936__auto__;
 } else {
 return obb_rules.laws.default_board_w;
 }
@@ -136,11 +136,11 @@ return obb_rules.laws.default_board_w;
  * Gets a board's height
  */
 obb_rules.board.board_height = (function obb_rules$board$board_height(board){
-var or__6938__auto__ = (function (){var G__12656 = cljs.core.constant$keyword$height;
-return (board.cljs$core$IFn$_invoke$arity$1 ? board.cljs$core$IFn$_invoke$arity$1(G__12656) : board.call(null,G__12656));
+var or__6936__auto__ = (function (){var G__12654 = cljs.core.constant$keyword$height;
+return (board.cljs$core$IFn$_invoke$arity$1 ? board.cljs$core$IFn$_invoke$arity$1(G__12654) : board.call(null,G__12654));
 })();
-if(cljs.core.truth_(or__6938__auto__)){
-return or__6938__auto__;
+if(cljs.core.truth_(or__6936__auto__)){
+return or__6936__auto__;
 } else {
 return obb_rules.laws.default_board_h;
 }
@@ -149,15 +149,15 @@ return obb_rules.laws.default_board_h;
  * Gets the board's terrain
  */
 obb_rules.board.board_terrain = (function obb_rules$board$board_terrain(board){
-var G__12658 = cljs.core.constant$keyword$terrain;
-return (board.cljs$core$IFn$_invoke$arity$1 ? board.cljs$core$IFn$_invoke$arity$1(G__12658) : board.call(null,G__12658));
+var G__12656 = cljs.core.constant$keyword$terrain;
+return (board.cljs$core$IFn$_invoke$arity$1 ? board.cljs$core$IFn$_invoke$arity$1(G__12656) : board.call(null,G__12656));
 });
 /**
  * Gets/sets all the elements
  */
 obb_rules.board.elements = (function obb_rules$board$elements(){
-var G__12660 = arguments.length;
-switch (G__12660) {
+var G__12658 = arguments.length;
+switch (G__12658) {
 case 1:
 return obb_rules.board.elements.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -173,8 +173,8 @@ throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(arguments.lengt
 });
 
 obb_rules.board.elements.cljs$core$IFn$_invoke$arity$1 = (function (board){
-var G__12661 = cljs.core.constant$keyword$elements;
-return (board.cljs$core$IFn$_invoke$arity$1 ? board.cljs$core$IFn$_invoke$arity$1(G__12661) : board.call(null,G__12661));
+var G__12659 = cljs.core.constant$keyword$elements;
+return (board.cljs$core$IFn$_invoke$arity$1 ? board.cljs$core$IFn$_invoke$arity$1(G__12659) : board.call(null,G__12659));
 });
 
 obb_rules.board.elements.cljs$core$IFn$_invoke$arity$2 = (function (board,elements){
@@ -192,9 +192,9 @@ return cljs.core.get_in.cljs$core$IFn$_invoke$arity$2(board,new cljs.core.Persis
  * Gets an element given a coordinate
  */
 obb_rules.board.get_element_consider_removed = (function obb_rules$board$get_element_consider_removed(board,coord){
-var or__6938__auto__ = obb_rules.board.get_element(board,coord);
-if(cljs.core.truth_(or__6938__auto__)){
-return or__6938__auto__;
+var or__6936__auto__ = obb_rules.board.get_element(board,coord);
+if(cljs.core.truth_(or__6936__auto__)){
+return or__6936__auto__;
 } else {
 return cljs.core.get_in.cljs$core$IFn$_invoke$arity$2(board,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$removed_DASH_elements,coord], null));
 }
@@ -202,21 +202,21 @@ return cljs.core.get_in.cljs$core$IFn$_invoke$arity$2(board,new cljs.core.Persis
 /**
  * Checks if a given coord is in the board
  */
-obb_rules.board.in_bounds_QMARK_ = (function obb_rules$board$in_bounds_QMARK_(board,p__12663){
-var vec__12665 = p__12663;
-var x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12665,(0),null);
-var y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12665,(1),null);
+obb_rules.board.in_bounds_QMARK_ = (function obb_rules$board$in_bounds_QMARK_(board,p__12661){
+var vec__12663 = p__12661;
+var x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12663,(0),null);
+var y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12663,(1),null);
 return ((x > (0))) && ((y > (0))) && ((x <= (8))) && ((y <= (8)));
 });
 /**
  * Checks if an element can be placed
  */
 obb_rules.board.can_place_element_QMARK_ = (function obb_rules$board$can_place_element_QMARK_(board,coord,elem){
-var and__6926__auto__ = obb_rules.board.in_bounds_QMARK_(board,coord);
-if(cljs.core.truth_(and__6926__auto__)){
+var and__6924__auto__ = obb_rules.board.in_bounds_QMARK_(board,coord);
+if(cljs.core.truth_(and__6924__auto__)){
 return (obb_rules.board.get_element(board,coord) == null);
 } else {
-return and__6926__auto__;
+return and__6924__auto__;
 }
 });
 /**
@@ -224,11 +224,11 @@ return and__6926__auto__;
  */
 obb_rules.board.register_removed_element = (function obb_rules$board$register_removed_element(board,coord,element,destroyed_QMARK_){
 if(cljs.core.truth_(destroyed_QMARK_)){
-var all_removed = (function (){var or__6938__auto__ = (function (){var G__12669 = cljs.core.constant$keyword$removed_DASH_elements;
-return (board.cljs$core$IFn$_invoke$arity$1 ? board.cljs$core$IFn$_invoke$arity$1(G__12669) : board.call(null,G__12669));
+var all_removed = (function (){var or__6936__auto__ = (function (){var G__12667 = cljs.core.constant$keyword$removed_DASH_elements;
+return (board.cljs$core$IFn$_invoke$arity$1 ? board.cljs$core$IFn$_invoke$arity$1(G__12667) : board.call(null,G__12667));
 })();
-if(cljs.core.truth_(or__6938__auto__)){
-return or__6938__auto__;
+if(cljs.core.truth_(or__6936__auto__)){
+return or__6936__auto__;
 } else {
 return cljs.core.PersistentArrayMap.EMPTY;
 }
@@ -242,8 +242,8 @@ return board;
  * Removes an element from the board
  */
 obb_rules.board.remove_element = (function obb_rules$board$remove_element(){
-var G__12671 = arguments.length;
-switch (G__12671) {
+var G__12669 = arguments.length;
+switch (G__12669) {
 case 2:
 return obb_rules.board.remove_element.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(arguments[(1)]));
 
@@ -263,8 +263,8 @@ return obb_rules.board.remove_element.cljs$core$IFn$_invoke$arity$3(board,coord,
 });
 
 obb_rules.board.remove_element.cljs$core$IFn$_invoke$arity$3 = (function (board,coord,destroyed_QMARK_){
-var elements = (function (){var G__12672 = cljs.core.constant$keyword$elements;
-return (board.cljs$core$IFn$_invoke$arity$1 ? board.cljs$core$IFn$_invoke$arity$1(G__12672) : board.call(null,G__12672));
+var elements = (function (){var G__12670 = cljs.core.constant$keyword$elements;
+return (board.cljs$core$IFn$_invoke$arity$1 ? board.cljs$core$IFn$_invoke$arity$1(G__12670) : board.call(null,G__12670));
 })();
 var new_elements = cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(elements,coord);
 return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(obb_rules.board.register_removed_element(board,coord,cljs.core.get.cljs$core$IFn$_invoke$arity$2(elements,coord),destroyed_QMARK_),cljs.core.constant$keyword$elements,new_elements);
@@ -275,8 +275,8 @@ obb_rules.board.remove_element.cljs$lang$maxFixedArity = 3;
  * Swaps a given element for another
  */
 obb_rules.board.swap_element = (function obb_rules$board$swap_element(board,coord,new_elem){
-var elements = (function (){var G__12675 = cljs.core.constant$keyword$elements;
-return (board.cljs$core$IFn$_invoke$arity$1 ? board.cljs$core$IFn$_invoke$arity$1(G__12675) : board.call(null,G__12675));
+var elements = (function (){var G__12673 = cljs.core.constant$keyword$elements;
+return (board.cljs$core$IFn$_invoke$arity$1 ? board.cljs$core$IFn$_invoke$arity$1(G__12673) : board.call(null,G__12673));
 })();
 var element_with_coord = obb_rules.element.element_coordinate.cljs$core$IFn$_invoke$arity$2(new_elem,coord);
 var new_elements = cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(elements,coord,element_with_coord);
@@ -306,13 +306,13 @@ return !((obb_rules.board.get_element(board,coord) == null));
 /**
  * Checks if two coordinates are adjacent
  */
-obb_rules.board.adjacent_QMARK_ = (function obb_rules$board$adjacent_QMARK_(p__12676,p__12677){
-var vec__12680 = p__12676;
-var c1x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12680,(0),null);
-var c1y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12680,(1),null);
-var vec__12681 = p__12677;
-var c2x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12681,(0),null);
-var c2y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12681,(1),null);
+obb_rules.board.adjacent_QMARK_ = (function obb_rules$board$adjacent_QMARK_(p__12674,p__12675){
+var vec__12678 = p__12674;
+var c1x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12678,(0),null);
+var c1y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12678,(1),null);
+var vec__12679 = p__12675;
+var c2x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12679,(0),null);
+var c2y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12679,(1),null);
 var dx = (c1x - c2x);
 var dy = (c1y - c2y);
 return (((-2) < dx)) && (((2) > dx)) && (((-2) < dy)) && (((2) > dy));
@@ -321,8 +321,8 @@ return (((-2) < dx)) && (((2) > dx)) && (((-2) < dy)) && (((2) > dy));
  * Removes a quantity from the board, marking it as move
  */
 obb_rules.board.remove_from_element = (function obb_rules$board$remove_from_element(){
-var G__12683 = arguments.length;
-switch (G__12683) {
+var G__12681 = arguments.length;
+switch (G__12681) {
 case 3:
 return obb_rules.board.remove_from_element.cljs$core$IFn$_invoke$arity$3((arguments[(0)]),(arguments[(1)]),(arguments[(2)]));
 
@@ -363,16 +363,16 @@ return obb_rules.board.remove_from_element.cljs$core$IFn$_invoke$arity$4(board,c
  * Adds a quantity to an element
  */
 obb_rules.board.add_to_element = (function obb_rules$board$add_to_element(board,coord,extra_quantity,from_element){
-var element = (function (){var or__6938__auto__ = obb_rules.board.get_element(board,coord);
-if(cljs.core.truth_(or__6938__auto__)){
-return or__6938__auto__;
+var element = (function (){var or__6936__auto__ = obb_rules.board.get_element(board,coord);
+if(cljs.core.truth_(or__6936__auto__)){
+return or__6936__auto__;
 } else {
 return from_element;
 }
 })();
-var quantity = (function (){var or__6938__auto__ = (0);
-if(cljs.core.truth_(or__6938__auto__)){
-return or__6938__auto__;
+var quantity = (function (){var or__6936__auto__ = (0);
+if(cljs.core.truth_(or__6936__auto__)){
+return or__6936__auto__;
 } else {
 return obb_rules.element.element_quantity.cljs$core$IFn$_invoke$arity$1(element);
 }

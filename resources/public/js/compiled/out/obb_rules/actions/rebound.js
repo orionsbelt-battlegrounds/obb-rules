@@ -9,32 +9,32 @@ goog.require('obb_rules.unit');
 /**
  * Calculates the destroyed units by rebound
  */
-obb_rules.actions.rebound.calculate_destroyed = (function obb_rules$actions$rebound$calculate_destroyed(config,p__12744){
-var map__12747 = p__12744;
-var map__12747__$1 = ((cljs.core.seq_QMARK_(map__12747))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__12747):map__12747);
-var args = map__12747__$1;
-var attacker = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12747__$1,cljs.core.constant$keyword$attacker);
-var board = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12747__$1,cljs.core.constant$keyword$board);
-var info = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12747__$1,cljs.core.constant$keyword$info);
-var unused_damage = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12747__$1,cljs.core.constant$keyword$unused_DASH_damage);
-var rebound_target = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12747__$1,cljs.core.constant$keyword$rebound_DASH_target);
-var vec__12748 = obb_rules.actions.damage_calculator.destroyed_with_unused_damage.cljs$core$IFn$_invoke$arity$4(board,attacker,rebound_target,unused_damage);
-var destroyed = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12748,(0),null);
-var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12748,(1),null);
+obb_rules.actions.rebound.calculate_destroyed = (function obb_rules$actions$rebound$calculate_destroyed(config,p__12742){
+var map__12745 = p__12742;
+var map__12745__$1 = ((cljs.core.seq_QMARK_(map__12745))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__12745):map__12745);
+var args = map__12745__$1;
+var attacker = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12745__$1,cljs.core.constant$keyword$attacker);
+var board = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12745__$1,cljs.core.constant$keyword$board);
+var info = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12745__$1,cljs.core.constant$keyword$info);
+var unused_damage = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12745__$1,cljs.core.constant$keyword$unused_DASH_damage);
+var rebound_target = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12745__$1,cljs.core.constant$keyword$rebound_DASH_target);
+var vec__12746 = obb_rules.actions.damage_calculator.destroyed_with_unused_damage.cljs$core$IFn$_invoke$arity$4(board,attacker,rebound_target,unused_damage);
+var destroyed = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12746,(0),null);
+var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12746,(1),null);
 return destroyed;
 });
 /**
  * Applies rebound on the board
  */
-obb_rules.actions.rebound.process_rebound = (function obb_rules$actions$rebound$process_rebound(config,p__12749){
-var map__12751 = p__12749;
-var map__12751__$1 = ((cljs.core.seq_QMARK_(map__12751))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__12751):map__12751);
-var args = map__12751__$1;
-var attacker = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12751__$1,cljs.core.constant$keyword$attacker);
-var board = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12751__$1,cljs.core.constant$keyword$board);
-var info = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12751__$1,cljs.core.constant$keyword$info);
-var unused_damage = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12751__$1,cljs.core.constant$keyword$unused_DASH_damage);
-var rebound_target = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12751__$1,cljs.core.constant$keyword$rebound_DASH_target);
+obb_rules.actions.rebound.process_rebound = (function obb_rules$actions$rebound$process_rebound(config,p__12747){
+var map__12749 = p__12747;
+var map__12749__$1 = ((cljs.core.seq_QMARK_(map__12749))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__12749):map__12749);
+var args = map__12749__$1;
+var attacker = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12749__$1,cljs.core.constant$keyword$attacker);
+var board = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12749__$1,cljs.core.constant$keyword$board);
+var info = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12749__$1,cljs.core.constant$keyword$info);
+var unused_damage = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12749__$1,cljs.core.constant$keyword$unused_DASH_damage);
+var rebound_target = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12749__$1,cljs.core.constant$keyword$rebound_DASH_target);
 var destroyed = obb_rules.actions.rebound.calculate_destroyed(config,args);
 var rebound_coordinate = obb_rules.element.element_coordinate.cljs$core$IFn$_invoke$arity$1(rebound_target);
 var board__$1 = obb_rules.board.remove_from_element.cljs$core$IFn$_invoke$arity$3(board,rebound_coordinate,destroyed);
@@ -53,38 +53,38 @@ return (in_coord == null);
 /**
  * Checks if the rebound can be performed
  */
-obb_rules.actions.rebound.aplicable_QMARK_ = (function obb_rules$actions$rebound$aplicable_QMARK_(config,p__12752){
-var map__12754 = p__12752;
-var map__12754__$1 = ((cljs.core.seq_QMARK_(map__12754))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__12754):map__12754);
-var args = map__12754__$1;
-var target = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12754__$1,cljs.core.constant$keyword$target);
-var board = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12754__$1,cljs.core.constant$keyword$board);
-var unused_damage = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12754__$1,cljs.core.constant$keyword$unused_DASH_damage);
-var rebound_target = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12754__$1,cljs.core.constant$keyword$rebound_DASH_target);
-var and__6926__auto__ = (unused_damage >= (0));
-if(and__6926__auto__){
-var and__6926__auto____$1 = obb_rules.actions.rebound.target_was_destroyed_QMARK_(board,target);
-if(cljs.core.truth_(and__6926__auto____$1)){
+obb_rules.actions.rebound.aplicable_QMARK_ = (function obb_rules$actions$rebound$aplicable_QMARK_(config,p__12750){
+var map__12752 = p__12750;
+var map__12752__$1 = ((cljs.core.seq_QMARK_(map__12752))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__12752):map__12752);
+var args = map__12752__$1;
+var target = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12752__$1,cljs.core.constant$keyword$target);
+var board = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12752__$1,cljs.core.constant$keyword$board);
+var unused_damage = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12752__$1,cljs.core.constant$keyword$unused_DASH_damage);
+var rebound_target = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12752__$1,cljs.core.constant$keyword$rebound_DASH_target);
+var and__6924__auto__ = (unused_damage >= (0));
+if(and__6924__auto__){
+var and__6924__auto____$1 = obb_rules.actions.rebound.target_was_destroyed_QMARK_(board,target);
+if(cljs.core.truth_(and__6924__auto____$1)){
 return rebound_target;
 } else {
-return and__6926__auto____$1;
+return and__6924__auto____$1;
 }
 } else {
-return and__6926__auto__;
+return and__6924__auto__;
 }
 });
 /**
  * Finds the target that will be damaged by rebound
  */
-obb_rules.actions.rebound.rebound_target = (function obb_rules$actions$rebound$rebound_target(p__12755){
-var map__12757 = p__12755;
-var map__12757__$1 = ((cljs.core.seq_QMARK_(map__12757))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__12757):map__12757);
-var args = map__12757__$1;
-var target = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12757__$1,cljs.core.constant$keyword$target);
-var attacker = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12757__$1,cljs.core.constant$keyword$attacker);
-var board = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12757__$1,cljs.core.constant$keyword$board);
-var info = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12757__$1,cljs.core.constant$keyword$info);
-var unused_damage = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12757__$1,cljs.core.constant$keyword$unused_DASH_damage);
+obb_rules.actions.rebound.rebound_target = (function obb_rules$actions$rebound$rebound_target(p__12753){
+var map__12755 = p__12753;
+var map__12755__$1 = ((cljs.core.seq_QMARK_(map__12755))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__12755):map__12755);
+var args = map__12755__$1;
+var target = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12755__$1,cljs.core.constant$keyword$target);
+var attacker = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12755__$1,cljs.core.constant$keyword$attacker);
+var board = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12755__$1,cljs.core.constant$keyword$board);
+var info = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12755__$1,cljs.core.constant$keyword$info);
+var unused_damage = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12755__$1,cljs.core.constant$keyword$unused_DASH_damage);
 var target_coord = obb_rules.element.element_coordinate.cljs$core$IFn$_invoke$arity$1(target);
 var attacker_direction = obb_rules.element.element_direction.cljs$core$IFn$_invoke$arity$1(attacker);
 var rebound_coord = obb_rules.actions.direction.update(attacker_direction,target_coord);
@@ -93,12 +93,12 @@ return obb_rules.board.get_element(board,rebound_coord);
 /**
  * Processes the rebound for the given data
  */
-obb_rules.actions.rebound.process = (function obb_rules$actions$rebound$process(config,p__12758){
-var map__12760 = p__12758;
-var map__12760__$1 = ((cljs.core.seq_QMARK_(map__12760))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__12760):map__12760);
-var args = map__12760__$1;
-var board = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12760__$1,cljs.core.constant$keyword$board);
-var info = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12760__$1,cljs.core.constant$keyword$info);
+obb_rules.actions.rebound.process = (function obb_rules$actions$rebound$process(config,p__12756){
+var map__12758 = p__12756;
+var map__12758__$1 = ((cljs.core.seq_QMARK_(map__12758))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__12758):map__12758);
+var args = map__12758__$1;
+var board = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12758__$1,cljs.core.constant$keyword$board);
+var info = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12758__$1,cljs.core.constant$keyword$info);
 var args__$1 = cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(args,cljs.core.constant$keyword$rebound_DASH_target,obb_rules.actions.rebound.rebound_target(args));
 if(cljs.core.truth_(obb_rules.actions.rebound.aplicable_QMARK_(config,args__$1))){
 return obb_rules.actions.rebound.process_rebound(config,args__$1);

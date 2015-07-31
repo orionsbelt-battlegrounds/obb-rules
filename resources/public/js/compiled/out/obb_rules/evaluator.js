@@ -21,10 +21,10 @@ return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMP
 ,obb_rules.board.board_elements(game,player));
 } else {
 return cljs.core.map.cljs$core$IFn$_invoke$arity$2(((function (stash){
-return (function (p__13078){
-var vec__13079 = p__13078;
-var k = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__13079,(0),null);
-var v = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__13079,(1),null);
+return (function (p__13076){
+var vec__13077 = p__13076;
+var k = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__13077,(0),null);
+var v = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__13077,(1),null);
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_rules.unit.fetch(k),v], null);
 });})(stash))
 ,stash);
@@ -33,10 +33,10 @@ return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMP
 /**
  * Sums the value/quantity of the given units
  */
-obb_rules.evaluator.sum_value = (function obb_rules$evaluator$sum_value(acc,p__13080){
-var vec__13082 = p__13080;
-var unit = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__13082,(0),null);
-var quantity = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__13082,(1),null);
+obb_rules.evaluator.sum_value = (function obb_rules$evaluator$sum_value(acc,p__13078){
+var vec__13080 = p__13078;
+var unit = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__13080,(0),null);
+var quantity = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__13080,(1),null);
 return (acc + (quantity * obb_rules.unit.unit_value(unit)));
 });
 /**
@@ -49,8 +49,8 @@ return cljs.core.reduce.cljs$core$IFn$_invoke$arity$3(obb_rules.evaluator.sum_va
  * Evaluates a game for the participant players
  */
 obb_rules.evaluator.eval_game = (function obb_rules$evaluator$eval_game(){
-var G__13084 = arguments.length;
-switch (G__13084) {
+var G__13082 = arguments.length;
+switch (G__13082) {
 case 1:
 return obb_rules.evaluator.eval_game.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 

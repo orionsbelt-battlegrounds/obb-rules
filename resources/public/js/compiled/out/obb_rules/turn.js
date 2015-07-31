@@ -12,9 +12,9 @@ goog.require('obb_rules.laws');
 obb_rules.turn.continue_apply_actions = (function obb_rules$turn$continue_apply_actions(player,current_game,action_pair){
 var raw_action = cljs.core.first(action_pair);
 var action = cljs.core.last(action_pair);
-var result = (function (){var G__13096 = current_game;
-var G__13097 = player;
-return (action.cljs$core$IFn$_invoke$arity$2 ? action.cljs$core$IFn$_invoke$arity$2(G__13096,G__13097) : action.call(null,G__13096,G__13097));
+var result = (function (){var G__13094 = current_game;
+var G__13095 = player;
+return (action.cljs$core$IFn$_invoke$arity$2 ? action.cljs$core$IFn$_invoke$arity$2(G__13094,G__13095) : action.call(null,G__13094,G__13095));
 })();
 var result_game = obb_rules.result.result_board(result);
 if(cljs.core.truth_(obb_rules.result.succeeded_QMARK_(result))){
@@ -43,10 +43,10 @@ return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMP
  * Gets the used action points on a turn.
  */
 obb_rules.turn.points = (function obb_rules$turn$points(game){
-return cljs.core.reduce.cljs$core$IFn$_invoke$arity$2(cljs.core._PLUS_,cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p1__13099_SHARP_){
-return obb_rules.result.result_cost(p1__13099_SHARP_);
-}),cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p1__13098_SHARP_){
-return cljs.core.last(p1__13098_SHARP_);
+return cljs.core.reduce.cljs$core$IFn$_invoke$arity$2(cljs.core._PLUS_,cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p1__13097_SHARP_){
+return obb_rules.result.result_cost(p1__13097_SHARP_);
+}),cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p1__13096_SHARP_){
+return cljs.core.last(p1__13096_SHARP_);
 }),obb_rules.game.action_results(game))));
 });
 /**
@@ -63,8 +63,8 @@ return game;
  * Creates a result for the given game
  */
 obb_rules.turn.create_result = (function obb_rules$turn$create_result(){
-var G__13101 = arguments.length;
-switch (G__13101) {
+var G__13099 = arguments.length;
+switch (G__13099) {
 case 2:
 return obb_rules.turn.create_result.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(arguments[(1)]));
 
@@ -101,8 +101,8 @@ obb_rules.turn.create_result.cljs$lang$maxFixedArity = 3;
  * Simulates the given actions
  */
 obb_rules.turn.simulate_actions = (function obb_rules$turn$simulate_actions(){
-var G__13104 = arguments.length;
-switch (G__13104) {
+var G__13102 = arguments.length;
+switch (G__13102) {
 case 3:
 return obb_rules.turn.simulate_actions.cljs$core$IFn$_invoke$arity$3((arguments[(0)]),(arguments[(1)]),(arguments[(2)]));
 
@@ -149,8 +149,8 @@ return obb_rules.turn.create_result.cljs$core$IFn$_invoke$arity$2(final$,action_
  * Processes the given actions
  */
 obb_rules.turn.process = (function obb_rules$turn$process(){
-var argseq__7978__auto__ = ((((2) < arguments.length))?(new cljs.core.IndexedSeq(Array.prototype.slice.call(arguments,(2)),(0))):null);
-return obb_rules.turn.process.cljs$core$IFn$_invoke$arity$variadic((arguments[(0)]),(arguments[(1)]),argseq__7978__auto__);
+var argseq__7976__auto__ = ((((2) < arguments.length))?(new cljs.core.IndexedSeq(Array.prototype.slice.call(arguments,(2)),(0))):null);
+return obb_rules.turn.process.cljs$core$IFn$_invoke$arity$variadic((arguments[(0)]),(arguments[(1)]),argseq__7976__auto__);
 });
 
 obb_rules.turn.process.cljs$core$IFn$_invoke$arity$variadic = (function (game,player,raw_actions){
@@ -159,10 +159,10 @@ return obb_rules.turn.process_actions(game,player,raw_actions);
 
 obb_rules.turn.process.cljs$lang$maxFixedArity = (2);
 
-obb_rules.turn.process.cljs$lang$applyTo = (function (seq13106){
-var G__13107 = cljs.core.first(seq13106);
-var seq13106__$1 = cljs.core.next(seq13106);
-var G__13108 = cljs.core.first(seq13106__$1);
-var seq13106__$2 = cljs.core.next(seq13106__$1);
-return obb_rules.turn.process.cljs$core$IFn$_invoke$arity$variadic(G__13107,G__13108,seq13106__$2);
+obb_rules.turn.process.cljs$lang$applyTo = (function (seq13104){
+var G__13105 = cljs.core.first(seq13104);
+var seq13104__$1 = cljs.core.next(seq13104);
+var G__13106 = cljs.core.first(seq13104__$1);
+var seq13104__$2 = cljs.core.next(seq13104__$1);
+return obb_rules.turn.process.cljs$core$IFn$_invoke$arity$variadic(G__13105,G__13106,seq13104__$2);
 });
