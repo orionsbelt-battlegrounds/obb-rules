@@ -6,8 +6,8 @@ goog.require('obb_rules.unit');
  * Creates an element
  */
 obb_rules.element.create_element = (function obb_rules$element$create_element(){
-var G__12475 = arguments.length;
-switch (G__12475) {
+var G__12588 = arguments.length;
+switch (G__12588) {
 case 4:
 return obb_rules.element.create_element.cljs$core$IFn$_invoke$arity$4((arguments[(0)]),(arguments[(1)]),(arguments[(2)]),(arguments[(3)]));
 
@@ -35,8 +35,8 @@ obb_rules.element.create_element.cljs$lang$maxFixedArity = 5;
  * Element's player
  */
 obb_rules.element.element_player = (function obb_rules$element$element_player(){
-var G__12478 = arguments.length;
-switch (G__12478) {
+var G__12591 = arguments.length;
+switch (G__12591) {
 case 1:
 return obb_rules.element.element_player.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -52,8 +52,8 @@ throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(arguments.lengt
 });
 
 obb_rules.element.element_player.cljs$core$IFn$_invoke$arity$1 = (function (element){
-var G__12479 = cljs.core.constant$keyword$player;
-return (element.cljs$core$IFn$_invoke$arity$1 ? element.cljs$core$IFn$_invoke$arity$1(G__12479) : element.call(null,G__12479));
+var G__12592 = cljs.core.constant$keyword$player;
+return (element.cljs$core$IFn$_invoke$arity$1 ? element.cljs$core$IFn$_invoke$arity$1(G__12592) : element.call(null,G__12592));
 });
 
 obb_rules.element.element_player.cljs$core$IFn$_invoke$arity$2 = (function (element,player){
@@ -65,8 +65,8 @@ obb_rules.element.element_player.cljs$lang$maxFixedArity = 2;
  * Element's unit
  */
 obb_rules.element.element_unit = (function obb_rules$element$element_unit(element){
-var G__12482 = cljs.core.constant$keyword$unit;
-return (element.cljs$core$IFn$_invoke$arity$1 ? element.cljs$core$IFn$_invoke$arity$1(G__12482) : element.call(null,G__12482));
+var G__12595 = cljs.core.constant$keyword$unit;
+return (element.cljs$core$IFn$_invoke$arity$1 ? element.cljs$core$IFn$_invoke$arity$1(G__12595) : element.call(null,G__12595));
 });
 /**
  * Gets the hooks for the given event
@@ -100,8 +100,8 @@ return obb_rules.unit.unit_range(unit);
  * Gets/Sets element's direction
  */
 obb_rules.element.element_direction = (function obb_rules$element$element_direction(){
-var G__12484 = arguments.length;
-switch (G__12484) {
+var G__12597 = arguments.length;
+switch (G__12597) {
 case 1:
 return obb_rules.element.element_direction.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -117,8 +117,8 @@ throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(arguments.lengt
 });
 
 obb_rules.element.element_direction.cljs$core$IFn$_invoke$arity$1 = (function (element){
-var G__12485 = cljs.core.constant$keyword$direction;
-return (element.cljs$core$IFn$_invoke$arity$1 ? element.cljs$core$IFn$_invoke$arity$1(G__12485) : element.call(null,G__12485));
+var G__12598 = cljs.core.constant$keyword$direction;
+return (element.cljs$core$IFn$_invoke$arity$1 ? element.cljs$core$IFn$_invoke$arity$1(G__12598) : element.call(null,G__12598));
 });
 
 obb_rules.element.element_direction.cljs$core$IFn$_invoke$arity$2 = (function (element,new_direction){
@@ -130,8 +130,8 @@ obb_rules.element.element_direction.cljs$lang$maxFixedArity = 2;
  * Gets/Sets element's hitpoints
  */
 obb_rules.element.element_hitpoints = (function obb_rules$element$element_hitpoints(){
-var G__12488 = arguments.length;
-switch (G__12488) {
+var G__12601 = arguments.length;
+switch (G__12601) {
 case 1:
 return obb_rules.element.element_hitpoints.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -147,8 +147,8 @@ throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(arguments.lengt
 });
 
 obb_rules.element.element_hitpoints.cljs$core$IFn$_invoke$arity$1 = (function (element){
-var G__12489 = cljs.core.constant$keyword$hitpoints;
-return (element.cljs$core$IFn$_invoke$arity$1 ? element.cljs$core$IFn$_invoke$arity$1(G__12489) : element.call(null,G__12489));
+var G__12602 = cljs.core.constant$keyword$hitpoints;
+return (element.cljs$core$IFn$_invoke$arity$1 ? element.cljs$core$IFn$_invoke$arity$1(G__12602) : element.call(null,G__12602));
 });
 
 obb_rules.element.element_hitpoints.cljs$core$IFn$_invoke$arity$2 = (function (element,new_hitpoints){
@@ -166,9 +166,9 @@ var bonus = temp__4423__auto__;
 var temp__4423__auto____$1 = cljs.core.get_in.cljs$core$IFn$_invoke$arity$2(bonus,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [bonus_prop,bonus_type], null));
 if(cljs.core.truth_(temp__4423__auto____$1)){
 var specific = temp__4423__auto____$1;
-var or__6825__auto__ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(specific,specific_type);
-if(cljs.core.truth_(or__6825__auto__)){
-return or__6825__auto__;
+var or__6938__auto__ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(specific,specific_type);
+if(cljs.core.truth_(or__6938__auto__)){
+return or__6938__auto__;
 } else {
 return (0);
 }
@@ -236,8 +236,8 @@ return (defense + bonus);
  * Gets/Sets element's quantity
  */
 obb_rules.element.element_quantity = (function obb_rules$element$element_quantity(){
-var G__12492 = arguments.length;
-switch (G__12492) {
+var G__12605 = arguments.length;
+switch (G__12605) {
 case 1:
 return obb_rules.element.element_quantity.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -253,8 +253,8 @@ throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(arguments.lengt
 });
 
 obb_rules.element.element_quantity.cljs$core$IFn$_invoke$arity$1 = (function (element){
-var G__12493 = cljs.core.constant$keyword$quantity;
-return (element.cljs$core$IFn$_invoke$arity$1 ? element.cljs$core$IFn$_invoke$arity$1(G__12493) : element.call(null,G__12493));
+var G__12606 = cljs.core.constant$keyword$quantity;
+return (element.cljs$core$IFn$_invoke$arity$1 ? element.cljs$core$IFn$_invoke$arity$1(G__12606) : element.call(null,G__12606));
 });
 
 obb_rules.element.element_quantity.cljs$core$IFn$_invoke$arity$2 = (function (element,new_quantity){
@@ -308,8 +308,8 @@ return obb_rules.element.remove_hitpoints(element,quantity);
  * Gets/Sets element's coordinate
  */
 obb_rules.element.element_coordinate = (function obb_rules$element$element_coordinate(){
-var G__12496 = arguments.length;
-switch (G__12496) {
+var G__12609 = arguments.length;
+switch (G__12609) {
 case 1:
 return obb_rules.element.element_coordinate.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -325,8 +325,8 @@ throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(arguments.lengt
 });
 
 obb_rules.element.element_coordinate.cljs$core$IFn$_invoke$arity$1 = (function (element){
-var c = (function (){var G__12497 = cljs.core.constant$keyword$coordinate;
-return (element.cljs$core$IFn$_invoke$arity$1 ? element.cljs$core$IFn$_invoke$arity$1(G__12497) : element.call(null,G__12497));
+var c = (function (){var G__12610 = cljs.core.constant$keyword$coordinate;
+return (element.cljs$core$IFn$_invoke$arity$1 ? element.cljs$core$IFn$_invoke$arity$1(G__12610) : element.call(null,G__12610));
 })();
 if(cljs.core.truth_(c)){
 } else {
@@ -351,8 +351,8 @@ return (cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(obb_rules.element.element_p
  * Joins several elements
  */
 obb_rules.element.join_elements = (function obb_rules$element$join_elements(){
-var argseq__7865__auto__ = ((((0) < arguments.length))?(new cljs.core.IndexedSeq(Array.prototype.slice.call(arguments,(0)),(0))):null);
-return obb_rules.element.join_elements.cljs$core$IFn$_invoke$arity$variadic(argseq__7865__auto__);
+var argseq__7978__auto__ = ((((0) < arguments.length))?(new cljs.core.IndexedSeq(Array.prototype.slice.call(arguments,(0)),(0))):null);
+return obb_rules.element.join_elements.cljs$core$IFn$_invoke$arity$variadic(argseq__7978__auto__);
 });
 
 obb_rules.element.join_elements.cljs$core$IFn$_invoke$arity$variadic = (function (elements){
@@ -365,20 +365,20 @@ return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(template,cljs.core.constant
 
 obb_rules.element.join_elements.cljs$lang$maxFixedArity = (0);
 
-obb_rules.element.join_elements.cljs$lang$applyTo = (function (seq12499){
-return obb_rules.element.join_elements.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq12499));
+obb_rules.element.join_elements.cljs$lang$applyTo = (function (seq12612){
+return obb_rules.element.join_elements.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq12612));
 });
 /**
  * True if the element is frozen
  */
 obb_rules.element.frozen_QMARK_ = (function obb_rules$element$frozen_QMARK_(element){
-var and__6813__auto__ = element;
-if(cljs.core.truth_(and__6813__auto__)){
-return cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(true,(function (){var G__12501 = cljs.core.constant$keyword$frozen;
-return (element.cljs$core$IFn$_invoke$arity$1 ? element.cljs$core$IFn$_invoke$arity$1(G__12501) : element.call(null,G__12501));
+var and__6926__auto__ = element;
+if(cljs.core.truth_(and__6926__auto__)){
+return cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(true,(function (){var G__12614 = cljs.core.constant$keyword$frozen;
+return (element.cljs$core$IFn$_invoke$arity$1 ? element.cljs$core$IFn$_invoke$arity$1(G__12614) : element.call(null,G__12614));
 })());
 } else {
-return and__6813__auto__;
+return and__6926__auto__;
 }
 });
 /**

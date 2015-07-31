@@ -27,22 +27,22 @@ return null;
 /**
  * Moves a coord given a direction
  */
-obb_rules.actions.direction.update = (function obb_rules$actions$direction$update(dir,p__12574){
-var vec__12577 = p__12574;
-var x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12577,(0),null);
-var y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12577,(1),null);
-var vec__12578 = obb_rules.actions.direction.offset(dir);
-var ox = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12578,(0),null);
-var oy = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12578,(1),null);
+obb_rules.actions.direction.update = (function obb_rules$actions$direction$update(dir,p__12687){
+var vec__12690 = p__12687;
+var x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12690,(0),null);
+var y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12690,(1),null);
+var vec__12691 = obb_rules.actions.direction.offset(dir);
+var ox = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12691,(0),null);
+var oy = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12691,(1),null);
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(x + ox),(y + oy)], null);
 });
 /**
  * Gets the perpendicular coords for the given one
  */
 obb_rules.actions.direction.perpendicular = (function obb_rules$actions$direction$perpendicular(coord,direction){
-if(cljs.core.truth_((function (){var or__6825__auto__ = obb_rules.simplifier.name_EQ_(direction,cljs.core.constant$keyword$south);
-if(cljs.core.truth_(or__6825__auto__)){
-return or__6825__auto__;
+if(cljs.core.truth_((function (){var or__6938__auto__ = obb_rules.simplifier.name_EQ_(direction,cljs.core.constant$keyword$south);
+if(cljs.core.truth_(or__6938__auto__)){
+return or__6938__auto__;
 } else {
 return obb_rules.simplifier.name_EQ_(direction,cljs.core.constant$keyword$north);
 }

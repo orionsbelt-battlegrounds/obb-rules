@@ -29,16 +29,16 @@ return obb_rules.unit.unit_name(value);
 /**
  * Simplifies a unit object, if it's a unit
  */
-obb_rules.simplifier.simplify_if_unit = (function obb_rules$simplifier$simplify_if_unit(p__12444){
-var vec__12447 = p__12444;
-var k = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12447,(0),null);
-var v = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12447,(1),null);
+obb_rules.simplifier.simplify_if_unit = (function obb_rules$simplifier$simplify_if_unit(p__12557){
+var vec__12560 = p__12557;
+var k = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12560,(0),null);
+var v = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12560,(1),null);
 if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.constant$keyword$unit,cljs.core.keyword.cljs$core$IFn$_invoke$arity$1(k))){
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [k,obb_rules.simplifier.resolve_unit(v)], null);
 } else {
 if(cljs.core.map_QMARK_(v)){
-return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [k,(function (){var G__12448 = v;
-return (obb_rules.simplifier.clean_unit.cljs$core$IFn$_invoke$arity$1 ? obb_rules.simplifier.clean_unit.cljs$core$IFn$_invoke$arity$1(G__12448) : obb_rules.simplifier.clean_unit.call(null,G__12448));
+return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [k,(function (){var G__12561 = v;
+return (obb_rules.simplifier.clean_unit.cljs$core$IFn$_invoke$arity$1 ? obb_rules.simplifier.clean_unit.cljs$core$IFn$_invoke$arity$1(G__12561) : obb_rules.simplifier.clean_unit.call(null,G__12561));
 })()], null);
 } else {
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [k,v], null);
@@ -49,16 +49,16 @@ return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMP
 /**
  * Builds a unit, if it's a unit
  */
-obb_rules.simplifier.build_if_unit = (function obb_rules$simplifier$build_if_unit(p__12449){
-var vec__12452 = p__12449;
-var k = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12452,(0),null);
-var v = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12452,(1),null);
+obb_rules.simplifier.build_if_unit = (function obb_rules$simplifier$build_if_unit(p__12562){
+var vec__12565 = p__12562;
+var k = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12565,(0),null);
+var v = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12565,(1),null);
 if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.constant$keyword$unit,cljs.core.keyword.cljs$core$IFn$_invoke$arity$1(k))){
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [k,obb_rules.unit.fetch(v)], null);
 } else {
 if(cljs.core.map_QMARK_(v)){
-return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [k,(function (){var G__12453 = v;
-return (obb_rules.simplifier.build_unit.cljs$core$IFn$_invoke$arity$1 ? obb_rules.simplifier.build_unit.cljs$core$IFn$_invoke$arity$1(G__12453) : obb_rules.simplifier.build_unit.call(null,G__12453));
+return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [k,(function (){var G__12566 = v;
+return (obb_rules.simplifier.build_unit.cljs$core$IFn$_invoke$arity$1 ? obb_rules.simplifier.build_unit.cljs$core$IFn$_invoke$arity$1(G__12566) : obb_rules.simplifier.build_unit.call(null,G__12566));
 })()], null);
 } else {
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [k,v], null);
@@ -84,10 +84,10 @@ return clojure.walk.walk(obb_rules.simplifier.build_if_unit,cljs.core.identity,o
 obb_rules.simplifier.clean_action_results = (function obb_rules$simplifier$clean_action_results(result){
 var results = cljs.core.get_in.cljs$core$IFn$_invoke$arity$2(result,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$board,cljs.core.constant$keyword$action_DASH_results], null));
 var new_results = cljs.core.map.cljs$core$IFn$_invoke$arity$2(((function (results){
-return (function (p__12456){
-var vec__12457 = p__12456;
-var k = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12457,(0),null);
-var v = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12457,(1),null);
+return (function (p__12569){
+var vec__12570 = p__12569;
+var k = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12570,(0),null);
+var v = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12570,(1),null);
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [k,cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(v,cljs.core.constant$keyword$board)], null);
 });})(results))
 ,results);
@@ -97,10 +97,10 @@ return cljs.core.assoc_in(result,new cljs.core.PersistentVector(null, 2, 5, cljs
  * Transforms a string in a coordinate
  */
 obb_rules.simplifier.coordenize = (function obb_rules$simplifier$coordenize(raw){
-var beter_raw = (function (){var G__12461 = [cljs.core.str(raw)].join('');
-var G__12462 = /:/;
-var G__12463 = "";
-return (clojure.string.replace.cljs$core$IFn$_invoke$arity$3 ? clojure.string.replace.cljs$core$IFn$_invoke$arity$3(G__12461,G__12462,G__12463) : clojure.string.replace.call(null,G__12461,G__12462,G__12463));
+var beter_raw = (function (){var G__12574 = [cljs.core.str(raw)].join('');
+var G__12575 = /:/;
+var G__12576 = "";
+return (clojure.string.replace.cljs$core$IFn$_invoke$arity$3 ? clojure.string.replace.cljs$core$IFn$_invoke$arity$3(G__12574,G__12575,G__12576) : clojure.string.replace.call(null,G__12574,G__12575,G__12576));
 })();
 var temp__4423__auto__ = cljs.core.re_matches(/\[(\d+) (\d+)\]/,beter_raw);
 if(cljs.core.truth_(temp__4423__auto__)){
@@ -116,10 +116,10 @@ return raw;
 obb_rules.simplifier.build_coordinate_keys = (function obb_rules$simplifier$build_coordinate_keys(result){
 var elements = cljs.core.get_in.cljs$core$IFn$_invoke$arity$2(result,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$board,cljs.core.constant$keyword$elements], null));
 var cleaned = cljs.core.reduce.cljs$core$IFn$_invoke$arity$3(((function (elements){
-return (function (h,p__12466){
-var vec__12467 = p__12466;
-var k = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12467,(0),null);
-var v = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12467,(1),null);
+return (function (h,p__12579){
+var vec__12580 = p__12579;
+var k = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12580,(0),null);
+var v = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12580,(1),null);
 return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(h,obb_rules.simplifier.coordenize(k),v);
 });})(elements))
 ,cljs.core.PersistentArrayMap.EMPTY,elements);
@@ -131,10 +131,10 @@ return cljs.core.assoc_in(result,new cljs.core.PersistentVector(null, 2, 5, cljs
 obb_rules.simplifier.clean_coordinate_keys = (function obb_rules$simplifier$clean_coordinate_keys(result){
 var elements = cljs.core.get_in.cljs$core$IFn$_invoke$arity$2(result,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$board,cljs.core.constant$keyword$elements], null));
 var cleaned = cljs.core.reduce.cljs$core$IFn$_invoke$arity$3(((function (elements){
-return (function (h,p__12470){
-var vec__12471 = p__12470;
-var k = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12471,(0),null);
-var v = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12471,(1),null);
+return (function (h,p__12583){
+var vec__12584 = p__12583;
+var k = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12584,(0),null);
+var v = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12584,(1),null);
 return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(h,[cljs.core.str(k)].join(''),v);
 });})(elements))
 ,cljs.core.PersistentArrayMap.EMPTY,elements);
