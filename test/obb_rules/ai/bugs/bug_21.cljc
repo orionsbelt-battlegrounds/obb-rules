@@ -3,6 +3,7 @@
   (:require
     [obb-rules.unit :as unit]
     [obb-rules.turn :as turn]
+    [obb-rules.game :as game]
     [obb-rules.board :as board]
     [obb-rules.result :as result]
     [obb-rules.ai.firingsquad :as firingsquad]
@@ -139,9 +140,17 @@
             :board {:elements {}, :action-results ()}})
 
 (deftest process-turn
-  (let [game (simplifier/build-result game)
-        actions (alamo/actions game :p1)
-        result (turn/process-actions game :p1 actions)
-        game (result/result-board result)]
-    (is (result/succeeded? result))
-    (is (nil? (board/get-element game [6 6])))))
+  (testing "p1"
+    (let [game (simplifier/build-result game)
+          actions (alamo/actions game :p1)
+          result (turn/process-actions game :p1 actions)
+          game (result/result-board result)]
+      (is (result/succeeded? result))
+      (is (nil? (board/get-element game [6 6])))))
+
+  (testing "p2"
+    (let [game (-> (simplifier/build-result game) (game/state :p2))
+          actions (alamo/actions game :p2)
+          result (turn/process-actions game :p2 actions)
+          game (result/result-board result)]
+      (is (result/succeeded? result)))))
