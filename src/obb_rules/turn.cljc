@@ -40,8 +40,8 @@
   [game cleanup?]
   (if cleanup?
     (-> (action/reset-action-specific-state game)
-        (dissoc :action-results)
-        (dissoc :removed-elements))
+        #_(dissoc :action-results)
+        #_(dissoc :removed-elements))
     game))
 
 (defn- create-result
