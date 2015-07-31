@@ -11,7 +11,7 @@
             [obb-rules.result :as result]
             [obb-rules.board :as board]))
 
-(def element-depth 10)
+(def element-depth 5)
 
 (defmulti actions
   "Returns a list of actions to apply to the current game"
