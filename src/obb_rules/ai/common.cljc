@@ -114,8 +114,13 @@
   (when (result/succeeded? result)
     (let [game (result/result-board result)
           element (board/get-element game target-coord)]
-      (map (partial prepend-actions [action] 0)
-           (attack-options game element)))))
+      (concat
+        ;; add direct attack options
+        (map (partial prepend-actions [action] 0)
+             (rotate-attack-options game element))
+        ;; totate to other directions and try attack
+        (map (partial prepend-actions [action] 0)
+             (attack-options game element))))))
 
 (defn- targets-in-range?
   "True if there are any targets in range"

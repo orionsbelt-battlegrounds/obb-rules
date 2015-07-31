@@ -39,7 +39,9 @@
   "Resets state"
   [game cleanup?]
   (if cleanup?
-    (action/reset-action-specific-state game)
+    (-> (action/reset-action-specific-state game)
+        (dissoc :action-results)
+        (dissoc :removed-elements))
     game))
 
 (defn- create-result

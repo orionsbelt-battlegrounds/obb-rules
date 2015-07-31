@@ -4,6 +4,7 @@
             [obb-rules.element :as element]
             [obb-rules.actions.move :as move]
             [obb-rules.stash :as stash]
+            [obb-rules.simplifier :as simplify]
             [obb-rules.unit :as unit]
             [obb-rules.host-dependent :as host]
             [obb-demo.processor :as processor]
@@ -246,6 +247,7 @@
   [state]
   (let [game-data (get-game-data state)
         game (:game game-data)]
+    (println (simplify/clean-result game))
     [:div.row
       [:div.col-lg-2
        (challenger-selector game-data)
