@@ -74,10 +74,12 @@
 (defn- prepend-actions
   "Adds the given actions to the start of the option's actions"
   [new-actions cost option]
-  (-> option
-      (assoc :actions (into new-actions
-                            (option :actions)))
-      (assoc :cost (+ cost (option :cost)))))
+  (let [new-cost (+ cost (option :cost))]
+    (if (>= laws/max-action-points new-cost)
+      (-> option
+          (assoc :actions (into new-actions
+                                (option :actions)))
+          (assoc :cost new-cost)))))
 
 (defn- rotate-and-attack
   "For a given element, rotates it and attacks"
@@ -112,10 +114,16 @@
   "Builds options from a result"
   [[action result target-coord]]
   (when (result/succeeded? result)
-    (let [game (result/result-board result)
+    (let [previous-cost (:cost result)
+          game (result/result-board result)
           element (board/get-element game target-coord)]
-      (map (partial prepend-actions [action] 0)
-           (attack-options game element)))))
+      (concat
+        ;; add direct attack options
+        (map (partial prepend-actions [action] 0)
+             (rotate-attack-options game element))
+        ;; rotate to other directions and try attack
+        (map (partial prepend-actions [action] 0)
+             (attack-options game element))))))
 
 (defn- targets-in-range?
   "True if there are any targets in range"
@@ -183,16 +191,17 @@
   #_(println "master" (:cost master) (:actions master))
   #_(println "current" (:cost current-option) (:actions current-option))
   (if (or (nil? master)
-          (>= (:cost master) laws/max-action-points)
-          (> (+ (:cost master) (:cost current-option)) laws/max-action-points)
-          (nil? current-option))
+          (>= (:cost master) laws/max-action-points))
     (reduced master)
-    (let [board (master :board)
-          actions (current-option :actions)
-          result (turn/simulate-actions board player actions)]
-      (if (result/succeeded? result)
-        (-> master
-            (assoc :board (result/result-board result))
-            (assoc :actions (into (master :actions) actions))
-            (assoc :cost (+ (master :cost) (current-option :cost))))
-        master))))
+    (if (or (nil? current-option)
+            (> (+ (:cost master) (:cost current-option)) laws/max-action-points))
+      master
+      (let [board (master :board)
+            actions (current-option :actions)
+            result (turn/simulate-actions board player actions)]
+        (if (result/succeeded? result)
+          (-> master
+              (assoc :board (result/result-board result))
+              (assoc :actions (into (master :actions) actions))
+              (assoc :cost (+ (master :cost) (current-option :cost))))
+          master)))))
