@@ -7,6 +7,7 @@
             [obb-rules.game-mode :as game-mode]
             [obb-rules.evaluator :as evaluator]
             [obb-rules.ai.firingsquad :as firingsquad]
+            [obb-rules.ai.alamo :as alamo]
             [obb-rules.turn :as turn]
             [obb-rules.result :as result]))
 
@@ -33,13 +34,20 @@
       (turn/process-actions :p2 [[:auto-deploy :firingsquad]])
       (result/result-board)))
 
+(defn- bot-actions
+  "Gets actions"
+  [game player]
+  (if (= :p1 player)
+    (alamo/actions game player)
+    (firingsquad/actions game player)))
+
 (defn- generate-actions
   "Generates actions to be processed"
   [game-data]
   (let [game (:game game-data)
         turn-num (or (:turn-num game-data) 0)
         player (game/state game)
-        actions (firingsquad/actions game player)]
+        actions (time (bot-actions game player))]
     #_(println "game" (simplifier/clean-result {:board game}))
     (println "--" player actions)
     (if (= :final (game/state game))

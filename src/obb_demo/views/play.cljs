@@ -43,7 +43,6 @@
 (defn- selected-player
   "Shows the player"
   [current-player expected]
-
   (if (= current-player expected)
     (if (= :p1 current-player)
       :span.label.label-success
@@ -55,9 +54,9 @@
   [game]
   (let [player (game/state game)]
     [:div
-      [(selected-player player :p2) "Player 2"]
+      [(selected-player player :p2) "Firingsquad"]
       " vs "
-      [(selected-player player :p1) "Player 1"]]))
+      [(selected-player player :p1) "Alamo"]]))
 
 (defn- game-turn
   "Displays the current turn"
