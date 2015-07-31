@@ -54,17 +54,20 @@
   option value"
   [options]
   (map (fn [option]
-         (let [board (:board option)
-               player (game/state board)
-               counter-player (other-player board)
-               board (-> (game/state board counter-player)
-                         (dissoc :removed-elements)
-                         (dissoc :action-results))
-               counter-option (firingsquad/turn-option board counter-player)
-               counter-board (:board counter-option)]
-           (-> option
-               (assoc :old-value (:value option))
-               (assoc :value (common/eval-board counter-board player)))))
+         (when option
+           (let [board (:board option)
+                 player (game/state board)
+                 counter-player (other-player board)
+                 board (-> (game/state board counter-player)
+                           (dissoc :removed-elements)
+                           (dissoc :action-results))
+                 counter-option (firingsquad/turn-option board counter-player)
+                 counter-board (:board counter-option)]
+             (if counter-option
+               (-> option
+                   (assoc :old-value (:value option))
+                   (assoc :value (common/eval-board counter-board player)))
+               option))))
        options))
 
 (defn- gather-element-actions
