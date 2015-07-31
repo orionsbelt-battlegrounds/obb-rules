@@ -191,10 +191,10 @@
   #_(println "master" (:cost master) (:actions master))
   #_(println "current" (:cost current-option) (:actions current-option))
   (if (or (nil? master)
-          (>= (:cost master) laws/max-action-points)
-          (nil? current-option))
+          (>= (:cost master) laws/max-action-points))
     (reduced master)
-    (if (> (+ (:cost master) (:cost current-option)) laws/max-action-points)
+    (if (or (nil? current-option)
+            (> (+ (:cost master) (:cost current-option)) laws/max-action-points))
       master
       (let [board (master :board)
             actions (current-option :actions)
