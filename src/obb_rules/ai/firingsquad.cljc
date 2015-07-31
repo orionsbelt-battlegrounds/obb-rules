@@ -25,7 +25,7 @@
   "Utility for debugging"
   [coll]
   (mapv (fn [option]
-         (println [(:value option) (:cost option) (:actions option)])) coll)
+         (println "firingsquad" [(:value option) (:cost option) (:actions option)])) coll)
   coll)
 
 (defn- gather-element-actions
@@ -46,14 +46,18 @@
         the-one (reduce joiner (first options) (rest options))]
     the-one))
 
-(defmethod actions :turn
+(defn turn-option
+  "Gets the complete option for playing on a specific game"
   [game player]
   (let [elements (board/board-elements game player)
-        gatherer (partial gather-element-actions game)
-        option (->> (reduce gatherer [] elements)
-                    (sort-by common/option-value-sorter)
-                    #_(logger)
-                    (find-one player))]
-    (if option
-      (option :actions)
-      [])))
+          gatherer (partial gather-element-actions game)]
+    (->> (reduce gatherer [] elements)
+         (sort-by common/option-value-sorter)
+         #_(logger)
+         (find-one player))))
+
+(defmethod actions :turn
+  [game player]
+  (if-let [option (turn-option game player)]
+    (option :actions)
+    []))

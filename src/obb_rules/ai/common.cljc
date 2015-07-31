@@ -20,7 +20,7 @@
   [player board element raw-action next-element]
   (turn/simulate-actions board player [raw-action]))
 
-(defn- eval-board
+(defn eval-board
   "Evaluates a board for a given player"
   [board player]
   (let [[score1 score2] (evaluator/eval-game board)]
