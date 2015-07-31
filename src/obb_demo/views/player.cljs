@@ -9,6 +9,7 @@
             [obb-demo.processor :as processor]
             [obb-demo.views.power-bar :as power-bar]
             [obb-rules.ai.firingsquad :as firingsquad]
+            [obb-rules.ai.alamo :as alamo]
             [obb-rules.math :as math]
             [obb-rules.game-mode :as game-mode]
             [obb-rules.laws :as laws]
@@ -48,10 +49,10 @@
 
 (defn- players
   "Displays the players and the current to play"
-  [game]
+  [game-data game]
   (let [player (game/state game)]
     [:div
-      [(selected-player player :p2) "Firingsquad"]
+      [(selected-player player :p2) (or (:bot game-data) "Firingsquad")]
       " vs "
       [(selected-player player :p1) "Player 1"]]))
 
@@ -83,12 +84,21 @@
 (defn- reset-turn
   "Resets the actions on the current turn"
   [game-data]
-  (state/set-page-data! {:game (dissoc (:original-game game-data) :action-results)
+  (state/set-page-data! {:game (-> (:original-game game-data)
+                                   (dissoc :action-results)
+                                   (dissoc :removed-elements))
                          :original-game (:original-game game-data)
                          :previous-game (:original-game game-data)
                          :previous-player :p2
+                         :bot (:bot game-data)
                          :action-points 0
                          :turn-num 0}))
+
+(defn- bot-turn
+  [game-data game]
+  (if (= "Alamo" (:bot game-data))
+    (alamo/actions game :p2)
+    (firingsquad/actions game :p2)))
 
 (defn- play-turn
   "Resets the actions on the current turn"
@@ -98,7 +108,7 @@
                  (game-mode/process)
                  (dissoc :action-results))
         turn-num (:turn-num game-data)
-        actions (firingsquad/actions game :p2)
+        actions (time (bot-turn game-data game))
         result (turn/process-actions game :p2 actions)]
     (println actions)
     (if (result/succeeded? result)
@@ -108,6 +118,7 @@
                                :original-game new-game
                                :previous-game new-game
                                :previous-player :p2
+                               :bot (:bot game-data)
                                :action-points 0
                                :turn-num (+ 1 turn-num)}))
         (println result))))
@@ -216,6 +227,20 @@
        ]]
   )))
 
+(defn- set-bot
+  "Sets the current bot to play"
+  [game-data ev]
+  (if (= 0 (-> ev .-target .-selectedIndex))
+    (state/set-page-data! (assoc game-data :bot "Firingsquad"))
+    (state/set-page-data! (assoc game-data :bot "Alamo"))))
+
+(defn- challenger-selector
+  "Selects the bot to play"
+  [game-data]
+  [:select {:value (or (:bot game-data) "Firingsquad")
+            :on-change (partial set-bot game-data)}
+   [:option "Firingsquad"]
+   [:option "Alamo"]])
 
 (defn render
   [state]
@@ -223,8 +248,9 @@
         game (:game game-data)]
     [:div.row
       [:div.col-lg-2
+       (challenger-selector game-data)
        (game-turn game-data)
-       (players game)
+       (players game-data game)
        (power-bar/render game)
        (action-points game-data)
        [:button.btn.btn-primary {:on-click (partial play-turn game-data)} "Play turn"]

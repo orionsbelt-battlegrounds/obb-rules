@@ -16,4 +16,4 @@
       default-value))
 
 (defn scenarios-to-test []
-  (parse-int (get-env "OBB_SCENARIOS_TO_TEST" "10")))
+  (parse-int (get-env "OBB_SCENARIOS_TO_TEST" "1")))
