@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 0.0-3308 {:static-fns true, :optimize-constants true}
+// Compiled by ClojureScript 1.7.28 {:static-fns true, :optimize-constants true}
 goog.provide('obb_demo.state');
 goog.require('cljs.core');
 goog.require('reagent.core');
@@ -16,9 +16,7 @@ return cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$4(obb_demo.state.app_sta
  * Gets the current page
  */
 obb_demo.state.current_page = (function obb_demo$state$current_page(){
-return cljs.core.constant$keyword$page.cljs$core$IFn$_invoke$arity$1((function (){var G__13597 = obb_demo.state.app_state;
-return (cljs.core.deref.cljs$core$IFn$_invoke$arity$1 ? cljs.core.deref.cljs$core$IFn$_invoke$arity$1(G__13597) : cljs.core.deref.call(null,G__13597));
-})());
+return cljs.core.constant$keyword$page.cljs$core$IFn$_invoke$arity$1((cljs.core.deref.cljs$core$IFn$_invoke$arity$1 ? cljs.core.deref.cljs$core$IFn$_invoke$arity$1(obb_demo.state.app_state) : cljs.core.deref.call(null,obb_demo.state.app_state)));
 });
 /**
  * Sets data for the current page
@@ -30,7 +28,5 @@ return cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$4(obb_demo.state.app_sta
  * Gets the data of the current page
  */
 obb_demo.state.get_page_data = (function obb_demo$state$get_page_data(){
-return cljs.core.get.cljs$core$IFn$_invoke$arity$2((function (){var G__13599 = obb_demo.state.app_state;
-return (cljs.core.deref.cljs$core$IFn$_invoke$arity$1 ? cljs.core.deref.cljs$core$IFn$_invoke$arity$1(G__13599) : cljs.core.deref.call(null,G__13599));
-})(),obb_demo.state.current_page());
+return cljs.core.get.cljs$core$IFn$_invoke$arity$2((cljs.core.deref.cljs$core$IFn$_invoke$arity$1 ? cljs.core.deref.cljs$core$IFn$_invoke$arity$1(obb_demo.state.app_state) : cljs.core.deref.call(null,obb_demo.state.app_state)),obb_demo.state.current_page());
 });

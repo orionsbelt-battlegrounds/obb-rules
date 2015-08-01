@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 0.0-3308 {:static-fns true, :optimize-constants true}
+// Compiled by ClojureScript 1.7.28 {:static-fns true, :optimize-constants true}
 goog.provide('obb_demo.views.index');
 goog.require('cljs.core');
 goog.require('obb_demo.views.many_games');
@@ -26,8 +26,23 @@ return obb_demo.views.play.render(state);
 }
 });
 obb_demo.views.index.render = (function obb_demo$views$index$render(){
-var G__13833 = arguments.length;
-switch (G__13833) {
+var args11055 = [];
+var len__8163__auto___11058 = arguments.length;
+var i__8164__auto___11059 = (0);
+while(true){
+if((i__8164__auto___11059 < len__8163__auto___11058)){
+args11055.push((arguments[i__8164__auto___11059]));
+
+var G__11060 = (i__8164__auto___11059 + (1));
+i__8164__auto___11059 = G__11060;
+continue;
+} else {
+}
+break;
+}
+
+var G__11057 = args11055.length;
+switch (G__11057) {
 case 0:
 return obb_demo.views.index.render.cljs$core$IFn$_invoke$arity$0();
 
@@ -37,15 +52,13 @@ return obb_demo.views.index.render.cljs$core$IFn$_invoke$arity$1((arguments[(0)]
 
 break;
 default:
-throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(arguments.length)].join('')));
+throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args11055.length)].join('')));
 
 }
 });
 
 obb_demo.views.index.render.cljs$core$IFn$_invoke$arity$0 = (function (){
-return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_demo.views.index.render,(function (){var G__13834 = obb_demo.state.app_state;
-return (cljs.core.deref.cljs$core$IFn$_invoke$arity$1 ? cljs.core.deref.cljs$core$IFn$_invoke$arity$1(G__13834) : cljs.core.deref.call(null,G__13834));
-})()], null);
+return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_demo.views.index.render,(cljs.core.deref.cljs$core$IFn$_invoke$arity$1 ? cljs.core.deref.cljs$core$IFn$_invoke$arity$1(obb_demo.state.app_state) : cljs.core.deref.call(null,obb_demo.state.app_state))], null);
 });
 
 obb_demo.views.index.render.cljs$core$IFn$_invoke$arity$1 = (function (state){

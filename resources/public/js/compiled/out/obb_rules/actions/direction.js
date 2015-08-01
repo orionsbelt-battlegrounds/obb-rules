@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 0.0-3308 {:static-fns true, :optimize-constants true}
+// Compiled by ClojureScript 1.7.28 {:static-fns true, :optimize-constants true}
 goog.provide('obb_rules.actions.direction');
 goog.require('cljs.core');
 goog.require('obb_rules.simplifier');
@@ -27,22 +27,22 @@ return null;
 /**
  * Moves a coord given a direction
  */
-obb_rules.actions.direction.update = (function obb_rules$actions$direction$update(dir,p__12685){
-var vec__12688 = p__12685;
-var x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12688,(0),null);
-var y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12688,(1),null);
-var vec__12689 = obb_rules.actions.direction.offset(dir);
-var ox = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12689,(0),null);
-var oy = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12689,(1),null);
+obb_rules.actions.direction.update = (function obb_rules$actions$direction$update(dir,p__10095){
+var vec__10098 = p__10095;
+var x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10098,(0),null);
+var y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10098,(1),null);
+var vec__10099 = obb_rules.actions.direction.offset(dir);
+var ox = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10099,(0),null);
+var oy = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10099,(1),null);
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(x + ox),(y + oy)], null);
 });
 /**
  * Gets the perpendicular coords for the given one
  */
 obb_rules.actions.direction.perpendicular = (function obb_rules$actions$direction$perpendicular(coord,direction){
-if(cljs.core.truth_((function (){var or__6936__auto__ = obb_rules.simplifier.name_EQ_(direction,cljs.core.constant$keyword$south);
-if(cljs.core.truth_(or__6936__auto__)){
-return or__6936__auto__;
+if(cljs.core.truth_((function (){var or__7124__auto__ = obb_rules.simplifier.name_EQ_(direction,cljs.core.constant$keyword$south);
+if(cljs.core.truth_(or__7124__auto__)){
+return or__7124__auto__;
 } else {
 return obb_rules.simplifier.name_EQ_(direction,cljs.core.constant$keyword$north);
 }
