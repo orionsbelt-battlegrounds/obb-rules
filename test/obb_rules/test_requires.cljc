@@ -28,7 +28,7 @@
     [obb-rules.ai.common-test]
     [obb-rules.ai.firingsquad-test]
     [obb-rules.ai.alamo-test]
-    [obb-rules.ai.bug-16-test]
-    [obb-rules.ai.bug-21-test]
+    [obb-rules.ai.bugs.bug-16]
+    [obb-rules.ai.bugs.bug-21]
     [obb-rules.element-test]))
 
