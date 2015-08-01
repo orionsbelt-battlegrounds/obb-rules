@@ -27,5 +27,8 @@
     [obb-rules.ai.acts-as-bot-test]
     [obb-rules.ai.common-test]
     [obb-rules.ai.firingsquad-test]
+    [obb-rules.ai.alamo-test]
+    [obb-rules.ai.bug-16-test]
+    [obb-rules.ai.bug-21-test]
     [obb-rules.element-test]))
 
