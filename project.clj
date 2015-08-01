@@ -15,7 +15,7 @@
                  [criterium "0.4.3"]
                  [reagent "0.5.0"]
                  [secretary "1.2.3"]
-                 [org.clojure/clojurescript "0.0-3308"]]
+                 [org.clojure/clojurescript "1.7.28"]]
 
   :jvm-opts ["-XX:+TieredCompilation"]
 
