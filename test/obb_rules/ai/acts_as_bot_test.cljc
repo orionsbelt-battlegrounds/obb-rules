@@ -47,10 +47,10 @@
   [botfn]
   (let [board (-> (board/create-board)
                   (game/state :p1)
-                  (board/place-element [2 5] (element/create-element :p1 rain 1 :south [2 5]))
-                  (board/place-element [2 6] (element/create-element :p2 rain 1 :north [2 6]))
-                  (board/place-element [3 5] (element/create-element :p1 rain 5 :south [3 5]))
-                  (board/place-element [3 6] (element/create-element :p2 rain 5 :north [3 6])))
+                  (board/place-element [2 5] (element/create-element :p1 rain 10 :south [2 5]))
+                  (board/place-element [2 6] (element/create-element :p2 rain 10 :north [2 6]))
+                  (board/place-element [3 5] (element/create-element :p1 rain 10 :south [3 5]))
+                  (board/place-element [3 6] (element/create-element :p2 rain 10 :north [3 6])))
         actions (botfn board :p1)
         result (turn/process-actions board :p1 actions)
         final-game (result/result-board result)]
