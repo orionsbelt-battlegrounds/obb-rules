@@ -4,6 +4,7 @@
             [obb-rules.stash :as stash]
             [obb-rules.unit :as unit]
             [obb-rules.element :as element]
+            [obb-rules.logger :as logger]
             [obb-rules.simplifier :as simplifier]
             [obb-rules.board :as board]
             [obb-rules.result :as result]
@@ -39,7 +40,7 @@
   (acts-as-bot/first-blood alamo/actions (stash/random)))
 
 (deftest move-and-attack
-  (acts-as-bot/move-and-attack alamo/actions))
+  (logger/with-verbose (acts-as-bot/move-and-attack alamo/actions)))
 
 (deftest seek-and-destroy
   (acts-as-bot/seek-and-destroy alamo/actions))

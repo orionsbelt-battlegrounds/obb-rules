@@ -5,6 +5,7 @@
             [obb-rules.actions.move :as move]
             [obb-rules.element :as element]
             [obb-rules.ai.common :as common]
+            [obb-rules.logger :as logger]
             [obb-rules.game :as game]
             [obb-rules.ai.firingsquad :as firingsquad]
             [obb-rules.laws :as laws]
@@ -24,11 +25,14 @@
   [game player]
   [[:auto-deploy :firingsquad]])
 
-(defn- logger
+(defn- final-actions-logger
   "Utility for debugging"
   [coll]
-  (mapv (fn [option]
-         (println [(:value option) (:old-value option) (:cost option) (:actions option)])) coll)
+  (logger/log "## Final actions ~~~~~~~~~")
+  (when logger/*verbose*
+    (mapv (fn [option]
+            (logger/ai-option option))
+          coll))
   coll)
 
 (defn- take-best
@@ -84,15 +88,17 @@
   [player options]
   (let [joiner (partial common/join-options player)
         the-one (reduce joiner (first options) (rest options))]
+    (logger/log "## Final ~~~~~~~~~~")
     the-one))
 
 (defmethod actions :turn
   [game player]
+  (logger/ai-turn "alamo" game)
   (let [elements (board/board-elements game player)
         gatherer (partial gather-element-actions game)
         option (->> (reduce gatherer [] elements)
                     (sort-by common/option-value-sorter)
-                    #_(logger)
+                    (final-actions-logger)
                     (find-one player))]
     (if option
       (option :actions)
