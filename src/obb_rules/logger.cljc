@@ -5,11 +5,19 @@
 
 (def ^:dynamic *verbose* false)
 
-(defmacro log
-  "Logs the given data"
-  [& args]
-  `(when *verbose*
-    (println ~@args)))
+#?(:clj
+  (defmacro log
+    "Logs the given data"
+    [& args]
+    `(when *verbose*
+      (println ~@args))))
+
+#?(:cljs
+  (defn log
+    "Logs the given data"
+    [& args]
+    (when *verbose*
+      (apply println args))))
 
 (defn ai-turn
   "Logs ai-turn header"
