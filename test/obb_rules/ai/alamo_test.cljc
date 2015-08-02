@@ -40,7 +40,7 @@
   (acts-as-bot/first-blood alamo/actions (stash/random)))
 
 (deftest move-and-attack
-  (logger/with-verbose (acts-as-bot/move-and-attack alamo/actions)))
+  (acts-as-bot/move-and-attack alamo/actions))
 
 (deftest seek-and-destroy
   (acts-as-bot/seek-and-destroy alamo/actions))

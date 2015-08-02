@@ -35,6 +35,17 @@
           coll))
   coll)
 
+(defn- element-options-logger
+  "Utility for debugging"
+  [coll element]
+  (when logger/*verbose*
+    (logger/log "## Element" (element/element-coordinate element) "options ~~~~~~~~~")
+    (when logger/*verbose*
+      (mapv (fn [option]
+              (logger/ai-option option))
+            coll)))
+  coll)
+
 (defn- take-best
   "Takes the best n options for a given element"
   [game element n]
@@ -81,7 +92,7 @@
     (conj all (first (-> (take-best game element element-depth)
                          (consider-opponent-move)
                          (->> (sort-by common/option-value-cost-sorter))
-                         #_(logger))))))
+                         (element-options-logger element))))))
 
 (defn- find-one
   "Given a collection of sorted options, tries to find a good one"
@@ -89,6 +100,7 @@
   (let [joiner (partial common/join-options player)
         the-one (reduce joiner (first options) (rest options))]
     (logger/log "## Final ~~~~~~~~~~")
+    (logger/ai-option the-one)
     the-one))
 
 (defmethod actions :turn
