@@ -52,9 +52,9 @@
   (take n
     (-> []
         (into (common/attack-options game element))
-        #_(into (common/rotate-attack-options game element))
+        (into (common/rotate-attack-options game element))
         (into (common/move-attack-options game element))
-        #_(into (common/move-options game element))
+        (into (common/move-options game element))
         (->> (sort-by common/option-value-cost-sorter)))))
 
 (defn- other-player
@@ -91,7 +91,7 @@
                         :original-quantity original-quantity
                         :counter-quantity counter-quantity})
           (assoc :old-value (:value option))
-          (assoc :value (math/ceil (- original-value (* original-value (- 1 percentage)))))))
+          (assoc :value (math/ceil (- (* original-value 1.01) (* original-value (- 1 percentage)))))))
     option))
 
 (defn- consider-opponent-move

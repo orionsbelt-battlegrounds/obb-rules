@@ -3,7 +3,7 @@
   "Specific logger that can be turned on and off"
   (:require [obb-rules.simplifier :as simplify]))
 
-(def ^:dynamic *verbose* true)
+(def ^:dynamic *verbose* false)
 
 #?(:clj
   (defmacro log
