@@ -12,7 +12,7 @@
             [obb-rules.result :as result]
             [obb-rules.board :as board]))
 
-(def element-depth 50)
+(def element-depth 10)
 
 (defmulti actions
   "Returns a list of actions to apply to the current game"
@@ -85,11 +85,8 @@
           counter-quantity (if counter-element (element/element-quantity counter-element) 0)
           percentage (/ counter-quantity original-quantity)]
       (-> option
-          (assoc :data {:percentage percentage
+          #_(assoc :data {:percentage percentage
                         :_counter-element? (boolean counter-element)
-                        :_counter-element counter-element
-                        :elems (keys (:elements (:board counter-option)))
-                        :elems-oriq (keys (:elements element-board))
                         :counter-actions (:actions counter-option)
                         :original-quantity original-quantity
                         :counter-quantity counter-quantity})
@@ -106,8 +103,9 @@
            (let [board (:board option)
                  player (game/state board)
                  counter-player (other-player board)
+                 moved-element (board/get-element board (or (:element-coord option) (element/element-coordinate element)))
                  board (-> (game/state board counter-player)
-                           (board/element-focus element)
+                           (board/element-focus moved-element)
                            (dissoc :removed-elements)
                            (dissoc :action-results))
                  counter-option (firingsquad/turn-option board counter-player)]
