@@ -84,7 +84,11 @@
                   (board/place-element [1 1] e1)
                   (board/place-element [1 2] e1_2)
                   (board/place-element [2 1] e2)
-                  (board/place-element [2 2] e2_2))]
+                  (board/place-element [2 2] e2_2))
+        focus1 (board/element-focus board e1)
+        focus2 (board/element-focus board e2)]
     (is (= 4 (board/board-elements-count board)))
-    (is (= 3 (board/board-elements-count (board/element-focus board e1))))
-    (is (= 3 (board/board-elements-count (board/element-focus board e2))))))
+    (is (= 3 (board/board-elements-count focus1)))
+    (is (board/get-element focus1 [1 1]))
+    (is (= 3 (board/board-elements-count focus2)))
+    (is (board/get-element focus2 [2 1]))))

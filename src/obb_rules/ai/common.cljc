@@ -154,6 +154,7 @@
                 (assoc :distance 1)
                 (assoc :actions [action])
                 (assoc :value -10000)
+                (assoc :element-coord target-coord)
                 (assoc :cost mov-cost)))
          actions-and-results)))
 

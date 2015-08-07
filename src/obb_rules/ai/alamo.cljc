@@ -12,7 +12,7 @@
             [obb-rules.result :as result]
             [obb-rules.board :as board]))
 
-(def element-depth 5)
+(def element-depth 50)
 
 (defmulti actions
   "Returns a list of actions to apply to the current game"
@@ -52,9 +52,9 @@
   (take n
     (-> []
         (into (common/attack-options game element))
-        (into (common/rotate-attack-options game element))
+        #_(into (common/rotate-attack-options game element))
         (into (common/move-attack-options game element))
-        (into (common/move-options game element))
+        #_(into (common/move-options game element))
         (->> (sort-by common/option-value-cost-sorter)))))
 
 (defn- other-player
@@ -64,20 +64,32 @@
     :p2
     :p1))
 
+(defn- get-element-on-new-board
+  "Tries to find the element on the new board"
+  [element option counter-option]
+  (let [element-player (element/element-player element)
+        counter-board (:board counter-option)
+        element-coord (or (:element-coord option) (element/element-coordinate element))
+        counter-element (and counter-board (board/get-element counter-board element-coord))]
+    (when (and counter-element (= element-player (element/element-player counter-element)))
+      counter-element)))
+
 (defn- merge-counter-option
   "Given an option and a counter option will return a new option that is
   a merged one"
-  [element option counter-option]
+  [element option counter-option element-board]
   (if (and option counter-option)
     (let [original-value (:value option)
           original-quantity (element/element-quantity element)
-          counter-board (:board counter-option)
-          element-coord (or (:element-coord option) (element/element-coordinate element))
-          counter-element (and counter-board (board/get-element counter-board element-coord))
+          counter-element (get-element-on-new-board element option counter-option)
           counter-quantity (if counter-element (element/element-quantity counter-element) 0)
           percentage (/ counter-quantity original-quantity)]
       (-> option
           (assoc :data {:percentage percentage
+                        :_counter-element? (boolean counter-element)
+                        :_counter-element counter-element
+                        :elems (keys (:elements (:board counter-option)))
+                        :elems-oriq (keys (:elements element-board))
                         :counter-actions (:actions counter-option)
                         :original-quantity original-quantity
                         :counter-quantity counter-quantity})
@@ -99,10 +111,7 @@
                            (dissoc :removed-elements)
                            (dissoc :action-results))
                  counter-option (firingsquad/turn-option board counter-player)]
-             (println "====" player (count (board/board-elements board player)))
-             (println "====" counter-player (count (board/board-elements board counter-player)))
-             (println "---- " counter-option)
-             (merge-counter-option element option counter-option))))
+             (merge-counter-option element option counter-option board))))
        options))
 
 (defn- gather-element-actions
