@@ -64,25 +64,45 @@
     :p2
     :p1))
 
+(defn- merge-counter-option
+  "Given an option and a counter option will return a new option that is
+  a merged one"
+  [element option counter-option]
+  (if (and option counter-option)
+    (let [original-value (:value option)
+          original-quantity (element/element-quantity element)
+          counter-board (:board counter-option)
+          element-coord (or (:element-coord option) (element/element-coordinate element))
+          counter-element (and counter-board (board/get-element counter-board element-coord))
+          counter-quantity (if counter-element (element/element-quantity counter-element) 0)
+          percentage (/ counter-quantity original-quantity)]
+      (-> option
+          (assoc :data {:percentage percentage
+                        :counter-actions (:actions counter-option)
+                        :original-quantity original-quantity
+                        :counter-quantity counter-quantity})
+          (assoc :old-value (:value option))
+          (assoc :value (math/ceil (- original-value (* original-value (- 1 percentage)))))))
+    option))
+
 (defn- consider-opponent-move
   "For each option given, will play a bot against it and recalculate
   option value"
-  [options]
+  [options element]
   (map (fn [option]
          (when option
            (let [board (:board option)
                  player (game/state board)
                  counter-player (other-player board)
                  board (-> (game/state board counter-player)
+                           (board/element-focus element)
                            (dissoc :removed-elements)
                            (dissoc :action-results))
-                 counter-option (firingsquad/turn-option board counter-player)
-                 counter-board (:board counter-option)]
-             (if counter-option
-               (-> option
-                   (assoc :old-value (:value option))
-                   (assoc :value (common/eval-board counter-board player)))
-               option))))
+                 counter-option (firingsquad/turn-option board counter-player)]
+             (println "====" player (count (board/board-elements board player)))
+             (println "====" counter-player (count (board/board-elements board counter-player)))
+             (println "---- " counter-option)
+             (merge-counter-option element option counter-option))))
        options))
 
 (defn- gather-element-actions
@@ -90,7 +110,7 @@
   [game all element]
   (remove empty?
     (conj all (first (-> (take-best game element element-depth)
-                         (consider-opponent-move)
+                         (consider-opponent-move element)
                          (->> (sort-by common/option-value-cost-sorter))
                          (element-options-logger element))))))
 

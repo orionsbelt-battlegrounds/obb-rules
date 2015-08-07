@@ -35,6 +35,7 @@
     (-> result
         (assoc :distance distance)
         (assoc :actions [raw-action])
+        (assoc :element-coord (nth raw-action 1))
         (assoc :value (eval-board board player)))))
 
 (defn- find-targets
