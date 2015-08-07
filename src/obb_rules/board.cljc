@@ -176,9 +176,11 @@
   "True if the given element should be present on an element-focus"
   [player template-element some-element]
   (let [template-coord (element/element-coordinate template-element)
-        some-coord (element/element-coordinate some-element)]
+        some-coord (element/element-coordinate some-element)
+        some-player (element/element-player some-element)]
     (or (= template-coord some-coord)
-        (not (simplify/name= player (element/element-player some-element))))))
+        (and player some-player
+             (not (simplify/name= player some-player))))))
 
 (defn element-focus
   "Returns a new board, where the player of the given element only has

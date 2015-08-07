@@ -16,7 +16,7 @@
 (defn element-player
   "Element's player"
   ([element]
-   (element :player))
+   (:player element))
   ([element player]
    (assoc element :player player)))
 
@@ -155,9 +155,10 @@
 (defn element-coordinate
   "Gets/Sets element's coordinate"
   ([element]
-   (let [c (element :coordinate)]
-     (assert c (str "NoCoordinate:" element))
-     c))
+   (when element
+     (let [c (element :coordinate)]
+       (assert c (str "NoCoordinate:" element))
+       c)))
   ([element new-coordinate]
    (assoc element :coordinate new-coordinate)))
 
