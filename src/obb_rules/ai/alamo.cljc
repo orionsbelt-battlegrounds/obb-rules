@@ -58,7 +58,7 @@
         (into (common/rotate-attack-options game element))
         (into (common/move-attack-options game element))
         (into (common/move-options game element (common/eval-board game (element/element-player element))))
-        (->> (sort-by common/option-value-cost-sorter)))))
+        (->> (sort-by common/option-value-sorter)))))
 
 (defn- other-player
   "Gets the other player to play on the given board"
@@ -134,7 +134,7 @@
   (remove empty?
     (conj all (first (-> (take-best game element element-depth)
                          (consider-opponent-move element)
-                         (->> (sort-by common/option-value-cost-sorter))
+                         (->> (sort-by common/option-value-sorter))
                          (element-options-logger element))))))
 
 (defn- find-one
