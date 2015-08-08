@@ -61,9 +61,9 @@ return cljs.core.constant$keyword$span$label$label_DASH_primary;
  */
 obb_demo.views.player.players = (function obb_demo$views$player$players(game_data,game){
 var player = obb_rules.game.state.cljs$core$IFn$_invoke$arity$1(game);
-return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$div,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_demo.views.player.selected_player(player,cljs.core.constant$keyword$p2),(function (){var or__7124__auto__ = cljs.core.constant$keyword$bot.cljs$core$IFn$_invoke$arity$1(game_data);
-if(cljs.core.truth_(or__7124__auto__)){
-return or__7124__auto__;
+return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$div,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_demo.views.player.selected_player(player,cljs.core.constant$keyword$p2),(function (){var or__7192__auto__ = cljs.core.constant$keyword$bot.cljs$core$IFn$_invoke$arity$1(game_data);
+if(cljs.core.truth_(or__7192__auto__)){
+return or__7192__auto__;
 } else {
 return "Firingsquad";
 }
@@ -113,11 +113,11 @@ obb_demo.views.player.play_turn = (function obb_demo$views$player$play_turn(game
 var player = cljs.core.constant$keyword$p1;
 var game = cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(obb_rules.game_mode.process(cljs.core.constant$keyword$game.cljs$core$IFn$_invoke$arity$1(game_data)),cljs.core.constant$keyword$action_DASH_results);
 var turn_num = cljs.core.constant$keyword$turn_DASH_num.cljs$core$IFn$_invoke$arity$1(game_data);
-var actions = (function (){var start__8033__auto__ = (new Date()).getTime();
-var ret__8034__auto__ = obb_demo.views.player.bot_turn(game_data,game);
-cljs.core.prn.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([[cljs.core.str("Elapsed time: "),cljs.core.str(((new Date()).getTime() - start__8033__auto__)),cljs.core.str(" msecs")].join('')], 0));
+var actions = (function (){var start__8101__auto__ = (new Date()).getTime();
+var ret__8102__auto__ = obb_demo.views.player.bot_turn(game_data,game);
+cljs.core.prn.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([[cljs.core.str("Elapsed time: "),cljs.core.str(((new Date()).getTime() - start__8101__auto__)),cljs.core.str(" msecs")].join('')], 0));
 
-return ret__8034__auto__;
+return ret__8102__auto__;
 })();
 var result = obb_rules.turn.process_actions(game,cljs.core.constant$keyword$p2,actions);
 cljs.core.println.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([actions], 0));
@@ -199,12 +199,12 @@ if(cljs.core.truth_(temp__4423__auto__)){
 var element = temp__4423__auto__;
 var unit = obb_rules.element.element_unit(element);
 return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$div$panel$panel_DASH_info,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.constant$keyword$style,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.constant$keyword$margin_DASH_top,"20px"], null)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$div$panel_DASH_heading,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$h3$panel_DASH_title,[cljs.core.str("Selected element: "),cljs.core.str(obb_rules.unit.unit_name(unit))].join('')], null)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$div$panel_DASH_body,new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$div$row,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$div$col_DASH_lg_DASH_4,new cljs.core.PersistentVector(null, 5, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$ul$list_DASH_group,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$li$list_DASH_group_DASH_item,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$span$badge,obb_rules.unit.unit_attack(unit)], null),"Attack"], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$li$list_DASH_group_DASH_item,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$span$badge,cljs.core.name(obb_rules.unit.attack_type(unit))], null),"Type"], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$li$list_DASH_group_DASH_item,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$span$badge,obb_rules.unit.unit_range(unit)], null),"Range"], null),(cljs.core.truth_(cljs.core.constant$keyword$after_DASH_attack.cljs$core$IFn$_invoke$arity$1(unit))?new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$li$list_DASH_group_DASH_item,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$span$badge,cljs.core.map.cljs$core$IFn$_invoke$arity$2(((function (unit,element,temp__4423__auto__){
-return (function (p1__10897_SHARP_){
-return cljs.core.name(cljs.core.first(p1__10897_SHARP_));
+return (function (p1__10977_SHARP_){
+return cljs.core.name(cljs.core.first(p1__10977_SHARP_));
 });})(unit,element,temp__4423__auto__))
 ,cljs.core.constant$keyword$after_DASH_attack.cljs$core$IFn$_invoke$arity$1(unit))], null),"Powers"], null):null)], null)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$div$col_DASH_lg_DASH_4,new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$ul$list_DASH_group,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$li$list_DASH_group_DASH_item,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$span$badge,obb_rules.unit.unit_defense(unit)], null),"Defense"], null),(cljs.core.truth_(cljs.core.constant$keyword$after_DASH_hit.cljs$core$IFn$_invoke$arity$1(unit))?new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$li$list_DASH_group_DASH_item,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$span$badge,cljs.core.map.cljs$core$IFn$_invoke$arity$2(((function (unit,element,temp__4423__auto__){
-return (function (p1__10898_SHARP_){
-return cljs.core.name(cljs.core.first(p1__10898_SHARP_));
+return (function (p1__10978_SHARP_){
+return cljs.core.name(cljs.core.first(p1__10978_SHARP_));
 });})(unit,element,temp__4423__auto__))
 ,cljs.core.constant$keyword$after_DASH_hit.cljs$core$IFn$_invoke$arity$1(unit))], null),"Powers"], null):null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$li$list_DASH_group_DASH_item,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$span$badge,cljs.core.name(obb_rules.unit.unit_category(unit))], null),"Category"], null)], null)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$div$col_DASH_lg_DASH_4,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$ul$list_DASH_group,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$li$list_DASH_group_DASH_item,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$span$badge,cljs.core.name(obb_rules.unit.unit_movement_type(unit))], null),"Movement"], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$li$list_DASH_group_DASH_item,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$span$badge,obb_rules.unit.unit_movement_cost(unit)], null),"Movement cost"], null)], null)], null)], null)], null)], null);
 } else {
@@ -225,9 +225,9 @@ return obb_demo.state.set_page_data_BANG_(cljs.core.assoc.cljs$core$IFn$_invoke$
  * Selects the bot to play
  */
 obb_demo.views.player.challenger_selector = (function obb_demo$views$player$challenger_selector(game_data){
-return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$select,new cljs.core.PersistentArrayMap(null, 2, [cljs.core.constant$keyword$value,(function (){var or__7124__auto__ = cljs.core.constant$keyword$bot.cljs$core$IFn$_invoke$arity$1(game_data);
-if(cljs.core.truth_(or__7124__auto__)){
-return or__7124__auto__;
+return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$select,new cljs.core.PersistentArrayMap(null, 2, [cljs.core.constant$keyword$value,(function (){var or__7192__auto__ = cljs.core.constant$keyword$bot.cljs$core$IFn$_invoke$arity$1(game_data);
+if(cljs.core.truth_(or__7192__auto__)){
+return or__7192__auto__;
 } else {
 return "Firingsquad";
 }

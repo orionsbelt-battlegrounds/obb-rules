@@ -11,12 +11,12 @@ obb_rules.action.available_actions = new cljs.core.PersistentArrayMap(null, 6, [
 /**
  * Builds an action given its code and args
  */
-obb_rules.action.build_action = (function obb_rules$action$build_action(p__10483){
-var vec__10486 = p__10483;
-var action_type = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10486,(0),null);
-var action_args = cljs.core.nthnext(vec__10486,(1));
-var builder = (function (){var G__10487 = cljs.core.keyword.cljs$core$IFn$_invoke$arity$1(action_type);
-return (obb_rules.action.available_actions.cljs$core$IFn$_invoke$arity$1 ? obb_rules.action.available_actions.cljs$core$IFn$_invoke$arity$1(G__10487) : obb_rules.action.available_actions.call(null,G__10487));
+obb_rules.action.build_action = (function obb_rules$action$build_action(p__10551){
+var vec__10554 = p__10551;
+var action_type = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10554,(0),null);
+var action_args = cljs.core.nthnext(vec__10554,(1));
+var builder = (function (){var G__10555 = cljs.core.keyword.cljs$core$IFn$_invoke$arity$1(action_type);
+return (obb_rules.action.available_actions.cljs$core$IFn$_invoke$arity$1 ? obb_rules.action.available_actions.cljs$core$IFn$_invoke$arity$1(G__10555) : obb_rules.action.available_actions.call(null,G__10555));
 })();
 if(cljs.core.truth_(builder)){
 } else {

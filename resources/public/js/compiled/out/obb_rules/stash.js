@@ -12,23 +12,23 @@ return unit_hash;
  * Creates a new stash
  */
 obb_rules.stash.create = (function obb_rules$stash$create(){
-var args__8170__auto__ = [];
-var len__8163__auto___10230 = arguments.length;
-var i__8164__auto___10231 = (0);
+var args__8238__auto__ = [];
+var len__8231__auto___10298 = arguments.length;
+var i__8232__auto___10299 = (0);
 while(true){
-if((i__8164__auto___10231 < len__8163__auto___10230)){
-args__8170__auto__.push((arguments[i__8164__auto___10231]));
+if((i__8232__auto___10299 < len__8231__auto___10298)){
+args__8238__auto__.push((arguments[i__8232__auto___10299]));
 
-var G__10232 = (i__8164__auto___10231 + (1));
-i__8164__auto___10231 = G__10232;
+var G__10300 = (i__8232__auto___10299 + (1));
+i__8232__auto___10299 = G__10300;
 continue;
 } else {
 }
 break;
 }
 
-var argseq__8171__auto__ = ((((0) < args__8170__auto__.length))?(new cljs.core.IndexedSeq(args__8170__auto__.slice((0)),(0))):null);
-return obb_rules.stash.create.cljs$core$IFn$_invoke$arity$variadic(argseq__8171__auto__);
+var argseq__8239__auto__ = ((((0) < args__8238__auto__.length))?(new cljs.core.IndexedSeq(args__8238__auto__.slice((0)),(0))):null);
+return obb_rules.stash.create.cljs$core$IFn$_invoke$arity$variadic(argseq__8239__auto__);
 });
 
 obb_rules.stash.create.cljs$core$IFn$_invoke$arity$variadic = (function (units){
@@ -37,8 +37,8 @@ return cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,units);
 
 obb_rules.stash.create.cljs$lang$maxFixedArity = (0);
 
-obb_rules.stash.create.cljs$lang$applyTo = (function (seq10229){
-return obb_rules.stash.create.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq10229));
+obb_rules.stash.create.cljs$lang$applyTo = (function (seq10297){
+return obb_rules.stash.create.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq10297));
 });
 /**
  * Gets the way to access a unit key on the stash
@@ -54,11 +54,11 @@ return cljs.core.keyword;
  * States how many of a unit are present
  */
 obb_rules.stash.how_many_QMARK_ = (function obb_rules$stash$how_many_QMARK_(stash,unit){
-var or__7124__auto__ = (function (){var G__10236 = obb_rules.stash.accessorfn(stash,unit).call(null,unit);
-return (stash.cljs$core$IFn$_invoke$arity$1 ? stash.cljs$core$IFn$_invoke$arity$1(G__10236) : stash.call(null,G__10236));
+var or__7192__auto__ = (function (){var G__10304 = obb_rules.stash.accessorfn(stash,unit).call(null,unit);
+return (stash.cljs$core$IFn$_invoke$arity$1 ? stash.cljs$core$IFn$_invoke$arity$1(G__10304) : stash.call(null,G__10304));
 })();
-if(cljs.core.truth_(or__7124__auto__)){
-return or__7124__auto__;
+if(cljs.core.truth_(or__7192__auto__)){
+return or__7192__auto__;
 } else {
 return (0);
 }

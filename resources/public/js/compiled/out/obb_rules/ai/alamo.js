@@ -3,6 +3,7 @@ goog.provide('obb_rules.ai.alamo');
 goog.require('cljs.core');
 goog.require('obb_rules.board');
 goog.require('obb_rules.math');
+goog.require('obb_rules.logger');
 goog.require('obb_rules.element');
 goog.require('obb_rules.result');
 goog.require('obb_rules.ai.firingsquad');
@@ -10,34 +11,34 @@ goog.require('obb_rules.actions.move');
 goog.require('obb_rules.game');
 goog.require('obb_rules.ai.common');
 goog.require('obb_rules.laws');
-obb_rules.ai.alamo.element_depth = (5);
+obb_rules.ai.alamo.element_depth = (10);
 if(typeof obb_rules.ai.alamo.actions !== 'undefined'){
 } else {
 /**
  * Returns a list of actions to apply to the current game
  */
-obb_rules.ai.alamo.actions = (function (){var method_table__8018__auto__ = (function (){var G__10560 = cljs.core.PersistentArrayMap.EMPTY;
-return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__10560) : cljs.core.atom.call(null,G__10560));
+obb_rules.ai.alamo.actions = (function (){var method_table__8086__auto__ = (function (){var G__10640 = cljs.core.PersistentArrayMap.EMPTY;
+return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__10640) : cljs.core.atom.call(null,G__10640));
 })();
-var prefer_table__8019__auto__ = (function (){var G__10561 = cljs.core.PersistentArrayMap.EMPTY;
-return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__10561) : cljs.core.atom.call(null,G__10561));
+var prefer_table__8087__auto__ = (function (){var G__10641 = cljs.core.PersistentArrayMap.EMPTY;
+return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__10641) : cljs.core.atom.call(null,G__10641));
 })();
-var method_cache__8020__auto__ = (function (){var G__10562 = cljs.core.PersistentArrayMap.EMPTY;
-return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__10562) : cljs.core.atom.call(null,G__10562));
+var method_cache__8088__auto__ = (function (){var G__10642 = cljs.core.PersistentArrayMap.EMPTY;
+return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__10642) : cljs.core.atom.call(null,G__10642));
 })();
-var cached_hierarchy__8021__auto__ = (function (){var G__10563 = cljs.core.PersistentArrayMap.EMPTY;
-return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__10563) : cljs.core.atom.call(null,G__10563));
+var cached_hierarchy__8089__auto__ = (function (){var G__10643 = cljs.core.PersistentArrayMap.EMPTY;
+return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__10643) : cljs.core.atom.call(null,G__10643));
 })();
-var hierarchy__8022__auto__ = cljs.core.get.cljs$core$IFn$_invoke$arity$3(cljs.core.PersistentArrayMap.EMPTY,cljs.core.constant$keyword$hierarchy,cljs.core.get_global_hierarchy());
-return (new cljs.core.MultiFn(cljs.core.symbol.cljs$core$IFn$_invoke$arity$2("obb-rules.ai.alamo","actions"),((function (method_table__8018__auto__,prefer_table__8019__auto__,method_cache__8020__auto__,cached_hierarchy__8021__auto__,hierarchy__8022__auto__){
+var hierarchy__8090__auto__ = cljs.core.get.cljs$core$IFn$_invoke$arity$3(cljs.core.PersistentArrayMap.EMPTY,cljs.core.constant$keyword$hierarchy,cljs.core.get_global_hierarchy());
+return (new cljs.core.MultiFn(cljs.core.symbol.cljs$core$IFn$_invoke$arity$2("obb-rules.ai.alamo","actions"),((function (method_table__8086__auto__,prefer_table__8087__auto__,method_cache__8088__auto__,cached_hierarchy__8089__auto__,hierarchy__8090__auto__){
 return (function (game,player){
 if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.constant$keyword$deploy,cljs.core.keyword.cljs$core$IFn$_invoke$arity$1(obb_rules.game.state.cljs$core$IFn$_invoke$arity$1(game)))){
 return cljs.core.constant$keyword$deploy;
 } else {
 return cljs.core.constant$keyword$turn;
 }
-});})(method_table__8018__auto__,prefer_table__8019__auto__,method_cache__8020__auto__,cached_hierarchy__8021__auto__,hierarchy__8022__auto__))
-,cljs.core.constant$keyword$default,hierarchy__8022__auto__,method_table__8018__auto__,prefer_table__8019__auto__,method_cache__8020__auto__,cached_hierarchy__8021__auto__));
+});})(method_table__8086__auto__,prefer_table__8087__auto__,method_cache__8088__auto__,cached_hierarchy__8089__auto__,hierarchy__8090__auto__))
+,cljs.core.constant$keyword$default,hierarchy__8090__auto__,method_table__8086__auto__,prefer_table__8087__auto__,method_cache__8088__auto__,cached_hierarchy__8089__auto__));
 })();
 }
 obb_rules.ai.alamo.actions.cljs$core$IMultiFn$_add_method$arity$3(null,cljs.core.constant$keyword$deploy,(function (game,player){
@@ -46,10 +47,33 @@ return new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMP
 /**
  * Utility for debugging
  */
-obb_rules.ai.alamo.logger = (function obb_rules$ai$alamo$logger(coll){
+obb_rules.ai.alamo.final_actions_logger = (function obb_rules$ai$alamo$final_actions_logger(coll){
+obb_rules.logger.log.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq(["## Final actions ~~~~~~~~~"], 0));
+
+if(cljs.core.truth_(obb_rules.logger._STAR_verbose_STAR_)){
 cljs.core.mapv.cljs$core$IFn$_invoke$arity$2((function (option){
-return cljs.core.println.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$value.cljs$core$IFn$_invoke$arity$1(option),cljs.core.constant$keyword$old_DASH_value.cljs$core$IFn$_invoke$arity$1(option),cljs.core.constant$keyword$cost.cljs$core$IFn$_invoke$arity$1(option),cljs.core.constant$keyword$actions.cljs$core$IFn$_invoke$arity$1(option)], null)], 0));
+return obb_rules.logger.ai_option(option);
 }),coll);
+} else {
+}
+
+return coll;
+});
+/**
+ * Utility for debugging
+ */
+obb_rules.ai.alamo.element_options_logger = (function obb_rules$ai$alamo$element_options_logger(coll,element){
+if(cljs.core.truth_(obb_rules.logger._STAR_verbose_STAR_)){
+obb_rules.logger.log.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq(["## Element",obb_rules.element.element_coordinate.cljs$core$IFn$_invoke$arity$1(element),"options ~~~~~~~~~"], 0));
+
+if(cljs.core.truth_(obb_rules.logger._STAR_verbose_STAR_)){
+cljs.core.mapv.cljs$core$IFn$_invoke$arity$2((function (option){
+return obb_rules.logger.ai_option(option);
+}),coll);
+} else {
+}
+} else {
+}
 
 return coll;
 });
@@ -70,23 +94,79 @@ return cljs.core.constant$keyword$p1;
 }
 });
 /**
+ * Tries to find the element on the new board
+ */
+obb_rules.ai.alamo.get_element_on_new_board = (function obb_rules$ai$alamo$get_element_on_new_board(element,option,counter_option){
+var element_player = obb_rules.element.element_player.cljs$core$IFn$_invoke$arity$1(element);
+var counter_board = cljs.core.constant$keyword$board.cljs$core$IFn$_invoke$arity$1(counter_option);
+var element_coord = (function (){var or__7192__auto__ = cljs.core.constant$keyword$element_DASH_coord.cljs$core$IFn$_invoke$arity$1(option);
+if(cljs.core.truth_(or__7192__auto__)){
+return or__7192__auto__;
+} else {
+return obb_rules.element.element_coordinate.cljs$core$IFn$_invoke$arity$1(element);
+}
+})();
+var counter_element = (function (){var and__7180__auto__ = counter_board;
+if(cljs.core.truth_(and__7180__auto__)){
+return obb_rules.board.get_element(counter_board,element_coord);
+} else {
+return and__7180__auto__;
+}
+})();
+if(cljs.core.truth_((function (){var and__7180__auto__ = counter_element;
+if(cljs.core.truth_(and__7180__auto__)){
+return cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(element_player,obb_rules.element.element_player.cljs$core$IFn$_invoke$arity$1(counter_element));
+} else {
+return and__7180__auto__;
+}
+})())){
+return counter_element;
+} else {
+return null;
+}
+});
+/**
+ * Given an option and a counter option will return a new option that is
+ * a merged one
+ */
+obb_rules.ai.alamo.merge_counter_option = (function obb_rules$ai$alamo$merge_counter_option(element,option,counter_option,element_board){
+if(cljs.core.truth_((function (){var and__7180__auto__ = option;
+if(cljs.core.truth_(and__7180__auto__)){
+return counter_option;
+} else {
+return and__7180__auto__;
+}
+})())){
+var original_value = cljs.core.constant$keyword$value.cljs$core$IFn$_invoke$arity$1(option);
+var original_quantity = obb_rules.element.element_quantity.cljs$core$IFn$_invoke$arity$1(element);
+var counter_element = obb_rules.ai.alamo.get_element_on_new_board(element,option,counter_option);
+var counter_quantity = (cljs.core.truth_(counter_element)?obb_rules.element.element_quantity.cljs$core$IFn$_invoke$arity$1(counter_element):(0));
+var percentage = (counter_quantity / original_quantity);
+return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(option,cljs.core.constant$keyword$old_DASH_value,cljs.core.constant$keyword$value.cljs$core$IFn$_invoke$arity$1(option)),cljs.core.constant$keyword$value,obb_rules.math.ceil(((original_value * 1.01) - (original_value * ((1) - percentage)))));
+} else {
+return option;
+}
+});
+/**
  * For each option given, will play a bot against it and recalculate
  * option value
  */
-obb_rules.ai.alamo.consider_opponent_move = (function obb_rules$ai$alamo$consider_opponent_move(options){
+obb_rules.ai.alamo.consider_opponent_move = (function obb_rules$ai$alamo$consider_opponent_move(options,element){
 return cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (option){
 if(cljs.core.truth_(option)){
 var board = cljs.core.constant$keyword$board.cljs$core$IFn$_invoke$arity$1(option);
 var player = obb_rules.game.state.cljs$core$IFn$_invoke$arity$1(board);
 var counter_player = obb_rules.ai.alamo.other_player(board);
-var board__$1 = cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(obb_rules.game.state.cljs$core$IFn$_invoke$arity$2(board,counter_player),cljs.core.constant$keyword$removed_DASH_elements),cljs.core.constant$keyword$action_DASH_results);
-var counter_option = obb_rules.ai.firingsquad.turn_option(board__$1,counter_player);
-var counter_board = cljs.core.constant$keyword$board.cljs$core$IFn$_invoke$arity$1(counter_option);
-if(cljs.core.truth_(counter_option)){
-return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(option,cljs.core.constant$keyword$old_DASH_value,cljs.core.constant$keyword$value.cljs$core$IFn$_invoke$arity$1(option)),cljs.core.constant$keyword$value,obb_rules.ai.common.eval_board(counter_board,player));
+var moved_element = obb_rules.board.get_element(board,(function (){var or__7192__auto__ = cljs.core.constant$keyword$element_DASH_coord.cljs$core$IFn$_invoke$arity$1(option);
+if(cljs.core.truth_(or__7192__auto__)){
+return or__7192__auto__;
 } else {
-return option;
+return obb_rules.element.element_coordinate.cljs$core$IFn$_invoke$arity$1(element);
 }
+})());
+var board__$1 = cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(obb_rules.board.element_focus(obb_rules.game.state.cljs$core$IFn$_invoke$arity$2(board,counter_player),moved_element),cljs.core.constant$keyword$removed_DASH_elements),cljs.core.constant$keyword$action_DASH_results);
+var counter_option = obb_rules.ai.firingsquad.turn_option(board__$1,counter_player);
+return obb_rules.ai.alamo.merge_counter_option(element,option,counter_option,board__$1);
 } else {
 return null;
 }
@@ -96,7 +176,7 @@ return null;
  * Gathers possible actions for the given element
  */
 obb_rules.ai.alamo.gather_element_actions = (function obb_rules$ai$alamo$gather_element_actions(game,all,element){
-return cljs.core.remove.cljs$core$IFn$_invoke$arity$2(cljs.core.empty_QMARK_,cljs.core.conj.cljs$core$IFn$_invoke$arity$2(all,cljs.core.first(cljs.core.sort_by.cljs$core$IFn$_invoke$arity$2(obb_rules.ai.common.option_value_cost_sorter,obb_rules.ai.alamo.consider_opponent_move(obb_rules.ai.alamo.take_best(game,element,obb_rules.ai.alamo.element_depth))))));
+return cljs.core.remove.cljs$core$IFn$_invoke$arity$2(cljs.core.empty_QMARK_,cljs.core.conj.cljs$core$IFn$_invoke$arity$2(all,cljs.core.first(obb_rules.ai.alamo.element_options_logger(cljs.core.sort_by.cljs$core$IFn$_invoke$arity$2(obb_rules.ai.common.option_value_cost_sorter,obb_rules.ai.alamo.consider_opponent_move(obb_rules.ai.alamo.take_best(game,element,obb_rules.ai.alamo.element_depth),element)),element))));
 });
 /**
  * Given a collection of sorted options, tries to find a good one
@@ -104,12 +184,18 @@ return cljs.core.remove.cljs$core$IFn$_invoke$arity$2(cljs.core.empty_QMARK_,clj
 obb_rules.ai.alamo.find_one = (function obb_rules$ai$alamo$find_one(player,options){
 var joiner = cljs.core.partial.cljs$core$IFn$_invoke$arity$2(obb_rules.ai.common.join_options,player);
 var the_one = cljs.core.reduce.cljs$core$IFn$_invoke$arity$3(joiner,cljs.core.first(options),cljs.core.rest(options));
+obb_rules.logger.log.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq(["## Final ~~~~~~~~~~"], 0));
+
+obb_rules.logger.ai_option(the_one);
+
 return the_one;
 });
 obb_rules.ai.alamo.actions.cljs$core$IMultiFn$_add_method$arity$3(null,cljs.core.constant$keyword$turn,(function (game,player){
+obb_rules.logger.ai_turn("alamo",game);
+
 var elements = obb_rules.board.board_elements(game,player);
 var gatherer = cljs.core.partial.cljs$core$IFn$_invoke$arity$2(obb_rules.ai.alamo.gather_element_actions,game);
-var option = obb_rules.ai.alamo.find_one(player,cljs.core.sort_by.cljs$core$IFn$_invoke$arity$2(obb_rules.ai.common.option_value_sorter,cljs.core.reduce.cljs$core$IFn$_invoke$arity$3(gatherer,cljs.core.PersistentVector.EMPTY,elements)));
+var option = obb_rules.ai.alamo.find_one(player,obb_rules.ai.alamo.final_actions_logger(cljs.core.sort_by.cljs$core$IFn$_invoke$arity$2(obb_rules.ai.common.option_value_sorter,cljs.core.reduce.cljs$core$IFn$_invoke$arity$3(gatherer,cljs.core.PersistentVector.EMPTY,elements))));
 if(cljs.core.truth_(option)){
 return (option.cljs$core$IFn$_invoke$arity$1 ? option.cljs$core$IFn$_invoke$arity$1(cljs.core.constant$keyword$actions) : option.call(null,cljs.core.constant$keyword$actions));
 } else {

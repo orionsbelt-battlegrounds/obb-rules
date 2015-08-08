@@ -15,9 +15,9 @@ cljs.core.enable_console_print_BANG_();
 obb_demo.core.on_js_reload = (function obb_demo$core$on_js_reload(){
 cljs.core.println.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq(["Reloaded..."], 0));
 
-var G__11096 = new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_demo.views.index.render], null);
-var G__11097 = document.getElementById("app");
-return (reagent.core.render_component.cljs$core$IFn$_invoke$arity$2 ? reagent.core.render_component.cljs$core$IFn$_invoke$arity$2(G__11096,G__11097) : reagent.core.render_component.call(null,G__11096,G__11097));
+var G__11176 = new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_demo.views.index.render], null);
+var G__11177 = document.getElementById("app");
+return (reagent.core.render_component.cljs$core$IFn$_invoke$arity$2 ? reagent.core.render_component.cljs$core$IFn$_invoke$arity$2(G__11176,G__11177) : reagent.core.render_component.call(null,G__11176,G__11177));
 });
 obb_demo.core.get_tick = (function obb_demo$core$get_tick(){
 return obb_demo.core.tick;
@@ -31,28 +31,28 @@ var games_data = obb_demo.state.get_page_data();
 var new_games_data = cljs.core.mapv.cljs$core$IFn$_invoke$arity$2(obb_demo.processor.auto_process_game_data,games_data);
 obb_demo.state.set_page_data_BANG_(new_games_data);
 
-var G__11104 = obb_demo.core.get_tick();
-var G__11105 = (100);
-return setTimeout(G__11104,G__11105);
+var G__11184 = obb_demo.core.get_tick();
+var G__11185 = (100);
+return setTimeout(G__11184,G__11185);
 } else {
 if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.constant$keyword$index,obb_demo.state.current_page())){
 var game_data = obb_demo.state.get_page_data();
 var new_game_data = obb_demo.processor.auto_process_game_data(game_data);
 obb_demo.state.set_page_data_BANG_(new_game_data);
 
-var G__11106 = obb_demo.core.get_tick();
-var G__11107 = (function (){var or__7124__auto__ = cljs.core.constant$keyword$delay.cljs$core$IFn$_invoke$arity$1(game_data);
-if(cljs.core.truth_(or__7124__auto__)){
-return or__7124__auto__;
+var G__11186 = obb_demo.core.get_tick();
+var G__11187 = (function (){var or__7192__auto__ = cljs.core.constant$keyword$delay.cljs$core$IFn$_invoke$arity$1(game_data);
+if(cljs.core.truth_(or__7192__auto__)){
+return or__7192__auto__;
 } else {
 return (50);
 }
 })();
-return setTimeout(G__11106,G__11107);
+return setTimeout(G__11186,G__11187);
 } else {
-var G__11108 = obb_demo.core.get_tick();
-var G__11109 = (1000);
-return setTimeout(G__11108,G__11109);
+var G__11188 = obb_demo.core.get_tick();
+var G__11189 = (1000);
+return setTimeout(G__11188,G__11189);
 
 }
 }

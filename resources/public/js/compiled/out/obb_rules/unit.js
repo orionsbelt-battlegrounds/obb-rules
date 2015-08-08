@@ -64,17 +64,17 @@ this.__hash = __hash;
 this.cljs$lang$protocol_mask$partition0$ = 2229667594;
 this.cljs$lang$protocol_mask$partition1$ = 8192;
 })
-obb_rules.unit.CombatUnit.prototype.cljs$core$ILookup$_lookup$arity$2 = (function (this__7719__auto__,k__7720__auto__){
+obb_rules.unit.CombatUnit.prototype.cljs$core$ILookup$_lookup$arity$2 = (function (this__7787__auto__,k__7788__auto__){
 var self__ = this;
-var this__7719__auto____$1 = this;
-return cljs.core._lookup.cljs$core$IFn$_invoke$arity$3(this__7719__auto____$1,k__7720__auto__,null);
+var this__7787__auto____$1 = this;
+return cljs.core._lookup.cljs$core$IFn$_invoke$arity$3(this__7787__auto____$1,k__7788__auto__,null);
 });
 
-obb_rules.unit.CombatUnit.prototype.cljs$core$ILookup$_lookup$arity$3 = (function (this__7721__auto__,k9924,else__7722__auto__){
+obb_rules.unit.CombatUnit.prototype.cljs$core$ILookup$_lookup$arity$3 = (function (this__7789__auto__,k11900,else__7790__auto__){
 var self__ = this;
-var this__7721__auto____$1 = this;
-var G__9926 = (((k9924 instanceof cljs.core.Keyword))?k9924.fqn:null);
-switch (G__9926) {
+var this__7789__auto____$1 = this;
+var G__11902 = (((k11900 instanceof cljs.core.Keyword))?k11900.fqn:null);
+switch (G__11902) {
 case "category":
 return self__.category;
 
@@ -128,75 +128,75 @@ return self__.range;
 
 break;
 default:
-return cljs.core.get.cljs$core$IFn$_invoke$arity$3(self__.__extmap,k9924,else__7722__auto__);
+return cljs.core.get.cljs$core$IFn$_invoke$arity$3(self__.__extmap,k11900,else__7790__auto__);
 
 }
 });
 
-obb_rules.unit.CombatUnit.prototype.cljs$core$IPrintWithWriter$_pr_writer$arity$3 = (function (this__7733__auto__,writer__7734__auto__,opts__7735__auto__){
+obb_rules.unit.CombatUnit.prototype.cljs$core$IPrintWithWriter$_pr_writer$arity$3 = (function (this__7801__auto__,writer__7802__auto__,opts__7803__auto__){
 var self__ = this;
-var this__7733__auto____$1 = this;
-var pr_pair__7736__auto__ = ((function (this__7733__auto____$1){
-return (function (keyval__7737__auto__){
-return cljs.core.pr_sequential_writer(writer__7734__auto__,cljs.core.pr_writer,""," ","",opts__7735__auto__,keyval__7737__auto__);
-});})(this__7733__auto____$1))
+var this__7801__auto____$1 = this;
+var pr_pair__7804__auto__ = ((function (this__7801__auto____$1){
+return (function (keyval__7805__auto__){
+return cljs.core.pr_sequential_writer(writer__7802__auto__,cljs.core.pr_writer,""," ","",opts__7803__auto__,keyval__7805__auto__);
+});})(this__7801__auto____$1))
 ;
-return cljs.core.pr_sequential_writer(writer__7734__auto__,pr_pair__7736__auto__,"#obb-rules.unit.CombatUnit{",", ","}",opts__7735__auto__,cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.PersistentVector(null, 13, 5, cljs.core.PersistentVector.EMPTY_NODE, [(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.constant$keyword$name,self__.name],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.constant$keyword$code,self__.code],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.constant$keyword$value,self__.value],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.constant$keyword$attack,self__.attack],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.constant$keyword$attack_DASH_type,self__.attack_type],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.constant$keyword$range,self__.range],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.constant$keyword$defense,self__.defense],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.constant$keyword$bonus,self__.bonus],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.constant$keyword$type,self__.type],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.constant$keyword$category,self__.category],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.constant$keyword$displacement,self__.displacement],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.constant$keyword$movement_DASH_type,self__.movement_type],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.constant$keyword$movement_DASH_cost,self__.movement_cost],null))], null),self__.__extmap));
+return cljs.core.pr_sequential_writer(writer__7802__auto__,pr_pair__7804__auto__,"#obb-rules.unit.CombatUnit{",", ","}",opts__7803__auto__,cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.PersistentVector(null, 13, 5, cljs.core.PersistentVector.EMPTY_NODE, [(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.constant$keyword$name,self__.name],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.constant$keyword$code,self__.code],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.constant$keyword$value,self__.value],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.constant$keyword$attack,self__.attack],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.constant$keyword$attack_DASH_type,self__.attack_type],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.constant$keyword$range,self__.range],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.constant$keyword$defense,self__.defense],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.constant$keyword$bonus,self__.bonus],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.constant$keyword$type,self__.type],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.constant$keyword$category,self__.category],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.constant$keyword$displacement,self__.displacement],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.constant$keyword$movement_DASH_type,self__.movement_type],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.constant$keyword$movement_DASH_cost,self__.movement_cost],null))], null),self__.__extmap));
 });
 
 obb_rules.unit.CombatUnit.prototype.cljs$core$IIterable$ = true;
 
-obb_rules.unit.CombatUnit.prototype.cljs$core$IIterable$_iterator$arity$1 = (function (G__9923){
+obb_rules.unit.CombatUnit.prototype.cljs$core$IIterable$_iterator$arity$1 = (function (G__11899){
 var self__ = this;
-var G__9923__$1 = this;
-return (new cljs.core.RecordIter((0),G__9923__$1,13,new cljs.core.PersistentVector(null, 13, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$name,cljs.core.constant$keyword$code,cljs.core.constant$keyword$value,cljs.core.constant$keyword$attack,cljs.core.constant$keyword$attack_DASH_type,cljs.core.constant$keyword$range,cljs.core.constant$keyword$defense,cljs.core.constant$keyword$bonus,cljs.core.constant$keyword$type,cljs.core.constant$keyword$category,cljs.core.constant$keyword$displacement,cljs.core.constant$keyword$movement_DASH_type,cljs.core.constant$keyword$movement_DASH_cost], null),cljs.core._iterator(self__.__extmap)));
+var G__11899__$1 = this;
+return (new cljs.core.RecordIter((0),G__11899__$1,13,new cljs.core.PersistentVector(null, 13, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$name,cljs.core.constant$keyword$code,cljs.core.constant$keyword$value,cljs.core.constant$keyword$attack,cljs.core.constant$keyword$attack_DASH_type,cljs.core.constant$keyword$range,cljs.core.constant$keyword$defense,cljs.core.constant$keyword$bonus,cljs.core.constant$keyword$type,cljs.core.constant$keyword$category,cljs.core.constant$keyword$displacement,cljs.core.constant$keyword$movement_DASH_type,cljs.core.constant$keyword$movement_DASH_cost], null),cljs.core._iterator(self__.__extmap)));
 });
 
-obb_rules.unit.CombatUnit.prototype.cljs$core$IMeta$_meta$arity$1 = (function (this__7717__auto__){
+obb_rules.unit.CombatUnit.prototype.cljs$core$IMeta$_meta$arity$1 = (function (this__7785__auto__){
 var self__ = this;
-var this__7717__auto____$1 = this;
+var this__7785__auto____$1 = this;
 return self__.__meta;
 });
 
-obb_rules.unit.CombatUnit.prototype.cljs$core$ICloneable$_clone$arity$1 = (function (this__7713__auto__){
+obb_rules.unit.CombatUnit.prototype.cljs$core$ICloneable$_clone$arity$1 = (function (this__7781__auto__){
 var self__ = this;
-var this__7713__auto____$1 = this;
+var this__7781__auto____$1 = this;
 return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self__.attack,self__.attack_type,self__.range,self__.defense,self__.bonus,self__.type,self__.category,self__.displacement,self__.movement_type,self__.movement_cost,self__.__meta,self__.__extmap,self__.__hash));
 });
 
-obb_rules.unit.CombatUnit.prototype.cljs$core$ICounted$_count$arity$1 = (function (this__7723__auto__){
+obb_rules.unit.CombatUnit.prototype.cljs$core$ICounted$_count$arity$1 = (function (this__7791__auto__){
 var self__ = this;
-var this__7723__auto____$1 = this;
+var this__7791__auto____$1 = this;
 return (13 + cljs.core.count(self__.__extmap));
 });
 
-obb_rules.unit.CombatUnit.prototype.cljs$core$IHash$_hash$arity$1 = (function (this__7714__auto__){
+obb_rules.unit.CombatUnit.prototype.cljs$core$IHash$_hash$arity$1 = (function (this__7782__auto__){
 var self__ = this;
-var this__7714__auto____$1 = this;
-var h__7540__auto__ = self__.__hash;
-if(!((h__7540__auto__ == null))){
-return h__7540__auto__;
+var this__7782__auto____$1 = this;
+var h__7608__auto__ = self__.__hash;
+if(!((h__7608__auto__ == null))){
+return h__7608__auto__;
 } else {
-var h__7540__auto____$1 = cljs.core.hash_imap(this__7714__auto____$1);
-self__.__hash = h__7540__auto____$1;
+var h__7608__auto____$1 = cljs.core.hash_imap(this__7782__auto____$1);
+self__.__hash = h__7608__auto____$1;
 
-return h__7540__auto____$1;
+return h__7608__auto____$1;
 }
 });
 
-obb_rules.unit.CombatUnit.prototype.cljs$core$IEquiv$_equiv$arity$2 = (function (this__7715__auto__,other__7716__auto__){
+obb_rules.unit.CombatUnit.prototype.cljs$core$IEquiv$_equiv$arity$2 = (function (this__7783__auto__,other__7784__auto__){
 var self__ = this;
-var this__7715__auto____$1 = this;
-if(cljs.core.truth_((function (){var and__7112__auto__ = other__7716__auto__;
-if(cljs.core.truth_(and__7112__auto__)){
-var and__7112__auto____$1 = (this__7715__auto____$1.constructor === other__7716__auto__.constructor);
-if(and__7112__auto____$1){
-return cljs.core.equiv_map(this__7715__auto____$1,other__7716__auto__);
+var this__7783__auto____$1 = this;
+if(cljs.core.truth_((function (){var and__7180__auto__ = other__7784__auto__;
+if(cljs.core.truth_(and__7180__auto__)){
+var and__7180__auto____$1 = (this__7783__auto____$1.constructor === other__7784__auto__.constructor);
+if(and__7180__auto____$1){
+return cljs.core.equiv_map(this__7783__auto____$1,other__7784__auto__);
 } else {
-return and__7112__auto____$1;
+return and__7180__auto____$1;
 }
 } else {
-return and__7112__auto__;
+return and__7180__auto__;
 }
 })())){
 return true;
@@ -205,61 +205,61 @@ return false;
 }
 });
 
-obb_rules.unit.CombatUnit.prototype.cljs$core$IMap$_dissoc$arity$2 = (function (this__7728__auto__,k__7729__auto__){
+obb_rules.unit.CombatUnit.prototype.cljs$core$IMap$_dissoc$arity$2 = (function (this__7796__auto__,k__7797__auto__){
 var self__ = this;
-var this__7728__auto____$1 = this;
-if(cljs.core.contains_QMARK_(new cljs.core.PersistentHashSet(null, new cljs.core.PersistentArrayMap(null, 13, [cljs.core.constant$keyword$category,null,cljs.core.constant$keyword$displacement,null,cljs.core.constant$keyword$attack_DASH_type,null,cljs.core.constant$keyword$name,null,cljs.core.constant$keyword$value,null,cljs.core.constant$keyword$movement_DASH_cost,null,cljs.core.constant$keyword$type,null,cljs.core.constant$keyword$defense,null,cljs.core.constant$keyword$bonus,null,cljs.core.constant$keyword$code,null,cljs.core.constant$keyword$movement_DASH_type,null,cljs.core.constant$keyword$attack,null,cljs.core.constant$keyword$range,null], null), null),k__7729__auto__)){
-return cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(cljs.core.with_meta(cljs.core.into.cljs$core$IFn$_invoke$arity$2(cljs.core.PersistentArrayMap.EMPTY,this__7728__auto____$1),self__.__meta),k__7729__auto__);
+var this__7796__auto____$1 = this;
+if(cljs.core.contains_QMARK_(new cljs.core.PersistentHashSet(null, new cljs.core.PersistentArrayMap(null, 13, [cljs.core.constant$keyword$category,null,cljs.core.constant$keyword$displacement,null,cljs.core.constant$keyword$attack_DASH_type,null,cljs.core.constant$keyword$name,null,cljs.core.constant$keyword$value,null,cljs.core.constant$keyword$movement_DASH_cost,null,cljs.core.constant$keyword$type,null,cljs.core.constant$keyword$defense,null,cljs.core.constant$keyword$bonus,null,cljs.core.constant$keyword$code,null,cljs.core.constant$keyword$movement_DASH_type,null,cljs.core.constant$keyword$attack,null,cljs.core.constant$keyword$range,null], null), null),k__7797__auto__)){
+return cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(cljs.core.with_meta(cljs.core.into.cljs$core$IFn$_invoke$arity$2(cljs.core.PersistentArrayMap.EMPTY,this__7796__auto____$1),self__.__meta),k__7797__auto__);
 } else {
-return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self__.attack,self__.attack_type,self__.range,self__.defense,self__.bonus,self__.type,self__.category,self__.displacement,self__.movement_type,self__.movement_cost,self__.__meta,cljs.core.not_empty(cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(self__.__extmap,k__7729__auto__)),null));
+return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self__.attack,self__.attack_type,self__.range,self__.defense,self__.bonus,self__.type,self__.category,self__.displacement,self__.movement_type,self__.movement_cost,self__.__meta,cljs.core.not_empty(cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(self__.__extmap,k__7797__auto__)),null));
 }
 });
 
-obb_rules.unit.CombatUnit.prototype.cljs$core$IAssociative$_assoc$arity$3 = (function (this__7726__auto__,k__7727__auto__,G__9923){
+obb_rules.unit.CombatUnit.prototype.cljs$core$IAssociative$_assoc$arity$3 = (function (this__7794__auto__,k__7795__auto__,G__11899){
 var self__ = this;
-var this__7726__auto____$1 = this;
-var pred__9927 = cljs.core.keyword_identical_QMARK_;
-var expr__9928 = k__7727__auto__;
-if(cljs.core.truth_((pred__9927.cljs$core$IFn$_invoke$arity$2 ? pred__9927.cljs$core$IFn$_invoke$arity$2(cljs.core.constant$keyword$name,expr__9928) : pred__9927.call(null,cljs.core.constant$keyword$name,expr__9928)))){
-return (new obb_rules.unit.CombatUnit(G__9923,self__.code,self__.value,self__.attack,self__.attack_type,self__.range,self__.defense,self__.bonus,self__.type,self__.category,self__.displacement,self__.movement_type,self__.movement_cost,self__.__meta,self__.__extmap,null));
+var this__7794__auto____$1 = this;
+var pred__11903 = cljs.core.keyword_identical_QMARK_;
+var expr__11904 = k__7795__auto__;
+if(cljs.core.truth_((pred__11903.cljs$core$IFn$_invoke$arity$2 ? pred__11903.cljs$core$IFn$_invoke$arity$2(cljs.core.constant$keyword$name,expr__11904) : pred__11903.call(null,cljs.core.constant$keyword$name,expr__11904)))){
+return (new obb_rules.unit.CombatUnit(G__11899,self__.code,self__.value,self__.attack,self__.attack_type,self__.range,self__.defense,self__.bonus,self__.type,self__.category,self__.displacement,self__.movement_type,self__.movement_cost,self__.__meta,self__.__extmap,null));
 } else {
-if(cljs.core.truth_((pred__9927.cljs$core$IFn$_invoke$arity$2 ? pred__9927.cljs$core$IFn$_invoke$arity$2(cljs.core.constant$keyword$code,expr__9928) : pred__9927.call(null,cljs.core.constant$keyword$code,expr__9928)))){
-return (new obb_rules.unit.CombatUnit(self__.name,G__9923,self__.value,self__.attack,self__.attack_type,self__.range,self__.defense,self__.bonus,self__.type,self__.category,self__.displacement,self__.movement_type,self__.movement_cost,self__.__meta,self__.__extmap,null));
+if(cljs.core.truth_((pred__11903.cljs$core$IFn$_invoke$arity$2 ? pred__11903.cljs$core$IFn$_invoke$arity$2(cljs.core.constant$keyword$code,expr__11904) : pred__11903.call(null,cljs.core.constant$keyword$code,expr__11904)))){
+return (new obb_rules.unit.CombatUnit(self__.name,G__11899,self__.value,self__.attack,self__.attack_type,self__.range,self__.defense,self__.bonus,self__.type,self__.category,self__.displacement,self__.movement_type,self__.movement_cost,self__.__meta,self__.__extmap,null));
 } else {
-if(cljs.core.truth_((pred__9927.cljs$core$IFn$_invoke$arity$2 ? pred__9927.cljs$core$IFn$_invoke$arity$2(cljs.core.constant$keyword$value,expr__9928) : pred__9927.call(null,cljs.core.constant$keyword$value,expr__9928)))){
-return (new obb_rules.unit.CombatUnit(self__.name,self__.code,G__9923,self__.attack,self__.attack_type,self__.range,self__.defense,self__.bonus,self__.type,self__.category,self__.displacement,self__.movement_type,self__.movement_cost,self__.__meta,self__.__extmap,null));
+if(cljs.core.truth_((pred__11903.cljs$core$IFn$_invoke$arity$2 ? pred__11903.cljs$core$IFn$_invoke$arity$2(cljs.core.constant$keyword$value,expr__11904) : pred__11903.call(null,cljs.core.constant$keyword$value,expr__11904)))){
+return (new obb_rules.unit.CombatUnit(self__.name,self__.code,G__11899,self__.attack,self__.attack_type,self__.range,self__.defense,self__.bonus,self__.type,self__.category,self__.displacement,self__.movement_type,self__.movement_cost,self__.__meta,self__.__extmap,null));
 } else {
-if(cljs.core.truth_((pred__9927.cljs$core$IFn$_invoke$arity$2 ? pred__9927.cljs$core$IFn$_invoke$arity$2(cljs.core.constant$keyword$attack,expr__9928) : pred__9927.call(null,cljs.core.constant$keyword$attack,expr__9928)))){
-return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,G__9923,self__.attack_type,self__.range,self__.defense,self__.bonus,self__.type,self__.category,self__.displacement,self__.movement_type,self__.movement_cost,self__.__meta,self__.__extmap,null));
+if(cljs.core.truth_((pred__11903.cljs$core$IFn$_invoke$arity$2 ? pred__11903.cljs$core$IFn$_invoke$arity$2(cljs.core.constant$keyword$attack,expr__11904) : pred__11903.call(null,cljs.core.constant$keyword$attack,expr__11904)))){
+return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,G__11899,self__.attack_type,self__.range,self__.defense,self__.bonus,self__.type,self__.category,self__.displacement,self__.movement_type,self__.movement_cost,self__.__meta,self__.__extmap,null));
 } else {
-if(cljs.core.truth_((pred__9927.cljs$core$IFn$_invoke$arity$2 ? pred__9927.cljs$core$IFn$_invoke$arity$2(cljs.core.constant$keyword$attack_DASH_type,expr__9928) : pred__9927.call(null,cljs.core.constant$keyword$attack_DASH_type,expr__9928)))){
-return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self__.attack,G__9923,self__.range,self__.defense,self__.bonus,self__.type,self__.category,self__.displacement,self__.movement_type,self__.movement_cost,self__.__meta,self__.__extmap,null));
+if(cljs.core.truth_((pred__11903.cljs$core$IFn$_invoke$arity$2 ? pred__11903.cljs$core$IFn$_invoke$arity$2(cljs.core.constant$keyword$attack_DASH_type,expr__11904) : pred__11903.call(null,cljs.core.constant$keyword$attack_DASH_type,expr__11904)))){
+return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self__.attack,G__11899,self__.range,self__.defense,self__.bonus,self__.type,self__.category,self__.displacement,self__.movement_type,self__.movement_cost,self__.__meta,self__.__extmap,null));
 } else {
-if(cljs.core.truth_((pred__9927.cljs$core$IFn$_invoke$arity$2 ? pred__9927.cljs$core$IFn$_invoke$arity$2(cljs.core.constant$keyword$range,expr__9928) : pred__9927.call(null,cljs.core.constant$keyword$range,expr__9928)))){
-return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self__.attack,self__.attack_type,G__9923,self__.defense,self__.bonus,self__.type,self__.category,self__.displacement,self__.movement_type,self__.movement_cost,self__.__meta,self__.__extmap,null));
+if(cljs.core.truth_((pred__11903.cljs$core$IFn$_invoke$arity$2 ? pred__11903.cljs$core$IFn$_invoke$arity$2(cljs.core.constant$keyword$range,expr__11904) : pred__11903.call(null,cljs.core.constant$keyword$range,expr__11904)))){
+return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self__.attack,self__.attack_type,G__11899,self__.defense,self__.bonus,self__.type,self__.category,self__.displacement,self__.movement_type,self__.movement_cost,self__.__meta,self__.__extmap,null));
 } else {
-if(cljs.core.truth_((pred__9927.cljs$core$IFn$_invoke$arity$2 ? pred__9927.cljs$core$IFn$_invoke$arity$2(cljs.core.constant$keyword$defense,expr__9928) : pred__9927.call(null,cljs.core.constant$keyword$defense,expr__9928)))){
-return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self__.attack,self__.attack_type,self__.range,G__9923,self__.bonus,self__.type,self__.category,self__.displacement,self__.movement_type,self__.movement_cost,self__.__meta,self__.__extmap,null));
+if(cljs.core.truth_((pred__11903.cljs$core$IFn$_invoke$arity$2 ? pred__11903.cljs$core$IFn$_invoke$arity$2(cljs.core.constant$keyword$defense,expr__11904) : pred__11903.call(null,cljs.core.constant$keyword$defense,expr__11904)))){
+return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self__.attack,self__.attack_type,self__.range,G__11899,self__.bonus,self__.type,self__.category,self__.displacement,self__.movement_type,self__.movement_cost,self__.__meta,self__.__extmap,null));
 } else {
-if(cljs.core.truth_((pred__9927.cljs$core$IFn$_invoke$arity$2 ? pred__9927.cljs$core$IFn$_invoke$arity$2(cljs.core.constant$keyword$bonus,expr__9928) : pred__9927.call(null,cljs.core.constant$keyword$bonus,expr__9928)))){
-return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self__.attack,self__.attack_type,self__.range,self__.defense,G__9923,self__.type,self__.category,self__.displacement,self__.movement_type,self__.movement_cost,self__.__meta,self__.__extmap,null));
+if(cljs.core.truth_((pred__11903.cljs$core$IFn$_invoke$arity$2 ? pred__11903.cljs$core$IFn$_invoke$arity$2(cljs.core.constant$keyword$bonus,expr__11904) : pred__11903.call(null,cljs.core.constant$keyword$bonus,expr__11904)))){
+return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self__.attack,self__.attack_type,self__.range,self__.defense,G__11899,self__.type,self__.category,self__.displacement,self__.movement_type,self__.movement_cost,self__.__meta,self__.__extmap,null));
 } else {
-if(cljs.core.truth_((pred__9927.cljs$core$IFn$_invoke$arity$2 ? pred__9927.cljs$core$IFn$_invoke$arity$2(cljs.core.constant$keyword$type,expr__9928) : pred__9927.call(null,cljs.core.constant$keyword$type,expr__9928)))){
-return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self__.attack,self__.attack_type,self__.range,self__.defense,self__.bonus,G__9923,self__.category,self__.displacement,self__.movement_type,self__.movement_cost,self__.__meta,self__.__extmap,null));
+if(cljs.core.truth_((pred__11903.cljs$core$IFn$_invoke$arity$2 ? pred__11903.cljs$core$IFn$_invoke$arity$2(cljs.core.constant$keyword$type,expr__11904) : pred__11903.call(null,cljs.core.constant$keyword$type,expr__11904)))){
+return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self__.attack,self__.attack_type,self__.range,self__.defense,self__.bonus,G__11899,self__.category,self__.displacement,self__.movement_type,self__.movement_cost,self__.__meta,self__.__extmap,null));
 } else {
-if(cljs.core.truth_((pred__9927.cljs$core$IFn$_invoke$arity$2 ? pred__9927.cljs$core$IFn$_invoke$arity$2(cljs.core.constant$keyword$category,expr__9928) : pred__9927.call(null,cljs.core.constant$keyword$category,expr__9928)))){
-return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self__.attack,self__.attack_type,self__.range,self__.defense,self__.bonus,self__.type,G__9923,self__.displacement,self__.movement_type,self__.movement_cost,self__.__meta,self__.__extmap,null));
+if(cljs.core.truth_((pred__11903.cljs$core$IFn$_invoke$arity$2 ? pred__11903.cljs$core$IFn$_invoke$arity$2(cljs.core.constant$keyword$category,expr__11904) : pred__11903.call(null,cljs.core.constant$keyword$category,expr__11904)))){
+return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self__.attack,self__.attack_type,self__.range,self__.defense,self__.bonus,self__.type,G__11899,self__.displacement,self__.movement_type,self__.movement_cost,self__.__meta,self__.__extmap,null));
 } else {
-if(cljs.core.truth_((pred__9927.cljs$core$IFn$_invoke$arity$2 ? pred__9927.cljs$core$IFn$_invoke$arity$2(cljs.core.constant$keyword$displacement,expr__9928) : pred__9927.call(null,cljs.core.constant$keyword$displacement,expr__9928)))){
-return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self__.attack,self__.attack_type,self__.range,self__.defense,self__.bonus,self__.type,self__.category,G__9923,self__.movement_type,self__.movement_cost,self__.__meta,self__.__extmap,null));
+if(cljs.core.truth_((pred__11903.cljs$core$IFn$_invoke$arity$2 ? pred__11903.cljs$core$IFn$_invoke$arity$2(cljs.core.constant$keyword$displacement,expr__11904) : pred__11903.call(null,cljs.core.constant$keyword$displacement,expr__11904)))){
+return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self__.attack,self__.attack_type,self__.range,self__.defense,self__.bonus,self__.type,self__.category,G__11899,self__.movement_type,self__.movement_cost,self__.__meta,self__.__extmap,null));
 } else {
-if(cljs.core.truth_((pred__9927.cljs$core$IFn$_invoke$arity$2 ? pred__9927.cljs$core$IFn$_invoke$arity$2(cljs.core.constant$keyword$movement_DASH_type,expr__9928) : pred__9927.call(null,cljs.core.constant$keyword$movement_DASH_type,expr__9928)))){
-return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self__.attack,self__.attack_type,self__.range,self__.defense,self__.bonus,self__.type,self__.category,self__.displacement,G__9923,self__.movement_cost,self__.__meta,self__.__extmap,null));
+if(cljs.core.truth_((pred__11903.cljs$core$IFn$_invoke$arity$2 ? pred__11903.cljs$core$IFn$_invoke$arity$2(cljs.core.constant$keyword$movement_DASH_type,expr__11904) : pred__11903.call(null,cljs.core.constant$keyword$movement_DASH_type,expr__11904)))){
+return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self__.attack,self__.attack_type,self__.range,self__.defense,self__.bonus,self__.type,self__.category,self__.displacement,G__11899,self__.movement_cost,self__.__meta,self__.__extmap,null));
 } else {
-if(cljs.core.truth_((pred__9927.cljs$core$IFn$_invoke$arity$2 ? pred__9927.cljs$core$IFn$_invoke$arity$2(cljs.core.constant$keyword$movement_DASH_cost,expr__9928) : pred__9927.call(null,cljs.core.constant$keyword$movement_DASH_cost,expr__9928)))){
-return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self__.attack,self__.attack_type,self__.range,self__.defense,self__.bonus,self__.type,self__.category,self__.displacement,self__.movement_type,G__9923,self__.__meta,self__.__extmap,null));
+if(cljs.core.truth_((pred__11903.cljs$core$IFn$_invoke$arity$2 ? pred__11903.cljs$core$IFn$_invoke$arity$2(cljs.core.constant$keyword$movement_DASH_cost,expr__11904) : pred__11903.call(null,cljs.core.constant$keyword$movement_DASH_cost,expr__11904)))){
+return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self__.attack,self__.attack_type,self__.range,self__.defense,self__.bonus,self__.type,self__.category,self__.displacement,self__.movement_type,G__11899,self__.__meta,self__.__extmap,null));
 } else {
-return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self__.attack,self__.attack_type,self__.range,self__.defense,self__.bonus,self__.type,self__.category,self__.displacement,self__.movement_type,self__.movement_cost,self__.__meta,cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(self__.__extmap,k__7727__auto__,G__9923),null));
+return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self__.attack,self__.attack_type,self__.range,self__.defense,self__.bonus,self__.type,self__.category,self__.displacement,self__.movement_type,self__.movement_cost,self__.__meta,cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(self__.__extmap,k__7795__auto__,G__11899),null));
 }
 }
 }
@@ -275,25 +275,25 @@ return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self_
 }
 });
 
-obb_rules.unit.CombatUnit.prototype.cljs$core$ISeqable$_seq$arity$1 = (function (this__7731__auto__){
+obb_rules.unit.CombatUnit.prototype.cljs$core$ISeqable$_seq$arity$1 = (function (this__7799__auto__){
 var self__ = this;
-var this__7731__auto____$1 = this;
+var this__7799__auto____$1 = this;
 return cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.PersistentVector(null, 13, 5, cljs.core.PersistentVector.EMPTY_NODE, [(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.constant$keyword$name,self__.name],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.constant$keyword$code,self__.code],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.constant$keyword$value,self__.value],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.constant$keyword$attack,self__.attack],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.constant$keyword$attack_DASH_type,self__.attack_type],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.constant$keyword$range,self__.range],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.constant$keyword$defense,self__.defense],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.constant$keyword$bonus,self__.bonus],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.constant$keyword$type,self__.type],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.constant$keyword$category,self__.category],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.constant$keyword$displacement,self__.displacement],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.constant$keyword$movement_DASH_type,self__.movement_type],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.constant$keyword$movement_DASH_cost,self__.movement_cost],null))], null),self__.__extmap));
 });
 
-obb_rules.unit.CombatUnit.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = (function (this__7718__auto__,G__9923){
+obb_rules.unit.CombatUnit.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = (function (this__7786__auto__,G__11899){
 var self__ = this;
-var this__7718__auto____$1 = this;
-return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self__.attack,self__.attack_type,self__.range,self__.defense,self__.bonus,self__.type,self__.category,self__.displacement,self__.movement_type,self__.movement_cost,G__9923,self__.__extmap,self__.__hash));
+var this__7786__auto____$1 = this;
+return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self__.attack,self__.attack_type,self__.range,self__.defense,self__.bonus,self__.type,self__.category,self__.displacement,self__.movement_type,self__.movement_cost,G__11899,self__.__extmap,self__.__hash));
 });
 
-obb_rules.unit.CombatUnit.prototype.cljs$core$ICollection$_conj$arity$2 = (function (this__7724__auto__,entry__7725__auto__){
+obb_rules.unit.CombatUnit.prototype.cljs$core$ICollection$_conj$arity$2 = (function (this__7792__auto__,entry__7793__auto__){
 var self__ = this;
-var this__7724__auto____$1 = this;
-if(cljs.core.vector_QMARK_(entry__7725__auto__)){
-return cljs.core._assoc(this__7724__auto____$1,cljs.core._nth.cljs$core$IFn$_invoke$arity$2(entry__7725__auto__,(0)),cljs.core._nth.cljs$core$IFn$_invoke$arity$2(entry__7725__auto__,(1)));
+var this__7792__auto____$1 = this;
+if(cljs.core.vector_QMARK_(entry__7793__auto__)){
+return cljs.core._assoc(this__7792__auto____$1,cljs.core._nth.cljs$core$IFn$_invoke$arity$2(entry__7793__auto__,(0)),cljs.core._nth.cljs$core$IFn$_invoke$arity$2(entry__7793__auto__,(1)));
 } else {
-return cljs.core.reduce.cljs$core$IFn$_invoke$arity$3(cljs.core._conj,this__7724__auto____$1,entry__7725__auto__);
+return cljs.core.reduce.cljs$core$IFn$_invoke$arity$3(cljs.core._conj,this__7792__auto____$1,entry__7793__auto__);
 }
 });
 
@@ -303,12 +303,12 @@ return new cljs.core.PersistentVector(null, 13, 5, cljs.core.PersistentVector.EM
 
 obb_rules.unit.CombatUnit.cljs$lang$type = true;
 
-obb_rules.unit.CombatUnit.cljs$lang$ctorPrSeq = (function (this__7753__auto__){
+obb_rules.unit.CombatUnit.cljs$lang$ctorPrSeq = (function (this__7821__auto__){
 return cljs.core._conj(cljs.core.List.EMPTY,"obb-rules.unit/CombatUnit");
 });
 
-obb_rules.unit.CombatUnit.cljs$lang$ctorPrWriter = (function (this__7753__auto__,writer__7754__auto__){
-return cljs.core._write(writer__7754__auto__,"obb-rules.unit/CombatUnit");
+obb_rules.unit.CombatUnit.cljs$lang$ctorPrWriter = (function (this__7821__auto__,writer__7822__auto__){
+return cljs.core._write(writer__7822__auto__,"obb-rules.unit/CombatUnit");
 });
 
 /**
@@ -321,22 +321,22 @@ return (new obb_rules.unit.CombatUnit(name,code,value,attack,attack_type,range,d
 /**
  * Represents a combat unit
  */
-obb_rules.unit.map__GT_CombatUnit = (function obb_rules$unit$map__GT_CombatUnit(G__9925){
-return (new obb_rules.unit.CombatUnit(cljs.core.constant$keyword$name.cljs$core$IFn$_invoke$arity$1(G__9925),cljs.core.constant$keyword$code.cljs$core$IFn$_invoke$arity$1(G__9925),cljs.core.constant$keyword$value.cljs$core$IFn$_invoke$arity$1(G__9925),cljs.core.constant$keyword$attack.cljs$core$IFn$_invoke$arity$1(G__9925),cljs.core.constant$keyword$attack_DASH_type.cljs$core$IFn$_invoke$arity$1(G__9925),cljs.core.constant$keyword$range.cljs$core$IFn$_invoke$arity$1(G__9925),cljs.core.constant$keyword$defense.cljs$core$IFn$_invoke$arity$1(G__9925),cljs.core.constant$keyword$bonus.cljs$core$IFn$_invoke$arity$1(G__9925),cljs.core.constant$keyword$type.cljs$core$IFn$_invoke$arity$1(G__9925),cljs.core.constant$keyword$category.cljs$core$IFn$_invoke$arity$1(G__9925),cljs.core.constant$keyword$displacement.cljs$core$IFn$_invoke$arity$1(G__9925),cljs.core.constant$keyword$movement_DASH_type.cljs$core$IFn$_invoke$arity$1(G__9925),cljs.core.constant$keyword$movement_DASH_cost.cljs$core$IFn$_invoke$arity$1(G__9925),null,cljs.core.dissoc.cljs$core$IFn$_invoke$arity$variadic(G__9925,cljs.core.constant$keyword$name,cljs.core.array_seq([cljs.core.constant$keyword$code,cljs.core.constant$keyword$value,cljs.core.constant$keyword$attack,cljs.core.constant$keyword$attack_DASH_type,cljs.core.constant$keyword$range,cljs.core.constant$keyword$defense,cljs.core.constant$keyword$bonus,cljs.core.constant$keyword$type,cljs.core.constant$keyword$category,cljs.core.constant$keyword$displacement,cljs.core.constant$keyword$movement_DASH_type,cljs.core.constant$keyword$movement_DASH_cost], 0)),null));
+obb_rules.unit.map__GT_CombatUnit = (function obb_rules$unit$map__GT_CombatUnit(G__11901){
+return (new obb_rules.unit.CombatUnit(cljs.core.constant$keyword$name.cljs$core$IFn$_invoke$arity$1(G__11901),cljs.core.constant$keyword$code.cljs$core$IFn$_invoke$arity$1(G__11901),cljs.core.constant$keyword$value.cljs$core$IFn$_invoke$arity$1(G__11901),cljs.core.constant$keyword$attack.cljs$core$IFn$_invoke$arity$1(G__11901),cljs.core.constant$keyword$attack_DASH_type.cljs$core$IFn$_invoke$arity$1(G__11901),cljs.core.constant$keyword$range.cljs$core$IFn$_invoke$arity$1(G__11901),cljs.core.constant$keyword$defense.cljs$core$IFn$_invoke$arity$1(G__11901),cljs.core.constant$keyword$bonus.cljs$core$IFn$_invoke$arity$1(G__11901),cljs.core.constant$keyword$type.cljs$core$IFn$_invoke$arity$1(G__11901),cljs.core.constant$keyword$category.cljs$core$IFn$_invoke$arity$1(G__11901),cljs.core.constant$keyword$displacement.cljs$core$IFn$_invoke$arity$1(G__11901),cljs.core.constant$keyword$movement_DASH_type.cljs$core$IFn$_invoke$arity$1(G__11901),cljs.core.constant$keyword$movement_DASH_cost.cljs$core$IFn$_invoke$arity$1(G__11901),null,cljs.core.dissoc.cljs$core$IFn$_invoke$arity$variadic(G__11901,cljs.core.constant$keyword$name,cljs.core.array_seq([cljs.core.constant$keyword$code,cljs.core.constant$keyword$value,cljs.core.constant$keyword$attack,cljs.core.constant$keyword$attack_DASH_type,cljs.core.constant$keyword$range,cljs.core.constant$keyword$defense,cljs.core.constant$keyword$bonus,cljs.core.constant$keyword$type,cljs.core.constant$keyword$category,cljs.core.constant$keyword$displacement,cljs.core.constant$keyword$movement_DASH_type,cljs.core.constant$keyword$movement_DASH_cost], 0)),null));
 });
 
 /**
  * Gets all the available units
  */
 obb_rules.unit.gather_units = (function obb_rules$unit$gather_units(){
-return cljs.core.mapv.cljs$core$IFn$_invoke$arity$2((function (p1__9931_SHARP_){
-return obb_rules.unit.map__GT_CombatUnit(p1__9931_SHARP_);
+return cljs.core.mapv.cljs$core$IFn$_invoke$arity$2((function (p1__11907_SHARP_){
+return obb_rules.unit.map__GT_CombatUnit(p1__11907_SHARP_);
 }),new cljs.core.PersistentVector(null, 20, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_rules.units.rain.metadata,obb_rules.units.nova.metadata,obb_rules.units.pretorian.metadata,obb_rules.units.raptor.metadata,obb_rules.units.toxic.metadata,obb_rules.units.worm.metadata,obb_rules.units.vector.metadata,obb_rules.units.anubis.metadata,obb_rules.units.boozer.metadata,obb_rules.units.eagle.metadata,obb_rules.units.heavy_seeker.metadata,obb_rules.units.doomer.metadata,obb_rules.units.fenix.metadata,obb_rules.units.driller.metadata,obb_rules.units.krill.metadata,obb_rules.units.kahuna.metadata,obb_rules.units.panther.metadata,obb_rules.units.scarab.metadata,obb_rules.units.kamikaze.metadata,obb_rules.units.crusader.metadata], null));
 });
 obb_rules.unit.get_units = cljs.core.memoize(obb_rules.unit.gather_units);
 obb_rules.unit.build_units = (function obb_rules$unit$build_units(units,selector){
-return cljs.core.reduce.cljs$core$IFn$_invoke$arity$3((function (p1__9932_SHARP_,p2__9933_SHARP_){
-return cljs.core.conj.cljs$core$IFn$_invoke$arity$2(p1__9932_SHARP_,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(selector.cljs$core$IFn$_invoke$arity$1 ? selector.cljs$core$IFn$_invoke$arity$1(p2__9933_SHARP_) : selector.call(null,p2__9933_SHARP_)),p2__9933_SHARP_], null));
+return cljs.core.reduce.cljs$core$IFn$_invoke$arity$3((function (p1__11908_SHARP_,p2__11909_SHARP_){
+return cljs.core.conj.cljs$core$IFn$_invoke$arity$2(p1__11908_SHARP_,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(selector.cljs$core$IFn$_invoke$arity$1 ? selector.cljs$core$IFn$_invoke$arity$1(p2__11909_SHARP_) : selector.call(null,p2__11909_SHARP_)),p2__11909_SHARP_], null));
 }),cljs.core.PersistentArrayMap.EMPTY,units);
 });
 obb_rules.unit.units_by_name = (new cljs.core.Delay((function (){
@@ -362,9 +362,9 @@ return (cljs.core.deref.cljs$core$IFn$_invoke$arity$1 ? cljs.core.deref.cljs$cor
  */
 obb_rules.unit.fetch = (function obb_rules$unit$fetch(raw){
 var identifier = cljs.core.name(raw);
-var or__7124__auto__ = obb_rules.unit.get_unit_by_name(identifier);
-if(cljs.core.truth_(or__7124__auto__)){
-return or__7124__auto__;
+var or__7192__auto__ = obb_rules.unit.get_unit_by_name(identifier);
+if(cljs.core.truth_(or__7192__auto__)){
+return or__7192__auto__;
 } else {
 return obb_rules.unit.get_unit_by_code(identifier);
 }
@@ -439,9 +439,9 @@ return cljs.core.constant$keyword$type.cljs$core$IFn$_invoke$arity$1(unit);
  * Gets a unit's hardcore value
  */
 obb_rules.unit.unit_value = (function obb_rules$unit$unit_value(unit){
-var or__7124__auto__ = cljs.core.constant$keyword$value.cljs$core$IFn$_invoke$arity$1(unit);
-if(cljs.core.truth_(or__7124__auto__)){
-return or__7124__auto__;
+var or__7192__auto__ = cljs.core.constant$keyword$value.cljs$core$IFn$_invoke$arity$1(unit);
+if(cljs.core.truth_(or__7192__auto__)){
+return or__7192__auto__;
 } else {
 return (0);
 }
@@ -450,9 +450,9 @@ return (0);
  * Gets the unit's attack type
  */
 obb_rules.unit.attack_type = (function obb_rules$unit$attack_type(unit){
-var or__7124__auto__ = cljs.core.constant$keyword$attack_DASH_type.cljs$core$IFn$_invoke$arity$1(unit);
-if(cljs.core.truth_(or__7124__auto__)){
-return or__7124__auto__;
+var or__7192__auto__ = cljs.core.constant$keyword$attack_DASH_type.cljs$core$IFn$_invoke$arity$1(unit);
+if(cljs.core.truth_(or__7192__auto__)){
+return or__7192__auto__;
 } else {
 return cljs.core.constant$keyword$direct;
 }

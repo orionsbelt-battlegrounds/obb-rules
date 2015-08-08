@@ -39,19 +39,19 @@ return (obb_rules.ai.firingsquad.actions.cljs$core$IFn$_invoke$arity$2 ? obb_rul
  */
 obb_demo.processor.generate_actions = (function obb_demo$processor$generate_actions(game_data){
 var game = cljs.core.constant$keyword$game.cljs$core$IFn$_invoke$arity$1(game_data);
-var turn_num = (function (){var or__7124__auto__ = cljs.core.constant$keyword$turn_DASH_num.cljs$core$IFn$_invoke$arity$1(game_data);
-if(cljs.core.truth_(or__7124__auto__)){
-return or__7124__auto__;
+var turn_num = (function (){var or__7192__auto__ = cljs.core.constant$keyword$turn_DASH_num.cljs$core$IFn$_invoke$arity$1(game_data);
+if(cljs.core.truth_(or__7192__auto__)){
+return or__7192__auto__;
 } else {
 return (0);
 }
 })();
 var player = obb_rules.game.state.cljs$core$IFn$_invoke$arity$1(game);
-var actions = (function (){var start__8033__auto__ = (new Date()).getTime();
-var ret__8034__auto__ = obb_demo.processor.bot_actions(game,player);
-cljs.core.prn.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([[cljs.core.str("Elapsed time: "),cljs.core.str(((new Date()).getTime() - start__8033__auto__)),cljs.core.str(" msecs")].join('')], 0));
+var actions = (function (){var start__8101__auto__ = (new Date()).getTime();
+var ret__8102__auto__ = obb_demo.processor.bot_actions(game,player);
+cljs.core.prn.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([[cljs.core.str("Elapsed time: "),cljs.core.str(((new Date()).getTime() - start__8101__auto__)),cljs.core.str(" msecs")].join('')], 0));
 
-return ret__8034__auto__;
+return ret__8102__auto__;
 })();
 cljs.core.println.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq(["--",player,actions], 0));
 
