@@ -39,6 +39,6 @@
   (log (:actions option))
   (log "\tValue:" (:value option)
        "(" (:old-value option) ")"
-       "data" (:data option)
-       "coord" (:element-coord option)
+       ;"data" (:data option)
+       ;"coord" (:element-coord option)
        "Cost:" (:cost option)))

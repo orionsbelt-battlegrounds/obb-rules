@@ -81,8 +81,8 @@
   "Given a pair of scores, removes the value given from the correct player"
   [[s1 s2] player value]
   (if (simplify/name= player :p1)
-    (common/eval-scores player [(- s1 value) s2])
-    (common/eval-scores player [s1 (- s2 value)])))
+    (common/eval-scores player [(+ s1 value) s2])
+    (common/eval-scores player [s1 (+ s2 value)])))
 
 (defn- merge-counter-option
   "Given an option and a counter option will return a new option that is
@@ -93,9 +93,18 @@
           original-quantity (element/element-quantity element)
           counter-element (get-element-on-new-board element option counter-option)
           counter-quantity (if counter-element (element/element-quantity counter-element) 0)
-          remaining-quantity (- original-quantity counter-quantity)
-          total-element-value (if counter-element (* remaining-quantity (unit/unit-value (element/element-unit counter-element))) 0)]
+          remaining-quantity (- counter-quantity original-quantity)
+          unit-value (unit/unit-value (element/element-unit element))
+          total-element-value (* remaining-quantity unit-value)]
       (-> option
+          #_(assoc :data {:original-scores scores
+                        :actions (:actions counter-option)
+                        :element counter-element
+                        :counter-quantity counter-quantity
+                        :total-element-value total-element-value
+                        :remaining-quantity remaining-quantity
+                        :player player
+                        :new-scores (remove-value scores player total-element-value)})
           (assoc :old-value (:value option))
           (assoc :value (remove-value scores player total-element-value))))
     option))
