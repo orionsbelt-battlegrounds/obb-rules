@@ -7,67 +7,67 @@ goog.require('obb_demo.views.units');
 goog.require('obb_demo.views.index');
 goog.require('obb_demo.state');
 goog.require('obb_demo.views.play');
-var action__10990__auto___11147 = (function (params__10991__auto__){
-if(cljs.core.map_QMARK_(params__10991__auto__)){
-var map__11144 = params__10991__auto__;
-var map__11144__$1 = ((((!((map__11144 == null)))?((((map__11144.cljs$lang$protocol_mask$partition0$ & (64))) || (map__11144.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__11144):map__11144);
+var action__11006__auto___11163 = (function (params__11007__auto__){
+if(cljs.core.map_QMARK_(params__11007__auto__)){
+var map__11160 = params__11007__auto__;
+var map__11160__$1 = ((((!((map__11160 == null)))?((((map__11160.cljs$lang$protocol_mask$partition0$ & (64))) || (map__11160.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__11160):map__11160);
 return obb_demo.state.set_page_BANG_(cljs.core.constant$keyword$index);
 } else {
-if(cljs.core.vector_QMARK_(params__10991__auto__)){
-var vec__11146 = params__10991__auto__;
+if(cljs.core.vector_QMARK_(params__11007__auto__)){
+var vec__11162 = params__11007__auto__;
 return obb_demo.state.set_page_BANG_(cljs.core.constant$keyword$index);
 } else {
 return null;
 }
 }
 });
-secretary.core.add_route_BANG_("/",action__10990__auto___11147);
+secretary.core.add_route_BANG_("/",action__11006__auto___11163);
 
-var action__10990__auto___11151 = (function (params__10991__auto__){
-if(cljs.core.map_QMARK_(params__10991__auto__)){
-var map__11148 = params__10991__auto__;
-var map__11148__$1 = ((((!((map__11148 == null)))?((((map__11148.cljs$lang$protocol_mask$partition0$ & (64))) || (map__11148.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__11148):map__11148);
+var action__11006__auto___11167 = (function (params__11007__auto__){
+if(cljs.core.map_QMARK_(params__11007__auto__)){
+var map__11164 = params__11007__auto__;
+var map__11164__$1 = ((((!((map__11164 == null)))?((((map__11164.cljs$lang$protocol_mask$partition0$ & (64))) || (map__11164.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__11164):map__11164);
 return obb_demo.state.set_page_BANG_(cljs.core.constant$keyword$player);
 } else {
-if(cljs.core.vector_QMARK_(params__10991__auto__)){
-var vec__11150 = params__10991__auto__;
+if(cljs.core.vector_QMARK_(params__11007__auto__)){
+var vec__11166 = params__11007__auto__;
 return obb_demo.state.set_page_BANG_(cljs.core.constant$keyword$player);
 } else {
 return null;
 }
 }
 });
-secretary.core.add_route_BANG_("/play",action__10990__auto___11151);
+secretary.core.add_route_BANG_("/play",action__11006__auto___11167);
 
-var action__10990__auto___11155 = (function (params__10991__auto__){
-if(cljs.core.map_QMARK_(params__10991__auto__)){
-var map__11152 = params__10991__auto__;
-var map__11152__$1 = ((((!((map__11152 == null)))?((((map__11152.cljs$lang$protocol_mask$partition0$ & (64))) || (map__11152.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__11152):map__11152);
+var action__11006__auto___11171 = (function (params__11007__auto__){
+if(cljs.core.map_QMARK_(params__11007__auto__)){
+var map__11168 = params__11007__auto__;
+var map__11168__$1 = ((((!((map__11168 == null)))?((((map__11168.cljs$lang$protocol_mask$partition0$ & (64))) || (map__11168.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__11168):map__11168);
 return obb_demo.state.set_page_BANG_(cljs.core.constant$keyword$many_DASH_games);
 } else {
-if(cljs.core.vector_QMARK_(params__10991__auto__)){
-var vec__11154 = params__10991__auto__;
+if(cljs.core.vector_QMARK_(params__11007__auto__)){
+var vec__11170 = params__11007__auto__;
 return obb_demo.state.set_page_BANG_(cljs.core.constant$keyword$many_DASH_games);
 } else {
 return null;
 }
 }
 });
-secretary.core.add_route_BANG_("/many-games",action__10990__auto___11155);
+secretary.core.add_route_BANG_("/many-games",action__11006__auto___11171);
 
-var action__10990__auto___11159 = (function (params__10991__auto__){
-if(cljs.core.map_QMARK_(params__10991__auto__)){
-var map__11156 = params__10991__auto__;
-var map__11156__$1 = ((((!((map__11156 == null)))?((((map__11156.cljs$lang$protocol_mask$partition0$ & (64))) || (map__11156.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__11156):map__11156);
+var action__11006__auto___11175 = (function (params__11007__auto__){
+if(cljs.core.map_QMARK_(params__11007__auto__)){
+var map__11172 = params__11007__auto__;
+var map__11172__$1 = ((((!((map__11172 == null)))?((((map__11172.cljs$lang$protocol_mask$partition0$ & (64))) || (map__11172.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__11172):map__11172);
 return obb_demo.state.set_page_BANG_(cljs.core.constant$keyword$units);
 } else {
-if(cljs.core.vector_QMARK_(params__10991__auto__)){
-var vec__11158 = params__10991__auto__;
+if(cljs.core.vector_QMARK_(params__11007__auto__)){
+var vec__11174 = params__11007__auto__;
 return obb_demo.state.set_page_BANG_(cljs.core.constant$keyword$units);
 } else {
 return null;
 }
 }
 });
-secretary.core.add_route_BANG_("/units",action__10990__auto___11159);
+secretary.core.add_route_BANG_("/units",action__11006__auto___11175);
 

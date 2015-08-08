@@ -229,7 +229,6 @@ cljs.core.constant$keyword$select = new cljs.core.Keyword(null,"select","select"
 cljs.core.constant$keyword$left = new cljs.core.Keyword(null,"left","left",-399115937);
 cljs.core.constant$keyword$div$element_DASH_quantity = new cljs.core.Keyword(null,"div.element-quantity","div.element-quantity",1861752223);
 cljs.core.constant$keyword$cljs$core_SLASH_not_DASH_found = new cljs.core.Keyword("cljs.core","not-found","cljs.core/not-found",-1572889185);
-cljs.core.constant$keyword$data = new cljs.core.Keyword(null,"data","data",-232669377);
 cljs.core.constant$keyword$div$jumbotron = new cljs.core.Keyword(null,"div.jumbotron","div.jumbotron",-1632448673);
 cljs.core.constant$keyword$img$obb_DASH_ice = new cljs.core.Keyword(null,"img.obb-ice","img.obb-ice",-2106967169);
 cljs.core.constant$keyword$organic = new cljs.core.Keyword(null,"organic","organic",-1424795777);
