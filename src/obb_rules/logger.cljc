@@ -3,7 +3,7 @@
   "Specific logger that can be turned on and off"
   (:require [obb-rules.simplifier :as simplify]))
 
-(def ^:dynamic *verbose* false)
+(def ^:dynamic *verbose* true)
 
 #?(:clj
   (defmacro log
@@ -39,6 +39,6 @@
   (log (:actions option))
   (log "\tValue:" (:value option)
        "(" (:old-value option) ")"
-       "data" (:data option)
-       "coord" (:element-coord option)
+       ;"data" (:data option)
+       ;"coord" (:element-coord option)
        "Cost:" (:cost option)))

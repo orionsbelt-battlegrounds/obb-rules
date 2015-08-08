@@ -20,13 +20,18 @@
   [player board element raw-action next-element]
   (turn/simulate-actions board player [raw-action]))
 
+(defn eval-scores
+  "Evaluates the socres of p1 and p2"
+  [player [score1 score2]]
+  (if (simplify/name= player :p1)
+    (- score1 score2)
+    (- score2 score1)))
+
 (defn eval-board
   "Evaluates a board for a given player"
   [board player]
-  (let [[score1 score2] (evaluator/eval-game board)]
-    (if (simplify/name= player :p1)
-      (- score1 score2)
-      (- score2 score1))))
+  (let [scores (evaluator/eval-game board)]
+    (eval-scores player scores)))
 
 (defn- build-target
   "Builds a result that represents a successful target"
@@ -141,22 +146,24 @@
 (defn move-options
   "Returns a collection of possible options that move
   the unit by chance"
-  [game element]
-  (let [coordinate (element/element-coordinate element)
-        unit (element/element-unit element)
-        mov-cost (unit/unit-movement-cost unit)
-        player (element/element-player element)
-        possible-coords (take 1 (shuffle (move/find-possible-destinations game element)))
-        run-results (partial goto-result game element player)
-        actions-and-results (map run-results possible-coords)]
-    (map (fn [[action result target-coord]]
-            (-> result
-                (assoc :distance 1)
-                (assoc :actions [action])
-                (assoc :value -10000)
-                (assoc :element-coord target-coord)
-                (assoc :cost mov-cost)))
-         actions-and-results)))
+  ([game element]
+   (move-options game element -1000))
+  ([game element value]
+   (let [coordinate (element/element-coordinate element)
+         unit (element/element-unit element)
+         mov-cost (unit/unit-movement-cost unit)
+         player (element/element-player element)
+         possible-coords (take 1 (shuffle (move/find-possible-destinations game element)))
+         run-results (partial goto-result game element player)
+         actions-and-results (map run-results possible-coords)]
+     (map (fn [[action result target-coord]]
+             (-> result
+                 (assoc :distance 1)
+                 (assoc :actions [action])
+                 (assoc :value value)
+                 (assoc :element-coord target-coord)
+                 (assoc :cost mov-cost)))
+          actions-and-results))))
 
 (defn move-attack-options
   "Returns a collection of possible options that first move and then
