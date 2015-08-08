@@ -4,6 +4,7 @@
             [obb-rules.stash :as stash]
             [obb-rules.unit :as unit]
             [obb-rules.element :as element]
+            [obb-rules.logger :as logger]
             [obb-rules.simplifier :as simplifier]
             [obb-rules.board :as board]
             [obb-rules.result :as result]
@@ -57,7 +58,7 @@
                   (board/place-element [2 2] crusader-element-p2)
                   (board/place-element [2 3] doomer-element-p2)
                   (board/place-element [7 6] (element/element-quantity doomer-element-p2 2))
-                  (board/place-element [7 7] kamikaze-element-p1))
+                  (board/place-element [2 4] kamikaze-element-p1))
         actions (alamo/actions board :p1)
         result (turn/process-actions board :p1 actions)
         game (result/result-board result)]

@@ -44,6 +44,19 @@
     (is (= :direct (info :attack-type)))
     (is (board/get-element (result/result-board result) [8 4]))))
 
+(deftest strikeback-out-of-range-bug-23
+  (let [board (-> (board/create-board)
+                  (board/place-element [6 3] (element/element-direction krill-element :south))
+                  (board/place-element [6 7] (element/element-direction crusader-element :north)))
+        attack (action/build-action [:attack [6 7] [6 3]])
+        result (attack board :p1)
+        info (last (result/info result))]
+    (is (result/succeeded? result))
+    (is (= 1 (count (result/info result))))
+    (is (= "OK" (result/result-message result)))
+    (is (= :direct (info :attack-type)))
+    (is (board/get-element (result/result-board result) [6 7]))))
+
 (deftest strikeback-on-the-side
   (let [crusader-element (element/element-direction crusader-element :east)
         board (-> board-with-krill

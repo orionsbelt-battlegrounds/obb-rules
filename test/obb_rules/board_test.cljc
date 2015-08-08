@@ -75,3 +75,20 @@
   (is (= laws/default-board-w (board/board-width {})))
   (is (= laws/default-board-h (board/board-height {}))))
 
+(deftest element-focus-test
+  (let [e1 (element/create-element :p1 (unit/get-unit-by-name "rain") 20 :south [1 1])
+        e1_2 (element/create-element :p1 (unit/get-unit-by-name "rain") 20 :south [1 2])
+        e2 (element/create-element :p2 (unit/get-unit-by-name "rain") 20 :north [2 1])
+        e2_2 (element/create-element :p2 (unit/get-unit-by-name "rain") 20 :north [2 2])
+        board (-> (board/create-board)
+                  (board/place-element [1 1] e1)
+                  (board/place-element [1 2] e1_2)
+                  (board/place-element [2 1] e2)
+                  (board/place-element [2 2] e2_2))
+        focus1 (board/element-focus board e1)
+        focus2 (board/element-focus board e2)]
+    (is (= 4 (board/board-elements-count board)))
+    (is (= 3 (board/board-elements-count focus1)))
+    (is (board/get-element focus1 [1 1]))
+    (is (= 3 (board/board-elements-count focus2)))
+    (is (board/get-element focus2 [2 1]))))

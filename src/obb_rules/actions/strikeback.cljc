@@ -5,6 +5,7 @@
   (:require [obb-rules.element :as element]
             [obb-rules.board :as board]
             [obb-rules.unit :as unit]
+            [obb-rules.math :as math]
             [obb-rules.actions.damage-calculator :as calculator]
             [obb-rules.actions.direction :as direction]))
 
@@ -27,12 +28,11 @@
 (defn- in-range?
   "Checks if the attacker is in range of the target"
   [target attacker]
-  (if target
+  (when target
     (let [[tx ty] (element/element-coordinate target)
           [ax ay] (element/element-coordinate attacker)
-          distance (+ (- tx ax) (- ty ay))]
-      (<= distance (element/element-range target)))
-    false))
+          distance (math/abs (+ (- tx ax) (- ty ay)))]
+      (<= distance (element/element-range target)))))
 
 (defn- facing-attacker?
   "True if the target is facing it's attacker"

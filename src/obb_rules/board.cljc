@@ -171,3 +171,26 @@
   "Gets a stash for a given player"
   [board player]
   (get-in board [:stash (keyword player)]))
+
+(defn- element-focus-match?
+  "True if the given element should be present on an element-focus"
+  [player template-element some-element]
+  (let [template-coord (element/element-coordinate template-element)
+        some-coord (element/element-coordinate some-element)
+        some-player (element/element-player some-element)]
+    (or (= template-coord some-coord)
+        (and player some-player
+             (not (simplify/name= player some-player))))))
+
+(defn element-focus
+  "Returns a new board, where the player of the given element only has
+  the given element. All the opponents elements remain intact."
+  [board element]
+  (let [player (element/element-player element)]
+    (->> (reduce-kv (fn [m k v]
+                       (if (element-focus-match? player element v)
+                         (assoc m k v)
+                         m))
+                       {}
+                       (:elements board))
+         (assoc {} :elements))))
