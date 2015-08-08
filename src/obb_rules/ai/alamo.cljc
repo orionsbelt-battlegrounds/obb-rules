@@ -57,7 +57,7 @@
         (into (common/attack-options game element))
         (into (common/rotate-attack-options game element))
         (into (common/move-attack-options game element))
-        (into (common/move-options game element))
+        (into (common/move-options game element (common/eval-board game (element/element-player element))))
         (->> (sort-by common/option-value-cost-sorter)))))
 
 (defn- other-player
