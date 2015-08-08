@@ -20,13 +20,18 @@
   [player board element raw-action next-element]
   (turn/simulate-actions board player [raw-action]))
 
+(defn eval-scores
+  "Evaluates the socres of p1 and p2"
+  [player [score1 score2]]
+  (if (simplify/name= player :p1)
+    (- score1 score2)
+    (- score2 score1)))
+
 (defn eval-board
   "Evaluates a board for a given player"
   [board player]
-  (let [[score1 score2] (evaluator/eval-game board)]
-    (if (simplify/name= player :p1)
-      (- score1 score2)
-      (- score2 score1))))
+  (let [scores (evaluator/eval-game board)]
+    (eval-scores player scores)))
 
 (defn- build-target
   "Builds a result that represents a successful target"

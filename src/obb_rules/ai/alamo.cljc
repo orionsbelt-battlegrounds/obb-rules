@@ -3,7 +3,10 @@
   "Bot implementation that it's defensive"
   (:require [obb-rules.math :as math]
             [obb-rules.actions.move :as move]
+            [obb-rules.simplifier :as simplify]
             [obb-rules.element :as element]
+            [obb-rules.evaluator :as evaluator]
+            [obb-rules.unit :as unit]
             [obb-rules.ai.common :as common]
             [obb-rules.logger :as logger]
             [obb-rules.game :as game]
@@ -74,24 +77,27 @@
     (when (and counter-element (= element-player (element/element-player counter-element)))
       counter-element)))
 
+(defn- remove-value
+  "Given a pair of scores, removes the value given from the correct player"
+  [[s1 s2] player value]
+  (if (simplify/name= player :p1)
+    (common/eval-scores player [(- s1 value) s2])
+    (common/eval-scores player [s1 (- s2 value)])))
+
 (defn- merge-counter-option
   "Given an option and a counter option will return a new option that is
   a merged one"
-  [element option counter-option element-board]
+  [element option counter-option element-board scores player]
   (if (and option counter-option)
     (let [original-value (:value option)
           original-quantity (element/element-quantity element)
           counter-element (get-element-on-new-board element option counter-option)
           counter-quantity (if counter-element (element/element-quantity counter-element) 0)
-          percentage (/ counter-quantity original-quantity)]
+          remaining-quantity (- original-quantity counter-quantity)
+          total-element-value (if counter-element (* remaining-quantity (unit/unit-value (element/element-unit counter-element))) 0)]
       (-> option
-          #_(assoc :data {:percentage percentage
-                        :_counter-element? (boolean counter-element)
-                        :counter-actions (:actions counter-option)
-                        :original-quantity original-quantity
-                        :counter-quantity counter-quantity})
           (assoc :old-value (:value option))
-          (assoc :value (math/ceil (- (* original-value 1.01) (* original-value (- 1 percentage)))))))
+          (assoc :value (remove-value scores player total-element-value))))
     option))
 
 (defn- consider-opponent-move
@@ -102,6 +108,7 @@
          (when option
            (let [board (:board option)
                  player (game/state board)
+                 scores (evaluator/eval-game board)
                  counter-player (other-player board)
                  moved-element (board/get-element board (or (:element-coord option) (element/element-coordinate element)))
                  board (-> (game/state board counter-player)
@@ -109,7 +116,7 @@
                            (dissoc :removed-elements)
                            (dissoc :action-results))
                  counter-option (firingsquad/turn-option board counter-player)]
-             (merge-counter-option element option counter-option board))))
+             (merge-counter-option element option counter-option board scores player))))
        options))
 
 (defn- gather-element-actions
