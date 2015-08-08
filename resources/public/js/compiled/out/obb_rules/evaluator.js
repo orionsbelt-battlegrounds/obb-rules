@@ -21,10 +21,10 @@ return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMP
 ,obb_rules.board.board_elements(game,player));
 } else {
 return cljs.core.map.cljs$core$IFn$_invoke$arity$2(((function (stash){
-return (function (p__12006){
-var vec__12007 = p__12006;
-var k = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12007,(0),null);
-var v = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12007,(1),null);
+return (function (p__10572){
+var vec__10573 = p__10572;
+var k = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10573,(0),null);
+var v = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10573,(1),null);
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_rules.unit.fetch(k),v], null);
 });})(stash))
 ,stash);
@@ -33,10 +33,10 @@ return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMP
 /**
  * Sums the value/quantity of the given units
  */
-obb_rules.evaluator.sum_value = (function obb_rules$evaluator$sum_value(acc,p__12008){
-var vec__12010 = p__12008;
-var unit = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12010,(0),null);
-var quantity = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12010,(1),null);
+obb_rules.evaluator.sum_value = (function obb_rules$evaluator$sum_value(acc,p__10574){
+var vec__10576 = p__10574;
+var unit = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10576,(0),null);
+var quantity = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10576,(1),null);
 return (acc + (quantity * obb_rules.unit.unit_value(unit)));
 });
 /**
@@ -49,23 +49,23 @@ return cljs.core.reduce.cljs$core$IFn$_invoke$arity$3(obb_rules.evaluator.sum_va
  * Evaluates a game for the participant players
  */
 obb_rules.evaluator.eval_game = (function obb_rules$evaluator$eval_game(){
-var args12011 = [];
-var len__8231__auto___12014 = arguments.length;
-var i__8232__auto___12015 = (0);
+var args10577 = [];
+var len__8231__auto___10580 = arguments.length;
+var i__8232__auto___10581 = (0);
 while(true){
-if((i__8232__auto___12015 < len__8231__auto___12014)){
-args12011.push((arguments[i__8232__auto___12015]));
+if((i__8232__auto___10581 < len__8231__auto___10580)){
+args10577.push((arguments[i__8232__auto___10581]));
 
-var G__12016 = (i__8232__auto___12015 + (1));
-i__8232__auto___12015 = G__12016;
+var G__10582 = (i__8232__auto___10581 + (1));
+i__8232__auto___10581 = G__10582;
 continue;
 } else {
 }
 break;
 }
 
-var G__12013 = args12011.length;
-switch (G__12013) {
+var G__10579 = args10577.length;
+switch (G__10579) {
 case 1:
 return obb_rules.evaluator.eval_game.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -75,7 +75,7 @@ return obb_rules.evaluator.eval_game.cljs$core$IFn$_invoke$arity$2((arguments[(0
 
 break;
 default:
-throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args12011.length)].join('')));
+throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args10577.length)].join('')));
 
 }
 });

@@ -14,17 +14,17 @@ if(typeof obb_rules.ai.firingsquad.actions !== 'undefined'){
 /**
  * Returns a list of actions to apply to the current game
  */
-obb_rules.ai.firingsquad.actions = (function (){var method_table__8086__auto__ = (function (){var G__11893 = cljs.core.PersistentArrayMap.EMPTY;
-return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__11893) : cljs.core.atom.call(null,G__11893));
+obb_rules.ai.firingsquad.actions = (function (){var method_table__8086__auto__ = (function (){var G__10634 = cljs.core.PersistentArrayMap.EMPTY;
+return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__10634) : cljs.core.atom.call(null,G__10634));
 })();
-var prefer_table__8087__auto__ = (function (){var G__11894 = cljs.core.PersistentArrayMap.EMPTY;
-return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__11894) : cljs.core.atom.call(null,G__11894));
+var prefer_table__8087__auto__ = (function (){var G__10635 = cljs.core.PersistentArrayMap.EMPTY;
+return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__10635) : cljs.core.atom.call(null,G__10635));
 })();
-var method_cache__8088__auto__ = (function (){var G__11895 = cljs.core.PersistentArrayMap.EMPTY;
-return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__11895) : cljs.core.atom.call(null,G__11895));
+var method_cache__8088__auto__ = (function (){var G__10636 = cljs.core.PersistentArrayMap.EMPTY;
+return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__10636) : cljs.core.atom.call(null,G__10636));
 })();
-var cached_hierarchy__8089__auto__ = (function (){var G__11896 = cljs.core.PersistentArrayMap.EMPTY;
-return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__11896) : cljs.core.atom.call(null,G__11896));
+var cached_hierarchy__8089__auto__ = (function (){var G__10637 = cljs.core.PersistentArrayMap.EMPTY;
+return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__10637) : cljs.core.atom.call(null,G__10637));
 })();
 var hierarchy__8090__auto__ = cljs.core.get.cljs$core$IFn$_invoke$arity$3(cljs.core.PersistentArrayMap.EMPTY,cljs.core.constant$keyword$hierarchy,cljs.core.get_global_hierarchy());
 return (new cljs.core.MultiFn(cljs.core.symbol.cljs$core$IFn$_invoke$arity$2("obb-rules.ai.firingsquad","actions"),((function (method_table__8086__auto__,prefer_table__8087__auto__,method_cache__8088__auto__,cached_hierarchy__8089__auto__,hierarchy__8090__auto__){

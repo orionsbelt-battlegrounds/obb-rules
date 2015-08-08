@@ -14,9 +14,9 @@ goog.require('obb_rules.stash');
  * Shows each player's power
  */
 obb_demo.views.power_bar.render = (function obb_demo$views$power_bar$render(game){
-var vec__12021 = obb_rules.evaluator.eval_game.cljs$core$IFn$_invoke$arity$1(game);
-var p1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12021,(0),null);
-var p2 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12021,(1),null);
+var vec__10974 = obb_rules.evaluator.eval_game.cljs$core$IFn$_invoke$arity$1(game);
+var p1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10974,(0),null);
+var p2 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10974,(1),null);
 var total = (p1 + p2);
 var p1_perc = obb_rules.math.ceil(((100) * ((total - p1) / total)));
 var p2_perc = ((100) - p1_perc);

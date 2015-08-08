@@ -1,1 +1,0 @@
-{"version":3,"file":"\/Users\/pedrosantos\/projects\/orionsbelt-battlegrounds\/obb-rules\/resources\/public\/js\/compiled\/out\/obb_demo\/game.js","sources":["game.cljs?rel=1439049283854"],"lineCount":13,"mappings":";;;;UAGSA;;AAAAA,0BACJC;;AAECC","names":["obb-demo.game\/app-state","reagent.core\/atom","obb-demo.game\/new-game"]}
