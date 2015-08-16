@@ -8,13 +8,12 @@
             [obb-rules.turn :as turn]
             [obb-rules.generators :as obb-gen]
             [obb-rules.game :as game]
-    #?(:cljs [cljs.test.check :as tc])
-    #?(:clj [clojure.test.check.generators :as gen]
-       :cljs [cljs.test.check.generators :as gen])
+            [clojure.test.check.generators :as gen]
+   #?(:cljs [clojure.test.check :as tc])
     #?(:clj [clojure.test.check.properties :as prop]
-       :cljs [cljs.test.check.properties :as prop :include-macros true])
+       :cljs [clojure.test.check.properties :as prop :include-macros true])
     #?(:clj [clojure.test.check.clojure-test :refer [defspec]]
-       :cljs [cljs.test.check.cljs-test :refer-macros [defspec]])
+       :cljs [clojure.test.check.clojure-test :refer-macros [defspec]])
     #?(:clj [clojure.test :refer [deftest testing is run-tests]]
        :cljs [cljs.test :refer-macros [deftest testing is run-tests]])))
 
