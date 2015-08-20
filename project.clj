@@ -7,7 +7,7 @@
             :distribution :repo
             :comments     "Copyright 2011-2014 Pedro Santos All Rights Reserved."}
 
-  :dependencies [[org.clojure/test.check "0.7.0"]
+  :dependencies [[org.clojure/test.check "0.8.0"]
                  [org.clojure/math.numeric-tower "0.0.4"]
                  [org.clojure/tools.namespace "0.2.11"]
                  [org.clojure/clojure "1.8.0-alpha2"]
@@ -15,7 +15,7 @@
                  [criterium "0.4.3"]
                  [reagent "0.5.0"]
                  [secretary "1.2.3"]
-                 [org.clojure/clojurescript "1.7.28"]]
+                 [org.clojure/clojurescript "1.7.48"]]
 
   :jvm-opts ["-XX:+TieredCompilation"]
 

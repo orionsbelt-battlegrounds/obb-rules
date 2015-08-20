@@ -7,11 +7,9 @@
             [obb-rules.action :as action]
             [obb-rules.host-dependent :as host]
             [obb-rules.unit :as unit]
-    #?(:clj [clojure.test.check.generators :as gen]
-       :cljs [cljs.test.check.generators :as gen])
-    #?(:clj [clojure.test.check.properties :as prop]
-       :cljs [cljs.test.check.properties :as prop :include-macros true])
-    #?(:clj [clojure.test.check.clojure-test :refer [defspec]])
+            [clojure.test.check.generators :as gen]
+            [clojure.test.check.properties :as prop]
+   #?(:cljs [clojure.test.check :as tc])
     #?(:clj [clojure.test :refer [deftest testing is run-tests]]
        :cljs [cljs.test :refer-macros [deftest testing is run-tests]])))
 
