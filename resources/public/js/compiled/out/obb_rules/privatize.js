@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 1.7.28 {:static-fns true, :optimize-constants true}
+// Compiled by ClojureScript 1.7.48 {:static-fns true, :optimize-constants true}
 goog.provide('obb_rules.privatize');
 goog.require('cljs.core');
 goog.require('obb_rules.game');
@@ -9,43 +9,43 @@ if(typeof obb_rules.privatize.game !== 'undefined'){
 /**
  * Privatizes a board
  */
-obb_rules.privatize.game = (function (){var method_table__8093__auto__ = (function (){var G__11208 = cljs.core.PersistentArrayMap.EMPTY;
-return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__11208) : cljs.core.atom.call(null,G__11208));
+obb_rules.privatize.game = (function (){var method_table__8122__auto__ = (function (){var G__11237 = cljs.core.PersistentArrayMap.EMPTY;
+return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__11237) : cljs.core.atom.call(null,G__11237));
 })();
-var prefer_table__8094__auto__ = (function (){var G__11209 = cljs.core.PersistentArrayMap.EMPTY;
-return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__11209) : cljs.core.atom.call(null,G__11209));
+var prefer_table__8123__auto__ = (function (){var G__11238 = cljs.core.PersistentArrayMap.EMPTY;
+return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__11238) : cljs.core.atom.call(null,G__11238));
 })();
-var method_cache__8095__auto__ = (function (){var G__11210 = cljs.core.PersistentArrayMap.EMPTY;
-return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__11210) : cljs.core.atom.call(null,G__11210));
+var method_cache__8124__auto__ = (function (){var G__11239 = cljs.core.PersistentArrayMap.EMPTY;
+return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__11239) : cljs.core.atom.call(null,G__11239));
 })();
-var cached_hierarchy__8096__auto__ = (function (){var G__11211 = cljs.core.PersistentArrayMap.EMPTY;
-return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__11211) : cljs.core.atom.call(null,G__11211));
+var cached_hierarchy__8125__auto__ = (function (){var G__11240 = cljs.core.PersistentArrayMap.EMPTY;
+return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__11240) : cljs.core.atom.call(null,G__11240));
 })();
-var hierarchy__8097__auto__ = cljs.core.get.cljs$core$IFn$_invoke$arity$3(cljs.core.PersistentArrayMap.EMPTY,cljs.core.constant$keyword$hierarchy,cljs.core.get_global_hierarchy());
-return (new cljs.core.MultiFn(cljs.core.symbol.cljs$core$IFn$_invoke$arity$2("obb-rules.privatize","game"),((function (method_table__8093__auto__,prefer_table__8094__auto__,method_cache__8095__auto__,cached_hierarchy__8096__auto__,hierarchy__8097__auto__){
+var hierarchy__8126__auto__ = cljs.core.get.cljs$core$IFn$_invoke$arity$3(cljs.core.PersistentArrayMap.EMPTY,cljs.core.cst$kw$hierarchy,cljs.core.get_global_hierarchy());
+return (new cljs.core.MultiFn(cljs.core.symbol.cljs$core$IFn$_invoke$arity$2("obb-rules.privatize","game"),((function (method_table__8122__auto__,prefer_table__8123__auto__,method_cache__8124__auto__,cached_hierarchy__8125__auto__,hierarchy__8126__auto__){
 return (function() { 
-var G__11212__delegate = function (game,player){
+var G__11241__delegate = function (game,player){
 return cljs.core.keyword.cljs$core$IFn$_invoke$arity$1(obb_rules.game.state.cljs$core$IFn$_invoke$arity$1(game));
 };
-var G__11212 = function (game,var_args){
+var G__11241 = function (game,var_args){
 var player = null;
 if (arguments.length > 1) {
-var G__11213__i = 0, G__11213__a = new Array(arguments.length -  1);
-while (G__11213__i < G__11213__a.length) {G__11213__a[G__11213__i] = arguments[G__11213__i + 1]; ++G__11213__i;}
-  player = new cljs.core.IndexedSeq(G__11213__a,0);
+var G__11242__i = 0, G__11242__a = new Array(arguments.length -  1);
+while (G__11242__i < G__11242__a.length) {G__11242__a[G__11242__i] = arguments[G__11242__i + 1]; ++G__11242__i;}
+  player = new cljs.core.IndexedSeq(G__11242__a,0);
 } 
-return G__11212__delegate.call(this,game,player);};
-G__11212.cljs$lang$maxFixedArity = 1;
-G__11212.cljs$lang$applyTo = (function (arglist__11214){
-var game = cljs.core.first(arglist__11214);
-var player = cljs.core.rest(arglist__11214);
-return G__11212__delegate(game,player);
+return G__11241__delegate.call(this,game,player);};
+G__11241.cljs$lang$maxFixedArity = 1;
+G__11241.cljs$lang$applyTo = (function (arglist__11243){
+var game = cljs.core.first(arglist__11243);
+var player = cljs.core.rest(arglist__11243);
+return G__11241__delegate(game,player);
 });
-G__11212.cljs$core$IFn$_invoke$arity$variadic = G__11212__delegate;
-return G__11212;
+G__11241.cljs$core$IFn$_invoke$arity$variadic = G__11241__delegate;
+return G__11241;
 })()
-;})(method_table__8093__auto__,prefer_table__8094__auto__,method_cache__8095__auto__,cached_hierarchy__8096__auto__,hierarchy__8097__auto__))
-,cljs.core.constant$keyword$default,hierarchy__8097__auto__,method_table__8093__auto__,prefer_table__8094__auto__,method_cache__8095__auto__,cached_hierarchy__8096__auto__));
+;})(method_table__8122__auto__,prefer_table__8123__auto__,method_cache__8124__auto__,cached_hierarchy__8125__auto__,hierarchy__8126__auto__))
+,cljs.core.cst$kw$default,hierarchy__8126__auto__,method_table__8122__auto__,prefer_table__8123__auto__,method_cache__8124__auto__,cached_hierarchy__8125__auto__));
 })();
 }
 /**
@@ -80,92 +80,92 @@ return board;
 return obb_rules.board.set_stash(board,player,cljs.core.PersistentArrayMap.EMPTY);
 }
 });
-obb_rules.privatize.game.cljs$core$IMultiFn$_add_method$arity$3(null,cljs.core.constant$keyword$deploy,(function() { 
-var G__11215__delegate = function (game,args){
+obb_rules.privatize.game.cljs$core$IMultiFn$_add_method$arity$3(null,cljs.core.cst$kw$deploy,(function() { 
+var G__11244__delegate = function (game,args){
 var viewed_by = cljs.core.keyword.cljs$core$IFn$_invoke$arity$1(cljs.core.first(args));
-return obb_rules.privatize.remove_elements(obb_rules.privatize.remove_elements(obb_rules.privatize.clear_stash(obb_rules.privatize.clear_stash(game,cljs.core.constant$keyword$p1,viewed_by),cljs.core.constant$keyword$p2,viewed_by),cljs.core.constant$keyword$p1,viewed_by),cljs.core.constant$keyword$p2,viewed_by);
+return obb_rules.privatize.remove_elements(obb_rules.privatize.remove_elements(obb_rules.privatize.clear_stash(obb_rules.privatize.clear_stash(game,cljs.core.cst$kw$p1,viewed_by),cljs.core.cst$kw$p2,viewed_by),cljs.core.cst$kw$p1,viewed_by),cljs.core.cst$kw$p2,viewed_by);
 };
-var G__11215 = function (game,var_args){
+var G__11244 = function (game,var_args){
 var args = null;
 if (arguments.length > 1) {
-var G__11216__i = 0, G__11216__a = new Array(arguments.length -  1);
-while (G__11216__i < G__11216__a.length) {G__11216__a[G__11216__i] = arguments[G__11216__i + 1]; ++G__11216__i;}
-  args = new cljs.core.IndexedSeq(G__11216__a,0);
+var G__11245__i = 0, G__11245__a = new Array(arguments.length -  1);
+while (G__11245__i < G__11245__a.length) {G__11245__a[G__11245__i] = arguments[G__11245__i + 1]; ++G__11245__i;}
+  args = new cljs.core.IndexedSeq(G__11245__a,0);
 } 
-return G__11215__delegate.call(this,game,args);};
-G__11215.cljs$lang$maxFixedArity = 1;
-G__11215.cljs$lang$applyTo = (function (arglist__11217){
-var game = cljs.core.first(arglist__11217);
-var args = cljs.core.rest(arglist__11217);
-return G__11215__delegate(game,args);
+return G__11244__delegate.call(this,game,args);};
+G__11244.cljs$lang$maxFixedArity = 1;
+G__11244.cljs$lang$applyTo = (function (arglist__11246){
+var game = cljs.core.first(arglist__11246);
+var args = cljs.core.rest(arglist__11246);
+return G__11244__delegate(game,args);
 });
-G__11215.cljs$core$IFn$_invoke$arity$variadic = G__11215__delegate;
-return G__11215;
+G__11244.cljs$core$IFn$_invoke$arity$variadic = G__11244__delegate;
+return G__11244;
 })()
 );
-obb_rules.privatize.game.cljs$core$IMultiFn$_add_method$arity$3(null,cljs.core.constant$keyword$final,(function() { 
-var G__11218__delegate = function (board,player){
+obb_rules.privatize.game.cljs$core$IMultiFn$_add_method$arity$3(null,cljs.core.cst$kw$final,(function() { 
+var G__11247__delegate = function (board,player){
 return board;
 };
-var G__11218 = function (board,var_args){
+var G__11247 = function (board,var_args){
 var player = null;
 if (arguments.length > 1) {
-var G__11219__i = 0, G__11219__a = new Array(arguments.length -  1);
-while (G__11219__i < G__11219__a.length) {G__11219__a[G__11219__i] = arguments[G__11219__i + 1]; ++G__11219__i;}
-  player = new cljs.core.IndexedSeq(G__11219__a,0);
+var G__11248__i = 0, G__11248__a = new Array(arguments.length -  1);
+while (G__11248__i < G__11248__a.length) {G__11248__a[G__11248__i] = arguments[G__11248__i + 1]; ++G__11248__i;}
+  player = new cljs.core.IndexedSeq(G__11248__a,0);
 } 
-return G__11218__delegate.call(this,board,player);};
-G__11218.cljs$lang$maxFixedArity = 1;
-G__11218.cljs$lang$applyTo = (function (arglist__11220){
-var board = cljs.core.first(arglist__11220);
-var player = cljs.core.rest(arglist__11220);
-return G__11218__delegate(board,player);
+return G__11247__delegate.call(this,board,player);};
+G__11247.cljs$lang$maxFixedArity = 1;
+G__11247.cljs$lang$applyTo = (function (arglist__11249){
+var board = cljs.core.first(arglist__11249);
+var player = cljs.core.rest(arglist__11249);
+return G__11247__delegate(board,player);
 });
-G__11218.cljs$core$IFn$_invoke$arity$variadic = G__11218__delegate;
-return G__11218;
+G__11247.cljs$core$IFn$_invoke$arity$variadic = G__11247__delegate;
+return G__11247;
 })()
 );
-obb_rules.privatize.game.cljs$core$IMultiFn$_add_method$arity$3(null,cljs.core.constant$keyword$p1,(function() { 
-var G__11221__delegate = function (board,player){
+obb_rules.privatize.game.cljs$core$IMultiFn$_add_method$arity$3(null,cljs.core.cst$kw$p1,(function() { 
+var G__11250__delegate = function (board,player){
 return board;
 };
-var G__11221 = function (board,var_args){
+var G__11250 = function (board,var_args){
 var player = null;
 if (arguments.length > 1) {
-var G__11222__i = 0, G__11222__a = new Array(arguments.length -  1);
-while (G__11222__i < G__11222__a.length) {G__11222__a[G__11222__i] = arguments[G__11222__i + 1]; ++G__11222__i;}
-  player = new cljs.core.IndexedSeq(G__11222__a,0);
+var G__11251__i = 0, G__11251__a = new Array(arguments.length -  1);
+while (G__11251__i < G__11251__a.length) {G__11251__a[G__11251__i] = arguments[G__11251__i + 1]; ++G__11251__i;}
+  player = new cljs.core.IndexedSeq(G__11251__a,0);
 } 
-return G__11221__delegate.call(this,board,player);};
-G__11221.cljs$lang$maxFixedArity = 1;
-G__11221.cljs$lang$applyTo = (function (arglist__11223){
-var board = cljs.core.first(arglist__11223);
-var player = cljs.core.rest(arglist__11223);
-return G__11221__delegate(board,player);
+return G__11250__delegate.call(this,board,player);};
+G__11250.cljs$lang$maxFixedArity = 1;
+G__11250.cljs$lang$applyTo = (function (arglist__11252){
+var board = cljs.core.first(arglist__11252);
+var player = cljs.core.rest(arglist__11252);
+return G__11250__delegate(board,player);
 });
-G__11221.cljs$core$IFn$_invoke$arity$variadic = G__11221__delegate;
-return G__11221;
+G__11250.cljs$core$IFn$_invoke$arity$variadic = G__11250__delegate;
+return G__11250;
 })()
 );
-obb_rules.privatize.game.cljs$core$IMultiFn$_add_method$arity$3(null,cljs.core.constant$keyword$p2,(function() { 
-var G__11224__delegate = function (board,player){
+obb_rules.privatize.game.cljs$core$IMultiFn$_add_method$arity$3(null,cljs.core.cst$kw$p2,(function() { 
+var G__11253__delegate = function (board,player){
 return board;
 };
-var G__11224 = function (board,var_args){
+var G__11253 = function (board,var_args){
 var player = null;
 if (arguments.length > 1) {
-var G__11225__i = 0, G__11225__a = new Array(arguments.length -  1);
-while (G__11225__i < G__11225__a.length) {G__11225__a[G__11225__i] = arguments[G__11225__i + 1]; ++G__11225__i;}
-  player = new cljs.core.IndexedSeq(G__11225__a,0);
+var G__11254__i = 0, G__11254__a = new Array(arguments.length -  1);
+while (G__11254__i < G__11254__a.length) {G__11254__a[G__11254__i] = arguments[G__11254__i + 1]; ++G__11254__i;}
+  player = new cljs.core.IndexedSeq(G__11254__a,0);
 } 
-return G__11224__delegate.call(this,board,player);};
-G__11224.cljs$lang$maxFixedArity = 1;
-G__11224.cljs$lang$applyTo = (function (arglist__11226){
-var board = cljs.core.first(arglist__11226);
-var player = cljs.core.rest(arglist__11226);
-return G__11224__delegate(board,player);
+return G__11253__delegate.call(this,board,player);};
+G__11253.cljs$lang$maxFixedArity = 1;
+G__11253.cljs$lang$applyTo = (function (arglist__11255){
+var board = cljs.core.first(arglist__11255);
+var player = cljs.core.rest(arglist__11255);
+return G__11253__delegate(board,player);
 });
-G__11224.cljs$core$IFn$_invoke$arity$variadic = G__11224__delegate;
-return G__11224;
+G__11253.cljs$core$IFn$_invoke$arity$variadic = G__11253__delegate;
+return G__11253;
 })()
 );

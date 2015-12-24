@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 1.7.28 {:static-fns true, :optimize-constants true}
+// Compiled by ClojureScript 1.7.48 {:static-fns true, :optimize-constants true}
 goog.provide('obb_rules.stash');
 goog.require('cljs.core');
 goog.require('obb_rules.unit');
@@ -12,23 +12,23 @@ return unit_hash;
  * Creates a new stash
  */
 obb_rules.stash.create = (function obb_rules$stash$create(){
-var args__8245__auto__ = [];
-var len__8238__auto___10305 = arguments.length;
-var i__8239__auto___10306 = (0);
+var args__8274__auto__ = [];
+var len__8267__auto___10334 = arguments.length;
+var i__8268__auto___10335 = (0);
 while(true){
-if((i__8239__auto___10306 < len__8238__auto___10305)){
-args__8245__auto__.push((arguments[i__8239__auto___10306]));
+if((i__8268__auto___10335 < len__8267__auto___10334)){
+args__8274__auto__.push((arguments[i__8268__auto___10335]));
 
-var G__10307 = (i__8239__auto___10306 + (1));
-i__8239__auto___10306 = G__10307;
+var G__10336 = (i__8268__auto___10335 + (1));
+i__8268__auto___10335 = G__10336;
 continue;
 } else {
 }
 break;
 }
 
-var argseq__8246__auto__ = ((((0) < args__8245__auto__.length))?(new cljs.core.IndexedSeq(args__8245__auto__.slice((0)),(0))):null);
-return obb_rules.stash.create.cljs$core$IFn$_invoke$arity$variadic(argseq__8246__auto__);
+var argseq__8275__auto__ = ((((0) < args__8274__auto__.length))?(new cljs.core.IndexedSeq(args__8274__auto__.slice((0)),(0))):null);
+return obb_rules.stash.create.cljs$core$IFn$_invoke$arity$variadic(argseq__8275__auto__);
 });
 
 obb_rules.stash.create.cljs$core$IFn$_invoke$arity$variadic = (function (units){
@@ -37,8 +37,8 @@ return cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,units);
 
 obb_rules.stash.create.cljs$lang$maxFixedArity = (0);
 
-obb_rules.stash.create.cljs$lang$applyTo = (function (seq10304){
-return obb_rules.stash.create.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq10304));
+obb_rules.stash.create.cljs$lang$applyTo = (function (seq10333){
+return obb_rules.stash.create.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq10333));
 });
 /**
  * Gets the way to access a unit key on the stash
@@ -54,11 +54,11 @@ return cljs.core.keyword;
  * States how many of a unit are present
  */
 obb_rules.stash.how_many_QMARK_ = (function obb_rules$stash$how_many_QMARK_(stash,unit){
-var or__7199__auto__ = (function (){var G__10311 = obb_rules.stash.accessorfn(stash,unit).call(null,unit);
-return (stash.cljs$core$IFn$_invoke$arity$1 ? stash.cljs$core$IFn$_invoke$arity$1(G__10311) : stash.call(null,G__10311));
+var or__7228__auto__ = (function (){var G__10340 = obb_rules.stash.accessorfn(stash,unit).call(null,unit);
+return (stash.cljs$core$IFn$_invoke$arity$1 ? stash.cljs$core$IFn$_invoke$arity$1(G__10340) : stash.call(null,G__10340));
 })();
-if(cljs.core.truth_(or__7199__auto__)){
-return or__7199__auto__;
+if(cljs.core.truth_(or__7228__auto__)){
+return or__7228__auto__;
 } else {
 return (0);
 }
@@ -85,7 +85,7 @@ var current_quantity = obb_rules.stash.how_many_QMARK_(stash,unit_key);
 var new_quantity = (current_quantity - quantity);
 if((current_quantity >= quantity)){
 } else {
-throw (new Error([cljs.core.str("Assert failed: "),cljs.core.str("InvalidStashQuantity"),cljs.core.str("\n"),cljs.core.str(cljs.core.pr_str.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([cljs.core.list(new cljs.core.Symbol(null,">=",">=",1016916022,null),new cljs.core.Symbol(null,"current-quantity","current-quantity",-508952045,null),new cljs.core.Symbol(null,"quantity","quantity",-288519167,null))], 0)))].join('')));
+throw (new Error([cljs.core.str("Assert failed: "),cljs.core.str("InvalidStashQuantity"),cljs.core.str("\n"),cljs.core.str(cljs.core.pr_str.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([cljs.core.list(cljs.core.cst$sym$_GT__EQ_,cljs.core.cst$sym$current_DASH_quantity,cljs.core.cst$sym$quantity)], 0)))].join('')));
 }
 
 if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(new_quantity,(0))){
@@ -117,9 +117,9 @@ return cljs.core.flatten(lucky);
  * Creates a stash randomly populated
  */
 obb_rules.stash.random = (function obb_rules$stash$random(){
-var lights = obb_rules.stash.random_by_category((2),cljs.core.constant$keyword$light,(100));
-var mediums = obb_rules.stash.random_by_category((3),cljs.core.constant$keyword$medium,(50));
-var heavies = obb_rules.stash.random_by_category((3),cljs.core.constant$keyword$heavy,(25));
+var lights = obb_rules.stash.random_by_category((2),cljs.core.cst$kw$light,(100));
+var mediums = obb_rules.stash.random_by_category((3),cljs.core.cst$kw$medium,(50));
+var heavies = obb_rules.stash.random_by_category((3),cljs.core.cst$kw$heavy,(25));
 var all = cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(lights,mediums,cljs.core.array_seq([heavies], 0));
 return cljs.core.apply.cljs$core$IFn$_invoke$arity$2(obb_rules.stash.create,all);
 });

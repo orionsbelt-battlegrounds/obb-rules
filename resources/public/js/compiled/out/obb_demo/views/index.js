@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 1.7.28 {:static-fns true, :optimize-constants true}
+// Compiled by ClojureScript 1.7.48 {:static-fns true, :optimize-constants true}
 goog.provide('obb_demo.views.index');
 goog.require('cljs.core');
 goog.require('obb_demo.views.many_games');
@@ -9,14 +9,14 @@ goog.require('obb_demo.views.units');
 goog.require('obb_demo.state');
 goog.require('obb_demo.views.play');
 obb_demo.views.index.current_page = (function obb_demo$views$index$current_page(state){
-var page = cljs.core.constant$keyword$page.cljs$core$IFn$_invoke$arity$1(state);
-if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.constant$keyword$units,page)){
+var page = cljs.core.cst$kw$page.cljs$core$IFn$_invoke$arity$1(state);
+if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$units,page)){
 return obb_demo.views.units.render(state);
 } else {
-if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.constant$keyword$player,page)){
+if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$player,page)){
 return obb_demo.views.player.render(state);
 } else {
-if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.constant$keyword$many_DASH_games,page)){
+if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$many_DASH_games,page)){
 return obb_demo.views.many_games.render(state);
 } else {
 return obb_demo.views.play.render(state);
@@ -26,23 +26,23 @@ return obb_demo.views.play.render(state);
 }
 });
 obb_demo.views.index.render = (function obb_demo$views$index$render(){
-var args11151 = [];
-var len__8238__auto___11154 = arguments.length;
-var i__8239__auto___11155 = (0);
+var args11180 = [];
+var len__8267__auto___11183 = arguments.length;
+var i__8268__auto___11184 = (0);
 while(true){
-if((i__8239__auto___11155 < len__8238__auto___11154)){
-args11151.push((arguments[i__8239__auto___11155]));
+if((i__8268__auto___11184 < len__8267__auto___11183)){
+args11180.push((arguments[i__8268__auto___11184]));
 
-var G__11156 = (i__8239__auto___11155 + (1));
-i__8239__auto___11155 = G__11156;
+var G__11185 = (i__8268__auto___11184 + (1));
+i__8268__auto___11184 = G__11185;
 continue;
 } else {
 }
 break;
 }
 
-var G__11153 = args11151.length;
-switch (G__11153) {
+var G__11182 = args11180.length;
+switch (G__11182) {
 case 0:
 return obb_demo.views.index.render.cljs$core$IFn$_invoke$arity$0();
 
@@ -52,7 +52,7 @@ return obb_demo.views.index.render.cljs$core$IFn$_invoke$arity$1((arguments[(0)]
 
 break;
 default:
-throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args11151.length)].join('')));
+throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args11180.length)].join('')));
 
 }
 });
@@ -62,7 +62,7 @@ return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMP
 });
 
 obb_demo.views.index.render.cljs$core$IFn$_invoke$arity$1 = (function (state){
-return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$div,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_demo.views.layout.header.render], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$div$container,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$div$bs_DASH_docs_DASH_section$clearfix,obb_demo.views.index.current_page(state)], null),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_demo.views.layout.footer.render], null)], null)], null);
+return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_demo.views.layout.header.render], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$container,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$bs_DASH_docs_DASH_section$clearfix,obb_demo.views.index.current_page(state)], null),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_demo.views.layout.footer.render], null)], null)], null);
 });
 
 obb_demo.views.index.render.cljs$lang$maxFixedArity = 1;
