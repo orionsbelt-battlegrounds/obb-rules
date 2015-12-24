@@ -30,7 +30,7 @@
 (defn eval-board
   "Evaluates a board for a given player"
   [board player]
-  (let [scores (evaluator/eval-game board)]
+ (let [scores (evaluator/eval-game board)]
     (eval-scores player scores)))
 
 (defn- build-target
@@ -147,8 +147,8 @@
   "Returns a collection of possible options that move
   the unit by chance"
   ([game element]
-   (move-options game element -1000))
-  ([game element value]
+   (move-options game element -1000 1))
+  ([game element value max-options]
    (let [coordinate (element/element-coordinate element)
          unit (element/element-unit element)
          mov-cost (unit/unit-movement-cost unit)
@@ -183,7 +183,8 @@
   "Sorts a collection of options based on the value"
   [option]
   (if option
-    (- (option :value))
+    (let [cost-factor (/ (- laws/max-action-points (:cost option)) 10)]
+      (- (+ (option :value) cost-factor)))
     0))
 
 (defn option-value-cost-sorter

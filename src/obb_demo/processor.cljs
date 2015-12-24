@@ -37,8 +37,9 @@
 (defn- bot-actions
   "Gets actions"
   [game player]
+  ;; (alamo/actions game player)
   (if (= :p1 player)
-    (alamo/actions game player)
+    (firingsquad/actions game player)
     (firingsquad/actions game player)))
 
 (defn- generate-actions

@@ -10,7 +10,7 @@
     [:ul.nav.navbar-nav.navbar-right
       [:li [:a {:on-click #(secretary/dispatch! "/play") :href "#"} "Play!"]]
       [:li [:a {:on-click #(secretary/dispatch! "/") :href "#"} "AI vs AI"]]
-      #_[:li [:a {:on-click #(secretary/dispatch! "/many-games") :href "#"} "Many games"]]
+      [:li [:a {:on-click #(secretary/dispatch! "/many-games") :href "#"} "Many games"]]
       [:li [:a {:on-click #(secretary/dispatch! "/units") :href "#"} "Units"]]
       [:li [:a {:href "https://github.com/orionsbelt-battlegrounds/obb-rules"} "Source Code"]]]]
    ])
