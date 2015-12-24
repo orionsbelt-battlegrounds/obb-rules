@@ -56,7 +56,7 @@
     [:div
       [(selected-player player :p2) "Firingsquad"]
       " vs "
-      [(selected-player player :p1) "Alamo"]]))
+      [(selected-player player :p1) "Firingsquad"]]))
 
 (defn- game-turn
   "Displays the current turn"
