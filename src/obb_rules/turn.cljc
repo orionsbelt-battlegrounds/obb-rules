@@ -40,8 +40,8 @@
   [game cleanup?]
   (if cleanup?
     (-> (action/reset-action-specific-state game)
-        (dissoc :action-results)
-        (dissoc :removed-elements))
+        (clojure.set/rename-keys {:action-results :previous-action-results
+                                  :removed-elements :previous-removed-elements}))
     game))
 
 (defn- create-result

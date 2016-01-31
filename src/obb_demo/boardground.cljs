@@ -176,6 +176,7 @@
   "Gets current action-results"
   [game-data]
   (or (get-in game-data [:game :action-results])
+      (get-in game-data [:game :previous-action-results])
       (get-in game-data [:previous-game :action-results])))
 
 (defn- action-participant

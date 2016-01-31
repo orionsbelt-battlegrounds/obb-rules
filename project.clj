@@ -10,7 +10,7 @@
   :dependencies [[org.clojure/test.check "0.9.0"]
                  [org.clojure/math.numeric-tower "0.0.4"]
                  [org.clojure/tools.namespace "0.2.11"]
-                 [org.clojure/clojure "1.8.0-alpha2"]
+                 [org.clojure/clojure "1.8.0"]
                  [org.clojure/tools.nrepl "0.2.12"]
                  [criterium "0.4.3"]
                  [reagent "0.5.1"]
