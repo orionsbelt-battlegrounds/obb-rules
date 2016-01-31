@@ -61,7 +61,7 @@
 
                   (board/place-element [1 2] (element/create-element :p2 crusader quantity :south [1 2]))
                   (board/place-element [2 2] (element/create-element :p2 crusader quantity :south [2 2]))
-                  (board/place-element [3 2] (element/create-element :p2 crusader quantity :south [4 2])))
+                  (board/place-element [3 2] (element/create-element :p2 crusader quantity :south [3 2])))
 
         actions (firingsquad/actions board :p1)
         result (turn/process-actions board :p1 actions)
@@ -101,3 +101,34 @@
                   (println "--" player)
                   (println actions)
                   (println (simplifier/clean-result result)))))))))))
+
+(defn- crusader-vs-crusader
+  []
+  (-> (board/create-board)
+      (game/state :p1)
+      (board/place-element [1 7] (element/create-element :p1 crusader quantity :north [1 7]))
+      (board/place-element [2 7] (element/create-element :p1 crusader quantity :north [2 7]))
+      (board/place-element [3 7] (element/create-element :p1 crusader quantity :north [3 7]))
+      (board/place-element [4 7] (element/create-element :p1 crusader quantity :north [4 7]))
+      (board/place-element [5 7] (element/create-element :p1 crusader quantity :north [5 7]))
+      (board/place-element [6 7] (element/create-element :p1 crusader quantity :north [6 7]))
+      (board/place-element [7 7] (element/create-element :p1 crusader quantity :north [7 7]))
+      (board/place-element [8 7] (element/create-element :p1 crusader quantity :north [8 7]))
+
+      (board/place-element [1 2] (element/create-element :p2 crusader quantity :south [1 2]))
+      (board/place-element [2 2] (element/create-element :p2 crusader quantity :south [2 2]))
+      (board/place-element [3 2] (element/create-element :p2 crusader quantity :south [3 2]))
+      (board/place-element [4 2] (element/create-element :p2 crusader quantity :south [4 2]))
+      (board/place-element [5 2] (element/create-element :p2 crusader quantity :south [5 2]))
+      (board/place-element [6 2] (element/create-element :p2 crusader quantity :south [6 2]))
+      (board/place-element [7 2] (element/create-element :p2 crusader quantity :south [7 2]))
+      (board/place-element [8 2] (element/create-element :p2 crusader quantity :south [8 2]))))
+
+(deftest chooses-firing-round
+  (let [board (crusader-vs-crusader)
+        actions (firingsquad/actions board :p1)
+        result (turn/process-actions board :p1 actions)
+        game-p1 (result/result-board result)]
+    (is (= 6 (count actions))
+    (is (result/succeeded? result)))))
+

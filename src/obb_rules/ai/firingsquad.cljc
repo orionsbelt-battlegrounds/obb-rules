@@ -25,19 +25,19 @@
   "Utility for debugging"
   [coll]
   (mapv (fn [option]
-         (println "firingsquad" [(:value option) (:cost option) (:actions option)])) coll)
+          (println "firingsquad" [(:value option) (:cost option) (:actions option)])) coll)
   coll)
 
 (defn- gather-element-actions
   "Gathers possible actions for the given element"
   [game all element]
   (remove empty?
-    (conj all (first (-> []
-                         (into (common/attack-options game element))
-                         (into (common/rotate-attack-options game element))
-                         (into (common/move-attack-options game element))
-                         (into (common/move-options game element))
-                         (->> (sort-by common/option-value-cost-sorter)))))))
+    (concat all (take 3 (-> []
+                           (into (common/attack-options game element))
+                           (into (common/rotate-attack-options game element))
+                           (into (common/move-attack-options game element))
+                           (into (common/move-options game element))
+                           (->> (sort-by common/option-value-cost-sorter)))))))
 
 (defn- find-one
   "Given a collection of sorted options, tries to find a good one"
@@ -45,6 +45,19 @@
   (let [joiner (partial common/join-options player)
         the-one (reduce joiner (first options) (rest options))]
     the-one))
+
+(defn- aggregate-best
+  "Given a collection of sorted options, tries to group several of them
+  to find the best one"
+  [player options]
+  (let [joiner (partial common/join-options player)]
+    (->> options
+         (map (fn [master-option]
+                (->> options
+                     (filter #(>= (:cost master-option) (:cost %)))
+                     (reduce joiner master-option))))
+         (sort-by common/option-value-sorter)
+         first)))
 
 (defn turn-option
   "Gets the complete option for playing on a specific game"
@@ -54,7 +67,7 @@
     (->> (reduce gatherer [] elements)
          (sort-by common/option-value-sorter)
          #_(logger)
-         (find-one player))))
+         (aggregate-best player))))
 
 (defmethod actions :turn
   [game player]

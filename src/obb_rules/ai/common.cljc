@@ -213,5 +213,6 @@
           (-> master
               (assoc :board (result/result-board result))
               (assoc :actions (into (master :actions) actions))
+              (update :value + (:value current-option))
               (assoc :cost (+ (master :cost) (current-option :cost))))
           master)))))
