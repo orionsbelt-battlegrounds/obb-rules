@@ -24,51 +24,51 @@ if(typeof obb_rules.actions.hooks.process !== 'undefined'){
 /**
  * Processes the event hooks for the given context
  */
-obb_rules.actions.hooks.process = (function (){var method_table__7055__auto__ = (function (){var G__14945 = cljs.core.PersistentArrayMap.EMPTY;
-return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__14945) : cljs.core.atom.call(null,G__14945));
+obb_rules.actions.hooks.process = (function (){var method_table__7069__auto__ = (function (){var G__12153 = cljs.core.PersistentArrayMap.EMPTY;
+return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__12153) : cljs.core.atom.call(null,G__12153));
 })();
-var prefer_table__7056__auto__ = (function (){var G__14946 = cljs.core.PersistentArrayMap.EMPTY;
-return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__14946) : cljs.core.atom.call(null,G__14946));
+var prefer_table__7070__auto__ = (function (){var G__12154 = cljs.core.PersistentArrayMap.EMPTY;
+return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__12154) : cljs.core.atom.call(null,G__12154));
 })();
-var method_cache__7057__auto__ = (function (){var G__14947 = cljs.core.PersistentArrayMap.EMPTY;
-return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__14947) : cljs.core.atom.call(null,G__14947));
+var method_cache__7071__auto__ = (function (){var G__12155 = cljs.core.PersistentArrayMap.EMPTY;
+return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__12155) : cljs.core.atom.call(null,G__12155));
 })();
-var cached_hierarchy__7058__auto__ = (function (){var G__14948 = cljs.core.PersistentArrayMap.EMPTY;
-return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__14948) : cljs.core.atom.call(null,G__14948));
+var cached_hierarchy__7072__auto__ = (function (){var G__12156 = cljs.core.PersistentArrayMap.EMPTY;
+return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__12156) : cljs.core.atom.call(null,G__12156));
 })();
-var hierarchy__7059__auto__ = cljs.core.get.cljs$core$IFn$_invoke$arity$3(cljs.core.PersistentArrayMap.EMPTY,cljs.core.cst$kw$hierarchy,cljs.core.get_global_hierarchy());
-return (new cljs.core.MultiFn(cljs.core.symbol.cljs$core$IFn$_invoke$arity$2("obb-rules.actions.hooks","process"),((function (method_table__7055__auto__,prefer_table__7056__auto__,method_cache__7057__auto__,cached_hierarchy__7058__auto__,hierarchy__7059__auto__){
+var hierarchy__7073__auto__ = cljs.core.get.cljs$core$IFn$_invoke$arity$3(cljs.core.PersistentArrayMap.EMPTY,cljs.core.cst$kw$hierarchy,cljs.core.get_global_hierarchy());
+return (new cljs.core.MultiFn(cljs.core.symbol.cljs$core$IFn$_invoke$arity$2("obb-rules.actions.hooks","process"),((function (method_table__7069__auto__,prefer_table__7070__auto__,method_cache__7071__auto__,cached_hierarchy__7072__auto__,hierarchy__7073__auto__){
 return (function (event,args){
 return cljs.core.keyword.cljs$core$IFn$_invoke$arity$1(event);
-});})(method_table__7055__auto__,prefer_table__7056__auto__,method_cache__7057__auto__,cached_hierarchy__7058__auto__,hierarchy__7059__auto__))
-,cljs.core.cst$kw$default,hierarchy__7059__auto__,method_table__7055__auto__,prefer_table__7056__auto__,method_cache__7057__auto__,cached_hierarchy__7058__auto__));
+});})(method_table__7069__auto__,prefer_table__7070__auto__,method_cache__7071__auto__,cached_hierarchy__7072__auto__,hierarchy__7073__auto__))
+,cljs.core.cst$kw$default,hierarchy__7073__auto__,method_table__7069__auto__,prefer_table__7070__auto__,method_cache__7071__auto__,cached_hierarchy__7072__auto__));
 })();
 }
-obb_rules.actions.hooks.process.cljs$core$IMultiFn$_add_method$arity$3(null,cljs.core.cst$kw$after_DASH_attack,(function (event,p__14949){
-var map__14950 = p__14949;
-var map__14950__$1 = ((((!((map__14950 == null)))?((((map__14950.cljs$lang$protocol_mask$partition0$ & (64))) || (map__14950.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__14950):map__14950);
-var args = map__14950__$1;
-var attacker = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14950__$1,cljs.core.cst$kw$attacker);
-var board = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14950__$1,cljs.core.cst$kw$board);
-var info = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14950__$1,cljs.core.cst$kw$info);
-var temp__4423__auto__ = obb_rules.element.hooks(attacker,event);
-if(cljs.core.truth_(temp__4423__auto__)){
-var hooks = temp__4423__auto__;
+obb_rules.actions.hooks.process.cljs$core$IMultiFn$_add_method$arity$3(null,cljs.core.cst$kw$after_DASH_attack,(function (event,p__12157){
+var map__12158 = p__12157;
+var map__12158__$1 = ((((!((map__12158 == null)))?((((map__12158.cljs$lang$protocol_mask$partition0$ & (64))) || (map__12158.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__12158):map__12158);
+var args = map__12158__$1;
+var attacker = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12158__$1,cljs.core.cst$kw$attacker);
+var board = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12158__$1,cljs.core.cst$kw$board);
+var info = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12158__$1,cljs.core.cst$kw$info);
+var temp__4655__auto__ = obb_rules.element.hooks(attacker,event);
+if(cljs.core.truth_(temp__4655__auto__)){
+var hooks = temp__4655__auto__;
 return obb_rules.actions.hooks.get_handler(cljs.core.first(hooks)).call(null,cljs.core.first(hooks),args);
 } else {
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [board,info], null);
 }
 }));
-obb_rules.actions.hooks.process.cljs$core$IMultiFn$_add_method$arity$3(null,cljs.core.cst$kw$after_DASH_hit,(function (event,p__14952){
-var map__14953 = p__14952;
-var map__14953__$1 = ((((!((map__14953 == null)))?((((map__14953.cljs$lang$protocol_mask$partition0$ & (64))) || (map__14953.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__14953):map__14953);
-var args = map__14953__$1;
-var target = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14953__$1,cljs.core.cst$kw$target);
-var board = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14953__$1,cljs.core.cst$kw$board);
-var info = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14953__$1,cljs.core.cst$kw$info);
-var temp__4423__auto__ = obb_rules.element.hooks(target,event);
-if(cljs.core.truth_(temp__4423__auto__)){
-var hooks = temp__4423__auto__;
+obb_rules.actions.hooks.process.cljs$core$IMultiFn$_add_method$arity$3(null,cljs.core.cst$kw$after_DASH_hit,(function (event,p__12160){
+var map__12161 = p__12160;
+var map__12161__$1 = ((((!((map__12161 == null)))?((((map__12161.cljs$lang$protocol_mask$partition0$ & (64))) || (map__12161.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__12161):map__12161);
+var args = map__12161__$1;
+var target = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12161__$1,cljs.core.cst$kw$target);
+var board = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12161__$1,cljs.core.cst$kw$board);
+var info = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12161__$1,cljs.core.cst$kw$info);
+var temp__4655__auto__ = obb_rules.element.hooks(target,event);
+if(cljs.core.truth_(temp__4655__auto__)){
+var hooks = temp__4655__auto__;
 return obb_rules.actions.hooks.get_handler(cljs.core.first(hooks)).call(null,cljs.core.first(hooks),args);
 } else {
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [board,info], null);

@@ -15,16 +15,16 @@ goog.require('obb_demo.views.power_bar');
  * Gets the current games or setups them
  */
 obb_demo.views.many_games.get_games_data = (function obb_demo$views$many_games$get_games_data(state){
-var temp__4423__auto__ = cljs.core.cst$kw$many_DASH_games.cljs$core$IFn$_invoke$arity$1(state);
-if(cljs.core.truth_(temp__4423__auto__)){
-var datas = temp__4423__auto__;
+var temp__4655__auto__ = cljs.core.cst$kw$many_DASH_games.cljs$core$IFn$_invoke$arity$1(state);
+if(cljs.core.truth_(temp__4655__auto__)){
+var datas = temp__4655__auto__;
 return datas;
 } else {
 var games = cljs.core.take.cljs$core$IFn$_invoke$arity$2((6),cljs.core.repeatedly.cljs$core$IFn$_invoke$arity$1(obb_demo.processor.deployed_game));
-var datas = cljs.core.mapv.cljs$core$IFn$_invoke$arity$2(((function (games,temp__4423__auto__){
+var datas = cljs.core.mapv.cljs$core$IFn$_invoke$arity$2(((function (games,temp__4655__auto__){
 return (function (game){
 return new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$game,game], null);
-});})(games,temp__4423__auto__))
+});})(games,temp__4655__auto__))
 ,games);
 obb_demo.state.set_page_data_BANG_(datas);
 
@@ -39,27 +39,27 @@ return obb_demo.state.set_page_data_BANG_(null);
 });
 obb_demo.views.many_games.render = (function obb_demo$views$many_games$render(state){
 var datas = obb_demo.views.many_games.get_games_data(state);
-return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$row,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$col_DASH_lg_DASH_12,(function (){var iter__6914__auto__ = ((function (datas){
-return (function obb_demo$views$many_games$render_$_iter__15890(s__15891){
+return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$row,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$col_DASH_lg_DASH_12,(function (){var iter__6928__auto__ = ((function (datas){
+return (function obb_demo$views$many_games$render_$_iter__13098(s__13099){
 return (new cljs.core.LazySeq(null,((function (datas){
 return (function (){
-var s__15891__$1 = s__15891;
+var s__13099__$1 = s__13099;
 while(true){
-var temp__4425__auto__ = cljs.core.seq(s__15891__$1);
-if(temp__4425__auto__){
-var s__15891__$2 = temp__4425__auto__;
-if(cljs.core.chunked_seq_QMARK_(s__15891__$2)){
-var c__6912__auto__ = cljs.core.chunk_first(s__15891__$2);
-var size__6913__auto__ = cljs.core.count(c__6912__auto__);
-var b__15893 = cljs.core.chunk_buffer(size__6913__auto__);
-if((function (){var i__15892 = (0);
+var temp__4657__auto__ = cljs.core.seq(s__13099__$1);
+if(temp__4657__auto__){
+var s__13099__$2 = temp__4657__auto__;
+if(cljs.core.chunked_seq_QMARK_(s__13099__$2)){
+var c__6926__auto__ = cljs.core.chunk_first(s__13099__$2);
+var size__6927__auto__ = cljs.core.count(c__6926__auto__);
+var b__13101 = cljs.core.chunk_buffer(size__6927__auto__);
+if((function (){var i__13100 = (0);
 while(true){
-if((i__15892 < size__6913__auto__)){
-var game_data = cljs.core._nth.cljs$core$IFn$_invoke$arity$2(c__6912__auto__,i__15892);
-cljs.core.chunk_append(b__15893,new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$col_DASH_lg_DASH_4,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$key,cljs.core.rand_int((10000))], null),obb_demo.views.power_bar.render(cljs.core.cst$kw$game.cljs$core$IFn$_invoke$arity$1(game_data)),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_demo.boardground.render,cljs.core.PersistentArrayMap.EMPTY,game_data], null)], null));
+if((i__13100 < size__6927__auto__)){
+var game_data = cljs.core._nth.cljs$core$IFn$_invoke$arity$2(c__6926__auto__,i__13100);
+cljs.core.chunk_append(b__13101,new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$col_DASH_lg_DASH_4,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$key,cljs.core.rand_int((10000))], null),obb_demo.views.power_bar.render(cljs.core.cst$kw$game.cljs$core$IFn$_invoke$arity$1(game_data)),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_demo.boardground.render,cljs.core.PersistentArrayMap.EMPTY,game_data], null)], null));
 
-var G__15896 = (i__15892 + (1));
-i__15892 = G__15896;
+var G__13104 = (i__13100 + (1));
+i__13100 = G__13104;
 continue;
 } else {
 return true;
@@ -67,13 +67,13 @@ return true;
 break;
 }
 })()){
-return cljs.core.chunk_cons(cljs.core.chunk(b__15893),obb_demo$views$many_games$render_$_iter__15890(cljs.core.chunk_rest(s__15891__$2)));
+return cljs.core.chunk_cons(cljs.core.chunk(b__13101),obb_demo$views$many_games$render_$_iter__13098(cljs.core.chunk_rest(s__13099__$2)));
 } else {
-return cljs.core.chunk_cons(cljs.core.chunk(b__15893),null);
+return cljs.core.chunk_cons(cljs.core.chunk(b__13101),null);
 }
 } else {
-var game_data = cljs.core.first(s__15891__$2);
-return cljs.core.cons(new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$col_DASH_lg_DASH_4,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$key,cljs.core.rand_int((10000))], null),obb_demo.views.power_bar.render(cljs.core.cst$kw$game.cljs$core$IFn$_invoke$arity$1(game_data)),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_demo.boardground.render,cljs.core.PersistentArrayMap.EMPTY,game_data], null)], null),obb_demo$views$many_games$render_$_iter__15890(cljs.core.rest(s__15891__$2)));
+var game_data = cljs.core.first(s__13099__$2);
+return cljs.core.cons(new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$col_DASH_lg_DASH_4,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$key,cljs.core.rand_int((10000))], null),obb_demo.views.power_bar.render(cljs.core.cst$kw$game.cljs$core$IFn$_invoke$arity$1(game_data)),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_demo.boardground.render,cljs.core.PersistentArrayMap.EMPTY,game_data], null)], null),obb_demo$views$many_games$render_$_iter__13098(cljs.core.rest(s__13099__$2)));
 }
 } else {
 return null;
@@ -84,6 +84,6 @@ break;
 ,null,null));
 });})(datas))
 ;
-return iter__6914__auto__(datas);
+return iter__6928__auto__(datas);
 })()], null)], null);
 });

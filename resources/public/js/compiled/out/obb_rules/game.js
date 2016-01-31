@@ -12,9 +12,9 @@ obb_rules.game.version = "2.0.0";
  */
 obb_rules.game.state_QMARK_ = (function obb_rules$game$state_QMARK_(game,state){
 var current_state = (game.cljs$core$IFn$_invoke$arity$1 ? game.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$state) : game.call(null,cljs.core.cst$kw$state));
-var or__6142__auto__ = (current_state == null);
-if(or__6142__auto__){
-return or__6142__auto__;
+var or__6156__auto__ = (current_state == null);
+if(or__6156__auto__){
+return or__6156__auto__;
 } else {
 return obb_rules.simplifier.name_EQ_(state,current_state);
 }
@@ -41,9 +41,9 @@ return obb_rules.board.get_stash(game,player);
  * Gets the game mode
  */
 obb_rules.game.mode = (function obb_rules$game$mode(game){
-var or__6142__auto__ = (game.cljs$core$IFn$_invoke$arity$1 ? game.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$mode) : game.call(null,cljs.core.cst$kw$mode));
-if(cljs.core.truth_(or__6142__auto__)){
-return or__6142__auto__;
+var or__6156__auto__ = (game.cljs$core$IFn$_invoke$arity$1 ? game.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$mode) : game.call(null,cljs.core.cst$kw$mode));
+if(cljs.core.truth_(or__6156__auto__)){
+return or__6156__auto__;
 } else {
 return cljs.core.cst$kw$default;
 }
@@ -52,23 +52,23 @@ return cljs.core.cst$kw$default;
  * Gets/Sets the current game's state
  */
 obb_rules.game.state = (function obb_rules$game$state(var_args){
-var args14688 = [];
-var len__7200__auto___14691 = arguments.length;
-var i__7201__auto___14692 = (0);
+var args11896 = [];
+var len__7214__auto___11899 = arguments.length;
+var i__7215__auto___11900 = (0);
 while(true){
-if((i__7201__auto___14692 < len__7200__auto___14691)){
-args14688.push((arguments[i__7201__auto___14692]));
+if((i__7215__auto___11900 < len__7214__auto___11899)){
+args11896.push((arguments[i__7215__auto___11900]));
 
-var G__14693 = (i__7201__auto___14692 + (1));
-i__7201__auto___14692 = G__14693;
+var G__11901 = (i__7215__auto___11900 + (1));
+i__7215__auto___11900 = G__11901;
 continue;
 } else {
 }
 break;
 }
 
-var G__14690 = args14688.length;
-switch (G__14690) {
+var G__11898 = args11896.length;
+switch (G__11898) {
 case 1:
 return obb_rules.game.state.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -78,7 +78,7 @@ return obb_rules.game.state.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(argu
 
 break;
 default:
-throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args14688.length)].join('')));
+throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args11896.length)].join('')));
 
 }
 });
@@ -130,9 +130,9 @@ return (game.cljs$core$IFn$_invoke$arity$1 ? game.cljs$core$IFn$_invoke$arity$1(
  * Stores an action's result
  */
 obb_rules.game.push_result = (function obb_rules$game$push_result(game,raw_action,result){
-var action_results = (function (){var or__6142__auto__ = obb_rules.game.action_results(game);
-if(cljs.core.truth_(or__6142__auto__)){
-return or__6142__auto__;
+var action_results = (function (){var or__6156__auto__ = obb_rules.game.action_results(game);
+if(cljs.core.truth_(or__6156__auto__)){
+return or__6156__auto__;
 } else {
 return cljs.core.PersistentVector.EMPTY;
 }
@@ -145,7 +145,7 @@ return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(game,cljs.core.cst$kw$actio
  *   are all successful.
  */
 obb_rules.game.valid_actions_QMARK_ = (function obb_rules$game$valid_actions_QMARK_(game){
-return cljs.core.every_QMARK_((function (p1__14695_SHARP_){
-return obb_rules.result.succeeded_QMARK_(cljs.core.last(p1__14695_SHARP_));
+return cljs.core.every_QMARK_((function (p1__11903_SHARP_){
+return obb_rules.result.succeeded_QMARK_(cljs.core.last(p1__11903_SHARP_));
 }),obb_rules.game.action_results(game));
 });

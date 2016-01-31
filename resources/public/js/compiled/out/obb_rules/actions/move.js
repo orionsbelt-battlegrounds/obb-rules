@@ -48,20 +48,20 @@ return "InvalidQuantityPercentage";
 if(cljs.core.not(obb_rules.actions.move_restrictions.valid_QMARK_(efrom,from,to))){
 return "MovementTypeFail";
 } else {
-if(cljs.core.truth_((function (){var and__6130__auto__ = eto;
-if(cljs.core.truth_(and__6130__auto__)){
+if(cljs.core.truth_((function (){var and__6144__auto__ = eto;
+if(cljs.core.truth_(and__6144__auto__)){
 return cljs.core.not_EQ_.cljs$core$IFn$_invoke$arity$2(obb_rules.element.element_unit(efrom),obb_rules.element.element_unit(eto));
 } else {
-return and__6130__auto__;
+return and__6144__auto__;
 }
 })())){
 return "UnitMismatch";
 } else {
-if(cljs.core.truth_((function (){var and__6130__auto__ = eto;
-if(cljs.core.truth_(and__6130__auto__)){
+if(cljs.core.truth_((function (){var and__6144__auto__ = eto;
+if(cljs.core.truth_(and__6144__auto__)){
 return obb_rules.simplifier.not_name_EQ_(player,obb_rules.element.element_player.cljs$core$IFn$_invoke$arity$1(eto));
 } else {
-return and__6130__auto__;
+return and__6144__auto__;
 }
 })())){
 return "NotOwnedElement";
@@ -110,27 +110,27 @@ return cljs.core.filter.cljs$core$IFn$_invoke$arity$2(cljs.core.partial.cljs$cor
  * Find possible destinations for the given coordinates
  */
 obb_rules.actions.move.tier_positions = (function obb_rules$actions$move$tier_positions(board,element,coll){
-var all = (function (){var iter__6914__auto__ = (function obb_rules$actions$move$tier_positions_$_iter__14804(s__14805){
+var all = (function (){var iter__6928__auto__ = (function obb_rules$actions$move$tier_positions_$_iter__12012(s__12013){
 return (new cljs.core.LazySeq(null,(function (){
-var s__14805__$1 = s__14805;
+var s__12013__$1 = s__12013;
 while(true){
-var temp__4425__auto__ = cljs.core.seq(s__14805__$1);
-if(temp__4425__auto__){
-var s__14805__$2 = temp__4425__auto__;
-if(cljs.core.chunked_seq_QMARK_(s__14805__$2)){
-var c__6912__auto__ = cljs.core.chunk_first(s__14805__$2);
-var size__6913__auto__ = cljs.core.count(c__6912__auto__);
-var b__14807 = cljs.core.chunk_buffer(size__6913__auto__);
-if((function (){var i__14806 = (0);
+var temp__4657__auto__ = cljs.core.seq(s__12013__$1);
+if(temp__4657__auto__){
+var s__12013__$2 = temp__4657__auto__;
+if(cljs.core.chunked_seq_QMARK_(s__12013__$2)){
+var c__6926__auto__ = cljs.core.chunk_first(s__12013__$2);
+var size__6927__auto__ = cljs.core.count(c__6926__auto__);
+var b__12015 = cljs.core.chunk_buffer(size__6927__auto__);
+if((function (){var i__12014 = (0);
 while(true){
-if((i__14806 < size__6913__auto__)){
-var coord = cljs.core._nth.cljs$core$IFn$_invoke$arity$2(c__6912__auto__,i__14806);
+if((i__12014 < size__6927__auto__)){
+var coord = cljs.core._nth.cljs$core$IFn$_invoke$arity$2(c__6926__auto__,i__12014);
 var element__$1 = obb_rules.element.element_coordinate.cljs$core$IFn$_invoke$arity$2(element,coord);
 var coord_pos = obb_rules.actions.move.find_possible_destinations(board,element__$1);
-cljs.core.chunk_append(b__14807,cljs.core.reduce.cljs$core$IFn$_invoke$arity$3(cljs.core.conj,cljs.core.PersistentHashSet.EMPTY,coord_pos));
+cljs.core.chunk_append(b__12015,cljs.core.reduce.cljs$core$IFn$_invoke$arity$3(cljs.core.conj,cljs.core.PersistentHashSet.EMPTY,coord_pos));
 
-var G__14810 = (i__14806 + (1));
-i__14806 = G__14810;
+var G__12018 = (i__12014 + (1));
+i__12014 = G__12018;
 continue;
 } else {
 return true;
@@ -138,15 +138,15 @@ return true;
 break;
 }
 })()){
-return cljs.core.chunk_cons(cljs.core.chunk(b__14807),obb_rules$actions$move$tier_positions_$_iter__14804(cljs.core.chunk_rest(s__14805__$2)));
+return cljs.core.chunk_cons(cljs.core.chunk(b__12015),obb_rules$actions$move$tier_positions_$_iter__12012(cljs.core.chunk_rest(s__12013__$2)));
 } else {
-return cljs.core.chunk_cons(cljs.core.chunk(b__14807),null);
+return cljs.core.chunk_cons(cljs.core.chunk(b__12015),null);
 }
 } else {
-var coord = cljs.core.first(s__14805__$2);
+var coord = cljs.core.first(s__12013__$2);
 var element__$1 = obb_rules.element.element_coordinate.cljs$core$IFn$_invoke$arity$2(element,coord);
 var coord_pos = obb_rules.actions.move.find_possible_destinations(board,element__$1);
-return cljs.core.cons(cljs.core.reduce.cljs$core$IFn$_invoke$arity$3(cljs.core.conj,cljs.core.PersistentHashSet.EMPTY,coord_pos),obb_rules$actions$move$tier_positions_$_iter__14804(cljs.core.rest(s__14805__$2)));
+return cljs.core.cons(cljs.core.reduce.cljs$core$IFn$_invoke$arity$3(cljs.core.conj,cljs.core.PersistentHashSet.EMPTY,coord_pos),obb_rules$actions$move$tier_positions_$_iter__12012(cljs.core.rest(s__12013__$2)));
 }
 } else {
 return null;
@@ -155,7 +155,7 @@ break;
 }
 }),null,null));
 });
-return iter__6914__auto__(cljs.core.set(coll));
+return iter__6928__auto__(cljs.core.set(coll));
 })();
 return cljs.core.apply.cljs$core$IFn$_invoke$arity$2(clojure.set.union,all);
 });
@@ -163,23 +163,23 @@ return cljs.core.apply.cljs$core$IFn$_invoke$arity$2(clojure.set.union,all);
  * Returns all possible destinations on a complete turn
  */
 obb_rules.actions.move.find_all_possible_destinations = (function obb_rules$actions$move$find_all_possible_destinations(var_args){
-var args14811 = [];
-var len__7200__auto___14814 = arguments.length;
-var i__7201__auto___14815 = (0);
+var args12019 = [];
+var len__7214__auto___12022 = arguments.length;
+var i__7215__auto___12023 = (0);
 while(true){
-if((i__7201__auto___14815 < len__7200__auto___14814)){
-args14811.push((arguments[i__7201__auto___14815]));
+if((i__7215__auto___12023 < len__7214__auto___12022)){
+args12019.push((arguments[i__7215__auto___12023]));
 
-var G__14816 = (i__7201__auto___14815 + (1));
-i__7201__auto___14815 = G__14816;
+var G__12024 = (i__7215__auto___12023 + (1));
+i__7215__auto___12023 = G__12024;
 continue;
 } else {
 }
 break;
 }
 
-var G__14813 = args14811.length;
-switch (G__14813) {
+var G__12021 = args12019.length;
+switch (G__12021) {
 case 2:
 return obb_rules.actions.move.find_all_possible_destinations.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(arguments[(1)]));
 
@@ -189,7 +189,7 @@ return obb_rules.actions.move.find_all_possible_destinations.cljs$core$IFn$_invo
 
 break;
 default:
-throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args14811.length)].join('')));
+throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args12019.length)].join('')));
 
 }
 });
@@ -208,18 +208,18 @@ return cljs.core.disj.cljs$core$IFn$_invoke$arity$2(all,obb_rules.element.elemen
 } else {
 var current_pos = obb_rules.actions.move.tier_positions(board,element,curr_coords);
 var all__$1 = cljs.core.into.cljs$core$IFn$_invoke$arity$2(all,current_pos);
-var G__14818 = board;
-var G__14819 = element;
-var G__14820 = mov_cost;
-var G__14821 = (curr_cost + mov_cost);
-var G__14822 = current_pos;
-var G__14823 = all__$1;
-board = G__14818;
-element = G__14819;
-mov_cost = G__14820;
-curr_cost = G__14821;
-curr_coords = G__14822;
-all = G__14823;
+var G__12026 = board;
+var G__12027 = element;
+var G__12028 = mov_cost;
+var G__12029 = (curr_cost + mov_cost);
+var G__12030 = current_pos;
+var G__12031 = all__$1;
+board = G__12026;
+element = G__12027;
+mov_cost = G__12028;
+curr_cost = G__12029;
+curr_coords = G__12030;
+all = G__12031;
 continue;
 }
 break;
@@ -244,23 +244,23 @@ return container;
  * Returns all possible destinations on a complete turn, including cost
  */
 obb_rules.actions.move.find_all_possible_destinations_with_cost = (function obb_rules$actions$move$find_all_possible_destinations_with_cost(var_args){
-var args14824 = [];
-var len__7200__auto___14827 = arguments.length;
-var i__7201__auto___14828 = (0);
+var args12032 = [];
+var len__7214__auto___12035 = arguments.length;
+var i__7215__auto___12036 = (0);
 while(true){
-if((i__7201__auto___14828 < len__7200__auto___14827)){
-args14824.push((arguments[i__7201__auto___14828]));
+if((i__7215__auto___12036 < len__7214__auto___12035)){
+args12032.push((arguments[i__7215__auto___12036]));
 
-var G__14829 = (i__7201__auto___14828 + (1));
-i__7201__auto___14828 = G__14829;
+var G__12037 = (i__7215__auto___12036 + (1));
+i__7215__auto___12036 = G__12037;
 continue;
 } else {
 }
 break;
 }
 
-var G__14826 = args14824.length;
-switch (G__14826) {
+var G__12034 = args12032.length;
+switch (G__12034) {
 case 2:
 return obb_rules.actions.move.find_all_possible_destinations_with_cost.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(arguments[(1)]));
 
@@ -270,7 +270,7 @@ return obb_rules.actions.move.find_all_possible_destinations_with_cost.cljs$core
 
 break;
 default:
-throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args14824.length)].join('')));
+throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args12032.length)].join('')));
 
 }
 });
@@ -290,18 +290,18 @@ return cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(all,obb_rules.element.elem
 var curr_cost__$1 = (curr_cost + mov_cost);
 var current_pos = obb_rules.actions.move.tier_positions(board,element,curr_coords);
 var all__$1 = obb_rules.actions.move.coordinate_coll_to_map(all,current_pos,curr_cost__$1);
-var G__14831 = board;
-var G__14832 = element;
-var G__14833 = mov_cost;
-var G__14834 = curr_cost__$1;
-var G__14835 = current_pos;
-var G__14836 = all__$1;
-board = G__14831;
-element = G__14832;
-mov_cost = G__14833;
-curr_cost = G__14834;
-curr_coords = G__14835;
-all = G__14836;
+var G__12039 = board;
+var G__12040 = element;
+var G__12041 = mov_cost;
+var G__12042 = curr_cost__$1;
+var G__12043 = current_pos;
+var G__12044 = all__$1;
+board = G__12039;
+element = G__12040;
+mov_cost = G__12041;
+curr_cost = G__12042;
+curr_coords = G__12043;
+all = G__12044;
 continue;
 }
 break;
@@ -339,25 +339,25 @@ return (0);
 /**
  * Builds a move action on a board
  */
-obb_rules.actions.move.build_move = (function obb_rules$actions$move$build_move(p__14837){
-var vec__14839 = p__14837;
-var from = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14839,(0),null);
-var to = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14839,(1),null);
-var quantity = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14839,(2),null);
-return ((function (vec__14839,from,to,quantity){
+obb_rules.actions.move.build_move = (function obb_rules$actions$move$build_move(p__12045){
+var vec__12047 = p__12045;
+var from = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12047,(0),null);
+var to = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12047,(1),null);
+var quantity = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12047,(2),null);
+return ((function (vec__12047,from,to,quantity){
 return (function obb_rules$actions$move$build_move_$_mover(board,player){
 var efrom = obb_rules.board.get_element(board,from);
 var eto = obb_rules.board.get_element_consider_removed(board,to);
 var quantity__$1 = obb_rules.actions.move.get_quantity(quantity,efrom);
-var temp__4423__auto__ = obb_rules.actions.move.move_restrictions(player,board,efrom,from,eto,to,quantity__$1);
-if(cljs.core.truth_(temp__4423__auto__)){
-var error = temp__4423__auto__;
+var temp__4655__auto__ = obb_rules.actions.move.move_restrictions(player,board,efrom,from,eto,to,quantity__$1);
+if(cljs.core.truth_(temp__4655__auto__)){
+var error = temp__4655__auto__;
 return obb_rules.result.action_failed.cljs$core$IFn$_invoke$arity$1(error);
 } else {
 return obb_rules.actions.move.process_move(board,efrom,from,eto,to,quantity__$1);
 }
 });
-;})(vec__14839,from,to,quantity))
+;})(vec__12047,from,to,quantity))
 });
 /**
  * Removes action specific state from the board
@@ -365,10 +365,10 @@ return obb_rules.actions.move.process_move(board,efrom,from,eto,to,quantity__$1)
 obb_rules.actions.move.reset_action_state = (function obb_rules$actions$move$reset_action_state(board){
 var elements = cljs.core.get.cljs$core$IFn$_invoke$arity$2(board,cljs.core.cst$kw$elements);
 var cleaned = cljs.core.reduce.cljs$core$IFn$_invoke$arity$3(((function (elements){
-return (function (h,p__14842){
-var vec__14843 = p__14842;
-var k = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14843,(0),null);
-var v = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14843,(1),null);
+return (function (h,p__12050){
+var vec__12051 = p__12050;
+var k = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12051,(0),null);
+var v = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12051,(1),null);
 return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(h,k,cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(v,cljs.core.cst$kw$frozen));
 });})(elements))
 ,cljs.core.PersistentArrayMap.EMPTY,elements);

@@ -35,19 +35,19 @@ return null;
 /**
  * Creates a action that auto deploys a stash
  */
-obb_rules.actions.auto_deploy.build_auto_deploy = (function obb_rules$actions$auto_deploy$build_auto_deploy(p__15047){
-var vec__15049 = p__15047;
-var raw_template_name = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15049,(0),null);
+obb_rules.actions.auto_deploy.build_auto_deploy = (function obb_rules$actions$auto_deploy$build_auto_deploy(p__12255){
+var vec__12257 = p__12255;
+var raw_template_name = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12257,(0),null);
 var template_name = cljs.core.keyword.cljs$core$IFn$_invoke$arity$1(raw_template_name);
-return ((function (template_name,vec__15049,raw_template_name){
+return ((function (template_name,vec__12257,raw_template_name){
 return (function obb_rules$actions$auto_deploy$build_auto_deploy_$_auto_deployer(board,player){
-var temp__4423__auto__ = obb_rules.actions.auto_deploy.verify_restrictions(board,player,template_name);
-if(cljs.core.truth_(temp__4423__auto__)){
-var error = temp__4423__auto__;
+var temp__4655__auto__ = obb_rules.actions.auto_deploy.verify_restrictions(board,player,template_name);
+if(cljs.core.truth_(temp__4655__auto__)){
+var error = temp__4655__auto__;
 return obb_rules.result.action_failed.cljs$core$IFn$_invoke$arity$1(error);
 } else {
 return (obb_rules.actions.auto_deploy.templates.cljs$core$IFn$_invoke$arity$1 ? obb_rules.actions.auto_deploy.templates.cljs$core$IFn$_invoke$arity$1(template_name) : obb_rules.actions.auto_deploy.templates.call(null,template_name)).call(null,board,player);
 }
 });
-;})(template_name,vec__15049,raw_template_name))
+;})(template_name,vec__12257,raw_template_name))
 });

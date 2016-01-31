@@ -13,11 +13,11 @@ return game;
 } else {
 var stash1 = obb_rules.game.get_stash(game,cljs.core.cst$kw$p1);
 var stash2 = obb_rules.game.get_stash(game,cljs.core.cst$kw$p2);
-var and__6130__auto__ = obb_rules.stash.cleared_QMARK_(stash1);
-if(cljs.core.truth_(and__6130__auto__)){
+var and__6144__auto__ = obb_rules.stash.cleared_QMARK_(stash1);
+if(cljs.core.truth_(and__6144__auto__)){
 return obb_rules.stash.cleared_QMARK_(stash2);
 } else {
-return and__6130__auto__;
+return and__6144__auto__;
 }
 }
 });
@@ -25,16 +25,16 @@ return and__6130__auto__;
  * Checks if the game is finished
  */
 obb_rules.game_mode.final_QMARK_ = (function obb_rules$game_mode$final_QMARK_(game){
-var and__6130__auto__ = !(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.keyword.cljs$core$IFn$_invoke$arity$1(obb_rules.game.state.cljs$core$IFn$_invoke$arity$1(game)),cljs.core.cst$kw$deploy));
-if(and__6130__auto__){
-var or__6142__auto__ = obb_rules.board.empty_board_QMARK_.cljs$core$IFn$_invoke$arity$2(game,cljs.core.cst$kw$p1);
-if(cljs.core.truth_(or__6142__auto__)){
-return or__6142__auto__;
+var and__6144__auto__ = !(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.keyword.cljs$core$IFn$_invoke$arity$1(obb_rules.game.state.cljs$core$IFn$_invoke$arity$1(game)),cljs.core.cst$kw$deploy));
+if(and__6144__auto__){
+var or__6156__auto__ = obb_rules.board.empty_board_QMARK_.cljs$core$IFn$_invoke$arity$2(game,cljs.core.cst$kw$p1);
+if(cljs.core.truth_(or__6156__auto__)){
+return or__6156__auto__;
 } else {
 return obb_rules.board.empty_board_QMARK_.cljs$core$IFn$_invoke$arity$2(game,cljs.core.cst$kw$p2);
 }
 } else {
-return and__6130__auto__;
+return and__6144__auto__;
 }
 });
 /**

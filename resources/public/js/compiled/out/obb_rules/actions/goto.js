@@ -10,13 +10,13 @@ goog.require('obb_rules.laws');
 /**
  * Calculates the distance between two coordinates
  */
-obb_rules.actions.goto$.distance_to = (function obb_rules$actions$goto$distance_to(p__15052,p__15053){
-var vec__15056 = p__15052;
-var xa = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15056,(0),null);
-var ya = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15056,(1),null);
-var vec__15057 = p__15053;
-var xb = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15057,(0),null);
-var yb = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15057,(1),null);
+obb_rules.actions.goto$.distance_to = (function obb_rules$actions$goto$distance_to(p__12260,p__12261){
+var vec__12264 = p__12260;
+var xa = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12264,(0),null);
+var ya = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12264,(1),null);
+var vec__12265 = p__12261;
+var xb = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12265,(0),null);
+var yb = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12265,(1),null);
 return obb_rules.math.sqrt((obb_rules.math.expt((xa - xb),(2)) + obb_rules.math.expt((ya - yb),(2))));
 });
 /**
@@ -32,12 +32,12 @@ var current_distance = obb_rules.actions.goto$.distance_to(current,target);
 if((source_distance > current_distance)){
 return current_distance;
 } else {
-var vec__15060 = target;
-var xa = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15060,(0),null);
-var ya = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15060,(1),null);
-var vec__15061 = current;
-var xb = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15061,(0),null);
-var yb = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15061,(1),null);
+var vec__12268 = target;
+var xa = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12268,(0),null);
+var ya = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12268,(1),null);
+var vec__12269 = current;
+var xb = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12269,(0),null);
+var yb = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12269,(1),null);
 var dx = obb_rules.math.abs((xa - xb));
 var dy = obb_rules.math.abs((ya - yb));
 if((cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2((0),dx)) || (cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2((0),dy))){
@@ -63,9 +63,9 @@ return cljs.core.sort_by.cljs$core$IFn$_invoke$arity$2(cljs.core.partial.cljs$co
  * Groups the possible coords for the current scenario
  */
 obb_rules.actions.goto$.possible_coords = (function obb_rules$actions$goto$possible_coords(board,from,target,travelled){
-var temp__4423__auto__ = obb_rules.board.get_element(board,from);
-if(cljs.core.truth_(temp__4423__auto__)){
-var efrom = temp__4423__auto__;
+var temp__4655__auto__ = obb_rules.board.get_element(board,from);
+if(cljs.core.truth_(temp__4655__auto__)){
+var efrom = temp__4655__auto__;
 return obb_rules.actions.goto$.purge(obb_rules.actions.goto$.sort_by_distance(obb_rules.actions.move.find_possible_destinations(board,efrom),from,target),travelled);
 } else {
 return cljs.core.PersistentVector.EMPTY;
@@ -83,9 +83,9 @@ return (move_action.cljs$core$IFn$_invoke$arity$2 ? move_action.cljs$core$IFn$_i
  */
 obb_rules.actions.goto$.find_path = (function obb_rules$actions$goto$find_path(board,player,from,target,cost,travelled,possible){
 while(true){
-var possible__$1 = (function (){var or__6142__auto__ = possible;
-if(cljs.core.truth_(or__6142__auto__)){
-return or__6142__auto__;
+var possible__$1 = (function (){var or__6156__auto__ = possible;
+if(cljs.core.truth_(or__6156__auto__)){
+return or__6156__auto__;
 } else {
 return obb_rules.actions.goto$.possible_coords(board,from,target,travelled);
 }
@@ -106,25 +106,25 @@ return obb_rules.result.action_success.cljs$core$IFn$_invoke$arity$2(new_board,c
 if(cljs.core.truth_(obb_rules.result.failed_QMARK_(result))){
 return result;
 } else {
-var temp__4423__auto__ = obb_rules$actions$goto$find_path(new_board,player,best,target,current_cost,cljs.core.conj.cljs$core$IFn$_invoke$arity$2(travelled,best),null);
-if(cljs.core.truth_(temp__4423__auto__)){
-var result__$1 = temp__4423__auto__;
+var temp__4655__auto__ = obb_rules$actions$goto$find_path(new_board,player,best,target,current_cost,cljs.core.conj.cljs$core$IFn$_invoke$arity$2(travelled,best),null);
+if(cljs.core.truth_(temp__4655__auto__)){
+var result__$1 = temp__4655__auto__;
 return result__$1;
 } else {
-var G__15069 = board;
-var G__15070 = player;
-var G__15071 = from;
-var G__15072 = target;
-var G__15073 = cost;
-var G__15074 = travelled;
-var G__15075 = cljs.core.rest(possible__$1);
-board = G__15069;
-player = G__15070;
-from = G__15071;
-target = G__15072;
-cost = G__15073;
-travelled = G__15074;
-possible = G__15075;
+var G__12277 = board;
+var G__12278 = player;
+var G__12279 = from;
+var G__12280 = target;
+var G__12281 = cost;
+var G__12282 = travelled;
+var G__12283 = cljs.core.rest(possible__$1);
+board = G__12277;
+player = G__12278;
+from = G__12279;
+target = G__12280;
+cost = G__12281;
+travelled = G__12282;
+possible = G__12283;
 continue;
 }
 
@@ -157,14 +157,14 @@ return null;
  */
 obb_rules.actions.goto$.resolve_goto = (function obb_rules$actions$goto$resolve_goto(from,target,quantity){
 return (function obb_rules$actions$goto$resolve_goto_$_gotoer(board,player){
-var temp__4423__auto__ = obb_rules.actions.goto$.resolve_adjacent_move(board,player,from,target,quantity);
-if(cljs.core.truth_(temp__4423__auto__)){
-var adjacent_result = temp__4423__auto__;
+var temp__4655__auto__ = obb_rules.actions.goto$.resolve_adjacent_move(board,player,from,target,quantity);
+if(cljs.core.truth_(temp__4655__auto__)){
+var adjacent_result = temp__4655__auto__;
 return adjacent_result;
 } else {
-var temp__4423__auto____$1 = obb_rules.actions.goto$.find_path(board,player,from,target,(0),cljs.core.PersistentHashSet.EMPTY,null);
-if(cljs.core.truth_(temp__4423__auto____$1)){
-var result = temp__4423__auto____$1;
+var temp__4655__auto____$1 = obb_rules.actions.goto$.find_path(board,player,from,target,(0),cljs.core.PersistentHashSet.EMPTY,null);
+if(cljs.core.truth_(temp__4655__auto____$1)){
+var result = temp__4655__auto____$1;
 return result;
 } else {
 return obb_rules.result.action_failed.cljs$core$IFn$_invoke$arity$1("NoPathToTarget");
@@ -175,10 +175,10 @@ return obb_rules.result.action_failed.cljs$core$IFn$_invoke$arity$1("NoPathToTar
 /**
  * Builds a goto action on a board
  */
-obb_rules.actions.goto$.build_goto = (function obb_rules$actions$goto$build_goto(p__15076){
-var vec__15078 = p__15076;
-var from = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15078,(0),null);
-var to = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15078,(1),null);
-var quantity = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15078,(2),null);
+obb_rules.actions.goto$.build_goto = (function obb_rules$actions$goto$build_goto(p__12284){
+var vec__12286 = p__12284;
+var from = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12286,(0),null);
+var to = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12286,(1),null);
+var quantity = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12286,(2),null);
 return obb_rules.actions.goto$.resolve_goto(from,to,quantity);
 });

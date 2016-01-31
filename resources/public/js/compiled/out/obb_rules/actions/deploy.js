@@ -11,10 +11,10 @@ goog.require('obb_rules.stash');
 /**
  * Returns true if the coordinate zone is invalid
  */
-obb_rules.actions.deploy.invalid_deploy_zone_QMARK_ = (function obb_rules$actions$deploy$invalid_deploy_zone_QMARK_(player,p__14986){
-var vec__14988 = p__14986;
-var x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14988,(0),null);
-var y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14988,(1),null);
+obb_rules.actions.deploy.invalid_deploy_zone_QMARK_ = (function obb_rules$actions$deploy$invalid_deploy_zone_QMARK_(player,p__12194){
+var vec__12196 = p__12194;
+var x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12196,(0),null);
+var y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12196,(1),null);
 if(cljs.core.truth_(obb_rules.simplifier.name_EQ_(player,cljs.core.cst$kw$p1))){
 return (y < (7));
 } else {
@@ -70,12 +70,12 @@ return cljs.core.cst$kw$south;
 /**
  * Deploys a unit to the battleground
  */
-obb_rules.actions.deploy.build_deploy = (function obb_rules$actions$deploy$build_deploy(p__14989){
-var vec__14991 = p__14989;
-var quantity = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14991,(0),null);
-var unit_type = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14991,(1),null);
-var coordinate = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14991,(2),null);
-return ((function (vec__14991,quantity,unit_type,coordinate){
+obb_rules.actions.deploy.build_deploy = (function obb_rules$actions$deploy$build_deploy(p__12197){
+var vec__12199 = p__12197;
+var quantity = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12199,(0),null);
+var unit_type = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12199,(1),null);
+var coordinate = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12199,(2),null);
+return ((function (vec__12199,quantity,unit_type,coordinate){
 return (function obb_rules$actions$deploy$build_deploy_$_deployer(board,player){
 var unit = obb_rules.unit.fetch(unit_type);
 var element = obb_rules.element.create_element.cljs$core$IFn$_invoke$arity$4(player,unit,quantity,obb_rules.actions.deploy.default_direction(player));
@@ -85,13 +85,13 @@ if(cljs.core.truth_(unit)){
 throw (new Error([cljs.core.str("Assert failed: "),cljs.core.str([cljs.core.str("Don't know unit type "),cljs.core.str(unit_type)].join('')),cljs.core.str("\n"),cljs.core.str(cljs.core.pr_str.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([cljs.core.cst$sym$unit], 0)))].join('')));
 }
 
-var temp__4423__auto__ = obb_rules.actions.deploy.deploy_restrictions(player,board,quantity,unit,coordinate,element,stash);
-if(cljs.core.truth_(temp__4423__auto__)){
-var error = temp__4423__auto__;
+var temp__4655__auto__ = obb_rules.actions.deploy.deploy_restrictions(player,board,quantity,unit,coordinate,element,stash);
+if(cljs.core.truth_(temp__4655__auto__)){
+var error = temp__4655__auto__;
 return obb_rules.result.action_failed.cljs$core$IFn$_invoke$arity$1(error);
 } else {
 return obb_rules.actions.deploy.process_deploy(player,board,quantity,unit,coordinate,element,stash);
 }
 });
-;})(vec__14991,quantity,unit_type,coordinate))
+;})(vec__12199,quantity,unit_type,coordinate))
 });

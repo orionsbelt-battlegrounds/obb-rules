@@ -19,16 +19,16 @@ var unit = obb_rules.element.element_unit(attacker);
 var direction = obb_rules.element.element_direction.cljs$core$IFn$_invoke$arity$1(attacker);
 var next_coordinate = obb_rules.actions.direction.update(direction,current_coordinate);
 var next_element = obb_rules.board.get_element_consider_removed(board,next_coordinate);
-var may_try_next_QMARK_ = (function (){var or__6142__auto__ = (next_element == null);
-if(or__6142__auto__){
-return or__6142__auto__;
+var may_try_next_QMARK_ = (function (){var or__6156__auto__ = (next_element == null);
+if(or__6156__auto__){
+return or__6156__auto__;
 } else {
 return obb_rules.element.catapult_attack_QMARK_(attacker);
 }
 })();
-var bypassed_QMARK_ = (function (){var or__6142__auto__ = bypassed_element_QMARK_;
-if(cljs.core.truth_(or__6142__auto__)){
-return or__6142__auto__;
+var bypassed_QMARK_ = (function (){var or__6156__auto__ = bypassed_element_QMARK_;
+if(cljs.core.truth_(or__6156__auto__)){
+return or__6156__auto__;
 } else {
 return (cljs.core.some_QMARK_(next_element)) && (cljs.core.not_EQ_.cljs$core$IFn$_invoke$arity$2(next_element,target));
 }
@@ -44,18 +44,18 @@ if((distance >= obb_rules.unit.unit_range(unit))){
 return cljs.core.cst$kw$out_DASH_of_DASH_range;
 } else {
 if(cljs.core.truth_(may_try_next_QMARK_)){
-var G__14957 = board;
-var G__14958 = attacker;
-var G__14959 = target;
-var G__14960 = next_coordinate;
-var G__14961 = ((1) + distance);
-var G__14962 = bypassed_QMARK_;
-board = G__14957;
-attacker = G__14958;
-target = G__14959;
-current_coordinate = G__14960;
-distance = G__14961;
-bypassed_element_QMARK_ = G__14962;
+var G__12165 = board;
+var G__12166 = attacker;
+var G__12167 = target;
+var G__12168 = next_coordinate;
+var G__12169 = ((1) + distance);
+var G__12170 = bypassed_QMARK_;
+board = G__12165;
+attacker = G__12166;
+target = G__12167;
+current_coordinate = G__12168;
+distance = G__12169;
+bypassed_element_QMARK_ = G__12170;
 continue;
 } else {
 return cljs.core.cst$kw$out_DASH_of_DASH_range;
@@ -100,9 +100,9 @@ return null;
  * Checks if the target element is in range
  */
 obb_rules.actions.attack.resolve_attack = (function obb_rules$actions$attack$resolve_attack(board,player,attacker,target){
-var temp__4423__auto__ = obb_rules.actions.attack.attack_restrictions(board,player,attacker,target);
-if(cljs.core.truth_(temp__4423__auto__)){
-var error_msg = temp__4423__auto__;
+var temp__4655__auto__ = obb_rules.actions.attack.attack_restrictions(board,player,attacker,target);
+if(cljs.core.truth_(temp__4655__auto__)){
+var error_msg = temp__4655__auto__;
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [false,error_msg], null);
 } else {
 var lock_target = obb_rules.actions.attack.advance_and_check_target(board,attacker,target,obb_rules.element.element_coordinate.cljs$core$IFn$_invoke$arity$1(attacker),(1),false);
@@ -124,25 +124,25 @@ return new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMP
  * Processes registered handlers for after-attack
  */
 obb_rules.actions.attack.process_after_attack = (function obb_rules$actions$attack$process_after_attack(board,attacker,target,unused_damage,info){
-var G__14965 = cljs.core.cst$kw$after_DASH_attack;
-var G__14966 = new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$board,board,cljs.core.cst$kw$attacker,attacker,cljs.core.cst$kw$target,target,cljs.core.cst$kw$unused_DASH_damage,unused_damage,cljs.core.cst$kw$info,info], null);
-return (obb_rules.actions.hooks.process.cljs$core$IFn$_invoke$arity$2 ? obb_rules.actions.hooks.process.cljs$core$IFn$_invoke$arity$2(G__14965,G__14966) : obb_rules.actions.hooks.process.call(null,G__14965,G__14966));
+var G__12173 = cljs.core.cst$kw$after_DASH_attack;
+var G__12174 = new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$board,board,cljs.core.cst$kw$attacker,attacker,cljs.core.cst$kw$target,target,cljs.core.cst$kw$unused_DASH_damage,unused_damage,cljs.core.cst$kw$info,info], null);
+return (obb_rules.actions.hooks.process.cljs$core$IFn$_invoke$arity$2 ? obb_rules.actions.hooks.process.cljs$core$IFn$_invoke$arity$2(G__12173,G__12174) : obb_rules.actions.hooks.process.call(null,G__12173,G__12174));
 });
 /**
  * Processes registered handlers for after-hit
  */
 obb_rules.actions.attack.process_after_hit = (function obb_rules$actions$attack$process_after_hit(board,attacker,target,unused_damage,info){
-var G__14969 = cljs.core.cst$kw$after_DASH_hit;
-var G__14970 = new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$board,board,cljs.core.cst$kw$attacker,attacker,cljs.core.cst$kw$target,target,cljs.core.cst$kw$unused_DASH_damage,unused_damage,cljs.core.cst$kw$info,info], null);
-return (obb_rules.actions.hooks.process.cljs$core$IFn$_invoke$arity$2 ? obb_rules.actions.hooks.process.cljs$core$IFn$_invoke$arity$2(G__14969,G__14970) : obb_rules.actions.hooks.process.call(null,G__14969,G__14970));
+var G__12177 = cljs.core.cst$kw$after_DASH_hit;
+var G__12178 = new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$board,board,cljs.core.cst$kw$attacker,attacker,cljs.core.cst$kw$target,target,cljs.core.cst$kw$unused_DASH_damage,unused_damage,cljs.core.cst$kw$info,info], null);
+return (obb_rules.actions.hooks.process.cljs$core$IFn$_invoke$arity$2 ? obb_rules.actions.hooks.process.cljs$core$IFn$_invoke$arity$2(G__12177,G__12178) : obb_rules.actions.hooks.process.call(null,G__12177,G__12178));
 });
 /**
  * Processes registered handlers on hooks
  */
 obb_rules.actions.attack.process_hooks = (function obb_rules$actions$attack$process_hooks(board,attacker,target,unused_damage,info){
-var vec__14972 = obb_rules.actions.attack.process_after_attack(board,attacker,target,unused_damage,info);
-var board__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14972,(0),null);
-var info__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14972,(1),null);
+var vec__12180 = obb_rules.actions.attack.process_after_attack(board,attacker,target,unused_damage,info);
+var board__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12180,(0),null);
+var info__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12180,(1),null);
 return obb_rules.actions.attack.process_after_hit(board__$1,attacker,target,unused_damage,info__$1);
 });
 /**
@@ -158,35 +158,35 @@ return obb_rules.board.destroy_from_element(obb_rules.board.swap_element(board,a
  * Processes the attack
  */
 obb_rules.actions.attack.process_attack = (function obb_rules$actions$attack$process_attack(board,attacker,target,attack_type){
-var vec__14975 = obb_rules.actions.damage_calculator.destroyed_with_unused_damage.cljs$core$IFn$_invoke$arity$3(board,attacker,target);
-var destroyed = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14975,(0),null);
-var unused_damage = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14975,(1),null);
+var vec__12183 = obb_rules.actions.damage_calculator.destroyed_with_unused_damage.cljs$core$IFn$_invoke$arity$3(board,attacker,target);
+var destroyed = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12183,(0),null);
+var unused_damage = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12183,(1),null);
 var attacked_board = obb_rules.actions.attack.update_board_state(board,attacker,target,destroyed);
 var attack_info = obb_rules.actions.attack.build_basic_attack_info(attack_type,destroyed,target);
-var vec__14976 = obb_rules.actions.attack.process_hooks(attacked_board,attacker,target,unused_damage,attack_info);
-var final_board = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14976,(0),null);
-var final_info = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14976,(1),null);
+var vec__12184 = obb_rules.actions.attack.process_hooks(attacked_board,attacker,target,unused_damage,attack_info);
+var final_board = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12184,(0),null);
+var final_info = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12184,(1),null);
 return obb_rules.result.action_success.cljs$core$IFn$_invoke$arity$4(final_board,(1),"OK",final_info);
 });
 /**
  * Builds an attack action on a board
  */
-obb_rules.actions.attack.build_attack = (function obb_rules$actions$attack$build_attack(p__14977){
-var vec__14981 = p__14977;
-var coord = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14981,(0),null);
-var target_coord = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14981,(1),null);
-return ((function (vec__14981,coord,target_coord){
+obb_rules.actions.attack.build_attack = (function obb_rules$actions$attack$build_attack(p__12185){
+var vec__12189 = p__12185;
+var coord = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12189,(0),null);
+var target_coord = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12189,(1),null);
+return ((function (vec__12189,coord,target_coord){
 return (function obb_rules$actions$attack$build_attack_$_attacker(board,player){
 var attacker__$1 = obb_rules.board.get_element(board,coord);
 var target = obb_rules.board.get_element(board,target_coord);
-var vec__14983 = obb_rules.actions.attack.resolve_attack(board,player,attacker__$1,target);
-var success_QMARK_ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14983,(0),null);
-var info = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14983,(1),null);
+var vec__12191 = obb_rules.actions.attack.resolve_attack(board,player,attacker__$1,target);
+var success_QMARK_ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12191,(0),null);
+var info = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12191,(1),null);
 if(cljs.core.not(success_QMARK_)){
 return obb_rules.result.action_failed.cljs$core$IFn$_invoke$arity$1(info);
 } else {
 return obb_rules.actions.attack.process_attack(board,attacker__$1,target,info);
 }
 });
-;})(vec__14981,coord,target_coord))
+;})(vec__12189,coord,target_coord))
 });
