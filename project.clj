@@ -7,15 +7,15 @@
             :distribution :repo
             :comments     "Copyright 2011-2014 Pedro Santos All Rights Reserved."}
 
-  :dependencies [[org.clojure/test.check "0.8.0"]
+  :dependencies [[org.clojure/test.check "0.9.0"]
                  [org.clojure/math.numeric-tower "0.0.4"]
                  [org.clojure/tools.namespace "0.2.11"]
                  [org.clojure/clojure "1.8.0-alpha2"]
-                 [org.clojure/tools.nrepl "0.2.10"]
+                 [org.clojure/tools.nrepl "0.2.12"]
                  [criterium "0.4.3"]
-                 [reagent "0.5.0"]
+                 [reagent "0.5.1"]
                  [secretary "1.2.3"]
-                 [org.clojure/clojurescript "1.7.48"]]
+                 [org.clojure/clojurescript "1.7.228"]]
 
   :jvm-opts ["-XX:+TieredCompilation"]
 
@@ -41,8 +41,8 @@
 
      :cljs-dev {
 
-       :plugins [[lein-cljsbuild "1.0.6"]
-                 [lein-figwheel "0.3.7"]]
+       :plugins [[lein-cljsbuild "1.1.2"]
+                 [lein-figwheel "0.5.0-6"]]
 
        :figwheel {:css-dirs ["resources/public/css"]}
 
@@ -67,7 +67,7 @@
 
      :cljs-prd {
 
-       :plugins [[lein-cljsbuild "1.0.6"]]
+       :plugins [[lein-cljsbuild "1.1.2"]]
 
        :cljsbuild {
                    :builds [{:id "prd"
@@ -87,7 +87,7 @@
 
      :cljs-browser {
 
-       :plugins [[lein-cljsbuild "1.0.6"]]
+       :plugins [[lein-cljsbuild "1.1.2"]]
 
        :cljsbuild {
                    :test-commands {"test" ["phantomjs" "phantom/test.js" "test.html"]}
@@ -105,7 +105,7 @@
 
      :cljs-node {
 
-       :plugins [[lein-cljsbuild "1.0.6"]]
+       :plugins [[lein-cljsbuild "1.1.2"]]
 
        :cljsbuild {
                    :test-commands {"test" ["node"  "build/test/out-node.js"]}
