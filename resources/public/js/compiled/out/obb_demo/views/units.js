@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 1.7.48 {:static-fns true, :optimize-constants true}
+// Compiled by ClojureScript 1.7.228 {:static-fns true, :optimize-constants true}
 goog.provide('obb_demo.views.units');
 goog.require('cljs.core');
 goog.require('obb_rules.unit');
@@ -7,42 +7,42 @@ goog.require('obb_demo.state');
  * Writes info about a unit
  */
 obb_demo.views.units.unit_info_panel = (function obb_demo$views$units$unit_info_panel(unit){
-return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$panel$panel_DASH_info,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$panel_DASH_heading,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$h3$panel_DASH_title,obb_rules.unit.unit_name(unit)], null)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$panel_DASH_body,new cljs.core.PersistentVector(null, 17, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$ul,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$li,"Attack: ",obb_rules.unit.unit_attack(unit)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$li,"Attack Type: ",cljs.core.name(obb_rules.unit.attack_type(unit))], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$li,"After Attack: ",cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p1__11148_SHARP_){
-return cljs.core.name(cljs.core.first(p1__11148_SHARP_));
-}),cljs.core.cst$kw$after_DASH_attack.cljs$core$IFn$_invoke$arity$1(unit))], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$li,"Range: ",obb_rules.unit.unit_range(unit)], null),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$li], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$li,"Defense: ",obb_rules.unit.unit_defense(unit)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$li,"After hit: ",cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p1__11149_SHARP_){
-return cljs.core.name(cljs.core.first(p1__11149_SHARP_));
+return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$panel$panel_DASH_info,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$panel_DASH_heading,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$h3$panel_DASH_title,obb_rules.unit.unit_name(unit)], null)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$panel_DASH_body,new cljs.core.PersistentVector(null, 17, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$ul,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$li,"Attack: ",obb_rules.unit.unit_attack(unit)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$li,"Attack Type: ",cljs.core.name(obb_rules.unit.attack_type(unit))], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$li,"After Attack: ",cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p1__15867_SHARP_){
+return cljs.core.name(cljs.core.first(p1__15867_SHARP_));
+}),cljs.core.cst$kw$after_DASH_attack.cljs$core$IFn$_invoke$arity$1(unit))], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$li,"Range: ",obb_rules.unit.unit_range(unit)], null),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$li], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$li,"Defense: ",obb_rules.unit.unit_defense(unit)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$li,"After hit: ",cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p1__15868_SHARP_){
+return cljs.core.name(cljs.core.first(p1__15868_SHARP_));
 }),cljs.core.cst$kw$after_DASH_hit.cljs$core$IFn$_invoke$arity$1(unit))], null),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$li], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$li,"Movement Type: ",cljs.core.name(obb_rules.unit.unit_movement_type(unit))], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$li,"Movement Cost: ",obb_rules.unit.unit_movement_cost(unit)], null),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$li], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$li,"Type: ",cljs.core.name(obb_rules.unit.unit_type(unit))], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$li,"Category: ",cljs.core.name(obb_rules.unit.unit_category(unit))], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$li,"Displacement: ",cljs.core.name(obb_rules.unit.unit_displacement(unit))], null),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$li], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$li,"Value: ",obb_rules.unit.unit_value(unit)], null)], null)], null)], null);
 });
 /**
  * Writes a panel with units by category
  */
 obb_demo.views.units.units_panel = (function obb_demo$views$units$units_panel(category){
-return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$panel$panel_DASH_primary,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$panel_DASH_heading,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$h3$panel_DASH_title,cljs.core.name(category)], null)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$panel_DASH_body,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$ul$units,(function (){var iter__7981__auto__ = (function obb_demo$views$units$units_panel_$_iter__11156(s__11157){
+return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$panel$panel_DASH_primary,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$panel_DASH_heading,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$h3$panel_DASH_title,cljs.core.name(category)], null)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$panel_DASH_body,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$ul$units,(function (){var iter__6914__auto__ = (function obb_demo$views$units$units_panel_$_iter__15875(s__15876){
 return (new cljs.core.LazySeq(null,(function (){
-var s__11157__$1 = s__11157;
+var s__15876__$1 = s__15876;
 while(true){
-var temp__4425__auto__ = cljs.core.seq(s__11157__$1);
+var temp__4425__auto__ = cljs.core.seq(s__15876__$1);
 if(temp__4425__auto__){
-var s__11157__$2 = temp__4425__auto__;
-if(cljs.core.chunked_seq_QMARK_(s__11157__$2)){
-var c__7979__auto__ = cljs.core.chunk_first(s__11157__$2);
-var size__7980__auto__ = cljs.core.count(c__7979__auto__);
-var b__11159 = cljs.core.chunk_buffer(size__7980__auto__);
-if((function (){var i__11158 = (0);
+var s__15876__$2 = temp__4425__auto__;
+if(cljs.core.chunked_seq_QMARK_(s__15876__$2)){
+var c__6912__auto__ = cljs.core.chunk_first(s__15876__$2);
+var size__6913__auto__ = cljs.core.count(c__6912__auto__);
+var b__15878 = cljs.core.chunk_buffer(size__6913__auto__);
+if((function (){var i__15877 = (0);
 while(true){
-if((i__11158 < size__7980__auto__)){
-var unit = cljs.core._nth.cljs$core$IFn$_invoke$arity$2(c__7979__auto__,i__11158);
-cljs.core.chunk_append(b__11159,(function (){var unit_name = obb_rules.unit.unit_name(unit);
+if((i__15877 < size__6913__auto__)){
+var unit = cljs.core._nth.cljs$core$IFn$_invoke$arity$2(c__6912__auto__,i__15877);
+cljs.core.chunk_append(b__15878,(function (){var unit_name = obb_rules.unit.unit_name(unit);
 var url = [cljs.core.str("http://orionsbelt.eu/public/units/"),cljs.core.str(unit_name),cljs.core.str("_n.png")].join('');
-return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$li,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$key,unit_name], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$img,new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$src,url,cljs.core.cst$kw$on_DASH_click,((function (i__11158,unit_name,url,unit,c__7979__auto__,size__7980__auto__,b__11159,s__11157__$2,temp__4425__auto__){
+return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$li,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$key,unit_name], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$img,new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$src,url,cljs.core.cst$kw$on_DASH_click,((function (i__15877,unit_name,url,unit,c__6912__auto__,size__6913__auto__,b__15878,s__15876__$2,temp__4425__auto__){
 return (function (){
 return obb_demo.state.set_page_data_BANG_(unit_name);
-});})(i__11158,unit_name,url,unit,c__7979__auto__,size__7980__auto__,b__11159,s__11157__$2,temp__4425__auto__))
+});})(i__15877,unit_name,url,unit,c__6912__auto__,size__6913__auto__,b__15878,s__15876__$2,temp__4425__auto__))
 ,cljs.core.cst$kw$alt,unit_name], null)], null)], null);
 })());
 
-var G__11162 = (i__11158 + (1));
-i__11158 = G__11162;
+var G__15881 = (i__15877 + (1));
+i__15877 = G__15881;
 continue;
 } else {
 return true;
@@ -50,20 +50,20 @@ return true;
 break;
 }
 })()){
-return cljs.core.chunk_cons(cljs.core.chunk(b__11159),obb_demo$views$units$units_panel_$_iter__11156(cljs.core.chunk_rest(s__11157__$2)));
+return cljs.core.chunk_cons(cljs.core.chunk(b__15878),obb_demo$views$units$units_panel_$_iter__15875(cljs.core.chunk_rest(s__15876__$2)));
 } else {
-return cljs.core.chunk_cons(cljs.core.chunk(b__11159),null);
+return cljs.core.chunk_cons(cljs.core.chunk(b__15878),null);
 }
 } else {
-var unit = cljs.core.first(s__11157__$2);
+var unit = cljs.core.first(s__15876__$2);
 return cljs.core.cons((function (){var unit_name = obb_rules.unit.unit_name(unit);
 var url = [cljs.core.str("http://orionsbelt.eu/public/units/"),cljs.core.str(unit_name),cljs.core.str("_n.png")].join('');
-return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$li,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$key,unit_name], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$img,new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$src,url,cljs.core.cst$kw$on_DASH_click,((function (unit_name,url,unit,s__11157__$2,temp__4425__auto__){
+return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$li,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$key,unit_name], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$img,new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$src,url,cljs.core.cst$kw$on_DASH_click,((function (unit_name,url,unit,s__15876__$2,temp__4425__auto__){
 return (function (){
 return obb_demo.state.set_page_data_BANG_(unit_name);
-});})(unit_name,url,unit,s__11157__$2,temp__4425__auto__))
+});})(unit_name,url,unit,s__15876__$2,temp__4425__auto__))
 ,cljs.core.cst$kw$alt,unit_name], null)], null)], null);
-})(),obb_demo$views$units$units_panel_$_iter__11156(cljs.core.rest(s__11157__$2)));
+})(),obb_demo$views$units$units_panel_$_iter__15875(cljs.core.rest(s__15876__$2)));
 }
 } else {
 return null;
@@ -72,16 +72,16 @@ break;
 }
 }),null,null));
 });
-return iter__7981__auto__(obb_rules.unit.units_by_category(category));
+return iter__6914__auto__(obb_rules.unit.units_by_category(category));
 })()], null)], null)], null);
 });
 obb_demo.views.units.units_ul = (function obb_demo$views$units$units_ul(){
 return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_demo.views.units.units_panel,cljs.core.cst$kw$light], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_demo.views.units.units_panel,cljs.core.cst$kw$medium], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_demo.views.units.units_panel,cljs.core.cst$kw$heavy], null)], null);
 });
 obb_demo.views.units.render = (function obb_demo$views$units$render(state){
-return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$row,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$col_DASH_lg_DASH_4,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_demo.views.units.units_ul], null)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$col_DASH_lg_DASH_8,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_demo.views.units.unit_info_panel,obb_rules.unit.fetch((function (){var or__7228__auto__ = cljs.core.cst$kw$units.cljs$core$IFn$_invoke$arity$1(state);
-if(cljs.core.truth_(or__7228__auto__)){
-return or__7228__auto__;
+return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$row,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$col_DASH_lg_DASH_4,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_demo.views.units.units_ul], null)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$col_DASH_lg_DASH_8,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_demo.views.units.unit_info_panel,obb_rules.unit.fetch((function (){var or__6142__auto__ = cljs.core.cst$kw$units.cljs$core$IFn$_invoke$arity$1(state);
+if(cljs.core.truth_(or__6142__auto__)){
+return or__6142__auto__;
 } else {
 return cljs.core.cst$kw$rain;
 }

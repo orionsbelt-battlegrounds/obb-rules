@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 1.7.48 {:static-fns true, :optimize-constants true}
+// Compiled by ClojureScript 1.7.228 {:static-fns true, :optimize-constants true}
 goog.provide('obb_demo.processor');
 goog.require('cljs.core');
 goog.require('obb_rules.game_mode');
@@ -39,19 +39,19 @@ return (obb_rules.ai.firingsquad.actions.cljs$core$IFn$_invoke$arity$2 ? obb_rul
  */
 obb_demo.processor.generate_actions = (function obb_demo$processor$generate_actions(game_data){
 var game = cljs.core.cst$kw$game.cljs$core$IFn$_invoke$arity$1(game_data);
-var turn_num = (function (){var or__7228__auto__ = cljs.core.cst$kw$turn_DASH_num.cljs$core$IFn$_invoke$arity$1(game_data);
-if(cljs.core.truth_(or__7228__auto__)){
-return or__7228__auto__;
+var turn_num = (function (){var or__6142__auto__ = cljs.core.cst$kw$turn_DASH_num.cljs$core$IFn$_invoke$arity$1(game_data);
+if(cljs.core.truth_(or__6142__auto__)){
+return or__6142__auto__;
 } else {
 return (0);
 }
 })();
 var player = obb_rules.game.state.cljs$core$IFn$_invoke$arity$1(game);
-var actions = (function (){var start__8137__auto__ = (new Date()).getTime();
-var ret__8138__auto__ = obb_demo.processor.bot_actions(game,player);
-cljs.core.prn.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([[cljs.core.str("Elapsed time: "),cljs.core.str(((new Date()).getTime() - start__8137__auto__)),cljs.core.str(" msecs")].join('')], 0));
+var actions = (function (){var start__7070__auto__ = cljs.core.system_time();
+var ret__7071__auto__ = obb_demo.processor.bot_actions(game,player);
+cljs.core.prn.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([[cljs.core.str("Elapsed time: "),cljs.core.str((cljs.core.system_time() - start__7070__auto__).toFixed((6))),cljs.core.str(" msecs")].join('')], 0));
 
-return ret__8138__auto__;
+return ret__7071__auto__;
 })();
 cljs.core.println.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq(["--",player,actions], 0));
 

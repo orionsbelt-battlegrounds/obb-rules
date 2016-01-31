@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 1.7.48 {:static-fns true, :optimize-constants true}
+// Compiled by ClojureScript 1.7.228 {:static-fns true, :optimize-constants true}
 goog.provide('obb_rules.simplifier');
 goog.require('cljs.core');
 goog.require('clojure.walk');
@@ -29,10 +29,10 @@ return obb_rules.unit.unit_name(value);
 /**
  * Simplifies a unit object, if it's a unit
  */
-obb_rules.simplifier.simplify_if_unit = (function obb_rules$simplifier$simplify_if_unit(p__10064){
-var vec__10066 = p__10064;
-var k = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10066,(0),null);
-var v = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10066,(1),null);
+obb_rules.simplifier.simplify_if_unit = (function obb_rules$simplifier$simplify_if_unit(p__14515){
+var vec__14517 = p__14515;
+var k = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14517,(0),null);
+var v = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14517,(1),null);
 if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$unit,cljs.core.keyword.cljs$core$IFn$_invoke$arity$1(k))){
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [k,obb_rules.simplifier.resolve_unit(v)], null);
 } else {
@@ -47,10 +47,10 @@ return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMP
 /**
  * Builds a unit, if it's a unit
  */
-obb_rules.simplifier.build_if_unit = (function obb_rules$simplifier$build_if_unit(p__10067){
-var vec__10069 = p__10067;
-var k = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10069,(0),null);
-var v = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10069,(1),null);
+obb_rules.simplifier.build_if_unit = (function obb_rules$simplifier$build_if_unit(p__14518){
+var vec__14520 = p__14518;
+var k = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14520,(0),null);
+var v = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14520,(1),null);
 if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$unit,cljs.core.keyword.cljs$core$IFn$_invoke$arity$1(k))){
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [k,obb_rules.unit.fetch(v)], null);
 } else {
@@ -80,10 +80,10 @@ return clojure.walk.walk(obb_rules.simplifier.build_if_unit,cljs.core.identity,o
 obb_rules.simplifier.clean_action_results = (function obb_rules$simplifier$clean_action_results(result){
 var results = cljs.core.get_in.cljs$core$IFn$_invoke$arity$2(result,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$board,cljs.core.cst$kw$action_DASH_results], null));
 var new_results = cljs.core.map.cljs$core$IFn$_invoke$arity$2(((function (results){
-return (function (p__10072){
-var vec__10073 = p__10072;
-var k = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10073,(0),null);
-var v = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10073,(1),null);
+return (function (p__14523){
+var vec__14524 = p__14523;
+var k = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14524,(0),null);
+var v = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14524,(1),null);
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [k,cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(v,cljs.core.cst$kw$board)], null);
 });})(results))
 ,results);
@@ -93,10 +93,10 @@ return cljs.core.assoc_in(result,new cljs.core.PersistentVector(null, 2, 5, cljs
  * Transforms a string in a coordinate
  */
 obb_rules.simplifier.coordenize = (function obb_rules$simplifier$coordenize(raw){
-var beter_raw = (function (){var G__10077 = [cljs.core.str(raw)].join('');
-var G__10078 = /:/;
-var G__10079 = "";
-return (clojure.string.replace.cljs$core$IFn$_invoke$arity$3 ? clojure.string.replace.cljs$core$IFn$_invoke$arity$3(G__10077,G__10078,G__10079) : clojure.string.replace.call(null,G__10077,G__10078,G__10079));
+var beter_raw = (function (){var G__14528 = [cljs.core.str(raw)].join('');
+var G__14529 = /:/;
+var G__14530 = "";
+return (clojure.string.replace.cljs$core$IFn$_invoke$arity$3 ? clojure.string.replace.cljs$core$IFn$_invoke$arity$3(G__14528,G__14529,G__14530) : clojure.string.replace.call(null,G__14528,G__14529,G__14530));
 })();
 var temp__4423__auto__ = cljs.core.re_matches(/\[(\d+) (\d+)\]/,beter_raw);
 if(cljs.core.truth_(temp__4423__auto__)){
@@ -112,10 +112,10 @@ return raw;
 obb_rules.simplifier.build_coordinate_keys = (function obb_rules$simplifier$build_coordinate_keys(result){
 var elements = cljs.core.get_in.cljs$core$IFn$_invoke$arity$2(result,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$board,cljs.core.cst$kw$elements], null));
 var cleaned = cljs.core.reduce.cljs$core$IFn$_invoke$arity$3(((function (elements){
-return (function (h,p__10082){
-var vec__10083 = p__10082;
-var k = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10083,(0),null);
-var v = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10083,(1),null);
+return (function (h,p__14533){
+var vec__14534 = p__14533;
+var k = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14534,(0),null);
+var v = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14534,(1),null);
 return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(h,obb_rules.simplifier.coordenize(k),v);
 });})(elements))
 ,cljs.core.PersistentArrayMap.EMPTY,elements);
@@ -127,10 +127,10 @@ return cljs.core.assoc_in(result,new cljs.core.PersistentVector(null, 2, 5, cljs
 obb_rules.simplifier.clean_coordinate_keys = (function obb_rules$simplifier$clean_coordinate_keys(result){
 var elements = cljs.core.get_in.cljs$core$IFn$_invoke$arity$2(result,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$board,cljs.core.cst$kw$elements], null));
 var cleaned = cljs.core.reduce.cljs$core$IFn$_invoke$arity$3(((function (elements){
-return (function (h,p__10086){
-var vec__10087 = p__10086;
-var k = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10087,(0),null);
-var v = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10087,(1),null);
+return (function (h,p__14537){
+var vec__14538 = p__14537;
+var k = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14538,(0),null);
+var v = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14538,(1),null);
 return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(h,[cljs.core.str(k)].join(''),v);
 });})(elements))
 ,cljs.core.PersistentArrayMap.EMPTY,elements);

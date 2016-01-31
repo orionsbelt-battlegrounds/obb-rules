@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 1.7.48 {:static-fns true, :optimize-constants true}
+// Compiled by ClojureScript 1.7.228 {:static-fns true, :optimize-constants true}
 goog.provide('obb_rules.auto_deploys.firingsquad');
 goog.require('cljs.core');
 goog.require('obb_rules.board');
@@ -12,18 +12,18 @@ goog.require('obb_rules.translator');
 /**
  * Translates on how the given unit is good for a firingsquad
  */
-obb_rules.auto_deploys.firingsquad.firing_squad_value = (function obb_rules$auto_deploys$firingsquad$firing_squad_value(p__10542){
-var vec__10544 = p__10542;
-var unit = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10544,(0),null);
-var quantity = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10544,(1),null);
+obb_rules.auto_deploys.firingsquad.firing_squad_value = (function obb_rules$auto_deploys$firingsquad$firing_squad_value(p__15041){
+var vec__15043 = p__15041;
+var unit = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15043,(0),null);
+var quantity = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15043,(1),null);
 return (- obb_rules.unit.unit_range(unit));
 });
 /**
  * From the given stash, finds how may units are first row material
  */
 obb_rules.auto_deploys.firingsquad.front_row_units_to_use = (function obb_rules$auto_deploys$firingsquad$front_row_units_to_use(stash){
-var long_range_units = cljs.core.filter.cljs$core$IFn$_invoke$arity$2((function (p1__10545_SHARP_){
-return (obb_rules.unit.unit_range(cljs.core.first(p1__10545_SHARP_)) > (4));
+var long_range_units = cljs.core.filter.cljs$core$IFn$_invoke$arity$2((function (p1__15044_SHARP_){
+return (obb_rules.unit.unit_range(cljs.core.first(p1__15044_SHARP_)) > (4));
 }),stash);
 var number = cljs.core.count(long_range_units);
 if((number > (0))){
@@ -53,7 +53,7 @@ return cljs.core.reduce.cljs$core$IFn$_invoke$arity$3(cljs.core.partial.cljs$cor
 });
 /**
  * Deploys the given stash in a way that will be advantajous for firingsquad
- * logic
+ *   logic
  */
 obb_rules.auto_deploys.firingsquad.deploy = (function obb_rules$auto_deploys$firingsquad$deploy(board,player){
 var stash = cljs.core.map.cljs$core$IFn$_invoke$arity$2(obb_rules.auto_deploys.common.map_stash_to_units,obb_rules.board.get_stash(board,player));

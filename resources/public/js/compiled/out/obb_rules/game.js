@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 1.7.48 {:static-fns true, :optimize-constants true}
+// Compiled by ClojureScript 1.7.228 {:static-fns true, :optimize-constants true}
 goog.provide('obb_rules.game');
 goog.require('cljs.core');
 goog.require('obb_rules.board');
@@ -12,9 +12,9 @@ obb_rules.game.version = "2.0.0";
  */
 obb_rules.game.state_QMARK_ = (function obb_rules$game$state_QMARK_(game,state){
 var current_state = (game.cljs$core$IFn$_invoke$arity$1 ? game.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$state) : game.call(null,cljs.core.cst$kw$state));
-var or__7228__auto__ = (current_state == null);
-if(or__7228__auto__){
-return or__7228__auto__;
+var or__6142__auto__ = (current_state == null);
+if(or__6142__auto__){
+return or__6142__auto__;
 } else {
 return obb_rules.simplifier.name_EQ_(state,current_state);
 }
@@ -41,9 +41,9 @@ return obb_rules.board.get_stash(game,player);
  * Gets the game mode
  */
 obb_rules.game.mode = (function obb_rules$game$mode(game){
-var or__7228__auto__ = (game.cljs$core$IFn$_invoke$arity$1 ? game.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$mode) : game.call(null,cljs.core.cst$kw$mode));
-if(cljs.core.truth_(or__7228__auto__)){
-return or__7228__auto__;
+var or__6142__auto__ = (game.cljs$core$IFn$_invoke$arity$1 ? game.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$mode) : game.call(null,cljs.core.cst$kw$mode));
+if(cljs.core.truth_(or__6142__auto__)){
+return or__6142__auto__;
 } else {
 return cljs.core.cst$kw$default;
 }
@@ -51,24 +51,24 @@ return cljs.core.cst$kw$default;
 /**
  * Gets/Sets the current game's state
  */
-obb_rules.game.state = (function obb_rules$game$state(){
-var args10343 = [];
-var len__8267__auto___10346 = arguments.length;
-var i__8268__auto___10347 = (0);
+obb_rules.game.state = (function obb_rules$game$state(var_args){
+var args14688 = [];
+var len__7200__auto___14691 = arguments.length;
+var i__7201__auto___14692 = (0);
 while(true){
-if((i__8268__auto___10347 < len__8267__auto___10346)){
-args10343.push((arguments[i__8268__auto___10347]));
+if((i__7201__auto___14692 < len__7200__auto___14691)){
+args14688.push((arguments[i__7201__auto___14692]));
 
-var G__10348 = (i__8268__auto___10347 + (1));
-i__8268__auto___10347 = G__10348;
+var G__14693 = (i__7201__auto___14692 + (1));
+i__7201__auto___14692 = G__14693;
 continue;
 } else {
 }
 break;
 }
 
-var G__10345 = args10343.length;
-switch (G__10345) {
+var G__14690 = args14688.length;
+switch (G__14690) {
 case 1:
 return obb_rules.game.state.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -78,7 +78,7 @@ return obb_rules.game.state.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(argu
 
 break;
 default:
-throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args10343.length)].join('')));
+throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args14688.length)].join('')));
 
 }
 });
@@ -121,7 +121,7 @@ return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(game,cljs.core.cst$kw$state
 });
 /**
  * Provides the actions a results currently aplied on this game
- * if any.
+ *   if any.
  */
 obb_rules.game.action_results = (function obb_rules$game$action_results(game){
 return (game.cljs$core$IFn$_invoke$arity$1 ? game.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$action_DASH_results) : game.call(null,cljs.core.cst$kw$action_DASH_results));
@@ -130,9 +130,9 @@ return (game.cljs$core$IFn$_invoke$arity$1 ? game.cljs$core$IFn$_invoke$arity$1(
  * Stores an action's result
  */
 obb_rules.game.push_result = (function obb_rules$game$push_result(game,raw_action,result){
-var action_results = (function (){var or__7228__auto__ = obb_rules.game.action_results(game);
-if(cljs.core.truth_(or__7228__auto__)){
-return or__7228__auto__;
+var action_results = (function (){var or__6142__auto__ = obb_rules.game.action_results(game);
+if(cljs.core.truth_(or__6142__auto__)){
+return or__6142__auto__;
 } else {
 return cljs.core.PersistentVector.EMPTY;
 }
@@ -142,10 +142,10 @@ return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(game,cljs.core.cst$kw$actio
 });
 /**
  * Returns true if the actions currently applied to the given game
- * are all successful.
+ *   are all successful.
  */
 obb_rules.game.valid_actions_QMARK_ = (function obb_rules$game$valid_actions_QMARK_(game){
-return cljs.core.every_QMARK_((function (p1__10350_SHARP_){
-return obb_rules.result.succeeded_QMARK_(cljs.core.last(p1__10350_SHARP_));
+return cljs.core.every_QMARK_((function (p1__14695_SHARP_){
+return obb_rules.result.succeeded_QMARK_(cljs.core.last(p1__14695_SHARP_));
 }),obb_rules.game.action_results(game));
 });

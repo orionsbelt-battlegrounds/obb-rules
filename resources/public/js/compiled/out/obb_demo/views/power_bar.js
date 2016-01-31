@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 1.7.48 {:static-fns true, :optimize-constants true}
+// Compiled by ClojureScript 1.7.228 {:static-fns true, :optimize-constants true}
 goog.provide('obb_demo.views.power_bar');
 goog.require('cljs.core');
 goog.require('obb_demo.processor');
@@ -14,9 +14,9 @@ goog.require('obb_rules.stash');
  * Shows each player's power
  */
 obb_demo.views.power_bar.render = (function obb_demo$views$power_bar$render(game){
-var vec__11019 = obb_rules.evaluator.eval_game.cljs$core$IFn$_invoke$arity$1(game);
-var p1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__11019,(0),null);
-var p2 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__11019,(1),null);
+var vec__15729 = obb_rules.evaluator.eval_game.cljs$core$IFn$_invoke$arity$1(game);
+var p1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15729,(0),null);
+var p2 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15729,(1),null);
 var total = (p1 + p2);
 var p1_perc = obb_rules.math.ceil(((100) * ((total - p1) / total)));
 var p2_perc = ((100) - p1_perc);

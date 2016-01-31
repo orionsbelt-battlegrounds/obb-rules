@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 1.7.48 {:static-fns true, :optimize-constants true}
+// Compiled by ClojureScript 1.7.228 {:static-fns true, :optimize-constants true}
 goog.provide('obb_rules.stash');
 goog.require('cljs.core');
 goog.require('obb_rules.unit');
@@ -11,24 +11,24 @@ return unit_hash;
 /**
  * Creates a new stash
  */
-obb_rules.stash.create = (function obb_rules$stash$create(){
-var args__8274__auto__ = [];
-var len__8267__auto___10334 = arguments.length;
-var i__8268__auto___10335 = (0);
+obb_rules.stash.create = (function obb_rules$stash$create(var_args){
+var args__7207__auto__ = [];
+var len__7200__auto___14679 = arguments.length;
+var i__7201__auto___14680 = (0);
 while(true){
-if((i__8268__auto___10335 < len__8267__auto___10334)){
-args__8274__auto__.push((arguments[i__8268__auto___10335]));
+if((i__7201__auto___14680 < len__7200__auto___14679)){
+args__7207__auto__.push((arguments[i__7201__auto___14680]));
 
-var G__10336 = (i__8268__auto___10335 + (1));
-i__8268__auto___10335 = G__10336;
+var G__14681 = (i__7201__auto___14680 + (1));
+i__7201__auto___14680 = G__14681;
 continue;
 } else {
 }
 break;
 }
 
-var argseq__8275__auto__ = ((((0) < args__8274__auto__.length))?(new cljs.core.IndexedSeq(args__8274__auto__.slice((0)),(0))):null);
-return obb_rules.stash.create.cljs$core$IFn$_invoke$arity$variadic(argseq__8275__auto__);
+var argseq__7208__auto__ = ((((0) < args__7207__auto__.length))?(new cljs.core.IndexedSeq(args__7207__auto__.slice((0)),(0))):null);
+return obb_rules.stash.create.cljs$core$IFn$_invoke$arity$variadic(argseq__7208__auto__);
 });
 
 obb_rules.stash.create.cljs$core$IFn$_invoke$arity$variadic = (function (units){
@@ -37,8 +37,8 @@ return cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,units);
 
 obb_rules.stash.create.cljs$lang$maxFixedArity = (0);
 
-obb_rules.stash.create.cljs$lang$applyTo = (function (seq10333){
-return obb_rules.stash.create.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq10333));
+obb_rules.stash.create.cljs$lang$applyTo = (function (seq14678){
+return obb_rules.stash.create.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq14678));
 });
 /**
  * Gets the way to access a unit key on the stash
@@ -54,11 +54,11 @@ return cljs.core.keyword;
  * States how many of a unit are present
  */
 obb_rules.stash.how_many_QMARK_ = (function obb_rules$stash$how_many_QMARK_(stash,unit){
-var or__7228__auto__ = (function (){var G__10340 = obb_rules.stash.accessorfn(stash,unit).call(null,unit);
-return (stash.cljs$core$IFn$_invoke$arity$1 ? stash.cljs$core$IFn$_invoke$arity$1(G__10340) : stash.call(null,G__10340));
+var or__6142__auto__ = (function (){var G__14685 = obb_rules.stash.accessorfn(stash,unit).call(null,unit);
+return (stash.cljs$core$IFn$_invoke$arity$1 ? stash.cljs$core$IFn$_invoke$arity$1(G__14685) : stash.call(null,G__14685));
 })();
-if(cljs.core.truth_(or__7228__auto__)){
-return or__7228__auto__;
+if(cljs.core.truth_(or__6142__auto__)){
+return or__6142__auto__;
 } else {
 return (0);
 }

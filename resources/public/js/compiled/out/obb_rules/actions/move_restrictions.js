@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 1.7.48 {:static-fns true, :optimize-constants true}
+// Compiled by ClojureScript 1.7.228 {:static-fns true, :optimize-constants true}
 goog.provide('obb_rules.actions.move_restrictions');
 goog.require('cljs.core');
 goog.require('obb_rules.element');
@@ -19,22 +19,22 @@ return new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMP
 /**
  * Given two adjacent coords, checks if the movement is valid
  */
-obb_rules.actions.move_restrictions.normal_movement_valid_QMARK_ = (function obb_rules$actions$move_restrictions$normal_movement_valid_QMARK_(direction,p__10382,p__10383){
-var vec__10386 = p__10382;
-var x1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10386,(0),null);
-var y1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10386,(1),null);
-var vec__10387 = p__10383;
-var x2 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10387,(0),null);
-var y2 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10387,(1),null);
+obb_rules.actions.move_restrictions.normal_movement_valid_QMARK_ = (function obb_rules$actions$move_restrictions$normal_movement_valid_QMARK_(direction,p__14721,p__14722){
+var vec__14725 = p__14721;
+var x1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14725,(0),null);
+var y1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14725,(1),null);
+var vec__14726 = p__14722;
+var x2 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14726,(0),null);
+var y2 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14726,(1),null);
 return (cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(x1,x2)) || (cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(y1,y2));
 });
 /**
  * Given a coordinate, returns all possible adjacent squares
  */
-obb_rules.actions.move_restrictions.normal_movement_generator = (function obb_rules$actions$move_restrictions$normal_movement_generator(_,p__10388){
-var vec__10390 = p__10388;
-var x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10390,(0),null);
-var y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10390,(1),null);
+obb_rules.actions.move_restrictions.normal_movement_generator = (function obb_rules$actions$move_restrictions$normal_movement_generator(_,p__14727){
+var vec__14729 = p__14727;
+var x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14729,(0),null);
+var y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14729,(1),null);
 return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [x,(y - (1))], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [x,(y + (1))], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(x + (1)),y], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(x - (1)),y], null)], null);
 });
 /**
@@ -46,10 +46,10 @@ return cljs.core.not(obb_rules.actions.move_restrictions.normal_movement_valid_Q
 /**
  * Given a coordinate, returns all possible adjacent squares
  */
-obb_rules.actions.move_restrictions.diagonal_movement_generator = (function obb_rules$actions$move_restrictions$diagonal_movement_generator(_,p__10391){
-var vec__10393 = p__10391;
-var x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10393,(0),null);
-var y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10393,(1),null);
+obb_rules.actions.move_restrictions.diagonal_movement_generator = (function obb_rules$actions$move_restrictions$diagonal_movement_generator(_,p__14730){
+var vec__14732 = p__14730;
+var x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14732,(0),null);
+var y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14732,(1),null);
 return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(x - (1)),(y - (1))], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(x - (1)),(y + (1))], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(x + (1)),(y - (1))], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(x + (1)),(y + (1))], null)], null);
 });
 /**
@@ -83,7 +83,7 @@ return (validator.cljs$core$IFn$_invoke$arity$3 ? validator.cljs$core$IFn$_invok
 });
 /**
  * Returns a collection with the possible destinations based on the element's
- * movement-type and direction
+ *   movement-type and direction
  */
 obb_rules.actions.move_restrictions.possible_destinations = (function obb_rules$actions$move_restrictions$possible_destinations(element){
 var unit = obb_rules.element.element_unit(element);

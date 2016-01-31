@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 1.7.48 {:static-fns true, :optimize-constants true}
+// Compiled by ClojureScript 1.7.228 {:static-fns true, :optimize-constants true}
 goog.provide('obb_demo.views.index');
 goog.require('cljs.core');
 goog.require('obb_demo.views.many_games');
@@ -25,24 +25,24 @@ return obb_demo.views.play.render(state);
 }
 }
 });
-obb_demo.views.index.render = (function obb_demo$views$index$render(){
-var args11180 = [];
-var len__8267__auto___11183 = arguments.length;
-var i__8268__auto___11184 = (0);
+obb_demo.views.index.render = (function obb_demo$views$index$render(var_args){
+var args15899 = [];
+var len__7200__auto___15902 = arguments.length;
+var i__7201__auto___15903 = (0);
 while(true){
-if((i__8268__auto___11184 < len__8267__auto___11183)){
-args11180.push((arguments[i__8268__auto___11184]));
+if((i__7201__auto___15903 < len__7200__auto___15902)){
+args15899.push((arguments[i__7201__auto___15903]));
 
-var G__11185 = (i__8268__auto___11184 + (1));
-i__8268__auto___11184 = G__11185;
+var G__15904 = (i__7201__auto___15903 + (1));
+i__7201__auto___15903 = G__15904;
 continue;
 } else {
 }
 break;
 }
 
-var G__11182 = args11180.length;
-switch (G__11182) {
+var G__15901 = args15899.length;
+switch (G__15901) {
 case 0:
 return obb_demo.views.index.render.cljs$core$IFn$_invoke$arity$0();
 
@@ -52,7 +52,7 @@ return obb_demo.views.index.render.cljs$core$IFn$_invoke$arity$1((arguments[(0)]
 
 break;
 default:
-throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args11180.length)].join('')));
+throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args15899.length)].join('')));
 
 }
 });

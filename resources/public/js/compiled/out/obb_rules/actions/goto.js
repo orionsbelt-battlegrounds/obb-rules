@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 1.7.48 {:static-fns true, :optimize-constants true}
+// Compiled by ClojureScript 1.7.228 {:static-fns true, :optimize-constants true}
 goog.provide('obb_rules.actions.goto$');
 goog.require('cljs.core');
 goog.require('obb_rules.board');
@@ -10,21 +10,21 @@ goog.require('obb_rules.laws');
 /**
  * Calculates the distance between two coordinates
  */
-obb_rules.actions.goto$.distance_to = (function obb_rules$actions$goto$distance_to(p__10553,p__10554){
-var vec__10557 = p__10553;
-var xa = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10557,(0),null);
-var ya = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10557,(1),null);
-var vec__10558 = p__10554;
-var xb = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10558,(0),null);
-var yb = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10558,(1),null);
+obb_rules.actions.goto$.distance_to = (function obb_rules$actions$goto$distance_to(p__15052,p__15053){
+var vec__15056 = p__15052;
+var xa = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15056,(0),null);
+var ya = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15056,(1),null);
+var vec__15057 = p__15053;
+var xb = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15057,(0),null);
+var yb = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15057,(1),null);
 return obb_rules.math.sqrt((obb_rules.math.expt((xa - xb),(2)) + obb_rules.math.expt((ya - yb),(2))));
 });
 /**
  * Gives proper weight to the distance between coordinates. It calculates the
- * geometric distance to the target. However, if the distance of the current
- * coordinate to evaluate is bigger than the distance of the source coordinate,
- * it will make the diagonals more valuable. Meaning, going one square behind
- * will always be the costest move to make.
+ *   geometric distance to the target. However, if the distance of the current
+ *   coordinate to evaluate is bigger than the distance of the source coordinate,
+ *   it will make the diagonals more valuable. Meaning, going one square behind
+ *   will always be the costest move to make.
  */
 obb_rules.actions.goto$.distance_factor = (function obb_rules$actions$goto$distance_factor(source,target,current){
 var source_distance = obb_rules.actions.goto$.distance_to(source,target);
@@ -32,12 +32,12 @@ var current_distance = obb_rules.actions.goto$.distance_to(current,target);
 if((source_distance > current_distance)){
 return current_distance;
 } else {
-var vec__10561 = target;
-var xa = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10561,(0),null);
-var ya = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10561,(1),null);
-var vec__10562 = current;
-var xb = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10562,(0),null);
-var yb = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10562,(1),null);
+var vec__15060 = target;
+var xa = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15060,(0),null);
+var ya = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15060,(1),null);
+var vec__15061 = current;
+var xb = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15061,(0),null);
+var yb = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15061,(1),null);
 var dx = obb_rules.math.abs((xa - xb));
 var dy = obb_rules.math.abs((ya - yb));
 if((cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2((0),dx)) || (cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2((0),dy))){
@@ -83,9 +83,9 @@ return (move_action.cljs$core$IFn$_invoke$arity$2 ? move_action.cljs$core$IFn$_i
  */
 obb_rules.actions.goto$.find_path = (function obb_rules$actions$goto$find_path(board,player,from,target,cost,travelled,possible){
 while(true){
-var possible__$1 = (function (){var or__7228__auto__ = possible;
-if(cljs.core.truth_(or__7228__auto__)){
-return or__7228__auto__;
+var possible__$1 = (function (){var or__6142__auto__ = possible;
+if(cljs.core.truth_(or__6142__auto__)){
+return or__6142__auto__;
 } else {
 return obb_rules.actions.goto$.possible_coords(board,from,target,travelled);
 }
@@ -111,20 +111,20 @@ if(cljs.core.truth_(temp__4423__auto__)){
 var result__$1 = temp__4423__auto__;
 return result__$1;
 } else {
-var G__10570 = board;
-var G__10571 = player;
-var G__10572 = from;
-var G__10573 = target;
-var G__10574 = cost;
-var G__10575 = travelled;
-var G__10576 = cljs.core.rest(possible__$1);
-board = G__10570;
-player = G__10571;
-from = G__10572;
-target = G__10573;
-cost = G__10574;
-travelled = G__10575;
-possible = G__10576;
+var G__15069 = board;
+var G__15070 = player;
+var G__15071 = from;
+var G__15072 = target;
+var G__15073 = cost;
+var G__15074 = travelled;
+var G__15075 = cljs.core.rest(possible__$1);
+board = G__15069;
+player = G__15070;
+from = G__15071;
+target = G__15072;
+cost = G__15073;
+travelled = G__15074;
+possible = G__15075;
 continue;
 }
 
@@ -153,7 +153,7 @@ return null;
 });
 /**
  * Tries to find the best path between the given coordinates. Fails if can't
- * find it, or the :move action would fail for this scenario.
+ *   find it, or the :move action would fail for this scenario.
  */
 obb_rules.actions.goto$.resolve_goto = (function obb_rules$actions$goto$resolve_goto(from,target,quantity){
 return (function obb_rules$actions$goto$resolve_goto_$_gotoer(board,player){
@@ -175,10 +175,10 @@ return obb_rules.result.action_failed.cljs$core$IFn$_invoke$arity$1("NoPathToTar
 /**
  * Builds a goto action on a board
  */
-obb_rules.actions.goto$.build_goto = (function obb_rules$actions$goto$build_goto(p__10577){
-var vec__10579 = p__10577;
-var from = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10579,(0),null);
-var to = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10579,(1),null);
-var quantity = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10579,(2),null);
+obb_rules.actions.goto$.build_goto = (function obb_rules$actions$goto$build_goto(p__15076){
+var vec__15078 = p__15076;
+var from = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15078,(0),null);
+var to = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15078,(1),null);
+var quantity = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15078,(2),null);
 return obb_rules.actions.goto$.resolve_goto(from,to,quantity);
 });

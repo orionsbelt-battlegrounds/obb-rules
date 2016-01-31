@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 1.7.48 {:static-fns true, :optimize-constants true}
+// Compiled by ClojureScript 1.7.228 {:static-fns true, :optimize-constants true}
 goog.provide('obb_rules.units.raptor');
 goog.require('cljs.core');
 obb_rules.units.raptor.metadata = cljs.core.PersistentHashMap.fromArrays([cljs.core.cst$kw$category,cljs.core.cst$kw$displacement,cljs.core.cst$kw$name,cljs.core.cst$kw$value,cljs.core.cst$kw$movement_DASH_cost,cljs.core.cst$kw$type,cljs.core.cst$kw$defense,cljs.core.cst$kw$bonus,cljs.core.cst$kw$code,cljs.core.cst$kw$movement_DASH_type,cljs.core.cst$kw$attack,cljs.core.cst$kw$range],[cljs.core.cst$kw$light,cljs.core.cst$kw$air,"raptor",(20),(1),cljs.core.cst$kw$mechanic,(400),new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$attack,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$category,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$light,(1000)], null)], null)], null),"rp",cljs.core.cst$kw$all,(280),(2)]);

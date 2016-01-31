@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 1.7.48 {:static-fns true, :optimize-constants true}
+// Compiled by ClojureScript 1.7.228 {:static-fns true, :optimize-constants true}
 goog.provide('obb_rules.actions.direction');
 goog.require('cljs.core');
 goog.require('obb_rules.simplifier');
@@ -27,22 +27,22 @@ return null;
 /**
  * Moves a coord given a direction
  */
-obb_rules.actions.direction.update = (function obb_rules$actions$direction$update(dir,p__10199){
-var vec__10202 = p__10199;
-var x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10202,(0),null);
-var y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10202,(1),null);
-var vec__10203 = obb_rules.actions.direction.offset(dir);
-var ox = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10203,(0),null);
-var oy = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10203,(1),null);
+obb_rules.actions.direction.update = (function obb_rules$actions$direction$update(dir,p__14714){
+var vec__14717 = p__14714;
+var x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14717,(0),null);
+var y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14717,(1),null);
+var vec__14718 = obb_rules.actions.direction.offset(dir);
+var ox = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14718,(0),null);
+var oy = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14718,(1),null);
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(x + ox),(y + oy)], null);
 });
 /**
  * Gets the perpendicular coords for the given one
  */
 obb_rules.actions.direction.perpendicular = (function obb_rules$actions$direction$perpendicular(coord,direction){
-if(cljs.core.truth_((function (){var or__7228__auto__ = obb_rules.simplifier.name_EQ_(direction,cljs.core.cst$kw$south);
-if(cljs.core.truth_(or__7228__auto__)){
-return or__7228__auto__;
+if(cljs.core.truth_((function (){var or__6142__auto__ = obb_rules.simplifier.name_EQ_(direction,cljs.core.cst$kw$south);
+if(cljs.core.truth_(or__6142__auto__)){
+return or__6142__auto__;
 } else {
 return obb_rules.simplifier.name_EQ_(direction,cljs.core.cst$kw$north);
 }
