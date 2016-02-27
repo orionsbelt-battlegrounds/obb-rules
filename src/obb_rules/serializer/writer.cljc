@@ -23,3 +23,26 @@
 (defmethod action->str :rotate
   [[_ [source-x source-y] dir]]
   (str "r" source-x source-y (first (name dir))))
+
+(defmethod action->str :move
+  [[_ [source-x source-y] [target-x target-y] quantity]]
+  (str "m" source-x source-y target-x target-y "." quantity))
+
+(defn actions->str
+  "Translates a coll of raw actions to a concise string representation"
+  [actions]
+  (->> actions
+       (map action->str)
+       (clojure.string/join " ")))
+
+(def separator "\n\n")
+
+(defn game->str
+  "Translates a complete game to a consize string representation"
+  [game]
+  (let [history (:history game)
+        deploy-history (take 2 history)
+        turns-history (drop 2 history)]
+    (str (clojure.string/join "\n" (map actions->str deploy-history))
+         separator
+         (clojure.string/join "\n" (map actions->str turns-history)))))

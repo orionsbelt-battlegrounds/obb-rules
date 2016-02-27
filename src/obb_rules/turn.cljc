@@ -44,6 +44,13 @@
                                   :removed-elements :previous-removed-elements}))
     game))
 
+(defn- register-history
+  "Register the processes actions on the game's history"
+  [game]
+  (update game :history concat [(map (fn [[raw-action action-result]]
+                                      raw-action)
+                                     (:action-results game))]))
+
 (defn- create-result
   "Creates a result for the given game"
   ([game total-action-points]
@@ -56,6 +63,7 @@
        (result/action-failed "ActionPointsOverflow")
      :else
        (-> game
+           (register-history)
            (reset-action-specific-state cleanup?)
            (result/action-success total-action-points "TurnOK")))))
 
@@ -87,3 +95,11 @@
   [game player & raw-actions]
   (process-actions game player raw-actions))
 
+(defn process-board
+  "Processes the given actions, and if the turn succeeded, returns the
+  new board"
+  [game player & raw-actions]
+  (let [result (process-actions game player raw-actions)]
+    (if (result/succeeded? result)
+      (:board result)
+      result)))
