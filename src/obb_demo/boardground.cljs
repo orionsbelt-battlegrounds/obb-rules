@@ -224,13 +224,15 @@
 (defn register-action
   "Registers an action"
   [game-data game player action coord]
-  (let [current-actions (:actions game-data)
+  (let [current-actions (or (:actions game-data) [])
+        next-actions (conj current-actions action  )
         result (turn/simulate-actions game player [action])]
     (if (result/succeeded? result)
       (state/set-page-data! (-> game-data
                                 (assoc :game (result/result-board result))
                                 (assoc :action-points (+ (result/result-cost result)))
-                                (assoc :actions (conj action current-actions))
+                                (assoc-in [:game :history] (concat (:history game-data) [next-actions]))
+                                (assoc :actions next-actions)
                                 (with-selected-element coord)))
       (println result))))
 

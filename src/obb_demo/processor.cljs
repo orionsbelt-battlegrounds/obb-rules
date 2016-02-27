@@ -55,6 +55,7 @@
       {:game (deployed-game)}
       (-> (assoc game-data :actions actions)
           (assoc :original-actions actions)
+          (assoc :history (concat (or (:history game-data) (:history game)) [actions]))
           (assoc :turn-num (if (= :final player)
                              turn-num
                              (inc turn-num)))))))
@@ -81,6 +82,7 @@
                     (dissoc :actions)))
             (-> (assoc game-data :game new-game)
                 (dissoc :action)
+                (assoc-in [:game :history] (:history game-data))
                 (assoc :actions (rest actions)))))
         (-> (assoc game-data :action (first actions))
             #_(boardground/with-selected-element (nth (first actions) 1))

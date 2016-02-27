@@ -7,6 +7,7 @@
             [obb-rules.simplifier :as simplify]
             [obb-rules.unit :as unit]
             [obb-rules.host-dependent :as host]
+            [obb-rules.serializer.writer :as writer]
             [obb-demo.processor :as processor]
             [obb-demo.views.power-bar :as power-bar]
             [obb-rules.ai.firingsquad :as firingsquad]
@@ -29,6 +30,7 @@
           game-data {:game game
                      :original-game game
                      :action-points 0
+                     :history (:history game)
                      :turn-num 0}]
       (state/set-page-data! game-data)
       game-data)))
@@ -113,13 +115,13 @@
         turn-num (:turn-num game-data)
         actions (time (bot-turn game-data game))
         result (turn/process-actions game :p2 actions)]
-    (println actions)
     (if (result/succeeded? result)
       (let [new-game (result/result-board result)
             clean-game (dissoc new-game :action-results)]
         (state/set-page-data! {:game clean-game
                                :original-game new-game
                                :previous-game new-game
+                               :history (:history clean-game)
                                :previous-player :p2
                                :bot (:bot game-data)
                                :action-points 0
@@ -245,6 +247,11 @@
    [:option "Firingsquad"]
    [:option "Alamo"]])
 
+(defn- game-as-string
+  [game-data]
+  [:pre {:style {:margin-top "10px"}}
+    (writer/game->str (:game game-data))])
+
 (defn render
   [state]
   (let [game-data (get-game-data state)
@@ -271,4 +278,5 @@
         [:p "Would you like to know more?"
          [:ul
           [:li [:a {:href "https://twitter.com/orionsbelt"} "Twitter"]
-          [:li [:a {:href "https://github.com/orionsbelt-battlegrounds/obb-rules"} "Github"]]]]]]]]))
+          [:li [:a {:href "https://github.com/orionsbelt-battlegrounds/obb-rules"} "Github"]]]]]]
+        (game-as-string game-data)]]))

@@ -12,6 +12,10 @@
   [[_ quantity unit [source-x source-y]]]
   (str "d" source-x source-y "." quantity "." (name unit)))
 
+(defmethod action->str :auto-deploy
+  [[_ auto-template]]
+  (str "auto-" (name auto-template)))
+
 (defmethod action->str :attack
   [[_ [source-x source-y] [target-x target-y]]]
   (str "a" source-x source-y target-x target-y))
