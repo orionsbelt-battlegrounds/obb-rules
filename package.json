@@ -1,0 +1,11 @@
+{
+  "name": "obb-rules",
+  "version": "0.0.1",
+  "description": "OBB Rules",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "phantomjs-prebuilt": "2.1.4"
+  },
+  "author": "OBB"
+}

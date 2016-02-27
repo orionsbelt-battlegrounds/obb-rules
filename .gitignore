@@ -17,3 +17,4 @@ build/
 langs
 *.log
 resources/public/js/compiled*
+node_modules
