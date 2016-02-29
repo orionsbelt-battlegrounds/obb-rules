@@ -90,7 +90,9 @@
        :plugins [[lein-cljsbuild "1.1.2"]]
 
        :cljsbuild {
-                   :test-commands {"test" ["phantomjs" "phantom/test.js" "test.html"]}
+                   :test-commands {"test" ["./node_modules/phantomjs-prebuilt/bin/phantomjs"
+                                           "phantom/test.js"
+                                           "test.html"]}
                    :builds [{:id "test"
                              :source-paths ["src/obb_rules" "test"]
                              :compiler {:output-to "build/test/out.js"
