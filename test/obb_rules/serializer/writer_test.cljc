@@ -38,7 +38,10 @@
                                          [:move [1 4] [1 3] 1]
                                          [:attack [1 3] [1 2]]))]
     (is (= (writer/game->str game)
-"d17.1.kamikaze
+"state: final
+winner: p1
+
+d17.1.kamikaze
 d12.1.kamikaze
 
 m1716.1 m1615.1 m1514.1 m1413.1 a1312"))

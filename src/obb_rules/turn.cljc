@@ -44,12 +44,25 @@
                                   :removed-elements :previous-removed-elements}))
     game))
 
+(defn- history-action?
+  "True if the action should be registered on the history"
+  [raw-action]
+  (not= :auto-deploy (first raw-action)))
+
+(defn action-results->raw-actions
+  "Gets the raw actions performed on the turn"
+  [game]
+  (->> (:action-results game)
+       (map (fn [[raw-action action-result]]
+              raw-action))
+       (filter history-action?)))
+
 (defn- register-history
   "Register the processes actions on the game's history"
   [game]
-  (update game :history concat [(map (fn [[raw-action action-result]]
-                                      raw-action)
-                                     (:action-results game))]))
+  (if-let[turn-actions (seq (action-results->raw-actions game))]
+    (update game :history concat [turn-actions])
+    game))
 
 (defn- create-result
   "Creates a result for the given game"

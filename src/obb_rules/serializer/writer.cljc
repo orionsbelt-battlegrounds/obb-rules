@@ -1,7 +1,9 @@
 (ns ^{:added "2.1.0"
       :author "Pedro Santos"}
   obb-rules.serializer.writer
-  "Writes a game and actions to a text format")
+  "Writes a game and actions to a text format"
+  (:require [obb-rules.game :as game]
+            [obb-rules.game-mode :as game-mode]))
 
 (defmulti action->str
   "Translates a raw action to a concise string representation"
@@ -41,12 +43,20 @@
 
 (def separator "\n\n")
 
+(defn game-props->str
+  "Gets the game properties as a string"
+  [game]
+  (str "state: " (name (game/state game))
+       (when (game/final? game) (str "\nwinner: " (name (game-mode/winner game))))))
+
 (defn game->str
   "Translates a complete game to a consize string representation"
   [game]
   (let [history (:history game)
         deploy-history (take 2 history)
         turns-history (drop 2 history)]
-    (str (clojure.string/join "\n" (map actions->str deploy-history))
+    (str (game-props->str game)
+         separator
+         (clojure.string/join "\n" (map actions->str deploy-history))
          separator
          (clojure.string/join "\n" (map actions->str turns-history)))))
