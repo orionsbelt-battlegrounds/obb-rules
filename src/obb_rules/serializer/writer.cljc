@@ -3,16 +3,8 @@
   obb-rules.serializer.writer
   "Writes a game and actions to a text format"
   (:require [obb-rules.game :as game]
+            [obb-rules.serializer.common :as common]
             [obb-rules.game-mode :as game-mode]))
-
-(def ^:const context-separator
-  "This marker separates each context of the dumped game
-  (properties, deploy, turns,...)"
-  "\n\n")
-
-(def ^:const action-separator
-  "This marker separates each action in a collection of actions"
-  " ")
 
 (defmulti action->str
   "Translates a raw action to a concise string representation"
@@ -44,7 +36,7 @@
   [actions]
   (->> actions
        (map action->str)
-       (clojure.string/join action-separator)))
+       (clojure.string/join common/action-separator)))
 
 (defn game-props->str
   "Gets the game properties as a string"
@@ -59,7 +51,7 @@
         deploy-history (take 2 history)
         turns-history (drop 2 history)]
     (str (game-props->str game)
-         context-separator
+         common/context-separator
          (clojure.string/join "\n" (map actions->str deploy-history))
-         context-separator
+         common/context-separator
          (clojure.string/join "\n" (map actions->str turns-history)))))
