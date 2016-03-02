@@ -3,6 +3,7 @@
   obb-rules.serializer.reader
   "Loads and processes a game from a serialized text format"
   (:require [clojure.string :as string]
+            [obb-rules.serializer.common :as common]
             [obb-rules.game :as game]
             [obb-rules.host-dependent :as host]
             [obb-rules.game-mode :as game-mode]))
@@ -54,3 +55,10 @@
     [:deploy quantity
              unit
              [(get-int s 1) (get-int s 2)]]))
+
+(defn str->actions
+  "Given a string with several actions, returns a vector with all the
+  raw actions."
+  [s]
+  (->> (string/split s (re-pattern common/action-separator))
+       (mapv str->action)))

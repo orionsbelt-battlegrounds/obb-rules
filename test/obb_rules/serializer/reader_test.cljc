@@ -20,11 +20,11 @@
   (is (= [:deploy 10 :rain [8 8]] (reader/str->action "d88.10.rain")))
   (is (= [:deploy 200 :crusader [1 1]] (reader/str->action "d11.200.crusader"))))
 
-#_(deftest actions-serializer
-  (is (= "a1112 g1112 r11w"
-           (writer/actions->str [[:attack [1 1] [1 2]]
-                                 [:goto [1 1] [1 2]]
-                                 [:rotate [1 1] :west]]))))
+(deftest actions-reader
+  (is (= (reader/str->actions "a1112 g1112 r11w")
+         [[:attack [1 1] [1 2]]
+          [:goto [1 1] [1 2]]
+          [:rotate [1 1] :west]])))
 
 #_(deftest complete-game
   (let [game (-> (stash/create "kamikaze" 1)
