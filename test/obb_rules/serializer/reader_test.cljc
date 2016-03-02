@@ -43,6 +43,11 @@
     (is (= p1-deploy (second deploy)))
     (is (= p2-deploy (first deploy)))))
 
+(deftest build-stash
+  (is (= {:rain 100 :kamikaze 100}
+         (reader/build-stash [[:deploy 100 :kamikaze [1 7]]
+                              [:deploy 100 :rain [2 7]]]))))
+
 (deftest complete-game
   (let [game (-> (stash/create "kamikaze" 1)
                  game/create

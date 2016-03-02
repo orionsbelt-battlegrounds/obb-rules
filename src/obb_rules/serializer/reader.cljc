@@ -90,6 +90,15 @@
       [deploy1 deploy2]
       [deploy2 deploy1])))
 
+(defn build-stash
+  "Given a collection of raw deploy actions, rebuild the original stash,
+  by summing all the quantities"
+  [deploy-actions]
+  (reduce (fn [stash [_ quantity unit _]]
+            (update stash unit #(+ quantity (or % 0))))
+          {}
+          deploy-actions))
+
 (defn str->game
   "Given a game string, returns the game, fully processed with all the
   give turns"
@@ -98,6 +107,8 @@
         attrs (str->attrs (nth parts 0))
         deploy-actions (str->raw-turn-actions (nth parts 1))
         [p1-deploy p2-deploy] (deploy-per-player deploy-actions)
+        stash1 (build-stash p1-deploy)
+        stash2 (build-stash p2-deploy)
         turn-actions (str->raw-turn-actions (nth parts 2))]
     (prn attrs)
     (prn deploy-actions)
