@@ -62,3 +62,25 @@
   [s]
   (->> (string/split s (re-pattern common/action-separator))
        (mapv str->action)))
+
+(defn str->attrs
+  "Gets the game attributes as a map"
+  [s]
+  (->> (string/split-lines s)
+       (reduce (fn [attrs line]
+                 (let [parts (string/split line #":")
+                       k (nth parts 0)
+                       v (string/trim (nth parts 1))]
+                   (assoc attrs (keyword k) (keyword v))))
+               {})))
+
+(defn str->game
+  "Given a game string, returns the game, fully processed with all the
+  give turns"
+  [s]
+  (let [parts (string/split s (re-pattern common/context-separator))
+        attrs (str->attrs (nth parts 0))
+        deploy-str (nth parts 1)
+        turns-str (nth parts 2)]
+    (prn attrs)
+    {}))

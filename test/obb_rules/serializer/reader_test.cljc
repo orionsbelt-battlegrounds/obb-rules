@@ -1,6 +1,7 @@
 (ns obb-rules.serializer.reader-test
   (:require
     [obb-rules.serializer.reader :as reader]
+    [obb-rules.serializer.writer :as writer]
     [obb-rules.stash :as stash]
     [obb-rules.game :as game]
     [obb-rules.turn :as turn]
@@ -26,6 +27,10 @@
           [:goto [1 1] [1 2]]
           [:rotate [1 1] :west]])))
 
+(deftest attrs-reader
+  (is (= {:state :final :winner :p1}
+         (reader/str->attrs "state: final\nwinner: p1"))))
+
 #_(deftest complete-game
   (let [game (-> (stash/create "kamikaze" 1)
                  game/create
@@ -36,13 +41,8 @@
                                          [:move [1 6] [1 5] 1]
                                          [:move [1 5] [1 4] 1]
                                          [:move [1 4] [1 3] 1]
-                                         [:attack [1 3] [1 2]]))]
-    (is (= (writer/game->str game)
-"state: final
-winner: p1
-
-d17.1.kamikaze
-d12.1.kamikaze
-
-m1716.1 m1615.1 m1514.1 m1413.1 a1312"))))
+                                         [:attack [1 3] [1 2]]))
+        game-str (writer/game->str game)
+        loaded-game (reader/str->game game-str)]
+    #_(is (= game loaded-game))))
 
