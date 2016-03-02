@@ -36,7 +36,14 @@
           [[:goto [4 7] [2 5]] [:attack [2 5] [2 3]]]]
          (reader/str->raw-turn-actions "g1223 g6252\ng4725 a2523"))))
 
-#_(deftest complete-game
+(deftest deploy-per-player
+  (let [deploy [[[:deploy 1 :kamikaze [1 7]]]
+                [[:deploy 1 :kamikaze [1 2]]]]
+        [p1-deploy p2-deploy] (reader/deploy-per-player deploy)]
+    (is (= p1-deploy (second deploy)))
+    (is (= p2-deploy (first deploy)))))
+
+(deftest complete-game
   (let [game (-> (stash/create "kamikaze" 1)
                  game/create
                  (turn/process-board :p1 [:deploy 1 :kamikaze [1 7]])

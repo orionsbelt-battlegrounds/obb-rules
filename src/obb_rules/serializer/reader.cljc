@@ -81,13 +81,25 @@
   (->> (string/split-lines s)
        (mapv str->actions)))
 
+(defn deploy-per-player
+  "Given two deploy turns, this fn returns the raw actions for each player"
+  [[deploy1 deploy2]]
+  (let [first-action (first deploy1)
+        [x y] (last first-action)]
+    (if (> 6 y) ;; p1 deploys on rows 7 and 8
+      [deploy1 deploy2]
+      [deploy2 deploy1])))
+
 (defn str->game
   "Given a game string, returns the game, fully processed with all the
   give turns"
   [s]
   (let [parts (string/split s (re-pattern common/context-separator))
         attrs (str->attrs (nth parts 0))
-        deploy-str (nth parts 1)
-        turns-str (nth parts 2)]
+        deploy-actions (str->raw-turn-actions (nth parts 1))
+        [p1-deploy p2-deploy] (deploy-per-player deploy-actions)
+        turn-actions (str->raw-turn-actions (nth parts 2))]
     (prn attrs)
+    (prn deploy-actions)
+    (prn turn-actions)
     {}))

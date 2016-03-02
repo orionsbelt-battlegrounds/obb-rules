@@ -31,10 +31,10 @@
 (defn create
   "Creates a game for a given stash"
   [stash]
-  (let [board (board/create-board)
-        board1 (board/set-stash board :p1 stash)
-        board2 (board/set-stash board1 :p2 stash)]
-    (assoc board2 :state :deploy)))
+  (-> (board/create-board)
+      (board/set-stash :p1 stash)
+      (board/set-stash :p2 stash)
+      (assoc :state :deploy)))
 
 (defn random
   "Creates a game with random units"
