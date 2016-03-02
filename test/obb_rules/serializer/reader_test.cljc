@@ -31,6 +31,11 @@
   (is (= {:state :final :winner :p1}
          (reader/str->attrs "state: final\nwinner: p1"))))
 
+(deftest raww-turn-actions-reader
+  (is (= [[[:goto [1 2] [2 3]] [:goto [6 2] [5 2]]]
+          [[:goto [4 7] [2 5]] [:attack [2 5] [2 3]]]]
+         (reader/str->raw-turn-actions "g1223 g6252\ng4725 a2523"))))
+
 #_(deftest complete-game
   (let [game (-> (stash/create "kamikaze" 1)
                  game/create

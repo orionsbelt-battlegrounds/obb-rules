@@ -74,6 +74,13 @@
                    (assoc attrs (keyword k) (keyword v))))
                {})))
 
+(defn str->raw-turn-actions
+  "Given a multi line string with several actions, will return a coll
+  of raw turn actions"
+  [s]
+  (->> (string/split-lines s)
+       (mapv str->actions)))
+
 (defn str->game
   "Given a game string, returns the game, fully processed with all the
   give turns"
