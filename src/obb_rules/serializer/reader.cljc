@@ -5,6 +5,7 @@
   (:require [clojure.string :as string]
             [obb-rules.serializer.common :as common]
             [obb-rules.game :as game]
+            [obb-rules.result :as result]
             [obb-rules.board :as board]
             [obb-rules.turn :as turn]
             [obb-rules.host-dependent :as host]
@@ -103,9 +104,21 @@
           {}
           deploy-actions))
 
+(defn process-turns
+  "Processes the given turns on the given game"
+  [game turns]
+  (reduce (fn [game turn]
+            (let [curr-player (game/state game)
+                  result (turn/process-actions game curr-player turn)]
+              (if (result/succeeded? result)
+                (:board result)
+                (reduced result))))
+          game
+          turns))
+
 (defn str->game
   "Given a game string, returns the game, fully processed with all the
-  give turns"
+  given turns"
   [s]
   (let [parts (string/split s (re-pattern common/context-separator))
         attrs (str->attrs (nth parts 0))
@@ -118,4 +131,5 @@
         (board/board-terrain (:terrain attrs))
         (turn/process-board-actions :p1 p1-deploy)
         (turn/process-board-actions :p2 p2-deploy)
-        (game/state (:state attrs)))))
+        (game/start-battle (:first-player attrs))
+        (process-turns turn-actions))))

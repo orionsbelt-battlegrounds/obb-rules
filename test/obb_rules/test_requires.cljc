@@ -7,6 +7,7 @@
     [obb-rules.game-test]
     [obb-rules.translator-test]
     [obb-rules.serializer.writer-test]
+    [obb-rules.serializer.reader-test]
     [obb-rules.action-test]
     [obb-rules.actions.direction-test]
     [obb-rules.actions.auto-deploy-test]

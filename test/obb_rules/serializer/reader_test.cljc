@@ -58,13 +58,13 @@
                  (board/board-terrain :ice)
                  (turn/process-board :p1 [:deploy 1 :kamikaze [1 7]])
                  (turn/process-board :p2 [:deploy 1 :kamikaze [1 2]])
-                 (game/state :p1)
-                 #_(turn/process-board :p1 [:move [1 7] [1 6] 1]
+                 (game/start-battle :p1)
+                 (turn/process-board :p1 [:move [1 7] [1 6] 1]
                                          [:move [1 6] [1 5] 1]
                                          [:move [1 5] [1 4] 1]
                                          [:move [1 4] [1 3] 1]
                                          [:attack [1 3] [1 2]]))
         game-str (writer/game->str game)
         loaded-game (reader/str->game game-str)]
-    #_(is (= game loaded-game))))
+    (is (= game loaded-game))))
 

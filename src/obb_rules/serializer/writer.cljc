@@ -43,6 +43,7 @@
   "Gets the game properties as a string"
   [game]
   (str "terrain: " (name (board/board-terrain game))
+       "\nfirst-player: " (name (game/first-player game))
        "\nstate: " (name (game/state game))
        (when (game/final? game) (str "\nwinner: " (name (game-mode/winner game))))))
 

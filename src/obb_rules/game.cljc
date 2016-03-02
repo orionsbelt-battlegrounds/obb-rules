@@ -46,9 +46,18 @@
 
 (defn start-battle
   "Given a deployed board, starts the battle"
+  ([game]
+   (assert (deploy? game) "Game not in deploy state")
+   (start-battle game (rand-nth [:p1 :p2])))
+  ([game first-player]
+   (-> game
+       (assoc :state first-player)
+       (assoc :first-player first-player))))
+
+(defn first-player
+  "Gets the player that started the game"
   [game]
-  (assert (deploy? game) "Game not in deploy state")
-  (assoc game :state (rand-nth [:p1 :p2])))
+  (:first-player game))
 
 (defn action-results
   "Provides the actions a results currently aplied on this game
