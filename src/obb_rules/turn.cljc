@@ -60,7 +60,7 @@
 (defn- register-history
   "Register the processes actions on the game's history"
   [game]
-  (if-let[turn-actions (seq (action-results->raw-actions game))]
+  (if-let [turn-actions (seq (action-results->raw-actions game))]
     (update game :history concat [turn-actions])
     game))
 

@@ -37,10 +37,10 @@
   "Takes the auto deploy action and adds the actual run deploy actions
   on the history"
   [result raw-actions]
-  (let[history (get-in result [:board :history])
-       deploy-actions (into (get-in result [:board :deploy-actions]) raw-actions)
-       history (concat history [deploy-actions])
-       result (assoc-in result [:board :history] history)]
+  (let [history (get-in result [:board :history])
+        deploy-actions (into (get-in result [:board :deploy-actions]) raw-actions)
+        history (concat history [deploy-actions])
+        result (assoc-in result [:board :history] history)]
     result))
 
 (defn- deploy-back-row

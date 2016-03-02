@@ -224,8 +224,8 @@
 (defn register-action
   "Registers an action"
   [game-data game player action coord]
-  (let [current-actions (or (:actions game-data) [])
-        next-actions (conj current-actions action  )
+  (let [current-actions (get game-data :actions [])
+        next-actions (conj current-actions action)
         result (turn/simulate-actions game player [action])]
     (if (result/succeeded? result)
       (state/set-page-data! (-> game-data

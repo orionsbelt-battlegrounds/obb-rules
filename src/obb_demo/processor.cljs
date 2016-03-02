@@ -55,7 +55,8 @@
       {:game (deployed-game)}
       (-> (assoc game-data :actions actions)
           (assoc :original-actions actions)
-          (assoc :history (concat (or (:history game-data) (:history game)) [actions]))
+          (assoc :history (concat (get game-data :history (:history game))
+                                  [actions]))
           (assoc :turn-num (if (= :final player)
                              turn-num
                              (inc turn-num)))))))
