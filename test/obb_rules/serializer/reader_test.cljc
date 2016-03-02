@@ -34,14 +34,18 @@
 (deftest raww-turn-actions-reader
   (is (= [[[:goto [1 2] [2 3]] [:goto [6 2] [5 2]]]
           [[:goto [4 7] [2 5]] [:attack [2 5] [2 3]]]]
-         (reader/str->raw-turn-actions "g1223 g6252\ng4725 a2523"))))
+         (reader/str->raw-turn-actions "g1223 g6252\ng4725 a2523")))
+
+  (testing "empty"
+    (is (= []
+           (reader/str->raw-turn-actions nil)))))
 
 (deftest deploy-per-player
   (let [deploy [[[:deploy 1 :kamikaze [1 7]]]
                 [[:deploy 1 :kamikaze [1 2]]]]
         [p1-deploy p2-deploy] (reader/deploy-per-player deploy)]
-    (is (= p1-deploy (second deploy)))
-    (is (= p2-deploy (first deploy)))))
+    (is (= p1-deploy (first deploy)))
+    (is (= p2-deploy (second deploy)))))
 
 (deftest build-stash
   (is (= {:rain 100 :kamikaze 100}
@@ -49,12 +53,13 @@
                               [:deploy 100 :rain [2 7]]]))))
 
 (deftest complete-game
-  (let [game (-> (stash/create "kamikaze" 1)
+  (let [game (-> (stash/create :kamikaze 1)
                  game/create
+                 (board/board-terrain :ice)
                  (turn/process-board :p1 [:deploy 1 :kamikaze [1 7]])
                  (turn/process-board :p2 [:deploy 1 :kamikaze [1 2]])
                  (game/state :p1)
-                 (turn/process-board :p1 [:move [1 7] [1 6] 1]
+                 #_(turn/process-board :p1 [:move [1 7] [1 6] 1]
                                          [:move [1 6] [1 5] 1]
                                          [:move [1 5] [1 4] 1]
                                          [:move [1 4] [1 3] 1]

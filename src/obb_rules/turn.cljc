@@ -103,6 +103,14 @@
         action-points (points final)]
     (create-result final action-points)))
 
+(defn process-board-actions
+  "Processes the given actions, returns only the board if successful"
+  [game player raw-actions]
+  (let [result (process-actions game player raw-actions)]
+    (if (result/succeeded? result)
+      (:board result)
+      result)))
+
 (defn process
   "Processes the given actions"
   [game player & raw-actions]
@@ -112,7 +120,4 @@
   "Processes the given actions, and if the turn succeeded, returns the
   new board"
   [game player & raw-actions]
-  (let [result (process-actions game player raw-actions)]
-    (if (result/succeeded? result)
-      (:board result)
-      result)))
+  (process-board-actions game player raw-actions))

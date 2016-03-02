@@ -29,6 +29,7 @@
 (deftest complete-game
   (let [game (-> (stash/create "kamikaze" 1)
                  game/create
+                 (board/board-terrain :ice)
                  (turn/process-board :p1 [:deploy 1 :kamikaze [1 7]])
                  (turn/process-board :p2 [:deploy 1 :kamikaze [1 2]])
                  (game/state :p1)
@@ -38,7 +39,8 @@
                                          [:move [1 4] [1 3] 1]
                                          [:attack [1 3] [1 2]]))]
     (is (= (writer/game->str game)
-"state: final
+"terrain: ice
+state: final
 winner: p1
 
 d17.1.kamikaze

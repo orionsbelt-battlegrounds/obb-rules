@@ -5,6 +5,8 @@
   (:require [clojure.string :as string]
             [obb-rules.serializer.common :as common]
             [obb-rules.game :as game]
+            [obb-rules.board :as board]
+            [obb-rules.turn :as turn]
             [obb-rules.host-dependent :as host]
             [obb-rules.game-mode :as game-mode]))
 
@@ -78,15 +80,17 @@
   "Given a multi line string with several actions, will return a coll
   of raw turn actions"
   [s]
-  (->> (string/split-lines s)
-       (mapv str->actions)))
+  (if s
+    (->> (string/split-lines s)
+         (mapv str->actions))
+    []))
 
 (defn deploy-per-player
   "Given two deploy turns, this fn returns the raw actions for each player"
   [[deploy1 deploy2]]
   (let [first-action (first deploy1)
         [x y] (last first-action)]
-    (if (> 6 y) ;; p1 deploys on rows 7 and 8
+    (if (> y 6) ;; p1 deploys on rows 7 and 8
       [deploy1 deploy2]
       [deploy2 deploy1])))
 
@@ -109,8 +113,9 @@
         [p1-deploy p2-deploy] (deploy-per-player deploy-actions)
         stash1 (build-stash p1-deploy)
         stash2 (build-stash p2-deploy)
-        turn-actions (str->raw-turn-actions (nth parts 2))]
-    (prn attrs)
-    (prn deploy-actions)
-    (prn turn-actions)
-    {}))
+        turn-actions (str->raw-turn-actions (nth parts 2 nil))]
+    (-> (game/create stash1 stash2)
+        (board/board-terrain (:terrain attrs))
+        (turn/process-board-actions :p1 p1-deploy)
+        (turn/process-board-actions :p2 p2-deploy)
+        (game/state (:state attrs)))))

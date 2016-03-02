@@ -3,6 +3,7 @@
   obb-rules.serializer.writer
   "Writes a game and actions to a text format"
   (:require [obb-rules.game :as game]
+            [obb-rules.board :as board]
             [obb-rules.serializer.common :as common]
             [obb-rules.game-mode :as game-mode]))
 
@@ -41,7 +42,8 @@
 (defn game-props->str
   "Gets the game properties as a string"
   [game]
-  (str "state: " (name (game/state game))
+  (str "terrain: " (name (board/board-terrain game))
+       "\nstate: " (name (game/state game))
        (when (game/final? game) (str "\nwinner: " (name (game-mode/winner game))))))
 
 (defn game->str
