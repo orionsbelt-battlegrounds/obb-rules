@@ -2,6 +2,7 @@
   (:require [obb-demo.state :as state]
             [obb-rules.game :as game]
             [obb-rules.stash :as stash]
+            [obb-rules.serializer.writer :as writer]
             [obb-demo.processor :as processor]
             [obb-demo.views.power-bar :as power-bar]
             [obb-rules.math :as math]
@@ -66,6 +67,11 @@
     [:a "Turn "
      [:span.badge (:turn-num game-data)]]]])
 
+(defn- game-as-string
+  [game-data]
+  [:pre {:style {:margin-top "10px"}}
+    (writer/game->str (:game game-data))])
+
 (defn render
   [state]
   (let [game-data (get-game-data state)
@@ -76,7 +82,8 @@
        (players game)
        (power-bar/render game)]
       [:div.col-lg-5
-        [boardground/render {} game-data]]
+        [boardground/render {} game-data]
+        (game-as-string game-data)]
       [:div.col-lg-2
        [:div.panel.panel-default
         [:div.panel-heading

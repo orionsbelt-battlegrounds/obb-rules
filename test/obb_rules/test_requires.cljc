@@ -6,6 +6,7 @@
     [obb-rules.env-test]
     [obb-rules.game-test]
     [obb-rules.translator-test]
+    [obb-rules.serializer.writer-test]
     [obb-rules.action-test]
     [obb-rules.actions.direction-test]
     [obb-rules.actions.auto-deploy-test]

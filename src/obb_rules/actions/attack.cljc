@@ -108,4 +108,3 @@
       (if-not success?
         (result/action-failed info)
         (process-attack board attacker target info)))))
-
