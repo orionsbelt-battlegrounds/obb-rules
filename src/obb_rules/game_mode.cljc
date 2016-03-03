@@ -12,15 +12,6 @@
           stash2 (game/get-stash game :p2)]
       (and (stash/cleared? stash1) (stash/cleared? stash2)))))
 
-(defn final?
-  "Checks if the game is finished"
-  [game]
-  (and
-    (not (= (keyword (game/state game)) :deploy))
-    (or
-      (board/empty-board? game :p1)
-      (board/empty-board? game :p2))))
-
 (defn winner
   "Gets the winner of the given game"
   [game]
@@ -28,6 +19,18 @@
     (board/empty-board? game :p1) :p2
     (board/empty-board? game :p2) :p1
     :else :none))
+
+(defn- winner?
+  "Checks if there is already a winner"
+  [game]
+  (not= (winner game) :none))
+
+(defn final?
+  "Checks if the game is finished"
+  [game]
+  (and
+   (not (game/deploy? game))
+   (winner? game)))
 
 (defn- finalize
   "Marks a game as final"
