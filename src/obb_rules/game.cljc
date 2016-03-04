@@ -69,6 +69,7 @@
   "Stores an action's result"
   [game raw-action result]
   (let [action-results (or (action-results game) [])
+        result (dissoc result :board)
         new-results (conj action-results [raw-action result])]
     (assoc game :action-results new-results)))
 

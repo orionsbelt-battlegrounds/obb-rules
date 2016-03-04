@@ -26,5 +26,5 @@
 (defn stash
   "Generates random stash info"
   []
-  (gen/fmap (fn [[stash quantity]] (map (fn [name] [name quantity]) stash)) (gen/tuple (roaster-gen unit-names) (gen/choose 1 100))))
+  (gen/fmap (fn [[stash quantity]] (map (fn [name] [(keyword name) quantity]) stash)) (gen/tuple (roaster-gen unit-names) (gen/choose 1 100))))
 

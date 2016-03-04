@@ -7,6 +7,13 @@
     [obb-rules.turn :as turn]
     [obb-rules.result :as result]
     [obb-rules.board :as board]
+    [obb-rules.generators :as obb-gen]
+    [obb-rules.ai.firingsquad :as firingsquad]
+    [obb-rules.ai.acts-as-bot-test :as acts-as-bot]
+    #?(:clj [clojure.test.check.properties :as prop]
+       :cljs [clojure.test.check.properties :as prop :include-macros true])
+    #?(:clj [clojure.test.check.clojure-test :refer [defspec]]
+       :cljs [clojure.test.check.clojure-test :refer-macros [defspec]])
     #?(:clj [clojure.test :refer [deftest testing is]]
        :cljs [cljs.test :refer-macros [deftest testing is]])))
 
@@ -110,3 +117,10 @@
                  (turn/process-board :p1 [:deploy 1 :kamikaze [1 7]])
                  (turn/process-board :p2 [:deploy 1 :kamikaze [1 2]])
                  (game/start-battle :p1))))
+
+(defspec first-blood-game-reload
+  (* obb-gen/scenarions-to-test 1)
+  (prop/for-all [raw-stash (obb-gen/stash)]
+    (let [stash (stash/create-from-hash (apply hash-map (flatten raw-stash)))
+          result (acts-as-bot/first-blood firingsquad/actions stash)]
+      (test-game (:board result)))))

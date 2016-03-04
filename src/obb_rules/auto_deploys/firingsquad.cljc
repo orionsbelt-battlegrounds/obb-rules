@@ -41,7 +41,7 @@
         deploy-actions (into (get-in result [:board :deploy-actions]) raw-actions)
         history (concat history [deploy-actions])
         result (assoc-in result [:board :history] history)]
-    result))
+    (update-in result [:board] dissoc :deploy-actions)))
 
 (defn- deploy-back-row
   "Deploys a back row with all the given units"
