@@ -49,11 +49,25 @@
 
 (deftest build-stash
   (is (= {:rain 100 :kamikaze 100}
-         (reader/build-stash [[:deploy 100 :kamikaze [1 7]]
+         (reader/build-stash {} :p1
+                             [[:deploy 100 :kamikaze [1 7]]
                               [:deploy 100 :rain [2 7]]]))))
 
+(deftest build-stash-from-str
+  (is (= {:rain 100 :kamikaze 100}
+         (reader/build-stash {:p1-stash "100.rain 100.kamikaze"}
+                             :p1
+                             nil))))
+
+(defn test-game
+  "Gets a game, serializes it and reloades it, testing if it is the same"
+  [game]
+  (let [game-str (writer/game->str game)
+        loaded-game (reader/str->game game-str)]
+    (is (= game loaded-game))))
+
 (deftest complete-game
-  (let [game (-> (stash/create :kamikaze 1)
+  (test-game (-> (stash/create :kamikaze 1)
                  game/create
                  (board/board-terrain :ice)
                  (turn/process-board :p1 [:deploy 1 :kamikaze [1 7]])
@@ -63,8 +77,36 @@
                                          [:move [1 6] [1 5] 1]
                                          [:move [1 5] [1 4] 1]
                                          [:move [1 4] [1 3] 1]
-                                         [:attack [1 3] [1 2]]))
-        game-str (writer/game->str game)
-        loaded-game (reader/str->game game-str)]
-    (is (= game loaded-game))))
+                                         [:attack [1 3] [1 2]]))))
 
+(deftest not-complete-game
+  (test-game (-> (stash/create :kamikaze 1)
+                 game/create
+                 (board/board-terrain :ice)
+                 (turn/process-board :p1 [:deploy 1 :kamikaze [1 7]])
+                 (turn/process-board :p2 [:deploy 1 :kamikaze [1 2]])
+                 (game/start-battle :p1)
+                 (turn/process-board :p1 [:move [1 7] [1 6] 1]
+                                         [:move [1 6] [1 5] 1]
+                                         [:move [1 5] [1 4] 1]
+                                         [:move [1 4] [1 3] 1]))))
+
+(deftest just-player-1-deployed
+  (test-game (-> (stash/create :kamikaze 1)
+                 game/create
+                 (board/board-terrain :ice)
+                 (turn/process-board :p1 [:deploy 1 :kamikaze [1 7]]))))
+
+(deftest just-player-2-deployed
+  (test-game (-> (stash/create :kamikaze 1)
+                 game/create
+                 (board/board-terrain :ice)
+                 (turn/process-board :p2 [:deploy 1 :kamikaze [1 2]]))))
+
+(deftest game-ready-to-start
+  (test-game (-> (stash/create :kamikaze 1)
+                 game/create
+                 (board/board-terrain :ice)
+                 (turn/process-board :p1 [:deploy 1 :kamikaze [1 7]])
+                 (turn/process-board :p2 [:deploy 1 :kamikaze [1 2]])
+                 (game/start-battle :p1))))

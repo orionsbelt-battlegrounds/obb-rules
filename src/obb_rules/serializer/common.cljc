@@ -11,3 +11,7 @@
 (def ^:const action-separator
   "This marker separates each action in a collection of actions"
   " ")
+
+(def ^:const stash-separator
+  "This marker separates each stash unit/quantity in a stash coll"
+  " ")
