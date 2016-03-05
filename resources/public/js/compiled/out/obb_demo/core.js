@@ -15,9 +15,9 @@ cljs.core.enable_console_print_BANG_();
 obb_demo.core.on_js_reload = (function obb_demo$core$on_js_reload(){
 cljs.core.println.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq(["Reloaded..."], 0));
 
-var G__13148 = new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_demo.views.index.render], null);
-var G__13149 = document.getElementById("app");
-return (reagent.core.render_component.cljs$core$IFn$_invoke$arity$2 ? reagent.core.render_component.cljs$core$IFn$_invoke$arity$2(G__13148,G__13149) : reagent.core.render_component.call(null,G__13148,G__13149));
+var G__16058 = new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_demo.views.index.render], null);
+var G__16059 = document.getElementById("app");
+return (reagent.core.render_component.cljs$core$IFn$_invoke$arity$2 ? reagent.core.render_component.cljs$core$IFn$_invoke$arity$2(G__16058,G__16059) : reagent.core.render_component.call(null,G__16058,G__16059));
 });
 obb_demo.core.get_tick = (function obb_demo$core$get_tick(){
 return obb_demo.core.tick;
@@ -31,28 +31,28 @@ var games_data = obb_demo.state.get_page_data();
 var new_games_data = cljs.core.mapv.cljs$core$IFn$_invoke$arity$2(obb_demo.processor.auto_process_game_data,games_data);
 obb_demo.state.set_page_data_BANG_(new_games_data);
 
-var G__13156 = obb_demo.core.get_tick();
-var G__13157 = (100);
-return setTimeout(G__13156,G__13157);
+var G__16066 = obb_demo.core.get_tick();
+var G__16067 = (100);
+return setTimeout(G__16066,G__16067);
 } else {
 if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$index,obb_demo.state.current_page())){
 var game_data = obb_demo.state.get_page_data();
 var new_game_data = obb_demo.processor.auto_process_game_data(game_data);
 obb_demo.state.set_page_data_BANG_(new_game_data);
 
-var G__13158 = obb_demo.core.get_tick();
-var G__13159 = (function (){var or__6156__auto__ = cljs.core.cst$kw$delay.cljs$core$IFn$_invoke$arity$1(game_data);
+var G__16068 = obb_demo.core.get_tick();
+var G__16069 = (function (){var or__6156__auto__ = cljs.core.cst$kw$delay.cljs$core$IFn$_invoke$arity$1(game_data);
 if(cljs.core.truth_(or__6156__auto__)){
 return or__6156__auto__;
 } else {
 return (50);
 }
 })();
-return setTimeout(G__13158,G__13159);
+return setTimeout(G__16068,G__16069);
 } else {
-var G__13160 = obb_demo.core.get_tick();
-var G__13161 = (1000);
-return setTimeout(G__13160,G__13161);
+var G__16070 = obb_demo.core.get_tick();
+var G__16071 = (1000);
+return setTimeout(G__16070,G__16071);
 
 }
 }

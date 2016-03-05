@@ -52,23 +52,23 @@ return cljs.core.cst$kw$default;
  * Gets/Sets the current game's state
  */
 obb_rules.game.state = (function obb_rules$game$state(var_args){
-var args11896 = [];
-var len__7214__auto___11899 = arguments.length;
-var i__7215__auto___11900 = (0);
+var args14806 = [];
+var len__7214__auto___14809 = arguments.length;
+var i__7215__auto___14810 = (0);
 while(true){
-if((i__7215__auto___11900 < len__7214__auto___11899)){
-args11896.push((arguments[i__7215__auto___11900]));
+if((i__7215__auto___14810 < len__7214__auto___14809)){
+args14806.push((arguments[i__7215__auto___14810]));
 
-var G__11901 = (i__7215__auto___11900 + (1));
-i__7215__auto___11900 = G__11901;
+var G__14811 = (i__7215__auto___14810 + (1));
+i__7215__auto___14810 = G__14811;
 continue;
 } else {
 }
 break;
 }
 
-var G__11898 = args11896.length;
-switch (G__11898) {
+var G__14808 = args14806.length;
+switch (G__14808) {
 case 1:
 return obb_rules.game.state.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -78,7 +78,7 @@ return obb_rules.game.state.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(argu
 
 break;
 default:
-throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args11896.length)].join('')));
+throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args14806.length)].join('')));
 
 }
 });
@@ -145,7 +145,7 @@ return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(game,cljs.core.cst$kw$actio
  *   are all successful.
  */
 obb_rules.game.valid_actions_QMARK_ = (function obb_rules$game$valid_actions_QMARK_(game){
-return cljs.core.every_QMARK_((function (p1__11903_SHARP_){
-return obb_rules.result.succeeded_QMARK_(cljs.core.last(p1__11903_SHARP_));
+return cljs.core.every_QMARK_((function (p1__14813_SHARP_){
+return obb_rules.result.succeeded_QMARK_(cljs.core.last(p1__14813_SHARP_));
 }),obb_rules.game.action_results(game));
 });

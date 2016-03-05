@@ -8,12 +8,12 @@ goog.require('obb_rules.unit');
  * Gets a distance factor for an attack
  */
 obb_rules.actions.damage_calculator.distance_factor = (function obb_rules$actions$damage_calculator$distance_factor(attacker,target){
-var vec__12056 = obb_rules.element.element_coordinate.cljs$core$IFn$_invoke$arity$1(attacker);
-var x1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12056,(0),null);
-var y1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12056,(1),null);
-var vec__12057 = obb_rules.element.element_coordinate.cljs$core$IFn$_invoke$arity$1(target);
-var x2 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12057,(0),null);
-var y2 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12057,(1),null);
+var vec__14966 = obb_rules.element.element_coordinate.cljs$core$IFn$_invoke$arity$1(attacker);
+var x1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14966,(0),null);
+var y1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14966,(1),null);
+var vec__14967 = obb_rules.element.element_coordinate.cljs$core$IFn$_invoke$arity$1(target);
+var x2 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14967,(0),null);
+var y2 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14967,(1),null);
 var distance = obb_rules.math.abs(((x1 - x2) - (y1 - y2)));
 if((distance > (3))){
 return (0.25 * ((7) - distance));
@@ -50,23 +50,23 @@ return quantity;
  * Gets how many units an attack will destroy
  */
 obb_rules.actions.damage_calculator.destroyed_with_unused_damage = (function obb_rules$actions$damage_calculator$destroyed_with_unused_damage(var_args){
-var args12058 = [];
-var len__7214__auto___12061 = arguments.length;
-var i__7215__auto___12062 = (0);
+var args14968 = [];
+var len__7214__auto___14971 = arguments.length;
+var i__7215__auto___14972 = (0);
 while(true){
-if((i__7215__auto___12062 < len__7214__auto___12061)){
-args12058.push((arguments[i__7215__auto___12062]));
+if((i__7215__auto___14972 < len__7214__auto___14971)){
+args14968.push((arguments[i__7215__auto___14972]));
 
-var G__12063 = (i__7215__auto___12062 + (1));
-i__7215__auto___12062 = G__12063;
+var G__14973 = (i__7215__auto___14972 + (1));
+i__7215__auto___14972 = G__14973;
 continue;
 } else {
 }
 break;
 }
 
-var G__12060 = args12058.length;
-switch (G__12060) {
+var G__14970 = args14968.length;
+switch (G__14970) {
 case 3:
 return obb_rules.actions.damage_calculator.destroyed_with_unused_damage.cljs$core$IFn$_invoke$arity$3((arguments[(0)]),(arguments[(1)]),(arguments[(2)]));
 
@@ -76,7 +76,7 @@ return obb_rules.actions.damage_calculator.destroyed_with_unused_damage.cljs$cor
 
 break;
 default:
-throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args12058.length)].join('')));
+throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args14968.length)].join('')));
 
 }
 });
@@ -101,8 +101,8 @@ obb_rules.actions.damage_calculator.destroyed_with_unused_damage.cljs$lang$maxFi
  * Gets how many units an attack will destroy
  */
 obb_rules.actions.damage_calculator.destroyed = (function obb_rules$actions$damage_calculator$destroyed(board,attacker_element,defender_element){
-var vec__12066 = obb_rules.actions.damage_calculator.destroyed_with_unused_damage.cljs$core$IFn$_invoke$arity$3(board,attacker_element,defender_element);
-var destroyed__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12066,(0),null);
-var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12066,(1),null);
+var vec__14976 = obb_rules.actions.damage_calculator.destroyed_with_unused_damage.cljs$core$IFn$_invoke$arity$3(board,attacker_element,defender_element);
+var destroyed__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14976,(0),null);
+var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14976,(1),null);
 return destroyed__$1;
 });

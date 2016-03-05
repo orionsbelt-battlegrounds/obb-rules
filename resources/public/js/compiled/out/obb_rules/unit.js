@@ -65,11 +65,11 @@ var this__6770__auto____$1 = this;
 return cljs.core._lookup.cljs$core$IFn$_invoke$arity$3(this__6770__auto____$1,k__6771__auto__,null);
 });
 
-obb_rules.unit.CombatUnit.prototype.cljs$core$ILookup$_lookup$arity$3 = (function (this__6772__auto__,k11691,else__6773__auto__){
+obb_rules.unit.CombatUnit.prototype.cljs$core$ILookup$_lookup$arity$3 = (function (this__6772__auto__,k14601,else__6773__auto__){
 var self__ = this;
 var this__6772__auto____$1 = this;
-var G__11693 = (((k11691 instanceof cljs.core.Keyword))?k11691.fqn:null);
-switch (G__11693) {
+var G__14603 = (((k14601 instanceof cljs.core.Keyword))?k14601.fqn:null);
+switch (G__14603) {
 case "category":
 return self__.category;
 
@@ -123,7 +123,7 @@ return self__.range;
 
 break;
 default:
-return cljs.core.get.cljs$core$IFn$_invoke$arity$3(self__.__extmap,k11691,else__6773__auto__);
+return cljs.core.get.cljs$core$IFn$_invoke$arity$3(self__.__extmap,k14601,else__6773__auto__);
 
 }
 });
@@ -141,10 +141,10 @@ return cljs.core.pr_sequential_writer(writer__6785__auto__,pr_pair__6787__auto__
 
 obb_rules.unit.CombatUnit.prototype.cljs$core$IIterable$ = true;
 
-obb_rules.unit.CombatUnit.prototype.cljs$core$IIterable$_iterator$arity$1 = (function (G__11690){
+obb_rules.unit.CombatUnit.prototype.cljs$core$IIterable$_iterator$arity$1 = (function (G__14600){
 var self__ = this;
-var G__11690__$1 = this;
-return (new cljs.core.RecordIter((0),G__11690__$1,13,new cljs.core.PersistentVector(null, 13, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$name,cljs.core.cst$kw$code,cljs.core.cst$kw$value,cljs.core.cst$kw$attack,cljs.core.cst$kw$attack_DASH_type,cljs.core.cst$kw$range,cljs.core.cst$kw$defense,cljs.core.cst$kw$bonus,cljs.core.cst$kw$type,cljs.core.cst$kw$category,cljs.core.cst$kw$displacement,cljs.core.cst$kw$movement_DASH_type,cljs.core.cst$kw$movement_DASH_cost], null),cljs.core._iterator(self__.__extmap)));
+var G__14600__$1 = this;
+return (new cljs.core.RecordIter((0),G__14600__$1,13,new cljs.core.PersistentVector(null, 13, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$name,cljs.core.cst$kw$code,cljs.core.cst$kw$value,cljs.core.cst$kw$attack,cljs.core.cst$kw$attack_DASH_type,cljs.core.cst$kw$range,cljs.core.cst$kw$defense,cljs.core.cst$kw$bonus,cljs.core.cst$kw$type,cljs.core.cst$kw$category,cljs.core.cst$kw$displacement,cljs.core.cst$kw$movement_DASH_type,cljs.core.cst$kw$movement_DASH_cost], null),cljs.core._iterator(self__.__extmap)));
 });
 
 obb_rules.unit.CombatUnit.prototype.cljs$core$IMeta$_meta$arity$1 = (function (this__6768__auto__){
@@ -210,51 +210,51 @@ return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self_
 }
 });
 
-obb_rules.unit.CombatUnit.prototype.cljs$core$IAssociative$_assoc$arity$3 = (function (this__6777__auto__,k__6778__auto__,G__11690){
+obb_rules.unit.CombatUnit.prototype.cljs$core$IAssociative$_assoc$arity$3 = (function (this__6777__auto__,k__6778__auto__,G__14600){
 var self__ = this;
 var this__6777__auto____$1 = this;
-var pred__11694 = cljs.core.keyword_identical_QMARK_;
-var expr__11695 = k__6778__auto__;
-if(cljs.core.truth_((pred__11694.cljs$core$IFn$_invoke$arity$2 ? pred__11694.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$name,expr__11695) : pred__11694.call(null,cljs.core.cst$kw$name,expr__11695)))){
-return (new obb_rules.unit.CombatUnit(G__11690,self__.code,self__.value,self__.attack,self__.attack_type,self__.range,self__.defense,self__.bonus,self__.type,self__.category,self__.displacement,self__.movement_type,self__.movement_cost,self__.__meta,self__.__extmap,null));
+var pred__14604 = cljs.core.keyword_identical_QMARK_;
+var expr__14605 = k__6778__auto__;
+if(cljs.core.truth_((pred__14604.cljs$core$IFn$_invoke$arity$2 ? pred__14604.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$name,expr__14605) : pred__14604.call(null,cljs.core.cst$kw$name,expr__14605)))){
+return (new obb_rules.unit.CombatUnit(G__14600,self__.code,self__.value,self__.attack,self__.attack_type,self__.range,self__.defense,self__.bonus,self__.type,self__.category,self__.displacement,self__.movement_type,self__.movement_cost,self__.__meta,self__.__extmap,null));
 } else {
-if(cljs.core.truth_((pred__11694.cljs$core$IFn$_invoke$arity$2 ? pred__11694.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$code,expr__11695) : pred__11694.call(null,cljs.core.cst$kw$code,expr__11695)))){
-return (new obb_rules.unit.CombatUnit(self__.name,G__11690,self__.value,self__.attack,self__.attack_type,self__.range,self__.defense,self__.bonus,self__.type,self__.category,self__.displacement,self__.movement_type,self__.movement_cost,self__.__meta,self__.__extmap,null));
+if(cljs.core.truth_((pred__14604.cljs$core$IFn$_invoke$arity$2 ? pred__14604.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$code,expr__14605) : pred__14604.call(null,cljs.core.cst$kw$code,expr__14605)))){
+return (new obb_rules.unit.CombatUnit(self__.name,G__14600,self__.value,self__.attack,self__.attack_type,self__.range,self__.defense,self__.bonus,self__.type,self__.category,self__.displacement,self__.movement_type,self__.movement_cost,self__.__meta,self__.__extmap,null));
 } else {
-if(cljs.core.truth_((pred__11694.cljs$core$IFn$_invoke$arity$2 ? pred__11694.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$value,expr__11695) : pred__11694.call(null,cljs.core.cst$kw$value,expr__11695)))){
-return (new obb_rules.unit.CombatUnit(self__.name,self__.code,G__11690,self__.attack,self__.attack_type,self__.range,self__.defense,self__.bonus,self__.type,self__.category,self__.displacement,self__.movement_type,self__.movement_cost,self__.__meta,self__.__extmap,null));
+if(cljs.core.truth_((pred__14604.cljs$core$IFn$_invoke$arity$2 ? pred__14604.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$value,expr__14605) : pred__14604.call(null,cljs.core.cst$kw$value,expr__14605)))){
+return (new obb_rules.unit.CombatUnit(self__.name,self__.code,G__14600,self__.attack,self__.attack_type,self__.range,self__.defense,self__.bonus,self__.type,self__.category,self__.displacement,self__.movement_type,self__.movement_cost,self__.__meta,self__.__extmap,null));
 } else {
-if(cljs.core.truth_((pred__11694.cljs$core$IFn$_invoke$arity$2 ? pred__11694.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$attack,expr__11695) : pred__11694.call(null,cljs.core.cst$kw$attack,expr__11695)))){
-return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,G__11690,self__.attack_type,self__.range,self__.defense,self__.bonus,self__.type,self__.category,self__.displacement,self__.movement_type,self__.movement_cost,self__.__meta,self__.__extmap,null));
+if(cljs.core.truth_((pred__14604.cljs$core$IFn$_invoke$arity$2 ? pred__14604.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$attack,expr__14605) : pred__14604.call(null,cljs.core.cst$kw$attack,expr__14605)))){
+return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,G__14600,self__.attack_type,self__.range,self__.defense,self__.bonus,self__.type,self__.category,self__.displacement,self__.movement_type,self__.movement_cost,self__.__meta,self__.__extmap,null));
 } else {
-if(cljs.core.truth_((pred__11694.cljs$core$IFn$_invoke$arity$2 ? pred__11694.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$attack_DASH_type,expr__11695) : pred__11694.call(null,cljs.core.cst$kw$attack_DASH_type,expr__11695)))){
-return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self__.attack,G__11690,self__.range,self__.defense,self__.bonus,self__.type,self__.category,self__.displacement,self__.movement_type,self__.movement_cost,self__.__meta,self__.__extmap,null));
+if(cljs.core.truth_((pred__14604.cljs$core$IFn$_invoke$arity$2 ? pred__14604.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$attack_DASH_type,expr__14605) : pred__14604.call(null,cljs.core.cst$kw$attack_DASH_type,expr__14605)))){
+return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self__.attack,G__14600,self__.range,self__.defense,self__.bonus,self__.type,self__.category,self__.displacement,self__.movement_type,self__.movement_cost,self__.__meta,self__.__extmap,null));
 } else {
-if(cljs.core.truth_((pred__11694.cljs$core$IFn$_invoke$arity$2 ? pred__11694.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$range,expr__11695) : pred__11694.call(null,cljs.core.cst$kw$range,expr__11695)))){
-return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self__.attack,self__.attack_type,G__11690,self__.defense,self__.bonus,self__.type,self__.category,self__.displacement,self__.movement_type,self__.movement_cost,self__.__meta,self__.__extmap,null));
+if(cljs.core.truth_((pred__14604.cljs$core$IFn$_invoke$arity$2 ? pred__14604.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$range,expr__14605) : pred__14604.call(null,cljs.core.cst$kw$range,expr__14605)))){
+return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self__.attack,self__.attack_type,G__14600,self__.defense,self__.bonus,self__.type,self__.category,self__.displacement,self__.movement_type,self__.movement_cost,self__.__meta,self__.__extmap,null));
 } else {
-if(cljs.core.truth_((pred__11694.cljs$core$IFn$_invoke$arity$2 ? pred__11694.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$defense,expr__11695) : pred__11694.call(null,cljs.core.cst$kw$defense,expr__11695)))){
-return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self__.attack,self__.attack_type,self__.range,G__11690,self__.bonus,self__.type,self__.category,self__.displacement,self__.movement_type,self__.movement_cost,self__.__meta,self__.__extmap,null));
+if(cljs.core.truth_((pred__14604.cljs$core$IFn$_invoke$arity$2 ? pred__14604.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$defense,expr__14605) : pred__14604.call(null,cljs.core.cst$kw$defense,expr__14605)))){
+return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self__.attack,self__.attack_type,self__.range,G__14600,self__.bonus,self__.type,self__.category,self__.displacement,self__.movement_type,self__.movement_cost,self__.__meta,self__.__extmap,null));
 } else {
-if(cljs.core.truth_((pred__11694.cljs$core$IFn$_invoke$arity$2 ? pred__11694.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$bonus,expr__11695) : pred__11694.call(null,cljs.core.cst$kw$bonus,expr__11695)))){
-return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self__.attack,self__.attack_type,self__.range,self__.defense,G__11690,self__.type,self__.category,self__.displacement,self__.movement_type,self__.movement_cost,self__.__meta,self__.__extmap,null));
+if(cljs.core.truth_((pred__14604.cljs$core$IFn$_invoke$arity$2 ? pred__14604.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$bonus,expr__14605) : pred__14604.call(null,cljs.core.cst$kw$bonus,expr__14605)))){
+return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self__.attack,self__.attack_type,self__.range,self__.defense,G__14600,self__.type,self__.category,self__.displacement,self__.movement_type,self__.movement_cost,self__.__meta,self__.__extmap,null));
 } else {
-if(cljs.core.truth_((pred__11694.cljs$core$IFn$_invoke$arity$2 ? pred__11694.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$type,expr__11695) : pred__11694.call(null,cljs.core.cst$kw$type,expr__11695)))){
-return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self__.attack,self__.attack_type,self__.range,self__.defense,self__.bonus,G__11690,self__.category,self__.displacement,self__.movement_type,self__.movement_cost,self__.__meta,self__.__extmap,null));
+if(cljs.core.truth_((pred__14604.cljs$core$IFn$_invoke$arity$2 ? pred__14604.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$type,expr__14605) : pred__14604.call(null,cljs.core.cst$kw$type,expr__14605)))){
+return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self__.attack,self__.attack_type,self__.range,self__.defense,self__.bonus,G__14600,self__.category,self__.displacement,self__.movement_type,self__.movement_cost,self__.__meta,self__.__extmap,null));
 } else {
-if(cljs.core.truth_((pred__11694.cljs$core$IFn$_invoke$arity$2 ? pred__11694.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$category,expr__11695) : pred__11694.call(null,cljs.core.cst$kw$category,expr__11695)))){
-return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self__.attack,self__.attack_type,self__.range,self__.defense,self__.bonus,self__.type,G__11690,self__.displacement,self__.movement_type,self__.movement_cost,self__.__meta,self__.__extmap,null));
+if(cljs.core.truth_((pred__14604.cljs$core$IFn$_invoke$arity$2 ? pred__14604.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$category,expr__14605) : pred__14604.call(null,cljs.core.cst$kw$category,expr__14605)))){
+return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self__.attack,self__.attack_type,self__.range,self__.defense,self__.bonus,self__.type,G__14600,self__.displacement,self__.movement_type,self__.movement_cost,self__.__meta,self__.__extmap,null));
 } else {
-if(cljs.core.truth_((pred__11694.cljs$core$IFn$_invoke$arity$2 ? pred__11694.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$displacement,expr__11695) : pred__11694.call(null,cljs.core.cst$kw$displacement,expr__11695)))){
-return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self__.attack,self__.attack_type,self__.range,self__.defense,self__.bonus,self__.type,self__.category,G__11690,self__.movement_type,self__.movement_cost,self__.__meta,self__.__extmap,null));
+if(cljs.core.truth_((pred__14604.cljs$core$IFn$_invoke$arity$2 ? pred__14604.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$displacement,expr__14605) : pred__14604.call(null,cljs.core.cst$kw$displacement,expr__14605)))){
+return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self__.attack,self__.attack_type,self__.range,self__.defense,self__.bonus,self__.type,self__.category,G__14600,self__.movement_type,self__.movement_cost,self__.__meta,self__.__extmap,null));
 } else {
-if(cljs.core.truth_((pred__11694.cljs$core$IFn$_invoke$arity$2 ? pred__11694.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$movement_DASH_type,expr__11695) : pred__11694.call(null,cljs.core.cst$kw$movement_DASH_type,expr__11695)))){
-return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self__.attack,self__.attack_type,self__.range,self__.defense,self__.bonus,self__.type,self__.category,self__.displacement,G__11690,self__.movement_cost,self__.__meta,self__.__extmap,null));
+if(cljs.core.truth_((pred__14604.cljs$core$IFn$_invoke$arity$2 ? pred__14604.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$movement_DASH_type,expr__14605) : pred__14604.call(null,cljs.core.cst$kw$movement_DASH_type,expr__14605)))){
+return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self__.attack,self__.attack_type,self__.range,self__.defense,self__.bonus,self__.type,self__.category,self__.displacement,G__14600,self__.movement_cost,self__.__meta,self__.__extmap,null));
 } else {
-if(cljs.core.truth_((pred__11694.cljs$core$IFn$_invoke$arity$2 ? pred__11694.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$movement_DASH_cost,expr__11695) : pred__11694.call(null,cljs.core.cst$kw$movement_DASH_cost,expr__11695)))){
-return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self__.attack,self__.attack_type,self__.range,self__.defense,self__.bonus,self__.type,self__.category,self__.displacement,self__.movement_type,G__11690,self__.__meta,self__.__extmap,null));
+if(cljs.core.truth_((pred__14604.cljs$core$IFn$_invoke$arity$2 ? pred__14604.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$movement_DASH_cost,expr__14605) : pred__14604.call(null,cljs.core.cst$kw$movement_DASH_cost,expr__14605)))){
+return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self__.attack,self__.attack_type,self__.range,self__.defense,self__.bonus,self__.type,self__.category,self__.displacement,self__.movement_type,G__14600,self__.__meta,self__.__extmap,null));
 } else {
-return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self__.attack,self__.attack_type,self__.range,self__.defense,self__.bonus,self__.type,self__.category,self__.displacement,self__.movement_type,self__.movement_cost,self__.__meta,cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(self__.__extmap,k__6778__auto__,G__11690),null));
+return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self__.attack,self__.attack_type,self__.range,self__.defense,self__.bonus,self__.type,self__.category,self__.displacement,self__.movement_type,self__.movement_cost,self__.__meta,cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(self__.__extmap,k__6778__auto__,G__14600),null));
 }
 }
 }
@@ -276,10 +276,10 @@ var this__6782__auto____$1 = this;
 return cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.PersistentVector(null, 13, 5, cljs.core.PersistentVector.EMPTY_NODE, [(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.cst$kw$name,self__.name],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.cst$kw$code,self__.code],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.cst$kw$value,self__.value],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.cst$kw$attack,self__.attack],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.cst$kw$attack_DASH_type,self__.attack_type],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.cst$kw$range,self__.range],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.cst$kw$defense,self__.defense],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.cst$kw$bonus,self__.bonus],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.cst$kw$type,self__.type],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.cst$kw$category,self__.category],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.cst$kw$displacement,self__.displacement],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.cst$kw$movement_DASH_type,self__.movement_type],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.cst$kw$movement_DASH_cost,self__.movement_cost],null))], null),self__.__extmap));
 });
 
-obb_rules.unit.CombatUnit.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = (function (this__6769__auto__,G__11690){
+obb_rules.unit.CombatUnit.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = (function (this__6769__auto__,G__14600){
 var self__ = this;
 var this__6769__auto____$1 = this;
-return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self__.attack,self__.attack_type,self__.range,self__.defense,self__.bonus,self__.type,self__.category,self__.displacement,self__.movement_type,self__.movement_cost,G__11690,self__.__extmap,self__.__hash));
+return (new obb_rules.unit.CombatUnit(self__.name,self__.code,self__.value,self__.attack,self__.attack_type,self__.range,self__.defense,self__.bonus,self__.type,self__.category,self__.displacement,self__.movement_type,self__.movement_cost,G__14600,self__.__extmap,self__.__hash));
 });
 
 obb_rules.unit.CombatUnit.prototype.cljs$core$ICollection$_conj$arity$2 = (function (this__6775__auto__,entry__6776__auto__){
@@ -316,22 +316,22 @@ return (new obb_rules.unit.CombatUnit(name,code,value,attack,attack_type,range,d
 /**
  * Represents a combat unit
  */
-obb_rules.unit.map__GT_CombatUnit = (function obb_rules$unit$map__GT_CombatUnit(G__11692){
-return (new obb_rules.unit.CombatUnit(cljs.core.cst$kw$name.cljs$core$IFn$_invoke$arity$1(G__11692),cljs.core.cst$kw$code.cljs$core$IFn$_invoke$arity$1(G__11692),cljs.core.cst$kw$value.cljs$core$IFn$_invoke$arity$1(G__11692),cljs.core.cst$kw$attack.cljs$core$IFn$_invoke$arity$1(G__11692),cljs.core.cst$kw$attack_DASH_type.cljs$core$IFn$_invoke$arity$1(G__11692),cljs.core.cst$kw$range.cljs$core$IFn$_invoke$arity$1(G__11692),cljs.core.cst$kw$defense.cljs$core$IFn$_invoke$arity$1(G__11692),cljs.core.cst$kw$bonus.cljs$core$IFn$_invoke$arity$1(G__11692),cljs.core.cst$kw$type.cljs$core$IFn$_invoke$arity$1(G__11692),cljs.core.cst$kw$category.cljs$core$IFn$_invoke$arity$1(G__11692),cljs.core.cst$kw$displacement.cljs$core$IFn$_invoke$arity$1(G__11692),cljs.core.cst$kw$movement_DASH_type.cljs$core$IFn$_invoke$arity$1(G__11692),cljs.core.cst$kw$movement_DASH_cost.cljs$core$IFn$_invoke$arity$1(G__11692),null,cljs.core.dissoc.cljs$core$IFn$_invoke$arity$variadic(G__11692,cljs.core.cst$kw$name,cljs.core.array_seq([cljs.core.cst$kw$code,cljs.core.cst$kw$value,cljs.core.cst$kw$attack,cljs.core.cst$kw$attack_DASH_type,cljs.core.cst$kw$range,cljs.core.cst$kw$defense,cljs.core.cst$kw$bonus,cljs.core.cst$kw$type,cljs.core.cst$kw$category,cljs.core.cst$kw$displacement,cljs.core.cst$kw$movement_DASH_type,cljs.core.cst$kw$movement_DASH_cost], 0)),null));
+obb_rules.unit.map__GT_CombatUnit = (function obb_rules$unit$map__GT_CombatUnit(G__14602){
+return (new obb_rules.unit.CombatUnit(cljs.core.cst$kw$name.cljs$core$IFn$_invoke$arity$1(G__14602),cljs.core.cst$kw$code.cljs$core$IFn$_invoke$arity$1(G__14602),cljs.core.cst$kw$value.cljs$core$IFn$_invoke$arity$1(G__14602),cljs.core.cst$kw$attack.cljs$core$IFn$_invoke$arity$1(G__14602),cljs.core.cst$kw$attack_DASH_type.cljs$core$IFn$_invoke$arity$1(G__14602),cljs.core.cst$kw$range.cljs$core$IFn$_invoke$arity$1(G__14602),cljs.core.cst$kw$defense.cljs$core$IFn$_invoke$arity$1(G__14602),cljs.core.cst$kw$bonus.cljs$core$IFn$_invoke$arity$1(G__14602),cljs.core.cst$kw$type.cljs$core$IFn$_invoke$arity$1(G__14602),cljs.core.cst$kw$category.cljs$core$IFn$_invoke$arity$1(G__14602),cljs.core.cst$kw$displacement.cljs$core$IFn$_invoke$arity$1(G__14602),cljs.core.cst$kw$movement_DASH_type.cljs$core$IFn$_invoke$arity$1(G__14602),cljs.core.cst$kw$movement_DASH_cost.cljs$core$IFn$_invoke$arity$1(G__14602),null,cljs.core.dissoc.cljs$core$IFn$_invoke$arity$variadic(G__14602,cljs.core.cst$kw$name,cljs.core.array_seq([cljs.core.cst$kw$code,cljs.core.cst$kw$value,cljs.core.cst$kw$attack,cljs.core.cst$kw$attack_DASH_type,cljs.core.cst$kw$range,cljs.core.cst$kw$defense,cljs.core.cst$kw$bonus,cljs.core.cst$kw$type,cljs.core.cst$kw$category,cljs.core.cst$kw$displacement,cljs.core.cst$kw$movement_DASH_type,cljs.core.cst$kw$movement_DASH_cost], 0)),null));
 });
 
 /**
  * Gets all the available units
  */
 obb_rules.unit.gather_units = (function obb_rules$unit$gather_units(){
-return cljs.core.mapv.cljs$core$IFn$_invoke$arity$2((function (p1__11698_SHARP_){
-return obb_rules.unit.map__GT_CombatUnit(p1__11698_SHARP_);
+return cljs.core.mapv.cljs$core$IFn$_invoke$arity$2((function (p1__14608_SHARP_){
+return obb_rules.unit.map__GT_CombatUnit(p1__14608_SHARP_);
 }),new cljs.core.PersistentVector(null, 20, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_rules.units.rain.metadata,obb_rules.units.nova.metadata,obb_rules.units.pretorian.metadata,obb_rules.units.raptor.metadata,obb_rules.units.toxic.metadata,obb_rules.units.worm.metadata,obb_rules.units.vector.metadata,obb_rules.units.anubis.metadata,obb_rules.units.boozer.metadata,obb_rules.units.eagle.metadata,obb_rules.units.heavy_seeker.metadata,obb_rules.units.doomer.metadata,obb_rules.units.fenix.metadata,obb_rules.units.driller.metadata,obb_rules.units.krill.metadata,obb_rules.units.kahuna.metadata,obb_rules.units.panther.metadata,obb_rules.units.scarab.metadata,obb_rules.units.kamikaze.metadata,obb_rules.units.crusader.metadata], null));
 });
 obb_rules.unit.get_units = cljs.core.memoize(obb_rules.unit.gather_units);
 obb_rules.unit.build_units = (function obb_rules$unit$build_units(units,selector){
-return cljs.core.reduce.cljs$core$IFn$_invoke$arity$3((function (p1__11699_SHARP_,p2__11700_SHARP_){
-return cljs.core.conj.cljs$core$IFn$_invoke$arity$2(p1__11699_SHARP_,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(selector.cljs$core$IFn$_invoke$arity$1 ? selector.cljs$core$IFn$_invoke$arity$1(p2__11700_SHARP_) : selector.call(null,p2__11700_SHARP_)),p2__11700_SHARP_], null));
+return cljs.core.reduce.cljs$core$IFn$_invoke$arity$3((function (p1__14609_SHARP_,p2__14610_SHARP_){
+return cljs.core.conj.cljs$core$IFn$_invoke$arity$2(p1__14609_SHARP_,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(selector.cljs$core$IFn$_invoke$arity$1 ? selector.cljs$core$IFn$_invoke$arity$1(p2__14610_SHARP_) : selector.call(null,p2__14610_SHARP_)),p2__14610_SHARP_], null));
 }),cljs.core.PersistentArrayMap.EMPTY,units);
 });
 obb_rules.unit.units_by_name = (new cljs.core.Delay((function (){
