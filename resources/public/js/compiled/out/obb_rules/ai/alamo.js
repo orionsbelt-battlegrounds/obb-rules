@@ -20,17 +20,17 @@ if(typeof obb_rules.ai.alamo.actions !== 'undefined'){
 /**
  * Returns a list of actions to apply to the current game
  */
-obb_rules.ai.alamo.actions = (function (){var method_table__7069__auto__ = (function (){var G__15272 = cljs.core.PersistentArrayMap.EMPTY;
-return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__15272) : cljs.core.atom.call(null,G__15272));
+obb_rules.ai.alamo.actions = (function (){var method_table__7069__auto__ = (function (){var G__15401 = cljs.core.PersistentArrayMap.EMPTY;
+return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__15401) : cljs.core.atom.call(null,G__15401));
 })();
-var prefer_table__7070__auto__ = (function (){var G__15273 = cljs.core.PersistentArrayMap.EMPTY;
-return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__15273) : cljs.core.atom.call(null,G__15273));
+var prefer_table__7070__auto__ = (function (){var G__15402 = cljs.core.PersistentArrayMap.EMPTY;
+return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__15402) : cljs.core.atom.call(null,G__15402));
 })();
-var method_cache__7071__auto__ = (function (){var G__15274 = cljs.core.PersistentArrayMap.EMPTY;
-return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__15274) : cljs.core.atom.call(null,G__15274));
+var method_cache__7071__auto__ = (function (){var G__15403 = cljs.core.PersistentArrayMap.EMPTY;
+return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__15403) : cljs.core.atom.call(null,G__15403));
 })();
-var cached_hierarchy__7072__auto__ = (function (){var G__15275 = cljs.core.PersistentArrayMap.EMPTY;
-return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__15275) : cljs.core.atom.call(null,G__15275));
+var cached_hierarchy__7072__auto__ = (function (){var G__15404 = cljs.core.PersistentArrayMap.EMPTY;
+return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__15404) : cljs.core.atom.call(null,G__15404));
 })();
 var hierarchy__7073__auto__ = cljs.core.get.cljs$core$IFn$_invoke$arity$3(cljs.core.PersistentArrayMap.EMPTY,cljs.core.cst$kw$hierarchy,cljs.core.get_global_hierarchy());
 return (new cljs.core.MultiFn(cljs.core.symbol.cljs$core$IFn$_invoke$arity$2("obb-rules.ai.alamo","actions"),((function (method_table__7069__auto__,prefer_table__7070__auto__,method_cache__7071__auto__,cached_hierarchy__7072__auto__,hierarchy__7073__auto__){
@@ -131,10 +131,10 @@ return null;
 /**
  * Given a pair of scores, removes the value given from the correct player
  */
-obb_rules.ai.alamo.remove_value = (function obb_rules$ai$alamo$remove_value(p__15276,player,value){
-var vec__15278 = p__15276;
-var s1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15278,(0),null);
-var s2 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15278,(1),null);
+obb_rules.ai.alamo.remove_value = (function obb_rules$ai$alamo$remove_value(p__15405,player,value){
+var vec__15407 = p__15405;
+var s1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15407,(0),null);
+var s2 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15407,(1),null);
 if(cljs.core.truth_(obb_rules.simplifier.name_EQ_(player,cljs.core.cst$kw$p1))){
 return obb_rules.ai.common.eval_scores(player,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(s1 + value),s2], null));
 } else {

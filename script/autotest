@@ -1,1 +1,1 @@
-lein with-profile +clj test-refresh
+OBB_SCENARIOS_TO_TEST=0 lein with-profile +clj test-refresh

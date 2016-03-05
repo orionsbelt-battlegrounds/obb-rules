@@ -8,14 +8,14 @@ obb_rules.logger._STAR_verbose_STAR_ = false;
  */
 obb_rules.logger.log = (function obb_rules$logger$log(var_args){
 var args__7221__auto__ = [];
-var len__7214__auto___14769 = arguments.length;
-var i__7215__auto___14770 = (0);
+var len__7214__auto___14926 = arguments.length;
+var i__7215__auto___14927 = (0);
 while(true){
-if((i__7215__auto___14770 < len__7214__auto___14769)){
-args__7221__auto__.push((arguments[i__7215__auto___14770]));
+if((i__7215__auto___14927 < len__7214__auto___14926)){
+args__7221__auto__.push((arguments[i__7215__auto___14927]));
 
-var G__14771 = (i__7215__auto___14770 + (1));
-i__7215__auto___14770 = G__14771;
+var G__14928 = (i__7215__auto___14927 + (1));
+i__7215__auto___14927 = G__14928;
 continue;
 } else {
 }
@@ -36,8 +36,8 @@ return null;
 
 obb_rules.logger.log.cljs$lang$maxFixedArity = (0);
 
-obb_rules.logger.log.cljs$lang$applyTo = (function (seq14768){
-return obb_rules.logger.log.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq14768));
+obb_rules.logger.log.cljs$lang$applyTo = (function (seq14925){
+return obb_rules.logger.log.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq14925));
 });
 /**
  * Logs ai-turn header
@@ -56,14 +56,14 @@ return obb_rules.logger.log.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array
  */
 obb_rules.logger.with_verbose = (function obb_rules$logger$with_verbose(var_args){
 var args__7221__auto__ = [];
-var len__7214__auto___14775 = arguments.length;
-var i__7215__auto___14776 = (0);
+var len__7214__auto___14932 = arguments.length;
+var i__7215__auto___14933 = (0);
 while(true){
-if((i__7215__auto___14776 < len__7214__auto___14775)){
-args__7221__auto__.push((arguments[i__7215__auto___14776]));
+if((i__7215__auto___14933 < len__7214__auto___14932)){
+args__7221__auto__.push((arguments[i__7215__auto___14933]));
 
-var G__14777 = (i__7215__auto___14776 + (1));
-i__7215__auto___14776 = G__14777;
+var G__14934 = (i__7215__auto___14933 + (1));
+i__7215__auto___14933 = G__14934;
 continue;
 } else {
 }
@@ -80,12 +80,12 @@ return cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.
 
 obb_rules.logger.with_verbose.cljs$lang$maxFixedArity = (2);
 
-obb_rules.logger.with_verbose.cljs$lang$applyTo = (function (seq14772){
-var G__14773 = cljs.core.first(seq14772);
-var seq14772__$1 = cljs.core.next(seq14772);
-var G__14774 = cljs.core.first(seq14772__$1);
-var seq14772__$2 = cljs.core.next(seq14772__$1);
-return obb_rules.logger.with_verbose.cljs$core$IFn$_invoke$arity$variadic(G__14773,G__14774,seq14772__$2);
+obb_rules.logger.with_verbose.cljs$lang$applyTo = (function (seq14929){
+var G__14930 = cljs.core.first(seq14929);
+var seq14929__$1 = cljs.core.next(seq14929);
+var G__14931 = cljs.core.first(seq14929__$1);
+var seq14929__$2 = cljs.core.next(seq14929__$1);
+return obb_rules.logger.with_verbose.cljs$core$IFn$_invoke$arity$variadic(G__14930,G__14931,seq14929__$2);
 });
 
 obb_rules.logger.with_verbose.cljs$lang$macro = true;

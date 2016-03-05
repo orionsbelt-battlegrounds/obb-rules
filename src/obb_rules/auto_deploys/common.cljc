@@ -51,7 +51,7 @@
   "Builds a deploy action command"
   [player row idx [u q]]
   (let [coordinate (translator/coordinate player [(+ idx 1) row])]
-    [(int q) (unit/unit-name u) coordinate]))
+    [:deploy (int q) (unit/unit-name u) coordinate]))
 
 (defn build-deploy-actions
   "Builds deploy actions based on the given data"

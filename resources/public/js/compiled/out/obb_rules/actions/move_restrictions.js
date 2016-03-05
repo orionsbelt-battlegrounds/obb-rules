@@ -19,22 +19,22 @@ return new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMP
 /**
  * Given two adjacent coords, checks if the movement is valid
  */
-obb_rules.actions.move_restrictions.normal_movement_valid_QMARK_ = (function obb_rules$actions$move_restrictions$normal_movement_valid_QMARK_(direction,p__14839,p__14840){
-var vec__14843 = p__14839;
-var x1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14843,(0),null);
-var y1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14843,(1),null);
-var vec__14844 = p__14840;
-var x2 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14844,(0),null);
-var y2 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14844,(1),null);
+obb_rules.actions.move_restrictions.normal_movement_valid_QMARK_ = (function obb_rules$actions$move_restrictions$normal_movement_valid_QMARK_(direction,p__14960,p__14961){
+var vec__14964 = p__14960;
+var x1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14964,(0),null);
+var y1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14964,(1),null);
+var vec__14965 = p__14961;
+var x2 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14965,(0),null);
+var y2 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14965,(1),null);
 return (cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(x1,x2)) || (cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(y1,y2));
 });
 /**
  * Given a coordinate, returns all possible adjacent squares
  */
-obb_rules.actions.move_restrictions.normal_movement_generator = (function obb_rules$actions$move_restrictions$normal_movement_generator(_,p__14845){
-var vec__14847 = p__14845;
-var x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14847,(0),null);
-var y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14847,(1),null);
+obb_rules.actions.move_restrictions.normal_movement_generator = (function obb_rules$actions$move_restrictions$normal_movement_generator(_,p__14966){
+var vec__14968 = p__14966;
+var x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14968,(0),null);
+var y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14968,(1),null);
 return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [x,(y - (1))], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [x,(y + (1))], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(x + (1)),y], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(x - (1)),y], null)], null);
 });
 /**
@@ -46,10 +46,10 @@ return cljs.core.not(obb_rules.actions.move_restrictions.normal_movement_valid_Q
 /**
  * Given a coordinate, returns all possible adjacent squares
  */
-obb_rules.actions.move_restrictions.diagonal_movement_generator = (function obb_rules$actions$move_restrictions$diagonal_movement_generator(_,p__14848){
-var vec__14850 = p__14848;
-var x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14850,(0),null);
-var y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14850,(1),null);
+obb_rules.actions.move_restrictions.diagonal_movement_generator = (function obb_rules$actions$move_restrictions$diagonal_movement_generator(_,p__14969){
+var vec__14971 = p__14969;
+var x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14971,(0),null);
+var y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14971,(1),null);
 return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(x - (1)),(y - (1))], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(x - (1)),(y + (1))], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(x + (1)),(y - (1))], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(x + (1)),(y + (1))], null)], null);
 });
 /**

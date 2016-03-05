@@ -357,10 +357,11 @@ return and__6144__auto__;
  * Registers an action
  */
 obb_demo.boardground.register_action = (function obb_demo$boardground$register_action(game_data,game,player,action,coord){
-var current_actions = cljs.core.cst$kw$actions.cljs$core$IFn$_invoke$arity$1(game_data);
+var current_actions = cljs.core.get.cljs$core$IFn$_invoke$arity$3(game_data,cljs.core.cst$kw$actions,cljs.core.PersistentVector.EMPTY);
+var next_actions = cljs.core.conj.cljs$core$IFn$_invoke$arity$2(current_actions,action);
 var result = obb_rules.turn.simulate_actions.cljs$core$IFn$_invoke$arity$3(game,player,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [action], null));
 if(cljs.core.truth_(obb_rules.result.succeeded_QMARK_(result))){
-return obb_demo.state.set_page_data_BANG_(obb_demo.boardground.with_selected_element(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(game_data,cljs.core.cst$kw$game,obb_rules.result.result_board(result)),cljs.core.cst$kw$action_DASH_points,obb_rules.result.result_cost(result)),cljs.core.cst$kw$actions,cljs.core.conj.cljs$core$IFn$_invoke$arity$2(action,current_actions)),coord));
+return obb_demo.state.set_page_data_BANG_(obb_demo.boardground.with_selected_element(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.assoc_in(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(game_data,cljs.core.cst$kw$game,obb_rules.result.result_board(result)),cljs.core.cst$kw$action_DASH_points,obb_rules.result.result_cost(result)),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$game,cljs.core.cst$kw$history], null),cljs.core.concat.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$history.cljs$core$IFn$_invoke$arity$1(game_data),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [next_actions], null))),cljs.core.cst$kw$actions,next_actions),coord));
 } else {
 return cljs.core.println.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([result], 0));
 }
@@ -467,35 +468,35 @@ return game_data;
  * Renders the full game's board
  */
 obb_demo.boardground.render = (function obb_demo$boardground$render(options,game_data){
-return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$obb_DASH_board_DASH_panel,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$style,obb_demo.boardground.boardground_size(options)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$img$obb_DASH_ice,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$src,"img/ice.jpg"], null)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$obb_DASH_board,(function (){var iter__6928__auto__ = (function obb_demo$boardground$render_$_iter__15829(s__15830){
+return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$obb_DASH_board_DASH_panel,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$style,obb_demo.boardground.boardground_size(options)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$img$obb_DASH_ice,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$src,"img/ice.jpg"], null)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$obb_DASH_board,(function (){var iter__6928__auto__ = (function obb_demo$boardground$render_$_iter__15958(s__15959){
 return (new cljs.core.LazySeq(null,(function (){
-var s__15830__$1 = s__15830;
+var s__15959__$1 = s__15959;
 while(true){
-var temp__4657__auto__ = cljs.core.seq(s__15830__$1);
+var temp__4657__auto__ = cljs.core.seq(s__15959__$1);
 if(temp__4657__auto__){
 var xs__5205__auto__ = temp__4657__auto__;
 var y = cljs.core.first(xs__5205__auto__);
-var iterys__6924__auto__ = ((function (s__15830__$1,y,xs__5205__auto__,temp__4657__auto__){
-return (function obb_demo$boardground$render_$_iter__15829_$_iter__15831(s__15832){
-return (new cljs.core.LazySeq(null,((function (s__15830__$1,y,xs__5205__auto__,temp__4657__auto__){
+var iterys__6924__auto__ = ((function (s__15959__$1,y,xs__5205__auto__,temp__4657__auto__){
+return (function obb_demo$boardground$render_$_iter__15958_$_iter__15960(s__15961){
+return (new cljs.core.LazySeq(null,((function (s__15959__$1,y,xs__5205__auto__,temp__4657__auto__){
 return (function (){
-var s__15832__$1 = s__15832;
+var s__15961__$1 = s__15961;
 while(true){
-var temp__4657__auto____$1 = cljs.core.seq(s__15832__$1);
+var temp__4657__auto____$1 = cljs.core.seq(s__15961__$1);
 if(temp__4657__auto____$1){
-var s__15832__$2 = temp__4657__auto____$1;
-if(cljs.core.chunked_seq_QMARK_(s__15832__$2)){
-var c__6926__auto__ = cljs.core.chunk_first(s__15832__$2);
+var s__15961__$2 = temp__4657__auto____$1;
+if(cljs.core.chunked_seq_QMARK_(s__15961__$2)){
+var c__6926__auto__ = cljs.core.chunk_first(s__15961__$2);
 var size__6927__auto__ = cljs.core.count(c__6926__auto__);
-var b__15834 = cljs.core.chunk_buffer(size__6927__auto__);
-if((function (){var i__15833 = (0);
+var b__15963 = cljs.core.chunk_buffer(size__6927__auto__);
+if((function (){var i__15962 = (0);
 while(true){
-if((i__15833 < size__6927__auto__)){
-var x = cljs.core._nth.cljs$core$IFn$_invoke$arity$2(c__6926__auto__,i__15833);
-cljs.core.chunk_append(b__15834,obb_demo.boardground.square(obb_demo.boardground.prepare_game_data(game_data),x,y));
+if((i__15962 < size__6927__auto__)){
+var x = cljs.core._nth.cljs$core$IFn$_invoke$arity$2(c__6926__auto__,i__15962);
+cljs.core.chunk_append(b__15963,obb_demo.boardground.square(obb_demo.boardground.prepare_game_data(game_data),x,y));
 
-var G__15840 = (i__15833 + (1));
-i__15833 = G__15840;
+var G__15969 = (i__15962 + (1));
+i__15962 = G__15969;
 continue;
 } else {
 return true;
@@ -503,29 +504,29 @@ return true;
 break;
 }
 })()){
-return cljs.core.chunk_cons(cljs.core.chunk(b__15834),obb_demo$boardground$render_$_iter__15829_$_iter__15831(cljs.core.chunk_rest(s__15832__$2)));
+return cljs.core.chunk_cons(cljs.core.chunk(b__15963),obb_demo$boardground$render_$_iter__15958_$_iter__15960(cljs.core.chunk_rest(s__15961__$2)));
 } else {
-return cljs.core.chunk_cons(cljs.core.chunk(b__15834),null);
+return cljs.core.chunk_cons(cljs.core.chunk(b__15963),null);
 }
 } else {
-var x = cljs.core.first(s__15832__$2);
-return cljs.core.cons(obb_demo.boardground.square(obb_demo.boardground.prepare_game_data(game_data),x,y),obb_demo$boardground$render_$_iter__15829_$_iter__15831(cljs.core.rest(s__15832__$2)));
+var x = cljs.core.first(s__15961__$2);
+return cljs.core.cons(obb_demo.boardground.square(obb_demo.boardground.prepare_game_data(game_data),x,y),obb_demo$boardground$render_$_iter__15958_$_iter__15960(cljs.core.rest(s__15961__$2)));
 }
 } else {
 return null;
 }
 break;
 }
-});})(s__15830__$1,y,xs__5205__auto__,temp__4657__auto__))
+});})(s__15959__$1,y,xs__5205__auto__,temp__4657__auto__))
 ,null,null));
-});})(s__15830__$1,y,xs__5205__auto__,temp__4657__auto__))
+});})(s__15959__$1,y,xs__5205__auto__,temp__4657__auto__))
 ;
 var fs__6925__auto__ = cljs.core.seq(iterys__6924__auto__(cljs.core.range.cljs$core$IFn$_invoke$arity$2((1),(9))));
 if(fs__6925__auto__){
-return cljs.core.concat.cljs$core$IFn$_invoke$arity$2(fs__6925__auto__,obb_demo$boardground$render_$_iter__15829(cljs.core.rest(s__15830__$1)));
+return cljs.core.concat.cljs$core$IFn$_invoke$arity$2(fs__6925__auto__,obb_demo$boardground$render_$_iter__15958(cljs.core.rest(s__15959__$1)));
 } else {
-var G__15841 = cljs.core.rest(s__15830__$1);
-s__15830__$1 = G__15841;
+var G__15970 = cljs.core.rest(s__15959__$1);
+s__15959__$1 = G__15970;
 continue;
 }
 } else {

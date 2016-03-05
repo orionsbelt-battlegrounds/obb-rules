@@ -28,15 +28,27 @@
   (let [lineup (common/build-lineup board stash)
         lineup-quantities (common/build-lineup-quantities lineup stash)
         raw-actions (common/build-deploy-actions player lineup-quantities 7)
-        actions (map deploy/build-deploy raw-actions)
+        actions (map deploy/deploy-action raw-actions)
+        board (assoc board :deploy-actions raw-actions)
         start-result (result/action-success board 0)]
     (reduce (partial common/do-actions player) start-result actions)))
+
+(defn build-history
+  "Takes the auto deploy action and adds the actual run deploy actions
+  on the history"
+  [result raw-actions]
+  (let [history (get-in result [:board :history])
+        deploy-actions (into (get-in result [:board :deploy-actions]) raw-actions)
+        history (concat history [deploy-actions])
+        result (assoc-in result [:board :history] history)]
+    result))
 
 (defn- deploy-back-row
   "Deploys a back row with all the given units"
   [result player stash]
   (let [raw-actions (common/build-deploy-actions player stash 8)
-        actions (map deploy/build-deploy raw-actions)]
+        result (build-history result raw-actions)
+        actions (map deploy/deploy-action raw-actions)]
     (reduce (partial common/do-actions player) result actions)))
 
 (defn deploy

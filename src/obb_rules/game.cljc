@@ -16,6 +16,7 @@
       (simplify/name= state current-state))))
 
 (defn deploy? "True if in deploy state" [game] (state? game :deploy))
+(defn final? "True if the game has ended" [game] (state? game :final))
 (defn player-turn? "True if player's state" [game player] (state? game player))
 (defn get-stash "Gets the player's stash" [game player] (board/get-stash game player))
 (defn mode "Gets the game mode" [game] (or (game :mode) :default))

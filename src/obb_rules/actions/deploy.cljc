@@ -53,3 +53,7 @@
         (result/action-failed error)
         (process-deploy player board quantity unit coordinate element stash)))))
 
+(defn deploy-action
+  "Creates an action fn based on a deploy raw action"
+  [args]
+  (build-deploy (rest args)))

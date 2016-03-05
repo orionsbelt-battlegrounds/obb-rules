@@ -23,10 +23,10 @@ return obb_rules.turn.simulate_actions.cljs$core$IFn$_invoke$arity$3(board,playe
 /**
  * Evaluates the socres of p1 and p2
  */
-obb_rules.ai.common.eval_scores = (function obb_rules$ai$common$eval_scores(player,p__15237){
-var vec__15239 = p__15237;
-var score1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15239,(0),null);
-var score2 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15239,(1),null);
+obb_rules.ai.common.eval_scores = (function obb_rules$ai$common$eval_scores(player,p__15366){
+var vec__15368 = p__15366;
+var score1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15368,(0),null);
+var score2 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15368,(1),null);
 if(cljs.core.truth_(obb_rules.simplifier.name_EQ_(player,cljs.core.cst$kw$p1))){
 return (score1 - score2);
 } else {
@@ -63,29 +63,29 @@ if((obb_rules.element.element_range(attacker) < distance)){
 return targets;
 } else {
 if(cljs.core.truth_(obb_rules.result.failed_QMARK_(result))){
-var G__15240 = game;
-var G__15241 = attacker;
-var G__15242 = targets;
-var G__15243 = next_coordinate;
-var G__15244 = ((1) + distance);
-game = G__15240;
-attacker = G__15241;
-targets = G__15242;
-current_coordinate = G__15243;
-distance = G__15244;
+var G__15369 = game;
+var G__15370 = attacker;
+var G__15371 = targets;
+var G__15372 = next_coordinate;
+var G__15373 = ((1) + distance);
+game = G__15369;
+attacker = G__15370;
+targets = G__15371;
+current_coordinate = G__15372;
+distance = G__15373;
 continue;
 } else {
 var targets__$1 = cljs.core.conj.cljs$core$IFn$_invoke$arity$2(targets,obb_rules.ai.common.build_target(player,result,raw_action,distance));
-var G__15245 = game;
-var G__15246 = attacker;
-var G__15247 = targets__$1;
-var G__15248 = next_coordinate;
-var G__15249 = ((1) + distance);
-game = G__15245;
-attacker = G__15246;
-targets = G__15247;
-current_coordinate = G__15248;
-distance = G__15249;
+var G__15374 = game;
+var G__15375 = attacker;
+var G__15376 = targets__$1;
+var G__15377 = next_coordinate;
+var G__15378 = ((1) + distance);
+game = G__15374;
+attacker = G__15375;
+targets = G__15376;
+current_coordinate = G__15377;
+distance = G__15378;
 continue;
 
 }
@@ -138,8 +138,8 @@ var coordinate = obb_rules.element.element_coordinate.cljs$core$IFn$_invoke$arit
 var player = obb_rules.element.element_player.cljs$core$IFn$_invoke$arity$1(element);
 var dirs = obb_rules.actions.direction.other(obb_rules.element.element_direction.cljs$core$IFn$_invoke$arity$1(element));
 var options = cljs.core.filter.cljs$core$IFn$_invoke$arity$2(((function (coordinate,player,dirs){
-return (function (p1__15250_SHARP_){
-return cljs.core.seq(p1__15250_SHARP_);
+return (function (p1__15379_SHARP_){
+return cljs.core.seq(p1__15379_SHARP_);
 });})(coordinate,player,dirs))
 ,cljs.core.flatten(cljs.core.map.cljs$core$IFn$_invoke$arity$2(cljs.core.partial.cljs$core$IFn$_invoke$arity$3(obb_rules.ai.common.rotate_and_attack,game,element),dirs)));
 return options;
@@ -156,11 +156,11 @@ return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMP
 /**
  * Builds options from a result
  */
-obb_rules.ai.common.build_options = (function obb_rules$ai$common$build_options(p__15251){
-var vec__15253 = p__15251;
-var action = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15253,(0),null);
-var result = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15253,(1),null);
-var target_coord = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15253,(2),null);
+obb_rules.ai.common.build_options = (function obb_rules$ai$common$build_options(p__15380){
+var vec__15382 = p__15380;
+var action = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15382,(0),null);
+var result = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15382,(1),null);
+var target_coord = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15382,(2),null);
 if(cljs.core.truth_(obb_rules.result.succeeded_QMARK_(result))){
 var previous_cost = cljs.core.cst$kw$cost.cljs$core$IFn$_invoke$arity$1(result);
 var game = obb_rules.result.result_board(result);
@@ -194,23 +194,23 @@ return and__6144__auto__;
  *   the unit by chance
  */
 obb_rules.ai.common.move_options = (function obb_rules$ai$common$move_options(var_args){
-var args15254 = [];
-var len__7214__auto___15259 = arguments.length;
-var i__7215__auto___15260 = (0);
+var args15383 = [];
+var len__7214__auto___15388 = arguments.length;
+var i__7215__auto___15389 = (0);
 while(true){
-if((i__7215__auto___15260 < len__7214__auto___15259)){
-args15254.push((arguments[i__7215__auto___15260]));
+if((i__7215__auto___15389 < len__7214__auto___15388)){
+args15383.push((arguments[i__7215__auto___15389]));
 
-var G__15261 = (i__7215__auto___15260 + (1));
-i__7215__auto___15260 = G__15261;
+var G__15390 = (i__7215__auto___15389 + (1));
+i__7215__auto___15389 = G__15390;
 continue;
 } else {
 }
 break;
 }
 
-var G__15256 = args15254.length;
-switch (G__15256) {
+var G__15385 = args15383.length;
+switch (G__15385) {
 case 2:
 return obb_rules.ai.common.move_options.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(arguments[(1)]));
 
@@ -220,7 +220,7 @@ return obb_rules.ai.common.move_options.cljs$core$IFn$_invoke$arity$4((arguments
 
 break;
 default:
-throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args15254.length)].join('')));
+throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args15383.length)].join('')));
 
 }
 });
@@ -238,11 +238,11 @@ var possible_coords = cljs.core.take.cljs$core$IFn$_invoke$arity$2((1),cljs.core
 var run_results = cljs.core.partial.cljs$core$IFn$_invoke$arity$4(obb_rules.ai.common.goto_result,game,element,player);
 var actions_and_results = cljs.core.map.cljs$core$IFn$_invoke$arity$2(run_results,possible_coords);
 return cljs.core.map.cljs$core$IFn$_invoke$arity$2(((function (coordinate,unit,mov_cost,player,possible_coords,run_results,actions_and_results){
-return (function (p__15257){
-var vec__15258 = p__15257;
-var action = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15258,(0),null);
-var result = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15258,(1),null);
-var target_coord = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15258,(2),null);
+return (function (p__15386){
+var vec__15387 = p__15386;
+var action = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15387,(0),null);
+var result = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15387,(1),null);
+var target_coord = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15387,(2),null);
 return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(result,cljs.core.cst$kw$distance,(1)),cljs.core.cst$kw$actions,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [action], null)),cljs.core.cst$kw$value,value),cljs.core.cst$kw$element_DASH_coord,target_coord),cljs.core.cst$kw$cost,mov_cost);
 });})(coordinate,unit,mov_cost,player,possible_coords,run_results,actions_and_results))
 ,actions_and_results);

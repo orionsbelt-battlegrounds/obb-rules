@@ -1,3 +1,4 @@
+npm install
 
 lein with-profile clj deps
 lein with-profile cljs-node deps

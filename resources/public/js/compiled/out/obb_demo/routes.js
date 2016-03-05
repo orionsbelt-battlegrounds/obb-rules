@@ -7,67 +7,67 @@ goog.require('obb_demo.views.units');
 goog.require('obb_demo.views.index');
 goog.require('obb_demo.state');
 goog.require('obb_demo.views.play');
-var action__15863__auto___16029 = (function (params__15864__auto__){
-if(cljs.core.map_QMARK_(params__15864__auto__)){
-var map__16026 = params__15864__auto__;
-var map__16026__$1 = ((((!((map__16026 == null)))?((((map__16026.cljs$lang$protocol_mask$partition0$ & (64))) || (map__16026.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__16026):map__16026);
+var action__15992__auto___16158 = (function (params__15993__auto__){
+if(cljs.core.map_QMARK_(params__15993__auto__)){
+var map__16155 = params__15993__auto__;
+var map__16155__$1 = ((((!((map__16155 == null)))?((((map__16155.cljs$lang$protocol_mask$partition0$ & (64))) || (map__16155.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__16155):map__16155);
 return obb_demo.state.set_page_BANG_(cljs.core.cst$kw$index);
 } else {
-if(cljs.core.vector_QMARK_(params__15864__auto__)){
-var vec__16028 = params__15864__auto__;
+if(cljs.core.vector_QMARK_(params__15993__auto__)){
+var vec__16157 = params__15993__auto__;
 return obb_demo.state.set_page_BANG_(cljs.core.cst$kw$index);
 } else {
 return null;
 }
 }
 });
-secretary.core.add_route_BANG_("/",action__15863__auto___16029);
+secretary.core.add_route_BANG_("/",action__15992__auto___16158);
 
-var action__15863__auto___16033 = (function (params__15864__auto__){
-if(cljs.core.map_QMARK_(params__15864__auto__)){
-var map__16030 = params__15864__auto__;
-var map__16030__$1 = ((((!((map__16030 == null)))?((((map__16030.cljs$lang$protocol_mask$partition0$ & (64))) || (map__16030.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__16030):map__16030);
+var action__15992__auto___16162 = (function (params__15993__auto__){
+if(cljs.core.map_QMARK_(params__15993__auto__)){
+var map__16159 = params__15993__auto__;
+var map__16159__$1 = ((((!((map__16159 == null)))?((((map__16159.cljs$lang$protocol_mask$partition0$ & (64))) || (map__16159.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__16159):map__16159);
 return obb_demo.state.set_page_BANG_(cljs.core.cst$kw$player);
 } else {
-if(cljs.core.vector_QMARK_(params__15864__auto__)){
-var vec__16032 = params__15864__auto__;
+if(cljs.core.vector_QMARK_(params__15993__auto__)){
+var vec__16161 = params__15993__auto__;
 return obb_demo.state.set_page_BANG_(cljs.core.cst$kw$player);
 } else {
 return null;
 }
 }
 });
-secretary.core.add_route_BANG_("/play",action__15863__auto___16033);
+secretary.core.add_route_BANG_("/play",action__15992__auto___16162);
 
-var action__15863__auto___16037 = (function (params__15864__auto__){
-if(cljs.core.map_QMARK_(params__15864__auto__)){
-var map__16034 = params__15864__auto__;
-var map__16034__$1 = ((((!((map__16034 == null)))?((((map__16034.cljs$lang$protocol_mask$partition0$ & (64))) || (map__16034.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__16034):map__16034);
+var action__15992__auto___16166 = (function (params__15993__auto__){
+if(cljs.core.map_QMARK_(params__15993__auto__)){
+var map__16163 = params__15993__auto__;
+var map__16163__$1 = ((((!((map__16163 == null)))?((((map__16163.cljs$lang$protocol_mask$partition0$ & (64))) || (map__16163.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__16163):map__16163);
 return obb_demo.state.set_page_BANG_(cljs.core.cst$kw$many_DASH_games);
 } else {
-if(cljs.core.vector_QMARK_(params__15864__auto__)){
-var vec__16036 = params__15864__auto__;
+if(cljs.core.vector_QMARK_(params__15993__auto__)){
+var vec__16165 = params__15993__auto__;
 return obb_demo.state.set_page_BANG_(cljs.core.cst$kw$many_DASH_games);
 } else {
 return null;
 }
 }
 });
-secretary.core.add_route_BANG_("/many-games",action__15863__auto___16037);
+secretary.core.add_route_BANG_("/many-games",action__15992__auto___16166);
 
-var action__15863__auto___16041 = (function (params__15864__auto__){
-if(cljs.core.map_QMARK_(params__15864__auto__)){
-var map__16038 = params__15864__auto__;
-var map__16038__$1 = ((((!((map__16038 == null)))?((((map__16038.cljs$lang$protocol_mask$partition0$ & (64))) || (map__16038.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__16038):map__16038);
+var action__15992__auto___16170 = (function (params__15993__auto__){
+if(cljs.core.map_QMARK_(params__15993__auto__)){
+var map__16167 = params__15993__auto__;
+var map__16167__$1 = ((((!((map__16167 == null)))?((((map__16167.cljs$lang$protocol_mask$partition0$ & (64))) || (map__16167.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__16167):map__16167);
 return obb_demo.state.set_page_BANG_(cljs.core.cst$kw$units);
 } else {
-if(cljs.core.vector_QMARK_(params__15864__auto__)){
-var vec__16040 = params__15864__auto__;
+if(cljs.core.vector_QMARK_(params__15993__auto__)){
+var vec__16169 = params__15993__auto__;
 return obb_demo.state.set_page_BANG_(cljs.core.cst$kw$units);
 } else {
 return null;
 }
 }
 });
-secretary.core.add_route_BANG_("/units",action__15863__auto___16041);
+secretary.core.add_route_BANG_("/units",action__15992__auto___16170);
 
