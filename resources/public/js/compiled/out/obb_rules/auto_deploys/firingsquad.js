@@ -12,18 +12,18 @@ goog.require('obb_rules.translator');
 /**
  * Translates on how the given unit is good for a firingsquad
  */
-obb_rules.auto_deploys.firingsquad.firing_squad_value = (function obb_rules$auto_deploys$firingsquad$firing_squad_value(p__15280){
-var vec__15282 = p__15280;
-var unit = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15282,(0),null);
-var quantity = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15282,(1),null);
+obb_rules.auto_deploys.firingsquad.firing_squad_value = (function obb_rules$auto_deploys$firingsquad$firing_squad_value(p__15282){
+var vec__15284 = p__15282;
+var unit = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15284,(0),null);
+var quantity = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15284,(1),null);
 return (- obb_rules.unit.unit_range(unit));
 });
 /**
  * From the given stash, finds how may units are first row material
  */
 obb_rules.auto_deploys.firingsquad.front_row_units_to_use = (function obb_rules$auto_deploys$firingsquad$front_row_units_to_use(stash){
-var long_range_units = cljs.core.filter.cljs$core$IFn$_invoke$arity$2((function (p1__15283_SHARP_){
-return (obb_rules.unit.unit_range(cljs.core.first(p1__15283_SHARP_)) > (4));
+var long_range_units = cljs.core.filter.cljs$core$IFn$_invoke$arity$2((function (p1__15285_SHARP_){
+return (obb_rules.unit.unit_range(cljs.core.first(p1__15285_SHARP_)) > (4));
 }),stash);
 var number = cljs.core.count(long_range_units);
 if((number > (0))){

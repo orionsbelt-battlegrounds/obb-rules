@@ -14,17 +14,17 @@ if(typeof obb_rules.ai.firingsquad.actions !== 'undefined'){
 /**
  * Returns a list of actions to apply to the current game
  */
-obb_rules.ai.firingsquad.actions = (function (){var method_table__7069__auto__ = (function (){var G__15394 = cljs.core.PersistentArrayMap.EMPTY;
-return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__15394) : cljs.core.atom.call(null,G__15394));
-})();
-var prefer_table__7070__auto__ = (function (){var G__15395 = cljs.core.PersistentArrayMap.EMPTY;
-return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__15395) : cljs.core.atom.call(null,G__15395));
-})();
-var method_cache__7071__auto__ = (function (){var G__15396 = cljs.core.PersistentArrayMap.EMPTY;
+obb_rules.ai.firingsquad.actions = (function (){var method_table__7069__auto__ = (function (){var G__15396 = cljs.core.PersistentArrayMap.EMPTY;
 return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__15396) : cljs.core.atom.call(null,G__15396));
 })();
-var cached_hierarchy__7072__auto__ = (function (){var G__15397 = cljs.core.PersistentArrayMap.EMPTY;
+var prefer_table__7070__auto__ = (function (){var G__15397 = cljs.core.PersistentArrayMap.EMPTY;
 return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__15397) : cljs.core.atom.call(null,G__15397));
+})();
+var method_cache__7071__auto__ = (function (){var G__15398 = cljs.core.PersistentArrayMap.EMPTY;
+return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__15398) : cljs.core.atom.call(null,G__15398));
+})();
+var cached_hierarchy__7072__auto__ = (function (){var G__15399 = cljs.core.PersistentArrayMap.EMPTY;
+return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__15399) : cljs.core.atom.call(null,G__15399));
 })();
 var hierarchy__7073__auto__ = cljs.core.get.cljs$core$IFn$_invoke$arity$3(cljs.core.PersistentArrayMap.EMPTY,cljs.core.cst$kw$hierarchy,cljs.core.get_global_hierarchy());
 return (new cljs.core.MultiFn(cljs.core.symbol.cljs$core$IFn$_invoke$arity$2("obb-rules.ai.firingsquad","actions"),((function (method_table__7069__auto__,prefer_table__7070__auto__,method_cache__7071__auto__,cached_hierarchy__7072__auto__,hierarchy__7073__auto__){
@@ -74,8 +74,8 @@ var joiner = cljs.core.partial.cljs$core$IFn$_invoke$arity$2(obb_rules.ai.common
 return cljs.core.first(cljs.core.sort_by.cljs$core$IFn$_invoke$arity$2(obb_rules.ai.common.option_value_sorter,cljs.core.map.cljs$core$IFn$_invoke$arity$2(((function (joiner){
 return (function (master_option){
 return cljs.core.reduce.cljs$core$IFn$_invoke$arity$3(joiner,master_option,cljs.core.filter.cljs$core$IFn$_invoke$arity$2(((function (joiner){
-return (function (p1__15398_SHARP_){
-return (cljs.core.cst$kw$cost.cljs$core$IFn$_invoke$arity$1(master_option) >= cljs.core.cst$kw$cost.cljs$core$IFn$_invoke$arity$1(p1__15398_SHARP_));
+return (function (p1__15400_SHARP_){
+return (cljs.core.cst$kw$cost.cljs$core$IFn$_invoke$arity$1(master_option) >= cljs.core.cst$kw$cost.cljs$core$IFn$_invoke$arity$1(p1__15400_SHARP_));
 });})(joiner))
 ,options));
 });})(joiner))
