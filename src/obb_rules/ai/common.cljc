@@ -161,6 +161,7 @@
                  (assoc :distance 1)
                  (assoc :actions [action])
                  (assoc :value value)
+                 (assoc :dummy true)
                  (assoc :element-coord target-coord)
                  (assoc :cost mov-cost)))
           actions-and-results))))
@@ -195,6 +196,14 @@
       (- (* (option :value) cost-factor)))
     0))
 
+(defn value-for-join
+  "Gets the value of the option, considering that the option will me merged
+  with another option."
+  [current-option]
+  (if (:dummy current-option)
+    0
+    (:value current-option)))
+
 (defn join-options
   "Joins the given options on the given board, until the cost is possible"
   [player master current-option]
@@ -213,6 +222,6 @@
           (-> master
               (assoc :board (result/result-board result))
               (assoc :actions (into (master :actions) actions))
-              (update :value + (:value current-option))
+              (update :value + (value-for-join current-option))
               (assoc :cost (+ (master :cost) (current-option :cost))))
           master)))))
