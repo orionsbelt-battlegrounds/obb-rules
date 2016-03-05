@@ -147,7 +147,7 @@
   "Returns a collection of possible options that move
   the unit by chance"
   ([game element]
-   (move-options game element -1000 1))
+   (move-options game element -10000000 1))
   ([game element value max-options]
    (let [coordinate (element/element-coordinate element)
          unit (element/element-unit element)
