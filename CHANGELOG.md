@@ -1,3 +1,6 @@
+### v2.1.0 - ???
+* Added writer and reader to serialize to a simple text format
+
 ### v2.0.0 - 05/07/2015
 * Migrate all code to cljc and make tests pass on JVM, nodejs and the browser
 
