@@ -226,7 +226,7 @@ throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args15383.lengt
 });
 
 obb_rules.ai.common.move_options.cljs$core$IFn$_invoke$arity$2 = (function (game,element){
-return obb_rules.ai.common.move_options.cljs$core$IFn$_invoke$arity$4(game,element,(-1000),(1));
+return obb_rules.ai.common.move_options.cljs$core$IFn$_invoke$arity$4(game,element,(-10000000),(1));
 });
 
 obb_rules.ai.common.move_options.cljs$core$IFn$_invoke$arity$4 = (function (game,element,value,max_options){
