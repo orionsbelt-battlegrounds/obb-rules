@@ -16,6 +16,7 @@
             [obb-rules.board :as board]))
 
 (def element-depth 10)
+(def options-per-element 3)
 
 (defmulti actions
   "Returns a list of actions to apply to the current game"
@@ -132,19 +133,11 @@
   "Gathers possible actions for the given element"
   [game all element]
   (remove empty?
-    (conj all (first (-> (take-best game element element-depth)
-                         (consider-opponent-move element)
-                         (->> (sort-by common/option-value-sorter))
-                         (element-options-logger element))))))
-
-(defn- find-one
-  "Given a collection of sorted options, tries to find a good one"
-  [player options]
-  (let [joiner (partial common/join-options player)
-        the-one (reduce joiner (first options) (rest options))]
-    (logger/log "## Final ~~~~~~~~~~")
-    (logger/ai-option the-one)
-    the-one))
+    (concat all (take options-per-element
+                      (-> (take-best game element element-depth)
+                          (consider-opponent-move element)
+                          (->> (sort-by common/option-value-sorter))
+                          (element-options-logger element))))))
 
 (defmethod actions :turn
   [game player]
@@ -154,7 +147,7 @@
         option (->> (reduce gatherer [] elements)
                     (sort-by common/option-value-sorter)
                     (final-actions-logger)
-                    (find-one player))]
+                    (common/aggregate-best player))]
     (if option
       (option :actions)
       [])))
