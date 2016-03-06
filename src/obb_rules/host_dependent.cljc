@@ -17,3 +17,13 @@
 
 (defn scenarios-to-test []
   (parse-int (get-env "OBB_SCENARIOS_TO_TEST" "1")))
+
+#?(:clj
+    (def parallel-map
+      "Tries to run a map in parallel"
+      pmap))
+
+#?(:cljs
+    (def parallel-map
+      "Tries to run a map in parallel"
+      map))

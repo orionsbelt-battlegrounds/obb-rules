@@ -3,6 +3,7 @@
   "Bot implementation that it's defensive"
   (:require [obb-rules.math :as math]
             [obb-rules.actions.move :as move]
+            [obb-rules.host-dependent :as host]
             [obb-rules.simplifier :as simplify]
             [obb-rules.element :as element]
             [obb-rules.evaluator :as evaluator]
@@ -114,20 +115,21 @@
   "For each option given, will play a bot against it and recalculate
   option value"
   [options element]
-  (map (fn [option]
-         (when option
-           (let [board (:board option)
-                 player (game/state board)
-                 scores (evaluator/eval-game board)
-                 counter-player (other-player board)
-                 moved-element (board/get-element board (or (:element-coord option) (element/element-coordinate element)))
-                 board (-> (game/state board counter-player)
-                           (board/element-focus moved-element)
-                           (dissoc :removed-elements)
-                           (dissoc :action-results))
-                 counter-option (firingsquad/turn-option board counter-player)]
-             (merge-counter-option element option counter-option board scores player))))
-       options))
+  (host/parallel-map
+    (fn [option]
+       (when option
+         (let [board (:board option)
+               player (game/state board)
+               scores (evaluator/eval-game board)
+               counter-player (other-player board)
+               moved-element (board/get-element board (or (:element-coord option) (element/element-coordinate element)))
+               board (-> (game/state board counter-player)
+                         (board/element-focus moved-element)
+                         (dissoc :removed-elements)
+                         (dissoc :action-results))
+               counter-option (firingsquad/turn-option board counter-player)]
+           (merge-counter-option element option counter-option board scores player))))
+     options))
 
 (defn- gather-element-actions
   "Gathers possible actions for the given element"
