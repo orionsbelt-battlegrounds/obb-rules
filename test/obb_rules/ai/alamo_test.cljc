@@ -48,12 +48,16 @@
 (deftest prefer-the-star
   (acts-as-bot/prefer-the-star alamo/actions))
 
+(def pretorian (unit/get-unit-by-name "pretorian"))
+(def pretorian-element-p2 (element/create-element :p2 pretorian 100 :south))
 (def crusader (unit/get-unit-by-name "crusader"))
 (def crusader-element-p2 (element/create-element :p2 crusader 25 :south))
 (def doomer (unit/get-unit-by-name "doomer"))
 (def doomer-element-p2 (element/create-element :p2 doomer 25 :south))
 (def kamikaze (unit/get-unit-by-name "kamikaze"))
 (def kamikaze-element-p1 (element/create-element :p1 kamikaze 100 :north))
+(def anubis (unit/get-unit-by-name "anubis"))
+(def anubis-element-p1 (element/create-element :p1 anubis 5 :north))
 
 (deftest chooses-the-most-defensive-option
   (let [board (-> (game-progress/new-game {} {:mode :annihilation})
@@ -67,6 +71,30 @@
         game (result/result-board result)]
     (is (result/succeeded? result))
     (is (board/get-element game [2 3]))))
+
+(deftest runs-away
+  (let [board (-> (board/create-board)
+                  (game/state :p1)
+                  (board/place-element [2 2] crusader-element-p2)
+                  (board/place-element [2 3] anubis-element-p1))
+        actions (alamo/actions board :p1)
+        result (turn/process-actions board :p1 actions)
+        game (result/result-board result)]
+    (is (result/succeeded? result))
+    (is (board/get-element game [2 2]))
+    (is (not (board/get-element game [2 3])))))
+
+(deftest kamikaze-dont-front-attack-pretorian
+  (let [board (-> (board/create-board)
+                  (game/state :p1)
+                  (board/place-element [2 2] pretorian-element-p2)
+                  (board/place-element [6 6] kamikaze-element-p1))
+        actions (alamo/actions board :p1)
+        result (turn/process-actions board :p1 actions)
+        game (result/result-board result)]
+    (is (result/succeeded? result))
+    (is (= 1 (count (board/board-elements game :p1))))
+    (is (= 1 (count (board/board-elements game :p2))))))
 
 (deftest alamo-vs-alamo
   (println "Running" obb-gen/scenarions-to-test "alamo vs alamo")

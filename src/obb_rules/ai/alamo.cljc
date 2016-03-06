@@ -17,7 +17,7 @@
             [obb-rules.board :as board]))
 
 (def element-depth 10)
-(def options-per-element 3)
+(def options-per-element 10)
 
 (defmulti actions
   "Returns a list of actions to apply to the current game"

@@ -153,8 +153,8 @@
          unit (element/element-unit element)
          mov-cost (unit/unit-movement-cost unit)
          player (element/element-player element)
-         possible-coords (take 1 (shuffle (move/find-possible-destinations game element)))
-         run-results (partial go-to-result game element player)
+         possible-coords (take max-options (shuffle (move/find-possible-destinations game element)))
+         run-results (partial goto-result game element player)
          actions-and-results (map run-results possible-coords)]
      (map (fn [[action result target-coord]]
              (-> result
