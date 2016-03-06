@@ -72,16 +72,16 @@ Add the following dependency to your `project.clj` file:
 
 ## Usage
 
-You can create a game with a given _stash_. A stash is the quantity of units available to deploy.
+You can create a game with a given _stash_ for each player. A stash is an
+associative collection with the units and corresponding quantities to deploy.
 
 ```clojure
-(def stash (obb-rules.stash/create :rain 1 
-                                   :crusader 2))
-(def game (obb-rules.game/create stash)
+(def game (obb-rules.game/new-game {:p1 stash :p2 stash})
 ;=> {:state :deploy, :stash {:p2 {:crusader 2, :rain 1}, :p1 {:crusader 2, :rain 1}}, :width 8, :height 8, :elements {}}
 ```
 
-Or you can just create a game with a random stash.
+Or you can just create a game with a random stash. In this case, the same random
+stash is given to all players.
 
 ```clojure
 (obb-rules.game/random)

@@ -87,7 +87,7 @@
 (defn first-blood
   "Deploy and attack"
   [botfn stash]
-  (let [board (game/create stash)
+  (let [board (game/new-game {:p1 stash :p2 stash})
         actions (botfn board :p1)
         result (turn/process-actions board :p1 actions)
         result2 (turn/process-actions (result/result-board result) :p2 actions)

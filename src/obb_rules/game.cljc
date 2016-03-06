@@ -5,7 +5,9 @@
             [obb-rules.host-dependent :as host]
             [obb-rules.board :as board]))
 
-(def version "2.0.0")
+(def version "3.0.0")
+
+(def ^:private possible-players [:p1 :p2])
 
 (defn state?
   "Checks if the game is in a given state"
@@ -28,33 +30,26 @@
   ([game new-state]
    (assoc game :state new-state)))
 
-(defn create
-  "Creates a game for a given stash"
-  ([stash]
-    (create stash stash))
-  ([stash1 stash2]
-   (-> (board/create-board)
-       (board/set-stash :p1 stash1)
-       (board/set-stash :p2 stash2)
-       (assoc :state :deploy))))
-
 (defn new-game
   "Creates a game for the given stashes.
   stashes is an associative collection in which the keys correspond to the
   players and the values to the corresponding stash."
   [stashes & [{:as options} :as args]]
   (-> (reduce-kv (fn [board player stash] (board/set-stash board player stash))
-                             (board/create-board)
-                             stashes)
+                 (board/create-board)
+                 stashes)
       (cond->
         (some? (:terrain options)) (board/board-terrain (:terrain options)))
       (state :deploy)))
 
 (defn random
-  "Creates a game with random units"
+  "Creates a game with a random stash. The same stash is user for all players."
   []
   (let [stash (stash/random)]
-    (create stash)))
+    (-> (reduce (fn [assigned-stashes player] (assoc assigned-stashes player stash))
+                {}
+                possible-players)
+        new-game)))
 
 (defn start-battle
   "Given a deployed board, starts the battle"

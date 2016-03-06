@@ -15,15 +15,23 @@
   "Creates a new game"
   []
   (game/random)
-  #_(-> (stash/create :rain 100
-                    :raptor 100
-                    :pretorian 40
-                    :vector 40
-                    :eagle 50
-                    :kamikaze 50
-                    :fenix 25
-                    :crusader 25)
-      (game/create)))
+  #_(-> {:p1 (stash/create :rain 100
+                           :raptor 100
+                           :pretorian 40
+                           :vector 40
+                           :eagle 50
+                           :kamikaze 50
+                           :fenix 25
+                           :crusader 25)
+         :p2 (stash/create :rain 100
+                           :raptor 100
+                           :pretorian 40
+                           :vector 40
+                           :eagle 50
+                           :kamikaze 50
+                           :fenix 25
+                           :crusader 25)}
+      (game/new-game)))
 
 (defn deployed-game
   "Creates a deployed game"

@@ -27,7 +27,7 @@
 
 (deftest considers-stash
   (let [stash (stash/create :rain 1)
-        game (game/create stash)
+        game  (game/new-game {:p1 stash :p2 stash})
         [score1 score2] (evaluator/eval-game game)]
     (is (= 4 score1))
     (is (= 4 score2))))
@@ -44,7 +44,7 @@
   obb-gen/scenarions-to-test-small
   (prop/for-all [raw-stash (obb-gen/stash)]
     (let [stash (stash/create-from-hash (apply hash-map (flatten raw-stash)))
-          game (game/create stash)
+          game  (game/new-game {:p1 stash :p2 stash})
           [score1 score2] (evaluator/eval-game game)]
       (is (< 0 score1))
       (is (< 0 score2)))))
@@ -53,7 +53,7 @@
   obb-gen/scenarions-to-test-small
   (prop/for-all [raw-stash (obb-gen/stash)]
     (let [stash (stash/create-from-hash (apply hash-map (flatten raw-stash)))
-          game (-> (game/create stash)
+          game (-> (game/new-game {:p1 stash :p2 stash})
                    (turn/process :p1 [:auto-deploy :firingsquad])
                    (result/result-board))
           [score1 score2] (evaluator/eval-game game :value)]

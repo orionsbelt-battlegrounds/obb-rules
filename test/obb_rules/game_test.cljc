@@ -18,13 +18,13 @@
     (is (not (stash/cleared? game)))))
 
 (deftest complete-game-processing
-  (let [stash (stash/create "kamikaze" 1)
-        game (game/create stash)
+  (let [stash   (stash/create "kamikaze" 1)
+        game    (game/new-game {:p1 stash :p2 stash})
         result2 (turn/process game :p1 [:deploy 1 :kamikaze [1 7]])
-        game2 (result/result-board result2)
+        game2   (result/result-board result2)
         result3 (turn/process game2 :p2 [:deploy 1 :kamikaze [1 2]])
-        game3 (result/result-board result3)
-        game4 game3]
+        game3   (result/result-board result3)
+        game4   game3]
     (is (not= :deploy (game/state game4)))
     (is (result/succeeded? result2))
     (is (result/succeeded? result3))

@@ -58,7 +58,7 @@
 (defn- auto-deploy-for
   "Auto deploys for both players for the given stash"
   [stash deploy-template]
-  (let [board (game/create stash)
+  (let [board (game/new-game {:p1 stash :p2 stash})
         result-p2 (process-action board :p2 [:auto-deploy deploy-template])
         board2 (result/result-board result-p2)
         result-p1 (process-action board2 :p1 [:auto-deploy deploy-template])]

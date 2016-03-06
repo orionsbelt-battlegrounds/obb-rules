@@ -27,8 +27,9 @@
                                  [:rotate [1 1] :west]]))))
 
 (deftest complete-game
-  (let [game (-> (stash/create "kamikaze" 1)
-                 game/create
+  (let [game (-> {:p1 (stash/create :kamikaze 1)
+                  :p2 (stash/create :kamikaze 1)}
+                 game/new-game
                  (board/board-terrain :ice)
                  (turn/process-board :p1 [:deploy 1 :kamikaze [1 7]])
                  (turn/process-board :p2 [:deploy 1 :kamikaze [1 2]])
@@ -50,8 +51,9 @@ p2 d12.1.kamikaze
 p1 m1716.1 m1615.1 m1514.1 m1413.1 a1312"))))
 
 (deftest add-stash-to-props-if-deploy-state
-  (let [game (-> (stash/create "kamikaze" 1)
-                 game/create
+  (let [game (-> {:p1 (stash/create :kamikaze 1)
+                  :p2 (stash/create :kamikaze 1)}
+                 game/new-game
                  (board/board-terrain :ice))]
     (is (= (writer/game->str game)
 "terrain: ice
@@ -64,8 +66,9 @@ state: deploy
 "))))
 
 (deftest add-stash-to-props-if-player-1-deployed
-  (let [game (-> (stash/create "kamikaze" 1)
-                 game/create
+  (let [game (-> {:p1 (stash/create :kamikaze 1)
+                  :p2 (stash/create :kamikaze 1)}
+                 game/new-game
                  (board/board-terrain :ice)
                  (turn/process-board :p1 [:deploy 1 :kamikaze [1 7]]))]
     (is (= (writer/game->str game)
@@ -78,8 +81,9 @@ p1 d17.1.kamikaze
 "))))
 
 (deftest add-stash-to-props-if-player-2-deployed
-  (let [game (-> (stash/create "kamikaze" 1)
-                 game/create
+  (let [game (-> {:p1 (stash/create :kamikaze 1)
+                  :p2 (stash/create :kamikaze 1)}
+                 game/new-game
                  (board/board-terrain :ice)
                  (turn/process-board :p2 [:deploy 1 :kamikaze [1 2]]))]
     (is (= (writer/game->str game)
