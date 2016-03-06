@@ -15,10 +15,13 @@
 (defn winner
   "Gets the winner of the given game"
   [game]
-  (cond
-    (board/empty-board? game :p1) :p2
-    (board/empty-board? game :p2) :p1
-    :else :none))
+  (let [[first & others :as players-with-units] (filter
+                                                 #(not (board/empty-board? game %))
+                                                 game/all-players)]
+    (cond
+      (empty? players-with-units) :draw
+      (empty? others)             first
+      :else                       :none)))
 
 (defn- winner?
   "Checks if there is already a winner"

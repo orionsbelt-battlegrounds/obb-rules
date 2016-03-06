@@ -7,7 +7,7 @@
 
 (def version "3.0.0")
 
-(def ^:private possible-players [:p1 :p2])
+(def all-players [:p1 :p2])
 
 (defn state?
   "Checks if the game is in a given state"
@@ -48,7 +48,7 @@
   (let [stash (stash/random)]
     (-> (reduce (fn [assigned-stashes player] (assoc assigned-stashes player stash))
                 {}
-                possible-players)
+                all-players)
         new-game)))
 
 (defn start-battle

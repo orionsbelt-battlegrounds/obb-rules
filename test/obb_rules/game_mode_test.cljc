@@ -17,6 +17,8 @@
                       (board/place-element [1 1] p1-element)
                       (board/place-element [1 2] p2-element)
                       (game-mode/process)))
+(def game-with-empty-board
+  (game/new-game {}))
 
 (deftest game-processing
   (testing "switch current player using a string"
@@ -42,3 +44,16 @@
           final-game (game-mode/process game-on-deploy)]
       (is (not (game-mode/final? game-on-deploy)))
       (is (= "deploy" (game/state final-game))))))
+
+(deftest annihilation-winner
+  (testing "draw when all players have an empty board"
+     (is (= :draw (game-mode/winner game-with-empty-board))))
+  (let [game-with-empty-p1 (-> (game/new-game {})
+                               (board/place-element [1 2] p2-element))
+        winner             (game-mode/winner game-with-empty-p1)]
+    (testing "the winner is returned"
+      (is (= :p2 winner)))
+    (testing "the winner does not have an empty board"
+      (is (not (board/empty-board? game-with-empty-p1 winner))))
+    (testing "the loser has an empty board"
+      (is (board/empty-board? game-with-empty-p1 :p1)))))
