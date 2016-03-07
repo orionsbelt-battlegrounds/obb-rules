@@ -9,6 +9,10 @@
 
 (def all-players [:p1 :p2])
 
+(def ^:private available-modes #{:annihilation :supernova})
+
+(def ^:private default-create-options {:mode :annihilation})
+
 (defn state?
   "Checks if the game is in a given state"
   [game state]
@@ -21,7 +25,11 @@
 (defn final? "True if the game has ended" [game] (state? game :final))
 (defn player-turn? "True if player's state" [game player] (state? game player))
 (defn get-stash "Gets the player's stash" [game player] (board/get-stash game player))
-(defn mode "Gets the game mode" [game] (or (game :mode) :default))
+
+(defn mode
+  "Gets the game mode"
+  [game]
+  (:mode game))
 
 (defn state
   "Gets/Sets the current game's state"
@@ -29,6 +37,22 @@
    (game :state))
   ([game new-state]
    (assoc game :state new-state)))
+
+(defn- merge-create-defaults
+  "Returns the options with the default values applied for the non-specified options"
+  [options]
+  (merge default-create-options options))
+
+(defn- valid-mode?
+  "Checks if the given mode is one of the supported modes"
+  [mode]
+  (contains? available-modes mode))
+
+(defn- choose-mode
+  "Sets the game in the given mode"
+  [game mode]
+  (assert (valid-mode? mode) "Unknown mode")
+  (assoc game :mode mode))
 
 (defn new-game
   "Creates a game for the given stashes.
@@ -40,6 +64,7 @@
                  stashes)
       (cond->
         (some? (:terrain options)) (board/board-terrain (:terrain options)))
+      (choose-mode (:mode (merge-create-defaults options)))
       (state :deploy)))
 
 (defn random
@@ -85,4 +110,3 @@
   are all successful."
   [game]
   (every? #(result/succeeded? (last %)) (action-results game)))
-

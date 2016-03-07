@@ -11,11 +11,19 @@
        :cljs [cljs.test :refer-macros [deftest testing is run-tests]])))
 
 (deftest create-game
-  (let [game (game/random)]
-    (is game)
-    (is (= :deploy (game/state game)))
-    (is (= 0 (board/board-elements-count game)))
-    (is (not (stash/cleared? game)))))
+  (testing "initial game status"
+    (let [game (game/random)]
+      (is (= :deploy (game/state game)))
+      (is (= 0 (board/board-elements-count game)))
+      (is (not (stash/cleared? game)))))
+
+  (testing "default game mode"
+    (is (= :annihilation (-> (game/new-game {})
+                             (game/mode)))))
+
+  (testing "non-default game mode"
+    (let [game (game/new-game {} {:mode :supernova})]
+      (is (= :supernova (game/mode game))))))
 
 (deftest complete-game-processing
   (let [stash   (stash/create "kamikaze" 1)
@@ -48,7 +56,7 @@
       (let [mode (game/mode battle)]
         (is (= true (game-mode/end-game? battle)))
         (is (= :final (game/state battle)))
-        (is (= :default mode))
+        (is (= :annihilation mode))
         (is (= :p1 (game-mode/winner battle)))))))
 
 (deftest ensure-max-action-points
