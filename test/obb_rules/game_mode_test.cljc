@@ -36,13 +36,13 @@
   (testing "game is not finished while in deploy state"
     (let [game-on-deploy (game/random)
           final-game (game-mode/process game-on-deploy)]
-      (is (not (game-mode/final? game-on-deploy)))
+      (is (not (game-mode/end-game? game-on-deploy)))
       (is (= :deploy (game/state final-game)))))
 
   (testing "game is not finished even if it is in deploy state as a string"
     (let [game-on-deploy (-> (game/random) (assoc :state "deploy"))
           final-game (game-mode/process game-on-deploy)]
-      (is (not (game-mode/final? game-on-deploy)))
+      (is (not (game-mode/end-game? game-on-deploy)))
       (is (= "deploy" (game/state final-game))))))
 
 (deftest annihilation-winner

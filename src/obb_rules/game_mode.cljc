@@ -28,7 +28,7 @@
   [game]
   (not= (winner game) :none))
 
-(defn final?
+(defn end-game?
   "Checks if the game is finished"
   [game]
   (and
@@ -61,7 +61,7 @@
   "Checks the current game's state and acts based on it"
   [game]
   (cond
-    (final? game) (finalize game)
+    (end-game? game)           (finalize game)
     (switch-turn-player? game) (switch-turn-player game)
-    (deploy-completed? game) (start-game game)
-    :else game))
+    (deploy-completed? game)   (start-game game)
+    :else                      game))
