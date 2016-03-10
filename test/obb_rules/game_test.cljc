@@ -6,6 +6,7 @@
             [obb-rules.unit :as unit]
             [obb-rules.result :as result]
             [obb-rules.game-mode :as game-mode]
+            [obb-rules.game-progress :as game-progress]
             [obb-rules.stash :as stash]
     #?(:clj [clojure.test :refer [deftest testing is run-tests]]
        :cljs [cljs.test :refer-macros [deftest testing is run-tests]])))
@@ -38,7 +39,7 @@
     (is (result/succeeded? result3))
     (is (stash/cleared? (game/get-stash game4 :p2)))
     (is (stash/cleared? (game/get-stash game4 :p1)))
-    (is (= false (game-mode/end-game? game4)))
+    (is (= false (game-progress/end-game? game4)))
 
     (let [game4 (game/state game4 :p1)
           result (turn/process game4 :p1 [:move [1 7] [1 6] 1]
@@ -54,7 +55,7 @@
       (is (= 5 (result/result-cost result)))
 
       (let [mode (game/mode battle)]
-        (is (= true (game-mode/end-game? battle)))
+        (is (= true (game-progress/end-game? battle)))
         (is (= :final (game/state battle)))
         (is (= :annihilation mode))
         (is (= :p1 (game-mode/winner battle)))))))

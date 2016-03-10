@@ -3,11 +3,10 @@
             [obb-rules.result :as result]
             [obb-rules.simplifier :as simplify]
             [obb-rules.host-dependent :as host]
+            [obb-rules.player :as player]
             [obb-rules.board :as board]))
 
 (def version "3.0.0")
-
-(def all-players [:p1 :p2])
 
 (def ^:private available-modes #{:annihilation :supernova})
 
@@ -73,7 +72,7 @@
   (let [stash (stash/random)]
     (-> (reduce (fn [assigned-stashes player] (assoc assigned-stashes player stash))
                 {}
-                all-players)
+                player/all-players)
         new-game)))
 
 (defn start-battle
