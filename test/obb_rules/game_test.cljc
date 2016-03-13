@@ -88,3 +88,12 @@
       (is (= 0 (result/result-cost result)))
       (is (= "ActionFailed" (result/result-message result)))
       (is (result/failed? result)))))
+
+(deftest stash-updating
+  (let [game           (game/new-game {:p1 {:rain 1}})
+        update-fn      stash/add-units
+        update-fn-args {:crusader 2}]
+    (testing "the result is the same as applying the function directly to the stash"
+      (let [actual-game (game/update-stash game :p1 update-fn update-fn-args)]
+        (is (= (update-fn (board/get-stash game :p1) update-fn-args)
+               (board/get-stash actual-game :p1)))))))

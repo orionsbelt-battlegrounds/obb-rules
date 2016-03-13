@@ -109,3 +109,9 @@
   are all successful."
   [game]
   (every? #(result/succeeded? (last %)) (action-results game)))
+
+(defn update-stash
+  "Updates the specified player's stash by applying f to the stash and the given args"
+  [game player f & f-args]
+  (let [stash (board/get-stash game player)]
+    (board/set-stash game player (apply f stash f-args))))
