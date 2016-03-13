@@ -63,3 +63,10 @@
     (is (= 9 (stash/how-many? stash4 :crusader)))
     (is (= 9 (stash/how-many? stash5 "crusader")))))
 
+(deftest adding-units
+  (let [stash (stash/create :rain 10)]
+    (testing "adding a non existing unit type"
+      (is (= 1 (stash/how-many? (stash/add-units stash {:crusader 1}) :crusader))))
+    (testing "adding an already existing unit type"
+      (is (= 20 (stash/how-many? (stash/add-units stash {:rain 10}) :rain))))))
+
