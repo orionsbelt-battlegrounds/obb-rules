@@ -9,18 +9,19 @@
             [obb-rules.board :as board]
             [obb-rules.turn :as turn]
             [obb-rules.host-dependent :as host]
+            [obb-rules.actions.deploy :as deploy-action]
             [obb-rules.game-mode :as game-mode]))
+
+(defn- get-int
+  "Given a string, gets the char on the specific position, and returns it
+  as an integer"
+  [s pos]
+  (host/parse-int (str (nth s pos))))
 
 (defmulti str->action
   "Converts a action in string format to a raw action"
   (fn [s]
     (first s)))
-
-(defn get-int
-  "Given a string, gets the char on the specific position, and returns it
-  as an integer"
-  [s pos]
-  (host/parse-int (str (nth s pos))))
 
 (defmethod str->action \a
   [s]
@@ -52,7 +53,7 @@
 
 (defmethod str->action \d
   [s]
-  (let [parts (string/split s #"\.")
+  (let [parts (string/split s (re-pattern common/in-action-separator))
         quantity (host/parse-int (nth parts 1))
         unit (keyword (nth parts 2))]
     [:deploy quantity
@@ -66,16 +67,19 @@
   (->> (string/split s (re-pattern common/action-separator))
        (mapv str->action)))
 
+(defn- gather-attributes
+  "Returns the given attribute bag with the raw attribute added"
+  [attrs line]
+  (let [parts (string/split line (re-pattern common/attributes-separator))
+        k (nth parts 0)
+        v (string/trim (nth parts 1))]
+    (assoc attrs (keyword k) (keyword v))))
+
 (defn str->attrs
   "Gets the game attributes as a map"
   [s]
   (->> (string/split-lines s)
-       (reduce (fn [attrs line]
-                 (let [parts (string/split line #":")
-                       k (nth parts 0)
-                       v (string/trim (nth parts 1))]
-                   (assoc attrs (keyword k) (keyword v))))
-               {})))
+       (reduce gather-attributes {})))
 
 (defn str->raw-turn-actions
   "Given a multi line string with several actions, will return a coll
@@ -97,14 +101,18 @@
       [deploy1 deploy2]
       [deploy2 deploy1])))
 
+(defn- add-from-deploy-to-stash
+  "Gets the quantity of a unit deployed on a raw deploy action, and
+  adds it to the given stash map"
+  [stash raw-unit]
+  (let [{:keys [quantity unit]} (deploy-action/analyse raw-unit)]
+    (update stash unit #(+ quantity (or % 0)))))
+
 (defn build-stash-from-deploy
   "Given a collection of raw deploy actions, rebuild the original stash,
   by summing all the quantities"
   [deploy-actions]
-  (reduce (fn [stash [_ quantity unit _]]
-            (update stash unit #(+ quantity (or % 0))))
-          {}
-          deploy-actions))
+  (reduce add-from-deploy-to-stash {} deploy-actions))
 
 (defn str->stash
   "Gets the stash from a stash string"
