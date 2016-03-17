@@ -1,5 +1,6 @@
 (ns obb-rules.ai.acts-as-bot-test
   (:require [obb-rules.game :as game]
+            [obb-rules.game-progress :as game-progress]
             [obb-rules.turn :as turn]
             [obb-rules.board :as board]
             [obb-rules.element :as element]
@@ -23,7 +24,7 @@
 (defn validate-deploy
   "Applies a bot function to a deployable game"
   [botfn]
-  (let [game (game/random)
+  (let [game (game-progress/new-random-game)
         actions (botfn game :p1)
         result (turn/process-actions game :p1 actions)]
     (is (result/succeeded? result))))
@@ -87,7 +88,7 @@
 (defn first-blood
   "Deploy and attack"
   [botfn stash]
-  (let [board (game/new-game {:p1 stash :p2 stash})
+  (let [board (game-progress/new-game {:p1 stash :p2 stash})
         actions (botfn board :p1)
         result (turn/process-actions board :p1 actions)
         result2 (turn/process-actions (result/result-board result) :p2 actions)

@@ -13,7 +13,7 @@
 
 (def p2-element (element/create-element "p2" rain 20 :south))
 
-(def running-game (-> (game/random)
+(def running-game (-> (game-progress/new-random-game)
                       (assoc :state "p1")
                       (board/place-element [1 1] p1-element)
                       (board/place-element [1 2] p2-element)
@@ -33,13 +33,13 @@
       (is (= :p2 (get game :state)))))
 
   (testing "game is not finished while in deploy state"
-    (let [game-on-deploy (game/random)
+    (let [game-on-deploy (game-progress/new-random-game)
           final-game (game-progress/next-stage game-on-deploy)]
       (is (not (game-progress/end-game? game-on-deploy)))
       (is (= :deploy (game/state final-game)))))
 
   (testing "game is not finished even if it is in deploy state as a string"
-    (let [game-on-deploy (-> (game/random) (assoc :state "deploy"))
+    (let [game-on-deploy (-> (game-progress/new-random-game) (assoc :state "deploy"))
           final-game (game-progress/next-stage game-on-deploy)]
       (is (not (game-progress/end-game? game-on-deploy)))
       (is (= "deploy" (game/state final-game))))))

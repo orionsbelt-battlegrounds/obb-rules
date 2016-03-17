@@ -1,7 +1,39 @@
 (ns obb-rules.game-progress
   (:require[obb-rules.stash :as stash]
            [obb-rules.game :as game]
-           [obb-rules.game-mode :as game-mode]))
+           [obb-rules.player :as player]
+           [obb-rules.game-mode :as game-mode]
+           [obb-rules.board :as board]))
+
+(def ^:private default-new-game-options {:mode :annihilation})
+
+(defn- merge-new-game-defaults
+  "Returns the options with the default values applied for the non-specified options"
+  [options]
+  (merge default-new-game-options options))
+
+(defn new-game
+  "Creates a game for the given stashes.
+   stashes is an associative collection in which the keys correspond to the
+   players and the values to the corresponding stash."
+  [stashes & [{:as options} :as args]]
+  (-> (reduce-kv (fn [board player stash] (board/set-stash board player stash))
+                 (board/create-board)
+                 stashes)
+      (cond->
+          (some? (:terrain options)) (board/board-terrain (:terrain options)))
+      (game/mode (:mode (merge-new-game-defaults options)))
+      (game/state :deploy)
+      (game-mode/on-new-game)))
+
+(defn new-random-game
+  "Creates a game with a random stash. The same stash is user for all players."
+  []
+  (let [stash (stash/random)]
+    (-> (reduce (fn [assigned-stashes player] (assoc assigned-stashes player stash))
+                {}
+                player/all-players)
+        new-game)))
 
 (defn deploy-completed?
   "True if it's on deploy and completed"

@@ -1,6 +1,7 @@
 (ns obb-rules.game-mode-test
   (:require
     [obb-rules.game :as game]
+    [obb-rules.game-progress :as game-progress]
     [obb-rules.board :as board]
     [obb-rules.game-mode :as game-mode]
     [obb-rules.unit :as unit]
@@ -12,12 +13,12 @@
 
 (def p2-element (element/create-element "p2" rain 20 :south))
 
-(def game-with-empty-board (game/new-game {}))
+(def game-with-empty-board (game-progress/new-game {}))
 
 (deftest annihilation-winner
   (testing "draw when all players have an empty board"
      (is (= :draw (game-mode/winner game-with-empty-board))))
-  (let [game-with-empty-p1 (-> (game/new-game {})
+  (let [game-with-empty-p1 (-> (game-progress/new-game {})
                                (board/place-element [1 2] p2-element))
         winner             (game-mode/winner game-with-empty-p1)]
     (testing "the winner is returned"
@@ -26,3 +27,12 @@
       (is (not (board/empty-board? game-with-empty-p1 winner))))
     (testing "the loser has an empty board"
       (is (board/empty-board? game-with-empty-p1 :p1)))))
+
+(deftest supernova-on-new-game
+  (testing "star unit is automatically added to the stash"
+    (let [game           {:stash {:p1 {} :p2 {}} :mode :supernova}
+          resulting-game (game-mode/on-new-game game)]
+      (is (empty? (board/get-stash game :p1)))
+      (is (empty? (board/get-stash game :p2)))
+      (is (not-empty (board/get-stash resulting-game :p1)))
+      (is (not-empty (board/get-stash resulting-game :p2))))))

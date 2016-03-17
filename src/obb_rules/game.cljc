@@ -10,8 +10,6 @@
 
 (def ^:private available-modes #{:annihilation :supernova})
 
-(def ^:private default-create-options {:mode :annihilation})
-
 (defn state?
   "Checks if the game is in a given state"
   [game state]
@@ -25,11 +23,6 @@
 (defn player-turn? "True if player's state" [game player] (state? game player))
 (defn get-stash "Gets the player's stash" [game player] (board/get-stash game player))
 
-(defn mode
-  "Gets the game mode"
-  [game]
-  (:mode game))
-
 (defn state
   "Gets/Sets the current game's state"
   ([game]
@@ -37,43 +30,18 @@
   ([game new-state]
    (assoc game :state new-state)))
 
-(defn- merge-create-defaults
-  "Returns the options with the default values applied for the non-specified options"
-  [options]
-  (merge default-create-options options))
-
 (defn- valid-mode?
   "Checks if the given mode is one of the supported modes"
   [mode]
   (contains? available-modes mode))
 
-(defn- choose-mode
-  "Sets the game in the given mode"
-  [game mode]
-  (assert (valid-mode? mode) "Unknown mode")
-  (assoc game :mode mode))
-
-(defn new-game
-  "Creates a game for the given stashes.
-  stashes is an associative collection in which the keys correspond to the
-  players and the values to the corresponding stash."
-  [stashes & [{:as options} :as args]]
-  (-> (reduce-kv (fn [board player stash] (board/set-stash board player stash))
-                 (board/create-board)
-                 stashes)
-      (cond->
-        (some? (:terrain options)) (board/board-terrain (:terrain options)))
-      (choose-mode (:mode (merge-create-defaults options)))
-      (state :deploy)))
-
-(defn random
-  "Creates a game with a random stash. The same stash is user for all players."
-  []
-  (let [stash (stash/random)]
-    (-> (reduce (fn [assigned-stashes player] (assoc assigned-stashes player stash))
-                {}
-                player/all-players)
-        new-game)))
+(defn mode
+  "Gets or sets the game mode"
+  ([game]
+   (:mode game))
+  ([game mode]
+   (assert (valid-mode? mode) "Unknown mode")
+   (assoc game :mode mode)))
 
 (defn start-battle
   "Given a deployed board, starts the battle"
@@ -91,7 +59,7 @@
   (:first-player game))
 
 (defn action-results
-  "Provides the actions a results currently aplied on this game
+  "Provides the actions results currently applied on this game
   if any."
   [game]
   (game :action-results))

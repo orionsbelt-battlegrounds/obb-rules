@@ -1,6 +1,7 @@
 (ns obb-rules.privatize-test
   (:require
     [obb-rules.game :as game]
+    [obb-rules.game-progress :as game-progress]
     [obb-rules.board :as board]
     [obb-rules.privatize :as privatize]
     [obb-rules.unit :as unit]
@@ -11,7 +12,7 @@
        :cljs [cljs.test :refer-macros [deftest testing is run-tests]])))
 
 (def rain (unit/get-unit-by-name "rain"))
-(def deploy-game (game/random))
+(def deploy-game (game-progress/new-random-game))
 (def final-board (assoc deploy-game :state "final"))
 (def p1-board (assoc deploy-game :state :p1))
 (def p2-board (assoc deploy-game :state "p2"))

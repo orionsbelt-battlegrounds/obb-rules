@@ -1,6 +1,7 @@
 (ns obb-demo.processor
   (:require [obb-demo.state :as state]
             [obb-rules.game :as game]
+            [obb-rules.game-progress :as game-progress]
             [obb-rules.stash :as stash]
             [obb-rules.math :as math]
             [obb-rules.simplifier :as simplifier]
@@ -14,7 +15,7 @@
 (defn- new-game
   "Creates a new game"
   []
-  (game/random)
+  (game-progress/new-random-game)
   #_(-> {:p1 (stash/create :rain 100
                            :raptor 100
                            :pretorian 40
@@ -31,7 +32,7 @@
                            :kamikaze 50
                            :fenix 25
                            :crusader 25)}
-      (game/new-game)))
+      (game-progress/new-game)))
 
 (defn deployed-game
   "Creates a deployed game"

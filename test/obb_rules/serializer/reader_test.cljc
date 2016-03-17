@@ -4,6 +4,7 @@
     [obb-rules.serializer.writer :as writer]
     [obb-rules.stash :as stash]
     [obb-rules.game :as game]
+    [obb-rules.game-progress :as game-progress]
     [obb-rules.turn :as turn]
     [obb-rules.result :as result]
     [obb-rules.board :as board]
@@ -76,7 +77,7 @@
 (deftest complete-game
   (test-game (-> {:p1 (stash/create :kamikaze 1)
                   :p2 (stash/create :kamikaze 1)}
-                 game/new-game
+                 game-progress/new-game
                  (board/board-terrain :ice)
                  (turn/process-board :p1 [:deploy 1 :kamikaze [1 7]])
                  (turn/process-board :p2 [:deploy 1 :kamikaze [1 2]])
@@ -90,7 +91,7 @@
 (deftest not-complete-game
   (test-game (-> {:p1 (stash/create :kamikaze 1)
                   :p2 (stash/create :kamikaze 1)}
-                 game/new-game
+                 game-progress/new-game
                  (board/board-terrain :ice)
                  (turn/process-board :p1 [:deploy 1 :kamikaze [1 7]])
                  (turn/process-board :p2 [:deploy 1 :kamikaze [1 2]])
@@ -103,21 +104,21 @@
 (deftest just-player-1-deployed
   (test-game (-> {:p1 (stash/create :kamikaze 1)
                   :p2 (stash/create :kamikaze 1)}
-                 game/new-game
+                 game-progress/new-game
                  (board/board-terrain :ice)
                  (turn/process-board :p1 [:deploy 1 :kamikaze [1 7]]))))
 
 (deftest just-player-2-deployed
   (test-game (-> {:p1 (stash/create :kamikaze 1)
                   :p2 (stash/create :kamikaze 1)}
-                 game/new-game
+                 game-progress/new-game
                  (board/board-terrain :ice)
                  (turn/process-board :p2 [:deploy 1 :kamikaze [1 2]]))))
 
 (deftest game-ready-to-start
   (test-game (-> {:p1 (stash/create :kamikaze 1)
                   :p2 (stash/create :kamikaze 1)}
-                 game/new-game
+                 game-progress/new-game
                  (board/board-terrain :ice)
                  (turn/process-board :p1 [:deploy 1 :kamikaze [1 7]])
                  (turn/process-board :p2 [:deploy 1 :kamikaze [1 2]])
@@ -133,7 +134,7 @@
 (deftest allow-white-spaces
   (let [game (-> {:p1 (stash/create :kamikaze 1)
                   :p2 (stash/create :kamikaze 1)}
-                 game/new-game
+                 game-progress/new-game
                  (board/board-terrain :ice)
                  (turn/process-board :p1 [:deploy 1 :kamikaze [1 7]])
                  (turn/process-board :p2 [:deploy 1 :kamikaze [1 2]])
