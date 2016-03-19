@@ -124,3 +124,27 @@
     (let [stash (stash/create-from-hash (apply hash-map (flatten raw-stash)))
           result (acts-as-bot/first-blood firingsquad/actions stash)]
       (test-game (:board result)))))
+
+(deftest allow-white-spaces
+  (let [game (-> (stash/create "kamikaze" 1)
+                 game/create
+                 (board/board-terrain :ice)
+                 (turn/process-board :p1 [:deploy 1 :kamikaze [1 7]])
+                 (turn/process-board :p2 [:deploy 1 :kamikaze [1 2]])
+                 (game/start-battle :p1)
+                 (turn/process-board :p1 [:move [1 7] [1 6] 1]
+                                         [:move [1 6] [1 5] 1]
+                                         [:move [1 5] [1 4] 1]
+                                         [:move [1 4] [1 3] 1]
+                                         [:attack [1 3] [1 2]]))]
+    (is (= game
+           (reader/str->game "terrain: ice
+                              first-player: p1
+                              state: final
+                              winner: p1
+
+                              p1 d17.1.kamikaze
+                              p2 d12.1.kamikaze
+
+                              p1 m1716.1 m1615.1 m1514.1 m1413.1 a1312")))))
+

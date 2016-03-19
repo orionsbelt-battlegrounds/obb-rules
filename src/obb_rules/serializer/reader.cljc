@@ -83,17 +83,23 @@
         v (string/trim (nth parts 1))]
     (assoc attrs (keyword k) (keyword v))))
 
+(defn- split-lines
+  "Splits the given string in lines, and also trims them"
+  [s]
+  (->> (string/split-lines s)
+       (map string/trim)))
+
 (defn str->attrs
   "Gets the game attributes as a map"
   [s]
-  (->> (string/split-lines s)
+  (->> (split-lines s)
        (reduce gather-attributes {})))
 
 (defn str->history-items
   "Creates a history from a string"
   [s]
   (if s
-    (->> (string/split-lines s)
+    (->> (split-lines s)
          (mapv str->history-item))
     []))
 
