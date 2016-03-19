@@ -38,6 +38,18 @@
        (board/set-stash :p2 stash2)
        (assoc :state :deploy))))
 
+(defn new-game
+  "Creates a game for the given stashes.
+  stashes is an associative collection in which the keys correspond to the
+  players and the values to the corresponding stash."
+  [stashes & [{:as options} :as args]]
+  (-> (reduce-kv (fn [board player stash] (board/set-stash board player stash))
+                             (board/create-board)
+                             stashes)
+      (cond->
+        (some? (:terrain options)) (board/board-terrain (:terrain options)))
+      (state :deploy)))
+
 (defn random
   "Creates a game with random units"
   []

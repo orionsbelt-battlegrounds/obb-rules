@@ -162,7 +162,6 @@
         stash1 (build-stash attrs :p1 p1-deploy)
         stash2 (build-stash attrs :p2 p2-deploy)
         turn-history (str->history-items (nth parts 2 nil))]
-    (-> (game/create stash1 stash2)
-        (board/board-terrain (:terrain attrs))
+    (-> (game/new-game {:p1 stash1 :p2 stash2} attrs)
         (turn/process-history deploy-history)
         (start-battle attrs turn-history))))
