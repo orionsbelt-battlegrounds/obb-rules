@@ -67,6 +67,14 @@
   (->> (string/split s (re-pattern common/action-separator))
        (mapv str->action)))
 
+(defn str->history-item
+  "Creates a history item from a string"
+  [s]
+  (let [parts (string/split s (re-pattern common/action-separator))
+        player (keyword (first parts))
+        actions (mapv str->action (rest parts))]
+    {:player player :actions actions}))
+
 (defn- gather-attributes
   "Returns the given attribute bag with the raw attribute added"
   [attrs line]
@@ -81,23 +89,21 @@
   (->> (string/split-lines s)
        (reduce gather-attributes {})))
 
-(defn str->raw-turn-actions
-  "Given a multi line string with several actions, will return a coll
-  of raw turn actions"
+(defn str->history-items
+  "Creates a history from a string"
   [s]
   (if s
     (->> (string/split-lines s)
-         (mapv str->actions))
+         (mapv str->history-item))
     []))
 
 (defn deploy-per-player
   "Given two deploy turns, this fn returns the raw actions for each player"
-  [deploy-turns]
-  (let [deploy1 (first deploy-turns)
-        deploy2 (second deploy-turns)
-        first-action (first deploy1)
-        [x y] (last first-action)]
-    (if (and (some? y) (> y 6)) ;; p1 deploys on rows 7 and 8
+  [deploy-history]
+  (let [deploy1 (first deploy-history)
+        deploy2 (second deploy-history)
+        player (:player deploy1)]
+    (if (= :p1 player)
       [deploy1 deploy2]
       [deploy2 deploy1])))
 
@@ -111,8 +117,8 @@
 (defn build-stash-from-deploy
   "Given a collection of raw deploy actions, rebuild the original stash,
   by summing all the quantities"
-  [deploy-actions]
-  (reduce add-from-deploy-to-stash {} deploy-actions))
+  [deploy-history-item]
+  (reduce add-from-deploy-to-stash {} (:actions deploy-history-item)))
 
 (defn str->stash
   "Gets the stash from a stash string"
@@ -125,31 +131,19 @@
 
 (defn build-stash
   "Gets the stash for the given player"
-  [attrs player deploy-actions]
+  [attrs player deploy-history-item]
   (if-let [raw-stash (get attrs (keyword (str (name player) "-stash")) nil)]
     (str->stash (name raw-stash))
-    (build-stash-from-deploy deploy-actions)))
-
-(defn process-turns
-  "Processes the given turns on the given game"
-  [game turns]
-  (reduce (fn [game turn]
-            (let [curr-player (game/state game)
-                  result (turn/process-actions game curr-player turn)]
-              (if (result/succeeded? result)
-                (:board result)
-                (reduced result))))
-          game
-          turns))
+    (build-stash-from-deploy deploy-history-item)))
 
 (defn start-battle
   "Starts the game battle and runs turn actions"
-  [game attrs turn-actions]
+  [game attrs history]
   (if (game/deploy? game)
     game
     (-> game
         (game/start-battle (:first-player attrs))
-        (process-turns turn-actions))))
+        (turn/process-history history))))
 
 (defn str->game
   "Given a game string, returns the game, fully processed with all the
@@ -157,13 +151,12 @@
   [s]
   (let [parts (string/split s (re-pattern common/context-separator))
         attrs (str->attrs (nth parts 0))
-        deploy-actions (str->raw-turn-actions (nth parts 1 nil))
-        [p1-deploy p2-deploy] (deploy-per-player deploy-actions)
+        deploy-history (str->history-items (nth parts 1 nil))
+        [p1-deploy p2-deploy] (deploy-per-player deploy-history)
         stash1 (build-stash attrs :p1 p1-deploy)
         stash2 (build-stash attrs :p2 p2-deploy)
-        turn-actions (str->raw-turn-actions (nth parts 2 nil))]
+        turn-history (str->history-items (nth parts 2 nil))]
     (-> (game/create stash1 stash2)
         (board/board-terrain (:terrain attrs))
-        (turn/process-board-actions :p1 p1-deploy)
-        (turn/process-board-actions :p2 p2-deploy)
-        (start-battle attrs turn-actions))))
+        (turn/process-history deploy-history)
+        (start-battle attrs turn-history))))

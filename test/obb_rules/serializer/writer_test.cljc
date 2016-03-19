@@ -44,10 +44,10 @@ first-player: p1
 state: final
 winner: p1
 
-d17.1.kamikaze
-d12.1.kamikaze
+p1 d17.1.kamikaze
+p2 d12.1.kamikaze
 
-m1716.1 m1615.1 m1514.1 m1413.1 a1312"))))
+p1 m1716.1 m1615.1 m1514.1 m1413.1 a1312"))))
 
 (deftest add-stash-to-props-if-deploy-state
   (let [game (-> (stash/create "kamikaze" 1)
@@ -73,7 +73,7 @@ state: deploy
 p2-stash: 1.kamikaze
 state: deploy
 
-d17.1.kamikaze
+p1 d17.1.kamikaze
 
 "))))
 
@@ -87,7 +87,7 @@ d17.1.kamikaze
 p1-stash: 1.kamikaze
 state: deploy
 
-d12.1.kamikaze
+p2 d12.1.kamikaze
 
 "))))
 

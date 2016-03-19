@@ -40,6 +40,13 @@
        (map action->str)
        (clojure.string/join common/action-separator)))
 
+(defn history-item->str
+  "Renders a history item to a string"
+  [item]
+  (str (name (:player item))
+       common/action-separator
+       (actions->str (:actions item))))
+
 (defn stash->str
   "Specific stash as a string"
   [stash]
@@ -78,6 +85,6 @@
         turns-history (drop 2 history)]
     (str (game-props->str game)
          common/context-separator
-         (clojure.string/join "\n" (map actions->str deploy-history))
+         (clojure.string/join "\n" (map history-item->str deploy-history))
          common/context-separator
-         (clojure.string/join "\n" (map actions->str turns-history)))))
+         (clojure.string/join "\n" (map history-item->str turns-history)))))

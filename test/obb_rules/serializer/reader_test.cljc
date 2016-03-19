@@ -38,18 +38,18 @@
   (is (= {:state :final :winner :p1}
          (reader/str->attrs "state: final\nwinner: p1"))))
 
-(deftest raww-turn-actions-reader
-  (is (= [[[:goto [1 2] [2 3]] [:goto [6 2] [5 2]]]
-          [[:goto [4 7] [2 5]] [:attack [2 5] [2 3]]]]
-         (reader/str->raw-turn-actions "g1223 g6252\ng4725 a2523")))
+(deftest raww-history-reader
+  (is (= [{:player :p1 :actions [[:goto [1 2] [2 3]] [:goto [6 2] [5 2]]]}
+          {:player :p2 :actions [[:goto [4 7] [2 5]] [:attack [2 5] [2 3]]]}]
+         (reader/str->history-items "p1 g1223 g6252\np2 g4725 a2523")))
 
   (testing "empty"
     (is (= []
-           (reader/str->raw-turn-actions nil)))))
+           (reader/str->history-items nil)))))
 
 (deftest deploy-per-player
-  (let [deploy [[[:deploy 1 :kamikaze [1 7]]]
-                [[:deploy 1 :kamikaze [1 2]]]]
+  (let [deploy [{:player :p1 :actions [[:deploy 1 :kamikaze [1 7]]]}
+                {:player :p2 :actions [[:deploy 1 :kamikaze [1 2]]]}]
         [p1-deploy p2-deploy] (reader/deploy-per-player deploy)]
     (is (= p1-deploy (first deploy)))
     (is (= p2-deploy (second deploy)))))
@@ -57,8 +57,8 @@
 (deftest build-stash
   (is (= {:rain 100 :kamikaze 100}
          (reader/build-stash {} :p1
-                             [[:deploy 100 :kamikaze [1 7]]
-                              [:deploy 100 :rain [2 7]]]))))
+                             {:player :p1 :actions [[:deploy 100 :kamikaze [1 7]]
+                                                    [:deploy 100 :rain [2 7]]]}))))
 
 (deftest build-stash-from-str
   (is (= {:rain 100 :kamikaze 100}
