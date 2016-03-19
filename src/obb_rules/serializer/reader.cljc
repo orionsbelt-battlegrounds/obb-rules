@@ -76,7 +76,8 @@
     {:player player :actions actions}))
 
 (defn- gather-attributes
-  "Returns the given attribute bag with the raw attribute added"
+  "Parses string representation of an attribute and associates it to
+  the given attrs map"
   [attrs line]
   (let [parts (string/split line (re-pattern common/attributes-separator))
         k (nth parts 0)
@@ -116,8 +117,8 @@
 (defn- add-from-deploy-to-stash
   "Gets the quantity of a unit deployed on a raw deploy action, and
   adds it to the given stash map"
-  [stash raw-unit]
-  (let [{:keys [quantity unit]} (deploy-action/analyse raw-unit)]
+  [stash raw-action]
+  (let [{:keys [quantity unit]} (deploy-action/analyse raw-action)]
     (update stash unit #(+ quantity (or % 0)))))
 
 (defn build-stash-from-deploy

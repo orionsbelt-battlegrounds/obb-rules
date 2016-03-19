@@ -65,7 +65,8 @@
     (is (result/succeeded? result-p1))
     (is (result/succeeded? result-p2))
     (is (stash/cleared? (board/get-stash (result/result-board result-p1) :p2)))
-    (is (stash/cleared? (board/get-stash (result/result-board result-p1) :p1)))))
+    (is (stash/cleared? (board/get-stash (result/result-board result-p1) :p1)))
+    result-p1))
 
 (deftest test-check-fail-1
   (let [stash (stash/create "crusader" 47 "nova" 47 "heavy-seeker" 47)]
@@ -74,6 +75,16 @@
 (deftest test-check-fail-2
   (let [stash (stash/create "nova" 1 "heavy-seeker" 1 "crusader" 1 "boozer" 1)]
     (auto-deploy-for stash :firingsquad)))
+
+(deftest auto-deploy-history
+  (testing "auto-deploy utility actions should not be written to the history.
+           Instead, the actual deploy actions should be there"
+    (let [stash (stash/create "nova" 1)
+          result (auto-deploy-for stash :firingsquad)
+          history (get-in result [:board :history])
+          item (first history)
+          actions (:actions item)]
+      (is (not= :auto-deploy  (ffirst actions))))))
 
 (defspec any-random-game-should-be-firing-squad-deployed
   (* obb-gen/scenarions-to-test 1)

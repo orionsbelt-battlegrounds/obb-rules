@@ -32,7 +32,8 @@
       (turn/process-actions :p1 [[:auto-deploy :firingsquad]])
       (result/result-board)
       (turn/process-actions :p2 [[:auto-deploy :firingsquad]])
-      (result/result-board)))
+      (result/result-board)
+      (game/start-battle :p1)))
 
 (defn- bot-actions
   "Gets actions"
@@ -55,8 +56,8 @@
       {:game (deployed-game)}
       (-> (assoc game-data :actions actions)
           (assoc :original-actions actions)
-          (assoc :history (concat (get game-data :history (:history game))
-                                  [actions]))
+          (assoc :history (conj (vec (get game-data :history (:history game)))
+                                {:player player :actions actions}))
           (assoc :turn-num (if (= :final player)
                              turn-num
                              (inc turn-num)))))))
