@@ -12,18 +12,18 @@ goog.require('obb_rules.translator');
 /**
  * Translates on how the given unit is good for a firingsquad
  */
-obb_rules.auto_deploys.firingsquad.firing_squad_value = (function obb_rules$auto_deploys$firingsquad$firing_squad_value(p__15282){
-var vec__15284 = p__15282;
-var unit = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15284,(0),null);
-var quantity = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15284,(1),null);
+obb_rules.auto_deploys.firingsquad.firing_squad_value = (function obb_rules$auto_deploys$firingsquad$firing_squad_value(p__15481){
+var vec__15483 = p__15481;
+var unit = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15483,(0),null);
+var quantity = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15483,(1),null);
 return (- obb_rules.unit.unit_range(unit));
 });
 /**
  * From the given stash, finds how may units are first row material
  */
 obb_rules.auto_deploys.firingsquad.front_row_units_to_use = (function obb_rules$auto_deploys$firingsquad$front_row_units_to_use(stash){
-var long_range_units = cljs.core.filter.cljs$core$IFn$_invoke$arity$2((function (p1__15285_SHARP_){
-return (obb_rules.unit.unit_range(cljs.core.first(p1__15285_SHARP_)) > (4));
+var long_range_units = cljs.core.filter.cljs$core$IFn$_invoke$arity$2((function (p1__15484_SHARP_){
+return (obb_rules.unit.unit_range(cljs.core.first(p1__15484_SHARP_)) > (4));
 }),stash);
 var number = cljs.core.count(long_range_units);
 if((number > (0))){
@@ -48,19 +48,19 @@ return cljs.core.reduce.cljs$core$IFn$_invoke$arity$3(cljs.core.partial.cljs$cor
  * Takes the auto deploy action and adds the actual run deploy actions
  *   on the history
  */
-obb_rules.auto_deploys.firingsquad.build_history = (function obb_rules$auto_deploys$firingsquad$build_history(result,raw_actions){
+obb_rules.auto_deploys.firingsquad.build_history = (function obb_rules$auto_deploys$firingsquad$build_history(player,result,raw_actions){
 var history = cljs.core.get_in.cljs$core$IFn$_invoke$arity$2(result,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$board,cljs.core.cst$kw$history], null));
 var deploy_actions = cljs.core.into.cljs$core$IFn$_invoke$arity$2(cljs.core.get_in.cljs$core$IFn$_invoke$arity$2(result,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$board,cljs.core.cst$kw$deploy_DASH_actions], null)),raw_actions);
-var history__$1 = cljs.core.concat.cljs$core$IFn$_invoke$arity$2(history,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [deploy_actions], null));
+var history__$1 = cljs.core.conj.cljs$core$IFn$_invoke$arity$2(history,new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$player,player,cljs.core.cst$kw$actions,deploy_actions], null));
 var result__$1 = cljs.core.assoc_in(result,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$board,cljs.core.cst$kw$history], null),history__$1);
-return result__$1;
+return cljs.core.update_in.cljs$core$IFn$_invoke$arity$4(result__$1,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$board], null),cljs.core.dissoc,cljs.core.cst$kw$deploy_DASH_actions);
 });
 /**
  * Deploys a back row with all the given units
  */
 obb_rules.auto_deploys.firingsquad.deploy_back_row = (function obb_rules$auto_deploys$firingsquad$deploy_back_row(result,player,stash){
 var raw_actions = obb_rules.auto_deploys.common.build_deploy_actions(player,stash,(8));
-var result__$1 = obb_rules.auto_deploys.firingsquad.build_history(result,raw_actions);
+var result__$1 = obb_rules.auto_deploys.firingsquad.build_history(player,result,raw_actions);
 var actions = cljs.core.map.cljs$core$IFn$_invoke$arity$2(obb_rules.actions.deploy.deploy_action,raw_actions);
 return cljs.core.reduce.cljs$core$IFn$_invoke$arity$3(cljs.core.partial.cljs$core$IFn$_invoke$arity$2(obb_rules.auto_deploys.common.do_actions,player),result__$1,actions);
 });

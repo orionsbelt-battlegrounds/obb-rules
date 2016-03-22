@@ -27,13 +27,13 @@ return null;
 /**
  * Moves a coord given a direction
  */
-obb_rules.actions.direction.update = (function obb_rules$actions$direction$update(dir,p__14955){
-var vec__14958 = p__14955;
-var x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14958,(0),null);
-var y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14958,(1),null);
-var vec__14959 = obb_rules.actions.direction.offset(dir);
-var ox = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14959,(0),null);
-var oy = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14959,(1),null);
+obb_rules.actions.direction.update = (function obb_rules$actions$direction$update(dir,p__15151){
+var vec__15154 = p__15151;
+var x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15154,(0),null);
+var y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15154,(1),null);
+var vec__15155 = obb_rules.actions.direction.offset(dir);
+var ox = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15155,(0),null);
+var oy = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15155,(1),null);
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(x + ox),(y + oy)], null);
 });
 /**

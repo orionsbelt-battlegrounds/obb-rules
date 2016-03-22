@@ -1,33 +1,27 @@
 // Compiled by ClojureScript 1.7.228 {:static-fns true, :optimize-constants true}
 goog.provide('obb_rules.serializer.writer');
 goog.require('cljs.core');
-goog.require('obb_rules.game');
 goog.require('obb_rules.game_mode');
-/**
- * This marker separates each context of the dumped game
- *   (properties, deploy, turns,...)
- */
-obb_rules.serializer.writer.context_separator = "\n\n";
-/**
- * This marker separates each action in a collection of actions
- */
-obb_rules.serializer.writer.action_separator = " ";
+goog.require('obb_rules.board');
+goog.require('obb_rules.serializer.common');
+goog.require('obb_rules.game');
+goog.require('clojure.string');
 if(typeof obb_rules.serializer.writer.action__GT_str !== 'undefined'){
 } else {
 /**
  * Translates a raw action to a concise string representation
  */
-obb_rules.serializer.writer.action__GT_str = (function (){var method_table__7069__auto__ = (function (){var G__14891 = cljs.core.PersistentArrayMap.EMPTY;
-return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__14891) : cljs.core.atom.call(null,G__14891));
+obb_rules.serializer.writer.action__GT_str = (function (){var method_table__7069__auto__ = (function (){var G__15095 = cljs.core.PersistentArrayMap.EMPTY;
+return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__15095) : cljs.core.atom.call(null,G__15095));
 })();
-var prefer_table__7070__auto__ = (function (){var G__14892 = cljs.core.PersistentArrayMap.EMPTY;
-return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__14892) : cljs.core.atom.call(null,G__14892));
+var prefer_table__7070__auto__ = (function (){var G__15096 = cljs.core.PersistentArrayMap.EMPTY;
+return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__15096) : cljs.core.atom.call(null,G__15096));
 })();
-var method_cache__7071__auto__ = (function (){var G__14893 = cljs.core.PersistentArrayMap.EMPTY;
-return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__14893) : cljs.core.atom.call(null,G__14893));
+var method_cache__7071__auto__ = (function (){var G__15097 = cljs.core.PersistentArrayMap.EMPTY;
+return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__15097) : cljs.core.atom.call(null,G__15097));
 })();
-var cached_hierarchy__7072__auto__ = (function (){var G__14894 = cljs.core.PersistentArrayMap.EMPTY;
-return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__14894) : cljs.core.atom.call(null,G__14894));
+var cached_hierarchy__7072__auto__ = (function (){var G__15098 = cljs.core.PersistentArrayMap.EMPTY;
+return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__15098) : cljs.core.atom.call(null,G__15098));
 })();
 var hierarchy__7073__auto__ = cljs.core.get.cljs$core$IFn$_invoke$arity$3(cljs.core.PersistentArrayMap.EMPTY,cljs.core.cst$kw$hierarchy,cljs.core.get_global_hierarchy());
 return (new cljs.core.MultiFn(cljs.core.symbol.cljs$core$IFn$_invoke$arity$2("obb-rules.serializer.writer","action->str"),((function (method_table__7069__auto__,prefer_table__7070__auto__,method_cache__7071__auto__,cached_hierarchy__7072__auto__,hierarchy__7073__auto__){
@@ -37,72 +31,104 @@ return cljs.core.first(action);
 ,cljs.core.cst$kw$default,hierarchy__7073__auto__,method_table__7069__auto__,prefer_table__7070__auto__,method_cache__7071__auto__,cached_hierarchy__7072__auto__));
 })();
 }
-obb_rules.serializer.writer.action__GT_str.cljs$core$IMultiFn$_add_method$arity$3(null,cljs.core.cst$kw$deploy,(function (p__14895){
-var vec__14896 = p__14895;
-var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14896,(0),null);
-var quantity = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14896,(1),null);
-var unit = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14896,(2),null);
-var vec__14897 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14896,(3),null);
-var source_x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14897,(0),null);
-var source_y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14897,(1),null);
+obb_rules.serializer.writer.action__GT_str.cljs$core$IMultiFn$_add_method$arity$3(null,cljs.core.cst$kw$deploy,(function (p__15099){
+var vec__15100 = p__15099;
+var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15100,(0),null);
+var quantity = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15100,(1),null);
+var unit = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15100,(2),null);
+var vec__15101 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15100,(3),null);
+var source_x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15101,(0),null);
+var source_y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15101,(1),null);
 return [cljs.core.str("d"),cljs.core.str(source_x),cljs.core.str(source_y),cljs.core.str("."),cljs.core.str(quantity),cljs.core.str("."),cljs.core.str(cljs.core.name(unit))].join('');
 }));
-obb_rules.serializer.writer.action__GT_str.cljs$core$IMultiFn$_add_method$arity$3(null,cljs.core.cst$kw$attack,(function (p__14898){
-var vec__14899 = p__14898;
-var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14899,(0),null);
-var vec__14900 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14899,(1),null);
-var source_x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14900,(0),null);
-var source_y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14900,(1),null);
-var vec__14901 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14899,(2),null);
-var target_x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14901,(0),null);
-var target_y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14901,(1),null);
+obb_rules.serializer.writer.action__GT_str.cljs$core$IMultiFn$_add_method$arity$3(null,cljs.core.cst$kw$attack,(function (p__15102){
+var vec__15103 = p__15102;
+var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15103,(0),null);
+var vec__15104 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15103,(1),null);
+var source_x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15104,(0),null);
+var source_y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15104,(1),null);
+var vec__15105 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15103,(2),null);
+var target_x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15105,(0),null);
+var target_y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15105,(1),null);
 return [cljs.core.str("a"),cljs.core.str(source_x),cljs.core.str(source_y),cljs.core.str(target_x),cljs.core.str(target_y)].join('');
 }));
-obb_rules.serializer.writer.action__GT_str.cljs$core$IMultiFn$_add_method$arity$3(null,cljs.core.cst$kw$goto,(function (p__14902){
-var vec__14903 = p__14902;
-var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14903,(0),null);
-var vec__14904 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14903,(1),null);
-var source_x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14904,(0),null);
-var source_y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14904,(1),null);
-var vec__14905 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14903,(2),null);
-var target_x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14905,(0),null);
-var target_y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14905,(1),null);
+obb_rules.serializer.writer.action__GT_str.cljs$core$IMultiFn$_add_method$arity$3(null,cljs.core.cst$kw$goto,(function (p__15106){
+var vec__15107 = p__15106;
+var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15107,(0),null);
+var vec__15108 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15107,(1),null);
+var source_x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15108,(0),null);
+var source_y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15108,(1),null);
+var vec__15109 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15107,(2),null);
+var target_x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15109,(0),null);
+var target_y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15109,(1),null);
 return [cljs.core.str("g"),cljs.core.str(source_x),cljs.core.str(source_y),cljs.core.str(target_x),cljs.core.str(target_y)].join('');
 }));
-obb_rules.serializer.writer.action__GT_str.cljs$core$IMultiFn$_add_method$arity$3(null,cljs.core.cst$kw$rotate,(function (p__14906){
-var vec__14907 = p__14906;
-var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14907,(0),null);
-var vec__14908 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14907,(1),null);
-var source_x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14908,(0),null);
-var source_y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14908,(1),null);
-var dir = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14907,(2),null);
+obb_rules.serializer.writer.action__GT_str.cljs$core$IMultiFn$_add_method$arity$3(null,cljs.core.cst$kw$rotate,(function (p__15110){
+var vec__15111 = p__15110;
+var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15111,(0),null);
+var vec__15112 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15111,(1),null);
+var source_x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15112,(0),null);
+var source_y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15112,(1),null);
+var dir = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15111,(2),null);
 return [cljs.core.str("r"),cljs.core.str(source_x),cljs.core.str(source_y),cljs.core.str(cljs.core.first(cljs.core.name(dir)))].join('');
 }));
-obb_rules.serializer.writer.action__GT_str.cljs$core$IMultiFn$_add_method$arity$3(null,cljs.core.cst$kw$move,(function (p__14909){
-var vec__14910 = p__14909;
-var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14910,(0),null);
-var vec__14911 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14910,(1),null);
-var source_x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14911,(0),null);
-var source_y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14911,(1),null);
-var vec__14912 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14910,(2),null);
-var target_x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14912,(0),null);
-var target_y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14912,(1),null);
-var quantity = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14910,(3),null);
+obb_rules.serializer.writer.action__GT_str.cljs$core$IMultiFn$_add_method$arity$3(null,cljs.core.cst$kw$move,(function (p__15113){
+var vec__15114 = p__15113;
+var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15114,(0),null);
+var vec__15115 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15114,(1),null);
+var source_x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15115,(0),null);
+var source_y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15115,(1),null);
+var vec__15116 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15114,(2),null);
+var target_x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15116,(0),null);
+var target_y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15116,(1),null);
+var quantity = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15114,(3),null);
 return [cljs.core.str("m"),cljs.core.str(source_x),cljs.core.str(source_y),cljs.core.str(target_x),cljs.core.str(target_y),cljs.core.str("."),cljs.core.str(quantity)].join('');
 }));
 /**
  * Translates a coll of raw actions to a concise string representation
  */
 obb_rules.serializer.writer.actions__GT_str = (function obb_rules$serializer$writer$actions__GT_str(actions){
-var G__14915 = obb_rules.serializer.writer.action_separator;
-var G__14916 = cljs.core.map.cljs$core$IFn$_invoke$arity$2(obb_rules.serializer.writer.action__GT_str,actions);
-return (clojure.string.join.cljs$core$IFn$_invoke$arity$2 ? clojure.string.join.cljs$core$IFn$_invoke$arity$2(G__14915,G__14916) : clojure.string.join.call(null,G__14915,G__14916));
+return clojure.string.join.cljs$core$IFn$_invoke$arity$2(obb_rules.serializer.common.action_separator,cljs.core.map.cljs$core$IFn$_invoke$arity$2(obb_rules.serializer.writer.action__GT_str,actions));
+});
+/**
+ * Renders a history item to a string
+ */
+obb_rules.serializer.writer.history_item__GT_str = (function obb_rules$serializer$writer$history_item__GT_str(item){
+return [cljs.core.str(cljs.core.name(cljs.core.cst$kw$player.cljs$core$IFn$_invoke$arity$1(item))),cljs.core.str(obb_rules.serializer.common.action_separator),cljs.core.str(obb_rules.serializer.writer.actions__GT_str(cljs.core.cst$kw$actions.cljs$core$IFn$_invoke$arity$1(item)))].join('');
+});
+/**
+ * Specific stash as a string
+ */
+obb_rules.serializer.writer.stash__GT_str = (function obb_rules$serializer$writer$stash__GT_str(stash){
+return clojure.string.join.cljs$core$IFn$_invoke$arity$2(obb_rules.serializer.common.stash_separator,cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p__15119){
+var vec__15120 = p__15119;
+var k = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15120,(0),null);
+var v = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15120,(1),null);
+return [cljs.core.str(v),cljs.core.str("."),cljs.core.str(cljs.core.name(k))].join('');
+}),stash));
+});
+/**
+ * Gets a string that represents the player stash, if any
+ */
+obb_rules.serializer.writer.player_stash_str = (function obb_rules$serializer$writer$player_stash_str(game,player){
+var stash = obb_rules.game.get_stash(game,player);
+if(cljs.core.seq(stash)){
+return [cljs.core.str("\n"),cljs.core.str(cljs.core.name(player)),cljs.core.str("-stash: "),cljs.core.str(obb_rules.serializer.writer.stash__GT_str(stash))].join('');
+} else {
+return null;
+}
+});
+/**
+ * Gets a string the represents the stash, to be stored on the props
+ */
+obb_rules.serializer.writer.game_stash_str = (function obb_rules$serializer$writer$game_stash_str(game){
+return [cljs.core.str(obb_rules.serializer.writer.player_stash_str(game,cljs.core.cst$kw$p1)),cljs.core.str(obb_rules.serializer.writer.player_stash_str(game,cljs.core.cst$kw$p2))].join('');
 });
 /**
  * Gets the game properties as a string
  */
 obb_rules.serializer.writer.game_props__GT_str = (function obb_rules$serializer$writer$game_props__GT_str(game){
-return [cljs.core.str("state: "),cljs.core.str(cljs.core.name(obb_rules.game.state.cljs$core$IFn$_invoke$arity$1(game))),cljs.core.str((cljs.core.truth_(obb_rules.game.final_QMARK_(game))?[cljs.core.str("\nwinner: "),cljs.core.str(cljs.core.name(obb_rules.game_mode.winner(game)))].join(''):null))].join('');
+return [cljs.core.str("terrain: "),cljs.core.str(cljs.core.name(obb_rules.board.board_terrain.cljs$core$IFn$_invoke$arity$1(game))),cljs.core.str((cljs.core.truth_(obb_rules.game.deploy_QMARK_(game))?obb_rules.serializer.writer.game_stash_str(game):null)),cljs.core.str((cljs.core.truth_(obb_rules.game.first_player(game))?[cljs.core.str("\nfirst-player: "),cljs.core.str(cljs.core.name(obb_rules.game.first_player(game)))].join(''):null)),cljs.core.str("\nstate: "),cljs.core.str(cljs.core.name(obb_rules.game.state.cljs$core$IFn$_invoke$arity$1(game))),cljs.core.str((cljs.core.truth_(obb_rules.game.final_QMARK_(game))?[cljs.core.str("\nwinner: "),cljs.core.str(cljs.core.name(obb_rules.game_mode.winner(game)))].join(''):null))].join('');
 });
 /**
  * Translates a complete game to a concise string representation
@@ -111,11 +137,5 @@ obb_rules.serializer.writer.game__GT_str = (function obb_rules$serializer$writer
 var history = cljs.core.cst$kw$history.cljs$core$IFn$_invoke$arity$1(game);
 var deploy_history = cljs.core.take.cljs$core$IFn$_invoke$arity$2((2),history);
 var turns_history = cljs.core.drop.cljs$core$IFn$_invoke$arity$2((2),history);
-return [cljs.core.str(obb_rules.serializer.writer.game_props__GT_str(game)),cljs.core.str(obb_rules.serializer.writer.context_separator),cljs.core.str((function (){var G__14921 = "\n";
-var G__14922 = cljs.core.map.cljs$core$IFn$_invoke$arity$2(obb_rules.serializer.writer.actions__GT_str,deploy_history);
-return (clojure.string.join.cljs$core$IFn$_invoke$arity$2 ? clojure.string.join.cljs$core$IFn$_invoke$arity$2(G__14921,G__14922) : clojure.string.join.call(null,G__14921,G__14922));
-})()),cljs.core.str(obb_rules.serializer.writer.context_separator),cljs.core.str((function (){var G__14923 = "\n";
-var G__14924 = cljs.core.map.cljs$core$IFn$_invoke$arity$2(obb_rules.serializer.writer.actions__GT_str,turns_history);
-return (clojure.string.join.cljs$core$IFn$_invoke$arity$2 ? clojure.string.join.cljs$core$IFn$_invoke$arity$2(G__14923,G__14924) : clojure.string.join.call(null,G__14923,G__14924));
-})())].join('');
+return [cljs.core.str(obb_rules.serializer.writer.game_props__GT_str(game)),cljs.core.str(obb_rules.serializer.common.context_separator),cljs.core.str(clojure.string.join.cljs$core$IFn$_invoke$arity$2("\n",cljs.core.map.cljs$core$IFn$_invoke$arity$2(obb_rules.serializer.writer.history_item__GT_str,deploy_history))),cljs.core.str(obb_rules.serializer.common.context_separator),cljs.core.str(clojure.string.join.cljs$core$IFn$_invoke$arity$2("\n",cljs.core.map.cljs$core$IFn$_invoke$arity$2(obb_rules.serializer.writer.history_item__GT_str,turns_history)))].join('');
 });

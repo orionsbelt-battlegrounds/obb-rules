@@ -22,7 +22,7 @@ return obb_rules.game.random();
  * Creates a deployed game
  */
 obb_demo.processor.deployed_game = (function obb_demo$processor$deployed_game(){
-return obb_rules.result.result_board(obb_rules.turn.process_actions(obb_rules.result.result_board(obb_rules.turn.process_actions(obb_demo.processor.new_game(),cljs.core.cst$kw$p1,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$auto_DASH_deploy,cljs.core.cst$kw$firingsquad], null)], null))),cljs.core.cst$kw$p2,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$auto_DASH_deploy,cljs.core.cst$kw$firingsquad], null)], null)));
+return obb_rules.game.start_battle.cljs$core$IFn$_invoke$arity$2(obb_rules.result.result_board(obb_rules.turn.process_actions(obb_rules.result.result_board(obb_rules.turn.process_actions(obb_demo.processor.new_game(),cljs.core.cst$kw$p1,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$auto_DASH_deploy,cljs.core.cst$kw$firingsquad], null)], null))),cljs.core.cst$kw$p2,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$auto_DASH_deploy,cljs.core.cst$kw$firingsquad], null)], null))),cljs.core.cst$kw$p1);
 });
 /**
  * Gets actions
@@ -58,7 +58,7 @@ cljs.core.println.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq(["--"
 if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$final,obb_rules.game.state.cljs$core$IFn$_invoke$arity$1(game))){
 return new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$game,obb_demo.processor.deployed_game()], null);
 } else {
-return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(game_data,cljs.core.cst$kw$actions,actions),cljs.core.cst$kw$original_DASH_actions,actions),cljs.core.cst$kw$history,cljs.core.concat.cljs$core$IFn$_invoke$arity$2(cljs.core.get.cljs$core$IFn$_invoke$arity$3(game_data,cljs.core.cst$kw$history,cljs.core.cst$kw$history.cljs$core$IFn$_invoke$arity$1(game)),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [actions], null))),cljs.core.cst$kw$turn_DASH_num,((cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$final,player))?turn_num:(turn_num + (1))));
+return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(game_data,cljs.core.cst$kw$actions,actions),cljs.core.cst$kw$original_DASH_actions,actions),cljs.core.cst$kw$history,cljs.core.conj.cljs$core$IFn$_invoke$arity$2(cljs.core.vec(cljs.core.get.cljs$core$IFn$_invoke$arity$3(game_data,cljs.core.cst$kw$history,cljs.core.cst$kw$history.cljs$core$IFn$_invoke$arity$1(game))),new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$player,player,cljs.core.cst$kw$actions,actions], null))),cljs.core.cst$kw$turn_DASH_num,((cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$final,player))?turn_num:(turn_num + (1))));
 }
 });
 /**

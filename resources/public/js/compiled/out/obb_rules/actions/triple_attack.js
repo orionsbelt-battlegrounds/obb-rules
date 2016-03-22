@@ -37,44 +37,44 @@ return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMP
 /**
  * Applies triple on the board
  */
-obb_rules.actions.triple_attack.process_triple = (function obb_rules$actions$triple_attack$process_triple(config,p__15162){
-var map__15166 = p__15162;
-var map__15166__$1 = ((((!((map__15166 == null)))?((((map__15166.cljs$lang$protocol_mask$partition0$ & (64))) || (map__15166.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__15166):map__15166);
-var args = map__15166__$1;
-var attacker = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__15166__$1,cljs.core.cst$kw$attacker);
-var board = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__15166__$1,cljs.core.cst$kw$board);
-var info = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__15166__$1,cljs.core.cst$kw$info);
-var unused_damage = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__15166__$1,cljs.core.cst$kw$unused_DASH_damage);
-var targets = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__15166__$1,cljs.core.cst$kw$triple_DASH_targets);
+obb_rules.actions.triple_attack.process_triple = (function obb_rules$actions$triple_attack$process_triple(config,p__15358){
+var map__15362 = p__15358;
+var map__15362__$1 = ((((!((map__15362 == null)))?((((map__15362.cljs$lang$protocol_mask$partition0$ & (64))) || (map__15362.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__15362):map__15362);
+var args = map__15362__$1;
+var attacker = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__15362__$1,cljs.core.cst$kw$attacker);
+var board = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__15362__$1,cljs.core.cst$kw$board);
+var info = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__15362__$1,cljs.core.cst$kw$info);
+var unused_damage = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__15362__$1,cljs.core.cst$kw$unused_DASH_damage);
+var targets = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__15362__$1,cljs.core.cst$kw$triple_DASH_targets);
 var targets__$1 = cljs.core.get.cljs$core$IFn$_invoke$arity$2(args,cljs.core.cst$kw$triple_DASH_targets);
-var vec__15168 = obb_rules.actions.triple_attack.apply_triple(config,attacker,board,info,cljs.core.first(targets__$1));
-var board__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15168,(0),null);
-var info__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15168,(1),null);
+var vec__15364 = obb_rules.actions.triple_attack.apply_triple(config,attacker,board,info,cljs.core.first(targets__$1));
+var board__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15364,(0),null);
+var info__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15364,(1),null);
 return obb_rules.actions.triple_attack.apply_triple(config,attacker,board__$1,info__$1,cljs.core.second(targets__$1));
 });
 /**
  * Checks if the triple can be performed
  */
-obb_rules.actions.triple_attack.aplicable_QMARK_ = (function obb_rules$actions$triple_attack$aplicable_QMARK_(config,p__15169){
-var map__15172 = p__15169;
-var map__15172__$1 = ((((!((map__15172 == null)))?((((map__15172.cljs$lang$protocol_mask$partition0$ & (64))) || (map__15172.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__15172):map__15172);
-var args = map__15172__$1;
-var target = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__15172__$1,cljs.core.cst$kw$target);
-var board = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__15172__$1,cljs.core.cst$kw$board);
-var unused_damage = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__15172__$1,cljs.core.cst$kw$unused_DASH_damage);
+obb_rules.actions.triple_attack.aplicable_QMARK_ = (function obb_rules$actions$triple_attack$aplicable_QMARK_(config,p__15365){
+var map__15368 = p__15365;
+var map__15368__$1 = ((((!((map__15368 == null)))?((((map__15368.cljs$lang$protocol_mask$partition0$ & (64))) || (map__15368.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__15368):map__15368);
+var args = map__15368__$1;
+var target = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__15368__$1,cljs.core.cst$kw$target);
+var board = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__15368__$1,cljs.core.cst$kw$board);
+var unused_damage = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__15368__$1,cljs.core.cst$kw$unused_DASH_damage);
 return true;
 });
 /**
  * Finds the target that will be damaged by triple
  */
-obb_rules.actions.triple_attack.triple_targets = (function obb_rules$actions$triple_attack$triple_targets(p__15174){
-var map__15177 = p__15174;
-var map__15177__$1 = ((((!((map__15177 == null)))?((((map__15177.cljs$lang$protocol_mask$partition0$ & (64))) || (map__15177.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__15177):map__15177);
-var args = map__15177__$1;
-var target = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__15177__$1,cljs.core.cst$kw$target);
-var attacker = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__15177__$1,cljs.core.cst$kw$attacker);
-var board = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__15177__$1,cljs.core.cst$kw$board);
-var info = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__15177__$1,cljs.core.cst$kw$info);
+obb_rules.actions.triple_attack.triple_targets = (function obb_rules$actions$triple_attack$triple_targets(p__15370){
+var map__15373 = p__15370;
+var map__15373__$1 = ((((!((map__15373 == null)))?((((map__15373.cljs$lang$protocol_mask$partition0$ & (64))) || (map__15373.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__15373):map__15373);
+var args = map__15373__$1;
+var target = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__15373__$1,cljs.core.cst$kw$target);
+var attacker = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__15373__$1,cljs.core.cst$kw$attacker);
+var board = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__15373__$1,cljs.core.cst$kw$board);
+var info = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__15373__$1,cljs.core.cst$kw$info);
 var target_coord = obb_rules.element.element_coordinate.cljs$core$IFn$_invoke$arity$1(target);
 var attacker_direction = obb_rules.element.element_direction.cljs$core$IFn$_invoke$arity$1(attacker);
 var triple_coords = obb_rules.actions.direction.perpendicular(target_coord,attacker_direction);
@@ -83,12 +83,12 @@ return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMP
 /**
  * Processes the triple for the given data
  */
-obb_rules.actions.triple_attack.process = (function obb_rules$actions$triple_attack$process(config,p__15179){
-var map__15182 = p__15179;
-var map__15182__$1 = ((((!((map__15182 == null)))?((((map__15182.cljs$lang$protocol_mask$partition0$ & (64))) || (map__15182.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__15182):map__15182);
-var args = map__15182__$1;
-var board = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__15182__$1,cljs.core.cst$kw$board);
-var info = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__15182__$1,cljs.core.cst$kw$info);
+obb_rules.actions.triple_attack.process = (function obb_rules$actions$triple_attack$process(config,p__15375){
+var map__15378 = p__15375;
+var map__15378__$1 = ((((!((map__15378 == null)))?((((map__15378.cljs$lang$protocol_mask$partition0$ & (64))) || (map__15378.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__15378):map__15378);
+var args = map__15378__$1;
+var board = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__15378__$1,cljs.core.cst$kw$board);
+var info = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__15378__$1,cljs.core.cst$kw$info);
 var args__$1 = cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(args,cljs.core.cst$kw$triple_DASH_targets,obb_rules.actions.triple_attack.triple_targets(args));
 if(cljs.core.truth_(obb_rules.actions.triple_attack.aplicable_QMARK_(config,args__$1))){
 return obb_rules.actions.triple_attack.process_triple(config,args__$1);

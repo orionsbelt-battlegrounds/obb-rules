@@ -49,14 +49,14 @@ var n__7059__auto__ = a.length;
 var i = (0);
 while(true){
 if((i < n__7059__auto__)){
-var c_15745 = (a[i]);
-if(cljs.core.truth_((c_15745["cljsIsDirty"]))){
-(c_15745["forceUpdate"])();
+var c_15892 = (a[i]);
+if(cljs.core.truth_((c_15892["cljsIsDirty"]))){
+(c_15892["forceUpdate"])();
 } else {
 }
 
-var G__15746 = (i + (1));
-i = G__15746;
+var G__15893 = (i + (1));
+i = G__15893;
 continue;
 } else {
 return null;
@@ -71,8 +71,8 @@ while(true){
 if((i < n__7059__auto__)){
 (a[i]).call(null);
 
-var G__15747 = (i + (1));
-i = G__15747;
+var G__15894 = (i + (1));
+i = G__15894;
 continue;
 } else {
 return null;
@@ -112,12 +112,12 @@ return null;
 } else {
 self__.scheduled_QMARK_ = true;
 
-var G__15748 = ((function (this$){
+var G__15895 = ((function (this$){
 return (function (){
 return this$.run_queue();
 });})(this$))
 ;
-return (reagent.impl.batching.next_tick.cljs$core$IFn$_invoke$arity$1 ? reagent.impl.batching.next_tick.cljs$core$IFn$_invoke$arity$1(G__15748) : reagent.impl.batching.next_tick.call(null,G__15748));
+return (reagent.impl.batching.next_tick.cljs$core$IFn$_invoke$arity$1 ? reagent.impl.batching.next_tick.cljs$core$IFn$_invoke$arity$1(G__15895) : reagent.impl.batching.next_tick.call(null,G__15895));
 }
 });
 
@@ -174,12 +174,12 @@ reagent.impl.batching.do_after_flush(f);
 return reagent.impl.batching.render_queue.schedule();
 });
 reagent.impl.batching.is_reagent_component = (function reagent$impl$batching$is_reagent_component(c){
-var G__15750 = c;
-var G__15750__$1 = (((G__15750 == null))?null:(G__15750["props"]));
-if((G__15750__$1 == null)){
+var G__15897 = c;
+var G__15897__$1 = (((G__15897 == null))?null:(G__15897["props"]));
+if((G__15897__$1 == null)){
 return null;
 } else {
-return (G__15750__$1["argv"]);
+return (G__15897__$1["argv"]);
 }
 });
 reagent.impl.batching.run_reactively = (function reagent$impl$batching$run_reactively(c,run){
@@ -209,10 +209,10 @@ return reagent.ratom.run(rat);
 }
 });
 reagent.impl.batching.dispose = (function reagent$impl$batching$dispose(c){
-var G__15752_15753 = (c["cljsRatom"]);
-if((G__15752_15753 == null)){
+var G__15899_15900 = (c["cljsRatom"]);
+if((G__15899_15900 == null)){
 } else {
-reagent.ratom.dispose_BANG_(G__15752_15753);
+reagent.ratom.dispose_BANG_(G__15899_15900);
 }
 
 return reagent.impl.batching.mark_rendered(c);

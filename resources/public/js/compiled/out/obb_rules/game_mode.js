@@ -62,7 +62,7 @@ return obb_rules.game.state.cljs$core$IFn$_invoke$arity$2(game,cljs.core.cst$kw$
  * Starts the game
  */
 obb_rules.game_mode.start_game = (function obb_rules$game_mode$start_game(game){
-return obb_rules.game.start_battle(game);
+return obb_rules.game.start_battle.cljs$core$IFn$_invoke$arity$1(game);
 });
 /**
  * Checks if the game is in a state where a player switch should be done

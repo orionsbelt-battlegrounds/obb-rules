@@ -15,23 +15,23 @@ return cljs.core.rand_nth(new cljs.core.PersistentVector(null, 6, 5, cljs.core.P
  * Creates an empty board
  */
 obb_rules.board.create_board = (function obb_rules$board$create_board(var_args){
-var args14796 = [];
-var len__7214__auto___14799 = arguments.length;
-var i__7215__auto___14800 = (0);
+var args14914 = [];
+var len__7214__auto___14917 = arguments.length;
+var i__7215__auto___14918 = (0);
 while(true){
-if((i__7215__auto___14800 < len__7214__auto___14799)){
-args14796.push((arguments[i__7215__auto___14800]));
+if((i__7215__auto___14918 < len__7214__auto___14917)){
+args14914.push((arguments[i__7215__auto___14918]));
 
-var G__14801 = (i__7215__auto___14800 + (1));
-i__7215__auto___14800 = G__14801;
+var G__14919 = (i__7215__auto___14918 + (1));
+i__7215__auto___14918 = G__14919;
 continue;
 } else {
 }
 break;
 }
 
-var G__14798 = args14796.length;
-switch (G__14798) {
+var G__14916 = args14914.length;
+switch (G__14916) {
 case 0:
 return obb_rules.board.create_board.cljs$core$IFn$_invoke$arity$0();
 
@@ -41,7 +41,7 @@ return obb_rules.board.create_board.cljs$core$IFn$_invoke$arity$2((arguments[(0)
 
 break;
 default:
-throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args14796.length)].join('')));
+throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args14914.length)].join('')));
 
 }
 });
@@ -58,41 +58,41 @@ obb_rules.board.create_board.cljs$lang$maxFixedArity = 2;
 /**
  * True if the given element is from the given player
  */
-obb_rules.board.player_element_QMARK_ = (function obb_rules$board$player_element_QMARK_(player,p__14803){
-var vec__14805 = p__14803;
-var coordinate = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14805,(0),null);
-var element = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14805,(1),null);
+obb_rules.board.player_element_QMARK_ = (function obb_rules$board$player_element_QMARK_(player,p__14921){
+var vec__14923 = p__14921;
+var coordinate = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14923,(0),null);
+var element = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14923,(1),null);
 return obb_rules.simplifier.name_EQ_(player,obb_rules.element.element_player.cljs$core$IFn$_invoke$arity$1(element));
 });
 /**
  * Gets the elements of a given player
  */
 obb_rules.board.board_elements = (function obb_rules$board$board_elements(board,player){
-return cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p1__14806_SHARP_){
-return cljs.core.last(p1__14806_SHARP_);
+return cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p1__14924_SHARP_){
+return cljs.core.last(p1__14924_SHARP_);
 }),cljs.core.filter.cljs$core$IFn$_invoke$arity$2(cljs.core.partial.cljs$core$IFn$_invoke$arity$2(obb_rules.board.player_element_QMARK_,player),(board.cljs$core$IFn$_invoke$arity$1 ? board.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$elements) : board.call(null,cljs.core.cst$kw$elements))));
 });
 /**
  * Gets the number of board elements
  */
 obb_rules.board.board_elements_count = (function obb_rules$board$board_elements_count(var_args){
-var args14807 = [];
-var len__7214__auto___14810 = arguments.length;
-var i__7215__auto___14811 = (0);
+var args14925 = [];
+var len__7214__auto___14928 = arguments.length;
+var i__7215__auto___14929 = (0);
 while(true){
-if((i__7215__auto___14811 < len__7214__auto___14810)){
-args14807.push((arguments[i__7215__auto___14811]));
+if((i__7215__auto___14929 < len__7214__auto___14928)){
+args14925.push((arguments[i__7215__auto___14929]));
 
-var G__14812 = (i__7215__auto___14811 + (1));
-i__7215__auto___14811 = G__14812;
+var G__14930 = (i__7215__auto___14929 + (1));
+i__7215__auto___14929 = G__14930;
 continue;
 } else {
 }
 break;
 }
 
-var G__14809 = args14807.length;
-switch (G__14809) {
+var G__14927 = args14925.length;
+switch (G__14927) {
 case 1:
 return obb_rules.board.board_elements_count.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -102,7 +102,7 @@ return obb_rules.board.board_elements_count.cljs$core$IFn$_invoke$arity$2((argum
 
 break;
 default:
-throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args14807.length)].join('')));
+throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args14925.length)].join('')));
 
 }
 });
@@ -120,23 +120,23 @@ obb_rules.board.board_elements_count.cljs$lang$maxFixedArity = 2;
  * Checks if a board is empty
  */
 obb_rules.board.empty_board_QMARK_ = (function obb_rules$board$empty_board_QMARK_(var_args){
-var args14814 = [];
-var len__7214__auto___14817 = arguments.length;
-var i__7215__auto___14818 = (0);
+var args14932 = [];
+var len__7214__auto___14935 = arguments.length;
+var i__7215__auto___14936 = (0);
 while(true){
-if((i__7215__auto___14818 < len__7214__auto___14817)){
-args14814.push((arguments[i__7215__auto___14818]));
+if((i__7215__auto___14936 < len__7214__auto___14935)){
+args14932.push((arguments[i__7215__auto___14936]));
 
-var G__14819 = (i__7215__auto___14818 + (1));
-i__7215__auto___14818 = G__14819;
+var G__14937 = (i__7215__auto___14936 + (1));
+i__7215__auto___14936 = G__14937;
 continue;
 } else {
 }
 break;
 }
 
-var G__14816 = args14814.length;
-switch (G__14816) {
+var G__14934 = args14932.length;
+switch (G__14934) {
 case 1:
 return obb_rules.board.empty_board_QMARK_.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -146,7 +146,7 @@ return obb_rules.board.empty_board_QMARK_.cljs$core$IFn$_invoke$arity$2((argumen
 
 break;
 default:
-throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args14814.length)].join('')));
+throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args14932.length)].join('')));
 
 }
 });
@@ -183,32 +183,70 @@ return obb_rules.laws.default_board_h;
 }
 });
 /**
- * Gets the board's terrain
+ * Gets/sets the board's terrain
  */
-obb_rules.board.board_terrain = (function obb_rules$board$board_terrain(board){
-return (board.cljs$core$IFn$_invoke$arity$1 ? board.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$terrain) : board.call(null,cljs.core.cst$kw$terrain));
-});
-/**
- * Gets/sets all the elements
- */
-obb_rules.board.elements = (function obb_rules$board$elements(var_args){
-var args14821 = [];
-var len__7214__auto___14824 = arguments.length;
-var i__7215__auto___14825 = (0);
+obb_rules.board.board_terrain = (function obb_rules$board$board_terrain(var_args){
+var args14939 = [];
+var len__7214__auto___14942 = arguments.length;
+var i__7215__auto___14943 = (0);
 while(true){
-if((i__7215__auto___14825 < len__7214__auto___14824)){
-args14821.push((arguments[i__7215__auto___14825]));
+if((i__7215__auto___14943 < len__7214__auto___14942)){
+args14939.push((arguments[i__7215__auto___14943]));
 
-var G__14826 = (i__7215__auto___14825 + (1));
-i__7215__auto___14825 = G__14826;
+var G__14944 = (i__7215__auto___14943 + (1));
+i__7215__auto___14943 = G__14944;
 continue;
 } else {
 }
 break;
 }
 
-var G__14823 = args14821.length;
-switch (G__14823) {
+var G__14941 = args14939.length;
+switch (G__14941) {
+case 1:
+return obb_rules.board.board_terrain.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
+
+break;
+case 2:
+return obb_rules.board.board_terrain.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(arguments[(1)]));
+
+break;
+default:
+throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args14939.length)].join('')));
+
+}
+});
+
+obb_rules.board.board_terrain.cljs$core$IFn$_invoke$arity$1 = (function (board){
+return (board.cljs$core$IFn$_invoke$arity$1 ? board.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$terrain) : board.call(null,cljs.core.cst$kw$terrain));
+});
+
+obb_rules.board.board_terrain.cljs$core$IFn$_invoke$arity$2 = (function (board,new_terrain){
+return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(board,cljs.core.cst$kw$terrain,new_terrain);
+});
+
+obb_rules.board.board_terrain.cljs$lang$maxFixedArity = 2;
+/**
+ * Gets/sets all the elements
+ */
+obb_rules.board.elements = (function obb_rules$board$elements(var_args){
+var args14946 = [];
+var len__7214__auto___14949 = arguments.length;
+var i__7215__auto___14950 = (0);
+while(true){
+if((i__7215__auto___14950 < len__7214__auto___14949)){
+args14946.push((arguments[i__7215__auto___14950]));
+
+var G__14951 = (i__7215__auto___14950 + (1));
+i__7215__auto___14950 = G__14951;
+continue;
+} else {
+}
+break;
+}
+
+var G__14948 = args14946.length;
+switch (G__14948) {
 case 1:
 return obb_rules.board.elements.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -218,7 +256,7 @@ return obb_rules.board.elements.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(
 
 break;
 default:
-throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args14821.length)].join('')));
+throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args14946.length)].join('')));
 
 }
 });
@@ -252,10 +290,10 @@ return cljs.core.get_in.cljs$core$IFn$_invoke$arity$2(board,new cljs.core.Persis
 /**
  * Checks if a given coord is in the board
  */
-obb_rules.board.in_bounds_QMARK_ = (function obb_rules$board$in_bounds_QMARK_(board,p__14828){
-var vec__14830 = p__14828;
-var x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14830,(0),null);
-var y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14830,(1),null);
+obb_rules.board.in_bounds_QMARK_ = (function obb_rules$board$in_bounds_QMARK_(board,p__14953){
+var vec__14955 = p__14953;
+var x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14955,(0),null);
+var y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14955,(1),null);
 return ((x > (0))) && ((y > (0))) && ((x <= (8))) && ((y <= (8)));
 });
 /**
@@ -290,23 +328,23 @@ return board;
  * Removes an element from the board
  */
 obb_rules.board.remove_element = (function obb_rules$board$remove_element(var_args){
-var args14831 = [];
-var len__7214__auto___14834 = arguments.length;
-var i__7215__auto___14835 = (0);
+var args14956 = [];
+var len__7214__auto___14959 = arguments.length;
+var i__7215__auto___14960 = (0);
 while(true){
-if((i__7215__auto___14835 < len__7214__auto___14834)){
-args14831.push((arguments[i__7215__auto___14835]));
+if((i__7215__auto___14960 < len__7214__auto___14959)){
+args14956.push((arguments[i__7215__auto___14960]));
 
-var G__14836 = (i__7215__auto___14835 + (1));
-i__7215__auto___14835 = G__14836;
+var G__14961 = (i__7215__auto___14960 + (1));
+i__7215__auto___14960 = G__14961;
 continue;
 } else {
 }
 break;
 }
 
-var G__14833 = args14831.length;
-switch (G__14833) {
+var G__14958 = args14956.length;
+switch (G__14958) {
 case 2:
 return obb_rules.board.remove_element.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(arguments[(1)]));
 
@@ -316,7 +354,7 @@ return obb_rules.board.remove_element.cljs$core$IFn$_invoke$arity$3((arguments[(
 
 break;
 default:
-throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args14831.length)].join('')));
+throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args14956.length)].join('')));
 
 }
 });
@@ -365,13 +403,13 @@ return !((obb_rules.board.get_element(board,coord) == null));
 /**
  * Checks if two coordinates are adjacent
  */
-obb_rules.board.adjacent_QMARK_ = (function obb_rules$board$adjacent_QMARK_(p__14838,p__14839){
-var vec__14842 = p__14838;
-var c1x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14842,(0),null);
-var c1y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14842,(1),null);
-var vec__14843 = p__14839;
-var c2x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14843,(0),null);
-var c2y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14843,(1),null);
+obb_rules.board.adjacent_QMARK_ = (function obb_rules$board$adjacent_QMARK_(p__14963,p__14964){
+var vec__14967 = p__14963;
+var c1x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14967,(0),null);
+var c1y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14967,(1),null);
+var vec__14968 = p__14964;
+var c2x = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14968,(0),null);
+var c2y = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__14968,(1),null);
 var dx = (c1x - c2x);
 var dy = (c1y - c2y);
 return (((-2) < dx)) && (((2) > dx)) && (((-2) < dy)) && (((2) > dy));
@@ -380,23 +418,23 @@ return (((-2) < dx)) && (((2) > dx)) && (((-2) < dy)) && (((2) > dy));
  * Removes a quantity from the board, marking it as move
  */
 obb_rules.board.remove_from_element = (function obb_rules$board$remove_from_element(var_args){
-var args14844 = [];
-var len__7214__auto___14847 = arguments.length;
-var i__7215__auto___14848 = (0);
+var args14969 = [];
+var len__7214__auto___14972 = arguments.length;
+var i__7215__auto___14973 = (0);
 while(true){
-if((i__7215__auto___14848 < len__7214__auto___14847)){
-args14844.push((arguments[i__7215__auto___14848]));
+if((i__7215__auto___14973 < len__7214__auto___14972)){
+args14969.push((arguments[i__7215__auto___14973]));
 
-var G__14849 = (i__7215__auto___14848 + (1));
-i__7215__auto___14848 = G__14849;
+var G__14974 = (i__7215__auto___14973 + (1));
+i__7215__auto___14973 = G__14974;
 continue;
 } else {
 }
 break;
 }
 
-var G__14846 = args14844.length;
-switch (G__14846) {
+var G__14971 = args14969.length;
+switch (G__14971) {
 case 3:
 return obb_rules.board.remove_from_element.cljs$core$IFn$_invoke$arity$3((arguments[(0)]),(arguments[(1)]),(arguments[(2)]));
 
@@ -406,7 +444,7 @@ return obb_rules.board.remove_from_element.cljs$core$IFn$_invoke$arity$4((argume
 
 break;
 default:
-throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args14844.length)].join('')));
+throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args14969.length)].join('')));
 
 }
 });
