@@ -6,6 +6,7 @@
     [obb-rules.action :as action]
     [obb-rules.unit :as unit]
     [obb-rules.action :as action]
+    [obb-rules.actions.deploy :as deploy-action]
     [obb-rules.actions.move :as move]
     [obb-rules.result :as result]
     #?(:clj [clojure.test :refer [deftest testing is run-tests]]
@@ -91,3 +92,10 @@
         result (deploy board :p1)]
     (is (result/failed? result))
     (is (= "NoStashAvailable" (result/result-message result)))))
+
+(deftest analyse
+  (is (= (deploy-action/analyse [:deploy 100 :rain [1 2]])
+         {:action :deploy
+          :quantity 100
+          :unit :rain
+          :coord [1 2]})))

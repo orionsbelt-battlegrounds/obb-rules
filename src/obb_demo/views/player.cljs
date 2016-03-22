@@ -93,6 +93,7 @@
                          :original-game (:original-game game-data)
                          :previous-game (:original-game game-data)
                          :previous-player :p2
+                         :history (:history game-data)
                          :bot (:bot game-data)
                          :action-points 0
                          :turn-num 0}))
