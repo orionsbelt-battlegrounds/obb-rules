@@ -36,18 +36,18 @@
 (defn build-history
   "Takes the auto deploy action and adds the actual run deploy actions
   on the history"
-  [result raw-actions]
+  [player result raw-actions]
   (let [history (get-in result [:board :history])
         deploy-actions (into (get-in result [:board :deploy-actions]) raw-actions)
-        history (concat history [deploy-actions])
+        history (conj history {:player player :actions deploy-actions})
         result (assoc-in result [:board :history] history)]
-    result))
+    (update-in result [:board] dissoc :deploy-actions)))
 
 (defn- deploy-back-row
   "Deploys a back row with all the given units"
   [result player stash]
   (let [raw-actions (common/build-deploy-actions player stash 8)
-        result (build-history result raw-actions)
+        result (build-history player result raw-actions)
         actions (map deploy/deploy-action raw-actions)]
     (reduce (partial common/do-actions player) result actions)))
 

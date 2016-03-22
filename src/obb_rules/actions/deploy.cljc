@@ -57,3 +57,11 @@
   "Creates an action fn based on a deploy raw action"
   [args]
   (build-deploy (rest args)))
+
+(defn analyse
+  "Given a raw action, will return a map with the data explained"
+  [[_ quantity unit coord]]
+  {:action :deploy
+   :unit unit
+   :quantity quantity
+   :coord coord})

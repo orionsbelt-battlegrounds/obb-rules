@@ -231,7 +231,8 @@
       (state/set-page-data! (-> game-data
                                 (assoc :game (result/result-board result))
                                 (assoc :action-points (+ (result/result-cost result)))
-                                (assoc-in [:game :history] (concat (:history game-data) [next-actions]))
+                                (assoc-in [:game :history] (conj (vec (:history game-data))
+                                                                 {:player player :actions next-actions}))
                                 (assoc :actions next-actions)
                                 (with-selected-element coord)))
       (println result))))

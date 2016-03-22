@@ -30,11 +30,25 @@
 
 (defn create
   "Creates a game for a given stash"
-  [stash]
-  (let [board (board/create-board)
-        board1 (board/set-stash board :p1 stash)
-        board2 (board/set-stash board1 :p2 stash)]
-    (assoc board2 :state :deploy)))
+  ([stash]
+    (create stash stash))
+  ([stash1 stash2]
+   (-> (board/create-board)
+       (board/set-stash :p1 stash1)
+       (board/set-stash :p2 stash2)
+       (assoc :state :deploy))))
+
+(defn new-game
+  "Creates a game for the given stashes.
+  stashes is an associative collection in which the keys correspond to the
+  players and the values to the corresponding stash."
+  [stashes & [{:as options} :as args]]
+  (-> (reduce-kv (fn [board player stash] (board/set-stash board player stash))
+                             (board/create-board)
+                             stashes)
+      (cond->
+        (some? (:terrain options)) (board/board-terrain (:terrain options)))
+      (state :deploy)))
 
 (defn random
   "Creates a game with random units"
@@ -44,9 +58,18 @@
 
 (defn start-battle
   "Given a deployed board, starts the battle"
+  ([game]
+   (assert (deploy? game) "Game not in deploy state")
+   (start-battle game (rand-nth [:p1 :p2])))
+  ([game first-player]
+   (-> game
+       (assoc :state first-player)
+       (assoc :first-player first-player))))
+
+(defn first-player
+  "Gets the player that started the game"
   [game]
-  (assert (deploy? game) "Game not in deploy state")
-  (assoc game :state (rand-nth [:p1 :p2])))
+  (:first-player game))
 
 (defn action-results
   "Provides the actions a results currently aplied on this game
@@ -58,6 +81,7 @@
   "Stores an action's result"
   [game raw-action result]
   (let [action-results (or (action-results game) [])
+        result (dissoc result :board)
         new-results (conj action-results [raw-action result])]
     (assoc game :action-results new-results)))
 
