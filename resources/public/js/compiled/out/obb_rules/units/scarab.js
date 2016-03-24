@@ -1,6 +1,4 @@
-// Compiled by ClojureScript 1.7.228 {}
+// Compiled by ClojureScript 1.7.228 {:static-fns true, :optimize-constants true}
 goog.provide('obb_rules.units.scarab');
 goog.require('cljs.core');
-obb_rules.units.scarab.metadata = cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null,"category","category",-593092832),new cljs.core.Keyword(null,"displacement","displacement",-1309600669),new cljs.core.Keyword(null,"name","name",1843675177),new cljs.core.Keyword(null,"value","value",305978217),new cljs.core.Keyword(null,"movement-cost","movement-cost",-716301045),new cljs.core.Keyword(null,"type","type",1174270348),new cljs.core.Keyword(null,"defense","defense",1755014992),new cljs.core.Keyword(null,"code","code",1586293142),new cljs.core.Keyword(null,"movement-type","movement-type",-1340819145),new cljs.core.Keyword(null,"attack","attack",1957061788),new cljs.core.Keyword(null,"range","range",1639692286)],[new cljs.core.Keyword(null,"medium","medium",-1864319384),new cljs.core.Keyword(null,"air","air",-104121788),"scarab",(38),(1),new cljs.core.Keyword(null,"mechanic","mechanic",-1805001628),(2300),"sc",new cljs.core.Keyword(null,"front","front",-1523508988),(1900),(2)]);
-
-//# sourceMappingURL=scarab.js.map?rel=1458852288687
+obb_rules.units.scarab.metadata = cljs.core.PersistentHashMap.fromArrays([cljs.core.cst$kw$category,cljs.core.cst$kw$displacement,cljs.core.cst$kw$name,cljs.core.cst$kw$value,cljs.core.cst$kw$movement_DASH_cost,cljs.core.cst$kw$type,cljs.core.cst$kw$defense,cljs.core.cst$kw$code,cljs.core.cst$kw$movement_DASH_type,cljs.core.cst$kw$attack,cljs.core.cst$kw$range],[cljs.core.cst$kw$medium,cljs.core.cst$kw$air,"scarab",(38),(1),cljs.core.cst$kw$mechanic,(2300),"sc",cljs.core.cst$kw$front,(1900),(2)]);

@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 1.7.228 {}
+// Compiled by ClojureScript 1.7.228 {:static-fns true, :optimize-constants true}
 goog.provide('obb_rules.serializer.common');
 goog.require('cljs.core');
 /**
@@ -22,5 +22,3 @@ obb_rules.serializer.common.attributes_separator = ":";
  * This markers separates data in an action
  */
 obb_rules.serializer.common.in_action_separator = "\\.";
-
-//# sourceMappingURL=common.js.map?rel=1458852292964

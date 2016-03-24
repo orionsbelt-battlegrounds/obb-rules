@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 1.7.228 {}
+// Compiled by ClojureScript 1.7.228 {:static-fns true, :optimize-constants true}
 goog.provide('obb_rules.math');
 goog.require('cljs.core');
 obb_rules.math.abs = (function obb_rules$math$abs(n){
@@ -16,5 +16,3 @@ return Math.sqrt(n);
 obb_rules.math.expt = (function obb_rules$math$expt(base,exponent){
 return Math.pow(base,exponent);
 });
-
-//# sourceMappingURL=math.js.map?rel=1458852289360

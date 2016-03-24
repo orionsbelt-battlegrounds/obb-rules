@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 1.7.228 {}
+// Compiled by ClojureScript 1.7.228 {:static-fns true, :optimize-constants true}
 goog.provide('obb_demo.processor');
 goog.require('cljs.core');
 goog.require('obb_rules.game_mode');
@@ -16,75 +16,75 @@ goog.require('obb_rules.stash');
  * Creates a new game
  */
 obb_demo.processor.new_game = (function obb_demo$processor$new_game(){
-return obb_rules.game.random.call(null);
+return obb_rules.game.random();
 });
 /**
  * Creates a deployed game
  */
 obb_demo.processor.deployed_game = (function obb_demo$processor$deployed_game(){
-return obb_rules.game.start_battle.call(null,obb_rules.result.result_board.call(null,obb_rules.turn.process_actions.call(null,obb_rules.result.result_board.call(null,obb_rules.turn.process_actions.call(null,obb_demo.processor.new_game.call(null),new cljs.core.Keyword(null,"p1","p1",-936759954),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"auto-deploy","auto-deploy",1838692925),new cljs.core.Keyword(null,"firingsquad","firingsquad",-1910418650)], null)], null))),new cljs.core.Keyword(null,"p2","p2",905500641),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"auto-deploy","auto-deploy",1838692925),new cljs.core.Keyword(null,"firingsquad","firingsquad",-1910418650)], null)], null))),new cljs.core.Keyword(null,"p1","p1",-936759954));
+return obb_rules.game.start_battle.cljs$core$IFn$_invoke$arity$2(obb_rules.result.result_board(obb_rules.turn.process_actions(obb_rules.result.result_board(obb_rules.turn.process_actions(obb_demo.processor.new_game(),cljs.core.cst$kw$p1,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$auto_DASH_deploy,cljs.core.cst$kw$firingsquad], null)], null))),cljs.core.cst$kw$p2,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$auto_DASH_deploy,cljs.core.cst$kw$firingsquad], null)], null))),cljs.core.cst$kw$p1);
 });
 /**
  * Gets actions
  */
 obb_demo.processor.bot_actions = (function obb_demo$processor$bot_actions(game,player){
-if(cljs.core._EQ_.call(null,new cljs.core.Keyword(null,"p1","p1",-936759954),player)){
-return obb_rules.ai.firingsquad.actions.call(null,game,player);
+if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$p1,player)){
+return (obb_rules.ai.firingsquad.actions.cljs$core$IFn$_invoke$arity$2 ? obb_rules.ai.firingsquad.actions.cljs$core$IFn$_invoke$arity$2(game,player) : obb_rules.ai.firingsquad.actions.call(null,game,player));
 } else {
-return obb_rules.ai.firingsquad.actions.call(null,game,player);
+return (obb_rules.ai.firingsquad.actions.cljs$core$IFn$_invoke$arity$2 ? obb_rules.ai.firingsquad.actions.cljs$core$IFn$_invoke$arity$2(game,player) : obb_rules.ai.firingsquad.actions.call(null,game,player));
 }
 });
 /**
  * Generates actions to be processed
  */
 obb_demo.processor.generate_actions = (function obb_demo$processor$generate_actions(game_data){
-var game = new cljs.core.Keyword(null,"game","game",-441523833).cljs$core$IFn$_invoke$arity$1(game_data);
-var turn_num = (function (){var or__18370__auto__ = new cljs.core.Keyword(null,"turn-num","turn-num",1507722590).cljs$core$IFn$_invoke$arity$1(game_data);
-if(cljs.core.truth_(or__18370__auto__)){
-return or__18370__auto__;
+var game = cljs.core.cst$kw$game.cljs$core$IFn$_invoke$arity$1(game_data);
+var turn_num = (function (){var or__6156__auto__ = cljs.core.cst$kw$turn_DASH_num.cljs$core$IFn$_invoke$arity$1(game_data);
+if(cljs.core.truth_(or__6156__auto__)){
+return or__6156__auto__;
 } else {
 return (0);
 }
 })();
-var player = obb_rules.game.state.call(null,game);
-var actions = (function (){var start__19298__auto__ = cljs.core.system_time.call(null);
-var ret__19299__auto__ = obb_demo.processor.bot_actions.call(null,game,player);
-cljs.core.prn.call(null,[cljs.core.str("Elapsed time: "),cljs.core.str((cljs.core.system_time.call(null) - start__19298__auto__).toFixed((6))),cljs.core.str(" msecs")].join(''));
+var player = obb_rules.game.state.cljs$core$IFn$_invoke$arity$1(game);
+var actions = (function (){var start__7084__auto__ = cljs.core.system_time();
+var ret__7085__auto__ = obb_demo.processor.bot_actions(game,player);
+cljs.core.prn.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([[cljs.core.str("Elapsed time: "),cljs.core.str((cljs.core.system_time() - start__7084__auto__).toFixed((6))),cljs.core.str(" msecs")].join('')], 0));
 
-return ret__19299__auto__;
+return ret__7085__auto__;
 })();
-cljs.core.println.call(null,"--",player,actions);
+cljs.core.println.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq(["--",player,actions], 0));
 
-if(cljs.core._EQ_.call(null,new cljs.core.Keyword(null,"final","final",1157881357),obb_rules.game.state.call(null,game))){
-return new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"game","game",-441523833),obb_demo.processor.deployed_game.call(null)], null);
+if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$final,obb_rules.game.state.cljs$core$IFn$_invoke$arity$1(game))){
+return new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$game,obb_demo.processor.deployed_game()], null);
 } else {
-return cljs.core.assoc.call(null,cljs.core.assoc.call(null,cljs.core.assoc.call(null,cljs.core.assoc.call(null,game_data,new cljs.core.Keyword(null,"actions","actions",-812656882),actions),new cljs.core.Keyword(null,"original-actions","original-actions",2002612771),actions),new cljs.core.Keyword(null,"history","history",-247395220),cljs.core.conj.call(null,cljs.core.vec.call(null,cljs.core.get.call(null,game_data,new cljs.core.Keyword(null,"history","history",-247395220),new cljs.core.Keyword(null,"history","history",-247395220).cljs$core$IFn$_invoke$arity$1(game))),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"player","player",-97687400),player,new cljs.core.Keyword(null,"actions","actions",-812656882),actions], null))),new cljs.core.Keyword(null,"turn-num","turn-num",1507722590),((cljs.core._EQ_.call(null,new cljs.core.Keyword(null,"final","final",1157881357),player))?turn_num:(turn_num + (1))));
+return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(game_data,cljs.core.cst$kw$actions,actions),cljs.core.cst$kw$original_DASH_actions,actions),cljs.core.cst$kw$history,cljs.core.conj.cljs$core$IFn$_invoke$arity$2(cljs.core.vec(cljs.core.get.cljs$core$IFn$_invoke$arity$3(game_data,cljs.core.cst$kw$history,cljs.core.cst$kw$history.cljs$core$IFn$_invoke$arity$1(game))),new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$player,player,cljs.core.cst$kw$actions,actions], null))),cljs.core.cst$kw$turn_DASH_num,((cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$final,player))?turn_num:(turn_num + (1))));
 }
 });
 /**
  * Processes actions
  */
 obb_demo.processor.process_actions = (function obb_demo$processor$process_actions(game_data){
-var actions = new cljs.core.Keyword(null,"actions","actions",-812656882).cljs$core$IFn$_invoke$arity$1(game_data);
-var game = new cljs.core.Keyword(null,"game","game",-441523833).cljs$core$IFn$_invoke$arity$1(game_data);
-if(cljs.core.empty_QMARK_.call(null,actions)){
-return cljs.core.dissoc.call(null,cljs.core.assoc.call(null,game_data,new cljs.core.Keyword(null,"game","game",-441523833),cljs.core.dissoc.call(null,obb_rules.game_mode.process.call(null,game),new cljs.core.Keyword(null,"action-results","action-results",-389719209))),new cljs.core.Keyword(null,"actions","actions",-812656882));
+var actions = cljs.core.cst$kw$actions.cljs$core$IFn$_invoke$arity$1(game_data);
+var game = cljs.core.cst$kw$game.cljs$core$IFn$_invoke$arity$1(game_data);
+if(cljs.core.empty_QMARK_(actions)){
+return cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(game_data,cljs.core.cst$kw$game,cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(obb_rules.game_mode.process(game),cljs.core.cst$kw$action_DASH_results)),cljs.core.cst$kw$actions);
 } else {
-var temp__4655__auto__ = new cljs.core.Keyword(null,"action","action",-811238024).cljs$core$IFn$_invoke$arity$1(game_data);
+var temp__4655__auto__ = cljs.core.cst$kw$action.cljs$core$IFn$_invoke$arity$1(game_data);
 if(cljs.core.truth_(temp__4655__auto__)){
 var action = temp__4655__auto__;
-var player = obb_rules.game.state.call(null,game);
-var result = obb_rules.turn.simulate_actions.call(null,game,player,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [action], null),true);
-var new_game = obb_rules.result.result_board.call(null,result);
-if(cljs.core.not.call(null,obb_rules.result.succeeded_QMARK_.call(null,result))){
-cljs.core.println.call(null,result);
+var player = obb_rules.game.state.cljs$core$IFn$_invoke$arity$1(game);
+var result = obb_rules.turn.simulate_actions.cljs$core$IFn$_invoke$arity$4(game,player,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [action], null),true);
+var new_game = obb_rules.result.result_board(result);
+if(cljs.core.not(obb_rules.result.succeeded_QMARK_(result))){
+cljs.core.println.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([result], 0));
 
-return cljs.core.assoc.call(null,game_data,new cljs.core.Keyword(null,"delay","delay",-574225219),(100000));
+return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(game_data,cljs.core.cst$kw$delay,(100000));
 } else {
-return cljs.core.assoc.call(null,cljs.core.assoc_in.call(null,cljs.core.dissoc.call(null,cljs.core.assoc.call(null,game_data,new cljs.core.Keyword(null,"game","game",-441523833),new_game),new cljs.core.Keyword(null,"action","action",-811238024)),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"game","game",-441523833),new cljs.core.Keyword(null,"history","history",-247395220)], null),new cljs.core.Keyword(null,"history","history",-247395220).cljs$core$IFn$_invoke$arity$1(game_data)),new cljs.core.Keyword(null,"actions","actions",-812656882),cljs.core.rest.call(null,actions));
+return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.assoc_in(cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(game_data,cljs.core.cst$kw$game,new_game),cljs.core.cst$kw$action),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$game,cljs.core.cst$kw$history], null),cljs.core.cst$kw$history.cljs$core$IFn$_invoke$arity$1(game_data)),cljs.core.cst$kw$actions,cljs.core.rest(actions));
 }
 } else {
-return cljs.core.assoc.call(null,game_data,new cljs.core.Keyword(null,"action","action",-811238024),cljs.core.first.call(null,actions));
+return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(game_data,cljs.core.cst$kw$action,cljs.core.first(actions));
 }
 }
 });
@@ -92,11 +92,9 @@ return cljs.core.assoc.call(null,game_data,new cljs.core.Keyword(null,"action","
  * Uses the AI the process a game-data
  */
 obb_demo.processor.auto_process_game_data = (function obb_demo$processor$auto_process_game_data(game_data){
-if(cljs.core.truth_(new cljs.core.Keyword(null,"actions","actions",-812656882).cljs$core$IFn$_invoke$arity$1(game_data))){
-return obb_demo.processor.process_actions.call(null,game_data);
+if(cljs.core.truth_(cljs.core.cst$kw$actions.cljs$core$IFn$_invoke$arity$1(game_data))){
+return obb_demo.processor.process_actions(game_data);
 } else {
-return obb_demo.processor.generate_actions.call(null,game_data);
+return obb_demo.processor.generate_actions(game_data);
 }
 });
-
-//# sourceMappingURL=processor.js.map?rel=1458852296405

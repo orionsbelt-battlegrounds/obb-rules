@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 1.7.228 {}
+// Compiled by ClojureScript 1.7.228 {:static-fns true, :optimize-constants true}
 goog.provide('obb_rules.serializer.reader');
 goog.require('cljs.core');
 goog.require('obb_rules.game_mode');
@@ -15,54 +15,62 @@ goog.require('obb_rules.host_dependent');
  *   as an integer
  */
 obb_rules.serializer.reader.get_int = (function obb_rules$serializer$reader$get_int(s,pos){
-return obb_rules.host_dependent.parse_int.call(null,[cljs.core.str(cljs.core.nth.call(null,s,pos))].join(''));
+return obb_rules.host_dependent.parse_int([cljs.core.str(cljs.core.nth.cljs$core$IFn$_invoke$arity$2(s,pos))].join(''));
 });
 if(typeof obb_rules.serializer.reader.str__GT_action !== 'undefined'){
 } else {
 /**
  * Converts a action in string format to a raw action
  */
-obb_rules.serializer.reader.str__GT_action = (function (){var method_table__19283__auto__ = cljs.core.atom.call(null,cljs.core.PersistentArrayMap.EMPTY);
-var prefer_table__19284__auto__ = cljs.core.atom.call(null,cljs.core.PersistentArrayMap.EMPTY);
-var method_cache__19285__auto__ = cljs.core.atom.call(null,cljs.core.PersistentArrayMap.EMPTY);
-var cached_hierarchy__19286__auto__ = cljs.core.atom.call(null,cljs.core.PersistentArrayMap.EMPTY);
-var hierarchy__19287__auto__ = cljs.core.get.call(null,cljs.core.PersistentArrayMap.EMPTY,new cljs.core.Keyword(null,"hierarchy","hierarchy",-1053470341),cljs.core.get_global_hierarchy.call(null));
-return (new cljs.core.MultiFn(cljs.core.symbol.call(null,"obb-rules.serializer.reader","str->action"),((function (method_table__19283__auto__,prefer_table__19284__auto__,method_cache__19285__auto__,cached_hierarchy__19286__auto__,hierarchy__19287__auto__){
+obb_rules.serializer.reader.str__GT_action = (function (){var method_table__7069__auto__ = (function (){var G__16122 = cljs.core.PersistentArrayMap.EMPTY;
+return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__16122) : cljs.core.atom.call(null,G__16122));
+})();
+var prefer_table__7070__auto__ = (function (){var G__16123 = cljs.core.PersistentArrayMap.EMPTY;
+return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__16123) : cljs.core.atom.call(null,G__16123));
+})();
+var method_cache__7071__auto__ = (function (){var G__16124 = cljs.core.PersistentArrayMap.EMPTY;
+return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__16124) : cljs.core.atom.call(null,G__16124));
+})();
+var cached_hierarchy__7072__auto__ = (function (){var G__16125 = cljs.core.PersistentArrayMap.EMPTY;
+return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__16125) : cljs.core.atom.call(null,G__16125));
+})();
+var hierarchy__7073__auto__ = cljs.core.get.cljs$core$IFn$_invoke$arity$3(cljs.core.PersistentArrayMap.EMPTY,cljs.core.cst$kw$hierarchy,cljs.core.get_global_hierarchy());
+return (new cljs.core.MultiFn(cljs.core.symbol.cljs$core$IFn$_invoke$arity$2("obb-rules.serializer.reader","str->action"),((function (method_table__7069__auto__,prefer_table__7070__auto__,method_cache__7071__auto__,cached_hierarchy__7072__auto__,hierarchy__7073__auto__){
 return (function (s){
-return cljs.core.first.call(null,s);
-});})(method_table__19283__auto__,prefer_table__19284__auto__,method_cache__19285__auto__,cached_hierarchy__19286__auto__,hierarchy__19287__auto__))
-,new cljs.core.Keyword(null,"default","default",-1987822328),hierarchy__19287__auto__,method_table__19283__auto__,prefer_table__19284__auto__,method_cache__19285__auto__,cached_hierarchy__19286__auto__));
+return cljs.core.first(s);
+});})(method_table__7069__auto__,prefer_table__7070__auto__,method_cache__7071__auto__,cached_hierarchy__7072__auto__,hierarchy__7073__auto__))
+,cljs.core.cst$kw$default,hierarchy__7073__auto__,method_table__7069__auto__,prefer_table__7070__auto__,method_cache__7071__auto__,cached_hierarchy__7072__auto__));
 })();
 }
-cljs.core._add_method.call(null,obb_rules.serializer.reader.str__GT_action,"a",(function (s){
-return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"attack","attack",1957061788),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_rules.serializer.reader.get_int.call(null,s,(1)),obb_rules.serializer.reader.get_int.call(null,s,(2))], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_rules.serializer.reader.get_int.call(null,s,(3)),obb_rules.serializer.reader.get_int.call(null,s,(4))], null)], null);
+obb_rules.serializer.reader.str__GT_action.cljs$core$IMultiFn$_add_method$arity$3(null,"a",(function (s){
+return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$attack,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_rules.serializer.reader.get_int(s,(1)),obb_rules.serializer.reader.get_int(s,(2))], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_rules.serializer.reader.get_int(s,(3)),obb_rules.serializer.reader.get_int(s,(4))], null)], null);
 }));
-cljs.core._add_method.call(null,obb_rules.serializer.reader.str__GT_action,"g",(function (s){
-return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"goto","goto",80149757),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_rules.serializer.reader.get_int.call(null,s,(1)),obb_rules.serializer.reader.get_int.call(null,s,(2))], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_rules.serializer.reader.get_int.call(null,s,(3)),obb_rules.serializer.reader.get_int.call(null,s,(4))], null)], null);
+obb_rules.serializer.reader.str__GT_action.cljs$core$IMultiFn$_add_method$arity$3(null,"g",(function (s){
+return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$goto,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_rules.serializer.reader.get_int(s,(1)),obb_rules.serializer.reader.get_int(s,(2))], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_rules.serializer.reader.get_int(s,(3)),obb_rules.serializer.reader.get_int(s,(4))], null)], null);
 }));
-cljs.core._add_method.call(null,obb_rules.serializer.reader.str__GT_action,"m",(function (s){
-var parts = clojure.string.split.call(null,s,/\./);
-var quantity = obb_rules.host_dependent.parse_int.call(null,cljs.core.nth.call(null,parts,(1)));
-return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"move","move",-2110884309),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_rules.serializer.reader.get_int.call(null,s,(1)),obb_rules.serializer.reader.get_int.call(null,s,(2))], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_rules.serializer.reader.get_int.call(null,s,(3)),obb_rules.serializer.reader.get_int.call(null,s,(4))], null),quantity], null);
+obb_rules.serializer.reader.str__GT_action.cljs$core$IMultiFn$_add_method$arity$3(null,"m",(function (s){
+var parts = clojure.string.split.cljs$core$IFn$_invoke$arity$2(s,/\./);
+var quantity = obb_rules.host_dependent.parse_int(cljs.core.nth.cljs$core$IFn$_invoke$arity$2(parts,(1)));
+return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$move,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_rules.serializer.reader.get_int(s,(1)),obb_rules.serializer.reader.get_int(s,(2))], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_rules.serializer.reader.get_int(s,(3)),obb_rules.serializer.reader.get_int(s,(4))], null),quantity], null);
 }));
-cljs.core._add_method.call(null,obb_rules.serializer.reader.str__GT_action,"r",(function (s){
-var c = cljs.core.nth.call(null,s,(3));
-var dir = (function (){var G__42127 = c;
-switch (G__42127) {
+obb_rules.serializer.reader.str__GT_action.cljs$core$IMultiFn$_add_method$arity$3(null,"r",(function (s){
+var c = cljs.core.nth.cljs$core$IFn$_invoke$arity$2(s,(3));
+var dir = (function (){var G__16126 = c;
+switch (G__16126) {
 case "w":
-return new cljs.core.Keyword(null,"west","west",708776677);
+return cljs.core.cst$kw$west;
 
 break;
 case "s":
-return new cljs.core.Keyword(null,"south","south",1586796293);
+return cljs.core.cst$kw$south;
 
 break;
 case "e":
-return new cljs.core.Keyword(null,"east","east",1189821678);
+return cljs.core.cst$kw$east;
 
 break;
 case "n":
-return new cljs.core.Keyword(null,"north","north",651323902);
+return cljs.core.cst$kw$north;
 
 break;
 default:
@@ -70,58 +78,58 @@ throw (new Error([cljs.core.str("No matching clause: "),cljs.core.str(c)].join('
 
 }
 })();
-return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"rotate","rotate",152705015),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_rules.serializer.reader.get_int.call(null,s,(1)),obb_rules.serializer.reader.get_int.call(null,s,(2))], null),dir], null);
+return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$rotate,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_rules.serializer.reader.get_int(s,(1)),obb_rules.serializer.reader.get_int(s,(2))], null),dir], null);
 }));
-cljs.core._add_method.call(null,obb_rules.serializer.reader.str__GT_action,"d",(function (s){
-var parts = clojure.string.split.call(null,s,cljs.core.re_pattern.call(null,obb_rules.serializer.common.in_action_separator));
-var quantity = obb_rules.host_dependent.parse_int.call(null,cljs.core.nth.call(null,parts,(1)));
-var unit = cljs.core.keyword.call(null,cljs.core.nth.call(null,parts,(2)));
-return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"deploy","deploy",-2006774212),quantity,unit,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_rules.serializer.reader.get_int.call(null,s,(1)),obb_rules.serializer.reader.get_int.call(null,s,(2))], null)], null);
+obb_rules.serializer.reader.str__GT_action.cljs$core$IMultiFn$_add_method$arity$3(null,"d",(function (s){
+var parts = clojure.string.split.cljs$core$IFn$_invoke$arity$2(s,cljs.core.re_pattern(obb_rules.serializer.common.in_action_separator));
+var quantity = obb_rules.host_dependent.parse_int(cljs.core.nth.cljs$core$IFn$_invoke$arity$2(parts,(1)));
+var unit = cljs.core.keyword.cljs$core$IFn$_invoke$arity$1(cljs.core.nth.cljs$core$IFn$_invoke$arity$2(parts,(2)));
+return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$deploy,quantity,unit,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_rules.serializer.reader.get_int(s,(1)),obb_rules.serializer.reader.get_int(s,(2))], null)], null);
 }));
 /**
  * Given a string with several actions, returns a vector with all the
  *   raw actions.
  */
 obb_rules.serializer.reader.str__GT_actions = (function obb_rules$serializer$reader$str__GT_actions(s){
-return cljs.core.mapv.call(null,obb_rules.serializer.reader.str__GT_action,clojure.string.split.call(null,s,cljs.core.re_pattern.call(null,obb_rules.serializer.common.action_separator)));
+return cljs.core.mapv.cljs$core$IFn$_invoke$arity$2(obb_rules.serializer.reader.str__GT_action,clojure.string.split.cljs$core$IFn$_invoke$arity$2(s,cljs.core.re_pattern(obb_rules.serializer.common.action_separator)));
 });
 /**
  * Creates a history item from a string
  */
 obb_rules.serializer.reader.str__GT_history_item = (function obb_rules$serializer$reader$str__GT_history_item(s){
-var parts = clojure.string.split.call(null,s,cljs.core.re_pattern.call(null,obb_rules.serializer.common.action_separator));
-var player = cljs.core.keyword.call(null,cljs.core.first.call(null,parts));
-var actions = cljs.core.mapv.call(null,obb_rules.serializer.reader.str__GT_action,cljs.core.rest.call(null,parts));
-return new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"player","player",-97687400),player,new cljs.core.Keyword(null,"actions","actions",-812656882),actions], null);
+var parts = clojure.string.split.cljs$core$IFn$_invoke$arity$2(s,cljs.core.re_pattern(obb_rules.serializer.common.action_separator));
+var player = cljs.core.keyword.cljs$core$IFn$_invoke$arity$1(cljs.core.first(parts));
+var actions = cljs.core.mapv.cljs$core$IFn$_invoke$arity$2(obb_rules.serializer.reader.str__GT_action,cljs.core.rest(parts));
+return new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$player,player,cljs.core.cst$kw$actions,actions], null);
 });
 /**
  * Parses string representation of an attribute and associates it to
  *   the given attrs map
  */
 obb_rules.serializer.reader.gather_attributes = (function obb_rules$serializer$reader$gather_attributes(attrs,line){
-var parts = clojure.string.split.call(null,line,cljs.core.re_pattern.call(null,obb_rules.serializer.common.attributes_separator));
-var k = cljs.core.nth.call(null,parts,(0));
-var v = clojure.string.trim.call(null,cljs.core.nth.call(null,parts,(1)));
-return cljs.core.assoc.call(null,attrs,cljs.core.keyword.call(null,k),cljs.core.keyword.call(null,v));
+var parts = clojure.string.split.cljs$core$IFn$_invoke$arity$2(line,cljs.core.re_pattern(obb_rules.serializer.common.attributes_separator));
+var k = cljs.core.nth.cljs$core$IFn$_invoke$arity$2(parts,(0));
+var v = clojure.string.trim(cljs.core.nth.cljs$core$IFn$_invoke$arity$2(parts,(1)));
+return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(attrs,cljs.core.keyword.cljs$core$IFn$_invoke$arity$1(k),cljs.core.keyword.cljs$core$IFn$_invoke$arity$1(v));
 });
 /**
  * Splits the given string in lines, and also trims them
  */
 obb_rules.serializer.reader.split_lines = (function obb_rules$serializer$reader$split_lines(s){
-return cljs.core.map.call(null,clojure.string.trim,clojure.string.split_lines.call(null,s));
+return cljs.core.map.cljs$core$IFn$_invoke$arity$2(clojure.string.trim,clojure.string.split_lines(s));
 });
 /**
  * Gets the game attributes as a map
  */
 obb_rules.serializer.reader.str__GT_attrs = (function obb_rules$serializer$reader$str__GT_attrs(s){
-return cljs.core.reduce.call(null,obb_rules.serializer.reader.gather_attributes,cljs.core.PersistentArrayMap.EMPTY,obb_rules.serializer.reader.split_lines.call(null,s));
+return cljs.core.reduce.cljs$core$IFn$_invoke$arity$3(obb_rules.serializer.reader.gather_attributes,cljs.core.PersistentArrayMap.EMPTY,obb_rules.serializer.reader.split_lines(s));
 });
 /**
  * Creates a history from a string
  */
 obb_rules.serializer.reader.str__GT_history_items = (function obb_rules$serializer$reader$str__GT_history_items(s){
 if(cljs.core.truth_(s)){
-return cljs.core.mapv.call(null,obb_rules.serializer.reader.str__GT_history_item,obb_rules.serializer.reader.split_lines.call(null,s));
+return cljs.core.mapv.cljs$core$IFn$_invoke$arity$2(obb_rules.serializer.reader.str__GT_history_item,obb_rules.serializer.reader.split_lines(s));
 } else {
 return cljs.core.PersistentVector.EMPTY;
 }
@@ -130,10 +138,10 @@ return cljs.core.PersistentVector.EMPTY;
  * Given two deploy turns, this fn returns the raw actions for each player
  */
 obb_rules.serializer.reader.deploy_per_player = (function obb_rules$serializer$reader$deploy_per_player(deploy_history){
-var deploy1 = cljs.core.first.call(null,deploy_history);
-var deploy2 = cljs.core.second.call(null,deploy_history);
-var player = new cljs.core.Keyword(null,"player","player",-97687400).cljs$core$IFn$_invoke$arity$1(deploy1);
-if(cljs.core._EQ_.call(null,new cljs.core.Keyword(null,"p1","p1",-936759954),player)){
+var deploy1 = cljs.core.first(deploy_history);
+var deploy2 = cljs.core.second(deploy_history);
+var player = cljs.core.cst$kw$player.cljs$core$IFn$_invoke$arity$1(deploy1);
+if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$p1,player)){
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [deploy1,deploy2], null);
 } else {
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [deploy2,deploy1], null);
@@ -144,20 +152,20 @@ return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMP
  *   adds it to the given stash map
  */
 obb_rules.serializer.reader.add_from_deploy_to_stash = (function obb_rules$serializer$reader$add_from_deploy_to_stash(stash,raw_action){
-var map__42132 = obb_rules.actions.deploy.analyse.call(null,raw_action);
-var map__42132__$1 = ((((!((map__42132 == null)))?((((map__42132.cljs$lang$protocol_mask$partition0$ & (64))) || (map__42132.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.call(null,cljs.core.hash_map,map__42132):map__42132);
-var quantity = cljs.core.get.call(null,map__42132__$1,new cljs.core.Keyword(null,"quantity","quantity",-1929050694));
-var unit = cljs.core.get.call(null,map__42132__$1,new cljs.core.Keyword(null,"unit","unit",375175175));
-return cljs.core.update.call(null,stash,unit,((function (map__42132,map__42132__$1,quantity,unit){
-return (function (p1__42129_SHARP_){
-return (quantity + (function (){var or__18370__auto__ = p1__42129_SHARP_;
-if(cljs.core.truth_(or__18370__auto__)){
-return or__18370__auto__;
+var map__16131 = obb_rules.actions.deploy.analyse(raw_action);
+var map__16131__$1 = ((((!((map__16131 == null)))?((((map__16131.cljs$lang$protocol_mask$partition0$ & (64))) || (map__16131.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__16131):map__16131);
+var quantity = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__16131__$1,cljs.core.cst$kw$quantity);
+var unit = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__16131__$1,cljs.core.cst$kw$unit);
+return cljs.core.update.cljs$core$IFn$_invoke$arity$3(stash,unit,((function (map__16131,map__16131__$1,quantity,unit){
+return (function (p1__16128_SHARP_){
+return (quantity + (function (){var or__6156__auto__ = p1__16128_SHARP_;
+if(cljs.core.truth_(or__6156__auto__)){
+return or__6156__auto__;
 } else {
 return (0);
 }
 })());
-});})(map__42132,map__42132__$1,quantity,unit))
+});})(map__16131,map__16131__$1,quantity,unit))
 );
 });
 /**
@@ -165,37 +173,37 @@ return (0);
  *   by summing all the quantities
  */
 obb_rules.serializer.reader.build_stash_from_deploy = (function obb_rules$serializer$reader$build_stash_from_deploy(deploy_history_item){
-return cljs.core.reduce.call(null,obb_rules.serializer.reader.add_from_deploy_to_stash,cljs.core.PersistentArrayMap.EMPTY,new cljs.core.Keyword(null,"actions","actions",-812656882).cljs$core$IFn$_invoke$arity$1(deploy_history_item));
+return cljs.core.reduce.cljs$core$IFn$_invoke$arity$3(obb_rules.serializer.reader.add_from_deploy_to_stash,cljs.core.PersistentArrayMap.EMPTY,cljs.core.cst$kw$actions.cljs$core$IFn$_invoke$arity$1(deploy_history_item));
 });
 /**
  * Gets the stash from a stash string
  */
 obb_rules.serializer.reader.str__GT_stash = (function obb_rules$serializer$reader$str__GT_stash(raw){
-return cljs.core.into.call(null,cljs.core.PersistentArrayMap.EMPTY,cljs.core.map.call(null,(function (raw_unit_quantity){
-var parts = clojure.string.split.call(null,raw_unit_quantity,/\./);
-return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.keyword.call(null,cljs.core.nth.call(null,parts,(1))),obb_rules.host_dependent.parse_int.call(null,cljs.core.nth.call(null,parts,(0)))], null);
-}),clojure.string.split.call(null,raw,cljs.core.re_pattern.call(null,obb_rules.serializer.common.stash_separator))));
+return cljs.core.into.cljs$core$IFn$_invoke$arity$2(cljs.core.PersistentArrayMap.EMPTY,cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (raw_unit_quantity){
+var parts = clojure.string.split.cljs$core$IFn$_invoke$arity$2(raw_unit_quantity,/\./);
+return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.keyword.cljs$core$IFn$_invoke$arity$1(cljs.core.nth.cljs$core$IFn$_invoke$arity$2(parts,(1))),obb_rules.host_dependent.parse_int(cljs.core.nth.cljs$core$IFn$_invoke$arity$2(parts,(0)))], null);
+}),clojure.string.split.cljs$core$IFn$_invoke$arity$2(raw,cljs.core.re_pattern(obb_rules.serializer.common.stash_separator))));
 });
 /**
  * Gets the stash for the given player
  */
 obb_rules.serializer.reader.build_stash = (function obb_rules$serializer$reader$build_stash(attrs,player,deploy_history_item){
-var temp__4655__auto__ = cljs.core.get.call(null,attrs,cljs.core.keyword.call(null,[cljs.core.str(cljs.core.name.call(null,player)),cljs.core.str("-stash")].join('')),null);
+var temp__4655__auto__ = cljs.core.get.cljs$core$IFn$_invoke$arity$3(attrs,cljs.core.keyword.cljs$core$IFn$_invoke$arity$1([cljs.core.str(cljs.core.name(player)),cljs.core.str("-stash")].join('')),null);
 if(cljs.core.truth_(temp__4655__auto__)){
 var raw_stash = temp__4655__auto__;
-return obb_rules.serializer.reader.str__GT_stash.call(null,cljs.core.name.call(null,raw_stash));
+return obb_rules.serializer.reader.str__GT_stash(cljs.core.name(raw_stash));
 } else {
-return obb_rules.serializer.reader.build_stash_from_deploy.call(null,deploy_history_item);
+return obb_rules.serializer.reader.build_stash_from_deploy(deploy_history_item);
 }
 });
 /**
  * Starts the game battle and runs turn actions
  */
 obb_rules.serializer.reader.start_battle = (function obb_rules$serializer$reader$start_battle(game,attrs,history){
-if(cljs.core.truth_(obb_rules.game.deploy_QMARK_.call(null,game))){
+if(cljs.core.truth_(obb_rules.game.deploy_QMARK_(game))){
 return game;
 } else {
-return obb_rules.turn.process_history.call(null,obb_rules.game.start_battle.call(null,game,new cljs.core.Keyword(null,"first-player","first-player",917418847).cljs$core$IFn$_invoke$arity$1(attrs)),history);
+return obb_rules.turn.process_history(obb_rules.game.start_battle.cljs$core$IFn$_invoke$arity$2(game,cljs.core.cst$kw$first_DASH_player.cljs$core$IFn$_invoke$arity$1(attrs)),history);
 }
 });
 /**
@@ -203,16 +211,14 @@ return obb_rules.turn.process_history.call(null,obb_rules.game.start_battle.call
  *   given turns
  */
 obb_rules.serializer.reader.str__GT_game = (function obb_rules$serializer$reader$str__GT_game(s){
-var parts = clojure.string.split.call(null,s,cljs.core.re_pattern.call(null,obb_rules.serializer.common.context_separator));
-var attrs = obb_rules.serializer.reader.str__GT_attrs.call(null,cljs.core.nth.call(null,parts,(0)));
-var deploy_history = obb_rules.serializer.reader.str__GT_history_items.call(null,cljs.core.nth.call(null,parts,(1),null));
-var vec__42135 = obb_rules.serializer.reader.deploy_per_player.call(null,deploy_history);
-var p1_deploy = cljs.core.nth.call(null,vec__42135,(0),null);
-var p2_deploy = cljs.core.nth.call(null,vec__42135,(1),null);
-var stash1 = obb_rules.serializer.reader.build_stash.call(null,attrs,new cljs.core.Keyword(null,"p1","p1",-936759954),p1_deploy);
-var stash2 = obb_rules.serializer.reader.build_stash.call(null,attrs,new cljs.core.Keyword(null,"p2","p2",905500641),p2_deploy);
-var turn_history = obb_rules.serializer.reader.str__GT_history_items.call(null,cljs.core.nth.call(null,parts,(2),null));
-return obb_rules.serializer.reader.start_battle.call(null,obb_rules.turn.process_history.call(null,obb_rules.game.new_game.call(null,new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"p1","p1",-936759954),stash1,new cljs.core.Keyword(null,"p2","p2",905500641),stash2], null),attrs),deploy_history),attrs,turn_history);
+var parts = clojure.string.split.cljs$core$IFn$_invoke$arity$2(s,cljs.core.re_pattern(obb_rules.serializer.common.context_separator));
+var attrs = obb_rules.serializer.reader.str__GT_attrs(cljs.core.nth.cljs$core$IFn$_invoke$arity$2(parts,(0)));
+var deploy_history = obb_rules.serializer.reader.str__GT_history_items(cljs.core.nth.cljs$core$IFn$_invoke$arity$3(parts,(1),null));
+var vec__16134 = obb_rules.serializer.reader.deploy_per_player(deploy_history);
+var p1_deploy = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__16134,(0),null);
+var p2_deploy = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__16134,(1),null);
+var stash1 = obb_rules.serializer.reader.build_stash(attrs,cljs.core.cst$kw$p1,p1_deploy);
+var stash2 = obb_rules.serializer.reader.build_stash(attrs,cljs.core.cst$kw$p2,p2_deploy);
+var turn_history = obb_rules.serializer.reader.str__GT_history_items(cljs.core.nth.cljs$core$IFn$_invoke$arity$3(parts,(2),null));
+return obb_rules.serializer.reader.start_battle(obb_rules.turn.process_history(obb_rules.game.new_game.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$p1,stash1,cljs.core.cst$kw$p2,stash2], null),cljs.core.array_seq([attrs], 0)),deploy_history),attrs,turn_history);
 });
-
-//# sourceMappingURL=reader.js.map?rel=1458852296281
