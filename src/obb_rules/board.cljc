@@ -47,7 +47,13 @@
 
 (defn board-width "Gets a board's witdh" [board] (or (board :width) laws/default-board-w))
 (defn board-height "Gets a board's height" [board] (or (board :height) laws/default-board-h))
-(defn board-terrain "Gets the board's terrain" [board] (board :terrain))
+
+(defn board-terrain
+  "Gets/sets the board's terrain"
+  ([board]
+   (board :terrain))
+  ([board new-terrain]
+   (assoc board :terrain new-terrain)))
 
 (defn elements
   "Gets/sets all the elements"

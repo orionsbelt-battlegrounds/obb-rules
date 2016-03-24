@@ -59,16 +59,17 @@
 
 (defn- register-history
   "Register the processes actions on the game's history"
-  [game]
+  [game player]
   (if-let [turn-actions (seq (action-results->raw-actions game))]
-    (update game :history concat [turn-actions])
+    (update game :history #(conj (vec %) {:actions turn-actions
+                                          :player player}))
     game))
 
 (defn- create-result
   "Creates a result for the given game"
-  ([game total-action-points]
-   (create-result game total-action-points true))
-  ([game total-action-points cleanup?]
+  ([game player total-action-points]
+   (create-result game player total-action-points true))
+  ([game player total-action-points cleanup?]
    (cond
      (not (game/valid-actions? game))
        (result/action-failed "ActionFailed" game)
@@ -76,7 +77,7 @@
        (result/action-failed "ActionPointsOverflow")
      :else
        (-> game
-           (register-history)
+           (register-history player)
            (reset-action-specific-state cleanup?)
            (result/action-success total-action-points "TurnOK")))))
 
@@ -90,7 +91,7 @@
            do-actions (partial apply-actions player)
            final (reduce do-actions game actions)
            action-points (points final)]
-       (create-result final action-points cleanup?))
+       (create-result final player action-points cleanup?))
      (result/action-failed "NoActions"))))
 
 (defn process-actions
@@ -101,7 +102,15 @@
         final-state (reduce do-actions game actions)
         final (game-mode/process final-state)
         action-points (points final)]
-    (create-result final action-points)))
+    (create-result final player action-points)))
+
+(defn process-board-actions
+  "Processes the given actions, returns only the board if successful"
+  [game player raw-actions]
+  (let [result (process-actions game player raw-actions)]
+    (if (result/succeeded? result)
+      (:board result)
+      result)))
 
 (defn process
   "Processes the given actions"
@@ -112,7 +121,18 @@
   "Processes the given actions, and if the turn succeeded, returns the
   new board"
   [game player & raw-actions]
-  (let [result (process-actions game player raw-actions)]
-    (if (result/succeeded? result)
-      (:board result)
-      result)))
+  (process-board-actions game player raw-actions))
+
+(defn process-history
+  "Processes history items into the game"
+  [game history]
+  (reduce (fn [game history-item]
+            (let [curr-player (:player history-item)
+                  actions (:actions history-item)
+                  game (if (game/deploy? game) game (game/state game curr-player))
+                  result (process-actions game curr-player actions)]
+              (if (result/succeeded? result)
+                (:board result)
+                (reduced result))))
+          game
+          history))

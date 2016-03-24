@@ -8,6 +8,7 @@
             [obb-rules.unit :as unit]
             [obb-rules.host-dependent :as host]
             [obb-rules.serializer.writer :as writer]
+            [obb-rules.serializer.reader :as reader]
             [obb-demo.processor :as processor]
             [obb-demo.views.power-bar :as power-bar]
             [obb-rules.ai.firingsquad :as firingsquad]
@@ -93,6 +94,7 @@
                          :original-game (:original-game game-data)
                          :previous-game (:original-game game-data)
                          :previous-player :p2
+                         :history (:history game-data)
                          :bot (:bot game-data)
                          :action-points 0
                          :turn-num 0}))
@@ -247,10 +249,31 @@
    [:option "Firingsquad"]
    [:option "Alamo"]])
 
+(defn- game-str-changed
+  "Called then the textarea with the game str is changed by the user"
+  [game-data ev]
+  (state/set-page-data! (assoc game-data :game-str (-> ev .-target .-value))))
+
+(defn- load-game-str
+  "Loads the game from a string on the game data"
+  [game-data]
+  (let [game-str (:game-str game-data)
+        new-game (reader/str->game game-str)]
+    (state/set-page-data!
+      (-> game-data
+          (dissoc :game-str)
+          (assoc :game new-game)))))
+
 (defn- game-as-string
   [game-data]
-  [:pre {:style {:margin-top "10px"}}
-    (writer/game->str (:game game-data))])
+  [:div.row
+    [:textarea {:style {:margin-top "10px"
+                        :height "500px"}
+                :class "form-control"
+                :on-change (partial game-str-changed game-data)
+                :value (or (:game-str game-data)
+                           (writer/game->str (:game game-data)))}]
+    [:button.btn.btn-primary {:on-click (partial load-game-str game-data)} "Load"]])
 
 (defn render
   [state]
