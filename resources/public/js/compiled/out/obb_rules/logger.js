@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 1.7.228 {:static-fns true, :optimize-constants true}
+// Compiled by ClojureScript 1.7.228 {}
 goog.provide('obb_rules.logger');
 goog.require('cljs.core');
 goog.require('obb_rules.simplifier');
@@ -7,28 +7,28 @@ obb_rules.logger._STAR_verbose_STAR_ = false;
  * Logs the given data
  */
 obb_rules.logger.log = (function obb_rules$logger$log(var_args){
-var args__7221__auto__ = [];
-var len__7214__auto___14928 = arguments.length;
-var i__7215__auto___14929 = (0);
+var args__19435__auto__ = [];
+var len__19428__auto___41740 = arguments.length;
+var i__19429__auto___41741 = (0);
 while(true){
-if((i__7215__auto___14929 < len__7214__auto___14928)){
-args__7221__auto__.push((arguments[i__7215__auto___14929]));
+if((i__19429__auto___41741 < len__19428__auto___41740)){
+args__19435__auto__.push((arguments[i__19429__auto___41741]));
 
-var G__14930 = (i__7215__auto___14929 + (1));
-i__7215__auto___14929 = G__14930;
+var G__41742 = (i__19429__auto___41741 + (1));
+i__19429__auto___41741 = G__41742;
 continue;
 } else {
 }
 break;
 }
 
-var argseq__7222__auto__ = ((((0) < args__7221__auto__.length))?(new cljs.core.IndexedSeq(args__7221__auto__.slice((0)),(0))):null);
-return obb_rules.logger.log.cljs$core$IFn$_invoke$arity$variadic(argseq__7222__auto__);
+var argseq__19436__auto__ = ((((0) < args__19435__auto__.length))?(new cljs.core.IndexedSeq(args__19435__auto__.slice((0)),(0))):null);
+return obb_rules.logger.log.cljs$core$IFn$_invoke$arity$variadic(argseq__19436__auto__);
 });
 
 obb_rules.logger.log.cljs$core$IFn$_invoke$arity$variadic = (function (args){
 if(cljs.core.truth_(obb_rules.logger._STAR_verbose_STAR_)){
-return cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.println,args);
+return cljs.core.apply.call(null,cljs.core.println,args);
 } else {
 return null;
 }
@@ -36,56 +36,56 @@ return null;
 
 obb_rules.logger.log.cljs$lang$maxFixedArity = (0);
 
-obb_rules.logger.log.cljs$lang$applyTo = (function (seq14927){
-return obb_rules.logger.log.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq14927));
+obb_rules.logger.log.cljs$lang$applyTo = (function (seq41739){
+return obb_rules.logger.log.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq41739));
 });
 /**
  * Logs ai-turn header
  */
 obb_rules.logger.ai_turn = (function obb_rules$logger$ai_turn(ai_name,game){
-obb_rules.logger.log.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq(["## ~~~~~~~~~~~~~~~~~~~~~~"], 0));
+obb_rules.logger.log.call(null,"## ~~~~~~~~~~~~~~~~~~~~~~");
 
-obb_rules.logger.log.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq(["## AI Turn:",ai_name], 0));
+obb_rules.logger.log.call(null,"## AI Turn:",ai_name);
 
-obb_rules.logger.log.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq(["Game:"], 0));
+obb_rules.logger.log.call(null,"Game:");
 
-return obb_rules.logger.log.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([obb_rules.simplifier.clean_result(new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$board,game], null))], 0));
+return obb_rules.logger.log.call(null,obb_rules.simplifier.clean_result.call(null,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"board","board",-1907017633),game], null)));
 });
 /**
  * Runs the given code in verbose mode
  */
 obb_rules.logger.with_verbose = (function obb_rules$logger$with_verbose(var_args){
-var args__7221__auto__ = [];
-var len__7214__auto___14934 = arguments.length;
-var i__7215__auto___14935 = (0);
+var args__19435__auto__ = [];
+var len__19428__auto___41746 = arguments.length;
+var i__19429__auto___41747 = (0);
 while(true){
-if((i__7215__auto___14935 < len__7214__auto___14934)){
-args__7221__auto__.push((arguments[i__7215__auto___14935]));
+if((i__19429__auto___41747 < len__19428__auto___41746)){
+args__19435__auto__.push((arguments[i__19429__auto___41747]));
 
-var G__14936 = (i__7215__auto___14935 + (1));
-i__7215__auto___14935 = G__14936;
+var G__41748 = (i__19429__auto___41747 + (1));
+i__19429__auto___41747 = G__41748;
 continue;
 } else {
 }
 break;
 }
 
-var argseq__7222__auto__ = ((((2) < args__7221__auto__.length))?(new cljs.core.IndexedSeq(args__7221__auto__.slice((2)),(0))):null);
-return obb_rules.logger.with_verbose.cljs$core$IFn$_invoke$arity$variadic((arguments[(0)]),(arguments[(1)]),argseq__7222__auto__);
+var argseq__19436__auto__ = ((((2) < args__19435__auto__.length))?(new cljs.core.IndexedSeq(args__19435__auto__.slice((2)),(0))):null);
+return obb_rules.logger.with_verbose.cljs$core$IFn$_invoke$arity$variadic((arguments[(0)]),(arguments[(1)]),argseq__19436__auto__);
 });
 
 obb_rules.logger.with_verbose.cljs$core$IFn$_invoke$arity$variadic = (function (_AMPERSAND_form,_AMPERSAND_env,body){
-return cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(cljs.core._conj(cljs.core.List.EMPTY,cljs.core.cst$sym$cljs$core_SLASH_binding),cljs.core._conj(cljs.core.List.EMPTY,cljs.core.vec(cljs.core.sequence.cljs$core$IFn$_invoke$arity$1(cljs.core.seq(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(cljs.core._conj(cljs.core.List.EMPTY,cljs.core.cst$sym$obb_DASH_rules$logger_SLASH__STAR_verbose_STAR_),cljs.core._conj(cljs.core.List.EMPTY,true)))))),cljs.core.array_seq([body], 0))));
+return cljs.core.sequence.call(null,cljs.core.seq.call(null,cljs.core.concat.call(null,cljs.core._conj.call(null,cljs.core.List.EMPTY,new cljs.core.Symbol("cljs.core","binding","cljs.core/binding",2050379843,null)),cljs.core._conj.call(null,cljs.core.List.EMPTY,cljs.core.vec.call(null,cljs.core.sequence.call(null,cljs.core.seq.call(null,cljs.core.concat.call(null,cljs.core._conj.call(null,cljs.core.List.EMPTY,new cljs.core.Symbol("obb-rules.logger","*verbose*","obb-rules.logger/*verbose*",1699165534,null)),cljs.core._conj.call(null,cljs.core.List.EMPTY,true)))))),body)));
 });
 
 obb_rules.logger.with_verbose.cljs$lang$maxFixedArity = (2);
 
-obb_rules.logger.with_verbose.cljs$lang$applyTo = (function (seq14931){
-var G__14932 = cljs.core.first(seq14931);
-var seq14931__$1 = cljs.core.next(seq14931);
-var G__14933 = cljs.core.first(seq14931__$1);
-var seq14931__$2 = cljs.core.next(seq14931__$1);
-return obb_rules.logger.with_verbose.cljs$core$IFn$_invoke$arity$variadic(G__14932,G__14933,seq14931__$2);
+obb_rules.logger.with_verbose.cljs$lang$applyTo = (function (seq41743){
+var G__41744 = cljs.core.first.call(null,seq41743);
+var seq41743__$1 = cljs.core.next.call(null,seq41743);
+var G__41745 = cljs.core.first.call(null,seq41743__$1);
+var seq41743__$2 = cljs.core.next.call(null,seq41743__$1);
+return obb_rules.logger.with_verbose.cljs$core$IFn$_invoke$arity$variadic(G__41744,G__41745,seq41743__$2);
 });
 
 obb_rules.logger.with_verbose.cljs$lang$macro = true;
@@ -93,7 +93,9 @@ obb_rules.logger.with_verbose.cljs$lang$macro = true;
  * Logs an AI option
  */
 obb_rules.logger.ai_option = (function obb_rules$logger$ai_option(option){
-obb_rules.logger.log.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([cljs.core.cst$kw$actions.cljs$core$IFn$_invoke$arity$1(option)], 0));
+obb_rules.logger.log.call(null,new cljs.core.Keyword(null,"actions","actions",-812656882).cljs$core$IFn$_invoke$arity$1(option));
 
-return obb_rules.logger.log.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq(["\tValue:",cljs.core.cst$kw$value.cljs$core$IFn$_invoke$arity$1(option),"(",cljs.core.cst$kw$old_DASH_value.cljs$core$IFn$_invoke$arity$1(option),")","Cost:",cljs.core.cst$kw$cost.cljs$core$IFn$_invoke$arity$1(option)], 0));
+return obb_rules.logger.log.call(null,"\tValue:",new cljs.core.Keyword(null,"value","value",305978217).cljs$core$IFn$_invoke$arity$1(option),"(",new cljs.core.Keyword(null,"old-value","old-value",862546795).cljs$core$IFn$_invoke$arity$1(option),")","Cost:",new cljs.core.Keyword(null,"cost","cost",-1094861735).cljs$core$IFn$_invoke$arity$1(option));
 });
+
+//# sourceMappingURL=logger.js.map?rel=1458852293229

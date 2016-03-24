@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 1.7.228 {:static-fns true, :optimize-constants true}
+// Compiled by ClojureScript 1.7.228 {}
 goog.provide('obb_demo.routes');
 goog.require('cljs.core');
 goog.require('reagent.core');
@@ -7,67 +7,69 @@ goog.require('obb_demo.views.units');
 goog.require('obb_demo.views.index');
 goog.require('obb_demo.state');
 goog.require('obb_demo.views.play');
-var action__15994__auto___16160 = (function (params__15995__auto__){
-if(cljs.core.map_QMARK_(params__15995__auto__)){
-var map__16157 = params__15995__auto__;
-var map__16157__$1 = ((((!((map__16157 == null)))?((((map__16157.cljs$lang$protocol_mask$partition0$ & (64))) || (map__16157.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__16157):map__16157);
-return obb_demo.state.set_page_BANG_(cljs.core.cst$kw$index);
+var action__20764__auto___46143 = (function (params__20765__auto__){
+if(cljs.core.map_QMARK_.call(null,params__20765__auto__)){
+var map__46140 = params__20765__auto__;
+var map__46140__$1 = ((((!((map__46140 == null)))?((((map__46140.cljs$lang$protocol_mask$partition0$ & (64))) || (map__46140.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.call(null,cljs.core.hash_map,map__46140):map__46140);
+return obb_demo.state.set_page_BANG_.call(null,new cljs.core.Keyword(null,"index","index",-1531685915));
 } else {
-if(cljs.core.vector_QMARK_(params__15995__auto__)){
-var vec__16159 = params__15995__auto__;
-return obb_demo.state.set_page_BANG_(cljs.core.cst$kw$index);
-} else {
-return null;
-}
-}
-});
-secretary.core.add_route_BANG_("/",action__15994__auto___16160);
-
-var action__15994__auto___16164 = (function (params__15995__auto__){
-if(cljs.core.map_QMARK_(params__15995__auto__)){
-var map__16161 = params__15995__auto__;
-var map__16161__$1 = ((((!((map__16161 == null)))?((((map__16161.cljs$lang$protocol_mask$partition0$ & (64))) || (map__16161.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__16161):map__16161);
-return obb_demo.state.set_page_BANG_(cljs.core.cst$kw$player);
-} else {
-if(cljs.core.vector_QMARK_(params__15995__auto__)){
-var vec__16163 = params__15995__auto__;
-return obb_demo.state.set_page_BANG_(cljs.core.cst$kw$player);
+if(cljs.core.vector_QMARK_.call(null,params__20765__auto__)){
+var vec__46142 = params__20765__auto__;
+return obb_demo.state.set_page_BANG_.call(null,new cljs.core.Keyword(null,"index","index",-1531685915));
 } else {
 return null;
 }
 }
 });
-secretary.core.add_route_BANG_("/play",action__15994__auto___16164);
+secretary.core.add_route_BANG_.call(null,"/",action__20764__auto___46143);
 
-var action__15994__auto___16168 = (function (params__15995__auto__){
-if(cljs.core.map_QMARK_(params__15995__auto__)){
-var map__16165 = params__15995__auto__;
-var map__16165__$1 = ((((!((map__16165 == null)))?((((map__16165.cljs$lang$protocol_mask$partition0$ & (64))) || (map__16165.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__16165):map__16165);
-return obb_demo.state.set_page_BANG_(cljs.core.cst$kw$many_DASH_games);
+var action__20764__auto___46147 = (function (params__20765__auto__){
+if(cljs.core.map_QMARK_.call(null,params__20765__auto__)){
+var map__46144 = params__20765__auto__;
+var map__46144__$1 = ((((!((map__46144 == null)))?((((map__46144.cljs$lang$protocol_mask$partition0$ & (64))) || (map__46144.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.call(null,cljs.core.hash_map,map__46144):map__46144);
+return obb_demo.state.set_page_BANG_.call(null,new cljs.core.Keyword(null,"player","player",-97687400));
 } else {
-if(cljs.core.vector_QMARK_(params__15995__auto__)){
-var vec__16167 = params__15995__auto__;
-return obb_demo.state.set_page_BANG_(cljs.core.cst$kw$many_DASH_games);
+if(cljs.core.vector_QMARK_.call(null,params__20765__auto__)){
+var vec__46146 = params__20765__auto__;
+return obb_demo.state.set_page_BANG_.call(null,new cljs.core.Keyword(null,"player","player",-97687400));
 } else {
 return null;
 }
 }
 });
-secretary.core.add_route_BANG_("/many-games",action__15994__auto___16168);
+secretary.core.add_route_BANG_.call(null,"/play",action__20764__auto___46147);
 
-var action__15994__auto___16172 = (function (params__15995__auto__){
-if(cljs.core.map_QMARK_(params__15995__auto__)){
-var map__16169 = params__15995__auto__;
-var map__16169__$1 = ((((!((map__16169 == null)))?((((map__16169.cljs$lang$protocol_mask$partition0$ & (64))) || (map__16169.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__16169):map__16169);
-return obb_demo.state.set_page_BANG_(cljs.core.cst$kw$units);
+var action__20764__auto___46151 = (function (params__20765__auto__){
+if(cljs.core.map_QMARK_.call(null,params__20765__auto__)){
+var map__46148 = params__20765__auto__;
+var map__46148__$1 = ((((!((map__46148 == null)))?((((map__46148.cljs$lang$protocol_mask$partition0$ & (64))) || (map__46148.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.call(null,cljs.core.hash_map,map__46148):map__46148);
+return obb_demo.state.set_page_BANG_.call(null,new cljs.core.Keyword(null,"many-games","many-games",1856139136));
 } else {
-if(cljs.core.vector_QMARK_(params__15995__auto__)){
-var vec__16171 = params__15995__auto__;
-return obb_demo.state.set_page_BANG_(cljs.core.cst$kw$units);
+if(cljs.core.vector_QMARK_.call(null,params__20765__auto__)){
+var vec__46150 = params__20765__auto__;
+return obb_demo.state.set_page_BANG_.call(null,new cljs.core.Keyword(null,"many-games","many-games",1856139136));
 } else {
 return null;
 }
 }
 });
-secretary.core.add_route_BANG_("/units",action__15994__auto___16172);
+secretary.core.add_route_BANG_.call(null,"/many-games",action__20764__auto___46151);
 
+var action__20764__auto___46155 = (function (params__20765__auto__){
+if(cljs.core.map_QMARK_.call(null,params__20765__auto__)){
+var map__46152 = params__20765__auto__;
+var map__46152__$1 = ((((!((map__46152 == null)))?((((map__46152.cljs$lang$protocol_mask$partition0$ & (64))) || (map__46152.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.call(null,cljs.core.hash_map,map__46152):map__46152);
+return obb_demo.state.set_page_BANG_.call(null,new cljs.core.Keyword(null,"units","units",-533089095));
+} else {
+if(cljs.core.vector_QMARK_.call(null,params__20765__auto__)){
+var vec__46154 = params__20765__auto__;
+return obb_demo.state.set_page_BANG_.call(null,new cljs.core.Keyword(null,"units","units",-533089095));
+} else {
+return null;
+}
+}
+});
+secretary.core.add_route_BANG_.call(null,"/units",action__20764__auto___46155);
+
+
+//# sourceMappingURL=routes.js.map?rel=1458852301310
