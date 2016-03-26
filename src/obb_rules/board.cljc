@@ -19,16 +19,16 @@
    :terrain (random-terrain)
    :elements {}}))
 
-(defn- player-element?
+(defn- element-from-player?
   "True if the given element is from the given player"
   [player [coordinate element]]
-  (simplify/name= player (element/element-player element)))
+  (element/player? element player))
 
-(defn board-elements
-  "Gets the elements of a given player"
+(defn player-elements
+  "Gets the elements belonging to a given player"
   [board player]
   (->> (board :elements)
-       (filter (partial player-element? player))
+       (filter (partial element-from-player? player))
        (map #(last %))))
 
 (defn board-elements-count
@@ -36,7 +36,7 @@
   ([board]
    (count (board :elements)))
   ([board player]
-   (count (board-elements board player))))
+   (count (player-elements board player))))
 
 (defn empty-board?
   "Checks if a board is empty"

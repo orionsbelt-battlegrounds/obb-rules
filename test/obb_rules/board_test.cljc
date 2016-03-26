@@ -92,3 +92,15 @@
     (is (board/get-element focus1 [1 1]))
     (is (= 3 (board/board-elements-count focus2)))
     (is (board/get-element focus2 [2 1]))))
+
+(deftest player-elements-sequence
+  (let [e1 (element/create-element :p1 (unit/get-unit-by-name "rain") 20 :south [1 1])
+        e2 (element/create-element :p2 (unit/get-unit-by-name "rain") 20 :north [2 1])
+        board (-> (board/create-board)
+                  (board/place-element [1 1] e1)
+                  (board/place-element [2 1] e2))]
+    (testing "elements belong to the given player"
+      (is (= [e1] (board/player-elements board :p1))))
+    (testing "empty list of elements"
+      (is (empty? (board/player-elements board :px))))))
+
