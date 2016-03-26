@@ -12,6 +12,7 @@
 (def game {:width 8,
            :height 8,
            :terrain :forest,
+           :mode :annihilation,
            :elements
            {[7 1]
             {:player :p2,

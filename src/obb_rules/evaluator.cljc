@@ -15,8 +15,10 @@
   [game player]
   (let [stash (game/get-stash game player)]
     (if (stash/cleared? stash)
-      (map (fn [e] [(element/element-unit e) (element/element-quantity e)]) (board/board-elements game player))
-      (map (fn [[k v]] [(unit/fetch k) v]) stash))))
+      (map (fn [e] [(element/element-unit e) (element/element-quantity e)])
+           (board/player-elements game player))
+      (map (fn [[k v]] [(unit/fetch k) v])
+           stash))))
 
 (defn- sum-value
   "Sums the value/quantity of the given units"

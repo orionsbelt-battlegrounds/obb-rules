@@ -149,7 +149,7 @@
 (defmethod actions :turn
   [game player]
   (logger/ai-turn "alamo" game)
-  (let [elements (board/board-elements game player)
+  (let [elements (board/player-elements game player)
         gatherer (partial gather-element-actions game)
         option (->> (reduce gatherer [] elements)
                     (sort-by common/option-value-sorter)

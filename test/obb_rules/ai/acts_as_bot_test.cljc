@@ -1,5 +1,6 @@
 (ns obb-rules.ai.acts-as-bot-test
   (:require [obb-rules.game :as game]
+            [obb-rules.game-progress :as game-progress]
             [obb-rules.turn :as turn]
             [obb-rules.board :as board]
             [obb-rules.element :as element]
@@ -23,7 +24,7 @@
 (defn validate-deploy
   "Applies a bot function to a deployable game"
   [botfn]
-  (let [game (game/random)
+  (let [game (game-progress/new-random-game)
         actions (botfn game :p1)
         result (turn/process-actions game :p1 actions)]
     (is (result/succeeded? result))))
@@ -31,7 +32,7 @@
 (defn direct-attack
   "Simple direct attack"
   [botfn]
-  (let [board (-> (board/create-board)
+  (let [board (-> (game-progress/new-game {})
                   (game/state :p1)
                   (board/place-element [2 5] (element/create-element :p1 rain 1 :south [2 5]))
                   (board/place-element [2 6] (element/create-element :p2 rain 1 :north [2 6])))
@@ -44,7 +45,7 @@
 (defn direct-attack-double
   "Must select two actions"
   [botfn]
-  (let [board (-> (board/create-board)
+  (let [board (-> (game-progress/new-game {})
                   (game/state :p1)
                   (board/place-element [2 5] (element/create-element :p1 rain 10 :south [2 5]))
                   (board/place-element [2 6] (element/create-element :p2 rain 10 :north [2 6]))
@@ -59,7 +60,7 @@
 (defn rotate-attack
   "Rotates to attack"
   [botfn]
-  (let [board (-> (board/create-board)
+  (let [board (-> (game-progress/new-game {})
                   (game/state :p1)
                   (board/place-element [2 5] (element/create-element :p1 rain 1 :south [2 5]))
                   (board/place-element [3 5] (element/create-element :p2 rain 1 :north [3 5])))
@@ -72,7 +73,7 @@
 (defn prefer-rotate-attack
   "Scenario where preferes rotates to attack"
   [botfn]
-  (let [board (-> (board/create-board)
+  (let [board (-> (game-progress/new-game {})
                   (game/state :p1)
                   (board/place-element [2 5] (element/create-element :p1 rain 1 :south [2 5]))
                   (board/place-element [2 6] (element/create-element :p2 rain 1 :south [2 6]))
@@ -87,7 +88,7 @@
 (defn first-blood
   "Deploy and attack"
   [botfn stash]
-  (let [board (game/create stash)
+  (let [board (game-progress/new-game {:p1 stash :p2 stash})
         actions (botfn board :p1)
         result (turn/process-actions board :p1 actions)
         result2 (turn/process-actions (result/result-board result) :p2 actions)
@@ -102,7 +103,7 @@
 (defn move-and-attack
   "Moves and attacks"
   [botfn]
-  (let [board (-> (board/create-board)
+  (let [board (-> (game-progress/new-game {})
                   (game/state :p1)
                   (board/place-element [2 5] (element/create-element :p1 rain 1 :south [2 5]))
                   (board/place-element [5 5] (element/create-element :p2 kamikaze 1 :north [5 5])))
@@ -115,7 +116,7 @@
 (defn seek-and-destroy
   "The seek part"
   [botfn]
-  (let [board (-> (board/create-board)
+  (let [board (-> (game-progress/new-game {})
                   (game/state :p1)
                   (board/place-element [2 5] (element/create-element :p1 rain 1 :south [2 5]))
                   (board/place-element [5 5] (element/create-element :p1 kamikaze 1 :north [5 5])))

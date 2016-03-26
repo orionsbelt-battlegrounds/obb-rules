@@ -3,9 +3,12 @@
             [obb-rules.result :as result]
             [obb-rules.simplifier :as simplify]
             [obb-rules.host-dependent :as host]
+            [obb-rules.player :as player]
             [obb-rules.board :as board]))
 
-(def version "2.0.0")
+(def version "3.0.0")
+
+(def ^:private available-modes #{:annihilation :supernova})
 
 (defn state?
   "Checks if the game is in a given state"
@@ -19,7 +22,6 @@
 (defn final? "True if the game has ended" [game] (state? game :final))
 (defn player-turn? "True if player's state" [game player] (state? game player))
 (defn get-stash "Gets the player's stash" [game player] (board/get-stash game player))
-(defn mode "Gets the game mode" [game] (or (game :mode) :default))
 
 (defn state
   "Gets/Sets the current game's state"
@@ -28,33 +30,18 @@
   ([game new-state]
    (assoc game :state new-state)))
 
-(defn create
-  "Creates a game for a given stash"
-  ([stash]
-    (create stash stash))
-  ([stash1 stash2]
-   (-> (board/create-board)
-       (board/set-stash :p1 stash1)
-       (board/set-stash :p2 stash2)
-       (assoc :state :deploy))))
+(defn- valid-mode?
+  "Checks if the given mode is one of the supported modes"
+  [mode]
+  (contains? available-modes mode))
 
-(defn new-game
-  "Creates a game for the given stashes.
-  stashes is an associative collection in which the keys correspond to the
-  players and the values to the corresponding stash."
-  [stashes & [{:as options} :as args]]
-  (-> (reduce-kv (fn [board player stash] (board/set-stash board player stash))
-                             (board/create-board)
-                             stashes)
-      (cond->
-        (some? (:terrain options)) (board/board-terrain (:terrain options)))
-      (state :deploy)))
-
-(defn random
-  "Creates a game with random units"
-  []
-  (let [stash (stash/random)]
-    (create stash)))
+(defn mode
+  "Gets or sets the game mode"
+  ([game]
+   (:mode game))
+  ([game mode]
+   (assert (valid-mode? mode) "Unknown mode")
+   (assoc game :mode mode)))
 
 (defn start-battle
   "Given a deployed board, starts the battle"
@@ -72,7 +59,7 @@
   (:first-player game))
 
 (defn action-results
-  "Provides the actions a results currently aplied on this game
+  "Provides the actions results currently applied on this game
   if any."
   [game]
   (game :action-results))
@@ -91,3 +78,8 @@
   [game]
   (every? #(result/succeeded? (last %)) (action-results game)))
 
+(defn update-stash
+  "Updates the specified player's stash by applying f to the stash and the given args"
+  [game player f & f-args]
+  (let [stash (board/get-stash game player)]
+    (board/set-stash game player (apply f stash f-args))))

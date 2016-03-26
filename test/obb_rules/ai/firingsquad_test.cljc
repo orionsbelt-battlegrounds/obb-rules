@@ -1,5 +1,6 @@
 (ns obb-rules.ai.firingsquad-test
   (:require [obb-rules.game :as game]
+            [obb-rules.game-progress :as game-progress]
             [obb-rules.turn :as turn]
             [obb-rules.stash :as stash]
             [obb-rules.unit :as unit]
@@ -53,7 +54,7 @@
 (def quantity 100)
 
 (deftest complete-game
-  (let [board (-> (board/create-board)
+  (let [board (-> (game-progress/new-game {})
                   (game/state :p1)
                   (board/place-element [1 7] (element/create-element :p1 crusader quantity :north [1 7]))
                   (board/place-element [2 7] (element/create-element :p1 crusader quantity :north [2 7]))
@@ -78,7 +79,7 @@
   (println "Running" obb-gen/scenarions-to-test "firingsquad vs firingsquad")
   (dotimes [x obb-gen/scenarions-to-test]
     (time
-      (let [game (-> (game/random)
+      (let [game (-> (game-progress/new-random-game)
                      (turn/process-actions :p1 [[:auto-deploy :firingsquad]])
                      (result/result-board)
                      (turn/process-actions :p2 [[:auto-deploy :firingsquad]])
@@ -104,7 +105,7 @@
 
 (defn- crusader-vs-crusader
   []
-  (-> (board/create-board)
+  (-> (game-progress/new-game {})
       (game/state :p1)
       (board/place-element [1 7] (element/create-element :p1 crusader quantity :north [1 7]))
       (board/place-element [2 7] (element/create-element :p1 crusader quantity :north [2 7]))

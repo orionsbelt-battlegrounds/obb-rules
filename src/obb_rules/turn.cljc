@@ -2,7 +2,7 @@
   (:require [obb-rules.action :as action]
             [obb-rules.game :as game]
             [obb-rules.laws :as laws]
-            [obb-rules.game-mode :as game-mode]
+            [obb-rules.game-progress :as game-progress]
             [obb-rules.result :as result]))
 
 (defn- continue-apply-actions
@@ -100,7 +100,7 @@
   (let [actions (map action-pair raw-actions)
         do-actions (partial apply-actions player)
         final-state (reduce do-actions game actions)
-        final (game-mode/process final-state)
+        final (game-progress/next-stage final-state)
         action-points (points final)]
     (create-result final player action-points)))
 

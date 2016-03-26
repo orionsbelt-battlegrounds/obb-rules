@@ -1,6 +1,7 @@
 (ns obb-rules.actions.auto-deploy-test
   (:require [obb-rules.actions.auto-deploy :as auto-deploy]
             [obb-rules.game :as game]
+            [obb-rules.game-progress :as game-progress]
             [obb-rules.board :as board]
             [obb-rules.stash :as stash]
             [obb-rules.turn :as turn]
@@ -23,30 +24,30 @@
     (action board player)))
 
 (deftest fails-if-not-deploy-state
-  (let [game (-> (game/random) (game/state :p1))
+  (let [game (-> (game-progress/new-random-game) (game/state :p1))
         result (process-action game :p1 [:auto-deploy])]
     (is (result/failed? result))
     (is (= "MustBeDeployState" (result/result-message result)))))
 
 (deftest fails-if-no-stash
-  (let [board (-> (game/random) (board/set-stash :p1 {}))
+  (let [board (-> (game-progress/new-random-game) (board/set-stash :p1 {}))
         result (process-action board :p1 [:auto-deploy])]
     (is (result/failed? result))
     (is (= "NoStash" (result/result-message result)))))
 
 (deftest fails-if-no-template
-  (let [board (game/random)
+  (let [board (game-progress/new-random-game)
         result (process-action board :p1 [:auto-deploy :no-template])]
     (is (result/failed? result))
     (is (= "NoTemplate" (result/result-message result)))))
 
 (deftest smoke-success-str
-  (let [board (game/random)
+  (let [board (game-progress/new-random-game)
         result (process-action board "p1" ["auto-deploy" "firingsquad"])]
     (is (result/succeeded? result))))
 
 (deftest smoke-success-sym
-  (let [board (game/random)
+  (let [board (game-progress/new-random-game)
         result-p2 (process-action board :p2 [:auto-deploy :firingsquad])
         board2 (result/result-board result-p2)
         result-p1 (process-action board2 :p1 [:auto-deploy :firingsquad])]
@@ -58,9 +59,9 @@
 (defn- auto-deploy-for
   "Auto deploys for both players for the given stash"
   [stash deploy-template]
-  (let [board (game/create stash)
+  (let [board     (game-progress/new-game {:p1 stash :p2 stash})
         result-p2 (process-action board :p2 [:auto-deploy deploy-template])
-        board2 (result/result-board result-p2)
+        board2    (result/result-board result-p2)
         result-p1 (process-action board2 :p1 [:auto-deploy deploy-template])]
     (is (result/succeeded? result-p1))
     (is (result/succeeded? result-p2))

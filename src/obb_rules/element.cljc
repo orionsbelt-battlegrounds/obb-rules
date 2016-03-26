@@ -16,7 +16,7 @@
 (defn element-player
   "Element's player"
   ([element]
-   (:player element))
+   (keyword (:player element)))
   ([element player]
    (assoc element :player player)))
 
@@ -46,8 +46,8 @@
   (let [unit (element-unit element)]
     (unit/unit-range unit)))
 
-(defn element-direction 
-  "Gets/Sets element's direction" 
+(defn element-direction
+  "Gets/Sets element's direction"
   ([element] (element :direction))
   ([element new-direction]
    (assoc element :direction new-direction)))
@@ -192,6 +192,11 @@
   "Unfreezes an element"
   [element]
   (dissoc element :frozen))
+
+(defn player?
+  "Checks whether the element belongs to the given player"
+  [element player]
+  (= (element-player element) player))
 
 (defn assert-element
   "Assets that an object acts as an element"

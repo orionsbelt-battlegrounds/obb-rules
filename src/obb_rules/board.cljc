@@ -2,6 +2,7 @@
   (:require [obb-rules.math :as math]
             [obb-rules.laws :as laws]
             [obb-rules.element :as element]
+            [obb-rules.unit :as unit]
             [obb-rules.simplifier :as simplify]))
 
 (defn- random-terrain
@@ -19,24 +20,30 @@
    :terrain (random-terrain)
    :elements {}}))
 
-(defn- player-element?
+(defn- element-from-player?
   "True if the given element is from the given player"
   [player [coordinate element]]
-  (simplify/name= player (element/element-player element)))
+  (element/player? element player))
 
-(defn board-elements
-  "Gets the elements of a given player"
+(defn player-elements
+  "Gets the elements belonging to a given player"
   [board player]
   (->> (board :elements)
-       (filter (partial player-element? player))
+       (filter (partial element-from-player? player))
        (map #(last %))))
+
+(defn unit-present?
+  "Checks whether the given unit is present and belongs to the given player"
+  [board player unit]
+  (some #(= (-> %1 element/element-unit unit/unit-name) unit)
+        (player-elements board player)))
 
 (defn board-elements-count
   "Gets the number of board elements"
   ([board]
    (count (board :elements)))
   ([board player]
-   (count (board-elements board player))))
+   (count (player-elements board player))))
 
 (defn empty-board?
   "Checks if a board is empty"

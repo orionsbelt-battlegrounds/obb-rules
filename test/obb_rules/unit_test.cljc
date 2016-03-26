@@ -4,9 +4,9 @@
     #?(:clj [clojure.test :refer [deftest testing is]]
        :cljs [cljs.test :refer-macros [deftest testing is]])))
 
-(deftest unit-smoke
+(deftest existing-unit-types
   (testing "get-units"
-    (is (= 20 (count (unit/get-units))))))
+    (is (= 21 (count (unit/get-units))))))
 
 (defn- test-unit
   [name code]
@@ -21,7 +21,7 @@
 
 (defn- verify-unit
   [unit]
-  (testing  (test-unit (:name unit) (:code unit))))
+  (testing (test-unit (:name unit) (:code unit))))
 
 (deftest verify-units
   (doseq [unit (unit/get-units)]
