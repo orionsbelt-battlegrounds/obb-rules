@@ -1,3 +1,7 @@
+### v3.0.0 - 26/03/2016
+* Support Supernova game mode
+* Move all game progress logic to the `game-progress` namespace
+
 ### v2.1.0 - ???
 * Added writer and reader to serialize to a simple text format
 
