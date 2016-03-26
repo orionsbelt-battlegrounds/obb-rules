@@ -1,4 +1,7 @@
-(ns obb-rules.units.star)
+(ns ^{:added "3.0.0"
+      :author "Joaquim Torres"}
+    obb-rules.units.star
+    "Metadata for the Star unit")
 
 (def metadata
   {:name "star"

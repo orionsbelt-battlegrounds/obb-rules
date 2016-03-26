@@ -1,9 +1,13 @@
-(ns obb-rules.game-progress
-  (:require[obb-rules.stash :as stash]
-           [obb-rules.game :as game]
-           [obb-rules.player :as player]
-           [obb-rules.game-mode :as game-mode]
-           [obb-rules.board :as board]))
+(ns ^{:added "3.0.0"
+      :author "Joaquim Torres"}
+  obb-rules.game-progress
+  "Evolving a game through its different stages"
+
+  (:require [obb-rules.stash :as stash]
+            [obb-rules.game :as game]
+            [obb-rules.player :as player]
+            [obb-rules.game-mode :as game-mode]
+            [obb-rules.board :as board]))
 
 (def ^:private default-new-game-options {:mode :annihilation})
 
