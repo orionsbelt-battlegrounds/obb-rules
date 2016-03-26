@@ -21,7 +21,7 @@
    stashes is an associative collection in which the keys correspond to the
    players and the values to the corresponding stash."
   [stashes & [{:as options} :as args]]
-  (-> (reduce-kv (fn [board player stash] (board/set-stash board player stash))
+  (-> (reduce-kv board/set-stash
                  (board/create-board)
                  stashes)
       (cond->
