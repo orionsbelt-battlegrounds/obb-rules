@@ -53,7 +53,7 @@
 (def kamikaze-element-p1 (element/create-element :p1 kamikaze 100 :north))
 
 (deftest chooses-the-most-defensive-option
-  (let [board (-> (board/create-board)
+  (let [board (-> (game-progress/new-game {})
                   (game/state :p1)
                   (board/place-element [2 2] crusader-element-p2)
                   (board/place-element [2 3] doomer-element-p2)

@@ -4,16 +4,33 @@
             [obb-rules.player :as player]
             [obb-rules.game :as game]))
 
+(defn- star-unit?
+  "Checks whether the given player still has the star unit"
+  [game player]
+  (board/unit-present? game player "star"))
+
+(defmulti filter-winners
+  "Filter the list of players that meet conditions to win the game"
+  (fn [game] (game/mode game)))
+
+(defmethod filter-winners :annihilation
+  [game]
+  (filter #(not (board/empty-board? game %))
+          player/all-players))
+
+(defmethod filter-winners :supernova
+  [game]
+  (filter #(star-unit? game %)
+          player/all-players))
+
 (defn winner
   "Gets the winner of the given game"
   [game]
-  (let [[first & others :as players-with-units] (filter
-                                                 #(not (board/empty-board? game %))
-                                                 player/all-players)]
+  (let [[first & others :as candidates] (filter-winners game)]
     (cond
-      (empty? players-with-units) :draw
-      (empty? others)             first
-      :else                       :none)))
+      (empty? candidates) :draw
+      (empty? others)     first
+      :else               :none)))
 
 (defn winner?
   "Checks if there is already a winner"
@@ -28,7 +45,7 @@
 
 (defmulti on-new-game
   "Hook to run mode specific preparation on game creation"
-  (fn [game] (:mode game)))
+  (fn [game] (game/mode game)))
 
 (defmethod on-new-game :supernova
   [game]

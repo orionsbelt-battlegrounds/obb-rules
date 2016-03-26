@@ -104,3 +104,15 @@
     (testing "empty list of elements"
       (is (empty? (board/player-elements board :px))))))
 
+(deftest presence-of-an-unit
+  (let [e1 (element/create-element :p1 (unit/get-unit-by-name "rain") 20 :south [1 1])
+        e2 (element/create-element :p2 (unit/get-unit-by-name "crusader") 20 :north [2 1])
+        board (-> (board/create-board)
+                  (board/place-element [1 1] e1)
+                  (board/place-element [2 1] e2))]
+    (testing "player has the given unit"
+      (is (board/unit-present? board :p1 "rain")))
+    (testing "only the opponent has the unit"
+      (is (not (board/unit-present? board :p1 "crusader"))))
+    (testing "player does not have the unit"
+      (is (not (board/unit-present? board :p1 "star"))))))

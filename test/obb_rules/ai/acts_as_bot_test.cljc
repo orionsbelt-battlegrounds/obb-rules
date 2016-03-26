@@ -32,7 +32,7 @@
 (defn direct-attack
   "Simple direct attack"
   [botfn]
-  (let [board (-> (board/create-board)
+  (let [board (-> (game-progress/new-game {})
                   (game/state :p1)
                   (board/place-element [2 5] (element/create-element :p1 rain 1 :south [2 5]))
                   (board/place-element [2 6] (element/create-element :p2 rain 1 :north [2 6])))
@@ -45,7 +45,7 @@
 (defn direct-attack-double
   "Must select two actions"
   [botfn]
-  (let [board (-> (board/create-board)
+  (let [board (-> (game-progress/new-game {})
                   (game/state :p1)
                   (board/place-element [2 5] (element/create-element :p1 rain 10 :south [2 5]))
                   (board/place-element [2 6] (element/create-element :p2 rain 10 :north [2 6]))
@@ -60,7 +60,7 @@
 (defn rotate-attack
   "Rotates to attack"
   [botfn]
-  (let [board (-> (board/create-board)
+  (let [board (-> (game-progress/new-game {})
                   (game/state :p1)
                   (board/place-element [2 5] (element/create-element :p1 rain 1 :south [2 5]))
                   (board/place-element [3 5] (element/create-element :p2 rain 1 :north [3 5])))
@@ -73,7 +73,7 @@
 (defn prefer-rotate-attack
   "Scenario where preferes rotates to attack"
   [botfn]
-  (let [board (-> (board/create-board)
+  (let [board (-> (game-progress/new-game {})
                   (game/state :p1)
                   (board/place-element [2 5] (element/create-element :p1 rain 1 :south [2 5]))
                   (board/place-element [2 6] (element/create-element :p2 rain 1 :south [2 6]))
@@ -103,7 +103,7 @@
 (defn move-and-attack
   "Moves and attacks"
   [botfn]
-  (let [board (-> (board/create-board)
+  (let [board (-> (game-progress/new-game {})
                   (game/state :p1)
                   (board/place-element [2 5] (element/create-element :p1 rain 1 :south [2 5]))
                   (board/place-element [5 5] (element/create-element :p2 kamikaze 1 :north [5 5])))
@@ -116,7 +116,7 @@
 (defn seek-and-destroy
   "The seek part"
   [botfn]
-  (let [board (-> (board/create-board)
+  (let [board (-> (game-progress/new-game {})
                   (game/state :p1)
                   (board/place-element [2 5] (element/create-element :p1 rain 1 :south [2 5]))
                   (board/place-element [5 5] (element/create-element :p1 kamikaze 1 :north [5 5])))

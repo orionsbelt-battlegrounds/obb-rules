@@ -54,7 +54,7 @@
 (def quantity 100)
 
 (deftest complete-game
-  (let [board (-> (board/create-board)
+  (let [board (-> (game-progress/new-game {})
                   (game/state :p1)
                   (board/place-element [1 7] (element/create-element :p1 crusader quantity :north [1 7]))
                   (board/place-element [2 7] (element/create-element :p1 crusader quantity :north [2 7]))
@@ -105,7 +105,7 @@
 
 (defn- crusader-vs-crusader
   []
-  (-> (board/create-board)
+  (-> (game-progress/new-game {})
       (game/state :p1)
       (board/place-element [1 7] (element/create-element :p1 crusader quantity :north [1 7]))
       (board/place-element [2 7] (element/create-element :p1 crusader quantity :north [2 7]))
