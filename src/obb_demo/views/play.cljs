@@ -20,17 +20,26 @@
 (defn- get-game-data
   "Gets the current game or creates a new one"
   [state]
-  (if-let [game (:index state)]
-    game
-    (let [game (processor/deployed-game)
-          game-data {:game game}]
-      (state/set-page-data! game-data)
-      game-data)))
+  (let [game-data (:index state)
+        game (:game game-data)]
+    (if game
+      game-data
+      (let [mode (get game-data :mode :annihilation)
+            game (processor/deployed-game {:mode mode})
+            game-data {:game game
+                       :mode mode}]
+        (state/set-page-data! game-data)
+        game-data))))
 
 (defn- restart-game
   "Generates and restarts a new game"
   []
-  (state/set-page-data! nil))
+  (state/set-page-data! {:mode :annihilation}))
+
+(defn- restart-game-supernova
+  "Generates and restarts a new game in supernova mode"
+  []
+  (state/set-page-data! {:mode :supernova}))
 
 (defn- set-speed
   "Sets the actions delay speed"
@@ -89,12 +98,11 @@
         [:div.panel-heading
          [:h3.panel-title "Options"]]
         [:div.panel-body
-         [:button.btn.btn-primary {:on-click restart-game} "Restart game"]
+         [:button.btn.btn-primary {:on-click restart-game} "Restart (annihilation)"]
+         [:button.btn.btn-primary {:on-click restart-game-supernova} "Restart (supernova)"]
          [:button.btn.btn-primary {:on-click (partial set-speed -100)} "More speed"]
          [:button.btn.btn-primary {:on-click (partial set-speed 100)} "Less speed"]
-         [:div.well.well-sm (or (:delay game-data) 100) " millis per action"]
-         ]]
-
+         [:div.well.well-sm (or (:delay game-data) 100) " millis per action"]]]
        [:div.panel.panel-info
         [:div.panel-heading
          [:h3.panel-title "Preview"]]

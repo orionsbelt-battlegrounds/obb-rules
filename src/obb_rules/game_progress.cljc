@@ -32,12 +32,12 @@
 
 (defn new-random-game
   "Creates a game with a random stash. The same stash is user for all players."
-  []
+  [& [{:as options} :as args]]
   (let [stash (stash/random)]
     (-> (reduce (fn [assigned-stashes player] (assoc assigned-stashes player stash))
                 {}
                 player/all-players)
-        new-game)))
+        (new-game options))))
 
 (defn deploy-completed?
   "True if it's on deploy and completed"
