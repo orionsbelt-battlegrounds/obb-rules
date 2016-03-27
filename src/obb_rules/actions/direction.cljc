@@ -1,4 +1,5 @@
 (ns obb-rules.actions.direction
+  (:refer-clojure :exclude [update])
   (:require [obb-rules.simplifier :as simplify]))
 
 (defn offset
@@ -12,8 +13,8 @@
 
 (defn update
   "Moves a coord given a direction"
-  [dir [^Integer x ^Integer y]]
-  (let [[^Integer ox ^Integer oy] (offset dir)]
+  [dir [^long x ^long y]]
+  (let [[^long ox ^long oy] (offset dir)]
     [(+ x ox) (+ y oy)]))
 
 (defn perpendicular

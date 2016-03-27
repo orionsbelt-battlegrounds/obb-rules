@@ -22,10 +22,19 @@
             [obb-rules.units.star]))
 
 (defrecord ^{:doc "Represents a combat unit"} CombatUnit
-  [name code value
-   attack attack-type range defense
-   bonus type category displacement
-   movement-type movement-cost])
+  [^String name
+   ^String code
+   ^long value
+   ^long attack
+   attack-type
+   ^long range
+   ^long defense
+   bonus
+   type
+   category
+   displacement
+   movement-type
+   movement-cost])
 
 (defn gather-units
   "Gets all the available units"
