@@ -62,7 +62,9 @@
     #_(println "game" (simplifier/clean-result {:board game}))
     (println "--" player actions)
     (if (= :final (game/state game))
-      {:game (deployed-game {:mode (get game-data :mode :annihilation)})}
+      (let [mode (get game-data :mode :annihilation)]
+        {:game (deployed-game {:mode mode})
+         :mode mode})
       (-> (assoc game-data :actions actions)
           (assoc :original-actions actions)
           (assoc :history (conj (vec (get game-data :history (:history game)))

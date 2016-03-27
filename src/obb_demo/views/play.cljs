@@ -93,7 +93,7 @@
       [:div.col-lg-5
         [boardground/render {} game-data]
         (game-as-string game-data)]
-      [:div.col-lg-2
+      [:div.col-lg-3
        [:div.panel.panel-default
         [:div.panel-heading
          [:h3.panel-title "Options"]]
