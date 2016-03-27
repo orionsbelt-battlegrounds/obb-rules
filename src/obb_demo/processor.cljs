@@ -77,7 +77,7 @@
   (let [actions (:actions game-data)
         game (:game game-data)]
     (if (empty? actions)
-      (-> (assoc game-data :game (-> (game-mode/process game)
+      (-> (assoc game-data :game (-> (game-progress/next-stage game)
                                      (dissoc :action-results)))
           (dissoc :actions))
       (if-let [action (:action game-data)]

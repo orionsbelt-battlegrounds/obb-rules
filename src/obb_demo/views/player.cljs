@@ -15,6 +15,7 @@
             [obb-rules.ai.alamo :as alamo]
             [obb-rules.math :as math]
             [obb-rules.game-mode :as game-mode]
+            [obb-rules.game-progress :as game-progress]
             [obb-rules.laws :as laws]
             [obb-rules.evaluator :as evaluator]
             [obb-rules.turn :as turn]
@@ -112,7 +113,7 @@
   [game-data]
   (let [player :p1
         game (-> (:game game-data)
-                 (game-mode/process)
+                 (game-progress/next-stage)
                  (dissoc :action-results))
         turn-num (:turn-num game-data)
         actions (time (bot-turn game-data game))
