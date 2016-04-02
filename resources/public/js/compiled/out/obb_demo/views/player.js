@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 1.7.228 {:static-fns true, :optimize-constants true}
+// Compiled by ClojureScript 1.8.40 {:static-fns true, :optimize-constants true}
 goog.provide('obb_demo.views.player');
 goog.require('cljs.core');
 goog.require('obb_rules.game_mode');
@@ -8,6 +8,7 @@ goog.require('obb_rules.serializer.writer');
 goog.require('obb_rules.ai.alamo');
 goog.require('obb_rules.evaluator');
 goog.require('obb_rules.simplifier');
+goog.require('obb_rules.game_progress');
 goog.require('obb_rules.element');
 goog.require('obb_demo.boardground');
 goog.require('obb_rules.result');
@@ -63,9 +64,9 @@ return cljs.core.cst$kw$span$label$label_DASH_primary;
  */
 obb_demo.views.player.players = (function obb_demo$views$player$players(game_data,game){
 var player = obb_rules.game.state.cljs$core$IFn$_invoke$arity$1(game);
-return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_demo.views.player.selected_player(player,cljs.core.cst$kw$p2),(function (){var or__6156__auto__ = cljs.core.cst$kw$bot.cljs$core$IFn$_invoke$arity$1(game_data);
-if(cljs.core.truth_(or__6156__auto__)){
-return or__6156__auto__;
+return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_demo.views.player.selected_player(player,cljs.core.cst$kw$p2),(function (){var or__6210__auto__ = cljs.core.cst$kw$bot.cljs$core$IFn$_invoke$arity$1(game_data);
+if(cljs.core.truth_(or__6210__auto__)){
+return or__6210__auto__;
 } else {
 return "Firingsquad";
 }
@@ -113,13 +114,13 @@ return (obb_rules.ai.firingsquad.actions.cljs$core$IFn$_invoke$arity$2 ? obb_rul
  */
 obb_demo.views.player.play_turn = (function obb_demo$views$player$play_turn(game_data){
 var player = cljs.core.cst$kw$p1;
-var game = cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(obb_rules.game_mode.process(cljs.core.cst$kw$game.cljs$core$IFn$_invoke$arity$1(game_data)),cljs.core.cst$kw$action_DASH_results);
+var game = cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(obb_rules.game_progress.next_stage(cljs.core.cst$kw$game.cljs$core$IFn$_invoke$arity$1(game_data)),cljs.core.cst$kw$action_DASH_results);
 var turn_num = cljs.core.cst$kw$turn_DASH_num.cljs$core$IFn$_invoke$arity$1(game_data);
-var actions = (function (){var start__7084__auto__ = cljs.core.system_time();
-var ret__7085__auto__ = obb_demo.views.player.bot_turn(game_data,game);
-cljs.core.prn.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([[cljs.core.str("Elapsed time: "),cljs.core.str((cljs.core.system_time() - start__7084__auto__).toFixed((6))),cljs.core.str(" msecs")].join('')], 0));
+var actions = (function (){var start__7149__auto__ = cljs.core.system_time();
+var ret__7150__auto__ = obb_demo.views.player.bot_turn(game_data,game);
+cljs.core.prn.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([[cljs.core.str("Elapsed time: "),cljs.core.str((cljs.core.system_time() - start__7149__auto__).toFixed((6))),cljs.core.str(" msecs")].join('')], 0));
 
-return ret__7085__auto__;
+return ret__7150__auto__;
 })();
 var result = obb_rules.turn.process_actions(game,cljs.core.cst$kw$p2,actions);
 if(cljs.core.truth_(obb_rules.result.succeeded_QMARK_(result))){
@@ -199,12 +200,12 @@ if(cljs.core.truth_(temp__4655__auto__)){
 var element = temp__4655__auto__;
 var unit = obb_rules.element.element_unit(element);
 return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$panel$panel_DASH_info,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$style,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$margin_DASH_top,"20px"], null)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$panel_DASH_heading,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$h3$panel_DASH_title,[cljs.core.str("Selected element: "),cljs.core.str(obb_rules.unit.unit_name(unit))].join('')], null)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$panel_DASH_body,new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$row,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$col_DASH_lg_DASH_4,new cljs.core.PersistentVector(null, 5, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$ul$list_DASH_group,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$li$list_DASH_group_DASH_item,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span$badge,obb_rules.unit.unit_attack(unit)], null),"Attack"], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$li$list_DASH_group_DASH_item,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span$badge,cljs.core.name(obb_rules.unit.attack_type(unit))], null),"Type"], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$li$list_DASH_group_DASH_item,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span$badge,obb_rules.unit.unit_range(unit)], null),"Range"], null),(cljs.core.truth_(cljs.core.cst$kw$after_DASH_attack.cljs$core$IFn$_invoke$arity$1(unit))?new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$li$list_DASH_group_DASH_item,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span$badge,cljs.core.map.cljs$core$IFn$_invoke$arity$2(((function (unit,element,temp__4655__auto__){
-return (function (p1__16143_SHARP_){
-return cljs.core.name(cljs.core.first(p1__16143_SHARP_));
+return (function (p1__16500_SHARP_){
+return cljs.core.name(cljs.core.first(p1__16500_SHARP_));
 });})(unit,element,temp__4655__auto__))
 ,cljs.core.cst$kw$after_DASH_attack.cljs$core$IFn$_invoke$arity$1(unit))], null),"Powers"], null):null)], null)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$col_DASH_lg_DASH_4,new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$ul$list_DASH_group,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$li$list_DASH_group_DASH_item,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span$badge,obb_rules.unit.unit_defense(unit)], null),"Defense"], null),(cljs.core.truth_(cljs.core.cst$kw$after_DASH_hit.cljs$core$IFn$_invoke$arity$1(unit))?new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$li$list_DASH_group_DASH_item,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span$badge,cljs.core.map.cljs$core$IFn$_invoke$arity$2(((function (unit,element,temp__4655__auto__){
-return (function (p1__16144_SHARP_){
-return cljs.core.name(cljs.core.first(p1__16144_SHARP_));
+return (function (p1__16501_SHARP_){
+return cljs.core.name(cljs.core.first(p1__16501_SHARP_));
 });})(unit,element,temp__4655__auto__))
 ,cljs.core.cst$kw$after_DASH_hit.cljs$core$IFn$_invoke$arity$1(unit))], null),"Powers"], null):null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$li$list_DASH_group_DASH_item,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span$badge,cljs.core.name(obb_rules.unit.unit_category(unit))], null),"Category"], null)], null)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$col_DASH_lg_DASH_4,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$ul$list_DASH_group,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$li$list_DASH_group_DASH_item,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span$badge,cljs.core.name(obb_rules.unit.unit_movement_type(unit))], null),"Movement"], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$li$list_DASH_group_DASH_item,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$span$badge,obb_rules.unit.unit_movement_cost(unit)], null),"Movement cost"], null)], null)], null)], null)], null)], null);
 } else {
@@ -225,9 +226,9 @@ return obb_demo.state.set_page_data_BANG_(cljs.core.assoc.cljs$core$IFn$_invoke$
  * Selects the bot to play
  */
 obb_demo.views.player.challenger_selector = (function obb_demo$views$player$challenger_selector(game_data){
-return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$select,new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$value,(function (){var or__6156__auto__ = cljs.core.cst$kw$bot.cljs$core$IFn$_invoke$arity$1(game_data);
-if(cljs.core.truth_(or__6156__auto__)){
-return or__6156__auto__;
+return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$select,new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$value,(function (){var or__6210__auto__ = cljs.core.cst$kw$bot.cljs$core$IFn$_invoke$arity$1(game_data);
+if(cljs.core.truth_(or__6210__auto__)){
+return or__6210__auto__;
 } else {
 return "Firingsquad";
 }
@@ -248,9 +249,9 @@ var new_game = obb_rules.serializer.reader.str__GT_game(game_str);
 return obb_demo.state.set_page_data_BANG_(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(game_data,cljs.core.cst$kw$game_DASH_str),cljs.core.cst$kw$game,new_game));
 });
 obb_demo.views.player.game_as_string = (function obb_demo$views$player$game_as_string(game_data){
-return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$row,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$textarea,new cljs.core.PersistentArrayMap(null, 4, [cljs.core.cst$kw$style,new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$margin_DASH_top,"10px",cljs.core.cst$kw$height,"500px"], null),cljs.core.cst$kw$class,"form-control",cljs.core.cst$kw$on_DASH_change,cljs.core.partial.cljs$core$IFn$_invoke$arity$2(obb_demo.views.player.game_str_changed,game_data),cljs.core.cst$kw$value,(function (){var or__6156__auto__ = cljs.core.cst$kw$game_DASH_str.cljs$core$IFn$_invoke$arity$1(game_data);
-if(cljs.core.truth_(or__6156__auto__)){
-return or__6156__auto__;
+return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$row,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$textarea,new cljs.core.PersistentArrayMap(null, 4, [cljs.core.cst$kw$style,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$height,"500px"], null),cljs.core.cst$kw$class,"form-control",cljs.core.cst$kw$on_DASH_change,cljs.core.partial.cljs$core$IFn$_invoke$arity$2(obb_demo.views.player.game_str_changed,game_data),cljs.core.cst$kw$value,(function (){var or__6210__auto__ = cljs.core.cst$kw$game_DASH_str.cljs$core$IFn$_invoke$arity$1(game_data);
+if(cljs.core.truth_(or__6210__auto__)){
+return or__6210__auto__;
 } else {
 return obb_rules.serializer.writer.game__GT_str(cljs.core.cst$kw$game.cljs$core$IFn$_invoke$arity$1(game_data));
 }
@@ -259,5 +260,5 @@ return obb_rules.serializer.writer.game__GT_str(cljs.core.cst$kw$game.cljs$core$
 obb_demo.views.player.render = (function obb_demo$views$player$render(state){
 var game_data = obb_demo.views.player.get_game_data(state);
 var game = cljs.core.cst$kw$game.cljs$core$IFn$_invoke$arity$1(game_data);
-return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$row,new cljs.core.PersistentVector(null, 10, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$col_DASH_lg_DASH_2,obb_demo.views.player.challenger_selector(game_data),obb_demo.views.player.game_turn(game_data),obb_demo.views.player.players(game_data,game),obb_demo.views.power_bar.render(game),obb_demo.views.player.action_points(game_data),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$button$btn$btn_DASH_primary,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$on_DASH_click,cljs.core.partial.cljs$core$IFn$_invoke$arity$2(obb_demo.views.player.play_turn,game_data)], null),"Play turn"], null),obb_demo.views.player.unit_quantity_picker(game_data),obb_demo.views.player.rotate_panel(game_data),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$button$btn$btn_DASH_default,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$on_DASH_click,cljs.core.partial.cljs$core$IFn$_invoke$arity$2(obb_demo.views.player.reset_turn,game_data)], null),"Reset turn"], null)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$col_DASH_lg_DASH_5,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_demo.boardground.render,cljs.core.PersistentArrayMap.EMPTY,game_data], null),obb_demo.views.player.selected_element_info(game_data)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$col_DASH_lg_DASH_5,new cljs.core.PersistentVector(null, 5, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$jumbotron,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$h1,"Demo"], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$p,"This is a demo that showcases the gameplay of Orion's Belt against a simple AI."], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$p,"It's your turn to play. Perform your actions and then click Play turn."], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$p,"Would you like to know more?",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$ul,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$li,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$a,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$href,"https://twitter.com/orionsbelt"], null),"Twitter"], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$li,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$a,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$href,"https://github.com/orionsbelt-battlegrounds/obb-rules"], null),"Github"], null)], null)], null)], null)], null)], null),obb_demo.views.player.game_as_string(game_data)], null)], null);
+return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$well,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$h4,"Demo"], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$p,"This is a demo that showcases the gameplay of Orion's Belt against a simple AI.\n            It's your turn to play. Perform your actions and then click Play turn."], null)], null),new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$row,new cljs.core.PersistentVector(null, 10, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$col_DASH_lg_DASH_2,obb_demo.views.player.challenger_selector(game_data),obb_demo.views.player.game_turn(game_data),obb_demo.views.player.players(game_data,game),obb_demo.views.power_bar.render(game),obb_demo.views.player.action_points(game_data),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$button$btn$btn_DASH_primary,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$on_DASH_click,cljs.core.partial.cljs$core$IFn$_invoke$arity$2(obb_demo.views.player.play_turn,game_data)], null),"Play turn"], null),obb_demo.views.player.unit_quantity_picker(game_data),obb_demo.views.player.rotate_panel(game_data),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$button$btn$btn_DASH_default,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$on_DASH_click,cljs.core.partial.cljs$core$IFn$_invoke$arity$2(obb_demo.views.player.reset_turn,game_data)], null),"Reset turn"], null)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$col_DASH_lg_DASH_5,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_demo.boardground.render,cljs.core.PersistentArrayMap.EMPTY,game_data], null),obb_demo.views.player.selected_element_info(game_data)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$col_DASH_lg_DASH_5,obb_demo.views.player.game_as_string(game_data)], null)], null)], null);
 });

@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 1.7.228 {:static-fns true, :optimize-constants true}
+// Compiled by ClojureScript 1.8.40 {:static-fns true, :optimize-constants true}
 goog.provide('obb_rules.result');
 goog.require('cljs.core');
 /**
@@ -50,23 +50,23 @@ return base_with_info;
  * Represents a successful action
  */
 obb_rules.result.action_success = (function obb_rules$result$action_success(var_args){
-var args14980 = [];
-var len__7214__auto___14983 = arguments.length;
-var i__7215__auto___14984 = (0);
+var args15289 = [];
+var len__7279__auto___15292 = arguments.length;
+var i__7280__auto___15293 = (0);
 while(true){
-if((i__7215__auto___14984 < len__7214__auto___14983)){
-args14980.push((arguments[i__7215__auto___14984]));
+if((i__7280__auto___15293 < len__7279__auto___15292)){
+args15289.push((arguments[i__7280__auto___15293]));
 
-var G__14985 = (i__7215__auto___14984 + (1));
-i__7215__auto___14984 = G__14985;
+var G__15294 = (i__7280__auto___15293 + (1));
+i__7280__auto___15293 = G__15294;
 continue;
 } else {
 }
 break;
 }
 
-var G__14982 = args14980.length;
-switch (G__14982) {
+var G__15291 = args15289.length;
+switch (G__15291) {
 case 2:
 return obb_rules.result.action_success.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(arguments[(1)]));
 
@@ -80,7 +80,7 @@ return obb_rules.result.action_success.cljs$core$IFn$_invoke$arity$4((arguments[
 
 break;
 default:
-throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args14980.length)].join('')));
+throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args15289.length)].join('')));
 
 }
 });
@@ -102,23 +102,23 @@ obb_rules.result.action_success.cljs$lang$maxFixedArity = 4;
  * Represents an unsuccessful action
  */
 obb_rules.result.action_failed = (function obb_rules$result$action_failed(var_args){
-var args14987 = [];
-var len__7214__auto___14990 = arguments.length;
-var i__7215__auto___14991 = (0);
+var args15296 = [];
+var len__7279__auto___15299 = arguments.length;
+var i__7280__auto___15300 = (0);
 while(true){
-if((i__7215__auto___14991 < len__7214__auto___14990)){
-args14987.push((arguments[i__7215__auto___14991]));
+if((i__7280__auto___15300 < len__7279__auto___15299)){
+args15296.push((arguments[i__7280__auto___15300]));
 
-var G__14992 = (i__7215__auto___14991 + (1));
-i__7215__auto___14991 = G__14992;
+var G__15301 = (i__7280__auto___15300 + (1));
+i__7280__auto___15300 = G__15301;
 continue;
 } else {
 }
 break;
 }
 
-var G__14989 = args14987.length;
-switch (G__14989) {
+var G__15298 = args15296.length;
+switch (G__15298) {
 case 1:
 return obb_rules.result.action_failed.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -128,7 +128,7 @@ return obb_rules.result.action_failed.cljs$core$IFn$_invoke$arity$2((arguments[(
 
 break;
 default:
-throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args14987.length)].join('')));
+throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args15296.length)].join('')));
 
 }
 });

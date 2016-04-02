@@ -1,10 +1,11 @@
-// Compiled by ClojureScript 1.7.228 {:static-fns true, :optimize-constants true}
+// Compiled by ClojureScript 1.8.40 {:static-fns true, :optimize-constants true}
 goog.provide('obb_demo.views.play');
 goog.require('cljs.core');
 goog.require('obb_demo.processor');
 goog.require('obb_rules.math');
 goog.require('obb_rules.serializer.writer');
 goog.require('obb_rules.evaluator');
+goog.require('obb_rules.game_progress');
 goog.require('obb_demo.boardground');
 goog.require('obb_rules.result');
 goog.require('obb_rules.game');
@@ -22,32 +23,39 @@ return game;
  * Gets the current game or creates a new one
  */
 obb_demo.views.play.get_game_data = (function obb_demo$views$play$get_game_data(state){
-var temp__4655__auto__ = cljs.core.cst$kw$index.cljs$core$IFn$_invoke$arity$1(state);
-if(cljs.core.truth_(temp__4655__auto__)){
-var game = temp__4655__auto__;
-return game;
-} else {
-var game = obb_demo.processor.deployed_game();
-var game_data = new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$game,game], null);
-obb_demo.state.set_page_data_BANG_(game_data);
-
+var game_data = cljs.core.cst$kw$index.cljs$core$IFn$_invoke$arity$1(state);
+var game = cljs.core.cst$kw$game.cljs$core$IFn$_invoke$arity$1(game_data);
+if(cljs.core.truth_(game)){
 return game_data;
+} else {
+var options = cljs.core.get.cljs$core$IFn$_invoke$arity$3(game_data,cljs.core.cst$kw$game_DASH_options,obb_rules.game_progress.default_new_game_options);
+var game__$1 = obb_demo.processor.deployed_game.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([options], 0));
+var game_data__$1 = new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$game,game__$1,cljs.core.cst$kw$game_DASH_options,options], null);
+obb_demo.state.set_page_data_BANG_(game_data__$1);
+
+return game_data__$1;
 }
 });
 /**
  * Generates and restarts a new game
  */
 obb_demo.views.play.restart_game = (function obb_demo$views$play$restart_game(){
-return obb_demo.state.set_page_data_BANG_(null);
+return obb_demo.state.set_page_data_BANG_(new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$game_DASH_options,obb_rules.game_progress.default_new_game_options], null));
+});
+/**
+ * Generates and restarts a new game in supernova mode
+ */
+obb_demo.views.play.restart_game_supernova = (function obb_demo$views$play$restart_game_supernova(){
+return obb_demo.state.set_page_data_BANG_(new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$game_DASH_options,cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(obb_rules.game_progress.default_new_game_options,cljs.core.cst$kw$mode,cljs.core.cst$kw$supernova)], null));
 });
 /**
  * Sets the actions delay speed
  */
 obb_demo.views.play.set_speed = (function obb_demo$views$play$set_speed(delay_msecs){
 var game_data = obb_demo.state.get_page_data();
-var current = (function (){var or__6156__auto__ = cljs.core.cst$kw$delay.cljs$core$IFn$_invoke$arity$1(game_data);
-if(cljs.core.truth_(or__6156__auto__)){
-return or__6156__auto__;
+var current = (function (){var or__6210__auto__ = cljs.core.cst$kw$delay.cljs$core$IFn$_invoke$arity$1(game_data);
+if(cljs.core.truth_(or__6210__auto__)){
+return or__6210__auto__;
 } else {
 return (100);
 }
@@ -92,9 +100,9 @@ return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMP
 obb_demo.views.play.render = (function obb_demo$views$play$render(state){
 var game_data = obb_demo.views.play.get_game_data(state);
 var game = cljs.core.cst$kw$game.cljs$core$IFn$_invoke$arity$1(game_data);
-return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$row,new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$col_DASH_lg_DASH_2,obb_demo.views.play.game_turn(game_data),obb_demo.views.play.players(game),obb_demo.views.power_bar.render(game)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$col_DASH_lg_DASH_5,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_demo.boardground.render,cljs.core.PersistentArrayMap.EMPTY,game_data], null),obb_demo.views.play.game_as_string(game_data)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$col_DASH_lg_DASH_2,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$panel$panel_DASH_default,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$panel_DASH_heading,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$h3$panel_DASH_title,"Options"], null)], null),new cljs.core.PersistentVector(null, 5, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$panel_DASH_body,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$button$btn$btn_DASH_primary,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$on_DASH_click,obb_demo.views.play.restart_game], null),"Restart game"], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$button$btn$btn_DASH_primary,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$on_DASH_click,cljs.core.partial.cljs$core$IFn$_invoke$arity$2(obb_demo.views.play.set_speed,(-100))], null),"More speed"], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$button$btn$btn_DASH_primary,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$on_DASH_click,cljs.core.partial.cljs$core$IFn$_invoke$arity$2(obb_demo.views.play.set_speed,(100))], null),"Less speed"], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$well$well_DASH_sm,(function (){var or__6156__auto__ = cljs.core.cst$kw$delay.cljs$core$IFn$_invoke$arity$1(game_data);
-if(cljs.core.truth_(or__6156__auto__)){
-return or__6156__auto__;
+return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$row,new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$col_DASH_lg_DASH_2,obb_demo.views.play.game_turn(game_data),obb_demo.views.play.players(game),obb_demo.views.power_bar.render(game)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$col_DASH_lg_DASH_5,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [obb_demo.boardground.render,cljs.core.PersistentArrayMap.EMPTY,game_data], null),obb_demo.views.play.game_as_string(game_data)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$col_DASH_lg_DASH_3,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$panel$panel_DASH_default,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$panel_DASH_heading,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$h3$panel_DASH_title,"Options"], null)], null),new cljs.core.PersistentVector(null, 6, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$panel_DASH_body,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$button$btn$btn_DASH_primary,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$on_DASH_click,obb_demo.views.play.restart_game], null),"Restart (annihilation)"], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$button$btn$btn_DASH_primary,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$on_DASH_click,obb_demo.views.play.restart_game_supernova], null),"Restart (supernova)"], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$button$btn$btn_DASH_primary,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$on_DASH_click,cljs.core.partial.cljs$core$IFn$_invoke$arity$2(obb_demo.views.play.set_speed,(-100))], null),"More speed"], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$button$btn$btn_DASH_primary,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$on_DASH_click,cljs.core.partial.cljs$core$IFn$_invoke$arity$2(obb_demo.views.play.set_speed,(100))], null),"Less speed"], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$well$well_DASH_sm,(function (){var or__6210__auto__ = cljs.core.cst$kw$delay.cljs$core$IFn$_invoke$arity$1(game_data);
+if(cljs.core.truth_(or__6210__auto__)){
+return or__6210__auto__;
 } else {
 return (100);
 }

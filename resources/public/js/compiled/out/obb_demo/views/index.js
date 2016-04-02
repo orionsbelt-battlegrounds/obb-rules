@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 1.7.228 {:static-fns true, :optimize-constants true}
+// Compiled by ClojureScript 1.8.40 {:static-fns true, :optimize-constants true}
 goog.provide('obb_demo.views.index');
 goog.require('cljs.core');
 goog.require('obb_demo.views.many_games');
@@ -26,23 +26,23 @@ return obb_demo.views.play.render(state);
 }
 });
 obb_demo.views.index.render = (function obb_demo$views$index$render(var_args){
-var args16310 = [];
-var len__7214__auto___16313 = arguments.length;
-var i__7215__auto___16314 = (0);
+var args16667 = [];
+var len__7279__auto___16670 = arguments.length;
+var i__7280__auto___16671 = (0);
 while(true){
-if((i__7215__auto___16314 < len__7214__auto___16313)){
-args16310.push((arguments[i__7215__auto___16314]));
+if((i__7280__auto___16671 < len__7279__auto___16670)){
+args16667.push((arguments[i__7280__auto___16671]));
 
-var G__16315 = (i__7215__auto___16314 + (1));
-i__7215__auto___16314 = G__16315;
+var G__16672 = (i__7280__auto___16671 + (1));
+i__7280__auto___16671 = G__16672;
 continue;
 } else {
 }
 break;
 }
 
-var G__16312 = args16310.length;
-switch (G__16312) {
+var G__16669 = args16667.length;
+switch (G__16669) {
 case 0:
 return obb_demo.views.index.render.cljs$core$IFn$_invoke$arity$0();
 
@@ -52,7 +52,7 @@ return obb_demo.views.index.render.cljs$core$IFn$_invoke$arity$1((arguments[(0)]
 
 break;
 default:
-throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args16310.length)].join('')));
+throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args16667.length)].join('')));
 
 }
 });

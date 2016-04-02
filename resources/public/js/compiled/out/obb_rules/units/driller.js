@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 1.7.228 {:static-fns true, :optimize-constants true}
+// Compiled by ClojureScript 1.8.40 {:static-fns true, :optimize-constants true}
 goog.provide('obb_rules.units.driller');
 goog.require('cljs.core');
 obb_rules.units.driller.metadata = cljs.core.PersistentHashMap.fromArrays([cljs.core.cst$kw$category,cljs.core.cst$kw$displacement,cljs.core.cst$kw$name,cljs.core.cst$kw$value,cljs.core.cst$kw$movement_DASH_cost,cljs.core.cst$kw$type,cljs.core.cst$kw$after_DASH_attack,cljs.core.cst$kw$defense,cljs.core.cst$kw$code,cljs.core.cst$kw$movement_DASH_type,cljs.core.cst$kw$attack,cljs.core.cst$kw$range],[cljs.core.cst$kw$medium,cljs.core.cst$kw$ground,"driller",(32),(2),cljs.core.cst$kw$mechanic,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$triple], null)], null),(1500),"d",cljs.core.cst$kw$all,(1500),(1)]);

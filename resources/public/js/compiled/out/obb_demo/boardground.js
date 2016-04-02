@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 1.7.228 {:static-fns true, :optimize-constants true}
+// Compiled by ClojureScript 1.8.40 {:static-fns true, :optimize-constants true}
 goog.provide('obb_demo.boardground');
 goog.require('cljs.core');
 goog.require('obb_rules.board');
@@ -17,11 +17,11 @@ goog.require('obb_rules.laws');
 obb_demo.boardground.with_selected_element = (function obb_demo$boardground$with_selected_element(game_data,coord){
 var game = cljs.core.cst$kw$game.cljs$core$IFn$_invoke$arity$1(game_data);
 var element = obb_rules.board.get_element(game,coord);
-if(cljs.core.truth_((function (){var and__6144__auto__ = element;
-if(cljs.core.truth_(and__6144__auto__)){
+if(cljs.core.truth_((function (){var and__6198__auto__ = element;
+if(cljs.core.truth_(and__6198__auto__)){
 return cljs.core.not(obb_rules.element.frozen_QMARK_(element));
 } else {
-return and__6144__auto__;
+return and__6198__auto__;
 }
 })())){
 return cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(game_data,cljs.core.cst$kw$possible_DASH_destinations,obb_rules.actions.move.find_all_possible_destinations_with_cost.cljs$core$IFn$_invoke$arity$2(game,element)),cljs.core.cst$kw$possible_DASH_attacks,obb_rules.ai.common.find_possible_attacks(game,element)),cljs.core.cst$kw$selected_DASH_coord,coord),cljs.core.cst$kw$selected_DASH_element,element),cljs.core.cst$kw$selected_DASH_quantity,obb_rules.element.element_quantity.cljs$core$IFn$_invoke$arity$1(element)),cljs.core.cst$kw$previous_DASH_player),cljs.core.cst$kw$selected_DASH_quantity_DASH_error),cljs.core.cst$kw$previous_DASH_game);
@@ -44,13 +44,24 @@ var dir = obb_rules.element.element_direction.cljs$core$IFn$_invoke$arity$1(elem
 return cljs.core.first(cljs.core.name(dir));
 });
 /**
+ * If the unit name needs transformations, does it to match the resources
+ *   on the main site.
+ */
+obb_demo.boardground.process_unit_name = (function obb_demo$boardground$process_unit_name(unit_name){
+if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(unit_name,"star")){
+return "flag";
+} else {
+return unit_name;
+}
+});
+/**
  * Renders an html element that displays a board element's unit, if present
  *   at the given coordinates
  */
 obb_demo.boardground.unit_image = (function obb_demo$boardground$unit_image(game,element){
 if(cljs.core.truth_(element)){
 var unit = obb_rules.element.element_unit(element);
-var unit_name = obb_rules.unit.unit_name(unit);
+var unit_name = obb_demo.boardground.process_unit_name(obb_rules.unit.unit_name(unit));
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$img$unit,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$src,[cljs.core.str("http://orionsbelt.eu/public/units/"),cljs.core.str(unit_name),cljs.core.str("_"),cljs.core.str(obb_demo.boardground.direction(element)),cljs.core.str(".png")].join('')], null)], null);
 } else {
 return null;
@@ -60,9 +71,9 @@ return null;
  * True if something with the given cost is possible
  */
 obb_demo.boardground.possible_cost_QMARK_ = (function obb_demo$boardground$possible_cost_QMARK_(game_data,cost){
-var action_points = (function (){var or__6156__auto__ = cljs.core.cst$kw$action_DASH_points.cljs$core$IFn$_invoke$arity$1(game_data);
-if(cljs.core.truth_(or__6156__auto__)){
-return or__6156__auto__;
+var action_points = (function (){var or__6210__auto__ = cljs.core.cst$kw$action_DASH_points.cljs$core$IFn$_invoke$arity$1(game_data);
+if(cljs.core.truth_(or__6210__auto__)){
+return or__6210__auto__;
 } else {
 return (0);
 }
@@ -75,21 +86,21 @@ return (obb_rules.laws.max_action_points >= (action_points + cost));
  */
 obb_demo.boardground.possible_move = (function obb_demo$boardground$possible_move(game_data,coord,element){
 var cost = cljs.core.get.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$possible_DASH_destinations.cljs$core$IFn$_invoke$arity$1(game_data),coord);
-if(cljs.core.truth_((function (){var and__6144__auto__ = (element == null);
-if(and__6144__auto__){
-var and__6144__auto____$1 = !((cost == null));
-if(and__6144__auto____$1){
-var and__6144__auto____$2 = cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(coord,cljs.core.cst$kw$overed_DASH_coord.cljs$core$IFn$_invoke$arity$1(game_data));
-if(and__6144__auto____$2){
+if(cljs.core.truth_((function (){var and__6198__auto__ = (element == null);
+if(and__6198__auto__){
+var and__6198__auto____$1 = !((cost == null));
+if(and__6198__auto____$1){
+var and__6198__auto____$2 = cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(coord,cljs.core.cst$kw$overed_DASH_coord.cljs$core$IFn$_invoke$arity$1(game_data));
+if(and__6198__auto____$2){
 return obb_demo.boardground.possible_cost_QMARK_(game_data,cost);
 } else {
-return and__6144__auto____$2;
+return and__6198__auto____$2;
 }
 } else {
-return and__6144__auto____$1;
+return and__6198__auto____$1;
 }
 } else {
-return and__6144__auto__;
+return and__6198__auto__;
 }
 })())){
 var element__$1 = cljs.core.cst$kw$selected_DASH_element.cljs$core$IFn$_invoke$arity$1(game_data);
@@ -106,21 +117,21 @@ return null;
  */
 obb_demo.boardground.possible_attack = (function obb_demo$boardground$possible_attack(game_data,coord,element){
 var cost = cljs.core.get.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$possible_DASH_attacks.cljs$core$IFn$_invoke$arity$1(game_data),coord);
-if(cljs.core.truth_((function (){var and__6144__auto__ = !((element == null));
-if(and__6144__auto__){
-var and__6144__auto____$1 = !((cost == null));
-if(and__6144__auto____$1){
-var and__6144__auto____$2 = cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(coord,cljs.core.cst$kw$overed_DASH_coord.cljs$core$IFn$_invoke$arity$1(game_data));
-if(and__6144__auto____$2){
+if(cljs.core.truth_((function (){var and__6198__auto__ = !((element == null));
+if(and__6198__auto__){
+var and__6198__auto____$1 = !((cost == null));
+if(and__6198__auto____$1){
+var and__6198__auto____$2 = cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(coord,cljs.core.cst$kw$overed_DASH_coord.cljs$core$IFn$_invoke$arity$1(game_data));
+if(and__6198__auto____$2){
 return obb_demo.boardground.possible_cost_QMARK_(game_data,(1));
 } else {
-return and__6144__auto____$2;
+return and__6198__auto____$2;
 }
 } else {
-return and__6144__auto____$1;
+return and__6198__auto____$1;
 }
 } else {
-return and__6144__auto__;
+return and__6198__auto__;
 }
 })())){
 var element__$1 = cljs.core.cst$kw$selected_DASH_element.cljs$core$IFn$_invoke$arity$1(game_data);
@@ -150,22 +161,22 @@ return null;
  * Checks if the given element is overed
  */
 obb_demo.boardground.overed_QMARK_ = (function obb_demo$boardground$overed_QMARK_(game_data,element){
-var and__6144__auto__ = element;
-if(cljs.core.truth_(and__6144__auto__)){
+var and__6198__auto__ = element;
+if(cljs.core.truth_(and__6198__auto__)){
 return cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(element,cljs.core.cst$kw$overed_DASH_element.cljs$core$IFn$_invoke$arity$1(game_data));
 } else {
-return and__6144__auto__;
+return and__6198__auto__;
 }
 });
 /**
  * Checks if the given element is selected
  */
 obb_demo.boardground.selected_QMARK_ = (function obb_demo$boardground$selected_QMARK_(game_data,element){
-var and__6144__auto__ = element;
-if(cljs.core.truth_(and__6144__auto__)){
+var and__6198__auto__ = element;
+if(cljs.core.truth_(and__6198__auto__)){
 return cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(element,cljs.core.cst$kw$selected_DASH_element.cljs$core$IFn$_invoke$arity$1(game_data));
 } else {
-return and__6144__auto__;
+return and__6198__auto__;
 }
 });
 /**
@@ -220,9 +231,9 @@ return cljs.core.cst$kw$span$label$label_DASH_info;
  * Shows element quantity
  */
 obb_demo.boardground.element_quantity = (function obb_demo$boardground$element_quantity(game_data,element){
-if(cljs.core.truth_((function (){var or__6156__auto__ = obb_demo.boardground.selected_QMARK_(game_data,element);
-if(cljs.core.truth_(or__6156__auto__)){
-return or__6156__auto__;
+if(cljs.core.truth_((function (){var or__6210__auto__ = obb_demo.boardground.selected_QMARK_(game_data,element);
+if(cljs.core.truth_(or__6210__auto__)){
+return or__6210__auto__;
 } else {
 return obb_demo.boardground.overed_QMARK_(game_data,element);
 }
@@ -266,13 +277,13 @@ return coords;
  * Gets current action-results
  */
 obb_demo.boardground.get_action_results = (function obb_demo$boardground$get_action_results(game_data){
-var or__6156__auto__ = cljs.core.get_in.cljs$core$IFn$_invoke$arity$2(game_data,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$game,cljs.core.cst$kw$action_DASH_results], null));
-if(cljs.core.truth_(or__6156__auto__)){
-return or__6156__auto__;
+var or__6210__auto__ = cljs.core.get_in.cljs$core$IFn$_invoke$arity$2(game_data,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$game,cljs.core.cst$kw$action_DASH_results], null));
+if(cljs.core.truth_(or__6210__auto__)){
+return or__6210__auto__;
 } else {
-var or__6156__auto____$1 = cljs.core.get_in.cljs$core$IFn$_invoke$arity$2(game_data,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$game,cljs.core.cst$kw$previous_DASH_action_DASH_results], null));
-if(cljs.core.truth_(or__6156__auto____$1)){
-return or__6156__auto____$1;
+var or__6210__auto____$1 = cljs.core.get_in.cljs$core$IFn$_invoke$arity$2(game_data,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$game,cljs.core.cst$kw$previous_DASH_action_DASH_results], null));
+if(cljs.core.truth_(or__6210__auto____$1)){
+return or__6210__auto____$1;
 } else {
 return cljs.core.get_in.cljs$core$IFn$_invoke$arity$2(game_data,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$previous_DASH_game,cljs.core.cst$kw$action_DASH_results], null));
 }
@@ -286,9 +297,9 @@ var action_results = obb_demo.boardground.get_action_results(game_data);
 var actions = cljs.core.reduce.cljs$core$IFn$_invoke$arity$3(obb_demo.boardground.action_coords,cljs.core.PersistentVector.EMPTY,action_results);
 var did_something_QMARK_ = cljs.core.some(cljs.core.PersistentHashSet.fromArray([coord], true),actions);
 if(cljs.core.truth_(did_something_QMARK_)){
-return new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.keyword.cljs$core$IFn$_invoke$arity$1([cljs.core.str("div.action-source.action-source-"),cljs.core.str(cljs.core.name((function (){var or__6156__auto__ = cljs.core.cst$kw$previous_DASH_player.cljs$core$IFn$_invoke$arity$1(game_data);
-if(cljs.core.truth_(or__6156__auto__)){
-return or__6156__auto__;
+return new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.keyword.cljs$core$IFn$_invoke$arity$1([cljs.core.str("div.action-source.action-source-"),cljs.core.str(cljs.core.name((function (){var or__6210__auto__ = cljs.core.cst$kw$previous_DASH_player.cljs$core$IFn$_invoke$arity$1(game_data);
+if(cljs.core.truth_(or__6210__auto__)){
+return or__6210__auto__;
 } else {
 return cljs.core.get_in.cljs$core$IFn$_invoke$arity$2(game_data,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$game,cljs.core.cst$kw$state], null));
 }
@@ -314,43 +325,43 @@ return null;
  * True if the given data is selected
  */
 obb_demo.boardground.selected_coord_QMARK_ = (function obb_demo$boardground$selected_coord_QMARK_(game_data,game,coord,elem){
-var and__6144__auto__ = elem;
-if(cljs.core.truth_(and__6144__auto__)){
+var and__6198__auto__ = elem;
+if(cljs.core.truth_(and__6198__auto__)){
 return (cljs.core.not_EQ_.cljs$core$IFn$_invoke$arity$2(coord,cljs.core.cst$kw$selected_DASH_coord.cljs$core$IFn$_invoke$arity$1(game_data))) && (cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(obb_rules.element.element_player.cljs$core$IFn$_invoke$arity$1(elem),obb_rules.game.state.cljs$core$IFn$_invoke$arity$1(game)));
 } else {
-return and__6144__auto__;
+return and__6198__auto__;
 }
 });
 /**
  * Checks if click is goto
  */
 obb_demo.boardground.goto_QMARK_ = (function obb_demo$boardground$goto_QMARK_(game_data,game,coord,elem){
-var and__6144__auto__ = (elem == null);
-if(and__6144__auto__){
-var and__6144__auto____$1 = cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$selected_DASH_quantity.cljs$core$IFn$_invoke$arity$1(game_data),obb_rules.element.element_quantity.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$selected_DASH_element.cljs$core$IFn$_invoke$arity$1(game_data)));
-if(and__6144__auto____$1){
+var and__6198__auto__ = (elem == null);
+if(and__6198__auto__){
+var and__6198__auto____$1 = cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$selected_DASH_quantity.cljs$core$IFn$_invoke$arity$1(game_data),obb_rules.element.element_quantity.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$selected_DASH_element.cljs$core$IFn$_invoke$arity$1(game_data)));
+if(and__6198__auto____$1){
 return cljs.core.get.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$possible_DASH_destinations.cljs$core$IFn$_invoke$arity$1(game_data),coord);
 } else {
-return and__6144__auto____$1;
+return and__6198__auto____$1;
 }
 } else {
-return and__6144__auto__;
+return and__6198__auto__;
 }
 });
 /**
  * Checks if click is move
  */
 obb_demo.boardground.move_QMARK_ = (function obb_demo$boardground$move_QMARK_(game_data,game,coord,elem){
-var and__6144__auto__ = (elem == null);
-if(and__6144__auto__){
-var and__6144__auto____$1 = cljs.core.not_EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$selected_DASH_quantity.cljs$core$IFn$_invoke$arity$1(game_data),obb_rules.element.element_quantity.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$selected_DASH_element.cljs$core$IFn$_invoke$arity$1(game_data)));
-if(and__6144__auto____$1){
+var and__6198__auto__ = (elem == null);
+if(and__6198__auto__){
+var and__6198__auto____$1 = cljs.core.not_EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$selected_DASH_quantity.cljs$core$IFn$_invoke$arity$1(game_data),obb_rules.element.element_quantity.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$selected_DASH_element.cljs$core$IFn$_invoke$arity$1(game_data)));
+if(and__6198__auto____$1){
 return cljs.core.get.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$possible_DASH_destinations.cljs$core$IFn$_invoke$arity$1(game_data),coord);
 } else {
-return and__6144__auto____$1;
+return and__6198__auto____$1;
 }
 } else {
-return and__6144__auto__;
+return and__6198__auto__;
 }
 });
 /**
@@ -389,16 +400,16 @@ return obb_demo.boardground.register_action(game_data,game,player,action,coord);
  * Checks if click is attack
  */
 obb_demo.boardground.attack_QMARK_ = (function obb_demo$boardground$attack_QMARK_(game_data,game,coord,elem){
-var and__6144__auto__ = !((elem == null));
-if(and__6144__auto__){
-var and__6144__auto____$1 = cljs.core.not(obb_rules.element.frozen_QMARK_(elem));
-if(and__6144__auto____$1){
+var and__6198__auto__ = !((elem == null));
+if(and__6198__auto__){
+var and__6198__auto____$1 = cljs.core.not(obb_rules.element.frozen_QMARK_(elem));
+if(and__6198__auto____$1){
 return cljs.core.get.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$possible_DASH_attacks.cljs$core$IFn$_invoke$arity$1(game_data),coord);
 } else {
-return and__6144__auto____$1;
+return and__6198__auto____$1;
 }
 } else {
-return and__6144__auto__;
+return and__6198__auto__;
 }
 });
 /**
@@ -468,35 +479,35 @@ return game_data;
  * Renders the full game's board
  */
 obb_demo.boardground.render = (function obb_demo$boardground$render(options,game_data){
-return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$obb_DASH_board_DASH_panel,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$style,obb_demo.boardground.boardground_size(options)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$img$obb_DASH_ice,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$src,"img/ice.jpg"], null)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$obb_DASH_board,(function (){var iter__6928__auto__ = (function obb_demo$boardground$render_$_iter__16107(s__16108){
+return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$obb_DASH_board_DASH_panel,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$style,obb_demo.boardground.boardground_size(options)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$img$obb_DASH_ice,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$src,"img/ice.jpg"], null)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$obb_DASH_board,(function (){var iter__6990__auto__ = (function obb_demo$boardground$render_$_iter__16448(s__16449){
 return (new cljs.core.LazySeq(null,(function (){
-var s__16108__$1 = s__16108;
+var s__16449__$1 = s__16449;
 while(true){
-var temp__4657__auto__ = cljs.core.seq(s__16108__$1);
+var temp__4657__auto__ = cljs.core.seq(s__16449__$1);
 if(temp__4657__auto__){
 var xs__5205__auto__ = temp__4657__auto__;
 var y = cljs.core.first(xs__5205__auto__);
-var iterys__6924__auto__ = ((function (s__16108__$1,y,xs__5205__auto__,temp__4657__auto__){
-return (function obb_demo$boardground$render_$_iter__16107_$_iter__16109(s__16110){
-return (new cljs.core.LazySeq(null,((function (s__16108__$1,y,xs__5205__auto__,temp__4657__auto__){
+var iterys__6986__auto__ = ((function (s__16449__$1,y,xs__5205__auto__,temp__4657__auto__){
+return (function obb_demo$boardground$render_$_iter__16448_$_iter__16450(s__16451){
+return (new cljs.core.LazySeq(null,((function (s__16449__$1,y,xs__5205__auto__,temp__4657__auto__){
 return (function (){
-var s__16110__$1 = s__16110;
+var s__16451__$1 = s__16451;
 while(true){
-var temp__4657__auto____$1 = cljs.core.seq(s__16110__$1);
+var temp__4657__auto____$1 = cljs.core.seq(s__16451__$1);
 if(temp__4657__auto____$1){
-var s__16110__$2 = temp__4657__auto____$1;
-if(cljs.core.chunked_seq_QMARK_(s__16110__$2)){
-var c__6926__auto__ = cljs.core.chunk_first(s__16110__$2);
-var size__6927__auto__ = cljs.core.count(c__6926__auto__);
-var b__16112 = cljs.core.chunk_buffer(size__6927__auto__);
-if((function (){var i__16111 = (0);
+var s__16451__$2 = temp__4657__auto____$1;
+if(cljs.core.chunked_seq_QMARK_(s__16451__$2)){
+var c__6988__auto__ = cljs.core.chunk_first(s__16451__$2);
+var size__6989__auto__ = cljs.core.count(c__6988__auto__);
+var b__16453 = cljs.core.chunk_buffer(size__6989__auto__);
+if((function (){var i__16452 = (0);
 while(true){
-if((i__16111 < size__6927__auto__)){
-var x = cljs.core._nth.cljs$core$IFn$_invoke$arity$2(c__6926__auto__,i__16111);
-cljs.core.chunk_append(b__16112,obb_demo.boardground.square(obb_demo.boardground.prepare_game_data(game_data),x,y));
+if((i__16452 < size__6989__auto__)){
+var x = cljs.core._nth.cljs$core$IFn$_invoke$arity$2(c__6988__auto__,i__16452);
+cljs.core.chunk_append(b__16453,obb_demo.boardground.square(obb_demo.boardground.prepare_game_data(game_data),x,y));
 
-var G__16118 = (i__16111 + (1));
-i__16111 = G__16118;
+var G__16459 = (i__16452 + (1));
+i__16452 = G__16459;
 continue;
 } else {
 return true;
@@ -504,29 +515,29 @@ return true;
 break;
 }
 })()){
-return cljs.core.chunk_cons(cljs.core.chunk(b__16112),obb_demo$boardground$render_$_iter__16107_$_iter__16109(cljs.core.chunk_rest(s__16110__$2)));
+return cljs.core.chunk_cons(cljs.core.chunk(b__16453),obb_demo$boardground$render_$_iter__16448_$_iter__16450(cljs.core.chunk_rest(s__16451__$2)));
 } else {
-return cljs.core.chunk_cons(cljs.core.chunk(b__16112),null);
+return cljs.core.chunk_cons(cljs.core.chunk(b__16453),null);
 }
 } else {
-var x = cljs.core.first(s__16110__$2);
-return cljs.core.cons(obb_demo.boardground.square(obb_demo.boardground.prepare_game_data(game_data),x,y),obb_demo$boardground$render_$_iter__16107_$_iter__16109(cljs.core.rest(s__16110__$2)));
+var x = cljs.core.first(s__16451__$2);
+return cljs.core.cons(obb_demo.boardground.square(obb_demo.boardground.prepare_game_data(game_data),x,y),obb_demo$boardground$render_$_iter__16448_$_iter__16450(cljs.core.rest(s__16451__$2)));
 }
 } else {
 return null;
 }
 break;
 }
-});})(s__16108__$1,y,xs__5205__auto__,temp__4657__auto__))
+});})(s__16449__$1,y,xs__5205__auto__,temp__4657__auto__))
 ,null,null));
-});})(s__16108__$1,y,xs__5205__auto__,temp__4657__auto__))
+});})(s__16449__$1,y,xs__5205__auto__,temp__4657__auto__))
 ;
-var fs__6925__auto__ = cljs.core.seq(iterys__6924__auto__(cljs.core.range.cljs$core$IFn$_invoke$arity$2((1),(9))));
-if(fs__6925__auto__){
-return cljs.core.concat.cljs$core$IFn$_invoke$arity$2(fs__6925__auto__,obb_demo$boardground$render_$_iter__16107(cljs.core.rest(s__16108__$1)));
+var fs__6987__auto__ = cljs.core.seq(iterys__6986__auto__(cljs.core.range.cljs$core$IFn$_invoke$arity$2((1),(9))));
+if(fs__6987__auto__){
+return cljs.core.concat.cljs$core$IFn$_invoke$arity$2(fs__6987__auto__,obb_demo$boardground$render_$_iter__16448(cljs.core.rest(s__16449__$1)));
 } else {
-var G__16119 = cljs.core.rest(s__16108__$1);
-s__16108__$1 = G__16119;
+var G__16460 = cljs.core.rest(s__16449__$1);
+s__16449__$1 = G__16460;
 continue;
 }
 } else {
@@ -536,6 +547,6 @@ break;
 }
 }),null,null));
 });
-return iter__6928__auto__(cljs.core.range.cljs$core$IFn$_invoke$arity$2((1),(9)));
+return iter__6990__auto__(cljs.core.range.cljs$core$IFn$_invoke$arity$2((1),(9)));
 })()], null)], null);
 });
