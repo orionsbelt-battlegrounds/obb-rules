@@ -14,8 +14,8 @@
 
 (defn- new-game
   "Creates a new game"
-  []
-  (game-progress/new-random-game)
+  [& [{:as options} :as args]]
+  (game-progress/new-random-game options)
   #_(-> {:p1 (stash/create :rain 100
                            :raptor 100
                            :pretorian 40
@@ -36,8 +36,8 @@
 
 (defn deployed-game
   "Creates a deployed game"
-  []
-  (-> (new-game)
+  [& [{:as options} :as args]]
+  (-> (new-game options)
       (turn/process-actions :p1 [[:auto-deploy :firingsquad]])
       (result/result-board)
       (turn/process-actions :p2 [[:auto-deploy :firingsquad]])
@@ -62,7 +62,9 @@
     #_(println "game" (simplifier/clean-result {:board game}))
     (println "--" player actions)
     (if (= :final (game/state game))
-      {:game (deployed-game)}
+      (let [options (get game-data :game-options game-progress/default-new-game-options)]
+        {:game (deployed-game options)
+         :game-options options})
       (-> (assoc game-data :actions actions)
           (assoc :original-actions actions)
           (assoc :history (conj (vec (get game-data :history (:history game)))
@@ -77,7 +79,7 @@
   (let [actions (:actions game-data)
         game (:game game-data)]
     (if (empty? actions)
-      (-> (assoc game-data :game (-> (game-mode/process game)
+      (-> (assoc game-data :game (-> (game-progress/next-stage game)
                                      (dissoc :action-results)))
           (dissoc :actions))
       (if-let [action (:action game-data)]

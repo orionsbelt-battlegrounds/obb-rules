@@ -82,7 +82,7 @@
 
 (defn in-bounds?
   "Checks if a given coord is in the board"
-  [board [^Integer x ^Integer y]]
+  [board [^long x ^long y]]
   (and
     (> x 0)
     (> y 0)
@@ -138,7 +138,7 @@
 
 (defn adjacent?
   "Checks if two coordinates are adjacent"
-  [[^Integer c1x ^Integer c1y] [^Integer c2x ^Integer  c2y]]
+  [[^long c1x ^long c1y] [^long c2x ^long  c2y]]
   (let [dx (- c1x c2x)
         dy (- c1y c2y)]
     (and
