@@ -9,7 +9,7 @@
             [obb-rules.game-mode :as game-mode]
             [obb-rules.board :as board]))
 
-(def ^:private default-new-game-options {:mode :annihilation})
+(def default-new-game-options {:mode :annihilation})
 
 (defn- merge-new-game-defaults
   "Returns the options with the default values applied for the non-specified options"

@@ -1,6 +1,7 @@
 (ns obb-demo.views.play
   (:require [obb-demo.state :as state]
             [obb-rules.game :as game]
+            [obb-rules.game-progress :as game-progress]
             [obb-rules.stash :as stash]
             [obb-rules.serializer.writer :as writer]
             [obb-demo.processor :as processor]
@@ -24,22 +25,24 @@
         game (:game game-data)]
     (if game
       game-data
-      (let [mode (get game-data :mode :annihilation)
-            game (processor/deployed-game {:mode mode})
+      (let [options (get game-data :game-options game-progress/default-new-game-options)
+            game (processor/deployed-game options)
             game-data {:game game
-                       :mode mode}]
+                       :game-options options}]
         (state/set-page-data! game-data)
         game-data))))
 
 (defn- restart-game
   "Generates and restarts a new game"
   []
-  (state/set-page-data! {:mode :annihilation}))
+  (state/set-page-data!
+    {:game-options game-progress/default-new-game-options}))
 
 (defn- restart-game-supernova
   "Generates and restarts a new game in supernova mode"
   []
-  (state/set-page-data! {:mode :supernova}))
+  (state/set-page-data!
+    {:game-options (assoc game-progress/default-new-game-options :mode :supernova)}))
 
 (defn- set-speed
   "Sets the actions delay speed"

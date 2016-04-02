@@ -14,7 +14,7 @@
                  [org.clojure/tools.nrepl "0.2.12"]
                  [reagent "0.5.1"]
                  [secretary "1.2.3"]
-                 [org.clojure/clojurescript "1.8.34"]]
+                 [org.clojure/clojurescript "1.8.40"]]
 
   :jvm-opts ["-XX:+TieredCompilation"]
 
