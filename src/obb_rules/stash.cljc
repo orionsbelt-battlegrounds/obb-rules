@@ -63,3 +63,8 @@
         heavies (random-by-category 3 :heavy 25)
         all (concat lights mediums heavies)]
     (apply create all)))
+
+(defn add-units
+  "Adds the units to the given stash"
+  [stash units]
+  (merge-with + stash units))

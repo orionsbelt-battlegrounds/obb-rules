@@ -62,7 +62,7 @@
 (defn turn-option
   "Gets the complete option for playing on a specific game"
   [game player]
-  (let [elements (board/board-elements game player)
+  (let [elements (board/player-elements game player)
           gatherer (partial gather-element-actions game)]
     (->> (reduce gatherer [] elements)
          (sort-by common/option-value-sorter)

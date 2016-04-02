@@ -1,5 +1,6 @@
 (ns obb-rules.ai.alamo-test
   (:require [obb-rules.game :as game]
+            [obb-rules.game-progress :as game-progress]
             [obb-rules.turn :as turn]
             [obb-rules.stash :as stash]
             [obb-rules.unit :as unit]
@@ -52,7 +53,7 @@
 (def kamikaze-element-p1 (element/create-element :p1 kamikaze 100 :north))
 
 (deftest chooses-the-most-defensive-option
-  (let [board (-> (board/create-board)
+  (let [board (-> (game-progress/new-game {})
                   (game/state :p1)
                   (board/place-element [2 2] crusader-element-p2)
                   (board/place-element [2 3] doomer-element-p2)
@@ -68,7 +69,7 @@
   (println "Running" obb-gen/scenarions-to-test "alamo vs alamo")
   (dotimes [x obb-gen/scenarions-to-test]
     (time
-      (let [game (-> (game/random)
+      (let [game (-> (game-progress/new-random-game)
                      (turn/process-actions :p1 [[:auto-deploy :firingsquad]])
                      (result/result-board)
                      (turn/process-actions :p2 [[:auto-deploy :firingsquad]])

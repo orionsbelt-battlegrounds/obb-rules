@@ -15,6 +15,7 @@
             [obb-rules.ai.alamo :as alamo]
             [obb-rules.math :as math]
             [obb-rules.game-mode :as game-mode]
+            [obb-rules.game-progress :as game-progress]
             [obb-rules.laws :as laws]
             [obb-rules.evaluator :as evaluator]
             [obb-rules.turn :as turn]
@@ -112,7 +113,7 @@
   [game-data]
   (let [player :p1
         game (-> (:game game-data)
-                 (game-mode/process)
+                 (game-progress/next-stage)
                  (dissoc :action-results))
         turn-num (:turn-num game-data)
         actions (time (bot-turn game-data game))
@@ -267,8 +268,7 @@
 (defn- game-as-string
   [game-data]
   [:div.row
-    [:textarea {:style {:margin-top "10px"
-                        :height "500px"}
+    [:textarea {:style {:height "500px"}
                 :class "form-control"
                 :on-change (partial game-str-changed game-data)
                 :value (or (:game-str game-data)
@@ -279,27 +279,24 @@
   [state]
   (let [game-data (get-game-data state)
         game (:game game-data)]
-    [:div.row
-      [:div.col-lg-2
-       (challenger-selector game-data)
-       (game-turn game-data)
-       (players game-data game)
-       (power-bar/render game)
-       (action-points game-data)
-       [:button.btn.btn-primary {:on-click (partial play-turn game-data)} "Play turn"]
-       (unit-quantity-picker game-data)
-       (rotate-panel game-data)
-       [:button.btn.btn-default {:on-click (partial reset-turn game-data)} "Reset turn"]]
-      [:div.col-lg-5
-        [boardground/render {} game-data]
-        (selected-element-info game-data)]
-      [:div.col-lg-5
-       [:div.jumbotron
-        [:h1 "Demo"]
-        [:p "This is a demo that showcases the gameplay of Orion's Belt against a simple AI."]
-        [:p "It's your turn to play. Perform your actions and then click Play turn."]
-        [:p "Would you like to know more?"
-         [:ul
-          [:li [:a {:href "https://twitter.com/orionsbelt"} "Twitter"]
-          [:li [:a {:href "https://github.com/orionsbelt-battlegrounds/obb-rules"} "Github"]]]]]]
-        (game-as-string game-data)]]))
+    [:div
+      [:div.well
+        [:h4 "Demo"]
+        [:p "This is a demo that showcases the gameplay of Orion's Belt against a simple AI.
+            It's your turn to play. Perform your actions and then click Play turn."]]
+      [:div.row
+        [:div.col-lg-2
+         (challenger-selector game-data)
+         (game-turn game-data)
+         (players game-data game)
+         (power-bar/render game)
+         (action-points game-data)
+         [:button.btn.btn-primary {:on-click (partial play-turn game-data)} "Play turn"]
+         (unit-quantity-picker game-data)
+         (rotate-panel game-data)
+         [:button.btn.btn-default {:on-click (partial reset-turn game-data)} "Reset turn"]]
+        [:div.col-lg-5
+          [boardground/render {} game-data]
+          (selected-element-info game-data)]
+        [:div.col-lg-5
+          (game-as-string game-data)]]]))

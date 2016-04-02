@@ -1,6 +1,7 @@
 (ns obb-demo.views.play
   (:require [obb-demo.state :as state]
             [obb-rules.game :as game]
+            [obb-rules.game-progress :as game-progress]
             [obb-rules.stash :as stash]
             [obb-rules.serializer.writer :as writer]
             [obb-demo.processor :as processor]
@@ -20,17 +21,28 @@
 (defn- get-game-data
   "Gets the current game or creates a new one"
   [state]
-  (if-let [game (:index state)]
-    game
-    (let [game (processor/deployed-game)
-          game-data {:game game}]
-      (state/set-page-data! game-data)
-      game-data)))
+  (let [game-data (:index state)
+        game (:game game-data)]
+    (if game
+      game-data
+      (let [options (get game-data :game-options game-progress/default-new-game-options)
+            game (processor/deployed-game options)
+            game-data {:game game
+                       :game-options options}]
+        (state/set-page-data! game-data)
+        game-data))))
 
 (defn- restart-game
   "Generates and restarts a new game"
   []
-  (state/set-page-data! nil))
+  (state/set-page-data!
+    {:game-options game-progress/default-new-game-options}))
+
+(defn- restart-game-supernova
+  "Generates and restarts a new game in supernova mode"
+  []
+  (state/set-page-data!
+    {:game-options (assoc game-progress/default-new-game-options :mode :supernova)}))
 
 (defn- set-speed
   "Sets the actions delay speed"
@@ -84,17 +96,16 @@
       [:div.col-lg-5
         [boardground/render {} game-data]
         (game-as-string game-data)]
-      [:div.col-lg-2
+      [:div.col-lg-3
        [:div.panel.panel-default
         [:div.panel-heading
          [:h3.panel-title "Options"]]
         [:div.panel-body
-         [:button.btn.btn-primary {:on-click restart-game} "Restart game"]
+         [:button.btn.btn-primary {:on-click restart-game} "Restart (annihilation)"]
+         [:button.btn.btn-primary {:on-click restart-game-supernova} "Restart (supernova)"]
          [:button.btn.btn-primary {:on-click (partial set-speed -100)} "More speed"]
          [:button.btn.btn-primary {:on-click (partial set-speed 100)} "Less speed"]
-         [:div.well.well-sm (or (:delay game-data) 100) " millis per action"]
-         ]]
-
+         [:div.well.well-sm (or (:delay game-data) 100) " millis per action"]]]
        [:div.panel.panel-info
         [:div.panel-heading
          [:h3.panel-title "Preview"]]

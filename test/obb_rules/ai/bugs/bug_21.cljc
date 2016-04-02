@@ -13,6 +13,7 @@
             :cljs [cljs.test :refer-macros [deftest testing is]])))
 
 (def game {:width 8,
+           :mode :annihilation,
            :height 8,
            :terrain :terrest,
            :elements

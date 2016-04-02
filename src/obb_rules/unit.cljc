@@ -18,13 +18,23 @@
             [obb-rules.units.toxic]
             [obb-rules.units.anubis]
             [obb-rules.units.kamikaze]
-            [obb-rules.units.crusader]))
+            [obb-rules.units.crusader]
+            [obb-rules.units.star]))
 
 (defrecord ^{:doc "Represents a combat unit"} CombatUnit
-  [name code value
-   attack attack-type range defense
-   bonus type category displacement
-   movement-type movement-cost])
+  [^String name
+   ^String code
+   ^long value
+   ^long attack
+   attack-type
+   ^long range
+   ^long defense
+   bonus
+   type
+   category
+   displacement
+   movement-type
+   movement-cost])
 
 (defn gather-units
   "Gets all the available units"
@@ -49,12 +59,13 @@
      obb-rules.units.panther/metadata
      obb-rules.units.scarab/metadata
      obb-rules.units.kamikaze/metadata
-     obb-rules.units.crusader/metadata]))
+     obb-rules.units.crusader/metadata
+     obb-rules.units.star/metadata]))
 
 (def get-units (memoize gather-units))
 
 (defn- build-units
-  [units, selector]
+  [units selector]
   (reduce #(conj %1 [(selector %2) %2]) {} units))
 
 (def ^:private units-by-name (delay (build-units (get-units) :name)))

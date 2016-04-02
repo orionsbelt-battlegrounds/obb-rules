@@ -1,61 +1,54 @@
 (ns obb-rules.game-mode
   (:require [obb-rules.board :as board]
             [obb-rules.stash :as stash]
+            [obb-rules.player :as player]
             [obb-rules.game :as game]))
 
-(defn deploy-completed?
-  "True if it's on deploy and completed"
-  [game]
-  (if-not (game/deploy? game)
-    game
-    (let [stash1 (game/get-stash game :p1)
-          stash2 (game/get-stash game :p2)]
-      (and (stash/cleared? stash1) (stash/cleared? stash2)))))
+(defn- star-unit?
+  "Checks whether the given player still has the star unit"
+  [game player]
+  (board/unit-present? game player "star"))
 
-(defn final?
-  "Checks if the game is finished"
+(defmulti filter-winners
+  "Filter the list of players that meet conditions to win the game"
+  (fn [game] (game/mode game)))
+
+(defmethod filter-winners :annihilation
   [game]
-  (and
-    (not (= (keyword (game/state game)) :deploy))
-    (or
-      (board/empty-board? game :p1)
-      (board/empty-board? game :p2))))
+  (filter #(not (board/empty-board? game %))
+          player/all-players))
+
+(defmethod filter-winners :supernova
+  [game]
+  (filter #(star-unit? game %)
+          player/all-players))
 
 (defn winner
   "Gets the winner of the given game"
   [game]
-  (cond
-    (board/empty-board? game :p1) :p2
-    (board/empty-board? game :p2) :p1
-    :else :none))
+  (let [[first & others :as candidates] (filter-winners game)]
+    (cond
+      (empty? candidates) :draw
+      (empty? others)     first
+      :else               :none)))
 
-(defn- finalize
-  "Marks a game as final"
+(defn winner?
+  "Checks if there is already a winner"
   [game]
-  (game/state game :final))
+  (not= (winner game) :none))
 
-(defn- start-game
-  "Starts the game"
+(defn- add-star-units
   [game]
-  (game/start-battle game))
+  (reduce #(game/update-stash %1 %2 stash/add-units {:star 1})
+          game
+          player/all-players))
 
-(defn- switch-turn-player?
-  "Checks if the game is in a state where a player switch should be done"
-  [game]
-  (some #{:p1 :p2} [(keyword (game :state))]))
+(defmulti on-new-game
+  "Hook to run mode specific preparation on game creation"
+  (fn [game] (game/mode game)))
 
-(defn- switch-turn-player
-  "Toggles the player to play"
+(defmethod on-new-game :supernova
   [game]
-  (let [current-player (keyword (game :state))
-        next-player (first (disj #{:p1 :p2} current-player))]
-    (assoc game :state (keyword next-player))))
+  (add-star-units game))
 
-(defn process
-  "Checks the current game's state and acts based on it"
-  [game]
-  (cond
-    (final? game) (finalize game)
-    (switch-turn-player? game) (switch-turn-player game)
-    (deploy-completed? game) (start-game game)
-    :else game))
+(defmethod on-new-game :annihilation [game] game)

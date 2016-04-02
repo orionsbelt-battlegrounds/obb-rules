@@ -1,4 +1,4 @@
-(defproject obb-rules "2.0.0"
+(defproject obb-rules "3.0.0"
   :description "Orion's Belt battle rules"
   :url "https://github.com/orionsbelt-battlegrounds/obb-rules"
 
@@ -12,10 +12,9 @@
                  [org.clojure/tools.namespace "0.2.11"]
                  [org.clojure/clojure "1.8.0"]
                  [org.clojure/tools.nrepl "0.2.12"]
-                 [criterium "0.4.3"]
                  [reagent "0.5.1"]
                  [secretary "1.2.3"]
-                 [org.clojure/clojurescript "1.7.228"]]
+                 [org.clojure/clojurescript "1.8.40"]]
 
   :jvm-opts ["-XX:+TieredCompilation"]
 
@@ -42,7 +41,7 @@
      :cljs-dev {
 
        :plugins [[lein-cljsbuild "1.1.2"]
-                 [lein-figwheel "0.5.0-6"]]
+                 [lein-figwheel "0.5.2"]]
 
        :figwheel {:css-dirs ["resources/public/css"]}
 
@@ -53,7 +52,6 @@
                              :figwheel {:on-jsload "obb-demo.core/on-js-reload"}
                              :source-paths ["src"]
                              :compiler {:main obb-demo.core
-                                        :figwheel true
                                         :recompile-dependents true
                                         :asset-path "js/compiled/out"
                                         :output-to "resources/public/js/compiled/obb.js"

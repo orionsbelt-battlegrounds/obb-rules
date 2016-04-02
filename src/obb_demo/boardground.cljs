@@ -47,13 +47,22 @@
   (let [dir (element/element-direction element)]
     (first (name dir))))
 
+(defn- process-unit-name
+  "If the unit name needs transformations, does it to match the resources
+  on the main site."
+  [unit-name]
+  (if (= unit-name "star")
+    "flag"
+    unit-name))
+
 (defn- unit-image
   "Renders an html element that displays a board element's unit, if present
   at the given coordinates"
   [game element]
   (when element
     (let [unit (element/element-unit element)
-          unit-name (unit/unit-name unit)]
+          unit-name (-> (unit/unit-name unit)
+                        process-unit-name)]
       [:img.unit {:src (str "http://orionsbelt.eu/public/units/" unit-name  "_" (direction element) ".png")}])))
 
 (defn- possible-cost?

@@ -20,7 +20,7 @@
   [board player viewed-by]
   (if (= player viewed-by)
     board
-    (let [elements (board/board-elements board player)
+    (let [elements (board/player-elements board player)
           remover (partial remove-element player)]
       (reduce remover board elements))))
 
