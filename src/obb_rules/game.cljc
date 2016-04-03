@@ -83,3 +83,8 @@
   [game player f & f-args]
   (let [stash (board/get-stash game player)]
     (board/set-stash game player (apply f stash f-args))))
+
+(defn history
+  "Gets the game history"
+  [game]
+  (:history game))
