@@ -15,7 +15,7 @@
     #?(:clj [clojure.test :refer [deftest testing is run-tests]]
        :cljs [cljs.test :refer-macros [deftest testing is run-tests]])))
 
-
+(def star (unit/get-unit-by-name "star"))
 (def rain (unit/get-unit-by-name "rain"))
 (def kamikaze (unit/get-unit-by-name "kamikaze"))
 (def krill (unit/get-unit-by-name "krill"))
@@ -124,3 +124,29 @@
         result (turn/process-actions board :p1 actions)
         final-game (result/result-board result)]
     (is (result/succeeded? result))))
+
+(defn prefer-the-star
+  "Preferrably attack the star, when possible"
+  [botfn]
+  (let [game (-> (game-progress/new-game {})
+                 (game/state :p2)
+                 (board/place-element [5 5] (element/create-element :p1
+                                                                    star
+                                                                    1
+                                                                    :south
+                                                                    [5 5]))
+                 (board/place-element [5 6] (element/create-element :p1
+                                                                    kamikaze
+                                                                    100
+                                                                    :north
+                                                                    [5 6]))
+                 (board/place-element [7 5] (element/create-element :p2
+                                                                    kamikaze
+                                                                    20
+                                                                    :north
+                                                                    [7 5])))
+        actions (botfn game :p2)
+        result (turn/process-actions game :p2 actions)
+        result-game (result/result-board result)]
+    (is (result/succeeded? result))
+    (is (not (board/unit-present? result-game :p1 "star")))))

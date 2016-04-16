@@ -45,6 +45,9 @@
 (deftest seek-and-destroy
   (acts-as-bot/seek-and-destroy alamo/actions))
 
+(deftest prefer-the-star
+  (acts-as-bot/prefer-the-star alamo/actions))
+
 (def crusader (unit/get-unit-by-name "crusader"))
 (def crusader-element-p2 (element/create-element :p2 crusader 25 :south))
 (def doomer (unit/get-unit-by-name "doomer"))

@@ -44,6 +44,9 @@
 (deftest seek-and-destroy
   (acts-as-bot/seek-and-destroy firingsquad/actions))
 
+(deftest prefer-the-star
+  (acts-as-bot/prefer-the-star firingsquad/actions))
+
 (defspec first-blood-check
   (* obb-gen/scenarions-to-test 1)
   (prop/for-all [raw-stash (obb-gen/stash)]
