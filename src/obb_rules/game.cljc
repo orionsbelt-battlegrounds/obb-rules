@@ -40,7 +40,7 @@
   ([game]
    (:mode game))
   ([game mode]
-   (assert (valid-mode? mode) "Unknown mode")
+   (assert (valid-mode? mode) "Unknown game mode")
    (assoc game :mode mode)))
 
 (defn start-battle

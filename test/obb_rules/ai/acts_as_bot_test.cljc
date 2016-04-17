@@ -24,7 +24,7 @@
 (defn validate-deploy
   "Applies a bot function to a deployable game"
   [botfn]
-  (let [game (game-progress/new-random-game)
+  (let [game (game-progress/new-random-game {:mode :annihilation})
         actions (botfn game :p1)
         result (turn/process-actions game :p1 actions)]
     (is (result/succeeded? result))))
@@ -32,7 +32,7 @@
 (defn direct-attack
   "Simple direct attack"
   [botfn]
-  (let [board (-> (game-progress/new-game {})
+  (let [board (-> (game-progress/new-game {} {:mode :annihilation})
                   (game/state :p1)
                   (board/place-element [2 5] (element/create-element :p1 rain 1 :south [2 5]))
                   (board/place-element [2 6] (element/create-element :p2 rain 1 :north [2 6])))
@@ -45,7 +45,7 @@
 (defn direct-attack-double
   "Must select two actions"
   [botfn]
-  (let [board (-> (game-progress/new-game {})
+  (let [board (-> (game-progress/new-game {} {:mode :annihilation})
                   (game/state :p1)
                   (board/place-element [2 5] (element/create-element :p1 rain 10 :south [2 5]))
                   (board/place-element [2 6] (element/create-element :p2 rain 10 :north [2 6]))
@@ -60,7 +60,7 @@
 (defn rotate-attack
   "Rotates to attack"
   [botfn]
-  (let [board (-> (game-progress/new-game {})
+  (let [board (-> (game-progress/new-game {} {:mode :annihilation})
                   (game/state :p1)
                   (board/place-element [2 5] (element/create-element :p1 rain 1 :south [2 5]))
                   (board/place-element [3 5] (element/create-element :p2 rain 1 :north [3 5])))
@@ -73,7 +73,7 @@
 (defn prefer-rotate-attack
   "Scenario where preferes rotates to attack"
   [botfn]
-  (let [board (-> (game-progress/new-game {})
+  (let [board (-> (game-progress/new-game {} {:mode :annihilation})
                   (game/state :p1)
                   (board/place-element [2 5] (element/create-element :p1 rain 1 :south [2 5]))
                   (board/place-element [2 6] (element/create-element :p2 rain 1 :south [2 6]))
@@ -88,7 +88,8 @@
 (defn first-blood
   "Deploy and attack"
   [botfn stash]
-  (let [board (game-progress/new-game {:p1 stash :p2 stash})
+  (let [board (game-progress/new-game {:p1 stash :p2 stash}
+                                      {:mode :annihilation})
         actions (botfn board :p1)
         result (turn/process-actions board :p1 actions)
         result2 (turn/process-actions (result/result-board result) :p2 actions)
@@ -103,7 +104,7 @@
 (defn move-and-attack
   "Moves and attacks"
   [botfn]
-  (let [board (-> (game-progress/new-game {})
+  (let [board (-> (game-progress/new-game {} {:mode :annihilation})
                   (game/state :p1)
                   (board/place-element [2 5] (element/create-element :p1 rain 1 :south [2 5]))
                   (board/place-element [5 5] (element/create-element :p2 kamikaze 1 :north [5 5])))
@@ -116,7 +117,7 @@
 (defn seek-and-destroy
   "The seek part"
   [botfn]
-  (let [board (-> (game-progress/new-game {})
+  (let [board (-> (game-progress/new-game {} {:mode :annihilation})
                   (game/state :p1)
                   (board/place-element [2 5] (element/create-element :p1 rain 1 :south [2 5]))
                   (board/place-element [5 5] (element/create-element :p1 kamikaze 1 :north [5 5])))
@@ -128,7 +129,7 @@
 (defn prefer-the-star
   "Preferrably attack the star, when possible"
   [botfn]
-  (let [game (-> (game-progress/new-game {})
+  (let [game (-> (game-progress/new-game {} {:mode :annihilation})
                  (game/state :p2)
                  (board/place-element [5 5] (element/create-element :p1
                                                                     star

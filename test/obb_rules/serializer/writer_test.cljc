@@ -31,8 +31,8 @@
 (deftest complete-game
   (let [game (-> {:p1 (stash/create :kamikaze 1)
                   :p2 (stash/create :kamikaze 1)}
-                 game-progress/new-game
-                 (board/board-terrain :ice)
+                 (game-progress/new-game {:mode :annihilation
+                                          :terrain :ice})
                  (turn/process-board :p1 [:deploy 1 :kamikaze [1 7]])
                  (turn/process-board :p2 [:deploy 1 :kamikaze [1 2]])
                  (game/start-battle :p1)
@@ -57,8 +57,8 @@
 (deftest add-stash-to-props-if-deploy-state
   (let [game (-> {:p1 (stash/create :kamikaze 1)
                   :p2 (stash/create :kamikaze 1)}
-                 game-progress/new-game
-                 (board/board-terrain :ice))]
+                 (game-progress/new-game {:mode :annihilation
+                                          :terrain :ice}))]
     (is (= (writer/game->str game)
            (string/join "\n"
                         ["mode: annihilation"
@@ -74,8 +74,8 @@
 (deftest add-stash-to-props-if-player-1-deployed
   (let [game (-> {:p1 (stash/create :kamikaze 1)
                   :p2 (stash/create :kamikaze 1)}
-                 game-progress/new-game
-                 (board/board-terrain :ice)
+                 (game-progress/new-game {:mode :annihilation
+                                          :terrain :ice})
                  (turn/process-board :p1 [:deploy 1 :kamikaze [1 7]]))]
     (is (= (writer/game->str game)
            (string/join "\n"
@@ -91,8 +91,8 @@
 (deftest add-stash-to-props-if-player-2-deployed
   (let [game (-> {:p1 (stash/create :kamikaze 1)
                   :p2 (stash/create :kamikaze 1)}
-                 game-progress/new-game
-                 (board/board-terrain :ice)
+                 (game-progress/new-game {:mode :annihilation
+                                          :terrain :ice})
                  (turn/process-board :p2 [:deploy 1 :kamikaze [1 2]]))]
     (is (= (writer/game->str game)
            (string/join "\n"

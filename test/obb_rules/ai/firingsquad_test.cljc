@@ -57,7 +57,7 @@
 (def quantity 100)
 
 (deftest complete-game
-  (let [board (-> (game-progress/new-game {})
+  (let [board (-> (game-progress/new-game {} {:mode :annihilation})
                   (game/state :p1)
                   (board/place-element [1 7] (element/create-element :p1 crusader quantity :north [1 7]))
                   (board/place-element [2 7] (element/create-element :p1 crusader quantity :north [2 7]))
@@ -82,7 +82,7 @@
   (println "Running" obb-gen/scenarions-to-test "firingsquad vs firingsquad")
   (dotimes [x obb-gen/scenarions-to-test]
     (time
-      (let [game (-> (game-progress/new-random-game)
+     (let [game (-> (game-progress/new-random-game {:mode :annihilation})
                      (turn/process-actions :p1 [[:auto-deploy :firingsquad]])
                      (result/result-board)
                      (turn/process-actions :p2 [[:auto-deploy :firingsquad]])
@@ -108,7 +108,7 @@
 
 (defn- crusader-vs-crusader
   []
-  (-> (game-progress/new-game {})
+  (-> (game-progress/new-game {} {:mode :annihilation})
       (game/state :p1)
       (board/place-element [1 7] (element/create-element :p1 crusader quantity :north [1 7]))
       (board/place-element [2 7] (element/create-element :p1 crusader quantity :north [2 7]))
