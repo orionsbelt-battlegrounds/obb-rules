@@ -71,7 +71,9 @@
 (defn game-props->str
   "Gets the game properties as a string"
   [game]
-  (str "terrain: " (name (board/board-terrain game))
+
+  (str "mode: " (name (game/mode game))
+       "\nterrain: " (name (board/board-terrain game))
        (when (game/deploy? game) (game-stash-str game))
        (when (game/first-player game) (str "\nfirst-player: " (name (game/first-player game))))
        "\nstate: " (name (game/state game))
