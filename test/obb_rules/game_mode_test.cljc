@@ -21,7 +21,7 @@
   (let [game-with-empty-board (game-progress/new-game {} {:mode :annihilation})]
     (testing "draw when all players have an empty board"
       (is (= :draw (game-mode/winner game-with-empty-board))))
-    (let [game-with-empty-p1 (-> (game-progress/new-game {})
+    (let [game-with-empty-p1 (-> (game-progress/new-game {} {:mode :annihilation})
                                  (board/place-element [1 2] p2-elem))
           winner             (game-mode/winner game-with-empty-p1)]
       (testing "the winner is returned"

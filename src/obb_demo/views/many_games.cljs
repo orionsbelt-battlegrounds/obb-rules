@@ -15,7 +15,8 @@
   [state]
   (if-let [datas (:many-games state)]
     datas
-    (let [games (take 6 (repeatedly processor/deployed-game))
+    (let [games (take 6 (repeatedly (partial processor/deployed-game
+                                             {:mode :annihilation})))
           datas (mapv (fn [game] {:game game}) games)]
       (state/set-page-data! datas)
       datas)))

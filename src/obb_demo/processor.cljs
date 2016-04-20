@@ -32,7 +32,7 @@
                            :kamikaze 50
                            :fenix 25
                            :crusader 25)}
-      (game-progress/new-game)))
+      (game-progress/new-game options)))
 
 (defn deployed-game
   "Creates a deployed game"

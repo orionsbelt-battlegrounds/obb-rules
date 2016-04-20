@@ -21,14 +21,16 @@
 (def rain (unit/get-unit-by-name "rain"))
 
 (deftest yields-zero-when-no-elements
-  (let [game-no-units (-> (game-progress/new-random-game) (dissoc :stash))
+  (let [game-no-units (-> (game-progress/new-random-game {:mode :annihilation})
+                          (dissoc :stash))
         [score1 score2] (evaluator/eval-game game-no-units)]
     (is (= 0 score1))
     (is (= 0 score2))))
 
 (deftest considers-stash
   (let [stash (stash/create :rain 1)
-        game  (game-progress/new-game {:p1 stash :p2 stash})
+        game  (game-progress/new-game {:p1 stash :p2 stash}
+                                      {:mode :annihilation})
         [score1 score2] (evaluator/eval-game game)]
     (is (= 4 score1))
     (is (= 4 score2))))
@@ -45,7 +47,8 @@
   obb-gen/scenarions-to-test-small
   (prop/for-all [raw-stash (obb-gen/stash)]
     (let [stash (stash/create-from-hash (apply hash-map (flatten raw-stash)))
-          game  (game-progress/new-game {:p1 stash :p2 stash})
+          game  (game-progress/new-game {:p1 stash :p2 stash}
+                                        {:mode :annihilation})
           [score1 score2] (evaluator/eval-game game)]
       (is (< 0 score1))
       (is (< 0 score2)))))
@@ -54,7 +57,8 @@
   obb-gen/scenarions-to-test-small
   (prop/for-all [raw-stash (obb-gen/stash)]
     (let [stash (stash/create-from-hash (apply hash-map (flatten raw-stash)))
-          game (-> (game-progress/new-game {:p1 stash :p2 stash})
+          game (-> (game-progress/new-game {:p1 stash :p2 stash}
+                                           {:mode :annihilation})
                    (turn/process :p1 [:auto-deploy :firingsquad])
                    (result/result-board))
           [score1 score2] (evaluator/eval-game game :value)]

@@ -27,7 +27,7 @@
   [state]
   (if-let [game (:player state)]
     game
-    (let [game (-> (processor/deployed-game)
+    (let [game (-> (processor/deployed-game {:mode :annihilation})
                    (game/state :p1))
           game-data {:game game
                      :original-game game

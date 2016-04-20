@@ -36,8 +36,8 @@
           [:rotate [1 1] :west]])))
 
 (deftest attrs-reader
-  (is (= {:state :final :winner :p1}
-         (reader/str->attrs "state: final\nwinner: p1"))))
+  (is (= {:mode :annihilation :state :final :winner :p1}
+         (reader/str->attrs "mode: annihilation\nstate: final\nwinner: p1"))))
 
 (deftest raww-history-reader
   (is (= [{:player :p1 :actions [[:goto [1 2] [2 3]] [:goto [6 2] [5 2]]]}
@@ -77,8 +77,8 @@
 (deftest complete-game
   (test-game (-> {:p1 (stash/create :kamikaze 1)
                   :p2 (stash/create :kamikaze 1)}
-                 game-progress/new-game
-                 (board/board-terrain :ice)
+                 (game-progress/new-game {:mode :annihilation
+                                          :terrain :ice})
                  (turn/process-board :p1 [:deploy 1 :kamikaze [1 7]])
                  (turn/process-board :p2 [:deploy 1 :kamikaze [1 2]])
                  (game/start-battle :p1)
@@ -91,8 +91,8 @@
 (deftest not-complete-game
   (test-game (-> {:p1 (stash/create :kamikaze 1)
                   :p2 (stash/create :kamikaze 1)}
-                 game-progress/new-game
-                 (board/board-terrain :ice)
+                 (game-progress/new-game {:mode :annihilation
+                                          :terrain :ice})
                  (turn/process-board :p1 [:deploy 1 :kamikaze [1 7]])
                  (turn/process-board :p2 [:deploy 1 :kamikaze [1 2]])
                  (game/start-battle :p1)
@@ -104,22 +104,22 @@
 (deftest just-player-1-deployed
   (test-game (-> {:p1 (stash/create :kamikaze 1)
                   :p2 (stash/create :kamikaze 1)}
-                 game-progress/new-game
-                 (board/board-terrain :ice)
+                 (game-progress/new-game {:mode :annihilation
+                                          :terrain :ice})
                  (turn/process-board :p1 [:deploy 1 :kamikaze [1 7]]))))
 
 (deftest just-player-2-deployed
   (test-game (-> {:p1 (stash/create :kamikaze 1)
                   :p2 (stash/create :kamikaze 1)}
-                 game-progress/new-game
-                 (board/board-terrain :ice)
+                 (game-progress/new-game {:mode :annihilation
+                                          :terrain :ice})
                  (turn/process-board :p2 [:deploy 1 :kamikaze [1 2]]))))
 
 (deftest game-ready-to-start
   (test-game (-> {:p1 (stash/create :kamikaze 1)
                   :p2 (stash/create :kamikaze 1)}
-                 game-progress/new-game
-                 (board/board-terrain :ice)
+                 (game-progress/new-game {:mode :annihilation
+                                          :terrain :ice})
                  (turn/process-board :p1 [:deploy 1 :kamikaze [1 7]])
                  (turn/process-board :p2 [:deploy 1 :kamikaze [1 2]])
                  (game/start-battle :p1))))
@@ -134,8 +134,8 @@
 (deftest allow-white-spaces
   (let [game (-> {:p1 (stash/create :kamikaze 1)
                   :p2 (stash/create :kamikaze 1)}
-                 game-progress/new-game
-                 (board/board-terrain :ice)
+                 (game-progress/new-game {:mode :annihilation
+                                          :terrain :ice})
                  (turn/process-board :p1 [:deploy 1 :kamikaze [1 7]])
                  (turn/process-board :p2 [:deploy 1 :kamikaze [1 2]])
                  (game/start-battle :p1)
@@ -145,7 +145,8 @@
                                          [:move [1 4] [1 3] 1]
                                          [:attack [1 3] [1 2]]))]
     (is (= game
-           (reader/str->game "terrain: ice
+           (reader/str->game "mode: annihilation
+                              terrain: ice
                               first-player: p1
                               state: final
                               winner: p1

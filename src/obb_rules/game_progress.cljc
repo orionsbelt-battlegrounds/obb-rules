@@ -11,11 +11,6 @@
 
 (def default-new-game-options {:mode :annihilation})
 
-(defn- merge-new-game-defaults
-  "Returns the options with the default values applied for the non-specified options"
-  [options]
-  (merge default-new-game-options options))
-
 (defn new-game
   "Creates a game for the given stashes.
    stashes is an associative collection in which the keys correspond to the
@@ -26,7 +21,7 @@
                  stashes)
       (cond->
           (some? (:terrain options)) (board/board-terrain (:terrain options)))
-      (game/mode (:mode (merge-new-game-defaults options)))
+      (game/mode (:mode options))
       (game/state :deploy)
       (game-mode/on-new-game)))
 
@@ -85,6 +80,3 @@
     (switch-turn-player? game) (switch-turn-player game)
     (deploy-completed? game)   (start-game game)
     :else                      game))
-
-
-
