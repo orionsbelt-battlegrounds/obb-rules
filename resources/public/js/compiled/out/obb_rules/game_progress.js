@@ -8,12 +8,6 @@ goog.require('obb_rules.game');
 goog.require('obb_rules.stash');
 obb_rules.game_progress.default_new_game_options = new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$mode,cljs.core.cst$kw$annihilation], null);
 /**
- * Returns the options with the default values applied for the non-specified options
- */
-obb_rules.game_progress.merge_new_game_defaults = (function obb_rules$game_progress$merge_new_game_defaults(options){
-return cljs.core.merge.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([obb_rules.game_progress.default_new_game_options,options], 0));
-});
-/**
  * Creates a game for the given stashes.
  * stashes is an associative collection in which the keys correspond to the
  * players and the values to the corresponding stash.
@@ -50,7 +44,7 @@ return obb_rules.board.board_terrain.cljs$core$IFn$_invoke$arity$2(G__15988,cljs
 } else {
 return G__15988;
 }
-})(),cljs.core.cst$kw$mode.cljs$core$IFn$_invoke$arity$1(obb_rules.game_progress.merge_new_game_defaults(options))),cljs.core.cst$kw$deploy);
+})(),cljs.core.cst$kw$mode.cljs$core$IFn$_invoke$arity$1(options)),cljs.core.cst$kw$deploy);
 return (obb_rules.game_mode.on_new_game.cljs$core$IFn$_invoke$arity$1 ? obb_rules.game_mode.on_new_game.cljs$core$IFn$_invoke$arity$1(G__15987) : obb_rules.game_mode.on_new_game.call(null,G__15987));
 });
 

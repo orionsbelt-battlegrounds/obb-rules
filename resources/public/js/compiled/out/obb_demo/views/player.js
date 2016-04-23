@@ -32,7 +32,7 @@ if(cljs.core.truth_(temp__4655__auto__)){
 var game = temp__4655__auto__;
 return game;
 } else {
-var game = obb_rules.game.state.cljs$core$IFn$_invoke$arity$2(obb_demo.processor.deployed_game(),cljs.core.cst$kw$p1);
+var game = obb_rules.game.state.cljs$core$IFn$_invoke$arity$2(obb_demo.processor.deployed_game.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$mode,cljs.core.cst$kw$annihilation], null)], 0)),cljs.core.cst$kw$p1);
 var game_data = new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$game,game,cljs.core.cst$kw$original_DASH_game,game,cljs.core.cst$kw$action_DASH_points,(0),cljs.core.cst$kw$history,cljs.core.cst$kw$history.cljs$core$IFn$_invoke$arity$1(game),cljs.core.cst$kw$turn_DASH_num,(0)], null);
 obb_demo.state.set_page_data_BANG_(game_data);
 

@@ -137,7 +137,7 @@ return cljs.core.cst$kw$mode.cljs$core$IFn$_invoke$arity$1(game);
 obb_rules.game.mode.cljs$core$IFn$_invoke$arity$2 = (function (game,mode){
 if(cljs.core.truth_(obb_rules.game.valid_mode_QMARK_(mode))){
 } else {
-throw (new Error([cljs.core.str("Assert failed: "),cljs.core.str("Unknown mode"),cljs.core.str("\n"),cljs.core.str("(valid-mode? mode)")].join('')));
+throw (new Error([cljs.core.str("Assert failed: "),cljs.core.str("Unknown game mode"),cljs.core.str("\n"),cljs.core.str("(valid-mode? mode)")].join('')));
 }
 
 return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(game,cljs.core.cst$kw$mode,mode);
@@ -268,4 +268,10 @@ var seq15450__$2 = cljs.core.next(seq15450__$1);
 var G__15453 = cljs.core.first(seq15450__$2);
 var seq15450__$3 = cljs.core.next(seq15450__$2);
 return obb_rules.game.update_stash.cljs$core$IFn$_invoke$arity$variadic(G__15451,G__15452,G__15453,seq15450__$3);
+});
+/**
+ * Gets the game history
+ */
+obb_rules.game.history = (function obb_rules$game$history(game){
+return cljs.core.cst$kw$history.cljs$core$IFn$_invoke$arity$1(game);
 });

@@ -20,7 +20,7 @@ if(cljs.core.truth_(temp__4655__auto__)){
 var datas = temp__4655__auto__;
 return datas;
 } else {
-var games = cljs.core.take.cljs$core$IFn$_invoke$arity$2((6),cljs.core.repeatedly.cljs$core$IFn$_invoke$arity$1(obb_demo.processor.deployed_game));
+var games = cljs.core.take.cljs$core$IFn$_invoke$arity$2((6),cljs.core.repeatedly.cljs$core$IFn$_invoke$arity$1(cljs.core.partial.cljs$core$IFn$_invoke$arity$2(obb_demo.processor.deployed_game,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$mode,cljs.core.cst$kw$annihilation], null))));
 var datas = cljs.core.mapv.cljs$core$IFn$_invoke$arity$2(((function (games,temp__4655__auto__){
 return (function (game){
 return new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$game,game], null);
