@@ -14,13 +14,13 @@
 
 (deftest create-game
   (testing "initial game status"
-    (let [game (game-progress/new-random-game)]
+    (let [game (game-progress/new-random-game {:mode :annihilation})]
       (is (= :deploy (game/state game)))
       (is (= 0 (board/board-elements-count game)))
       (is (not (stash/cleared? game)))))
 
   (testing "default game mode"
-    (is (= :annihilation (-> (game-progress/new-game {})
+    (is (= :annihilation (-> (game-progress/new-game {} {:mode :annihilation})
                              (game/mode)))))
 
   (testing "non-default game mode"
@@ -29,7 +29,8 @@
 
 (deftest complete-game-processing
   (let [stash   (stash/create "kamikaze" 1)
-        game    (game-progress/new-game {:p1 stash :p2 stash})
+        game    (game-progress/new-game {:p1 stash :p2 stash}
+                                        {:mode :annihilation})
         result2 (turn/process game :p1 [:deploy 1 :kamikaze [1 7]])
         game2   (result/result-board result2)
         result3 (turn/process game2 :p2 [:deploy 1 :kamikaze [1 2]])
@@ -91,7 +92,8 @@
       (is (result/failed? result)))))
 
 (deftest stash-updating
-  (let [game           (game-progress/new-game {:p1 {:rain 1}})
+  (let [game           (game-progress/new-game {:p1 {:rain 1}}
+                                               {:mode :annihilation})
         update-fn      stash/add-units
         update-fn-args {:crusader 2}]
     (testing "the result is the same as applying the function directly to the stash"

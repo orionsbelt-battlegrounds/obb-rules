@@ -12,7 +12,7 @@
        :cljs [cljs.test :refer-macros [deftest testing is run-tests]])))
 
 (def rain (unit/get-unit-by-name "rain"))
-(def deploy-game (game-progress/new-random-game))
+(def deploy-game (game-progress/new-random-game {:mode :annihilation}))
 (def final-board (assoc deploy-game :state "final"))
 (def p1-board (assoc deploy-game :state :p1))
 (def p2-board (assoc deploy-game :state "p2"))

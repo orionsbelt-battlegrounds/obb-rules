@@ -45,6 +45,9 @@
 (deftest seek-and-destroy
   (acts-as-bot/seek-and-destroy alamo/actions))
 
+(deftest prefer-the-star
+  (acts-as-bot/prefer-the-star alamo/actions))
+
 (def crusader (unit/get-unit-by-name "crusader"))
 (def crusader-element-p2 (element/create-element :p2 crusader 25 :south))
 (def doomer (unit/get-unit-by-name "doomer"))
@@ -53,7 +56,7 @@
 (def kamikaze-element-p1 (element/create-element :p1 kamikaze 100 :north))
 
 (deftest chooses-the-most-defensive-option
-  (let [board (-> (game-progress/new-game {})
+  (let [board (-> (game-progress/new-game {} {:mode :annihilation})
                   (game/state :p1)
                   (board/place-element [2 2] crusader-element-p2)
                   (board/place-element [2 3] doomer-element-p2)
@@ -69,7 +72,7 @@
   (println "Running" obb-gen/scenarions-to-test "alamo vs alamo")
   (dotimes [x obb-gen/scenarions-to-test]
     (time
-      (let [game (-> (game-progress/new-random-game)
+     (let [game (-> (game-progress/new-random-game {:mode :annihilation})
                      (turn/process-actions :p1 [[:auto-deploy :firingsquad]])
                      (result/result-board)
                      (turn/process-actions :p2 [[:auto-deploy :firingsquad]])
