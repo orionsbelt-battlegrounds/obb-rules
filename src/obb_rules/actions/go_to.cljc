@@ -1,5 +1,5 @@
 (ns ^{:added "1.4" :author "Pedro Santos"}
-  obb-rules.actions.goto
+  obb-rules.actions.go-to
   "Allows movement from a unit to non-adjacent coordinates.
   Translates itself to the best found path via :move actions."
   (:require [obb-rules.math :as math]
@@ -93,7 +93,7 @@
         nil ; on this case, we can't resolve the move, try another upstream
         result))))
 
-(defn- resolve-goto
+(defn- resolve-go-to
   "Tries to find the best path between the given coordinates. Fails if can't
   find it, or the :move action would fail for this scenario."
   [from target quantity]
@@ -104,7 +104,7 @@
         result
         (result/action-failed "NoPathToTarget")))))
 
-(defn build-goto
-  "Builds a goto action on a board"
+(defn build-go-to
+  "Builds a go-to action on a board"
   [[from to quantity]]
-  (resolve-goto from to quantity))
+  (resolve-go-to from to quantity))

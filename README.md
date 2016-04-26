@@ -34,7 +34,7 @@ Gathers all available units and deploys them using a template. On this example t
 
 Moves `3` units on coord `[1 2]` to coord `[2 3]`. Coords must be adjacent. The movement takes action points, depending on the selected unit's movement cost. You can do a partial move, but it will cost double action points.
 
-##### `[:goto [1 2] [4 4]]`
+##### `[:go-to [1 2] [4 4]]`
 
 Moves all units on `[1 2]` to `[4 4]`. It tries to find a path using the unit's movement cost and movement type.
 

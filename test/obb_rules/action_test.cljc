@@ -38,10 +38,10 @@
   (testing "load move as string"
     (loader-check ["move" [1 1] [2 2] 10]))
 
-  (testing "load goto"
-    (loader-check [:goto [1 1] [2 2]]))
-  (testing "load goto as string"
-    (loader-check ["goto" [1 1] [2 2]]))
+  (testing "load go-to"
+    (loader-check [:go-to [1 1] [2 2]]))
+  (testing "load go-to as string"
+    (loader-check ["go-to" [1 1] [2 2]]))
 
   (testing "load rotate"
     (loader-check [:rotate [1 1] :south]))

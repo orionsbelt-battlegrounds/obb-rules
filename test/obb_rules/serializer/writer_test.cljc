@@ -13,7 +13,7 @@
 
 (deftest action-serializer
   (is (= "a1112" (writer/action->str [:attack [1 1] [1 2]])))
-  (is (= "g1112" (writer/action->str [:goto [1 1] [1 2]])))
+  (is (= "g1112" (writer/action->str [:go-to [1 1] [1 2]])))
   (is (= "d88.10.rain" (writer/action->str [:deploy 10 :rain [8 8]])))
   (is (= "d11.200.crusader" (writer/action->str [:deploy 200 :crusader [1 1]])))
   (is (= "m1716.1" (writer/action->str [:move [1 7] [1 6] 1])))
@@ -25,7 +25,7 @@
 (deftest actions-serializer
   (is (= "a1112 g1112 r11w"
            (writer/actions->str [[:attack [1 1] [1 2]]
-                                 [:goto [1 1] [1 2]]
+                                 [:go-to [1 1] [1 2]]
                                  [:rotate [1 1] :west]]))))
 
 (deftest complete-game

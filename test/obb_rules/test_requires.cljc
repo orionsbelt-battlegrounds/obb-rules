@@ -13,7 +13,7 @@
     [obb-rules.actions.auto-deploy-test]
     [obb-rules.actions.rotate-test]
     [obb-rules.actions.move-test]
-    [obb-rules.actions.goto-test]
+    [obb-rules.actions.go-to-test]
     [obb-rules.actions.bonus-test]
     [obb-rules.actions.catapult-test]
     [obb-rules.actions.deploy-test]

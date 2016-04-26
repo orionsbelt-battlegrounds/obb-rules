@@ -30,7 +30,7 @@
 
 (defmethod str->action \g
   [s]
-  [:goto [(get-int s 1) (get-int s 2)]
+  [:go-to [(get-int s 1) (get-int s 2)]
          [(get-int s 3) (get-int s 4)]])
 
 (defmethod str->action \m

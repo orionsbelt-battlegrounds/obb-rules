@@ -20,7 +20,7 @@
 
 (deftest action-reader
   (is (= [:attack [1 1] [1 2]] (reader/str->action "a1112")))
-  (is (= [:goto [1 1] [1 2]] (reader/str->action "g1112")))
+  (is (= [:go-to [1 1] [1 2]] (reader/str->action "g1112")))
   (is (= [:move [1 7] [1 6] 1] (reader/str->action "m1716.1")))
   (is (= [:rotate [1 1] :west] (reader/str->action "r11w")))
   (is (= [:rotate [1 1] :north] (reader/str->action "r11n")))
@@ -32,7 +32,7 @@
 (deftest actions-reader
   (is (= (reader/str->actions "a1112 g1112 r11w")
          [[:attack [1 1] [1 2]]
-          [:goto [1 1] [1 2]]
+          [:go-to [1 1] [1 2]]
           [:rotate [1 1] :west]])))
 
 (deftest attrs-reader
@@ -40,8 +40,8 @@
          (reader/str->attrs "mode: annihilation\nstate: final\nwinner: p1"))))
 
 (deftest raww-history-reader
-  (is (= [{:player :p1 :actions [[:goto [1 2] [2 3]] [:goto [6 2] [5 2]]]}
-          {:player :p2 :actions [[:goto [4 7] [2 5]] [:attack [2 5] [2 3]]]}]
+  (is (= [{:player :p1 :actions [[:go-to [1 2] [2 3]] [:go-to [6 2] [5 2]]]}
+          {:player :p2 :actions [[:go-to [4 7] [2 5]] [:attack [2 5] [2 3]]]}]
          (reader/str->history-items "p1 g1223 g6252\np2 g4725 a2523")))
 
   (testing "empty"

@@ -48,10 +48,10 @@
         (is (result/failed? result))))))
 
 (defn- test-complete-move
-  "Tests a movement using the :move and :goto actions"
+  "Tests a movement using the :move and :go-to actions"
   [board old-coord new-coord expected-success?]
   (test-complete-move-action board old-coord new-coord expected-success? :move)
-  (test-complete-move-action board old-coord new-coord expected-success? :goto))
+  (test-complete-move-action board old-coord new-coord expected-success? :go-to))
 
 (deftest front-movement-east
   (let [element (element/element-direction crusader-element :east)
