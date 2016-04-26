@@ -95,7 +95,7 @@
                              :source-paths ["src/obb_rules" "test"]
                              :compiler {:output-to "build/test/out.js"
                                         :output-dir "build/test/out"
-                                        :cache-anlysis true
+                                        :cache-analysis true
                                         :main obb-rules.test-runner
                                         :optimizations :advanced}}]}}
 
