@@ -3,7 +3,7 @@
             [obb-rules.actions.attack :as attack]
             [obb-rules.actions.deploy :as deploy]
             [obb-rules.actions.auto-deploy :as auto-deploy]
-            [obb-rules.actions.goto :as goto]
+            [obb-rules.actions.go-to :as go-to]
             [obb-rules.actions.move :as move]))
 
 (def ^:private available-actions
@@ -12,7 +12,7 @@
    :attack attack/build-attack
    :deploy deploy/build-deploy
    :auto-deploy auto-deploy/build-auto-deploy
-   :goto goto/build-goto})
+   :go-to go-to/build-go-to})
 
 (defn build-action
   "Builds an action given its code and args"

@@ -164,7 +164,7 @@
   (let [raw-action (first action-result)
         action-name (first raw-action)]
     (cond
-      (some #{action-name} [:move :goto]) (-> coords
+      (some #{action-name} [:move :go-to]) (-> coords
                                               (conj (nth raw-action 1))
                                               (conj (nth raw-action 2)))
       (some #{action-name} [:rotate :attack]) (-> coords
@@ -216,8 +216,8 @@
        (not= coord (:selected-coord game-data))
        (= (element/element-player elem) (game/state game))))
 
-(defn- goto?
-  "Checks if click is goto"
+(defn- go-to?
+  "Checks if click is go-to"
   [game-data game coord elem]
   (and (nil? elem)
        (= (:selected-quantity game-data) (element/element-quantity (:selected-element game-data)))
@@ -255,12 +255,12 @@
         action [:move selected-coord coord quantity]]
     (register-action game-data game player action coord)))
 
-(defn- process-goto
-  "Processes a goto action"
+(defn- process-go-to
+  "Processes a go-to action"
   [game-data game coord elem]
   (let [selected-coord (:selected-coord game-data)
         player (element/element-player (:selected-element game-data))
-        action [:goto selected-coord coord]]
+        action [:go-to selected-coord coord]]
     (register-action game-data game player action coord)))
 
 (defn- attack?
@@ -271,7 +271,7 @@
        (get (:possible-attacks game-data) coord)))
 
 (defn- process-attack
-  "Processes a goto action"
+  "Processes a go-to action"
   [game-data game coord elem]
   (let [selected-coord (:selected-coord game-data)
         player (element/element-player (:selected-element game-data))
@@ -282,8 +282,8 @@
   "Processes select square"
   [game-data game coord elem]
   (cond
-    (goto? game-data game coord elem)
-      (process-goto game-data game coord elem)
+    (go-to? game-data game coord elem)
+      (process-go-to game-data game coord elem)
     (move? game-data game coord elem)
       (process-move game-data game coord elem)
     (attack? game-data game coord elem)

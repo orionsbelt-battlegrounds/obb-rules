@@ -2,7 +2,8 @@
   "Simplifies data structures and builds them if necessary"
   (:require [clojure.walk :as w]
             [obb-rules.host-dependent :as host]
-            [obb-rules.unit :as unit]))
+            [obb-rules.unit :as unit]
+            [clojure.string :as string]))
 
 (declare clean-unit)
 (declare build-unit)
@@ -62,7 +63,7 @@
 (defn coordenize
   "Transforms a string in a coordinate"
   [raw]
-  (let [beter-raw (-> raw (str) (clojure.string/replace #":" ""))]
+  (let [beter-raw (-> raw (str) (string/replace #":" ""))]
     (if-let [parsed (re-matches #"\[(\d+) (\d+)\]" beter-raw)]
       (into [] (map host/parse-int (rest parsed)))
       raw)))

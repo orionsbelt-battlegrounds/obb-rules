@@ -108,11 +108,11 @@
                      (filter #(seq %1)))]
     options))
 
-(defn- goto-result
-  "Applies a goto the given coordinate"
+(defn- go-to-result
+  "Applies a go-to the given coordinate"
   [game element player target-coord]
   (let [source-coord (element/element-coordinate element)
-        action [:goto source-coord target-coord]
+        action [:go-to source-coord target-coord]
         result (turn/simulate-actions game player [action])]
     [action result target-coord]))
 
@@ -154,7 +154,7 @@
          mov-cost (unit/unit-movement-cost unit)
          player (element/element-player element)
          possible-coords (take 1 (shuffle (move/find-possible-destinations game element)))
-         run-results (partial goto-result game element player)
+         run-results (partial go-to-result game element player)
          actions-and-results (map run-results possible-coords)]
      (map (fn [[action result target-coord]]
              (-> result
@@ -174,7 +174,7 @@
         player (element/element-player element)
         possible-coords (->> (move/find-all-possible-destinations game element)
                              (discard-possible-coords game element))
-        run-results (partial goto-result game element player)
+        run-results (partial go-to-result game element player)
         actions-and-results (map run-results possible-coords)
         options (->> (map build-options actions-and-results)
                      (flatten))]

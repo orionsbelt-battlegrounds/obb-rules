@@ -21,7 +21,7 @@
   [[_ [source-x source-y] [target-x target-y]]]
   (str "a" source-x source-y target-x target-y))
 
-(defmethod action->str :goto
+(defmethod action->str :go-to
   [[_ [source-x source-y] [target-x target-y]]]
   (str "g" source-x source-y target-x target-y))
 
