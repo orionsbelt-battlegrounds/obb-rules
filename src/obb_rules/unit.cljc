@@ -21,6 +21,38 @@
             [obb-rules.units.crusader]
             [obb-rules.units.star]))
 
+(s/def ::unit
+  (s/keys :req-un [::name ::code ::type ::category
+                   ::displacement ::movement-type ::movement-cost
+                   ::value ::attack ::defense ::range]
+          :opt-un [::attack-type ::after-attack ::bonus]))
+
+(s/def ::name (s/and string? #(<= 3 (count %) 15)))
+(s/def ::code (s/and string? #(<= 1 (count %) 3)))
+(s/def ::attack (s/and integer? pos? #(<= 1 % 6000)))
+(s/def ::defense (s/and integer? pos? #(<= 1 % 10000)))
+(s/def ::value (s/and integer? pos? #(or (<= 1 % 100) (= % 50000))))
+(s/def ::type #{:mechanic :organic})
+(s/def ::attack-type (s/nilable #{:direct :catapult}))
+(s/def ::category #{:light :medium :heavy :special})
+(s/def ::displacement #{:air :ground})
+(s/def ::movement-type #{:normal :diagonal :front :all})
+(s/def ::movement-cost (s/and integer? #(<= 1 % 6)))
+(s/def ::range (s/and integer? #(<= 1 % 7)))
+
+(s/def ::after-attack-hook-data #{:rebound :triple})
+(s/def ::after-attack-hook (s/tuple ::after-attack-hook-data))
+(s/def ::after-attack (s/coll-of ::after-attack-hook []))
+
+(s/def ::bonus (s/nilable (s/keys :opt-un [:obb-rules.unit.bonus/attack
+                                           :obb-rules.unit.bonus/defense])))
+(s/def :obb-rules.unit.bonus/attack (s/keys :opt-un [:obb-rules.unit.bonus/category
+                                                     :obb-rules.unit.bonus/type]))
+(s/def :obb-rules.unit.bonus/defense (s/keys :opt-un [:obb-rules.unit.bonus/category
+                                                      :obb-rules.unit.bonus/type]))
+(s/def :obb-rules.unit.bonus/category (s/map-of ::category integer?))
+(s/def :obb-rules.unit.bonus/type (s/map-of ::type integer?))
+
 (defrecord ^{:doc "Represents a combat unit"} CombatUnit
   [^String name
    ^String code
