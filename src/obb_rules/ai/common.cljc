@@ -153,8 +153,8 @@
          unit (element/element-unit element)
          mov-cost (unit/unit-movement-cost unit)
          player (element/element-player element)
-         possible-coords (take 1 (shuffle (move/find-possible-destinations game element)))
-         run-results (partial go-to-result game element player)
+         possible-coords (take max-options (shuffle (move/find-possible-destinations game element)))
+         run-results (partial goto-result game element player)
          actions-and-results (map run-results possible-coords)]
      (map (fn [[action result target-coord]]
              (-> result
@@ -225,3 +225,16 @@
               (update :value + (value-for-join current-option))
               (assoc :cost (+ (master :cost) (current-option :cost))))
           master)))))
+
+(defn aggregate-best
+  "Given a collection of sorted options, tries to group several of them
+  to find the best one"
+  [player options]
+  (let [joiner (partial join-options player)]
+    (->> options
+         (map (fn [master-option]
+                (->> options
+                     (filter #(>= (:cost master-option) (:cost %)))
+                     (reduce joiner master-option))))
+         (sort-by option-value-sorter)
+         first)))

@@ -3,6 +3,7 @@
   "Bot implementation that it's defensive"
   (:require [obb-rules.math :as math]
             [obb-rules.actions.move :as move]
+            [obb-rules.host-dependent :as host]
             [obb-rules.simplifier :as simplify]
             [obb-rules.element :as element]
             [obb-rules.evaluator :as evaluator]
@@ -16,6 +17,7 @@
             [obb-rules.board :as board]))
 
 (def element-depth 10)
+(def options-per-element 10)
 
 (defmulti actions
   "Returns a list of actions to apply to the current game"
@@ -113,38 +115,31 @@
   "For each option given, will play a bot against it and recalculate
   option value"
   [options element]
-  (map (fn [option]
-         (when option
-           (let [board (:board option)
-                 player (game/state board)
-                 scores (evaluator/eval-game board)
-                 counter-player (other-player board)
-                 moved-element (board/get-element board (or (:element-coord option) (element/element-coordinate element)))
-                 board (-> (game/state board counter-player)
-                           (board/element-focus moved-element)
-                           (dissoc :removed-elements)
-                           (dissoc :action-results))
-                 counter-option (firingsquad/turn-option board counter-player)]
-             (merge-counter-option element option counter-option board scores player))))
-       options))
+  (host/parallel-map
+    (fn [option]
+       (when option
+         (let [board (:board option)
+               player (game/state board)
+               scores (evaluator/eval-game board)
+               counter-player (other-player board)
+               moved-element (board/get-element board (or (:element-coord option) (element/element-coordinate element)))
+               board (-> (game/state board counter-player)
+                         (board/element-focus moved-element)
+                         (dissoc :removed-elements)
+                         (dissoc :action-results))
+               counter-option (firingsquad/turn-option board counter-player)]
+           (merge-counter-option element option counter-option board scores player))))
+     options))
 
 (defn- gather-element-actions
   "Gathers possible actions for the given element"
   [game all element]
   (remove empty?
-    (conj all (first (-> (take-best game element element-depth)
-                         (consider-opponent-move element)
-                         (->> (sort-by common/option-value-sorter))
-                         (element-options-logger element))))))
-
-(defn- find-one
-  "Given a collection of sorted options, tries to find a good one"
-  [player options]
-  (let [joiner (partial common/join-options player)
-        the-one (reduce joiner (first options) (rest options))]
-    (logger/log "## Final ~~~~~~~~~~")
-    (logger/ai-option the-one)
-    the-one))
+    (concat all (take options-per-element
+                      (-> (take-best game element element-depth)
+                          (consider-opponent-move element)
+                          (->> (sort-by common/option-value-sorter))
+                          (element-options-logger element))))))
 
 (defmethod actions :turn
   [game player]
@@ -154,7 +149,7 @@
         option (->> (reduce gatherer [] elements)
                     (sort-by common/option-value-sorter)
                     (final-actions-logger)
-                    (find-one player))]
+                    (common/aggregate-best player))]
     (if option
       (option :actions)
       [])))

@@ -39,26 +39,6 @@
                            (into (common/move-options game element))
                            (->> (sort-by common/option-value-cost-sorter)))))))
 
-(defn- find-one
-  "Given a collection of sorted options, tries to find a good one"
-  [player options]
-  (let [joiner (partial common/join-options player)
-        the-one (reduce joiner (first options) (rest options))]
-    the-one))
-
-(defn- aggregate-best
-  "Given a collection of sorted options, tries to group several of them
-  to find the best one"
-  [player options]
-  (let [joiner (partial common/join-options player)]
-    (->> options
-         (map (fn [master-option]
-                (->> options
-                     (filter #(>= (:cost master-option) (:cost %)))
-                     (reduce joiner master-option))))
-         (sort-by common/option-value-sorter)
-         first)))
-
 (defn turn-option
   "Gets the complete option for playing on a specific game"
   [game player]
@@ -67,7 +47,7 @@
     (->> (reduce gatherer [] elements)
          (sort-by common/option-value-sorter)
          #_(logger)
-         (aggregate-best player))))
+         (common/aggregate-best player))))
 
 (defmethod actions :turn
   [game player]
