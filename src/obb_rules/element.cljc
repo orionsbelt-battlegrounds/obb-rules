@@ -1,5 +1,14 @@
 (ns obb-rules.element
-  (:require [obb-rules.unit :as unit]))
+  (:require [clojure.spec :as s]
+            [obb-rules.unit :as unit]))
+
+(s/def ::element (s/keys :req-un [::quantity ::hitpoints ::player
+                                  :obb-rules.unit/unit]))
+
+(s/def ::player (s/or :keyword #{:p1 :p2}
+                      :string #{"p1" "p2"}))
+(s/def ::quantity (s/and integer? #(<= 0 % 1000)))
+(s/def ::hitpoints (s/and integer? #(<= 0 % 10000)))
 
 (defn create-element
   "Creates an element"
@@ -21,6 +30,9 @@
    (assoc element :player player)))
 
 (defn element-unit "Element's unit" [element] (element :unit))
+(s/fdef element-unit
+  :args (s/cat :element ::element)
+  :ret :obb-rules.unit/unit)
 
 (defn hooks
   "Gets the hooks for the given event"
@@ -130,6 +142,11 @@
     (if (> 0 remaining-quantity)
       (element-quantity element 0)
       (element-quantity element remaining-quantity))))
+
+(s/fdef remove-specific-quantity
+  :args (s/cat :element ::element
+               :quantity ::quantity)
+  :ret ::element)
 
 (defn- remove-hitpoints
   "Removes part of an element (<1)"
