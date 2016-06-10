@@ -2,7 +2,7 @@ language: clojure
 sudo: false
 env:
   global:
-    - OBB_SCENARIOS_TO_TEST=10
+    - OBB_SCENARIOS_TO_TEST=1
 lein: lein2
 script: script/test
 jdk:

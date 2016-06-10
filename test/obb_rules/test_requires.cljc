@@ -1,5 +1,7 @@
 (ns obb-rules.test-requires
   (:require
+    #?(:clj [clojure.spec :as s]
+       :cljs [cljs.spec :as s])
     [obb-rules.unit-test]
     [obb-rules.board-test]
     [obb-rules.simplifier-test]

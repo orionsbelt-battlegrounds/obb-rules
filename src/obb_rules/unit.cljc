@@ -1,5 +1,8 @@
 (ns obb-rules.unit
-  (:require [obb-rules.units.rain]
+  (:require
+    #?(:clj [clojure.spec :as s]
+       :cljs [cljs.spec :as s])
+            [obb-rules.units.rain]
             [obb-rules.units.nova]
             [obb-rules.units.pretorian]
             [obb-rules.units.raptor]

@@ -16,7 +16,7 @@
       default-value))
 
 (defn scenarios-to-test []
-  (parse-int (get-env "OBB_SCENARIOS_TO_TEST" "1")))
+  (parse-int (get-env "OBB_SCENARIOS_TO_TEST" "0")))
 
 #?(:clj
     (def parallel-map
